@@ -24,7 +24,7 @@ Each level integrates more of the product: I0 one part against its datasheet, I1
 
 | Level | T1 specifics |
 |---|---|
-| **I0 Part** | parts-lib sheet, kicad-lib symbol/footprint, fab rule test boards; lifecycle and second source recorded per PLIB-003 |
+| **I0 Part** | libs manifest entry and generator data (every value citing its datasheet page), the generated symbol, footprint and 3D model, fab rule test boards; lifecycle and second source recorded per PLIB-003 (generator-data fields) and in the board BOM's Sourcing and Second source columns |
 | **I1 Block** | board `sim/` studies |
 | **I2 Domain module** | Module boards of §2; the bench items of BOM §7 |
 | **I3 Domain pair** | Module stack of §2.2 |
@@ -77,7 +77,7 @@ Row IDs: `V0-nn` (I0), `V1-nn` (I1), `V2-<module letter><nn>` (I2), `V3-nn` (I3,
 |---|---|---|
 | V0-01 | Footprint against the manufacturer's drawing (pads, courtyard, pin 1, 3D model height) | Matches; reviewed by a second reading |
 | V0-02 | Symbol pin map against the datasheet pin table | Matches; Manufacturer and MPN fields (PCB-T-05) |
-| V0-03 | Lifecycle and second source recorded | PLIB-003, T1-028, T1-029 |
+| V0-03 | Lifecycle and second source recorded | In the part's libs generator data (PLIB-003) and its board BOM line; T1-028, T1-029 |
 | V0-04 | Simulation model available and its hash recorded | `odapkit sim fetch` succeeds or the block's checks are marked blocked |
 
 ### 4.2 I1 Block

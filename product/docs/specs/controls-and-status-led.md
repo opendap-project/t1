@@ -15,7 +15,7 @@ The T1 has four body buttons (T1-014, T1-015): **Main** (right edge) and **Actio
 | Short | released before 500 ms | Android long-press timeout (`ViewConfiguration`), proposed value |
 | Long | held 500 ms or more | as above |
 | Hold | held 2 s or more | proposed, to separate deliberate system actions from long presses |
-| Forced power-off | held until the PMIC cuts power | RK809 long PWRON press, handled in hardware without the OS ([RK809-5 sheet](https://github.com/opendap-project/parts-lib/blob/main/Rockchip/RK809-5.md)); the time is a PMIC register setting, value to be fixed in bring-up (**UNVERIFIED**) |
+| Forced power-off | held until the PMIC cuts power | RK809 long PWRON press, handled in hardware without the OS (Rockchip RK809 datasheet Rev 1.01, p. 21, §4.1: a long PWRON press powers down); the time is a PMIC register setting, value to be fixed in bring-up (**UNVERIFIED**) |
 
 ### 1.2 Device off
 

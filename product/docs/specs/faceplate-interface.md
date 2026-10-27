@@ -134,7 +134,7 @@ The body sets the backlight current (60 mA full scale, dimmed by scaling the ref
 
 ### 2.3 Backlight voltage against the connector rating
 
-The FH35C is rated **30 V AC rms** (Hirose FH35C catalog, edition 2013.11, p. 2; [parts-lib sheet](https://github.com/opendap-project/parts-lib/blob/main/Hirose/FH35C-51S-0.3SHW.md)). The touch faceplate's string runs at 14–16.5 V, inside it. The fault case is not: with the TPS61169, an open string drives BL_LEDA to the over-voltage threshold, 36–39 V (SNVSA40B p. 5), and the output capacitor holds it on contact 46 after the driver shuts down. The catalog does not say whether its AC rms figure applies to DC (**UNVERIFIED**).
+The FH35C is rated **30 V AC rms** (Hirose FH35C catalog, edition 2013.11, p. 2, Ratings). The touch faceplate's string runs at 14–16.5 V, inside it. The fault case is not: with the TPS61169, an open string drives BL_LEDA to the over-voltage threshold, 36–39 V (SNVSA40B p. 5), and the output capacitor holds it on contact 46 after the driver shuts down. The catalog does not say whether its AC rms figure applies to DC (**UNVERIFIED**).
 
 Interface v1 therefore caps **BL_LEDA at 30 V in every state, fault included**, and a faceplate's string forward voltage at **22 V** at its maximum current (provisional: the chosen driver's minimum threshold less 3 V). Two ways to close it, for the board owner: a backlight driver whose maximum over-voltage threshold is at most 30 V (recommended; the BOM's alternate TPS61160 is listed with a 26 V threshold, limits and land **UNVERIFIED**), or a written DC rating of at least 40 V from Hirose, after which a later ADR may relax the cap.
 

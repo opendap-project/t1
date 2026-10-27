@@ -1,0 +1,1162 @@
+(kicad_sch (version 20260306) (generator "eeschema") (generator_version "10.0")
+(uuid "e79ebaea-4836-5f63-8a0d-efb38e12b889")
+(paper "A4")
+(title_block (title "Ambient microphone") (date "2026-10-25") (rev "A") (company "The OpenDAP Project") (comment 1 "blk.mic-ambient") (comment 2 "IM73D122 PDM microphone on PDM CLK1 and SDI1, on its own MIC_1V8 branch (link #35)"))
+(lib_symbols (symbol "Connector:TestPoint"
+		(pin_numbers
+			(hide yes)
+		)
+		(pin_names
+			(offset 0.762)
+			(hide yes)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(duplicate_pin_numbers_are_jumpers no)
+		(property "Reference" "TP"
+			(at 0 6.858 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "TestPoint"
+			(at 0 5.08 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 5.08 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 5.08 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "test point"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_keywords" "test point tp"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_fp_filters" "Pin* Test*"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "TestPoint_0_1"
+			(circle
+				(center 0 3.302)
+				(radius 0.762)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+		)
+		(symbol "TestPoint_1_1"
+			(pin passive line
+				(at 0 0 90)
+				(length 2.54)
+				(name "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
+(symbol "Device:C"
+		(pin_numbers
+			(hide yes)
+		)
+		(pin_names
+			(offset 0.254)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(duplicate_pin_numbers_are_jumpers no)
+		(property "Reference" "C"
+			(at 0.635 2.54 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "C"
+			(at 0.635 -2.54 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 0.9652 -3.81 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Unpolarized capacitor"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_keywords" "cap capacitor"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_fp_filters" "C_*"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "C_0_1"
+			(polyline
+				(pts
+					(xy -2.032 0.762) (xy 2.032 0.762)
+				)
+				(stroke
+					(width 0.508)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy -2.032 -0.762) (xy 2.032 -0.762)
+				)
+				(stroke
+					(width 0.508)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+		)
+		(symbol "C_1_1"
+			(pin passive line
+				(at 0 3.81 270)
+				(length 2.794)
+				(name ""
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 0 -3.81 90)
+				(length 2.794)
+				(name ""
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
+(symbol "Device:R"
+		(pin_numbers
+			(hide yes)
+		)
+		(pin_names
+			(offset 0)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(duplicate_pin_numbers_are_jumpers no)
+		(property "Reference" "R"
+			(at 2.032 0 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "R"
+			(at 0 0 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at -1.778 0 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_keywords" "R res resistor"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_fp_filters" "R_*"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "R_0_1"
+			(rectangle
+				(start -1.016 -2.54)
+				(end 1.016 2.54)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+		)
+		(symbol "R_1_1"
+			(pin passive line
+				(at 0 3.81 270)
+				(length 1.27)
+				(name ""
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 0 -3.81 90)
+				(length 1.27)
+				(name ""
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
+(symbol "Infineon:IM73D122V01XTMA1"
+		(pin_names
+			(offset 1.016)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(property "Reference" "MK"
+			(at -7.62 16.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "IM73D122V01XTMA1"
+			(at -7.62 -17.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Infineon:Infineon_PG-LLGA-5-3_3x4mm_P0.7mm_BottomPort"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://www.infineon.com/assets/row/public/documents/24/49/infineon-im73d122-datasheet-en.pdf"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Digital PDM MEMS microphone, bottom port, 73 dB(A) SNR, -26 dBFS, 122 dBSPL AOP, 1.62-3.6 V, PG-LLGA-5-3 (4 x 3 x 1.2 mm)"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "Infineon"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "IM73D122V01XTMA1"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_keywords" "microphone MEMS PDM digital bottom port XENSIV IM73D122 LGA"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_fp_filters" "Infineon_PG-LLGA-5-3_3x4mm_P0.7mm_BottomPort*"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "IM73D122V01XTMA1_1_1"
+			(rectangle
+				(start -7.62 12.7)
+				(end 7.62 -12.7)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type background)
+				)
+			)
+			(pin input line
+				(at -10.16 0 0)
+				(length 2.54)
+				(name "CLOCK"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "3"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin input line
+				(at -10.16 -2.54 0)
+				(length 2.54)
+				(name "LR"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "4"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin tri_state line
+				(at 10.16 0 180)
+				(length 2.54)
+				(name "DATA"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin power_in line
+				(at 0 15.24 270)
+				(length 2.54)
+				(name "VDD"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin power_in line
+				(at 0 -15.24 90)
+				(length 2.54)
+				(name "GND"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "5"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
+(symbol "power:GND"
+		(power global)
+		(pin_numbers
+			(hide yes)
+		)
+		(pin_names
+			(offset 0)
+			(hide yes)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(duplicate_pin_numbers_are_jumpers no)
+		(property "Reference" "#PWR"
+			(at 0 -6.35 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 0 -3.81 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_keywords" "global power"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "GND_0_1"
+			(polyline
+				(pts
+					(xy 0 0) (xy 0 -1.27) (xy 1.27 -1.27) (xy 0 -2.54) (xy -1.27 -1.27) (xy 0 -1.27)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+		)
+		(symbol "GND_1_1"
+			(pin power_in line
+				(at 0 0 270)
+				(length 0)
+				(name ""
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
+(symbol "power:PWR_FLAG"
+		(power global)
+		(pin_numbers
+			(hide yes)
+		)
+		(pin_names
+			(offset 0)
+			(hide yes)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(duplicate_pin_numbers_are_jumpers no)
+		(property "Reference" "#FLG"
+			(at 0 1.905 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "PWR_FLAG"
+			(at 0 3.81 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Special symbol for telling ERC where power comes from"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_keywords" "flag power"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "PWR_FLAG_0_0"
+			(pin power_out line
+				(at 0 0 90)
+				(length 0)
+				(name ""
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(symbol "PWR_FLAG_0_1"
+			(polyline
+				(pts
+					(xy 0 0) (xy 0 1.27) (xy -1.016 1.905) (xy 0 2.54) (xy 1.016 1.905) (xy 0 1.27)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
+(symbol "power:VCC"
+		(power global)
+		(pin_numbers
+			(hide yes)
+		)
+		(pin_names
+			(offset 0)
+			(hide yes)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(duplicate_pin_numbers_are_jumpers no)
+		(property "Reference" "#PWR"
+			(at 0 -3.81 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "VCC"
+			(at 0 3.556 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"VCC\""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_keywords" "global power"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "VCC_0_1"
+			(polyline
+				(pts
+					(xy -0.762 1.27) (xy 0 2.54)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 0 2.54) (xy 0.762 1.27)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 0 0) (xy 0 2.54)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+		)
+		(symbol "VCC_1_1"
+			(pin power_in line
+				(at 0 0 90)
+				(length 0)
+				(name ""
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	))
+(symbol (lib_id "Infineon:IM73D122V01XTMA1") (at 52.07 69.85 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "021038e6-0d62-5ce6-b730-aa0fdc6e71d8")
+  (property "Reference" "MK3901" (at 53.34 54.61 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Value" "IM73D122V01XTMA1" (at 53.34 52.07 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Footprint" "Infineon:Infineon_PG-LLGA-5-3_3x4mm_P0.7mm_BottomPort" (at 52.07 69.85 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "https://www.infineon.com/assets/row/public/documents/24/49/infineon-im73d122-datasheet-en.pdf" (at 52.07 69.85 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Description" "Digital PDM MEMS microphone, bottom port, 73 dB(A) SNR, -26 dBFS, 122 dBSPL AOP, 1.62-3.6 V, PG-LLGA-5-3 (4 x 3 x 1.2 mm)" (at 52.07 69.85 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Manufacturer" "Infineon" (at 52.07 69.85 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "MPN" "IM73D122V01XTMA1" (at 52.07 69.85 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Block" "blk.mic-ambient" (at 52.07 69.85 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "3" (uuid "7bb2d994-fbc0-5cdd-ab26-99223fb75539"))
+  (pin "4" (uuid "61dc54d5-7c36-58ef-bead-efad9a2cee10"))
+  (pin "1" (uuid "2a9e09fe-e36d-5172-ae30-0d9d177a3e1b"))
+  (pin "2" (uuid "3c3e80e9-c06d-5d8c-be0d-66120a0d9611"))
+  (pin "5" (uuid "c58f6f96-302f-58e5-a57c-7a81a89af9b8"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/d05832da-0e46-58aa-babd-143bead58fa6" (reference "MK3901") (unit 1))))
+)
+(wire (pts (xy 41.91 69.85) (xy 39.37 69.85)) (stroke (width 0) (type default)) (uuid "1e6ffc13-f16b-525f-ac8f-ea84c8a37eb3"))
+(wire (pts (xy 41.91 72.39) (xy 39.37 72.39)) (stroke (width 0) (type default)) (uuid "6793ba81-3d91-5102-acdc-6f263c7256e8"))
+(symbol (lib_id "power:GND") (at 39.37 72.39 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "b8d4ba7d-a132-5882-8765-644e82bb36b5")
+  (property "Reference" "#PWR0934" (at 39.37 72.39 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Value" "GND" (at 39.37 76.2 0) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "" (at 39.37 72.39 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "" (at 39.37 72.39 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "25c577a8-1f27-5fa9-8aee-475b0797d7eb"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/d05832da-0e46-58aa-babd-143bead58fa6" (reference "#PWR0934") (unit 1))))
+)
+(wire (pts (xy 62.23 69.85) (xy 64.77 69.85)) (stroke (width 0) (type default)) (uuid "eea3e2bb-de67-5e7f-bdd5-63ad0aca652a"))
+(wire (pts (xy 52.07 54.61) (xy 52.07 52.07)) (stroke (width 0) (type default)) (uuid "6c258d35-b439-5fd3-9393-12e382907564"))
+(wire (pts (xy 52.07 85.09) (xy 52.07 87.63)) (stroke (width 0) (type default)) (uuid "892b4c84-f6c9-5a70-851c-6612ffabd838"))
+(symbol (lib_id "power:GND") (at 52.07 87.63 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "9eff2774-8a0b-5599-b0ed-a63f0ce4875b")
+  (property "Reference" "#PWR0935" (at 52.07 87.63 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Value" "GND" (at 52.07 91.44 0) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "" (at 52.07 87.63 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "" (at 52.07 87.63 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "115064b5-06d1-575e-af9a-e919243dba15"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/d05832da-0e46-58aa-babd-143bead58fa6" (reference "#PWR0935") (unit 1))))
+)
+(symbol (lib_id "Device:C") (at 81.28 58.42 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "26d83594-a6c9-560b-987d-8e1a5ee7cd20")
+  (property "Reference" "C3901" (at 83.82 57.15 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Value" "1 µF" (at 83.82 59.69 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Footprint" "Capacitor_SMD:C_0402_1005Metric" (at 81.28 58.42 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "https://www.murata.com/en-us/products/productdetail?partno=GRM155R61A105KE15D" (at 81.28 58.42 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Description" "Capacitor, 1 µF, 10 V, X5R, 0402" (at 81.28 58.42 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Manufacturer" "Murata" (at 81.28 58.42 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "MPN" "GRM155R61A105KE15D" (at 81.28 58.42 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Block" "blk.mic-ambient" (at 81.28 58.42 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "bc17b989-7dcd-5c23-a469-5a9fb476ba35"))
+  (pin "2" (uuid "62fc87fa-89e7-5189-84f0-37efe6c6f821"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/d05832da-0e46-58aa-babd-143bead58fa6" (reference "C3901") (unit 1))))
+)
+(wire (pts (xy 81.28 54.61) (xy 81.28 52.07)) (stroke (width 0) (type default)) (uuid "9b611274-2ea9-5229-829a-5b4661c96e82"))
+(wire (pts (xy 81.28 62.23) (xy 81.28 64.77)) (stroke (width 0) (type default)) (uuid "17c3d8ad-df8a-5f4d-ba23-5565135b6869"))
+(symbol (lib_id "power:GND") (at 81.28 64.77 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "a69cfa1b-8099-5c33-a951-dae69f3aa4f5")
+  (property "Reference" "#PWR0936" (at 81.28 64.77 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Value" "GND" (at 81.28 68.58 0) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "" (at 81.28 64.77 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "" (at 81.28 64.77 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "382b032c-4285-5abe-953b-d347ff18f658"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/d05832da-0e46-58aa-babd-143bead58fa6" (reference "#PWR0936") (unit 1))))
+)
+(symbol (lib_id "Device:C") (at 93.98 58.42 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "1ba104e5-790f-58df-82a3-8c265565443e")
+  (property "Reference" "C3902" (at 96.52 57.15 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Value" "100 nF" (at 96.52 59.69 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Footprint" "Capacitor_SMD:C_0402_1005Metric" (at 93.98 58.42 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "https://www.murata.com/en-us/products/productdetail?partno=GRM155R71C104KA88D" (at 93.98 58.42 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Description" "Capacitor, 100 nF, 16 V, X7R, 0402" (at 93.98 58.42 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Manufacturer" "Murata" (at 93.98 58.42 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "MPN" "GRM155R71C104KA88D" (at 93.98 58.42 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Block" "blk.mic-ambient" (at 93.98 58.42 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "02ce7d28-0d23-5530-b79f-f0cd3b45c2db"))
+  (pin "2" (uuid "d2e4343c-4e54-5cb4-8a40-3f6ff92d360a"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/d05832da-0e46-58aa-babd-143bead58fa6" (reference "C3902") (unit 1))))
+)
+(wire (pts (xy 93.98 54.61) (xy 93.98 52.07)) (stroke (width 0) (type default)) (uuid "81f1cc32-eabf-5616-a312-f3229d1ad6fe"))
+(wire (pts (xy 81.28 52.07) (xy 93.98 52.07)) (stroke (width 0) (type default)) (uuid "6d21d654-4e0e-5ce4-9765-f2a6b83234c4"))
+(junction (at 81.28 52.07) (diameter 0) (color 0 0 0 0) (uuid "f0772488-50bd-5c7b-ac81-622ade54d73f"))
+(wire (pts (xy 93.98 62.23) (xy 93.98 64.77)) (stroke (width 0) (type default)) (uuid "6e74edb0-8441-5e35-827c-69261ba28928"))
+(symbol (lib_id "power:GND") (at 93.98 64.77 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "6ea3624a-bb5a-5634-aa7e-40513f8ae6d0")
+  (property "Reference" "#PWR0937" (at 93.98 64.77 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Value" "GND" (at 93.98 68.58 0) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "" (at 93.98 64.77 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "" (at 93.98 64.77 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "68496799-4bcd-5a79-bd05-5ba21d21724e"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/d05832da-0e46-58aa-babd-143bead58fa6" (reference "#PWR0937") (unit 1))))
+)
+(rectangle (start 22.86 35.56) (end 144.78 96.52) (stroke (width 0) (type dash)) (fill (type none)) (uuid "b2a8dd3c-0bbe-5660-bb9c-5b4cb50787ac"))
+(text "IM73D122 bottom-port PDM microphone (BOM v1 line 34)" (exclude_from_sim no) (at 24.13 34.29 0) (effects (font (size 2.54 2.54)) (justify left bottom)) (uuid "03a64152-2cbd-57a8-9910-87c055672129"))
+(symbol (lib_id "Device:R") (at 179.07 50.8 90) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "c52adb02-d5fc-5326-b971-3e1e1b4cf354")
+  (property "Reference" "R3901" (at 176.53 46.99 90) (effects (font (size 1.27 1.27))))
+  (property "Value" "10 Ω" (at 176.53 53.34 90) (effects (font (size 1.27 1.27))))
+  (property "Spec" "0603" (at 176.53 55.88 90) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "Resistor_SMD:R_0603_1608Metric" (at 179.07 50.8 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "https://yageogroup.com/en/ProductSearch/PartNumberSearch?part=RC0603FR-0710RL" (at 179.07 50.8 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Description" "Resistor, 10 Ohm, 1 %, 0603: measurement link L10" (at 179.07 50.8 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Manufacturer" "YAGEO" (at 179.07 50.8 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "MPN" "RC0603FR-0710RL" (at 179.07 50.8 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Block" "blk.mic-ambient" (at 179.07 50.8 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Constraints" "PCB-T-02" (at 179.07 50.8 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "ed2bc785-0410-5a88-9048-de8347abd581"))
+  (pin "2" (uuid "b37bada3-6e99-5d3e-98fd-af0458284344"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/d05832da-0e46-58aa-babd-143bead58fa6" (reference "R3901") (unit 1) (variant (name "production") (field (name "Value") (value "0 Ω")) (field (name "MPN") (value "RC0603JR-070RL")) (field (name "Manufacturer") (value "YAGEO"))))))
+)
+(rectangle (start 161.29 38.1) (end 201.93 58.42) (stroke (width 0) (type dash)) (fill (type none)) (uuid "24ff7e1a-86aa-5733-922a-0be2bcae0cf9"))
+(text "Link #35" (exclude_from_sim no) (at 162.56 36.83 0) (effects (font (size 2.54 2.54)) (justify left bottom)) (uuid "cb1da52c-e5ed-52a7-a479-5f7aaeacd090"))
+(wire (pts (xy 175.26 50.8) (xy 158.75 50.8)) (stroke (width 0) (type default)) (uuid "c3568fe1-eb8a-59b5-94fc-cfb4a790f7bd"))
+(junction (at 172.72 50.8) (diameter 0) (color 0 0 0 0) (uuid "f87113e8-59a0-5091-8dc0-84677272617c"))
+(wire (pts (xy 172.72 50.8) (xy 172.72 48.26)) (stroke (width 0) (type default)) (uuid "2645fb93-df7f-5e1f-bbf6-cf750f710aa8"))
+(symbol (lib_id "Connector:TestPoint") (at 172.72 48.26 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom no) (on_board yes) (dnp no) (uuid "a53a8831-fa1c-5859-a08f-b25aacc07524")
+  (property "Reference" "TP3901" (at 171.45 43.18 0) (effects (font (size 1.27 1.27)) (justify right)))
+  (property "Value" "MIC_1V8" (at 171.45 45.72 0) (effects (font (size 1.27 1.27)) (justify right)))
+  (property "Footprint" "TestPoint:TestPoint_Pad_D1.0mm" (at 172.72 48.26 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "~" (at 172.72 48.26 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Description" "Test pad, 1.0 mm" (at 172.72 48.26 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Block" "blk.mic-ambient" (at 172.72 48.26 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "c8a97449-dcbe-5736-bc8d-4e0769b7885e"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/d05832da-0e46-58aa-babd-143bead58fa6" (reference "TP3901") (unit 1))))
+)
+(symbol (lib_id "power:VCC") (at 158.75 50.8 90) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "5b166b5c-f7db-5b1a-a62d-3e832403d612")
+  (property "Reference" "#PWR0938" (at 158.75 50.8 90) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Value" "MIC_1V8" (at 156.21 50.8 270) (effects (font (size 1.27 1.27)) (justify right)))
+  (property "Footprint" "" (at 158.75 50.8 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "" (at 158.75 50.8 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "1557da07-80d3-58ac-a045-bad65949b740"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/d05832da-0e46-58aa-babd-143bead58fa6" (reference "#PWR0938") (unit 1))))
+)
+(wire (pts (xy 182.88 50.8) (xy 214.63 50.8)) (stroke (width 0) (type default)) (uuid "c9b56e39-a5bb-5d81-9d93-65f6a822a484"))
+(junction (at 185.42 50.8) (diameter 0) (color 0 0 0 0) (uuid "0d10ac0c-33fe-53b7-b9ed-cb69c537de32"))
+(wire (pts (xy 185.42 50.8) (xy 185.42 48.26)) (stroke (width 0) (type default)) (uuid "6fcceed9-f10a-5194-b3fa-b8834ab3dcd5"))
+(symbol (lib_id "Connector:TestPoint") (at 185.42 48.26 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom no) (on_board yes) (dnp no) (uuid "3c7e4605-2adf-593b-b90d-169ae93a6cac")
+  (property "Reference" "TP3902" (at 186.69 43.18 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Value" "MIC_AMB_VDD" (at 186.69 45.72 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Footprint" "TestPoint:TestPoint_Pad_D1.0mm" (at 185.42 48.26 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "~" (at 185.42 48.26 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Description" "Test pad, 1.0 mm" (at 185.42 48.26 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Block" "blk.mic-ambient" (at 185.42 48.26 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "c8a5bc40-bc4d-54c1-a3db-12dfe1267632"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/d05832da-0e46-58aa-babd-143bead58fa6" (reference "TP3902") (unit 1))))
+)
+(junction (at 209.55 50.8) (diameter 0) (color 0 0 0 0) (uuid "b030589b-b3bc-5878-917f-76943acabe30"))
+(wire (pts (xy 209.55 50.8) (xy 209.55 53.34)) (stroke (width 0) (type default)) (uuid "e449212a-b988-52e3-989d-b31cc0c32870"))
+(symbol (lib_id "power:PWR_FLAG") (at 209.55 53.34 180) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "85a73393-1152-542f-b233-91094115dc76")
+  (property "Reference" "#FLG0053" (at 209.55 53.34 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Value" "PWR_FLAG" (at 209.55 58.42 0) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "" (at 209.55 53.34 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "" (at 209.55 53.34 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "a7f33583-8671-5ac4-a250-5bd18127ab38"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/d05832da-0e46-58aa-babd-143bead58fa6" (reference "#FLG0053") (unit 1))))
+)
+(symbol (lib_id "Device:R") (at 168.91 81.28 90) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "dc7c97d1-8d9f-5fea-b289-59921cce6716")
+  (property "Reference" "R3902" (at 168.91 78.74 90) (effects (font (size 1.27 1.27))))
+  (property "Value" "22 Ω" (at 168.91 83.82 90) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "Resistor_SMD:R_0402_1005Metric" (at 168.91 81.28 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "https://yageogroup.com/en/ProductSearch/PartNumberSearch?part=RC0402FR-0722RL" (at 168.91 81.28 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Description" "Resistor, 22 Ω, 1 %, 1/16 W, 0402" (at 168.91 81.28 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Manufacturer" "YAGEO" (at 168.91 81.28 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "MPN" "RC0402FR-0722RL" (at 168.91 81.28 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Block" "blk.mic-ambient" (at 168.91 81.28 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "c95c6b34-4d8f-5e2f-b236-413dd868e34d"))
+  (pin "2" (uuid "c05005ed-3344-56a1-91c1-6ecde13d1010"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/d05832da-0e46-58aa-babd-143bead58fa6" (reference "R3902") (unit 1))))
+)
+(wire (pts (xy 165.1 81.28) (xy 162.56 81.28)) (stroke (width 0) (type default)) (uuid "bbfc421e-f9f4-5ec6-a4d2-b34b0eecf421"))
+(wire (pts (xy 172.72 81.28) (xy 175.26 81.28)) (stroke (width 0) (type default)) (uuid "08d38260-13b9-56bd-8e0a-5bde60922e48"))
+(rectangle (start 149.86 71.12) (end 226.06 88.9) (stroke (width 0) (type dash)) (fill (type none)) (uuid "848dc064-3bcb-5742-a47b-cf8046d801bd"))
+(text "PDM clock series (pinout v1 AK2)" (exclude_from_sim no) (at 151.13 69.85 0) (effects (font (size 2.54 2.54)) (justify left bottom)) (uuid "85919289-8e68-521f-8217-e6da7ed46ca7"))
+(text_box "Notes\n1. Function: ambient-noise microphone on the body (BRD-031, should); the second PDM channel\n   of the SoC (PDM CLK1, SDI1), described as a sensor. BRD-027: it shares MIC_1V8 with the\n   faceplate microphone, so it never runs without the privacy LED's supply.\n2. Absent state: unfitted: SDI1 held by the SoC pull-down, CLK1 parked low.\n3. LR to GND: data driven on the falling clock edge (DATA1, DS v1.00 Table 8), the only\n   microphone on SDI1. 22 Ω series on the clock at the SoC (pinout v1 AK2).\n4. VDD from MIC_1V8 through link #35, 10 Ω (power tree §4.12: 1 mA or less, est.).\n5. PCB: 0.8 mm acoustic port under the microphone, ground ring as the land (DS v1.00 Fig. 13)." (exclude_from_sim no) (at 152.4 138.43 0) (size 129.54 22.86) (margins 1.905 1.905 1.905 1.905) (stroke (width 0) (type default)) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "d8671146-1c2f-512a-a3b4-ece2ae353f27"))
+(text "Rails" (exclude_from_sim no) (at 22.86 179.07 0) (effects (font (size 2.54 2.54)) (justify left bottom)) (uuid "074a1fae-d0fb-5974-9a0f-519fa77a8aa2"))
+(table (column_count 3) (border (external yes) (header yes) (stroke (width 0) (type solid))) (separators (rows yes) (cols yes) (stroke (width 0) (type solid))) (column_widths 27.94 39.37 54.61) (row_heights 5.08 7.62) (cells (table_cell "Rail" (exclude_from_sim no) (at 22.86 180.34 0) (size 27.94 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27) (bold yes)) (justify left top)) (uuid "7363c72c-065b-5ebb-9f23-e051af7afb9a")) (table_cell "Capacitors" (exclude_from_sim no) (at 50.8 180.34 0) (size 39.37 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27) (bold yes)) (justify left top)) (uuid "1f62dcdc-4854-54c6-8c69-c6a5bdc2395f")) (table_cell "Requirement and source" (exclude_from_sim no) (at 90.17 180.34 0) (size 54.61 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27) (bold yes)) (justify left top)) (uuid "dcff52f7-7e6b-58f0-a77b-dbded8b1914b")) (table_cell "MIC_AMB_VDD" (exclude_from_sim no) (at 22.86 185.42 0) (size 27.94 7.62) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "d41a90a1-4f41-5cf1-a775-669da5eb7339")) (table_cell "1 µF + 100 nF" (exclude_from_sim no) (at 50.8 185.42 0) (size 39.37 7.62) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "a685d8c9-cc7c-50d3-890b-6cb89f7f9fe1")) (table_cell "IM73D122 DS v1.00 Table 5 note 4 (1 µF) and §3.5 (100 nF)" (exclude_from_sim no) (at 90.17 185.42 0) (size 54.61 7.62) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "4027c858-b915-5330-9dea-b9c12d0018b9"))))
+(text "Interface" (exclude_from_sim no) (at 22.86 143.51 0) (effects (font (size 2.54 2.54)) (justify left bottom)) (uuid "2092eabe-89ad-5365-9987-a877a0e6b0e9"))
+(table (column_count 3) (border (external yes) (header yes) (stroke (width 0) (type solid))) (separators (rows yes) (cols yes) (stroke (width 0) (type solid))) (column_widths 45.72 25.4 50.8) (row_heights 5.08 7.62 7.62 7.62) (cells (table_cell "Net" (exclude_from_sim no) (at 22.86 144.78 0) (size 45.72 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27) (bold yes)) (justify left top)) (uuid "37ff4604-ad17-5bb9-a114-c4b2f2e0d4e7")) (table_cell "Direction" (exclude_from_sim no) (at 68.58 144.78 0) (size 25.4 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27) (bold yes)) (justify left top)) (uuid "bacc95e4-231c-5837-a2a8-3b3bad426f4b")) (table_cell "Absent state (block not fitted)" (exclude_from_sim no) (at 93.98 144.78 0) (size 50.8 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27) (bold yes)) (justify left top)) (uuid "fb9fb0cd-2f4e-519f-a280-5695d7a7c7b7")) (table_cell "PDM_CLK1" (exclude_from_sim no) (at 22.86 149.86 0) (size 45.72 7.62) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "34372e87-9bf9-5c03-a0d4-e6bf9410518b")) (table_cell "Input" (exclude_from_sim no) (at 68.58 149.86 0) (size 25.4 7.62) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "8e800aac-c602-5250-b15a-641c418e47c3")) (table_cell "PDM_CLK1_M1 (GPIO4_A0), parked low while MIC_1V8 is off (G10)" (exclude_from_sim no) (at 93.98 149.86 0) (size 50.8 7.62) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "e0c8d3bf-dc65-5810-813e-0bc1f4094edb")) (table_cell "PDM_DATA1" (exclude_from_sim no) (at 22.86 157.48 0) (size 45.72 7.62) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "d75b59d2-e157-5705-bae6-61b1cf7ff28e")) (table_cell "Output" (exclude_from_sim no) (at 68.58 157.48 0) (size 25.4 7.62) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "8c84dc3d-1d10-5d23-9662-b738174226c0")) (table_cell "PDM_SDI1_M1 (GPIO4_A1); its SoC pull-down holds a level (pinout v1 1P2)" (exclude_from_sim no) (at 93.98 157.48 0) (size 50.8 7.62) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "b39b7dd2-ae88-51e8-96cd-94b15658cee2")) (table_cell "MIC_1V8" (exclude_from_sim no) (at 22.86 165.1 0) (size 45.72 7.62) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "3b46fd8d-3aab-58ad-aa9d-d6e1baaeead6")) (table_cell "Supply in" (exclude_from_sim no) (at 68.58 165.1 0) (size 25.4 7.62) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "6e1ff772-68d3-5b9b-bbc0-ac8c9252ce1e")) (table_cell "From blk.mic-main: off with MIC_EN, so the privacy LED covers this microphone" (exclude_from_sim no) (at 93.98 165.1 0) (size 50.8 7.62) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "69d32121-b94e-52ff-8ee3-3a69d1dcc9be"))))
+(label "MIC_AMB_CLK" (at 39.37 69.85 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "0c032b27-6d01-5774-8f24-d70ac02b95cc"))
+(hierarchical_label "PDM_DATA1" (shape bidirectional) (at 64.77 69.85 0) (effects (font (size 1.27 1.27)) (justify left)) (uuid "20342e4f-3bee-5c7e-9682-9610d7c86090"))
+(label "MIC_AMB_VDD" (at 52.07 52.07 90) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "daf3cb2e-07d9-5dd4-88f6-c8b24251a030"))
+(label "MIC_AMB_VDD" (at 81.28 52.07 90) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "b067cf11-9bce-55c3-884a-bdf12dcbdab3"))
+(label "MIC_AMB_VDD" (at 214.63 50.8 0) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "b5e53a0e-e164-5882-af67-dd4752737350"))
+(hierarchical_label "PDM_CLK1" (shape passive) (at 162.56 81.28 180) (effects (font (size 1.27 1.27)) (justify right)) (uuid "4fb9619a-9b09-55b9-b4c6-f3da390b2b0e"))
+(label "MIC_AMB_CLK" (at 175.26 81.28 0) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "46f68123-f444-5317-b767-8cf4c6ef1500"))
+(embedded_fonts no))

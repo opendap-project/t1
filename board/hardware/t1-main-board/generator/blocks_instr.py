@@ -24,7 +24,9 @@ def sheets(proj):
                      "Debug UART, I2S/DSD and bring-up pads, spare GPIO pads and rail test pads", "A3")
     cov = proj.sheet("cover-detect.kicad_sch", "blk.cover-detect", "Cover detect",
                      "Back-cover detect input: board-edge contact pads, pull-up, ESD", "A4")
-    return cmon, led, dbg, cov
+    amb = proj.sheet("mic-ambient.kicad_sch", "blk.mic-ambient", "Ambient microphone",
+                     "IM73D122 PDM microphone on PDM CLK1 and SDI1, on its own MIC_1V8 branch (link #35)", "A4")
+    return cmon, led, dbg, cov, amb
 
 
 # ---------------------------------------------------------------------- blk.current-monitors
@@ -294,4 +296,42 @@ def draw_cover_detect(s, variants):
         "   Pinctrl turns the ball's 16-43 kΩ pull-down off. Software: gpio-keys (a switch event).",
         "4. Open (case input): the actuator. Two pads, the input and ground, take a conductive bridge",
         "   on the cover or a two-terminal switch on the same lands; pad size UNVERIFIED.",
+    ])
+
+
+# ---------------------------------------------------------------------- blk.mic-ambient
+
+def draw_mic_ambient(s, variants):
+    """blk.mic-ambient (#38): IM73D122V01 (BOM v1 line 34) on PDM CLK1 / SDI1 (pinout v1 AK2, 1P2),
+    powered from MIC_1V8 through link #35 (power tree §4.12, G10)."""
+    from blocks_audio import ic_group, link_group
+    from blocks_should import column
+    f = Flow(s)
+    grp(f, lambda: ic_group(
+        s, "IM73D122 bottom-port PDM microphone (BOM v1 line 34)", "Infineon", "IM73D122V01XTMA1",
+        {"VDD": "MIC_AMB_VDD", "CLOCK": "MIC_AMB_CLK", "DATA": "PDM_DATA1", "LR": "GND", "GND": "GND"},
+        rows=[[("C_1u_0402", "MIC_AMB_VDD", "GND"), ("C_100n_0402", "MIC_AMB_VDD", "GND")]], prefix="MK"))
+
+    def series():
+        g = Group(s, "PDM clock series (pinout v1 AK2)")
+        g.add(two_pin_box(s, "R_22", 101.6, 101.6, "PDM_CLK1", "MIC_AMB_CLK"))
+        return g.close()
+    col = column(s, f)
+    grp(col, lambda: link_group(s, "LINK_L10", "MIC_1V8", "MIC_AMB_VDD", variants, "Link #35"))
+    grp(col, series)
+    s.iface_rows = [
+        ["PDM_CLK1", "Input", "PDM_CLK1_M1 (GPIO4_A0), parked low while MIC_1V8 is off (G10)"],
+        ["PDM_DATA1", "Output", "PDM_SDI1_M1 (GPIO4_A1); its SoC pull-down holds a level (pinout v1 1P2)"],
+        ["MIC_1V8", "Supply in", "From blk.mic-main: off with MIC_EN, so the privacy LED covers this microphone"],
+    ]
+    s.rail_rows = [["MIC_AMB_VDD", "1 µF + 100 nF", "IM73D122 DS v1.00 Table 5 note 4 (1 µF) and §3.5 (100 nF)"]]
+    corner_notes(s, [
+        "1. Function: ambient-noise microphone on the body (BRD-031, should); the second PDM channel",
+        "   of the SoC (PDM CLK1, SDI1), described as a sensor. BRD-027: it shares MIC_1V8 with the",
+        "   faceplate microphone, so it never runs without the privacy LED's supply.",
+        "2. Absent state: unfitted: SDI1 held by the SoC pull-down, CLK1 parked low.",
+        "3. LR to GND: data driven on the falling clock edge (DATA1, DS v1.00 Table 8), the only",
+        "   microphone on SDI1. 22 Ω series on the clock at the SoC (pinout v1 AK2).",
+        "4. VDD from MIC_1V8 through link #35, 10 Ω (power tree §4.12: 1 mA or less, est.).",
+        "5. PCB: 0.8 mm acoustic port under the microphone, ground ring as the land (DS v1.00 Fig. 13).",
     ])

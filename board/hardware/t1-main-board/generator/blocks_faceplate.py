@@ -36,7 +36,7 @@ CONTACTS = {
     20: "FP_SPI_MOSI", 21: "FP_SPI_MISO", 22: "FP_SPI_CS_N", 23: "FP_DBI_DC", 24: "FP_TP_INT", 25: "FP_TP_RST_N",
     26: "FP_LCD_RST_N", 27: "FP_LCD_TE", 28: "FP_HID_INT_N", 29: "FP_ALS_INT_N", 30: "LED_R", 31: "LED_G",
     32: "LED_B", 33: "GND", 34: "PDM_CLK0_FP", 35: "PDM_DATA0", 36: "FP_DET_N", 37: "FP_GPIO0", 38: "FP_GPIO1",
-    39: "GND", 40: "MIC_1V8", 41: "FP_1V8", 42: "FP_3V3", 43: "FP_3V3", 44: "FP_VCI", 45: "BL_LEDK",
+    39: "GND", 40: "MIC_1V8_FP", 41: "FP_1V8", 42: "FP_3V3", 43: "FP_3V3", 44: "FP_VCI", 45: "BL_LEDK",
     46: "BL_LEDA", 47: None, 48: None, 49: None, 50: None, 51: None,
 }
 LOW_SPEED = [CONTACTS[c] for c in range(17, 39) if CONTACTS[c] not in ("GND",)]   # 21 lines (BOM v1 line 75)
@@ -107,7 +107,7 @@ def draw_connector(s, variants):
         ["PDM_CLK0_FP, PDM_DATA0", "Bidirectional", "blk.mic-main: clock through 22 Ω; data to the SoC"],
         ["FP_IO_EN", "Input", "Expander P00, 100 kΩ pull-down here: both switches off"],
         ["FP_DET_N, FP_GPIO0, FP_GPIO1", "Bidirectional", "Expander P12-P14; detect pulled up: absent"],
-        ["FP_VCI, MIC_1V8, BL_LEDA, BL_LEDK", "Supply", "From blk.fp-display, blk.mic-main, blk.fp-backlight"],
+        ["FP_VCI, MIC_1V8_FP, BL_LEDA, BL_LEDK", "Supply", "From blk.fp-display, blk.mic-main, blk.fp-backlight"],
     ]
     s.rail_rows = [["vcc3v3_sys, FP_3V3_SRC", "1 µF at VIN and VOUT", "SLVSFJ2B (value: capture choice)"],
                    ["vcc_1v8, FP_1V8_SRC", "1 µF at IN and OUT", "SLVS832D (value: capture choice)"]]
@@ -240,6 +240,7 @@ def draw_mic(s, variants):
         g.add(two_pin_box(s, "R_22", 101.6, 101.6, "PDM_CLK0", "PDM_CLK0_FP"))
         return g.close()
     grp(f, series)
+    grp(f, lambda: link_group(s, "LINK_L10", "MIC_1V8", "MIC_1V8_FP", variants, "Link #34"))
 
     def probes():
         g = Group(s, "Test pad (PCB-T-02)")
@@ -248,13 +249,15 @@ def draw_mic(s, variants):
     grp(f, probes)
     s.iface_rows = [
         ["MIC_EN", "Input", "GPIO4_C0, SoC pull-down: off"],
-        ["MIC_1V8", "Supply out", "Contact 40; also blk.mic-ambient"],
+        ["MIC_1V8, MIC_1V8_FP", "Supply out", "Off with MIC_EN low; MIC_1V8_FP to contact 40, MIC_1V8 also to blk.mic-ambient"],
         ["PDM_CLK0, PDM_CLK0_FP", "Output", "PDM_CLK0_M1, parked low while MIC_1V8 is off (G10)"],
     ]
     s.rail_rows = [["vcc_1v8, MIC_1V8", "1 µF at IN and OUT", "SLVS832D (value: capture choice)"]]
     corner_notes(s, [
         "1. Function: MIC_1V8 for the faceplate microphone through a 100-200 mA switch (≤ 0.2 A ceiling).",
         "2. Absent state: MIC_EN low: MIC_1V8 off, discharged by 10 kΩ; PDM clock parked low.",
-        "3. Open: the privacy-LED gate (BOM v1 line 35: DMG1012T, gate = MIC_1V8, LED anode from",
+        "3. Link #34 (L10, 10 Ω) on the faceplate branch, MIC_1V8_FP; the ambient branch takes link #35",
+        "   on blk.mic-ambient (power tree §4.12, G10).",
+        "4. Open: the privacy-LED gate (BOM v1 line 35: DMG1012T, gate = MIC_1V8, LED anode from",
         "   FP_3V3) has no faceplate contact in pinout v1 §8.2; it is drawn when the LED's place is set.",
     ])

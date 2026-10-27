@@ -14,6 +14,7 @@
   (lib (name "Murata")(type "KiCad")(uri "${KIPRJMOD}/../lib/opendap/footprints/Murata.pretty")(options "")(descr "kicad-lib"))
   (lib (name "NDK")(type "KiCad")(uri "${KIPRJMOD}/../lib/opendap/footprints/NDK.pretty")(options "")(descr "kicad-lib"))
   (lib (name "NXP")(type "KiCad")(uri "${KIPRJMOD}/../lib/opendap/footprints/NXP.pretty")(options "")(descr "kicad-lib"))
+  (lib (name "Nexperia")(type "KiCad")(uri "${KIPRJMOD}/../lib/opendap/footprints/Nexperia.pretty")(options "")(descr "kicad-lib"))
   (lib (name "Raspberry_Pi")(type "KiCad")(uri "${KIPRJMOD}/../lib/opendap/footprints/Raspberry_Pi.pretty")(options "")(descr "kicad-lib"))
   (lib (name "Rockchip")(type "KiCad")(uri "${KIPRJMOD}/../lib/opendap/footprints/Rockchip.pretty")(options "")(descr "kicad-lib"))
   (lib (name "Rockchip_PMIC")(type "KiCad")(uri "${KIPRJMOD}/../lib/opendap/footprints/Rockchip_PMIC.pretty")(options "")(descr "kicad-lib"))

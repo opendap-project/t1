@@ -40,6 +40,8 @@ RAILS = [
     # the branches the INA236 shunts measure (power tree §4.12, G11): supply side of the VSYS shunt
     # (BQ25798 SYS), then the load side of each branch shunt
     "VSYS_SRC", "VSYS_LV_AUDIO", "VSYS_AUDIO", "VSYS_LV_BL", "VSYS_P5V1",
+    # the faceplate microphone branch behind link #34 (power tree §4.12, G10)
+    "MIC_1V8_FP",
 ]
 
 

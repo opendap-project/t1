@@ -14,6 +14,7 @@
   (lib (name "Murata")(type "KiCad")(uri "${KIPRJMOD}/../lib/opendap/symbols/Murata.kicad_sym")(options "")(descr "kicad-lib"))
   (lib (name "NDK")(type "KiCad")(uri "${KIPRJMOD}/../lib/opendap/symbols/NDK.kicad_sym")(options "")(descr "kicad-lib"))
   (lib (name "NXP")(type "KiCad")(uri "${KIPRJMOD}/../lib/opendap/symbols/NXP.kicad_sym")(options "")(descr "kicad-lib"))
+  (lib (name "Nexperia")(type "KiCad")(uri "${KIPRJMOD}/../lib/opendap/symbols/Nexperia.kicad_sym")(options "")(descr "kicad-lib"))
   (lib (name "OpenDAP_Device")(type "KiCad")(uri "${KIPRJMOD}/../lib/opendap/symbols/OpenDAP_Device.kicad_sym")(options "")(descr "kicad-lib"))
   (lib (name "Raspberry_Pi")(type "KiCad")(uri "${KIPRJMOD}/../lib/opendap/symbols/Raspberry_Pi.kicad_sym")(options "")(descr "kicad-lib"))
   (lib (name "Rockchip")(type "KiCad")(uri "${KIPRJMOD}/../lib/opendap/symbols/Rockchip.kicad_sym")(options "")(descr "kicad-lib"))

@@ -47,7 +47,8 @@ RAIL_ROWS = [
     ["vcc1v8_wl", "1.80 V", "TPS62826 from VSYS_LV (blk.radio-power)", "EN from vcc3v3_wl", "Type 2EL AVDD18", "-", "H20 link #12"],
     ["FP_3V3", "3.3 V", "TPS22950 from vcc3v3_sys (blk.fp-connector)", "FP_IO_EN", "faceplate logic, pull-ups", "-", "-"],
     ["FP_1V8", "1.80 V", "TPS22945 from vcc_1v8 (blk.fp-connector)", "FP_IO_EN", "faceplate IOVCC", "-", "-"],
-    ["MIC_1V8", "1.80 V", "TPS22945 from vcc_1v8 (blk.mic-main)", "MIC_EN", "faceplate microphone", "-", "-"],
+    ["MIC_1V8", "1.80 V", "TPS22945 from vcc_1v8 (blk.mic-main)", "MIC_EN", "both microphone branches", "-", "-"],
+    ["MIC_1V8_FP", "1.80 V", "MIC_1V8 through link #34 (blk.mic-main)", "MIC_EN", "faceplate microphone (contact 40)", "-", "L10 link #34"],
 ]
 
 

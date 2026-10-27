@@ -685,7 +685,7 @@ Rule (feature blocks G12, RFC 0011 rule 3): one link per block supply, on the bl
 | 31 | `blk.fp-connector` | FP_1V8 | L1 | 5 mA | 5 mV | — |
 | 32 | `blk.imu` | VDD + VDDIO (vcca1v8_pmu branch) | L10 | 0.65 mA | 6.5 mV | — |
 | 33 | `blk.nfc-tag` | VCC (vcca1v8_pmu branch) | L10 | ≤ 1 mA (est., **UNVERIFIED**) | ≤ 10 mV | — |
-| 34–35 | `blk.mic-main`, `blk.mic-ambient` | each MIC_1V8 branch (G10) | L10 | ≤ 1 mA (est.) | ≤ 10 mV | — |
+| 34–35 | `blk.mic-main`, `blk.mic-ambient` | each MIC_1V8 branch (G10): #34 the faceplate microphone (rail `MIC_1V8_FP`, contact 40), #35 the ambient microphone | L10 | ≤ 1 mA (est.) | ≤ 10 mV | — |
 | 36 (v0.3) | `blk.mclk` | MCLK_1V8 LDO input (AUDIO_2V2 branch, after link 26) | L1 | 8.9 mA | 9 mV (0.4 %) | — |
 
 The DAC VP pair (0.06 mA) and the always-on logic (expander, EEPROM, gates) have no link: they are read through vcca1v8_pmu or not attributed. Blocks without a row share a parent's link.

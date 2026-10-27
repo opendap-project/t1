@@ -397,6 +397,11 @@
         "TPM_RST_N",
         "TPM_PIRQ_N"
       ],
+      "LED": [
+        "LED_R",
+        "LED_G",
+        "LED_B"
+      ],
       "RP": [
         "RP_UART_TX",
         "RP_UART_RX",

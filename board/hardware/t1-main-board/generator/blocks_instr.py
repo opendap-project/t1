@@ -18,7 +18,9 @@ def sheets(proj):
     cmon = proj.sheet("current-monitors.kicad_sch", "blk.current-monitors", "Current monitors",
                       "Five INA236 on I2C1 and their shunts: VSYS, audio (VSYS_LV and VSYS sides), display, HAT",
                       "A3")
-    return cmon
+    led = proj.sheet("status-led.kicad_sch", "blk.status-led", "Status LED driver",
+                     "LP5521 RGB LED driver on I2C2 at 0x32: charge pump, LED_R/G/B to the faceplate, link #22", "A4")
+    return cmon, led
 
 
 # ---------------------------------------------------------------------- blk.current-monitors
@@ -85,3 +87,64 @@ def draw_current_monitors(s, variants):
         "   (SBOSA81D §8.4.1); never issue a general-call reset on I2C1 (it resets all five, p. 18).",
     ])
 
+
+# ---------------------------------------------------------------------- blk.status-led
+
+def draw_status_led(s, variants):
+    """blk.status-led (#25): LP5521 (BOM v1 line 105) on the main board, LED_R, LED_G, LED_B to the
+    faceplate status LED (line 79) through the faceplate connector (ESD there, line 75)."""
+    from blocks_audio import link_group
+    from blocks_should import column
+    f = Flow(s)
+    pins = {"VDD": "LED_VDD", "EN": "vcca1v8_pmu", "SCL": "I2C2_SCL", "SDA": "I2C2_SDA", "ADDR_SEL0": "",
+            "ADDR_SEL1": "", "TRIG": "", "CLK_32K": "", "CFLY1P": "LED_CFLY1P", "CFLY1N": "LED_CFLY1N",
+            "CFLY2P": "LED_CFLY2P", "CFLY2N": "LED_CFLY2N", "VOUT": "LED_VOUT", "R": "LED_R", "G": "LED_G",
+            "B": "LED_B", "INT": None, "GPO": None, "NC": None, "GND": "GND", "EP": "GND"}
+
+    def driver():
+        g = Group(s, "LP5521 at I2C2 0x32 (BOM v1 line 105; SNVS441I Figure 26)")
+        u = ic(s, "Texas_Instruments", "LP5521YQX", 101.6, 101.6, pins)
+        g.add(u.bbox)
+        # ADDR_SEL0, ADDR_SEL1 (0x32), TRIG and CLK_32K (internal clock) on one ground collector; its
+        # symbol hangs off the top row, clear of the flying-capacitor labels below
+        ends = sorted((u.pos(u.pin(k)) for k in ("20", "21", "7", "5")), key=lambda e: e[1])
+        xc = snap(ends[0][0] - 5.08)
+        for ex, ey in ends:
+            s.wire((ex, ey), (xc, ey))
+        s.wire((xc, ends[0][1]), (xc, ends[-1][1]))
+        for _, ey in ends[1:-1]:
+            s.junction(xc, ey)
+        xg = snap(xc - 5.08)
+        s.junction(xc, ends[0][1])
+        s.wire((xc, ends[0][1]), (xg, ends[0][1]), (xg, ends[0][1] + 2.54))
+        s.power("GND", xg, ends[0][1] + 2.54)
+        g.add((xg - 2.54, ends[0][1], xc, ends[0][1] + 7.62))
+        rx, ry = u.bbox[2] + 5.08, u.bbox[1]
+        for r in [[("C_1u_0402", "LED_VDD", "GND"), ("C_1u_0402_10V", "LED_VOUT", "GND")],
+                  [("C_470n_0402", "LED_CFLY1P", "LED_CFLY1N"), ("C_470n_0402", "LED_CFLY2P", "LED_CFLY2N")]]:
+            b = g.add(prow(s, rx, snap(ry + row_need(r) + 3.81), r))
+            ry = b[3] + 2.54
+        return g.close()
+    grp(f, driver)
+    col = column(s, f)
+    grp(col, lambda: link_group(s, "LINK_M", "VSYS_LV", "LED_VDD", variants, "Link #22"))
+    s.iface_rows = [
+        ["I2C2_SCL, I2C2_SDA", "Bidirectional", "0x32 (ADDR_SEL0, ADDR_SEL1 low); pull-ups on blk.soc-pmuio. Unfitted: 0x32 free"],
+        ["LED_R, LED_G, LED_B", "Output", "Open: nothing drives or back-powers them; in use, current sources up to 25.5 mA to contacts 30-32"],
+    ]
+    s.rail_rows = [
+        ["LED_VDD", "1 µF", "SNVS441I p. 37: CIN 1 µF"],
+        ["LED_VOUT", "1 µF 10 V", "SNVS441I p. 37: COUT 1 µF, 10 V for DC bias"],
+        ["LED_CFLY1, LED_CFLY2", "2 x 470 nF", "SNVS441I p. 37: CFLY1, CFLY2 470 nF"],
+    ]
+    corner_notes(s, [
+        "1. Function: LP5521 RGB driver for the faceplate status LED (FPT-003, FPT-016 must; FPT-025",
+        "   should): three current sources with PWM and program engines; mainline leds-lp5521 (DKMS).",
+        "2. Absent state: faceplate detached: the outputs are open, nothing back-powers. Unfitted:",
+        "   0x32 free, LED lines open. Standby 1 µA with EN high and CHIP_EN = 0 (SNVS441I p. 6).",
+        "3. EN on vcca1v8_pmu: always enabled, and the I2C levels follow EN (1.8 V, I2C2). VDD from",
+        "   VSYS_LV 3.8 V through link #22, 0.1 Ω (power tree §4.12: 0.1 A est., 10 mV).",
+        "4. Internal clock: CLK_32K to GND; TRIG to GND (SNVS441I §7.3.5.3, §7.3.5.5); INT and GPO",
+        "   open (no SoC line in pinout v1). The R channel runs from VDD (R_TO_BATT, BOM line 105).",
+        "5. Each channel is capped at 20 mA in the devicetree (80 % of the LED's 25 mA IF, line 79).",
+    ])

@@ -58,6 +58,8 @@ PARTS = {
     "C_3n3_0402": _c("3.3 nF", "GRM155R71H332KA01D", "0402", 50, "X7R"),
     "C_1n_0402": _c("1 nF", "GRM155R71H102KA01D", "0402", 50, "X7R"),
     "C_1u_0402_10V": _c("1 µF", "GRM155R61A105KE15D", "0402", 10, "X5R"),
+    "C_470n_0402": _c("470 nF", "GRM155R61A474KE15D", "0402", 10, "X5R",
+                      src="LP5521 CFLY1, CFLY2 470 nF X5R, 6.3 V or more (SNVS441I p. 37, Table 36); part capture choice"),
     # audio (blk.audio and children; BOM v1 lines 22-29, 108-118, 140) --------------------------
     "C_4u7_0402_10V": _c("4.7 µF", "GRM155R61A475MEAAD", "0402", 10, "X5R",
                          src="TPS62840 CI: SLVSEC6D p. 17, Table 2 (the datasheet's part)"),

@@ -196,6 +196,9 @@ def layout_rows(sheet, rows, x0=25.4, y0=25.4, gap=5.08, hgap=5.08, head=3.81, w
                     raise SystemExit(f"generator: {cs.sheet.name} reaches y {cy:.1f} mm on the root, "
                                      f"below {bottom:.1f} mm (frame or title block)")
             placed.append((col, cy))
+            if os.environ.get("T1_LAYOUT_DEBUG"):
+                print(f"layout: root column at x {cx:.1f}: le {le:.1f} w {w:.1f} re {re_:.1f}: "
+                      + ", ".join(cs.sheet.name.split(".")[0] for cs in col if cs is not None))
             x = cx + w + re_ + hgap
         y = snap(max(cy for _, cy in placed) + gap)
     return y

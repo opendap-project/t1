@@ -50,21 +50,22 @@ Drawn from 2026-10-25. Every sheet carries the block's notes (function, absent s
 | 49 | `antennas.kicad_sch` | `blk.antennas` | ANT0 and ANT1 paths with matching positions, U.FL, the 10 pF shared link (ADR 0018) |
 | 50 | `fp-connector.kicad_sch` | `blk.fp-connector` | FH35C-51S contacts (pinout v1 §8.2), 6 × TPD4E05U06, TPS22950 FP_3V3, TPS22945 FP_1V8, links #23 and #31 |
 | 51 | `fp-backlight.kicad_sch` | `blk.fp-backlight` | TPS61160, 22 µH, PMEG6010CEH, RSET 3.32 Ω |
-| 52 | `gpio-expander.kicad_sch` | `blk.gpio-expander` | TCA6416A at 0x21 with the off-state pull-downs and the input pull-ups |
-| 53 | `imu.kicad_sch` | `blk.imu` | LSM6DSV16X at 0x6A, INT1 wake, link #32 |
-| 54 | `nfc-tag.kicad_sch` | `blk.nfc-tag` | NT3H2111 NTAG I2C plus at 0x55, field detect, loop antenna contacts, link #33 |
+| 52 | `speaker.kicad_sch` | `blk.speaker` | MAX98357A, gain 3 dB, SD_MODE position, speaker pads, link #17 |
+| 53 | `board-id.kicad_sch` | `blk.board-id` | AT24C02D at 0x50 |
+| 54 | `tpm.kicad_sch` | `blk.tpm` | SLB9673 TPM 2.0 at 0x2E, always on, link #20 |
 | 55 | `nfc-reader.kicad_sch` | `blk.nfc-reader` | PN7160 at 0x28, NFC_VBAT switch and link #18, EMC filter, matching and RX path (AN13219 first-iteration values), 27.12 MHz crystal, antenna contacts |
-| 56 | `buttons.kicad_sch` | `blk.buttons` | Power, Vol+, Vol− (PTS815) and Action (part open) to ground, 4 × TPD1E10B06, the Vol− pull-up |
-| 57 | `fp-display.kicad_sch` | `blk.fp-display` | TPS22945 FP_VCI after RK809 LDO4, link #24 |
-| 58 | `mic-main.kicad_sch` | `blk.mic-main` | TPS22945 MIC_1V8, PDM clock series resistor |
-| 59 | `board-id.kicad_sch` | `blk.board-id` | AT24C02D at 0x50 |
-| 60 | `haptics.kicad_sch` | `blk.haptics` | DRV2605L at 0x5A, LRA contacts, link #19 |
-| 61 | `fp-controls.kicad_sch` | `blk.fp-controls` | I2C3, interrupt and SPI CS pulls on FP_3V3, the GT911 strap footprint |
-| 62 | `speaker.kicad_sch` | `blk.speaker` | MAX98357A, gain 3 dB, SD_MODE position, speaker pads, link #17 |
-| 63 | `microsd.kicad_sch` | `blk.microsd` | DM3AT socket, 22 Ω series, detect, 2 × TPD4E05U06, link #16 |
-| 64 | `tpm.kicad_sch` | `blk.tpm` | SLB9673 TPM 2.0 at 0x2E, always on, link #20 |
+| 56 | `fp-display.kicad_sch` | `blk.fp-display` | TPS22945 FP_VCI after RK809 LDO4, link #24 |
+| 57 | `fp-controls.kicad_sch` | `blk.fp-controls` | I2C3, interrupt and SPI CS pulls on FP_3V3, the GT911 strap footprint |
+| 58 | `microsd.kicad_sch` | `blk.microsd` | DM3AT socket, 22 Ω series, detect, 2 × TPD4E05U06, link #16 |
+| 59 | `imu.kicad_sch` | `blk.imu` | LSM6DSV16X at 0x6A, INT1 wake, link #32 |
+| 60 | `nfc-tag.kicad_sch` | `blk.nfc-tag` | NT3H2111 NTAG I2C plus at 0x55, field detect, loop antenna contacts, link #33 |
+| 61 | `mic-main.kicad_sch` | `blk.mic-main` | TPS22945 MIC_1V8, PDM clock series resistor |
+| 62 | `status-led.kicad_sch` | `blk.status-led` | LP5521 at 0x32 on I2C2, charge pump, LED_R/G/B to the faceplate as the `LED` bus, link #22 |
+| 63 | `gpio-expander.kicad_sch` | `blk.gpio-expander` | TCA6416A at 0x21 with the off-state pull-downs and the input pull-ups |
+| 64 | `haptics.kicad_sch` | `blk.haptics` | DRV2605L at 0x5A, LRA contacts, link #19 |
+| 65 | `buttons.kicad_sch` | `blk.buttons` | Power, Vol+, Vol− (PTS815) and Action (part open) to ground, 4 × TPD1E10B06, the Vol− pull-up |
 
-Not drawn yet: `blk.status-led`, `blk.mic-ambient`, `blk.maskrom`, `blk.debug`, `blk.cover-detect` (their kicad-lib parts exist). Nets from the drawn sheets to those blocks end in a local label, which ERC lists as `isolated_pin_label` (a warning). The RK3566 USB, multi-PHY and CSI RX units are on `blk.soc-phy`; the reserved balls (`RSVD_*` in pinout v1) and the unused PHY balls carry no-connect flags.
+Not drawn yet: `blk.mic-ambient`, `blk.maskrom`, `blk.debug`, `blk.cover-detect` (their kicad-lib parts exist). Nets from the drawn sheets to those blocks end in a local label, which ERC lists as `isolated_pin_label` (a warning). The RK3566 USB, multi-PHY and CSI RX units are on `blk.soc-phy`; the reserved balls (`RSVD_*` in pinout v1) and the unused PHY balls carry no-connect flags.
 
 The SoC is one catalog block, `blk.soc`, drawn as a parent sheet with seven sub-sheets. The craft check names a sheet's block by its file, so the sub-sheets carry IDs of their own (`blk.soc-ddr` and so on) and their parts carry them in the `Block` field. The charger, the coprocessor, the radio, the amplifier rails and the balanced stage are drawn the same way (`blk.charger-core`, `blk.radio-module`, `blk.hpa-rails-pre`, `blk.hpa-bal-l` and so on). The audio host-side parts (DAC I2C isolation, the enables' pull-downs, the RX-clock option) sit on `blk.soc-vccio-b`, next to the balls they serve.
 
@@ -76,7 +77,7 @@ The SoC is one catalog block, `blk.soc`, drawn as a parent sheet with seven sub-
 - Measurement links (BOM v1 line 137; numbered as power tree §4.12) carry their shunt in the base design (the full variant). The production variant fits 0 Ω jumpers (except H5), written into each link as a KiCad 10 design variant from `../variants/*.toml`; the eMMC's 16 GB alternate is written the same way. The generator writes this variant data itself; the feature-blocks spec §6 assigns it to `odapkit variant sync`, which does not exist yet.
 - Parts the BOM does not name (generic capacitors and resistors) are capture choices from the Murata GRM and Yageo RC families (`generator/parts.py`). Their stock and effective capacitance under DC bias are **UNVERIFIED** until the BOM pass.
 - `PWR_FLAG`s sit on the sheet that feeds each rail, on a branch of the rail's wire outside the block's groups (a link's load side, an inductor output). A local net fed through a passive part (`TPM_VDD` through its link, `RP_DVDD` through the inductor, `GAUGE_VC2` through its input resistor) stays a local net, not a power-tree rail, and takes its flag the same way: on a branch of the wire that leaves the feeding part, never in a detached label-and-flag row. KiCad 10.0.7's ERC reports a flag on a net island of power symbols alone as `pin_not_connected` (tested again on 2026-10-25, also with a project ERC exclusion), so the flags cannot go on the power overview.
-- Buses cross the hierarchy through the project's bus aliases (`schematic.bus_aliases` in the `.kicad_pro`): `DDR_CHA` (with `DDR_RESET_N`), `DDR_CHB`, `EMMC`, `I2C0`, `I2C1`, `I2C2`, `PMIC_CTL`, for the audio block `AUDIO_I2S`, `AUDIO_CTL`, `DAC_L_OUT`, `DAC_R_OUT`, `HP_SE`, `HP_BAL`, and for the ports and IO `USB`, `IO_IRQ`, `IMON`, `WL`, `FP`, `EXP_IO` (the expander's port lines), `SDMMC0`, `SPK_I2S`, and for the control lines of the buttons, the I2C2 blocks and the coprocessor `KEYS`, `NFC`, `TPM`, `RP`. A sheet pin `{ALIAS}` carries every member; inside a sheet the members keep local labels at their pins and one hierarchical label `{ALIAS}` on a bus stub joins them. The members keep their pinout names.
+- Buses cross the hierarchy through the project's bus aliases (`schematic.bus_aliases` in the `.kicad_pro`): `DDR_CHA` (with `DDR_RESET_N`), `DDR_CHB`, `EMMC`, `I2C0`, `I2C1`, `I2C2`, `PMIC_CTL`, for the audio block `AUDIO_I2S`, `AUDIO_CTL`, `DAC_L_OUT`, `DAC_R_OUT`, `HP_SE`, `HP_BAL`, and for the ports and IO `USB`, `IO_IRQ`, `IMON`, `WL`, `FP`, `EXP_IO` (the expander's port lines), `SDMMC0`, `SPK_I2S`, and for the control lines of the buttons, the I2C2 blocks and the coprocessor `KEYS`, `NFC`, `TPM`, `RP`, and the status LED's current-source lines `LED`. A sheet pin `{ALIAS}` carries every member; inside a sheet the members keep local labels at their pins and one hierarchical label `{ALIAS}` on a bus stub joins them. The members keep their pinout names.
 - Power symbols point up (GND down, CRAFT-85). A rail on an IC's side pin stands upright at the end of a stub long enough to clear the two rows above it; a column of rails on adjacent pins (the RK809's LDO outputs) turns its symbols outward, each value on its own row.
 - Text never overlaps text or lines (CRAFT-175): fields go on a side of the body without pins, clear of capacitor plates; decoupling pitch follows the longest value or rating; table rows grow with wrapped text; a hierarchical label with a local label one row below it in the same pin column moves up half a row on a short dogleg; and `generator/overlaps.py` checks every plotted sheet (references included), group outlines and table borders among the lines. Bus ports stack above the interface table and fall back to rows when the column would meet a group. A vertical two-pin part's text keeps 1.27 mm to the next part's body.
 - Zones (CRAFT-170, -174): groups, tables and the notes box never meet each other, the title block or the frame, and nothing drawn crosses the frame. The generator stops on a collision (`overlaps.zones`), and `generator/overlaps.py` reports frame and title-block crossings on the plots.
@@ -120,6 +121,7 @@ The audio block (pages 18-31) was reviewed on SVG plots of every sheet: its shee
 Details the board documents left open, decided at capture. Each sheet's notes repeat them.
 
 - `blk.current-monitors`: Accepted (2026-10-26). The shunts sit on this sheet with their INA236, and each measured branch is a rail of its own, named in power tree §4.12: `VSYS_SRC` (BQ25798 SYS, the supply side of the VSYS shunt), `VSYS_LV_AUDIO`, `VSYS_AUDIO` (the LMR33630C with its enable shifter), `VSYS_LV_BL`, `VSYS_P5V1`; their PWR_FLAGs hang from the shunts' load-side wires. Shunt parts in the Vishay WSL family of line 43: WSL2512R0100FEA (VSYS, 10 mΩ, 1 W), WSL2010R0200FEA (HAT, 20 mΩ, 0.5 W), WSL1206R1000FEA (display), WSL1206R0200FEA (both audio channels, named by the BOM). A0 = GND, VS, SDA, SCL for 0x40-0x43; ALERT open; no input filter. Basis: BOM v1 lines 54 and 136 (values, ratings, addresses), power tree §4.12 (positions), Vishay doc 30100 (WSL2512 1 W, WSL2010 0.5 W, WSL1206 to 0.2 Ω), SBOSA81D Table 7-1 and §8.1.4 (the filter is only for transients near the 500 kHz sampling harmonics).
+- `blk.status-led`: Accepted (2026-10-26). INT and GPO open, with no SoC line for them in pinout v1; ADDR_SEL0, ADDR_SEL1, TRIG and CLK_32K to ground (0x32, internal clock); CFLY 470 nF and VOUT 1 µF 10 V as the data sheet's typical application. Basis: BOM v1 line 105, SNVS441I p. 37 and §7.3.5, pinout v1 (no LP5521 interrupt ball).
 
 ## Open items
 

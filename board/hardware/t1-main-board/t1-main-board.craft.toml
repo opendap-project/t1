@@ -222,7 +222,7 @@ interface = ["WL_ANT0", "WL_ANT1", "WL_BT_IN"]
 
 [[schematic.block]]
 id = "blk.fp-connector"
-interface = ["BL_LEDA", "BL_LEDK", "{FP}", "{EXP_IO}", "PDM_CLK0_FP"]
+interface = ["BL_LEDA", "BL_LEDK", "{FP}", "{EXP_IO}", "{LED}", "PDM_CLK0_FP"]
 
 [[schematic.block]]
 id = "blk.fp-display"
@@ -295,3 +295,7 @@ interface = ["{KEYS}"]
 [[schematic.block]]
 id = "blk.current-monitors"
 interface = ["{I2C1}"]
+
+[[schematic.block]]
+id = "blk.status-led"
+interface = ["{I2C2}", "{LED}"]

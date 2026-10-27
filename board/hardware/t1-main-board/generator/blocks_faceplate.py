@@ -23,7 +23,7 @@ def sheets(proj):
                     "TPS61160 boost LED driver, 60 mA, open-LED threshold below 30 V", "A4")
     ctl = proj.sheet("fp-controls.kicad_sch", "blk.fp-controls", "Faceplate controls",
                      "I2C3, SPI/DBI and interrupt pulls on FP_3V3, the touch address strap", "A4")
-    mic = proj.sheet("mic-main.kicad_sch", "blk.mic-main", "Faceplate microphone supply",
+    mic = proj.sheet("mic-main.kicad_sch", "blk.mic-main", "Microphone supply",
                      "MIC_1V8 current-limited switch and the PDM clock series resistor", "A4")
     return conn, disp, bl, ctl, mic
 
@@ -103,7 +103,7 @@ def draw_connector(s, variants):
     s.iface_rows = [
         ["FP_DSI_*", "Output", "From blk.fp-display (DSI0 D-PHY, 100 Ω)"],
         ["FP_I2C_*, FP_SPI_*, FP_TP_*, FP_LCD_*, FP_*_INT_N", "Bidirectional", "From blk.fp-controls"],
-        ["LED_R, LED_G, LED_B", "Output", "From blk.status-led (LP5521 current sinks), not drawn yet"],
+        ["LED_R, LED_G, LED_B", "Output", "From blk.status-led (LP5521 current sources): open with the LP5521 unfitted"],
         ["PDM_CLK0_FP, PDM_DATA0", "Bidirectional", "blk.mic-main: clock through 22 Ω; data to the SoC"],
         ["FP_IO_EN", "Input", "Expander P00, 100 kΩ pull-down here: both switches off"],
         ["FP_DET_N, FP_GPIO0, FP_GPIO1", "Bidirectional", "Expander P12-P14; detect pulled up: absent"],

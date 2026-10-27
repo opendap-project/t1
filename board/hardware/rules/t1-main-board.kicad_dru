@@ -655,8 +655,8 @@
 # (secondary): pad 1.0-1.27 mm, 2.54 mm pitch for fixtures, 1.0 mm from
 # component bodies, 3.8 mm from the edge. Production-test items: Q2.
 
-# PCB-D-06: test pad at least 0.8 mm (signal nets; JLCPCB DFT guide's
-# absolute minimum). Power and ground pads keep 1.0 mm, a CHK item: the
+# PCB-D-06: test pad at least 0.8 mm (signal nets; the absolute minimum
+# of [JD]). Power and ground pads keep 1.0 mm, a CHK item: the
 # rule cannot tell a rail from a signal net.
 (rule "T1 PCB-D-06 [Q2]: Test point size"
 	(severity warning)

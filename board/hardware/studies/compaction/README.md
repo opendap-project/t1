@@ -16,7 +16,7 @@ The matrix tool behind [placement v1](../../../docs/specs/placement-v1.md) §4 d
 | Inductors | Same inductance; design peak ≤ 70 % and the converter's maximum current limit ≤ 100 % of Isat (30 % drop); continuous current ≤ 70 % of Irms; height ≤ 1.5 mm to stand under the pocket; the XxL4020 land | BRD-049 as power tree v0 §4.10 applies it; PCB-Z-01; the makers' drawings |
 | Capacitors over 1.0 mm | Same value, rating and dielectric, ≤ 1.0 mm (front, PCB-Z-03); lifecycle active; sourcing; DC bias carried as stated (DRV-107) | Sourcing matrix (T1-029) |
 | 0201 decoupling | 100 nF on a rail of at most half the 0201 part's 10 V rating, in the core, I/O or radio zone; the audio zone keeps its parts (T1-040) | The sheets' rule "rated at least twice the rail"; ADR 0016 item 3 (the part under the BGA) |
-| Test pads | 0.8 mm on signal nets, 1.0 mm on power and ground nets | PCB-D-06 v0.16 (JLCPCB DFT guide) |
+| Test pads | 0.8 mm on signal nets, 1.0 mm on power and ground nets | PCB-D-06 ([JD]) |
 
 Availability and cost are read by `odapkit parts matrix` and kept privately; `candidates.toml` carries only each part's outcome (`sourcing`: pass, conditional, fail, or open when no channel the matrix reads lists a line its maker sells in its own store; open ranks as conditional and is closed before the BOM freeze).
 

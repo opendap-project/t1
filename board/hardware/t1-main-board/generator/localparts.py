@@ -126,7 +126,7 @@ def aota_b201610():
 
 
 def testpoint_d08():
-    """Round SMD test pad 0.8 mm for signal nets (PCB-D-06: the JLCPCB DFT guide's minimum for signal
+    """Round SMD test pad 0.8 mm for signal nets (PCB-D-06, source [JD] of the PCB design constraints: the minimum for signal
     nets; power and ground nets keep KiCad's 1.0 mm pad). Drawn as KiCad's TestPoint_Pad_D1.0mm:
     courtyard 0.5 mm around the pad, silk ring 0.2 mm outside it, no pad fabrication property (as KiCad's)."""
     return "\n".join([

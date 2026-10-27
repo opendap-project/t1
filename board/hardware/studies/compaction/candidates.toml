@@ -1,7 +1,6 @@
 # Compaction study of the T1 main board (2026-10-27): the candidates and the design stresses the
-# matrix tool (compaction.py) checks. Every value cites its source. Availability and cost are read
-# by `odapkit parts matrix` and kept privately; the outcome per candidate is recorded here as
-# `sourcing` (T1-029) without stock or price.
+# matrix tool (compaction.py) checks. Every value cites its source. The sourcing check (T1-029) is
+# run with `odapkit parts matrix` and kept privately; its outcome per candidate is `sourcing`.
 
 [rules]
 # BRD-049 margins as the power tree v0 §4.10 applies them to every inductor: the design peak at
@@ -13,8 +12,8 @@ mlcc_rating_min = 2.0
 # Heights: PCB-Z-03 front under the display, PCB-Z-01 back under the pocket (ADR 0016).
 h_front = 1.0
 h_back = 1.5
-# Test pads (PCB-D-06): JLCPCB DFT guide, absolute minimum 0.8 mm on signal nets, 1.0 mm on power
-# and ground nets.
+# Test pads (PCB-D-06, [JD]): absolute minimum 0.8 mm on signal nets, 1.0 mm on power and ground
+# nets.
 tp_signal_min = 0.8
 tp_power_min = 1.0
 
@@ -262,7 +261,7 @@ h_mm = 0.85
 lifecycle = "obsolete"
 sourcing = "fail"
 dc_bias = "UNVERIFIED"
-source = "Murata GRM219: 0.85 mm (dimension code 9); lifecycle from the sourcing matrix (Digi-Key: obsolete), 2026-10-27"
+source = "Murata GRM219: 0.85 mm (dimension code 9); lifecycle obsolete (sourcing check, 2026-10-27)"
 
 [[mlcc.part]]
 mpn = "C2012X5R1E106K085AC"
@@ -271,7 +270,7 @@ h_mm = 0.85
 lifecycle = "not recommended for new designs"
 sourcing = "conditional"
 dc_bias = "UNVERIFIED"
-source = "TDK C2012 ... 085: 0.85 mm; lifecycle from the sourcing matrix (Digi-Key: NRND), 2026-10-27"
+source = "TDK C2012 ... 085: 0.85 mm; lifecycle not recommended for new designs (sourcing check, 2026-10-27)"
 
 [[mlcc.part]]
 mpn = "C2012X7R1C106K085AC"
@@ -280,7 +279,7 @@ h_mm = 0.85
 lifecycle = "not stated"
 sourcing = "fail"
 dc_bias = "UNVERIFIED"
-source = "TDK thickness code 085; no authorized listing in the sourcing matrix, 2026-10-27"
+source = "TDK thickness code 085; not listed (sourcing check, 2026-10-27)"
 
 [[mlcc.part]]
 mpn = "C2012X7R1E475K085AC"
@@ -289,7 +288,7 @@ h_mm = 0.85
 lifecycle = "not stated"
 sourcing = "fail"
 dc_bias = "UNVERIFIED"
-source = "TDK thickness code 085; no authorized listing in the sourcing matrix, 2026-10-27"
+source = "TDK thickness code 085; not listed (sourcing check, 2026-10-27)"
 
 [[mlcc.part]]
 mpn = "C2012X5R1C226M085AC"
@@ -298,7 +297,7 @@ h_mm = 0.85
 lifecycle = "not recommended for new designs"
 sourcing = "conditional"
 dc_bias = "UNVERIFIED"
-source = "TDK thickness code 085; lifecycle from the sourcing matrix (Digi-Key: NRND), 2026-10-27"
+source = "TDK thickness code 085; lifecycle not recommended for new designs (sourcing check, 2026-10-27)"
 
 # ---- 0402 to 0201: 100 nF decoupling -------------------------------------------------------------
 [[c0201]]

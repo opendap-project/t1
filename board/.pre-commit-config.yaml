@@ -10,6 +10,15 @@ repos:
       - id: check-json
       - id: check-added-large-files
         args: ["--maxkb=5120"]
+        exclude: \.kicad_pcb$
+      # A KiCad board is one text file that grows with its copper: the placed T1
+      # main board is 4.7 MB before routing, and pours and tracks add to it. Board
+      # files get 40 MB, under GitHub's 50 MB push warning; every other file keeps
+      # the 5 MB limit above.
+      - id: check-added-large-files
+        name: check for added large files (KiCad boards, 40 MB)
+        args: ["--maxkb=40960"]
+        files: \.kicad_pcb$
   - repo: https://github.com/fsfe/reuse-tool
     rev: v6.2.0
     hooks:

@@ -175,7 +175,7 @@ isat30_a = 7.3
 irms_a = 6.5
 h_mm = 1.5
 land4020 = true
-sourcing = "conditional"
+sourcing = "open"
 source = "Coilcraft Document 1660-1, revised 02/19/26, and its drawing (1.5 mm max, pads 0.98 x 3.4 mm, 2.37 mm)"
 
 [[inductor.part]]

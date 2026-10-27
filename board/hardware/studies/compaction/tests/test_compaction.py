@@ -47,6 +47,12 @@ class Inductors(unittest.TestCase):
         self.assertEqual(c.choose_inductor(c.inductor_rows(POS, only_tall, RULES)), "TALL")
 
 
+class Sourcing(unittest.TestCase):
+    def test_open_ranks_as_conditional(self):
+        self.assertEqual(c.worst("pass", "open"), "conditional")
+        self.assertEqual(c.worst("open", "fail"), "fail")
+
+
 class Capacitors(unittest.TestCase):
     def test_lifecycle(self):
         pos = {"mpn": "C0", "value": "10 uF", "count": 1, "h_mm": 1.25, "rail_v": 5.0}

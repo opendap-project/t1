@@ -34,11 +34,14 @@ import sys
 import tomllib
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-ORDER = {"pass": 0, "conditional": 1, "fail": 2}
+# "open": the sourcing matrix found no listing for a line whose maker sells it in its own store, which
+# the matrix does not read; it ranks as conditional and must be closed before the BOM freeze.
+ORDER = {"pass": 0, "conditional": 1, "open": 1, "fail": 2}
 
 
 def worst(*verdicts):
-    return max(verdicts, key=lambda v: ORDER[v])
+    v = max(verdicts, key=lambda v: ORDER[v])
+    return "conditional" if v == "open" else v
 
 
 # ------------------------------------------------------------------ inductors

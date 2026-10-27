@@ -18,7 +18,7 @@ The matrix tool behind [placement v1](../../../docs/specs/placement-v1.md) §4 d
 | 0201 decoupling | 100 nF on a rail of at most half the 0201 part's 10 V rating, in the core, I/O or radio zone; the audio zone keeps its parts (T1-040) | The sheets' rule "rated at least twice the rail"; ADR 0016 item 3 (the part under the BGA) |
 | Test pads | 0.8 mm on signal nets, 1.0 mm on power and ground nets | PCB-D-06 v0.16 (JLCPCB DFT guide) |
 
-Availability and cost are read by `odapkit parts matrix` and kept privately; `candidates.toml` carries only each part's outcome (`sourcing`).
+Availability and cost are read by `odapkit parts matrix` and kept privately; `candidates.toml` carries only each part's outcome (`sourcing`: pass, conditional, fail, or open when no channel the matrix reads lists a line its maker sells in its own store; open ranks as conditional and is closed before the BOM freeze).
 
 ## Run
 
@@ -32,14 +32,14 @@ python3 hardware/studies/compaction/compaction.py --netlist /tmp/t1.net
 
 | Position | Part | h (mm) | Peak / Isat30 | Limit / Isat30 | Irms use | DCR loss vs current (mW) | Sourcing | Verdict (under the pocket) |
 |---|---|---|---|---|---|---|---|---|
-| L601 BQ25798 charger | XGL4015-102MEC **chosen** | 1.5 | 48 % | 86 % | 35 % | 8.9 | conditional | conditional |
+| L601 BQ25798 charger | XGL4015-102MEC **chosen** | 1.5 | 48 % | 86 % | 35 % | 8.9 | open | conditional |
 | L601 BQ25798 charger | XGL4012-102MEC | 1.2 | 53 % | 95 % | 43 % | 59.5 | fail | fail |
 | L601 BQ25798 charger | XAL4020-102MEC (current) | 2.1 | 40 % | 72 % | 34 % | 0.0 | conditional | fail |
 | L901 TPS62136 VSYS_LV | XGL4015-152MEC | 1.5 | 62 % | 103 % | 39 % | 29.1 | fail | fail |
 | L901 TPS62136 VSYS_LV | XGL4020-152MEC (current) **kept** | 2.1 | 52 % | 87 % | 26 % | 0.0 | conditional | fail |
 | L2802 LMR33630C −7 V | XGL4015-222MEC | 1.5 | 43 % | 103 % | 40 % | 34.0 | fail | fail |
 | L2802 LMR33630C −7 V | XGL4020-222MEC (current) **kept** | 2.1 | 34 % | 81 % | 27 % | 0.0 | conditional | fail |
-| L4401 TPS62903 5.1 V | XGL4015-102MEC **chosen** | 1.5 | 29 % | 78 % | 25 % | 17.4 | conditional | conditional |
+| L4401 TPS62903 5.1 V | XGL4015-102MEC **chosen** | 1.5 | 29 % | 78 % | 25 % | 17.4 | open | conditional |
 | L4401 TPS62903 5.1 V | XGL4020-102MEC (current) | 2.1 | 24 % | 65 % | 18 % | 0.0 | conditional | fail |
 | L1001 TPS62827 vcc3v3_sys | XGL4015-471MEC **chosen** | 1.5 | 25 % | 61 % | 26 % | — | conditional | conditional |
 | L1001 TPS62827 vcc3v3_sys | XFL4015-471MEC | 1.6 | 40 % | 97 % | 27 % | — | conditional | fail |

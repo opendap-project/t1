@@ -2,9 +2,9 @@
 
 - **Status:** Draft v0.1 (2026-10-24): specialised modules per domain are built, provided the integration is verified as well and never inferred from the parts.
 - **Updated 2026-10-25 ([RFC 0014](https://github.com/opendap-project/rfcs/blob/main/text/0014-hat-interface-v2-usb-only.md), [RFC 0015](https://github.com/opendap-project/rfcs/blob/main/text/0015-hat-connector-pogo-field-and-usb-c-port-hat.md)):** HATs are USB only (hat-standard interface v2): M-HAT, the interaction matrix, V2-P02, V2-H01, V2-H02 and V3-07 cover one USB port with USB PD through the DF40C-50, the flat cable and the 2 × 10 pogo field; the PCIe, CSI-2, DLN2-on-the-board, I2S, power-class and `HAT_3V3` items are gone.
-- **Method:** this spec applies the OpenDAP electronics integration and verification method to the T1: integration levels L0–L6, domain modules with rules M1–M4, an interaction matrix, evaluation rows and gates between levels. This file holds the T1's modules, its interaction matrix, its evaluation rows and how its gates apply.
+- **Method:** this spec applies the OpenDAP electronics integration and verification method to the T1: integration levels I0–I6 ([RFC 0018](https://github.com/opendap-project/rfcs/blob/main/text/0018-digital-thread.md) §7; written L0–L6 before it), domain modules with rules M1–M4, an interaction matrix, evaluation rows and gates between levels. This file holds the T1's modules, its interaction matrix, its evaluation rows and how its gates apply.
 - **Levels:** `[Qn]` after a row ID is the RFC 0010 quality level at which the row becomes mandatory; a row without it is Q1. Compliance rows follow T1-071 to T1-086.
-- **Scope:** the T1's electronics, from parts to the assembled product. Case, mechanical and physical-simulation work is out of scope; the levels that need it (L5, L6) list only their electrical evaluations.
+- **Scope:** the T1's electronics, from parts to the assembled product. Case, mechanical and physical-simulation work is out of scope; the levels that need it (I5, I6) list only their electrical evaluations.
 
 ## 0. Principles
 
@@ -13,26 +13,26 @@ Five principles apply:
 1. **Parts passing does not make the whole pass.** An interaction between two domains is signed off only at the lowest level that reproduces its physical mechanism (conduction, proximity, shared ground, shared clock, heat, software timing). A mechanism that a level cannot reproduce is marked there as *not representative*, never as passed.
 2. **What is tested is what ships.** Every module is built from the same hierarchical schematic sheets as the main board, and its layout block is copied from or into the main board's, with the same stackup class, part numbers and values (rule M4).
 3. **Every row traces to a requirement or a constraint** and carries the three thresholds where the metric has them.
-4. **Regression follows the dependency graph.** A change to a block reruns its L1 and L2 rows and every L3 and L4 row of each interaction it takes part in (§3).
+4. **Regression follows the dependency graph.** A change to a block reruns its I1 and I2 rows and every I3 and I4 row of each interaction it takes part in (§3).
 5. **Measurement before shrinking.** A level's exit gate is evidence (data file, capture, photo), stored with the component that was tested; a result without evidence counts as not run.
 
 For the T1, the IDs a row names are T1-, BRD-, PCB-, ADR and BOM §7 items, and the thresholds are those of T1-048 (ideal, warning, hard limit).
 
 ## 1. Integration levels
 
-Each level integrates more of the product: L0 one part against its datasheet, L1 one circuit block, L2 one domain on its own test board, L3 two or more modules connected through the core module (conducted coupling, protocol, sequencing; not proximity, radiated or thermal coupling), L4 the integrated main board, L5 the product assembly in the case, L6 the product in use. Each level's exit gate is that every row of the level passes with evidence. For the T1:
+Each level integrates more of the product: I0 one part against its datasheet, I1 one circuit block, I2 one domain on its own test board, I3 two or more modules connected through the core module (conducted coupling, protocol, sequencing; not proximity, radiated or thermal coupling), I4 the integrated main board, I5 the product assembly in the case, I6 the product in use. Each level's exit gate is that every row of the level passes with evidence. For the T1:
 
 | Level | T1 specifics |
 |---|---|
-| **L0 Part** | parts-lib sheet, kicad-lib symbol/footprint, fab rule test boards; lifecycle and second source recorded per PLIB-003 |
-| **L1 Block** | board `sim/` studies |
-| **L2 Domain module** | Module boards of §2; the bench items of BOM §7 |
-| **L3 Domain pair** | Module stack of §2.2 |
-| **L4 Integrated board** | Main board (prototype 1) with faceplate and HAT device-side piece on the bench; lives in board |
-| **L5 Product assembly** | Board, faceplate, battery pack and HAT piece in the case; lives in t1 |
-| **L6 Product in use** | The T1 running Blackbird OS through real sessions; lives in t1 and toolkit-verify. Autonomy (T1-039), endurance and scale (T1-046, T1-047), experience budgets (T1-048), compliance pre-scans |
+| **I0 Part** | parts-lib sheet, kicad-lib symbol/footprint, fab rule test boards; lifecycle and second source recorded per PLIB-003 |
+| **I1 Block** | board `sim/` studies |
+| **I2 Domain module** | Module boards of §2; the bench items of BOM §7 |
+| **I3 Domain pair** | Module stack of §2.2 |
+| **I4 Integrated board** | Main board (prototype 1) with faceplate and HAT device-side piece on the bench; lives in board |
+| **I5 Product assembly** | Board, faceplate, battery pack and HAT piece in the case; lives in t1 |
+| **I6 Product in use** | The T1 running Blackbird OS through real sessions; lives in t1 and toolkit-verify. Autonomy (T1-039), endurance and scale (T1-046, T1-047), experience budgets (T1-048), compliance pre-scans |
 
-## 2. Domain modules (L2) and the module stack (L3)
+## 2. Domain modules (I2) and the module stack (I3)
 
 ### 2.1 Modules
 
@@ -47,11 +47,11 @@ Each level integrates more of the product: L0 one part against its datasheet, L1
 | **M-HAT** | HAT port controller (FUSB302B01MPX) and `VBUS` source and sink paths, DF40C-50 pair, flat cable, device-side piece with the 2 × 10 pogo field (Mill-Max 0965) and its ESD, a test HAT: USB 3 Gen 1 and USB 2.0 loopback or test device, a USB PD sink and a USB PD source (powerbank role), the identity capability | Signal integrity at 5 Gb/s through DF40, FPC and pogo pins (hat-standard ADR 0004 coupon); USB PD roles, attach and detach, `VBUS` limits and discharge, 5 V only from a HAT; identity read over USB; HAT firmware recovery over USB | BRD-004, BRD-006, BRD-013, BRD-026, BRD-044, BRD-049; hat-standard interface v2 |
 | **M-SI** | Impedance and loss coupons of the main-board HDI stackup and of the two flat cables | Impedance per class (TDR), loss, microvia reliability (cross-section) | PCB-I-01 to PCB-I-07, PCB-S |
 
-Module rules: **M1** each module is a KiCad project built from the same hierarchical sheets as the main board; **M2** the core module uses the main board's stackup and fab process, and a module whose performance depends on the ground and plane arrangement keeps the main board's arrangement under its block; **M3** modules connect to the core module through one documented module connector per boundary, whose map is a machine-readable interface file checked against the main-board netlist; **M4** after the main board is laid out, a module whose layout block differs is updated and re-tested, or its L2 results are marked *superseded by L4*. For the T1: M-CORE uses the main board's stackup and fab process (M2); M-AUD keeps the main board's ground and plane arrangement under the audio block (M2); the module connector maps are interface files checked against the main-board netlist (M3).
+Module rules: **M1** each module is a KiCad project built from the same hierarchical sheets as the main board; **M2** the core module uses the main board's stackup and fab process, and a module whose performance depends on the ground and plane arrangement keeps the main board's arrangement under its block; **M3** modules connect to the core module through one documented module connector per boundary, whose map is a machine-readable interface file checked against the main-board netlist; **M4** after the main board is laid out, a module whose layout block differs is updated and re-tested, or its I2 results are marked *superseded by I4*. For the T1: M-CORE uses the main board's stackup and fab process (M2); M-AUD keeps the main board's ground and plane arrangement under the audio block (M2); the module connector maps are interface files checked against the main-board netlist (M3).
 
-### 2.2 Module stack (L3)
+### 2.2 Module stack (I3)
 
-M-CORE is the hub: every other module attaches to it, so pairs and the full stack run real Blackbird OS. M-PWR powers the stack through the same rails as on the board. The stack is representative for conducted effects through its defined interconnect only; every proximity, radiated or thermal interaction is first signed off at L4.
+M-CORE is the hub: every other module attaches to it, so pairs and the full stack run real Blackbird OS. M-PWR powers the stack through the same rails as on the board. The stack is representative for conducted effects through its defined interconnect only; every proximity, radiated or thermal interaction is first signed off at I4.
 
 ## 3. Interaction matrix
 
@@ -59,19 +59,19 @@ Each cell names the coupling mechanism, the level where it is first testable, an
 
 | | CORE | AUD | RF | UI | HAT | IO | EXT |
 |---|---|---|---|---|---|---|---|
-| **PWR** | Load transients of DVFS on VSYS_LV and vdd_cpu; sequencing; suspend and wake. First L3, signed off L4 | Converter ripple and PFM bursts into the amplifier rails and DAC supplies (PSRR budget, §7.31); ground return of the switchers. First L3 (conducted), signed off L4 (proximity) | Switching harmonics in the radio bands (desense). L4 | Backlight current steps on VSYS_LV. L3 | HAT inrush and fault on the shared 5.1 V converter and its shared limiter; a source HAT under USB PD; dead-battery charge from a HAT. L3, signed off L4 | Haptic and speaker current pulses. L3 | Source switching, PD negotiation, surge and ESD on VBUS. L2, signed off L5 |
-| **CORE** | | I2S/DSD timing, DAC as clock master, bit-perfect paths, sample-rate changes without pops. First L3. DDR and SoC noise coupling into analog: L4 | DDR and SDIO harmonics into the radio bands; SDIO timing. L3 (protocol), L4 (desense) | DSI timing, touch interrupt latency against the experience budgets. L3 | USB 3 link training through the cable and pogo field; enumeration, identity capability, remote wakeup. L3, signed off L4 | I2C bus loading and addresses; coprocessor flashing (BRD-015). L3 | USB OTG roles, MaskROM recovery, USB serial console (BRD-046). L3 |
-| **AUD** | | | Radio bursts (TDMA, BT) demodulated in the amplifiers: audible buzz. L4, signed off L5 | Display and backlight noise into the headphone path. L4 | A USB audio HAT on its own clock (no shared clock with the DACs); ground return of HAT `VBUS` current near the audio reference. L3, signed off L4 | Speaker amplifier and haptics against the headphone path; jack detect and speaker never chosen unasked (T1-053). L3 | Ground loops when USB-connected to a computer (USB DAC mode, T1-054). L4, signed off L5 |
-| **RF** | | | | Faceplate and display as antenna loading. L5 | HAT shielding and metal near the antennas. L5 | NFC field against nearby metal and the TPM I2C. L4 | Antenna in the enclosure; certification adherence. L5 |
-| **UI** | | | | | — | Buttons and faceplate controls agree (one press, one action). L3 | ESD into the faceplate through the cover. L5 |
-| **HAT** | | | | | | — | ESD and hot-plug at the pogo field. L4, signed off L5 |
-| **IO** | | | | | | | ESD at the side buttons and the microSD slot. L5 |
+| **PWR** | Load transients of DVFS on VSYS_LV and vdd_cpu; sequencing; suspend and wake. First I3, signed off I4 | Converter ripple and PFM bursts into the amplifier rails and DAC supplies (PSRR budget, §7.31); ground return of the switchers. First I3 (conducted), signed off I4 (proximity) | Switching harmonics in the radio bands (desense). I4 | Backlight current steps on VSYS_LV. I3 | HAT inrush and fault on the shared 5.1 V converter and its shared limiter; a source HAT under USB PD; dead-battery charge from a HAT. I3, signed off I4 | Haptic and speaker current pulses. I3 | Source switching, PD negotiation, surge and ESD on VBUS. I2, signed off I5 |
+| **CORE** | | I2S/DSD timing, DAC as clock master, bit-perfect paths, sample-rate changes without pops. First I3. DDR and SoC noise coupling into analog: I4 | DDR and SDIO harmonics into the radio bands; SDIO timing. I3 (protocol), I4 (desense) | DSI timing, touch interrupt latency against the experience budgets. I3 | USB 3 link training through the cable and pogo field; enumeration, identity capability, remote wakeup. I3, signed off I4 | I2C bus loading and addresses; coprocessor flashing (BRD-015). I3 | USB OTG roles, MaskROM recovery, USB serial console (BRD-046). I3 |
+| **AUD** | | | Radio bursts (TDMA, BT) demodulated in the amplifiers: audible buzz. I4, signed off I5 | Display and backlight noise into the headphone path. I4 | A USB audio HAT on its own clock (no shared clock with the DACs); ground return of HAT `VBUS` current near the audio reference. I3, signed off I4 | Speaker amplifier and haptics against the headphone path; jack detect and speaker never chosen unasked (T1-053). I3 | Ground loops when USB-connected to a computer (USB DAC mode, T1-054). I4, signed off I5 |
+| **RF** | | | | Faceplate and display as antenna loading. I5 | HAT shielding and metal near the antennas. I5 | NFC field against nearby metal and the TPM I2C. I4 | Antenna in the enclosure; certification adherence. I5 |
+| **UI** | | | | | — | Buttons and faceplate controls agree (one press, one action). I3 | ESD into the faceplate through the cover. I5 |
+| **HAT** | | | | | | — | ESD and hot-plug at the pogo field. I4, signed off I5 |
+| **IO** | | | | | | | ESD at the side buttons and the microSD slot. I5 |
 
 ## 4. Evaluation matrices
 
-Row IDs: `V0-nn` (L0), `V1-nn` (L1), `V2-<module letter><nn>` (L2), `V3-nn` (L3, with the pair named), `V4-nn` (L4), `V5-nn` and `V6-nn` (L5 and L6); at L4 every L2 and L3 row is repeated on the board. Columns: `ID | case | steps | expected (with thresholds) | observed | evidence`. The tables below fix the cases and their expected values; *observed* and *evidence* are filled when the level runs, stored next to the module or board that was tested. Thresholds come from the requirement, the ADR or the constraint named; where none exists yet, the case says what sets it.
+Row IDs: `V0-nn` (I0), `V1-nn` (I1), `V2-<module letter><nn>` (I2), `V3-nn` (I3, with the pair named), `V4-nn` (I4), `V5-nn` and `V6-nn` (I5 and I6); at I4 every I2 and I3 row is repeated on the board. Columns: `ID | case | steps | expected (with thresholds) | observed | evidence`. The tables below fix the cases and their expected values; *observed* and *evidence* are filled when the level runs, stored next to the module or board that was tested. Thresholds come from the requirement, the ADR or the constraint named; where none exists yet, the case says what sets it.
 
-### 4.1 L0 Part
+### 4.1 I0 Part
 
 | ID | Case | Expected |
 |---|---|---|
@@ -80,7 +80,7 @@ Row IDs: `V0-nn` (L0), `V1-nn` (L1), `V2-<module letter><nn>` (L2), `V3-nn` (L3,
 | V0-03 | Lifecycle and second source recorded | PLIB-003, T1-028, T1-029 |
 | V0-04 | Simulation model available and its hash recorded | `odapkit sim fetch` succeeds or the block's checks are marked blocked |
 
-### 4.2 L1 Block
+### 4.2 I1 Block
 
 | ID | Case | Expected |
 |---|---|---|
@@ -90,7 +90,7 @@ Row IDs: `V0-nn` (L0), `V1-nn` (L1), `V2-<module letter><nn>` (L2), `V3-nn` (L3,
 | V1-04 | Headphone stage at full scale into 16 and 32 Ω, both outputs | ADR 0012 and 0015 figures; rail headroom |
 | V1-05 | Every block reviewed against its datasheet application circuit | Checklist item per part, deviations justified |
 
-### 4.3 L2 Domain modules
+### 4.3 I2 Domain modules
 
 | ID | Module | Case | Expected |
 |---|---|---|---|
@@ -123,13 +123,13 @@ Row IDs: `V0-nn` (L0), `V1-nn` (L1), `V2-<module letter><nn>` (L2), `V3-nn` (L3,
 | V2-H02 | M-HAT | USB PD on the HAT port: sink HAT at Default and 1.5 A, source HAT at 5 V, power-role swap, dead battery, attach and detach, `VBUS` discharge to vSafe0V, eFuse #A and #D trips, OV2 above vSafe5V | Interface v2 §5–§6; never sources and sinks at once (OV2 interlock); 5 V only accepted; BRD-026, BRD-049 |
 | V2-S01 | M-SI | TDR per impedance class, microvia cross-section | PCB-I targets; the fab's acceptance class |
 
-### 4.4 L3 Domain pairs
+### 4.4 I3 Domain pairs
 
 | ID | Pair | Case | Expected |
 |---|---|---|---|
 | V3-01 | PWR + CORE | DVFS and load steps from the SoC with the real converters | VSYS_LV and vdd_cpu within range; no reset |
 | V3-02 | PWR + CORE | Suspend, resume, shutdown, battery cut-off, ship mode | Resume state kept (T1-051); no rail left floating |
-| V3-03 | PWR + AUD | Converters running at worst load while measuring V2-A01 and V2-A02 | No degradation beyond the L2 values; spurs listed with their frequency (upper bound for L4) |
+| V3-03 | PWR + AUD | Converters running at worst load while measuring V2-A01 and V2-A02 | No degradation beyond the I2 values; spurs listed with their frequency (upper bound for I4) |
 | V3-04 | CORE + AUD | Playback of every rate and format from Blackbird OS; rate changes; pause and seek | Bit-perfect; no pops (T1-049); latency within T1-057 budgets |
 | V3-05 | CORE + RF | Wi-Fi and Bluetooth under SDIO and DDR load | Throughput within 10 % of V2-R01 **UNVERIFIED** threshold |
 | V3-06 | CORE + UI | Interface at full frame rate during library scan and DSD playback | T1-056 |
@@ -137,14 +137,14 @@ Row IDs: `V0-nn` (L0), `V1-nn` (L1), `V2-<module letter><nn>` (L2), `V3-nn` (L3,
 | V3-08 | CORE + IO | Every I2C peripheral on its bus at once; coprocessor flashing during playback | No bus errors; audio unaffected |
 | V3-09 | Full stack | Blackbird OS running every domain at once for 24 h | No resets, no driver errors, no memory growth (T1-047) |
 
-### 4.5 L4 Integrated board
+### 4.5 I4 Integrated board
 
-Every L2 and L3 row is repeated on the board (the L2/L3 values become the reference), and these are added:
+Every I2 and I3 row is repeated on the board (the I2/I3 values become the reference), and these are added:
 
 | ID | Case | Expected |
 |---|---|---|
-| V4-01 | Audio noise and THD+N with every other domain active (radio transmitting, display on, HAT loaded, charging) | Within the T1-048 thresholds set at L2; no spur above the warning value |
-| V4-02 | Radio sensitivity with the board's own noise (desense), per band, in both antenna configurations | Desense ≤ the budget set at L2; the Radio targets of the experience budgets still met on the board |
+| V4-01 | Audio noise and THD+N with every other domain active (radio transmitting, display on, HAT loaded, charging) | Within the T1-048 thresholds set at I2; no spur above the warning value |
+| V4-02 | Radio sensitivity with the board's own noise (desense), per band, in both antenna configurations | Desense ≤ the budget set at I2; the Radio targets of the experience budgets still met on the board |
 | V4-03 | Thermal map at the full budget and at playback | Measured part temperatures; data handed to the out-of-scope thermal work |
 | V4-04 | Power by use case on the board | Updates the battery-life model; T1-039 evaluated |
 | V4-05 [Q2] | ESD at every connector on the bare board | ±4 kV contact, ±8 kV air (IEC 61000-4-2): no damage, criterion B |
@@ -156,35 +156,35 @@ Every L2 and L3 row is repeated on the board (the L2/L3 values become the refere
 | V4-12 [Q3] | HAT and USB-C source outputs with the eFuse shorted | Available power after 3 s ≤ 15 W (PCB-P-11) |
 | V4-13 [Q2] | USB Type-C and PD with a PD analyser: 5 V and 9 V sink, 5 V 1.5 A source, dead battery, OS not running, hot plug, legacy and non-PD chargers | Charges in every case; no back-feed (T1-081) |
 
-### 4.6 L5 Product assembly and L6 in use (electrical rows only)
+### 4.6 I5 Product assembly and I6 in use (electrical rows only)
 
 | ID | Level | Case | Expected |
 |---|---|---|---|
-| V5-01 | L5 | Radio range, throughput, latency and Bluetooth dropouts in the case, on body and through walls, on the radio courses of the experience budgets (LOS, W1, W2, BODY, COEX) | The Radio targets of the experience budgets; each must also beat the measured benchmark median |
-| V5-02 [Q2] | L5 | ESD at the product surface (cover, buttons, jacks, USB-C) | ±4 kV contact, ±8 kV air, criterion B; no audible event beyond a recovery |
-| V5-03 | L5 | Audio rows of L4 with the final jacks and ground | No change beyond measurement repeatability |
-| V6-01 | L6 | Core audiophile session autonomy | T1-039: > 12 h ideal, < 8 h warning, < 6 h hard limit |
-| V6-02 | L6 | Endurance and scale | T1-046, T1-047, experience budgets |
-| V6-03 [Q2] | L6 | Compliance pre-scans repeated on each release candidate in the V5-04 configurations | No regression beyond 2 dB from the last pass |
-| V5-04 [Q2] | L5 | Radiated emissions pre-scan in the case, 30 MHz–6 GHz: no HAT, representative HAT, charging, USB device mode, playback on both jacks, radios transmitting | ≥ 6 dB below FCC 15.109 / CISPR 32 Class B in every configuration |
-| V5-05 [Q2] | L5 | Headphone output during ESD at every discharge point, with a sensitive IEM load (±8 / ±15 kV at Q4) | No transient above the RS2 equivalent (value set with the lab) |
-| V5-06 [Q2] | L5 | RF exposure pre-assessment with and without the representative HAT | Below the FCC, EU and ISED limits with margin; fixes PCB-R-05 (T1-076) |
-| V5-07 [Q2] | L5 | Radiated spurious emissions of the radio in the case | ≥ 6 dB margin |
-| V5-08 [Q2] | L5 | Surface temperatures in the worst case of T1-083, 2 h at 25 °C | Within the IEC 62368-1 TS1 limits |
-| V5-09 [Q3] | L5 | Battery replacement with the manual and commercially available tools | Completed without heat, solvents or special tools; time recorded (T1-055, T1-080) |
-| V6-04 [Q2] | L6 | Sound dose against EN 50332-3 test signals; warnings; gradual return to RS1; persistence across power-off, crash and battery cut-off; every output and USB DAC mode | Within the standard's tolerance (T1-072, T1-073) |
-| V6-05 [Q3] | L6 | EN 18031-1/-2 assessment | Every applicable requirement met (T1-078) |
-| V6-06 [Q2] | L6 | Regulatory domain: a country change applies channels, power and access-point restrictions, and shows the domain | As T1-075 |
-| V6-07 [Q3] | L6 | Formal tests at accredited labs for the declared markets | Passed; reports in the technical file (T1-071) |
+| V5-01 | I5 | Radio range, throughput, latency and Bluetooth dropouts in the case, on body and through walls, on the radio courses of the experience budgets (LOS, W1, W2, BODY, COEX) | The Radio targets of the experience budgets; each must also beat the measured benchmark median |
+| V5-02 [Q2] | I5 | ESD at the product surface (cover, buttons, jacks, USB-C) | ±4 kV contact, ±8 kV air, criterion B; no audible event beyond a recovery |
+| V5-03 | I5 | Audio rows of I4 with the final jacks and ground | No change beyond measurement repeatability |
+| V6-01 | I6 | Core audiophile session autonomy | T1-039: > 12 h ideal, < 8 h warning, < 6 h hard limit |
+| V6-02 | I6 | Endurance and scale | T1-046, T1-047, experience budgets |
+| V6-03 [Q2] | I6 | Compliance pre-scans repeated on each release candidate in the V5-04 configurations | No regression beyond 2 dB from the last pass |
+| V5-04 [Q2] | I5 | Radiated emissions pre-scan in the case, 30 MHz–6 GHz: no HAT, representative HAT, charging, USB device mode, playback on both jacks, radios transmitting | ≥ 6 dB below FCC 15.109 / CISPR 32 Class B in every configuration |
+| V5-05 [Q2] | I5 | Headphone output during ESD at every discharge point, with a sensitive IEM load (±8 / ±15 kV at Q4) | No transient above the RS2 equivalent (value set with the lab) |
+| V5-06 [Q2] | I5 | RF exposure pre-assessment with and without the representative HAT | Below the FCC, EU and ISED limits with margin; fixes PCB-R-05 (T1-076) |
+| V5-07 [Q2] | I5 | Radiated spurious emissions of the radio in the case | ≥ 6 dB margin |
+| V5-08 [Q2] | I5 | Surface temperatures in the worst case of T1-083, 2 h at 25 °C | Within the IEC 62368-1 TS1 limits |
+| V5-09 [Q3] | I5 | Battery replacement with the manual and commercially available tools | Completed without heat, solvents or special tools; time recorded (T1-055, T1-080) |
+| V6-04 [Q2] | I6 | Sound dose against EN 50332-3 test signals; warnings; gradual return to RS1; persistence across power-off, crash and battery cut-off; every output and USB DAC mode | Within the standard's tolerance (T1-072, T1-073) |
+| V6-05 [Q3] | I6 | EN 18031-1/-2 assessment | Every applicable requirement met (T1-078) |
+| V6-06 [Q2] | I6 | Regulatory domain: a country change applies channels, power and access-point restrictions, and shows the domain | As T1-075 |
+| V6-07 [Q3] | I6 | Formal tests at accredited labs for the declared markets | Passed; reports in the technical file (T1-071) |
 
 ## 5. Gates between levels
 
 The gates between levels, for the T1:
 
-- A module goes to L3 only after its L2 rows pass or each failure has a recorded fix in the main-board design.
-- The main board is released for fabrication only after every L2 bench item of BOM §7 is closed or carried into the board with a decision, and every L3 row that can fail on the board's design (not only on the module interconnect) has passed.
-- The product enters L6 only when every interaction of §3 is signed off at its level.
+- A module goes to I3 only after its I2 rows pass or each failure has a recorded fix in the main-board design.
+- The main board is released for fabrication only after every I2 bench item of BOM §7 is closed or carried into the board with a decision, and every I3 row that can fail on the board's design (not only on the module interconnect) has passed.
+- The product enters I6 only when every interaction of §3 is signed off at its level.
 
 ## 6. Open
 
-- Open for the first modules: instruments and their residuals (a measurement's instrument residual sits at least 10 dB below the expected value, **UNVERIFIED** margin), KiCad layout-block reuse between projects (rules M1, M4), and thresholds marked "set at L2", which are filled from the first measurements and confirmed by the maintainers in the [experience budgets](experience-budgets.md).
+- Open for the first modules: instruments and their residuals (a measurement's instrument residual sits at least 10 dB below the expected value, **UNVERIFIED** margin), KiCad layout-block reuse between projects (rules M1, M4), and thresholds marked "set at I2", which are filled from the first measurements and confirmed by the maintainers in the [experience budgets](experience-budgets.md).

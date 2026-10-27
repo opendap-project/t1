@@ -1,0 +1,99 @@
+* OpenDAP T1 board: TPS65131 switch-level model for ngspice (subcircuit library)
+*
+* NOT a TI model. TI publishes no transient model for the TPS65131: the product
+* page lists none and SLVS493E §10.1 names none (checked 2026-10-22). This file
+* models the power stage from datasheet parameters and the BOM parts, and replaces
+* TI's control (fixed-frequency, multiple-feedforward PWM, SLVS493E §7.3.2) by a
+* fixed-frequency peak-current-mode loop with slope compensation. The steady-state
+* switch current is set by the power stage and its losses, not by the control law;
+* loop dynamics (overshoot, recovery) are not representative of the real part.
+*
+* Per converter: switch as a conductance ramped over tedge (gives transition loss),
+* PMEG2010AEH Schottky rectifier, inductor with DCR and a current-dependent
+* inductance (DFE252012F-4R7M), output capacitor with ESR, cycle-by-cycle switch
+* current limit ilim (set it high to read the unconstrained peak current).
+*
+* Sources: TI SLVS493E (Apr 2022) §6.5, §6.6, §7.3, §8.2; Murata DFE252012F sheet
+* (LCSC mirror, sha256 6175add0e7dc8af3...251f); NXP/Nexperia PMEG2010AEH Rev. 03.
+* Calibration against SLVS493E Figures 6-2 and 6-4: see README.md.
+
+* ---- inductor with DCR and L(I) = l0 * (1 - 0.30*(i/isat30)^2), floor 0.4*l0
+* isat30: current for -30 % inductance (DFE252012F-4R7M: 2.1 A rated, 2.4 A typ)
+* port il carries the inductor current as a voltage (1 V = 1 A)
+.subckt lsat a b il params: l0=4.7u dcr=0.19 isat30=2.1
+Bil 0 il I = v(a,m) / (l0*max(0.4, 1 - 0.30*(v(il)/isat30)**2))
+Cil il 0 1
+Rdcr m b {dcr}
+Bbr a m I = v(il)
+.ends
+
+* ---- PWM core: the clock sets, the comparator or the maximum duty resets
+* in: cmp (0/1)   out: gate (0..1, edges of tedge)
+.subckt pwmcore cmp gate params: fs=1.38meg tedge=5n dmax=0.875
+Vclk clk_a 0 PULSE(0 1 0 1n 1n 15n {1/fs})
+Vmd md_a 0 PULSE(0 1 {dmax/fs} 1n 1n 15n {1/fs})
+Vone one_a 0 1
+Vzer zer_a 0 0
+Aadc [clk_a md_a cmp one_a zer_a] [clk md rs one zer] adcb
+Aor [rs md] rst dor
+Aff one clk zer rst q nq dff
+Adac [q] [gate] dacb
+.model adcb adc_bridge(in_low=0.4 in_high=0.6)
+.model dor d_or(rise_delay=1n fall_delay=1n)
+.model dff d_dff(clk_delay=1n set_delay=1n reset_delay=1n)
+.model dacb dac_bridge(out_low=0 out_high=1 t_rise={tedge} t_fall={tedge})
+.ends
+
+* ---- TPS65131: boost (VPOS) and inverter (VNEG) from one input
+* ports: vin vpos vneg ilp iln (ilp, iln: boost and inverter inductor current, 1 V = 1 A)
+* rp, rn : boost (NMOS) and inverter (PMOS) switch on-resistance
+*          SLVS493E §6.5: inverter 440 typ / 620 max mOhm at VIN 3.6 V;
+*          boost 230/300 mOhm at VPOS 5 V, 170/200 mOhm at VPOS 10 V
+* fs     : 1.25 / 1.38 / 1.5 MHz (SLVS493E §6.6); dmax 87.5 %
+* ilim   : switch current limit 1.8 / 1.95 / 2.2 A, specified at VIN 3.6 V (§6.5)
+* dis, dn, drs : rectifier; defaults fitted to PMEG2010AEH max VF
+*          (220 mV at 10 mA, 290 mV at 100 mA, 430 mV at 1 A; Cd 70 pF max at 5 V)
+* r1..r4 : dividers (VPOS = 1.213*(1+r1/r2) = 6.97 V; VNEG = -1.213*r3/r4 = -6.99 V,
+*          BOM line 111)
+* cout   : effective output capacitance per output (4 x 4.7 uF 25 V X7R after DC bias:
+*          10 uF assumed, est.)
+.subckt tps65131 vin vpos vneg ilp iln params: fs=1.38meg rp=0.30 rn=0.62 ilim=1.8
++ tedge=5n l0=4.7u dcr=0.19 isat30=2.1 cout=10u esr=5m r1=475k r2=100k r3=576k r4=100k
++ sap=0.6e6 san=1.0e6 dis=7.5u dn=1.18 drs=0.07
+.param vref=1.213
+.model rect d(is={dis} n={dn} rs={drs} cjo=150p vj=0.35 m=0.5 bv=25 ibv=1m)
+* ---------------- boost ----------------
+XLP vin swp ilp lsat params: l0={l0} dcr={dcr} isat30={isat30}
+BSP swp 0 I = v(swp)*(v(gp)/rp + 1u)
+DP swp vposi rect
+RSNSP vposi vpos 1m
+CP vpos cpb {cout}
+RCP cpb 0 {esr}
+RFP1 vpos fbp {r1}
+RFP2 fbp 0 {r2}
+* error amplifier (OTA into a type-II network); output = peak current command [A]
+BEP 0 vcp I = 1m*(vref-v(fbp))
+RZP vcp zp 18k
+CZP zp 0 3n
+CPP vcp 0 80p
+Vrampp rampp 0 PULSE(0 1 0 {1/fs-2n} 1n 0 {1/fs})
+BCMPP cmpp 0 V = ((v(ilp) >= v(vcp) - sap/fs*v(rampp)) | (v(ilp) >= ilim)) ? 1 : 0
+XPWMP cmpp gp pwmcore params: fs={fs} tedge={tedge}
+* ---------------- inverter ----------------
+XLN swn 0 iln lsat params: l0={l0} dcr={dcr} isat30={isat30}
+BSN vin swn I = v(vin,swn)*(v(gn)/rn + 1u)
+DN vnegi swn rect
+RSNSN vneg vnegi 1m
+CN vneg cnb {cout}
+RCN cnb 0 {esr}
+RFN3 vneg fbn {r3}
+RFN4 fbn vrefn {r4}
+VREFN vrefn 0 {vref}
+BEN 0 vcn I = 1m*v(fbn)
+RZN vcn zn 18k
+CZN zn 0 3n
+CPN vcn 0 80p
+Vrampn rampn 0 PULSE(0 1 0 {1/fs-2n} 1n 0 {1/fs})
+BCMPN cmpn 0 V = ((v(iln) >= v(vcn) - san/fs*v(rampn)) | (v(iln) >= ilim)) ? 1 : 0
+XPWMN cmpn gn pwmcore params: fs={fs} tedge={tedge}
+.ends

@@ -1,0 +1,26 @@
+* Calibration check: the generic model (dcs-buck-generic.lib) with TPS62136
+* parameters (SLVSDV2: TON = 250 ns x VIN / (VIN - VOUT), RDS(on) 100 / 39 mOhm,
+* VFB 0.7 V, 15 pF internal feed-forward) under the same load step as
+* tps62136-3v8-step.cir, to compare against TI's model.
+.param VIN=7.4 CO=30u L=1.5u PFM=0 ILO=0.1 IHI=2.0
+.include dcs-buck-generic.lib
+VIN vin 0 {VIN}
+XU vin sw vout fb 0 DCSBUCK params: TONSEL=2 KTON=250n PFM={PFM} RHS=0.1 RLS=0.039
++ ILIMH=5.6 ILIML=5.6 VREF=0.7 TOFFMIN=80n
+L1 sw lx {L}
+RL lx vout 14.3m
+C1 vout 0 {CO}
+R1 vout fb 442k
+R2 fb 0 100k
+Cff vout fb 15p
+Iload vout 0 PWL(0 0 0.3m 0 0.301m {ILO} 0.6m {ILO} 0.601m {IHI} 0.9m {IHI} 0.901m {ILO})
+.ic v(vout)=3.794
+.tran 2n 1.2m 0 5n uic
+.control
+set wr_singlescale
+set wr_vecnames
+run
+linearize v(vout) i(L1)
+wrdata step.dat v(vout) i(L1)
+.endc
+.end

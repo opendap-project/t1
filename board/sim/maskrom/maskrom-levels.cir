@@ -1,0 +1,45 @@
+* MaskROM combo (BOM v1.5 lines 78, 98): gate-1 input levels (PWRON_N through the BAT54, VOLDN_N)
+* Pressed: PWRON at 0 V (button to ground), In2 = BAT54 forward drop.
+* Released: PWRON idles at VCC_RTC through the RK809 internal 17 kohm.
+* BAT54: fitted to the Nexperia v.6 maximum VF (240 mV at 0.1 mA, 320 mV at
+* 1 mA, 400 mV at 10 mA, 25 C): IS = 100 nA, N = 1.35; EG 0.69 eV, XTI 2
+* (generic Schottky temperature behaviour, UNVERIFIED for this part).
+.param RPU=20k VRTC=3.0
+.model BAT54MAX D(IS=100n N=1.35 RS=1.5 EG=0.69 XTI=2 CJO=10p BV=30 IBV=2u)
+* gate supply (vcca1v8_pmu), lowest case of the 1.65 V threshold table
+VCC vcc 0 1.65
+* pressed case
+Rpu1 in2p vcc {RPU}
+D1 in2p pwronp BAT54MAX
+Vbtn pwronp 0 0
+* released case: RK809 internal pull-up to VCC_RTC
+Rpu2 in2r vcc {RPU}
+D2 in2r pwronr BAT54MAX
+Rrk pwronr rtc 17k
+Vrtc rtc 0 {VRTC}
+.control
+* pressed: In2 versus temperature, for three pull-up values
+echo "pressed: RPU  T(C)  In2(mV)  I(uA)"
+foreach r 20k 47k 100k
+  alterparam RPU = $r
+  reset
+  foreach t -20 0 25 70
+    option temp=$t
+    op
+    let vmv = v(in2p)*1000
+    let iua = i(vbtn)*1e6
+    echo "pressed: $r $t $&vmv $&iua"
+  end
+end
+* released: In2 versus the RK809 VCC_RTC level, 20 kohm, 25 C and 70 C
+alterparam RPU = 20k
+reset
+option temp=25
+echo "released: VRTC(V)  In2(V)"
+foreach vr 0.5 0.7 1.0 1.26 1.5 1.8 3.0
+  alter Vrtc = $vr
+  op
+  echo "released: $vr $&v(in2r)"
+end
+.endc
+.end

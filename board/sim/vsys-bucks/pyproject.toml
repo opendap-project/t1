@@ -1,0 +1,6 @@
+[project]
+name = "opendap-board-sim-vsys-bucks"
+version = "0.1.0"
+description = "ngspice simulation of the T1 VSYS bucks (TPS62903 5.1 V HAT/USB-C source, TPS62136 3.8 V pre-regulator)"
+requires-python = ">=3.10"
+dependencies = ["numpy>=2.0"]

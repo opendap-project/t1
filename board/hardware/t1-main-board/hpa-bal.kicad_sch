@@ -1,0 +1,693 @@
+(kicad_sch (version 20260306) (generator "eeschema") (generator_version "10.0")
+(uuid "9017bb1e-ee48-5934-af1b-418620ef9491")
+(paper "A4")
+(title_block (title "Audio: balanced output stage") (date "2026-10-25") (rev "A") (company "The OpenDAP Project") (comment 1 "blk.hpa-bal") (comment 2 "Four OPA1622 with paralleled halves, one per leg, and the links of their rails (ADR 0012)"))
+(lib_symbols (symbol "Connector:TestPoint"
+		(pin_numbers
+			(hide yes)
+		)
+		(pin_names
+			(offset 0.762)
+			(hide yes)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(duplicate_pin_numbers_are_jumpers no)
+		(property "Reference" "TP"
+			(at 0 6.858 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "TestPoint"
+			(at 0 5.08 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 5.08 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 5.08 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "test point"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_keywords" "test point tp"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_fp_filters" "Pin* Test*"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "TestPoint_0_1"
+			(circle
+				(center 0 3.302)
+				(radius 0.762)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+		)
+		(symbol "TestPoint_1_1"
+			(pin passive line
+				(at 0 0 90)
+				(length 2.54)
+				(name "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
+(symbol "Device:R"
+		(pin_numbers
+			(hide yes)
+		)
+		(pin_names
+			(offset 0)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(duplicate_pin_numbers_are_jumpers no)
+		(property "Reference" "R"
+			(at 2.032 0 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "R"
+			(at 0 0 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at -1.778 0 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_keywords" "R res resistor"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_fp_filters" "R_*"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "R_0_1"
+			(rectangle
+				(start -1.016 -2.54)
+				(end 1.016 2.54)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+		)
+		(symbol "R_1_1"
+			(pin passive line
+				(at 0 3.81 270)
+				(length 1.27)
+				(name ""
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 0 -3.81 90)
+				(length 1.27)
+				(name ""
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
+(symbol "power:PWR_FLAG"
+		(power global)
+		(pin_numbers
+			(hide yes)
+		)
+		(pin_names
+			(offset 0)
+			(hide yes)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(duplicate_pin_numbers_are_jumpers no)
+		(property "Reference" "#FLG"
+			(at 0 1.905 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "PWR_FLAG"
+			(at 0 3.81 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Special symbol for telling ERC where power comes from"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_keywords" "flag power"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "PWR_FLAG_0_0"
+			(pin power_out line
+				(at 0 0 90)
+				(length 0)
+				(name ""
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(symbol "PWR_FLAG_0_1"
+			(polyline
+				(pts
+					(xy 0 0) (xy 0 1.27) (xy -1.016 1.905) (xy 0 2.54) (xy 1.016 1.905) (xy 0 1.27)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
+(symbol "power:VCC"
+		(power global)
+		(pin_numbers
+			(hide yes)
+		)
+		(pin_names
+			(offset 0)
+			(hide yes)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(duplicate_pin_numbers_are_jumpers no)
+		(property "Reference" "#PWR"
+			(at 0 -3.81 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "VCC"
+			(at 0 3.556 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"VCC\""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_keywords" "global power"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "VCC_0_1"
+			(polyline
+				(pts
+					(xy -0.762 1.27) (xy 0 2.54)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 0 2.54) (xy 0.762 1.27)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 0 0) (xy 0 2.54)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+		)
+		(symbol "VCC_1_1"
+			(pin power_in line
+				(at 0 0 90)
+				(length 0)
+				(name ""
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	))
+(symbol (lib_id "Device:R") (at 196.85 50.8 90) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "fc9e4afa-075e-596a-b526-c4c6ffad552a")
+  (property "Reference" "R3101" (at 194.31 46.99 90) (effects (font (size 1.27 1.27))))
+  (property "Value" "20 mΩ" (at 194.31 53.34 90) (effects (font (size 1.27 1.27))))
+  (property "Spec" "1206" (at 194.31 55.88 90) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "Resistor_SMD:R_1206_3216Metric" (at 196.85 50.8 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "https://www.vishay.com/docs/30100/wsl.pdf" (at 196.85 50.8 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Description" "Current-sense resistor, 20 mOhm, 1 %, 1206 metal strip: measurement link H20" (at 196.85 50.8 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Manufacturer" "Vishay Dale" (at 196.85 50.8 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "MPN" "WSL1206R0200FEA" (at 196.85 50.8 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Block" "blk.hpa-bal" (at 196.85 50.8 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Constraints" "PCB-T-02" (at 196.85 50.8 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "4c1a7075-9703-5a1a-a786-4188395dc688"))
+  (pin "2" (uuid "59158f1c-a0dd-555d-878f-9af9f2e3cd68"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/d6f0155c-678f-5298-bf09-6ea7c0e72438/4c9f41e4-f689-56fd-bbf7-e935b98bd288" (reference "R3101") (unit 1) (variant (name "production") (field (name "Value") (value "0 Ω")) (field (name "MPN") (value "RC1206JR-070RL")) (field (name "Manufacturer") (value "YAGEO"))))))
+)
+(rectangle (start 177.8 38.1) (end 220.98 58.42) (stroke (width 0) (type dash)) (fill (type none)) (uuid "abb7ea31-4813-53ed-8f64-728404f23106"))
+(text "Link #9" (exclude_from_sim no) (at 179.07 36.83 0) (effects (font (size 2.54 2.54)) (justify left bottom)) (uuid "05513828-ba27-5f7d-869a-d45c1ec9ee4d"))
+(wire (pts (xy 193.04 50.8) (xy 175.26 50.8)) (stroke (width 0) (type default)) (uuid "2145989f-0f0b-5136-8d6f-5e9cda32834c"))
+(junction (at 190.5 50.8) (diameter 0) (color 0 0 0 0) (uuid "afbebe60-7327-51e1-9426-48c15a76cd8d"))
+(wire (pts (xy 190.5 50.8) (xy 190.5 48.26)) (stroke (width 0) (type default)) (uuid "0c16092c-d717-5fd7-bfb6-7f2fba2a20ee"))
+(symbol (lib_id "Connector:TestPoint") (at 190.5 48.26 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom no) (on_board yes) (dnp no) (uuid "3af6d8c8-02ba-500e-8882-1da57ddd1e7e")
+  (property "Reference" "TP3101" (at 189.23 43.18 0) (effects (font (size 1.27 1.27)) (justify right)))
+  (property "Value" "HPA_P6V0" (at 189.23 45.72 0) (effects (font (size 1.27 1.27)) (justify right)))
+  (property "Footprint" "TestPoint:TestPoint_Pad_D1.0mm" (at 190.5 48.26 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "~" (at 190.5 48.26 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Description" "Test pad, 1.0 mm" (at 190.5 48.26 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Block" "blk.hpa-bal" (at 190.5 48.26 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "1d84a596-06b4-59bd-a8d1-574d761719ed"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/d6f0155c-678f-5298-bf09-6ea7c0e72438/4c9f41e4-f689-56fd-bbf7-e935b98bd288" (reference "TP3101") (unit 1))))
+)
+(symbol (lib_id "power:VCC") (at 175.26 50.8 90) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "b634f123-54df-56f3-95e3-eccfbbcca367")
+  (property "Reference" "#PWR0553" (at 175.26 50.8 90) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Value" "HPA_P6V0" (at 172.72 50.8 270) (effects (font (size 1.27 1.27)) (justify right)))
+  (property "Footprint" "" (at 175.26 50.8 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "" (at 175.26 50.8 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "97527a94-9899-5a88-9bb4-8bee327110a4"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/d6f0155c-678f-5298-bf09-6ea7c0e72438/4c9f41e4-f689-56fd-bbf7-e935b98bd288" (reference "#PWR0553") (unit 1))))
+)
+(wire (pts (xy 200.66 50.8) (xy 233.68 50.8)) (stroke (width 0) (type default)) (uuid "e92f5a0f-9990-5c49-9466-b071fe2567f1"))
+(junction (at 203.2 50.8) (diameter 0) (color 0 0 0 0) (uuid "f4e725fa-73ef-5bc4-a7a6-819a009c800e"))
+(wire (pts (xy 203.2 50.8) (xy 203.2 48.26)) (stroke (width 0) (type default)) (uuid "98f9ab02-3349-51b2-b023-5f57f8b80ef9"))
+(symbol (lib_id "Connector:TestPoint") (at 203.2 48.26 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom no) (on_board yes) (dnp no) (uuid "66614940-3b2d-51fa-ab6a-c03c9be47d49")
+  (property "Reference" "TP3102" (at 204.47 43.18 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Value" "HPA_P6V0_BAL" (at 204.47 45.72 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Footprint" "TestPoint:TestPoint_Pad_D1.0mm" (at 203.2 48.26 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "~" (at 203.2 48.26 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Description" "Test pad, 1.0 mm" (at 203.2 48.26 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Block" "blk.hpa-bal" (at 203.2 48.26 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "4ac09a2f-53cb-5a34-800f-94dab9e1da20"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/d6f0155c-678f-5298-bf09-6ea7c0e72438/4c9f41e4-f689-56fd-bbf7-e935b98bd288" (reference "TP3102") (unit 1))))
+)
+(junction (at 228.6 50.8) (diameter 0) (color 0 0 0 0) (uuid "ce5dade7-75d1-5645-b889-0bd5995d96c7"))
+(wire (pts (xy 228.6 50.8) (xy 228.6 53.34)) (stroke (width 0) (type default)) (uuid "58989e1c-4b03-5aa6-a8ff-28d556c9aee5"))
+(symbol (lib_id "power:PWR_FLAG") (at 228.6 53.34 180) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "1461a88d-0ad8-53d2-82ff-9e1266621b92")
+  (property "Reference" "#FLG0029" (at 228.6 53.34 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Value" "PWR_FLAG" (at 228.6 58.42 0) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "" (at 228.6 53.34 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "" (at 228.6 53.34 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "8907829d-1c2c-5964-8aae-2fffbdd35eab"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/d6f0155c-678f-5298-bf09-6ea7c0e72438/4c9f41e4-f689-56fd-bbf7-e935b98bd288" (reference "#FLG0029") (unit 1))))
+)
+(symbol (lib_id "Device:R") (at 196.85 86.36 90) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "3fbeb858-083d-5978-9d49-141f1b4935e7")
+  (property "Reference" "R3102" (at 194.31 82.55 90) (effects (font (size 1.27 1.27))))
+  (property "Value" "20 mΩ" (at 194.31 88.9 90) (effects (font (size 1.27 1.27))))
+  (property "Spec" "1206" (at 194.31 91.44 90) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "Resistor_SMD:R_1206_3216Metric" (at 196.85 86.36 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "https://www.vishay.com/docs/30100/wsl.pdf" (at 196.85 86.36 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Description" "Current-sense resistor, 20 mOhm, 1 %, 1206 metal strip: measurement link H20" (at 196.85 86.36 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Manufacturer" "Vishay Dale" (at 196.85 86.36 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "MPN" "WSL1206R0200FEA" (at 196.85 86.36 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Block" "blk.hpa-bal" (at 196.85 86.36 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Constraints" "PCB-T-02" (at 196.85 86.36 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "f9bfc349-29a3-5546-8cb6-461cd526501a"))
+  (pin "2" (uuid "9052e9af-a0d9-5e60-897b-aa8990107d84"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/d6f0155c-678f-5298-bf09-6ea7c0e72438/4c9f41e4-f689-56fd-bbf7-e935b98bd288" (reference "R3102") (unit 1) (variant (name "production") (field (name "Value") (value "0 Ω")) (field (name "MPN") (value "RC1206JR-070RL")) (field (name "Manufacturer") (value "YAGEO"))))))
+)
+(rectangle (start 177.8 73.66) (end 220.98 93.98) (stroke (width 0) (type dash)) (fill (type none)) (uuid "a112efb7-01df-589f-b3a8-e670ba3b9433"))
+(text "Link #10" (exclude_from_sim no) (at 179.07 72.39 0) (effects (font (size 2.54 2.54)) (justify left bottom)) (uuid "1e5c3a87-4250-536f-a7d0-00073a06e2ca"))
+(wire (pts (xy 193.04 86.36) (xy 175.26 86.36)) (stroke (width 0) (type default)) (uuid "2145989f-0f0b-5136-8d6f-5e9cda32834c"))
+(junction (at 190.5 86.36) (diameter 0) (color 0 0 0 0) (uuid "afbebe60-7327-51e1-9426-48c15a76cd8d"))
+(wire (pts (xy 190.5 86.36) (xy 190.5 83.82)) (stroke (width 0) (type default)) (uuid "0c16092c-d717-5fd7-bfb6-7f2fba2a20ee"))
+(symbol (lib_id "Connector:TestPoint") (at 190.5 83.82 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom no) (on_board yes) (dnp no) (uuid "b0f43bfb-afaf-5601-9f53-55144b188a33")
+  (property "Reference" "TP3103" (at 189.23 78.74 0) (effects (font (size 1.27 1.27)) (justify right)))
+  (property "Value" "HPA_N6V0" (at 189.23 81.28 0) (effects (font (size 1.27 1.27)) (justify right)))
+  (property "Footprint" "TestPoint:TestPoint_Pad_D1.0mm" (at 190.5 83.82 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "~" (at 190.5 83.82 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Description" "Test pad, 1.0 mm" (at 190.5 83.82 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Block" "blk.hpa-bal" (at 190.5 83.82 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "760e41f3-29e0-589f-854f-d24127d3e89f"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/d6f0155c-678f-5298-bf09-6ea7c0e72438/4c9f41e4-f689-56fd-bbf7-e935b98bd288" (reference "TP3103") (unit 1))))
+)
+(symbol (lib_id "power:VCC") (at 175.26 86.36 90) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "6e98424e-e7cd-556c-9e0a-6f14fcbce566")
+  (property "Reference" "#PWR0554" (at 175.26 86.36 90) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Value" "HPA_N6V0" (at 172.72 86.36 270) (effects (font (size 1.27 1.27)) (justify right)))
+  (property "Footprint" "" (at 175.26 86.36 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "" (at 175.26 86.36 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "9316389b-4732-57a7-9f60-aa3e08374760"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/d6f0155c-678f-5298-bf09-6ea7c0e72438/4c9f41e4-f689-56fd-bbf7-e935b98bd288" (reference "#PWR0554") (unit 1))))
+)
+(wire (pts (xy 200.66 86.36) (xy 233.68 86.36)) (stroke (width 0) (type default)) (uuid "e92f5a0f-9990-5c49-9466-b071fe2567f1"))
+(junction (at 203.2 86.36) (diameter 0) (color 0 0 0 0) (uuid "f4e725fa-73ef-5bc4-a7a6-819a009c800e"))
+(wire (pts (xy 203.2 86.36) (xy 203.2 83.82)) (stroke (width 0) (type default)) (uuid "98f9ab02-3349-51b2-b023-5f57f8b80ef9"))
+(symbol (lib_id "Connector:TestPoint") (at 203.2 83.82 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom no) (on_board yes) (dnp no) (uuid "f4a84219-270a-5462-8e53-77d30cae6603")
+  (property "Reference" "TP3104" (at 204.47 78.74 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Value" "HPA_N6V0_BAL" (at 204.47 81.28 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Footprint" "TestPoint:TestPoint_Pad_D1.0mm" (at 203.2 83.82 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "~" (at 203.2 83.82 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Description" "Test pad, 1.0 mm" (at 203.2 83.82 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Block" "blk.hpa-bal" (at 203.2 83.82 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "041abe84-fc34-5bd6-a056-7187e825655b"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/d6f0155c-678f-5298-bf09-6ea7c0e72438/4c9f41e4-f689-56fd-bbf7-e935b98bd288" (reference "TP3104") (unit 1))))
+)
+(junction (at 228.6 86.36) (diameter 0) (color 0 0 0 0) (uuid "ce5dade7-75d1-5645-b889-0bd5995d96c7"))
+(wire (pts (xy 228.6 86.36) (xy 228.6 88.9)) (stroke (width 0) (type default)) (uuid "58989e1c-4b03-5aa6-a8ff-28d556c9aee5"))
+(symbol (lib_id "power:PWR_FLAG") (at 228.6 88.9 180) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "56bc7d04-0bc2-51c7-84a2-dae02de74c9e")
+  (property "Reference" "#FLG0030" (at 228.6 88.9 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Value" "PWR_FLAG" (at 228.6 93.98 0) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "" (at 228.6 88.9 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "" (at 228.6 88.9 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "bbe828bd-d40e-547a-8043-bbbef35bc6d8"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/d6f0155c-678f-5298-bf09-6ea7c0e72438/4c9f41e4-f689-56fd-bbf7-e935b98bd288" (reference "#FLG0030") (unit 1))))
+)
+(text_box "Notes\n1. Function: four OPA1622, one per leg (L+, L-, R+, R-) of the 4.4 mm output, drawn on two\n   sub-sheets (left and right channel); this sheet carries the H20 links #9 and #10 of their\n   rails, before the local capacitors (power tree §4.12; ADR 0012).\n2. Absent state: HPA_BAL_EN pulled down on the host side: shutdown. A disabled output is not\n   high-impedance: never fitted but unpowered while the other stage plays (feature blocks #34).\n3. Sub-sheet IDs (blk.hpa-bal-*) are sheets of blk.hpa-bal, as the SoC's sub-sheets." (exclude_from_sim no) (at 152.4 142.24 0) (size 129.54 19.05) (margins 1.905 1.905 1.905 1.905) (stroke (width 0) (type default)) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "7b4204bc-3d17-5c4c-975a-ad115ef59ad3"))
+(text "Rails" (exclude_from_sim no) (at 22.86 179.07 0) (effects (font (size 2.54 2.54)) (justify left bottom)) (uuid "f23b388f-8563-5e33-af1a-3059b925bce9"))
+(table (column_count 3) (border (external yes) (header yes) (stroke (width 0) (type solid))) (separators (rows yes) (cols yes) (stroke (width 0) (type solid))) (column_widths 27.94 39.37 54.61) (row_heights 5.08 7.62) (cells (table_cell "Rail" (exclude_from_sim no) (at 22.86 180.34 0) (size 27.94 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27) (bold yes)) (justify left top)) (uuid "120fd9f4-80d2-547c-96cc-64776e65acdb")) (table_cell "Capacitors" (exclude_from_sim no) (at 50.8 180.34 0) (size 39.37 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27) (bold yes)) (justify left top)) (uuid "3599992e-6368-5b24-b5aa-f5cd6dae1014")) (table_cell "Requirement and source" (exclude_from_sim no) (at 90.17 180.34 0) (size 54.61 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27) (bold yes)) (justify left top)) (uuid "990f86ec-20a5-5b03-8f71-fe62b7e36ac3")) (table_cell "HPA_P6V0_BAL, HPA_N6V0_BAL" (exclude_from_sim no) (at 22.86 185.42 0) (size 27.94 7.62) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "f1b26b40-5dee-5011-b6dd-6581d891cd50")) (table_cell "100 nF per supply pin, after the links" (exclude_from_sim no) (at 50.8 185.42 0) (size 39.37 7.62) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "7c81c8a0-7e39-5990-a79c-ed8882c39362")) (table_cell "SBOS727B §10.1; the H20 links sit before them (power tree §4.12)" (exclude_from_sim no) (at 90.17 185.42 0) (size 54.61 7.62) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "559efe82-a218-54e1-8b34-1e01a4914cc3"))))
+(text "Interface" (exclude_from_sim no) (at 22.86 143.51 0) (effects (font (size 2.54 2.54)) (justify left bottom)) (uuid "ed95283d-0d14-52a3-90a1-1c323da1aaaf"))
+(table (column_count 3) (border (external yes) (header yes) (stroke (width 0) (type solid))) (separators (rows yes) (cols yes) (stroke (width 0) (type solid))) (column_widths 45.72 25.4 50.8) (row_heights 5.08 7.62 7.62 7.62) (cells (table_cell "Net" (exclude_from_sim no) (at 22.86 144.78 0) (size 45.72 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27) (bold yes)) (justify left top)) (uuid "498f9186-0d94-5703-b45f-61699964bb0f")) (table_cell "Direction" (exclude_from_sim no) (at 68.58 144.78 0) (size 25.4 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27) (bold yes)) (justify left top)) (uuid "772ac7f9-d904-5341-b52e-d83586a72990")) (table_cell "Absent state (block not fitted)" (exclude_from_sim no) (at 93.98 144.78 0) (size 50.8 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27) (bold yes)) (justify left top)) (uuid "b0c37d25-cddc-5ef2-b5fc-54bc6dd893bb")) (table_cell "DACx_AOUT_P, DACx_AOUT_N" (exclude_from_sim no) (at 22.86 149.86 0) (size 45.72 7.62) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "966d36af-0b9e-5fb5-a135-235416176029")) (table_cell "Input" (exclude_from_sim no) (at 68.58 149.86 0) (size 25.4 7.62) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "9e5f5ebc-2dc0-5251-a64e-7fb1c2c36db0")) (table_cell "Both stages load the DAC pins; a stage left fitted but unpowered still loads them" (exclude_from_sim no) (at 93.98 149.86 0) (size 50.8 7.62) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "aa59ef01-c572-5069-9225-24c3cf04dd3f")) (table_cell "HPA_BAL_EN" (exclude_from_sim no) (at 22.86 157.48 0) (size 45.72 7.62) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "eee3bea7-ef58-56c3-bb96-6f49ed7aa013")) (table_cell "Input" (exclude_from_sim no) (at 68.58 157.48 0) (size 25.4 7.62) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "834e9e9f-a1ac-5e9b-875b-6695981bead2")) (table_cell "Pulled down on the host side: packages in shutdown (5 µA per channel)" (exclude_from_sim no) (at 93.98 157.48 0) (size 50.8 7.62) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "3be0a717-24cb-564e-b44e-bfaff8fcaad5")) (table_cell "HPBAL_x_P / _N" (exclude_from_sim no) (at 22.86 165.1 0) (size 45.72 7.62) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "7fa71358-7c24-5bb4-ade2-d9a87701b55c")) (table_cell "Output" (exclude_from_sim no) (at 68.58 165.1 0) (size 25.4 7.62) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "b9daa862-d158-5f41-a9d3-2cc03c68a7f6")) (table_cell "A disabled OPA1622 output is not high-impedance (SBOS727B §7.4.1)" (exclude_from_sim no) (at 93.98 165.1 0) (size 50.8 7.62) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "d1eab9a9-9689-59e0-a364-82c7309e7812"))))
+(label "HPA_P6V0_BAL" (at 233.68 50.8 0) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "0ac4657b-b223-5e60-b5f1-d558a9e8eb3c"))
+(label "HPA_N6V0_BAL" (at 233.68 86.36 0) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "5ce8f842-3c3a-54dc-ba92-fd475438cf06"))
+(sheet (at 41.91 48.26) (size 53.34 19.05) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced yes) (stroke (width 0.1524) (type solid)) (fill (color 0 0 0 0.0000)) (uuid "652e8918-5567-5c20-92cc-be50936a4bbf")
+  (property "Sheetname" "Balanced output stage: left channel" (at 41.91 47.5484 0) (effects (font (size 1.27 1.27)) (justify left bottom)))
+  (property "Sheetfile" "hpa-bal-l.kicad_sch" (at 41.91 67.8984 0) (effects (font (size 1.27 1.27)) (justify left top)))
+  (property "Block" "blk.hpa-bal-l" (at 41.91 70.4384 0) (effects (font (size 1.27 1.27)) (justify left top)) (hide yes))
+  (pin "{DAC_L_OUT}" bidirectional (at 41.91 50.8 180) (effects (font (size 1.27 1.27)) (justify left)) (uuid "ed548a26-5b4a-540f-ae2b-18a171dc9bad"))
+  (pin "{AUDIO_CTL}" bidirectional (at 41.91 53.34 180) (effects (font (size 1.27 1.27)) (justify left)) (uuid "0db8a1fd-77ef-572b-822f-ba1ad47cc92a"))
+  (pin "HPA_N6V0_BAL" passive (at 86.36 48.26 90) (effects (font (size 1.27 1.27)) (justify right)) (uuid "3177a537-5760-5d7d-95fc-794e3bbc30e2"))
+  (pin "HPA_P6V0_BAL" input (at 88.9 48.26 90) (effects (font (size 1.27 1.27)) (justify right)) (uuid "77a83e6a-fb6e-53f6-851f-7d83a4e14990"))
+  (pin "{HP_BAL}" bidirectional (at 41.91 55.88 180) (effects (font (size 1.27 1.27)) (justify left)) (uuid "80787936-c730-5148-93f3-e686543bb697"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/d6f0155c-678f-5298-bf09-6ea7c0e72438/4c9f41e4-f689-56fd-bbf7-e935b98bd288" (page "32"))))
+)
+(sheet (at 41.91 95.25) (size 53.34 19.05) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced yes) (stroke (width 0.1524) (type solid)) (fill (color 0 0 0 0.0000)) (uuid "a95176d8-e1ac-5d90-b6b9-bc997d907562")
+  (property "Sheetname" "Balanced output stage: right channel" (at 41.91 94.5384 0) (effects (font (size 1.27 1.27)) (justify left bottom)))
+  (property "Sheetfile" "hpa-bal-r.kicad_sch" (at 41.91 114.888 0) (effects (font (size 1.27 1.27)) (justify left top)))
+  (property "Block" "blk.hpa-bal-r" (at 41.91 117.428 0) (effects (font (size 1.27 1.27)) (justify left top)) (hide yes))
+  (pin "{DAC_R_OUT}" bidirectional (at 41.91 97.79 180) (effects (font (size 1.27 1.27)) (justify left)) (uuid "4a8ebc46-024b-5988-b3d4-8c1c0685f25c"))
+  (pin "{AUDIO_CTL}" bidirectional (at 41.91 100.33 180) (effects (font (size 1.27 1.27)) (justify left)) (uuid "b663ec5f-21b7-5e92-8bf8-f0764830ae7d"))
+  (pin "HPA_N6V0_BAL" passive (at 87.63 95.25 90) (effects (font (size 1.27 1.27)) (justify right)) (uuid "9886c29f-1513-5021-ae4e-ed7775c7a4e3"))
+  (pin "HPA_P6V0_BAL" input (at 90.17 95.25 90) (effects (font (size 1.27 1.27)) (justify right)) (uuid "91e794d8-6d2d-5f69-a508-8d7a7748451c"))
+  (pin "{HP_BAL}" bidirectional (at 41.91 102.87 180) (effects (font (size 1.27 1.27)) (justify left)) (uuid "4096a7dd-3698-5d1f-961b-ee566ea0feb8"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/d6f0155c-678f-5298-bf09-6ea7c0e72438/4c9f41e4-f689-56fd-bbf7-e935b98bd288" (page "33"))))
+)
+(bus (pts (xy 41.91 50.8) (xy 36.83 50.8)) (stroke (width 0) (type default)) (uuid "7cb6b211-3d6c-549d-b4cc-758ab39f6978"))
+(hierarchical_label "{DAC_L_OUT}" (shape bidirectional) (at 36.83 50.8 180) (effects (font (size 1.27 1.27)) (justify right)) (uuid "fc350d7f-d7a5-5b9a-8cbe-4f64d5b2cebd"))
+(bus (pts (xy 41.91 53.34) (xy 36.83 53.34)) (stroke (width 0) (type default)) (uuid "76190a5d-caad-537c-a693-561ecee839e3"))
+(hierarchical_label "{AUDIO_CTL}" (shape bidirectional) (at 36.83 53.34 180) (effects (font (size 1.27 1.27)) (justify right)) (uuid "d62a709c-659e-57bb-b25b-e44b92c1623f"))
+(bus (pts (xy 41.91 100.33) (xy 36.83 100.33)) (stroke (width 0) (type default)) (uuid "becda623-4ae7-5e8a-9d85-c6b0d4a2e61c"))
+(hierarchical_label "{AUDIO_CTL}" (shape bidirectional) (at 36.83 100.33 180) (effects (font (size 1.27 1.27)) (justify right)) (uuid "758028dc-3c96-5c4d-b674-759324562349"))
+(wire (pts (xy 86.36 48.26) (xy 86.36 45.72)) (stroke (width 0) (type default)) (uuid "b6549817-1cd4-5335-a982-199a64178792"))
+(label "HPA_N6V0_BAL" (at 86.36 45.72 90) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "ce10bb3f-10c1-5cae-9e84-b7f6fbbde771"))
+(wire (pts (xy 87.63 95.25) (xy 87.63 92.71)) (stroke (width 0) (type default)) (uuid "23af76f2-af15-5a7f-b750-9a41334e213b"))
+(label "HPA_N6V0_BAL" (at 87.63 92.71 90) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "cc8708ab-f060-5536-9ff0-7cc621c6f2c5"))
+(wire (pts (xy 88.9 48.26) (xy 88.9 45.72)) (stroke (width 0) (type default)) (uuid "e6427758-02ec-54e6-a2b9-6da823981ec8"))
+(label "HPA_P6V0_BAL" (at 88.9 45.72 90) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "7f09d74c-8123-56f7-bdd3-c0a54f798f5b"))
+(wire (pts (xy 90.17 95.25) (xy 90.17 92.71)) (stroke (width 0) (type default)) (uuid "b5c7f04f-1a37-5833-b3ce-c71504d354fd"))
+(label "HPA_P6V0_BAL" (at 90.17 92.71 90) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "5ed95955-f6a9-5d64-b905-8eb022b3147d"))
+(bus (pts (xy 41.91 55.88) (xy 36.83 55.88)) (stroke (width 0) (type default)) (uuid "b39cb0d2-e6b1-5be8-a50d-f98bb292c111"))
+(hierarchical_label "{HP_BAL}" (shape bidirectional) (at 36.83 55.88 180) (effects (font (size 1.27 1.27)) (justify right)) (uuid "65677251-83ef-50b7-bff5-311e7ca381ce"))
+(bus (pts (xy 41.91 102.87) (xy 36.83 102.87)) (stroke (width 0) (type default)) (uuid "a19fd2eb-a887-57b6-9d36-972fd27692ee"))
+(hierarchical_label "{HP_BAL}" (shape bidirectional) (at 36.83 102.87 180) (effects (font (size 1.27 1.27)) (justify right)) (uuid "4609fe0e-c98e-51ca-8080-a47eba1bfcf0"))
+(bus (pts (xy 41.91 97.79) (xy 36.83 97.79)) (stroke (width 0) (type default)) (uuid "e36cb766-b424-5e6f-bd00-1d4520936f26"))
+(hierarchical_label "{DAC_R_OUT}" (shape bidirectional) (at 36.83 97.79 180) (effects (font (size 1.27 1.27)) (justify right)) (uuid "4615deb9-4c7f-56ad-a878-0fd717dde7f7"))
+(embedded_fonts no))

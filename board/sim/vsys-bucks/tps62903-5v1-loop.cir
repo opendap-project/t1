@@ -1,0 +1,28 @@
+* TPS62903 5.1 V buck: loop gain by voltage injection (Middlebrook) in the
+* sense path, at one frequency, 1.6 A load, forced PWM (the loop is the same in
+* PWM; power save only applies below about half the ripple current).
+* Generic DCS-Control-class model; see tps62903-5v1-step.cir for the values.
+* run.py sets FINJ, the stop time and the output file for each point.
+.param VIN=8.8 CO=10u FINJ=100k TSTART=0.4m TSTOP=0.6m
+.include dcs-buck-generic.lib
+VIN vin 0 {VIN}
+XU vin sw vs fb 0 DCSBUCK params: TONSEL=2 KTON=100n PFM=0 RHS=0.062 RLS=0.022
++ ILIMH=4.6 ILIML=4.4 VREF=0.6 TOFFMIN=80n
+L1 sw lx 1u
+RL lx vout 9m
+C1 vout 0 {CO}
+* the injection source sits between the output node and everything that senses it
+Vinj vs vout SIN(0 10m {FINJ} {TSTART})
+R1 vs fb 750k
+R2 fb 0 100k
+Iload vout 0 1.6
+.ic v(vout)=5.1 v(vs)=5.1
+.tran 2n {TSTOP} 0 4n uic
+.control
+set wr_singlescale
+set wr_vecnames
+run
+linearize v(vout) v(vs)
+wrdata loop.dat v(vout) v(vs)
+.endc
+.end

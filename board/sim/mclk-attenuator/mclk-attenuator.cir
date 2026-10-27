@@ -1,0 +1,47 @@
+* MCLK attenuator (ADR 0010): NSC5083D at MCLK_3V1 -> passive attenuator -> two CS43198 XTI/MCLK
+*
+* Topology (one oscillator runs, the other is tri-stated; BOM v1 lines 18, 20, 21, 29):
+*   XO_on --[R1 || C1]--+-- trace A --+-- trace B --[RD]-- XTI DAC1 (2*R2 || C2/2 || CIN to ground)
+*   XO_off -[R1 || C1]--+             +-- trace C --[RD]-- XTI DAC2 (2*R2 || C2/2 || CIN to ground)
+* R1/C1 sit at each oscillator, R2 and C2 are split over the two DAC pins (2*R2 and C2/2 each),
+* RD damps the trace inductance against the pin capacitance.
+*
+* Oscillator output: ideal edge (TRS) behind ROUT. NDK publishes no output impedance (catalogue
+* 1703A: Tr/Tf <= 6 ns into CL <= 15 pF, VOH >= 0.9 VCC): ROUT = 181 ohm with TRS = 1 ns is the
+* weakest linear driver that still meets Tr = 6 ns into 15 pF ("bound"); ROUT = 30 ohm is an
+* assumed typical CMOS driver (UNVERIFIED). COFF: tri-stated output capacitance (UNVERIFIED).
+* CIN: CS43198 input capacitance, 10 pF maximum (DS1156F2 Table 3-11, p. 19); no minimum is given.
+* RPD: XTI weak pull-down, 550 kohm minimum (Table 3-11). CPAD: pad and via (UNVERIFIED).
+* Traces: lossless 50 ohm lines (PCB-I-09), TD = length x 7 ps/mm (sqrt(4.4)/c, stripline FR-4).
+* The circuit is linear: run.py simulates VCC = 1 V and scales the results.
+.param VCC=1 ROUT=30 TRS=1n F=24.576e6 DUTY=0.5 R1=820 C1=27p R2=1000 C2=4.4p RD=47 CIN=10p COFF=2p CPAD=0.5p TDA=70p TDB=280p TDC=70p NPER=12
+.param T={1/F} PW={DUTY*T-TRS}
+Vsrc src 0 PULSE(0 {VCC} 2n {TRS} {TRS} {PW} {T})
+Rout src xo {ROUT}
+Cxo xo 0 1p
+Rs1 xo j {R1}
+Cs1 xo j {C1+0.05p}
+Rs2 j xoff {R1}
+Cs2 j xoff {C1+0.05p}
+Coff xoff 0 {COFF}
+T0 j 0 k 0 Z0=50 TD={TDA}
+T1 k 0 e1 0 Z0=50 TD={TDB}
+T2 k 0 e2 0 Z0=50 TD={TDC}
+Ce1 e1 0 0.3p
+Ce2 e2 0 0.3p
+Rd1 e1 p1 {RD}
+Rd2 e2 p2 {RD}
+Rsh1 p1 0 {2*R2}
+Csh1 p1 0 {C2/2+0.05p}
+Rsh2 p2 0 {2*R2}
+Csh2 p2 0 {C2/2+0.05p}
+Cin1 p1 0 {CIN+CPAD}
+Cin2 p2 0 {CIN+CPAD}
+Rpd1 p1 0 550k
+Rpd2 p2 0 550k
+.tran 20p {NPER*T} 0 20p
+.control
+run
+wrdata mclk.dat v(xo) v(p1) v(p2) i(Vsrc)
+.endc
+.end

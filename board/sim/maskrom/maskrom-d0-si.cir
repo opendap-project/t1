@@ -1,0 +1,38 @@
+* eMMC_D0 signal integrity with the MaskROM pull-down tap (FET off).
+* HS200: SDR at 200 MHz, 5 ns unit interval, VCCQ 1.8 V. A 1010 pattern is
+* driven host -> eMMC (write direction) through a 50 ohm line; the tap sits
+* at the eMMC end: series resistor RD0 then the DMG1012T drain (Coss).
+* All interconnect values are estimates (est.): see README.md.
+.param RD0=100 RDRV=33 COSS=25p TR=0.4n CRX=6p
+Vsrc src 0 PULSE(0 1.8 1n {TR} {TR} {5n-TR} 10n)
+Rdrv src a {RDRV}
+T1 a 0 b 0 Z0=50 TD=0.27n
+* receiver pad and package (eMMC input, JEDEC CIN, est.)
+Crx b 0 {CRX}
+* tap: 3 mm stub, series resistor, FET drain capacitance
+T2 b 0 c 0 Z0=50 TD=20p
+Rtap c d {RD0}
+Coss d 0 {COSS}
+.tran 2p 40n
+.control
+echo "COSS  RD0   t10-90(ns)  VIH-cross(ns)  V@mid-UI high(V)  V@mid-UI low(V)  margin-hi(V)  margin-lo(V)"
+foreach c 10p 25p
+  alterparam COSS = $c
+  foreach r 1e9 1k 470 220 100
+    alterparam RD0 = $r
+    reset
+    run
+    meas tran t10 WHEN v(b)=0.18 RISE=2
+    meas tran t90 WHEN v(b)=1.62 RISE=2
+    meas tran tih WHEN v(b)=1.125 RISE=2
+    meas tran vh FIND v(b) AT=13.5n
+    meas tran vl FIND v(b) AT=18.5n
+    let tr = (t90-t10)*1e9
+    let tvih = (tih-11e-9)*1e9
+    let mh = vh-1.125
+    let ml = 0.63-vl
+    echo "$c  $r  $&tr  $&tvih  $&vh  $&vl  $&mh  $&ml"
+  end
+end
+.endc
+.end

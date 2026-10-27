@@ -1,0 +1,34 @@
+* MaskROM combo (design A = BOM v1.5, B = proposal; see maskrom-cold.cir) during resume from suspend: the T1 boots normally (Main only),
+* suspends at 6 s (vcc_1v8 off, power tree v0 table 3), and the user wakes it
+* with Main while holding Vol- (Main + Vol- is the screenshot / power-menu
+* combination, controls spec 1.3). Prints how long eMMC_D0 is forced low after
+* vcc_1v8 returns. Any value above 0 means the eMMC is disturbed at resume.
+*
+.param TKEY=500m SLOT18=1 SLOTPMU=2 NSLOT=5 TRST=2m TSUSP=6 TRESUME=8
+.param SUP=0 TD=120m RPWR=20k RD0=100 RPU=10k
+Vmain mainb 0 PWL(0 0 0.5 0 0.501 1 1.2 1 1.201 0 7.9 0 7.901 1 9 1 9.001 0)
+Vvol volb 0 PWL(0 0 7.85 0 7.851 1 9 1 9.001 0)
+.include maskrom-model.inc
+.ic v(on)=0 v(onq)=0 v(s)=0 v(kt)=0 v(td)=0 v(h2)=1 v(h0)=1 v(hw)=0 v(pwron)=3.0 v(voldn)=1.8
+.tran 100u 10 0 100u uic
+.control
+echo "SUP(0=A,1=B) TD D0_forced_low_after_resume(ms)"
+foreach sup 0 1
+  alterparam SUP = $sup
+  if $sup = 0
+    set tds = ( 120m 350m )
+  else
+    set tds = ( 1.21 3.43 )
+  end
+  foreach td $tds
+    alterparam TD = $td
+    reset
+    run
+    meas tran trel WHEN v(d0)=0.63 RISE=LAST
+    meas tran tres WHEN v(v18)=0.9 RISE=LAST
+    let held = (trel - tres)*1000
+    echo "SUP=$sup  $td  $&held"
+  end
+end
+.endc
+.end

@@ -1,0 +1,1211 @@
+(kicad_sch (version 20260306) (generator "eeschema") (generator_version "10.0")
+(uuid "fe044e68-7eb6-51c6-b5d0-1568c7f5893c")
+(paper "A4")
+(title_block (title "NFC tag") (date "2026-10-25") (rev "A") (company "The OpenDAP Project") (comment 1 "blk.nfc-tag") (comment 2 "NTAG I2C plus on I2C2 at 0x55, field detect and the loop antenna contacts"))
+(lib_symbols (symbol "Connector:TestPoint"
+		(pin_numbers
+			(hide yes)
+		)
+		(pin_names
+			(offset 0.762)
+			(hide yes)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(duplicate_pin_numbers_are_jumpers no)
+		(property "Reference" "TP"
+			(at 0 6.858 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "TestPoint"
+			(at 0 5.08 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 5.08 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 5.08 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "test point"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_keywords" "test point tp"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_fp_filters" "Pin* Test*"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "TestPoint_0_1"
+			(circle
+				(center 0 3.302)
+				(radius 0.762)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+		)
+		(symbol "TestPoint_1_1"
+			(pin passive line
+				(at 0 0 90)
+				(length 2.54)
+				(name "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
+(symbol "Device:C"
+		(pin_numbers
+			(hide yes)
+		)
+		(pin_names
+			(offset 0.254)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(duplicate_pin_numbers_are_jumpers no)
+		(property "Reference" "C"
+			(at 0.635 2.54 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "C"
+			(at 0.635 -2.54 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 0.9652 -3.81 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Unpolarized capacitor"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_keywords" "cap capacitor"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_fp_filters" "C_*"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "C_0_1"
+			(polyline
+				(pts
+					(xy -2.032 0.762) (xy 2.032 0.762)
+				)
+				(stroke
+					(width 0.508)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy -2.032 -0.762) (xy 2.032 -0.762)
+				)
+				(stroke
+					(width 0.508)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+		)
+		(symbol "C_1_1"
+			(pin passive line
+				(at 0 3.81 270)
+				(length 2.794)
+				(name ""
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 0 -3.81 90)
+				(length 2.794)
+				(name ""
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
+(symbol "Device:R"
+		(pin_numbers
+			(hide yes)
+		)
+		(pin_names
+			(offset 0)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(duplicate_pin_numbers_are_jumpers no)
+		(property "Reference" "R"
+			(at 2.032 0 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "R"
+			(at 0 0 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at -1.778 0 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_keywords" "R res resistor"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_fp_filters" "R_*"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "R_0_1"
+			(rectangle
+				(start -1.016 -2.54)
+				(end 1.016 2.54)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+		)
+		(symbol "R_1_1"
+			(pin passive line
+				(at 0 3.81 270)
+				(length 1.27)
+				(name ""
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 0 -3.81 90)
+				(length 1.27)
+				(name ""
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
+(symbol "NXP:NT3H2111W0FHKH"
+		(pin_names
+			(offset 1.016)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(property "Reference" "U"
+			(at -7.62 19.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "NT3H2111W0FHKH"
+			(at -7.62 -20.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "NXP:NXP_SOT902-3_XQFN-8_1.6x1.6mm_P0.5mm"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://www.nxp.com/docs/en/data-sheet/NT3H2111_2211.pdf"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "NTAG I2C plus 1k: NFC Forum Type 2 Tag with I2C interface, field detection, energy harvesting, 1.67-3.6 V, XQFN8 (SOT902-3) 1.6 x 1.6 mm"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "NXP"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "NT3H2111W0FHKH"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Second_Source" "ST ST25DV04KC / ST25DV64KC (Type 5 tag, different footprint; BOM v1 line 125)"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_keywords" "NFC tag NTAG NTAG I2C plus NT3H2111 Type 2 T2T dynamic tag I2C XQFN8 SOT902-3 NXP"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_fp_filters" "NXP_SOT902-3_XQFN-8_1.6x1.6mm_P0.5mm*"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "NT3H2111W0FHKH_1_1"
+			(rectangle
+				(start -7.62 15.24)
+				(end 7.62 -15.24)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type background)
+				)
+			)
+			(pin input line
+				(at -10.16 5.08 0)
+				(length 2.54)
+				(name "SCL"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "3"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin bidirectional line
+				(at -10.16 2.54 0)
+				(length 2.54)
+				(name "SDA"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "5"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at -10.16 -2.54 0)
+				(length 2.54)
+				(name "LA"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at -10.16 -5.08 0)
+				(length 2.54)
+				(name "LB"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "8"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin open_collector line
+				(at 10.16 5.08 180)
+				(length 2.54)
+				(name "FD"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "4"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin power_out line
+				(at 10.16 0 180)
+				(length 2.54)
+				(name "VOUT"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "7"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin power_in line
+				(at 0 17.78 270)
+				(length 2.54)
+				(name "VCC"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "6"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin power_in line
+				(at 0 -17.78 90)
+				(length 2.54)
+				(name "VSS"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
+(symbol "power:GND"
+		(power global)
+		(pin_numbers
+			(hide yes)
+		)
+		(pin_names
+			(offset 0)
+			(hide yes)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(duplicate_pin_numbers_are_jumpers no)
+		(property "Reference" "#PWR"
+			(at 0 -6.35 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 0 -3.81 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_keywords" "global power"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "GND_0_1"
+			(polyline
+				(pts
+					(xy 0 0) (xy 0 -1.27) (xy 1.27 -1.27) (xy 0 -2.54) (xy -1.27 -1.27) (xy 0 -1.27)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+		)
+		(symbol "GND_1_1"
+			(pin power_in line
+				(at 0 0 270)
+				(length 0)
+				(name ""
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
+(symbol "power:PWR_FLAG"
+		(power global)
+		(pin_numbers
+			(hide yes)
+		)
+		(pin_names
+			(offset 0)
+			(hide yes)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(duplicate_pin_numbers_are_jumpers no)
+		(property "Reference" "#FLG"
+			(at 0 1.905 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "PWR_FLAG"
+			(at 0 3.81 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Special symbol for telling ERC where power comes from"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_keywords" "flag power"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "PWR_FLAG_0_0"
+			(pin power_out line
+				(at 0 0 90)
+				(length 0)
+				(name ""
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(symbol "PWR_FLAG_0_1"
+			(polyline
+				(pts
+					(xy 0 0) (xy 0 1.27) (xy -1.016 1.905) (xy 0 2.54) (xy 1.016 1.905) (xy 0 1.27)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
+(symbol "power:VCC"
+		(power global)
+		(pin_numbers
+			(hide yes)
+		)
+		(pin_names
+			(offset 0)
+			(hide yes)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(duplicate_pin_numbers_are_jumpers no)
+		(property "Reference" "#PWR"
+			(at 0 -3.81 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "VCC"
+			(at 0 3.556 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"VCC\""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_keywords" "global power"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "VCC_0_1"
+			(polyline
+				(pts
+					(xy -0.762 1.27) (xy 0 2.54)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 0 2.54) (xy 0.762 1.27)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 0 0) (xy 0 2.54)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+		)
+		(symbol "VCC_1_1"
+			(pin power_in line
+				(at 0 0 90)
+				(length 0)
+				(name ""
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	))
+(symbol (lib_id "NXP:NT3H2111W0FHKH") (at 50.8 72.39 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "287d5e45-e7f7-5d33-b5d4-979a1b5ff5bc")
+  (property "Reference" "U5301" (at 52.07 54.61 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Value" "NT3H2111W0FHKH" (at 52.07 52.07 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Footprint" "NXP:NXP_SOT902-3_XQFN-8_1.6x1.6mm_P0.5mm" (at 50.8 72.39 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "https://www.nxp.com/docs/en/data-sheet/NT3H2111_2211.pdf" (at 50.8 72.39 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Description" "NTAG I2C plus 1k: NFC Forum Type 2 Tag with I2C interface, field detection, energy harvesting, 1.67-3.6 V, XQFN8 (SOT902-3) 1.6 x 1.6 mm" (at 50.8 72.39 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Manufacturer" "NXP" (at 50.8 72.39 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "MPN" "NT3H2111W0FHKH" (at 50.8 72.39 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Second_Source" "ST ST25DV04KC / ST25DV64KC (Type 5 tag, different footprint; BOM v1 line 125)" (at 50.8 72.39 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Block" "blk.nfc-tag" (at 50.8 72.39 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "3" (uuid "3172c768-5250-5587-896d-b511c0239b72"))
+  (pin "5" (uuid "5b0c1a0c-af16-5315-9c63-2bc843e4e8c0"))
+  (pin "1" (uuid "2b64e26a-c093-5a3d-a361-b35b34b904a8"))
+  (pin "8" (uuid "47026a56-453f-5196-8e17-1381ec3d5bd6"))
+  (pin "4" (uuid "d3a42561-4959-53d8-8d77-7956270d4da2"))
+  (pin "7" (uuid "184d8d0e-de1a-5d4f-9496-b4b7c784e1d7"))
+  (pin "6" (uuid "1ea7490f-68ea-52b1-88db-7ad16cc17dd6"))
+  (pin "2" (uuid "c02306f7-57de-5ec0-b0a6-a203d35c1c67"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/338b6b86-006f-5bfa-ad71-6e8aca3fbcdb" (reference "U5301") (unit 1))))
+)
+(wire (pts (xy 40.64 67.31) (xy 38.1 67.31)) (stroke (width 0) (type default)) (uuid "5d8fa21e-da7c-5a9b-883d-d3f010088293"))
+(wire (pts (xy 40.64 69.85) (xy 38.1 69.85)) (stroke (width 0) (type default)) (uuid "daa10166-93c2-5853-8275-234d8dc60dd2"))
+(wire (pts (xy 40.64 74.93) (xy 38.1 74.93)) (stroke (width 0) (type default)) (uuid "5e62f01e-2190-5917-9117-5d9f2d3ddc72"))
+(wire (pts (xy 40.64 77.47) (xy 38.1 77.47)) (stroke (width 0) (type default)) (uuid "369294b0-2f95-57d8-95b8-90cca6b3500e"))
+(wire (pts (xy 60.96 67.31) (xy 63.5 67.31)) (stroke (width 0) (type default)) (uuid "ce0f77f6-45d0-5792-8e61-2d2b933bf47a"))
+(no_connect (at 60.96 72.39) (uuid "831818ba-511e-5637-8d1f-c7ed5265cdc7"))
+(wire (pts (xy 50.8 54.61) (xy 50.8 52.07)) (stroke (width 0) (type default)) (uuid "c455df94-8acc-5ab4-a8dc-d300f4e38f3b"))
+(wire (pts (xy 50.8 90.17) (xy 50.8 92.71)) (stroke (width 0) (type default)) (uuid "079f54cf-b959-5b85-abfa-9322572f8d79"))
+(symbol (lib_id "power:GND") (at 50.8 92.71 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "11118a6f-4ec8-5494-9086-0ada04e273ad")
+  (property "Reference" "#PWR0802" (at 50.8 92.71 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Value" "GND" (at 50.8 96.52 0) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "" (at 50.8 92.71 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "" (at 50.8 92.71 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "4fc1367c-f4ad-522e-89a7-c0d535be9b3c"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/338b6b86-006f-5bfa-ad71-6e8aca3fbcdb" (reference "#PWR0802") (unit 1))))
+)
+(symbol (lib_id "Device:C") (at 78.74 58.42 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "e5af6315-c69b-514f-83ec-5934aa311340")
+  (property "Reference" "C5301" (at 81.28 57.15 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Value" "100 nF" (at 81.28 59.69 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Footprint" "Capacitor_SMD:C_0402_1005Metric" (at 78.74 58.42 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "https://www.murata.com/en-us/products/productdetail?partno=GRM155R71C104KA88D" (at 78.74 58.42 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Description" "Capacitor, 100 nF, 16 V, X7R, 0402" (at 78.74 58.42 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Manufacturer" "Murata" (at 78.74 58.42 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "MPN" "GRM155R71C104KA88D" (at 78.74 58.42 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Block" "blk.nfc-tag" (at 78.74 58.42 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "22520c9f-4faa-5731-9476-8379b463d99b"))
+  (pin "2" (uuid "857bef93-7e4d-5457-853c-4638f9982b60"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/338b6b86-006f-5bfa-ad71-6e8aca3fbcdb" (reference "C5301") (unit 1))))
+)
+(wire (pts (xy 78.74 54.61) (xy 78.74 52.07)) (stroke (width 0) (type default)) (uuid "3c9e01ec-4039-53f1-9820-032194e973c1"))
+(wire (pts (xy 78.74 62.23) (xy 78.74 64.77)) (stroke (width 0) (type default)) (uuid "7f6774f5-a451-5fc9-9b25-1cc57f7c2842"))
+(symbol (lib_id "power:GND") (at 78.74 64.77 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "8c32bd60-64df-59e4-8a6a-b6ae8af05bd1")
+  (property "Reference" "#PWR0803" (at 78.74 64.77 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Value" "GND" (at 78.74 68.58 0) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "" (at 78.74 64.77 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "" (at 78.74 64.77 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "e862619c-4eb0-502c-8b4a-b77c04ddf7bc"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/338b6b86-006f-5bfa-ad71-6e8aca3fbcdb" (reference "#PWR0803") (unit 1))))
+)
+(rectangle (start 22.86 35.56) (end 147.32 101.6) (stroke (width 0) (type dash)) (fill (type none)) (uuid "9460d5c5-d54b-5f00-b640-1b04cc7ac342"))
+(text "NT3H2111 NTAG I2C plus at I2C2 0x55 (BOM v1 line 125)" (exclude_from_sim no) (at 24.13 34.29 0) (effects (font (size 2.54 2.54)) (justify left bottom)) (uuid "52b162b5-5f4e-56b5-9872-f30cedb48bb0"))
+(symbol (lib_id "Device:R") (at 191.77 50.8 90) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "d34f7aa7-9e8d-5029-8c4c-e398ca2f9fad")
+  (property "Reference" "R5301" (at 189.23 46.99 90) (effects (font (size 1.27 1.27))))
+  (property "Value" "10 Ω" (at 189.23 53.34 90) (effects (font (size 1.27 1.27))))
+  (property "Spec" "0603" (at 189.23 55.88 90) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "Resistor_SMD:R_0603_1608Metric" (at 191.77 50.8 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "https://yageogroup.com/en/ProductSearch/PartNumberSearch?part=RC0603FR-0710RL" (at 191.77 50.8 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Description" "Resistor, 10 Ohm, 1 %, 0603: measurement link L10" (at 191.77 50.8 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Manufacturer" "YAGEO" (at 191.77 50.8 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "MPN" "RC0603FR-0710RL" (at 191.77 50.8 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Block" "blk.nfc-tag" (at 191.77 50.8 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Constraints" "PCB-T-02" (at 191.77 50.8 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "752f61b9-d38c-514f-9f13-6cc1d2510006"))
+  (pin "2" (uuid "84e65fa4-c4aa-50e1-a09e-319caeac0e6c"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/338b6b86-006f-5bfa-ad71-6e8aca3fbcdb" (reference "R5301") (unit 1) (variant (name "production") (field (name "Value") (value "0 Ω")) (field (name "MPN") (value "RC0603JR-070RL")) (field (name "Manufacturer") (value "YAGEO"))))))
+)
+(rectangle (start 168.91 38.1) (end 214.63 58.42) (stroke (width 0) (type dash)) (fill (type none)) (uuid "406e3f81-775a-51f3-9918-8d99ea21ac57"))
+(text "Link #33" (exclude_from_sim no) (at 170.18 36.83 0) (effects (font (size 2.54 2.54)) (justify left bottom)) (uuid "50010aa0-ad06-5846-90f0-7ea4030520fc"))
+(wire (pts (xy 187.96 50.8) (xy 166.37 50.8)) (stroke (width 0) (type default)) (uuid "4ac28991-219a-5669-b134-ea522fd2f45f"))
+(junction (at 185.42 50.8) (diameter 0) (color 0 0 0 0) (uuid "9207fa37-9c2a-5589-9100-617e6654dea9"))
+(wire (pts (xy 185.42 50.8) (xy 185.42 48.26)) (stroke (width 0) (type default)) (uuid "735a6bcf-a6cf-56df-a65e-c91a537f0c64"))
+(symbol (lib_id "Connector:TestPoint") (at 185.42 48.26 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom no) (on_board yes) (dnp no) (uuid "eaf74127-33cb-572d-a450-b0b2b7c92915")
+  (property "Reference" "TP5301" (at 184.15 43.18 0) (effects (font (size 1.27 1.27)) (justify right)))
+  (property "Value" "vcca1v8_pmu" (at 184.15 45.72 0) (effects (font (size 1.27 1.27)) (justify right)))
+  (property "Footprint" "TestPoint:TestPoint_Pad_D1.0mm" (at 185.42 48.26 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "~" (at 185.42 48.26 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Description" "Test pad, 1.0 mm" (at 185.42 48.26 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Block" "blk.nfc-tag" (at 185.42 48.26 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "eb4d411f-e637-5763-9fcf-d870f76fcd10"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/338b6b86-006f-5bfa-ad71-6e8aca3fbcdb" (reference "TP5301") (unit 1))))
+)
+(symbol (lib_id "power:VCC") (at 166.37 50.8 90) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "56034d92-6b47-586d-a523-341dfb2b678c")
+  (property "Reference" "#PWR0804" (at 166.37 50.8 90) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Value" "vcca1v8_pmu" (at 163.83 50.8 270) (effects (font (size 1.27 1.27)) (justify right)))
+  (property "Footprint" "" (at 166.37 50.8 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "" (at 166.37 50.8 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "0d9d7020-8401-5a02-9316-e51bd508928a"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/338b6b86-006f-5bfa-ad71-6e8aca3fbcdb" (reference "#PWR0804") (unit 1))))
+)
+(wire (pts (xy 195.58 50.8) (xy 227.33 50.8)) (stroke (width 0) (type default)) (uuid "8a1a2592-69ab-5497-b8e1-16bb460f83ea"))
+(junction (at 198.12 50.8) (diameter 0) (color 0 0 0 0) (uuid "7a130700-2849-5973-87ce-f69b44f460db"))
+(wire (pts (xy 198.12 50.8) (xy 198.12 48.26)) (stroke (width 0) (type default)) (uuid "7e8a2eb8-1838-5815-bbe4-4796ac2f4494"))
+(symbol (lib_id "Connector:TestPoint") (at 198.12 48.26 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom no) (on_board yes) (dnp no) (uuid "d9dcb710-8f7b-5c16-bf79-a9ef8b6a72d5")
+  (property "Reference" "TP5302" (at 199.39 43.18 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Value" "NFC_TAG_VCC" (at 199.39 45.72 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Footprint" "TestPoint:TestPoint_Pad_D1.0mm" (at 198.12 48.26 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "~" (at 198.12 48.26 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Description" "Test pad, 1.0 mm" (at 198.12 48.26 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Block" "blk.nfc-tag" (at 198.12 48.26 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "d1cc61c2-c31e-5fd9-898b-30f72439069e"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/338b6b86-006f-5bfa-ad71-6e8aca3fbcdb" (reference "TP5302") (unit 1))))
+)
+(junction (at 222.25 50.8) (diameter 0) (color 0 0 0 0) (uuid "1d523e51-91c6-52d6-989f-b0007d0d3352"))
+(wire (pts (xy 222.25 50.8) (xy 222.25 53.34)) (stroke (width 0) (type default)) (uuid "93da1f3f-b7e1-54ea-bf17-78743ad9d8c8"))
+(symbol (lib_id "power:PWR_FLAG") (at 222.25 53.34 180) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "7d7a5a0c-0b92-5d6a-8be1-aaf9ddc01854")
+  (property "Reference" "#FLG0042" (at 222.25 53.34 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Value" "PWR_FLAG" (at 222.25 58.42 0) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "" (at 222.25 53.34 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "" (at 222.25 53.34 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "54c12e10-2867-592d-aa61-0dbc67d55fb7"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/338b6b86-006f-5bfa-ad71-6e8aca3fbcdb" (reference "#FLG0042") (unit 1))))
+)
+(symbol (lib_id "Connector:TestPoint") (at 168.91 81.28 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom no) (on_board yes) (dnp no) (uuid "e4bffb18-5586-5364-b211-17b47735c73e")
+  (property "Reference" "TP5303" (at 167.64 76.2 0) (effects (font (size 1.27 1.27)) (justify right)))
+  (property "Value" "NFC_TAG_LA" (at 167.64 78.74 0) (effects (font (size 1.27 1.27)) (justify right)))
+  (property "Footprint" "TestPoint:TestPoint_Pad_D1.0mm" (at 168.91 81.28 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "~" (at 168.91 81.28 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Description" "Test pad, 1.0 mm" (at 168.91 81.28 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Block" "blk.nfc-tag" (at 168.91 81.28 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "5c742ed8-f957-5f6f-aa59-c6b9c9d6d3a6"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/338b6b86-006f-5bfa-ad71-6e8aca3fbcdb" (reference "TP5303") (unit 1))))
+)
+(symbol (lib_id "Connector:TestPoint") (at 186.69 81.28 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom no) (on_board yes) (dnp no) (uuid "94eb9cb5-0616-58bb-8ef8-aeb59b77c561")
+  (property "Reference" "TP5304" (at 185.42 76.2 0) (effects (font (size 1.27 1.27)) (justify right)))
+  (property "Value" "NFC_TAG_LB" (at 185.42 78.74 0) (effects (font (size 1.27 1.27)) (justify right)))
+  (property "Footprint" "TestPoint:TestPoint_Pad_D1.0mm" (at 186.69 81.28 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "~" (at 186.69 81.28 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Description" "Test pad, 1.0 mm" (at 186.69 81.28 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Block" "blk.nfc-tag" (at 186.69 81.28 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "f1ecf772-c957-5330-8115-3734523ffbf9"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/338b6b86-006f-5bfa-ad71-6e8aca3fbcdb" (reference "TP5304") (unit 1))))
+)
+(rectangle (start 152.4 71.12) (end 245.11 97.79) (stroke (width 0) (type dash)) (fill (type none)) (uuid "cc274428-f040-5d1b-93da-69609da49293"))
+(text "Loop antenna contacts (BOM v1 line 126)" (exclude_from_sim no) (at 153.67 69.85 0) (effects (font (size 2.54 2.54)) (justify left bottom)) (uuid "87ac793e-1ca2-5c09-9a81-3557c199925c"))
+(text_box "Notes\n1. Function: NTAG I2C plus dynamic tag for tap-to-pair (BRD-057, should): phones read it with\n   the T1 off; the T1 writes it over I2C2.\n2. Absent state: unfitted: 0x55 free; FD pulled up. Always on (vcca1v8_pmu, G6).\n3. VOUT (energy harvesting) not used: open. The loop antenna (about 20 x 30 mm, line 126) and\n   its tuning against the 50 pF input are open items; the tag with VCC at 0 V and a live I2C2\n   is UNVERIFIED (G6).\n4. VCC from vcca1v8_pmu through link #33, 10 Ω (power tree §4.12: 1 mA est., UNVERIFIED)." (exclude_from_sim no) (at 152.4 140.97 0) (size 129.54 20.32) (margins 1.905 1.905 1.905 1.905) (stroke (width 0) (type default)) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "8580c943-8a5d-5439-9a98-121c03d1f099"))
+(text "Rails" (exclude_from_sim no) (at 22.86 179.07 0) (effects (font (size 2.54 2.54)) (justify left bottom)) (uuid "a6ea447d-ed6a-5578-b426-179939466dab"))
+(table (column_count 3) (border (external yes) (header yes) (stroke (width 0) (type solid))) (separators (rows yes) (cols yes) (stroke (width 0) (type solid))) (column_widths 27.94 39.37 54.61) (row_heights 5.08 7.62) (cells (table_cell "Rail" (exclude_from_sim no) (at 22.86 180.34 0) (size 27.94 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27) (bold yes)) (justify left top)) (uuid "1f657ebc-34fb-547e-ab53-fbc97a8af9cd")) (table_cell "Capacitors" (exclude_from_sim no) (at 50.8 180.34 0) (size 39.37 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27) (bold yes)) (justify left top)) (uuid "1b2dc578-3da4-5d09-9766-59a9e8eb65bb")) (table_cell "Requirement and source" (exclude_from_sim no) (at 90.17 180.34 0) (size 54.61 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27) (bold yes)) (justify left top)) (uuid "996967e8-44a4-594b-89da-e7b5520b94c4")) (table_cell "NFC_TAG_VCC" (exclude_from_sim no) (at 22.86 185.42 0) (size 27.94 7.62) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "6be069eb-d2f2-59fa-8f3c-f0f3ee3b93a2")) (table_cell "100 nF" (exclude_from_sim no) (at 50.8 185.42 0) (size 39.37 7.62) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "e4696fcf-b8f3-5c66-a34e-d7c919a0ecb4")) (table_cell "Capture choice: the DS gives no value (UNVERIFIED)" (exclude_from_sim no) (at 90.17 185.42 0) (size 54.61 7.62) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "73cbb15b-f219-53c6-84f7-85212f195846"))))
+(text "Interface" (exclude_from_sim no) (at 22.86 153.67 0) (effects (font (size 2.54 2.54)) (justify left bottom)) (uuid "e4301293-c853-5697-8b1e-82021b951d28"))
+(table (column_count 3) (border (external yes) (header yes) (stroke (width 0) (type solid))) (separators (rows yes) (cols yes) (stroke (width 0) (type solid))) (column_widths 45.72 25.4 50.8) (row_heights 5.08 5.08 7.62) (cells (table_cell "Net" (exclude_from_sim no) (at 22.86 154.94 0) (size 45.72 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27) (bold yes)) (justify left top)) (uuid "0d80e649-84db-51a9-8c07-3225f3456beb")) (table_cell "Direction" (exclude_from_sim no) (at 68.58 154.94 0) (size 25.4 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27) (bold yes)) (justify left top)) (uuid "e18f1076-4fcd-5f8b-a21b-978cd5662ed7")) (table_cell "Absent state (block not fitted)" (exclude_from_sim no) (at 93.98 154.94 0) (size 50.8 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27) (bold yes)) (justify left top)) (uuid "6d3b896d-c060-5a6b-8d6d-9eeffb6f7116")) (table_cell "I2C2_SCL, I2C2_SDA" (exclude_from_sim no) (at 22.86 160.02 0) (size 45.72 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "b58c233c-f94f-503c-8172-07bf3dde0253")) (table_cell "Bidirectional" (exclude_from_sim no) (at 68.58 160.02 0) (size 25.4 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "ee401b28-b65e-5a48-a07c-b20499b6471b")) (table_cell "0x55; pull-ups on blk.soc-pmuio" (exclude_from_sim no) (at 93.98 160.02 0) (size 50.8 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "dee802e1-9b62-54d1-ac0a-5c57577d1f1d")) (table_cell "NFC_FD_N" (exclude_from_sim no) (at 22.86 165.1 0) (size 45.72 7.62) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "288fb2e6-079a-5681-8c95-7ae226a2d1cc")) (table_cell "Output" (exclude_from_sim no) (at 68.58 165.1 0) (size 25.4 7.62) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "28a56b17-9043-505b-a403-6f702c7d2dd0")) (table_cell "Open drain, field detect; 4.7 kΩ pull-up on blk.soc-pmuio; wake on tap" (exclude_from_sim no) (at 93.98 165.1 0) (size 50.8 7.62) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "c1782b13-247f-5f75-9b91-c5300ead8b44"))))
+(label "I2C2_SCL" (at 38.1 67.31 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "d6955957-1e28-53c5-b0da-f72a5dccc29a"))
+(label "I2C2_SDA" (at 38.1 69.85 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "255c96b0-d9db-5ce4-a035-f7d660317e48"))
+(label "NFC_TAG_LA" (at 38.1 74.93 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "2be6519e-3c37-525f-bc13-76fede369d86"))
+(label "NFC_TAG_LB" (at 38.1 77.47 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "e5abe7a0-f01c-5110-938b-d88433a84b02"))
+(label "NFC_FD_N" (at 63.5 67.31 0) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "e9aede14-c1f0-5918-98fb-a0b119d76579"))
+(label "NFC_TAG_VCC" (at 50.8 52.07 90) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "4fa11421-e8de-5440-b751-29d4d44132c6"))
+(label "NFC_TAG_VCC" (at 78.74 52.07 90) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "866ce643-36c6-554b-b5ff-350e65d061ec"))
+(label "NFC_TAG_VCC" (at 227.33 50.8 0) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "da8b587a-02db-5243-bf9e-05314e381ff2"))
+(label "NFC_TAG_LA" (at 168.91 81.28 270) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "9ca62e7a-33df-52dd-b98d-0a51e4543e68"))
+(label "NFC_TAG_LB" (at 186.69 81.28 270) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "d4f6648c-565f-5bf4-8768-9b0ed3a858cb"))
+(bus (pts (xy 45.72 144.78) (xy 50.8 144.78)) (stroke (width 0) (type default)) (uuid "83c76362-a60d-50b7-b3c8-8b88a6e009a9"))
+(hierarchical_label "{I2C2}" (shape bidirectional) (at 45.72 144.78 180) (effects (font (size 1.27 1.27)) (justify right)) (uuid "43067592-ea95-520b-a83c-62a3cdde37e8"))
+(bus (pts (xy 45.72 139.7) (xy 50.8 139.7)) (stroke (width 0) (type default)) (uuid "0b6416a7-5b0b-5dcd-88e7-9e9375d51249"))
+(hierarchical_label "{NFC}" (shape bidirectional) (at 45.72 139.7 180) (effects (font (size 1.27 1.27)) (justify right)) (uuid "16d5a8d5-c729-5d04-97e6-46ad5c577424"))
+(embedded_fonts no))

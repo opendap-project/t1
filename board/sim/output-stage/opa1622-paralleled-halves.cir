@@ -1,0 +1,100 @@
+* OpenDAP T1 board: paralleled OPA1622 halves, one balanced channel (L+ and L- legs)
+* ADR 0012 topology: each half is its own difference amplifier (R1 = R3 = 1.00 k,
+* R2 = R4 = 1.62 k, 100 pF across R2 and R4, gain 1.62), feedback taken at the
+* half's own output pin, then a 1.0 ohm ballast to the leg node (BOM lines 37, 107, 108).
+* Worst-case spread between the two halves of a leg: input offset +-500 uV
+* (SBOS727B max at 25 C), 0.1 % gain resistors and 1 % ballast in the direction
+* that maximises the imbalance (half A high gain / low ballast, half B the opposite).
+* Rails: ideal +-6.04 V (LT3045 / LT3094 outputs). Load: 32 ohm between L+ and L-,
+* 400 pF from each leg to ground (SBOS727B 8.2.2). DAC: CS43198 AOUT with REF at 0 V,
+* ideal source (output impedance not modelled).
+*
+* Model: TI OPA1622 PSpice model, SBOM958 Rev. D (model "Final 1.5", 05JUL2022).
+* TI copyright, all rights reserved: it is not redistributed here. Download
+* https://www.ti.com/lit/zip/SBOM958 and place OPA1622.LIB in models/.
+* Run from this folder: ngspice -b opa1622-paralleled-halves.cir
+* (.spiceinit sets ngbehavior=ps). Edit the .param lines for the other cases.
+
+.include models/OPA1622.LIB
+
+.param vpk=2.45      ; DAC full scale, +1dB_EN = 0: 4.90 Vpp typ (DS1156F2 Table 3-4)
+.param fsig=1k
+.param vos=0.5m      ; OPA1622 input offset, max at 25 C (SBOS727B 6.5)
+.param tr=0.001      ; 0.1 % thin-film gain resistors
+.param tb=0.01       ; 1 % ballast resistors
+.param rb=1.0
+.param rl=32
+
+VCC vcc 0 6.04
+VEE vee 0 -6.04
+VDAC dacp 0 SIN(0 {vpk} {fsig})
+VREF dacn 0 0
+
+* ---------- one half of a difference amplifier ----------
+* inp/inn: DAC pins as seen by this half (swapped for the minus leg)
+* g: +1 raises the gain of this half (worst-case resistor spread), -1 lowers it
+.subckt halfamp inp inn vcc vee out vo_int params: g=1 vos=0 tr=0.001
+R3 inp np {1.00k*(1-g*tr)}
+R4 np 0 {1.62k*(1+g*tr)}
+C2 np 0 100p
+R1 inn nm {1.00k*(1-g*tr)}
+R2 nm vo_int {1.62k*(1+g*tr)}
+C1 nm vo_int 100p
+VOS np npo {vos}
+VIP vcc vcc_h 0
+VIN vee vee_h 0
+XU npo nm vcc_h vee_h vo_int OPA1622
+.ends
+
+* ---------- L+ leg: halves A (high) and B (low) ----------
+XPA dacp dacn vcc vee lp opa halfamp params: g=1  vos={vos}  tr={tr}
+XPB dacp dacn vcc vee lp opb halfamp params: g=-1 vos={-vos} tr={tr}
+RBPA opa lp_a {rb*(1-tb)}
+VSPA lp_a lp 0
+RBPB opb lp_b {rb*(1+tb)}
+VSPB lp_b lp 0
+* ---------- L- leg: inputs swapped ----------
+XMA dacn dacp vcc vee ln oma halfamp params: g=1  vos={vos}  tr={tr}
+XMB dacn dacp vcc vee ln omb halfamp params: g=-1 vos={-vos} tr={tr}
+RBMA oma ln_a {rb*(1-tb)}
+VSMA ln_a ln 0
+RBMB omb ln_b {rb*(1+tb)}
+VSMB ln_b ln 0
+
+RL lp ln {rl}
+CLP lp 0 400p
+CLN ln 0 400p
+
+.options method=gear rshunt=1e12 reltol=2e-3
+.tran 0.2u 4m 0 0.5u
+
+.control
+run
+let ia = i(vspa)
+let ib = i(vspb)
+let ileg = ia+ib
+let pha = 6.04*i(v.xpa.vip) - 6.04*i(v.xpa.vin) - v(opa)*ia
+let phb = 6.04*i(v.xpb.vip) - 6.04*i(v.xpb.vin) - v(opb)*ib
+let pout = (v(lp)-v(ln))^2/32
+let dab = ia-ib
+let irail = -i(vcc)
+meas tran ia_pk max ia from=2m to=4m
+meas tran ia_nk min ia from=2m to=4m
+meas tran ib_pk max ib from=2m to=4m
+meas tran ib_nk min ib from=2m to=4m
+meas tran ileg_pk max ileg from=2m to=4m
+meas tran dab_max max dab from=2m to=4m
+meas tran dab_min min dab from=2m to=4m
+meas tran dab_avg avg dab from=2m to=4m
+meas tran vlp_pk max v(lp) from=2m to=4m
+meas tran pd_a avg pha from=2m to=4m
+meas tran pd_b avg phb from=2m to=4m
+meas tran p_out avg pout from=2m to=4m
+meas tran irail_pk max irail from=2m to=4m
+meas tran irail_avg avg irail from=2m to=4m
+linearize v(lp) v(ln)
+let vd = v(lp)-v(ln)
+fourier 1k vd
+.endc
+
+.end

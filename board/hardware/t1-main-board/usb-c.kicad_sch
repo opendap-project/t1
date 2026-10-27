@@ -1,0 +1,3081 @@
+(kicad_sch (version 20260306) (generator "eeschema") (generator_version "10.0")
+(uuid "7b3bebaa-56d1-5195-8901-691f77824151")
+(paper "A3")
+(title_block (title "Main USB-C port") (date "2026-10-25") (rev "A") (company "The OpenDAP Project") (comment 1 "blk.usb-c") (comment 2 "USB4105 receptacle, VBUS TVS, CC/SBU protection, D± ESD and the FUSB302B port controller"))
+(lib_symbols (symbol "Connector:TestPoint"
+		(pin_numbers
+			(hide yes)
+		)
+		(pin_names
+			(offset 0.762)
+			(hide yes)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(duplicate_pin_numbers_are_jumpers no)
+		(property "Reference" "TP"
+			(at 0 6.858 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "TestPoint"
+			(at 0 5.08 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 5.08 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 5.08 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "test point"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_keywords" "test point tp"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_fp_filters" "Pin* Test*"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "TestPoint_0_1"
+			(circle
+				(center 0 3.302)
+				(radius 0.762)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+		)
+		(symbol "TestPoint_1_1"
+			(pin passive line
+				(at 0 0 90)
+				(length 2.54)
+				(name "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
+(symbol "Device:C"
+		(pin_numbers
+			(hide yes)
+		)
+		(pin_names
+			(offset 0.254)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(duplicate_pin_numbers_are_jumpers no)
+		(property "Reference" "C"
+			(at 0.635 2.54 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "C"
+			(at 0.635 -2.54 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 0.9652 -3.81 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Unpolarized capacitor"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_keywords" "cap capacitor"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_fp_filters" "C_*"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "C_0_1"
+			(polyline
+				(pts
+					(xy -2.032 0.762) (xy 2.032 0.762)
+				)
+				(stroke
+					(width 0.508)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy -2.032 -0.762) (xy 2.032 -0.762)
+				)
+				(stroke
+					(width 0.508)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+		)
+		(symbol "C_1_1"
+			(pin passive line
+				(at 0 3.81 270)
+				(length 2.794)
+				(name ""
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 0 -3.81 90)
+				(length 2.794)
+				(name ""
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
+(symbol "Device:R"
+		(pin_numbers
+			(hide yes)
+		)
+		(pin_names
+			(offset 0)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(duplicate_pin_numbers_are_jumpers no)
+		(property "Reference" "R"
+			(at 2.032 0 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "R"
+			(at 0 0 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at -1.778 0 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_keywords" "R res resistor"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_fp_filters" "R_*"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "R_0_1"
+			(rectangle
+				(start -1.016 -2.54)
+				(end 1.016 2.54)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+		)
+		(symbol "R_1_1"
+			(pin passive line
+				(at 0 3.81 270)
+				(length 1.27)
+				(name ""
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 0 -3.81 90)
+				(length 1.27)
+				(name ""
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
+(symbol "GCT:USB4105-GF-A"
+		(pin_names
+			(offset 1.016)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(property "Reference" "J"
+			(at -10.16 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "USB4105-GF-A"
+			(at -10.16 -30.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "GCT:GCT_USB4105-GF-A_USB-C_Receptacle_USB2.0_Horizontal"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://gct.co/files/drawings/usb4105.pdf"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "USB Type-C receptacle for USB 2.0, 16 contacts, SMT, PCB top mount, 4 shell stakes, 5 A VBUS"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "GCT"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "USB4105-GF-A"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Second_Source" "Amphenol 12402012E212A (BOM v1 line 61)"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_keywords" "USB Type-C USB2.0 receptacle connector GCT USB4105"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_fp_filters" "GCT_USB4105-GF-A_USB-C_Receptacle_USB2.0_Horizontal*"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "USB4105-GF-A_1_1"
+			(rectangle
+				(start -10.16 22.86)
+				(end 10.16 -22.86)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type background)
+				)
+			)
+			(pin bidirectional line
+				(at -15.24 10.16 0)
+				(length 5.08)
+				(name "CC1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "A5"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin bidirectional line
+				(at -15.24 7.62 0)
+				(length 5.08)
+				(name "CC2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "B5"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin bidirectional line
+				(at -15.24 2.54 0)
+				(length 5.08)
+				(name "Dp1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "A6"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin bidirectional line
+				(at -15.24 0 0)
+				(length 5.08)
+				(name "Dn1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "A7"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin bidirectional line
+				(at -15.24 -2.54 0)
+				(length 5.08)
+				(name "Dp2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "B6"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin bidirectional line
+				(at -15.24 -5.08 0)
+				(length 5.08)
+				(name "Dn2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "B7"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin bidirectional line
+				(at -15.24 -10.16 0)
+				(length 5.08)
+				(name "SBU1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "A8"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin bidirectional line
+				(at -15.24 -12.7 0)
+				(length 5.08)
+				(name "SBU2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "B8"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin power_in line
+				(at -5.08 27.94 270)
+				(length 5.08)
+				(name "VBUS"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "A4"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin power_in line
+				(at -2.54 27.94 270)
+				(length 5.08)
+				(name "VBUS"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "A9"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin power_in line
+				(at 2.54 27.94 270)
+				(length 5.08)
+				(name "VBUS"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "B4"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin power_in line
+				(at 5.08 27.94 270)
+				(length 5.08)
+				(name "VBUS"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "B9"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin power_in line
+				(at -7.62 -27.94 90)
+				(length 5.08)
+				(name "GND"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "A1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin power_in line
+				(at -5.08 -27.94 90)
+				(length 5.08)
+				(name "GND"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "A12"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin power_in line
+				(at -2.54 -27.94 90)
+				(length 5.08)
+				(name "GND"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "B1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin power_in line
+				(at 2.54 -27.94 90)
+				(length 5.08)
+				(name "GND"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "B12"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 7.62 -27.94 90)
+				(length 5.08)
+				(name "GND"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "S1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
+(symbol "Texas_Instruments:TPD4E05U06DQAR"
+		(pin_names
+			(offset 1.016)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(property "Reference" "U"
+			(at -6.35 15.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "TPD4E05U06DQAR"
+			(at -6.35 -20.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Texas_Instruments:Texas_DQA0010A_USON-10_1x2.5mm_P0.5mm"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://www.ti.com/lit/ds/symlink/tpd4e05u06.pdf"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "4-channel ESD protection, 0.5 pF, 5.5 V stand-off, IEC 61000-4-2 level 4, flow-through routing, USON-10 (DQA0010A) 1 x 2.5 mm"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "Texas Instruments"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "TPD4E05U06DQAR"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_keywords" "ESD TVS protection USB high-speed low capacitance TPD4E05U06 USON DQA"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_fp_filters" "Texas_DQA0010A_USON-10_1x2.5mm_P0.5mm*"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "TPD4E05U06DQAR_1_1"
+			(rectangle
+				(start -6.35 13.97)
+				(end 6.35 -13.97)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type background)
+				)
+			)
+			(pin passive line
+				(at -10.16 7.62 0)
+				(length 3.81)
+				(name "D1+"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at -10.16 5.08 0)
+				(length 3.81)
+				(name "D1-"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at -10.16 0 0)
+				(length 3.81)
+				(name "D2+"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "4"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at -10.16 -2.54 0)
+				(length 3.81)
+				(name "D2-"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "5"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 10.16 7.62 180)
+				(length 3.81)
+				(name "NC"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "10"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 10.16 5.08 180)
+				(length 3.81)
+				(name "NC"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "9"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 10.16 0 180)
+				(length 3.81)
+				(name "NC"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "7"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 10.16 -2.54 180)
+				(length 3.81)
+				(name "NC"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "6"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin power_in line
+				(at -2.54 -17.78 90)
+				(length 3.81)
+				(name "GND"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "3"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin power_in line
+				(at 2.54 -17.78 90)
+				(length 3.81)
+				(name "GND"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "8"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
+(symbol "Texas_Instruments:TPD8S300ARUKR"
+		(pin_names
+			(offset 1.016)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(property "Reference" "U"
+			(at -8.89 31.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "TPD8S300ARUKR"
+			(at -8.89 -33.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Texas_Instruments:Texas_RUK0020B_WQFN-20-1EP_3x3mm_P0.4mm_EP1.7x1.7mm"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://www.ti.com/lit/ds/symlink/tpd8s300a.pdf"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "USB Type-C port protector, 20 V short-to-VBUS overvoltage protection on CC1, CC2, SBU1, SBU2, 8-channel IEC 61000-4-2 ESD, dead-battery Rd, WQFN-20 (RUK0020B) 3 x 3 mm"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "Texas Instruments"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "TPD8S300ARUKR"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_keywords" "USB Type-C protection OVP CC SBU ESD dead battery TPD8S300A WQFN RUK"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_fp_filters" "Texas_RUK0020B_WQFN-20-1EP_3x3mm_P0.4mm_EP1.7x1.7mm*"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "TPD8S300ARUKR_1_1"
+			(rectangle
+				(start -8.89 26.67)
+				(end 8.89 -26.67)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type background)
+				)
+			)
+			(pin passive line
+				(at -12.7 15.24 0)
+				(length 3.81)
+				(name "C_CC1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "4"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at -12.7 12.7 0)
+				(length 3.81)
+				(name "C_CC2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "5"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at -12.7 7.62 0)
+				(length 3.81)
+				(name "RPD_G1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "7"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at -12.7 5.08 0)
+				(length 3.81)
+				(name "RPD_G2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "6"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at -12.7 0 0)
+				(length 3.81)
+				(name "C_SBU1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at -12.7 -2.54 0)
+				(length 3.81)
+				(name "C_SBU2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at -12.7 -7.62 0)
+				(length 3.81)
+				(name "D1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "20"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at -12.7 -10.16 0)
+				(length 3.81)
+				(name "D2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "19"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at -12.7 -12.7 0)
+				(length 3.81)
+				(name "D3"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "17"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at -12.7 -15.24 0)
+				(length 3.81)
+				(name "D4"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "16"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 12.7 15.24 180)
+				(length 3.81)
+				(name "CC1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "12"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 12.7 12.7 180)
+				(length 3.81)
+				(name "CC2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "11"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 12.7 7.62 180)
+				(length 3.81)
+				(name "SBU1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "15"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 12.7 5.08 180)
+				(length 3.81)
+				(name "SBU2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "14"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin open_collector line
+				(at 12.7 0 180)
+				(length 3.81)
+				(name "FLT"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "9"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin power_in line
+				(at -2.54 30.48 270)
+				(length 3.81)
+				(name "VPWR"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "10"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 2.54 30.48 270)
+				(length 3.81)
+				(name "VBIAS"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "3"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin power_in line
+				(at -5.08 -30.48 90)
+				(length 3.81)
+				(name "GND"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "8"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin power_in line
+				(at -2.54 -30.48 90)
+				(length 3.81)
+				(name "GND"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "13"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin power_in line
+				(at 2.54 -30.48 90)
+				(length 3.81)
+				(name "GND"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "18"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin power_in line
+				(at 5.08 -30.48 90)
+				(length 3.81)
+				(name "GND"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "21"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
+(symbol "Texas_Instruments:TVS2200DRVR"
+		(pin_names
+			(offset 1.016)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(property "Reference" "D"
+			(at -7.62 11.43 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "TVS2200DRVR"
+			(at -7.62 -15.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Texas_Instruments:Texas_DRV0006A_WSON-6-1EP_2x2mm_P0.65mm_EP1x1.6mm"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://www.ti.com/lit/ds/symlink/tvs2200.pdf"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Unidirectional flat-clamp surge protection device, 22 V stand-off, 40 A 8/20 us, IEC 61000-4-2 level 4, WSON-6 (DRV0006A) 2 x 2 mm"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "Texas Instruments"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "TVS2200DRVR"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_keywords" "TVS surge protection flat clamp ESD VBUS USB-C TVS2200 WSON DRV"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_fp_filters" "Texas_DRV0006A_WSON-6-1EP_2x2mm_P0.65mm_EP1x1.6mm*"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "TVS2200DRVR_1_1"
+			(rectangle
+				(start -7.62 10.16)
+				(end 7.62 -10.16)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type background)
+				)
+			)
+			(pin passive line
+				(at -10.16 5.08 0)
+				(length 2.54)
+				(name "IN"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "4"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at -10.16 2.54 0)
+				(length 2.54)
+				(name "IN"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "5"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at -10.16 0 0)
+				(length 2.54)
+				(name "IN"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "6"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin power_in line
+				(at -5.08 -12.7 90)
+				(length 2.54)
+				(name "GND"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin power_in line
+				(at -2.54 -12.7 90)
+				(length 2.54)
+				(name "GND"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin power_in line
+				(at 2.54 -12.7 90)
+				(length 2.54)
+				(name "GND"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "3"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin power_in line
+				(at 5.08 -12.7 90)
+				(length 2.54)
+				(name "GND"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "7"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
+(symbol "onsemi:FUSB302BMPX"
+		(pin_names
+			(offset 1.016)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(property "Reference" "U"
+			(at -8.89 24.13 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "FUSB302BMPX"
+			(at -8.89 -25.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "onsemi:onsemi_510BR_WQFN-14-1EP_2.5x2.5mm_P0.5mm_EP1.45x1.45mm"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://www.onsemi.com/pdf/datasheet/fusb302b-d.pdf"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Programmable USB Type-C controller with USB PD BMC physical layer, I2C address 0x22, source/sink/DRP, dead-battery Rd, WQFN-14 (MLP) 2.5 x 2.5 mm, 0.5 mm pitch"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "onsemi"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "FUSB302BMPX"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_keywords" "USB Type-C PD power delivery port controller TCPM CC FUSB302 FUSB302B WQFN MLP"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_fp_filters" "onsemi_510BR_WQFN-14-1EP_2.5x2.5mm_P0.5mm_EP1.45x1.45mm*"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "FUSB302BMPX_1_1"
+			(rectangle
+				(start -8.89 19.05)
+				(end 8.89 -19.05)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type background)
+				)
+			)
+			(pin input line
+				(at -12.7 5.08 0)
+				(length 3.81)
+				(name "SCL"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "6"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin bidirectional line
+				(at -12.7 2.54 0)
+				(length 3.81)
+				(name "SDA"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "7"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin input line
+				(at -12.7 -2.54 0)
+				(length 3.81)
+				(name "VBUS"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin open_collector line
+				(at 12.7 5.08 180)
+				(length 3.81)
+				(name "INT_N"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "5"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin bidirectional line
+				(at 12.7 0 180)
+				(length 3.81)
+				(name "CC1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "10"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin bidirectional line
+				(at 12.7 -2.54 180)
+				(length 3.81)
+				(name "CC1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "11"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin bidirectional line
+				(at 12.7 -5.08 180)
+				(length 3.81)
+				(name "CC2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin bidirectional line
+				(at 12.7 -7.62 180)
+				(length 3.81)
+				(name "CC2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "14"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin power_in line
+				(at -5.08 22.86 270)
+				(length 3.81)
+				(name "VDD"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "3"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin power_in line
+				(at -2.54 22.86 270)
+				(length 3.81)
+				(name "VDD"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "4"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin power_in line
+				(at 2.54 22.86 270)
+				(length 3.81)
+				(name "VCONN"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "12"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin power_in line
+				(at 5.08 22.86 270)
+				(length 3.81)
+				(name "VCONN"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "13"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin power_in line
+				(at -2.54 -22.86 90)
+				(length 3.81)
+				(name "GND"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "8"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin power_in line
+				(at 0 -22.86 90)
+				(length 3.81)
+				(name "GND"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "9"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin power_in line
+				(at 2.54 -22.86 90)
+				(length 3.81)
+				(name "GND"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "15"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
+(symbol "power:GND"
+		(power global)
+		(pin_numbers
+			(hide yes)
+		)
+		(pin_names
+			(offset 0)
+			(hide yes)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(duplicate_pin_numbers_are_jumpers no)
+		(property "Reference" "#PWR"
+			(at 0 -6.35 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 0 -3.81 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_keywords" "global power"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "GND_0_1"
+			(polyline
+				(pts
+					(xy 0 0) (xy 0 -1.27) (xy 1.27 -1.27) (xy 0 -2.54) (xy -1.27 -1.27) (xy 0 -1.27)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+		)
+		(symbol "GND_1_1"
+			(pin power_in line
+				(at 0 0 270)
+				(length 0)
+				(name ""
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
+(symbol "power:VCC"
+		(power global)
+		(pin_numbers
+			(hide yes)
+		)
+		(pin_names
+			(offset 0)
+			(hide yes)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(duplicate_pin_numbers_are_jumpers no)
+		(property "Reference" "#PWR"
+			(at 0 -3.81 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "VCC"
+			(at 0 3.556 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"VCC\""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_keywords" "global power"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "VCC_0_1"
+			(polyline
+				(pts
+					(xy -0.762 1.27) (xy 0 2.54)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 0 2.54) (xy 0.762 1.27)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 0 0) (xy 0 2.54)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+		)
+		(symbol "VCC_1_1"
+			(pin power_in line
+				(at 0 0 90)
+				(length 0)
+				(name ""
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	))
+(symbol (lib_id "GCT:USB4105-GF-A") (at 57.15 86.36 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "b5c6ad19-6c35-57c0-8d1a-0b385235f7a3")
+  (property "Reference" "J4201" (at 68.58 66.04 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Value" "USB4105-GF-A" (at 68.58 63.5 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Footprint" "GCT:GCT_USB4105-GF-A_USB-C_Receptacle_USB2.0_Horizontal" (at 57.15 86.36 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "https://gct.co/files/drawings/usb4105.pdf" (at 57.15 86.36 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Description" "USB Type-C receptacle for USB 2.0, 16 contacts, SMT, PCB top mount, 4 shell stakes, 5 A VBUS" (at 57.15 86.36 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Manufacturer" "GCT" (at 57.15 86.36 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "MPN" "USB4105-GF-A" (at 57.15 86.36 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Second_Source" "Amphenol 12402012E212A (BOM v1 line 61)" (at 57.15 86.36 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Block" "blk.usb-c" (at 57.15 86.36 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Constraints" "PCB-I-01" (at 57.15 86.36 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "A5" (uuid "0fb6b0c8-b3c0-5d3a-b6f9-848b99c08ace"))
+  (pin "B5" (uuid "8304f0e0-27dd-5507-a1b1-56ed01c46369"))
+  (pin "A6" (uuid "1ff6e860-00f6-56ca-a6dc-523a6e02f4a9"))
+  (pin "A7" (uuid "e07cac13-6886-56f2-8ce5-7516ce9dbbca"))
+  (pin "B6" (uuid "21f6ebc6-03f6-5ece-9e0e-a52906e3b595"))
+  (pin "B7" (uuid "27420adf-663d-5356-9b72-04312c2f0d2c"))
+  (pin "A8" (uuid "83847f39-38ee-5b06-ac73-00f858f6a20c"))
+  (pin "B8" (uuid "9bb32254-9ec9-5cca-8eb2-ef57c254b753"))
+  (pin "A4" (uuid "9b1419f8-8ebf-5a62-822b-74053e466f1b"))
+  (pin "A9" (uuid "af9bb7b2-64a0-5106-9995-d6c51661f61e"))
+  (pin "B4" (uuid "e3e62403-bb2d-5d92-82e9-571914840a00"))
+  (pin "B9" (uuid "9ba38b5a-01ad-5c60-892d-5a9482b1c57c"))
+  (pin "A1" (uuid "b114e864-7001-5f18-9f61-ef54d4b2722b"))
+  (pin "A12" (uuid "e548b7de-d379-537c-926f-2d4a0fd73e47"))
+  (pin "B1" (uuid "267f3c28-92d0-57d1-84d7-06fe528b31fa"))
+  (pin "B12" (uuid "44c95e2a-8b76-5de8-98b8-0629913cc331"))
+  (pin "S1" (uuid "98ab27fb-0eb0-5985-a712-63fa5648e210"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/8d93b6ef-9685-50fd-859d-fdd97abf86f1" (reference "J4201") (unit 1))))
+)
+(wire (pts (xy 52.07 58.42) (xy 52.07 55.88)) (stroke (width 0) (type default)) (uuid "eab4cbe7-76b7-5b72-9be5-715cc2f748c8"))
+(wire (pts (xy 54.61 58.42) (xy 54.61 55.88)) (stroke (width 0) (type default)) (uuid "87b9b0f4-ff1c-5e86-8092-d9bbe234a2c8"))
+(wire (pts (xy 59.69 58.42) (xy 59.69 55.88)) (stroke (width 0) (type default)) (uuid "7e7e718b-4339-5a7a-8927-d9565efd795e"))
+(wire (pts (xy 62.23 58.42) (xy 62.23 55.88)) (stroke (width 0) (type default)) (uuid "9589aebc-a2fe-5c58-931d-3b83703b8dbf"))
+(wire (pts (xy 52.07 55.88) (xy 62.23 55.88)) (stroke (width 0) (type default)) (uuid "8689da2b-41fc-5968-919f-f5815bdeba1f"))
+(junction (at 54.61 55.88) (diameter 0) (color 0 0 0 0) (uuid "cf5c7895-bd0e-547e-8084-c6b41ae75520"))
+(junction (at 59.69 55.88) (diameter 0) (color 0 0 0 0) (uuid "580bc909-b07e-5c67-80bc-47f3666b8d0f"))
+(wire (pts (xy 52.07 55.88) (xy 52.07 53.34)) (stroke (width 0) (type default)) (uuid "902f5ff0-0245-5fb2-8785-7848ceb28c81"))
+(junction (at 52.07 55.88) (diameter 0) (color 0 0 0 0) (uuid "5ea39528-a24b-58c4-872d-f8808a6c8a7e"))
+(symbol (lib_id "power:VCC") (at 52.07 53.34 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "a65dd193-36f6-52c0-b613-2480a4ced68a")
+  (property "Reference" "#PWR0598" (at 52.07 53.34 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Value" "USBC_VBUS" (at 52.07 49.53 90) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Footprint" "" (at 52.07 53.34 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "" (at 52.07 53.34 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "c84c4278-26b3-5037-9bea-78e198914dec"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/8d93b6ef-9685-50fd-859d-fdd97abf86f1" (reference "#PWR0598") (unit 1))))
+)
+(wire (pts (xy 49.53 114.3) (xy 49.53 116.84)) (stroke (width 0) (type default)) (uuid "023e5655-e21a-582d-b811-3e34492d1dff"))
+(wire (pts (xy 52.07 114.3) (xy 52.07 116.84)) (stroke (width 0) (type default)) (uuid "3c802c85-e007-59a2-80e7-e090f6367b68"))
+(wire (pts (xy 54.61 114.3) (xy 54.61 116.84)) (stroke (width 0) (type default)) (uuid "e273c643-ddc5-52b8-86c9-594e3f4c19e1"))
+(wire (pts (xy 59.69 114.3) (xy 59.69 116.84)) (stroke (width 0) (type default)) (uuid "11fdf24b-cadf-56da-9fe1-0f550205702d"))
+(wire (pts (xy 64.77 114.3) (xy 64.77 116.84)) (stroke (width 0) (type default)) (uuid "1103a37d-fb20-56be-939e-dfc599c59fa1"))
+(wire (pts (xy 49.53 116.84) (xy 64.77 116.84)) (stroke (width 0) (type default)) (uuid "50ad4049-250e-5a5c-8eb9-f7d36cb65c50"))
+(junction (at 52.07 116.84) (diameter 0) (color 0 0 0 0) (uuid "668e2fff-8ca2-53ba-844a-a6e4da05817e"))
+(junction (at 54.61 116.84) (diameter 0) (color 0 0 0 0) (uuid "da45beba-79a5-5423-830f-0993266a09cd"))
+(junction (at 59.69 116.84) (diameter 0) (color 0 0 0 0) (uuid "28af34d0-b41f-5867-b496-32b58d318e26"))
+(wire (pts (xy 49.53 116.84) (xy 49.53 119.38)) (stroke (width 0) (type default)) (uuid "d3ad64d4-5354-5ac9-961b-1323838386aa"))
+(junction (at 49.53 116.84) (diameter 0) (color 0 0 0 0) (uuid "f125131f-9d59-52c2-a1b2-db9e70c0e1ac"))
+(symbol (lib_id "power:GND") (at 49.53 119.38 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "682bc1fd-c272-5591-b9f3-cfd56aa97d51")
+  (property "Reference" "#PWR0599" (at 49.53 119.38 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Value" "GND" (at 49.53 123.19 0) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "" (at 49.53 119.38 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "" (at 49.53 119.38 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "8839b49d-dbbe-528b-84a9-4bbd7edf4b49"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/8d93b6ef-9685-50fd-859d-fdd97abf86f1" (reference "#PWR0599") (unit 1))))
+)
+(wire (pts (xy 41.91 76.2) (xy 39.37 76.2)) (stroke (width 0) (type default)) (uuid "9f3656e3-f0cd-503f-9e52-87fa70ae448f"))
+(wire (pts (xy 41.91 78.74) (xy 39.37 78.74)) (stroke (width 0) (type default)) (uuid "5b4ede0d-ff97-5d9e-9078-84f1b8d54982"))
+(wire (pts (xy 41.91 83.82) (xy 39.37 83.82)) (stroke (width 0) (type default)) (uuid "16fe0912-e43b-5d76-a0b2-c1b020db26b1"))
+(wire (pts (xy 41.91 86.36) (xy 39.37 86.36)) (stroke (width 0) (type default)) (uuid "051fd8c7-782a-5e15-bd12-1bd582878ea2"))
+(wire (pts (xy 41.91 88.9) (xy 39.37 88.9)) (stroke (width 0) (type default)) (uuid "f45eb08c-50db-55a8-83f4-73cf495e720d"))
+(wire (pts (xy 41.91 91.44) (xy 39.37 91.44)) (stroke (width 0) (type default)) (uuid "311da2a9-4b67-59c8-8ba6-80bf5775b106"))
+(wire (pts (xy 41.91 96.52) (xy 39.37 96.52)) (stroke (width 0) (type default)) (uuid "b792eb5d-aca5-52ef-b968-5d63008008c9"))
+(wire (pts (xy 41.91 99.06) (xy 39.37 99.06)) (stroke (width 0) (type default)) (uuid "2c3d6576-e8ae-57e3-a827-ebc368f27179"))
+(rectangle (start 22.86 35.56) (end 128.27 125.73) (stroke (width 0) (type dash)) (fill (type none)) (uuid "9752263a-7f35-566d-9840-0d20838863f8"))
+(text "Receptacle: GCT USB4105-GF-A (BOM v1 line 61)" (exclude_from_sim no) (at 24.13 34.29 0) (effects (font (size 2.54 2.54)) (justify left bottom)) (uuid "ca3422be-62aa-5cc5-b2f8-5a3b98fcc303"))
+(symbol (lib_id "Texas_Instruments:TVS2200DRVR") (at 161.29 55.88 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "cbfc2f1d-0808-5960-a3c6-8ea413336f32")
+  (property "Reference" "U4201" (at 153.67 43.18 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Value" "TVS2200DRVR" (at 153.67 40.64 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Footprint" "Texas_Instruments:Texas_DRV0006A_WSON-6-1EP_2x2mm_P0.65mm_EP1x1.6mm" (at 161.29 55.88 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "https://www.ti.com/lit/ds/symlink/tvs2200.pdf" (at 161.29 55.88 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Description" "Unidirectional flat-clamp surge protection device, 22 V stand-off, 40 A 8/20 us, IEC 61000-4-2 level 4, WSON-6 (DRV0006A) 2 x 2 mm" (at 161.29 55.88 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Manufacturer" "Texas Instruments" (at 161.29 55.88 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "MPN" "TVS2200DRVR" (at 161.29 55.88 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Block" "blk.usb-c" (at 161.29 55.88 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "4" (uuid "e73d76e0-ee2d-546e-bb1a-5c62e03dcfde"))
+  (pin "5" (uuid "75938194-fe2d-5a40-b1ac-11795a55d791"))
+  (pin "6" (uuid "99008338-4804-52c3-81c8-2eb2a4112138"))
+  (pin "1" (uuid "54496169-9f78-577a-a00d-9befdafb4092"))
+  (pin "2" (uuid "5063b0a0-8893-57b6-b544-50145a387862"))
+  (pin "3" (uuid "74190d49-ed89-501d-821a-43b1dfa1e467"))
+  (pin "7" (uuid "110c7cf3-cdae-52cf-8520-f3b7f9e1de00"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/8d93b6ef-9685-50fd-859d-fdd97abf86f1" (reference "U4201") (unit 1))))
+)
+(wire (pts (xy 156.21 68.58) (xy 156.21 71.12)) (stroke (width 0) (type default)) (uuid "01cd1835-c9d7-5658-b8ba-95fca1fbd226"))
+(wire (pts (xy 158.75 68.58) (xy 158.75 71.12)) (stroke (width 0) (type default)) (uuid "cbfd372c-bfb0-5bd8-9165-7844fa7694a4"))
+(wire (pts (xy 163.83 68.58) (xy 163.83 71.12)) (stroke (width 0) (type default)) (uuid "f36bf1d4-06cc-53cd-952d-ca4602f8f361"))
+(wire (pts (xy 166.37 68.58) (xy 166.37 71.12)) (stroke (width 0) (type default)) (uuid "72b6dcb2-c965-59a2-aa0e-b23347c36262"))
+(wire (pts (xy 156.21 71.12) (xy 166.37 71.12)) (stroke (width 0) (type default)) (uuid "c823b536-3312-55f6-bcb2-35603abb81f2"))
+(junction (at 158.75 71.12) (diameter 0) (color 0 0 0 0) (uuid "ef4019f6-c886-5983-8f76-84c1ce1489b2"))
+(junction (at 163.83 71.12) (diameter 0) (color 0 0 0 0) (uuid "cf96d043-d15c-577b-952c-8fb632efd737"))
+(wire (pts (xy 156.21 71.12) (xy 156.21 73.66)) (stroke (width 0) (type default)) (uuid "75d6aae2-eaf7-5744-bdd7-07b6b67a5d36"))
+(junction (at 156.21 71.12) (diameter 0) (color 0 0 0 0) (uuid "bffcf0ce-52de-51e2-9480-e86bf2eadfc2"))
+(symbol (lib_id "power:GND") (at 156.21 73.66 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "ab49e0a0-567e-5afe-a294-ebad5c0ac4e9")
+  (property "Reference" "#PWR0600" (at 156.21 73.66 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Value" "GND" (at 156.21 77.47 0) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "" (at 156.21 73.66 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "" (at 156.21 73.66 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "983b7279-f82f-535f-a9de-c7596d51efa4"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/8d93b6ef-9685-50fd-859d-fdd97abf86f1" (reference "#PWR0600") (unit 1))))
+)
+(wire (pts (xy 151.13 50.8) (xy 143.51 50.8)) (stroke (width 0) (type default)) (uuid "2810849f-761e-5f90-8821-cd3c7104dbda"))
+(wire (pts (xy 151.13 53.34) (xy 143.51 53.34)) (stroke (width 0) (type default)) (uuid "e13a8326-2332-5ebc-8cde-f0de2e880bf7"))
+(wire (pts (xy 151.13 55.88) (xy 143.51 55.88)) (stroke (width 0) (type default)) (uuid "d1ee7471-ad33-52f1-81b3-95438ac20380"))
+(junction (at 143.51 53.34) (diameter 0) (color 0 0 0 0) (uuid "35e90e3a-ac8d-58f2-8321-5ac95160171c"))
+(wire (pts (xy 143.51 48.26) (xy 143.51 55.88)) (stroke (width 0) (type default)) (uuid "42951735-6ec2-5852-87a0-6f3ef04b3a07"))
+(junction (at 143.51 50.8) (diameter 0) (color 0 0 0 0) (uuid "04bae795-4cf0-5717-b29d-9380b4cfc276"))
+(symbol (lib_id "power:VCC") (at 143.51 48.26 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "c1096dd4-8692-53d8-a22d-5bce9ebeda5f")
+  (property "Reference" "#PWR0601" (at 143.51 48.26 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Value" "USBC_VBUS" (at 143.51 44.45 0) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "" (at 143.51 48.26 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "" (at 143.51 48.26 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "9bd0fea5-e043-591d-9898-3294fc822497"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/8d93b6ef-9685-50fd-859d-fdd97abf86f1" (reference "#PWR0601") (unit 1))))
+)
+(rectangle (start 133.35 35.56) (end 215.9 80.01) (stroke (width 0) (type dash)) (fill (type none)) (uuid "5c0d3dce-61c0-54cf-87f4-1f6a3dc22e07"))
+(text "VBUS TVS, 22 V flat clamp (line 64)" (exclude_from_sim no) (at 134.62 34.29 0) (effects (font (size 2.54 2.54)) (justify left bottom)) (uuid "bf7ccebe-3cdf-53af-8dc8-07f2fcc79164"))
+(symbol (lib_id "Texas_Instruments:TPD8S300ARUKR") (at 252.73 86.36 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "96d4e08e-4b3d-5a36-955f-c64592807ec1")
+  (property "Reference" "U4202" (at 256.54 57.15 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Value" "TPD8S300ARUKR" (at 256.54 54.61 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Footprint" "Texas_Instruments:Texas_RUK0020B_WQFN-20-1EP_3x3mm_P0.4mm_EP1.7x1.7mm" (at 252.73 86.36 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "https://www.ti.com/lit/ds/symlink/tpd8s300a.pdf" (at 252.73 86.36 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Description" "USB Type-C port protector, 20 V short-to-VBUS overvoltage protection on CC1, CC2, SBU1, SBU2, 8-channel IEC 61000-4-2 ESD, dead-battery Rd, WQFN-20 (RUK0020B) 3 x 3 mm" (at 252.73 86.36 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Manufacturer" "Texas Instruments" (at 252.73 86.36 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "MPN" "TPD8S300ARUKR" (at 252.73 86.36 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Block" "blk.usb-c" (at 252.73 86.36 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "4" (uuid "b3201696-52b1-554f-a1ee-f59c3334b4a0"))
+  (pin "5" (uuid "bb0f9f72-9733-5e87-b9f3-2a096687208c"))
+  (pin "7" (uuid "264484e4-d943-51ca-892e-12ca97a16f6f"))
+  (pin "6" (uuid "ac1378e5-b09f-5473-83d9-05497db58fc5"))
+  (pin "1" (uuid "298d9456-5937-5c07-b290-3aa87ffbc512"))
+  (pin "2" (uuid "4e2266d9-f2b2-56d1-8088-e087cea14a13"))
+  (pin "20" (uuid "f66e9710-a155-5f4a-838e-2e9fe31c26f3"))
+  (pin "19" (uuid "0d3cb623-c4f3-58fa-b007-83e6c7b50325"))
+  (pin "17" (uuid "78f8976f-8010-5291-a4ef-60c9e1ca3bcc"))
+  (pin "16" (uuid "7029dca7-55ce-5f18-80dd-828dcea72795"))
+  (pin "12" (uuid "eda11bb5-1494-523b-9da0-e4000d2cdd0c"))
+  (pin "11" (uuid "63276a75-7bdd-54c0-8e8a-022b544787da"))
+  (pin "15" (uuid "8c0c812c-c5b8-5068-9974-eb6902dcba1a"))
+  (pin "14" (uuid "990c8d98-6c8a-5c8d-9109-2dadd46ee135"))
+  (pin "9" (uuid "df445a70-19cc-5a17-9454-04f2f8bc3120"))
+  (pin "10" (uuid "585a3b31-a545-59e2-8a40-0f6ff8b229ed"))
+  (pin "3" (uuid "913734db-8eac-5f8c-8123-fba2f1d66dda"))
+  (pin "8" (uuid "872cd2ce-f564-5630-ac2c-4f955df6d7df"))
+  (pin "13" (uuid "887cbf31-adbd-5586-b990-0070c0f06238"))
+  (pin "18" (uuid "f13bee9e-d8c0-5f84-89a9-3d6a02cb9b8c"))
+  (pin "21" (uuid "bc048924-ded8-5ccd-979a-7d636e515e7a"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/8d93b6ef-9685-50fd-859d-fdd97abf86f1" (reference "U4202") (unit 1))))
+)
+(wire (pts (xy 247.65 116.84) (xy 247.65 119.38)) (stroke (width 0) (type default)) (uuid "158f129a-d859-5590-b628-c4daec9aa42d"))
+(wire (pts (xy 250.19 116.84) (xy 250.19 119.38)) (stroke (width 0) (type default)) (uuid "efe75713-7a4a-5d53-a431-cb88841452a2"))
+(wire (pts (xy 255.27 116.84) (xy 255.27 119.38)) (stroke (width 0) (type default)) (uuid "ab398d8c-eaf4-5c10-af1e-3b40d863e040"))
+(wire (pts (xy 257.81 116.84) (xy 257.81 119.38)) (stroke (width 0) (type default)) (uuid "07ee97be-5d8f-56db-99e3-98ee071cba40"))
+(wire (pts (xy 247.65 119.38) (xy 257.81 119.38)) (stroke (width 0) (type default)) (uuid "bb2d335e-a881-5d40-bd0c-037ebc01c497"))
+(junction (at 250.19 119.38) (diameter 0) (color 0 0 0 0) (uuid "7f5cb851-48f5-5e61-a5d1-f8fd4c27c8f3"))
+(junction (at 255.27 119.38) (diameter 0) (color 0 0 0 0) (uuid "537a166e-d2a6-5891-8b34-b8c9b1ee13a7"))
+(wire (pts (xy 247.65 119.38) (xy 247.65 121.92)) (stroke (width 0) (type default)) (uuid "203ae076-df73-57b3-b517-4b5ef4047c38"))
+(junction (at 247.65 119.38) (diameter 0) (color 0 0 0 0) (uuid "9df35841-59b5-5df4-b8d8-b7f13fc67f7c"))
+(symbol (lib_id "power:GND") (at 247.65 121.92 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "2753e918-15b0-50de-a9d0-4027228fca61")
+  (property "Reference" "#PWR0602" (at 247.65 121.92 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Value" "GND" (at 247.65 125.73 0) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "" (at 247.65 121.92 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "" (at 247.65 121.92 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "6133addd-e4ab-5036-85ce-6e15f88a7998"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/8d93b6ef-9685-50fd-859d-fdd97abf86f1" (reference "#PWR0602") (unit 1))))
+)
+(wire (pts (xy 240.03 93.98) (xy 237.49 93.98)) (stroke (width 0) (type default)) (uuid "90dc00bd-d342-59d7-9387-0c41192a4d54"))
+(wire (pts (xy 240.03 96.52) (xy 237.49 96.52)) (stroke (width 0) (type default)) (uuid "7465ba7c-1a5d-56df-b437-d7ffa5441243"))
+(wire (pts (xy 240.03 99.06) (xy 237.49 99.06)) (stroke (width 0) (type default)) (uuid "52bef76a-396b-57d1-ba8a-b5601eb0b14b"))
+(wire (pts (xy 240.03 101.6) (xy 237.49 101.6)) (stroke (width 0) (type default)) (uuid "1d7af0c8-479b-5063-b4af-05573358808d"))
+(junction (at 237.49 96.52) (diameter 0) (color 0 0 0 0) (uuid "94bb0956-0d05-541a-8e26-e161ab4ed6f2"))
+(junction (at 237.49 99.06) (diameter 0) (color 0 0 0 0) (uuid "c84726ad-b4eb-54ed-bb36-1cb0b1a3d093"))
+(wire (pts (xy 237.49 93.98) (xy 237.49 104.14)) (stroke (width 0) (type default)) (uuid "b6f4f972-5964-5944-99bc-5e79e2818aff"))
+(junction (at 237.49 101.6) (diameter 0) (color 0 0 0 0) (uuid "60faaeeb-6b5c-5aec-88c5-90645064dcb7"))
+(symbol (lib_id "power:GND") (at 237.49 104.14 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "a128e786-14db-52a8-a955-84390c16abf8")
+  (property "Reference" "#PWR0603" (at 237.49 104.14 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Value" "GND" (at 237.49 107.95 0) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "" (at 237.49 104.14 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "" (at 237.49 104.14 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "af8e67ee-17d1-588b-b13e-df49ec01ca0f"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/8d93b6ef-9685-50fd-859d-fdd97abf86f1" (reference "#PWR0603") (unit 1))))
+)
+(wire (pts (xy 240.03 71.12) (xy 237.49 71.12)) (stroke (width 0) (type default)) (uuid "07bc6c8c-1be8-5c73-b709-821a07e5fcf0"))
+(wire (pts (xy 240.03 73.66) (xy 237.49 73.66)) (stroke (width 0) (type default)) (uuid "43ed5c33-8613-569d-a2d1-d4c15b70f2a1"))
+(wire (pts (xy 240.03 78.74) (xy 237.49 78.74)) (stroke (width 0) (type default)) (uuid "ebc9cc0d-acf2-5d12-a066-3353e8bf87c0"))
+(wire (pts (xy 240.03 81.28) (xy 237.49 81.28)) (stroke (width 0) (type default)) (uuid "627ad49a-f50f-5bd1-980e-a25497fbfe98"))
+(wire (pts (xy 240.03 86.36) (xy 237.49 86.36)) (stroke (width 0) (type default)) (uuid "f36c4b47-df40-5957-84ed-154979994298"))
+(wire (pts (xy 240.03 88.9) (xy 237.49 88.9)) (stroke (width 0) (type default)) (uuid "aa047251-76c2-57b5-bb66-0c4a850b445b"))
+(wire (pts (xy 265.43 71.12) (xy 267.97 71.12)) (stroke (width 0) (type default)) (uuid "4b428ed5-02b2-5779-b917-ada0c2dd1f14"))
+(wire (pts (xy 265.43 73.66) (xy 267.97 73.66)) (stroke (width 0) (type default)) (uuid "517c27f2-0bca-5ca9-bacc-d6b7c94c5ce8"))
+(wire (pts (xy 265.43 78.74) (xy 267.97 78.74)) (stroke (width 0) (type default)) (uuid "41e2282b-792d-5904-ac55-11b45c76e862"))
+(wire (pts (xy 265.43 81.28) (xy 267.97 81.28)) (stroke (width 0) (type default)) (uuid "a89c56a8-ad38-5b5e-8e9e-8e1c86915e75"))
+(wire (pts (xy 265.43 86.36) (xy 267.97 86.36)) (stroke (width 0) (type default)) (uuid "57224c45-8fc3-5d5e-ad14-6b5e001f9a6c"))
+(wire (pts (xy 255.27 55.88) (xy 255.27 53.34)) (stroke (width 0) (type default)) (uuid "a7f3933b-0a78-59c1-962c-6c19228341d3"))
+(wire (pts (xy 250.19 55.88) (xy 250.19 53.34)) (stroke (width 0) (type default)) (uuid "1a039c36-9493-5bf9-b97a-b1487f204c6a"))
+(symbol (lib_id "power:VCC") (at 250.19 53.34 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "809c93b6-b315-5e1f-bb7a-46e246a3714c")
+  (property "Reference" "#PWR0604" (at 250.19 53.34 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Value" "vcc3v3_pmu" (at 250.19 49.53 90) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Footprint" "" (at 250.19 53.34 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "" (at 250.19 53.34 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "cf2e6aa8-e234-5e74-a1a0-e9d1cc55af26"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/8d93b6ef-9685-50fd-859d-fdd97abf86f1" (reference "#PWR0604") (unit 1))))
+)
+(symbol (lib_id "Device:C") (at 292.1 57.15 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "51202ad3-51fe-5bfd-b95d-9425ab75ec37")
+  (property "Reference" "C4201" (at 294.64 55.88 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Value" "100 nF" (at 294.64 58.42 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Spec" "50 V X7R" (at 294.64 60.96 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Footprint" "Capacitor_SMD:C_0603_1608Metric" (at 292.1 57.15 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "https://www.murata.com/en-us/products/productdetail?partno=GRM188R71H104KA93D" (at 292.1 57.15 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Description" "Capacitor, 100 nF, 50 V, X7R, 0603" (at 292.1 57.15 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Manufacturer" "Murata" (at 292.1 57.15 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "MPN" "GRM188R71H104KA93D" (at 292.1 57.15 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Block" "blk.usb-c" (at 292.1 57.15 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "8b5ec17c-97d1-5830-9d6f-476fac298609"))
+  (pin "2" (uuid "d6277041-bbaf-5701-a66c-09b0ba6c5113"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/8d93b6ef-9685-50fd-859d-fdd97abf86f1" (reference "C4201") (unit 1))))
+)
+(wire (pts (xy 292.1 53.34) (xy 292.1 50.8)) (stroke (width 0) (type default)) (uuid "d6591075-197d-5b6e-9ac0-9a4e3fc097ff"))
+(wire (pts (xy 292.1 60.96) (xy 292.1 63.5)) (stroke (width 0) (type default)) (uuid "aa6b3b74-9c7f-50e9-a4e9-0d8ebe37f904"))
+(symbol (lib_id "power:GND") (at 292.1 63.5 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "4a1d2341-693c-5be1-883d-756492574f15")
+  (property "Reference" "#PWR0605" (at 292.1 63.5 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Value" "GND" (at 292.1 67.31 0) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "" (at 292.1 63.5 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "" (at 292.1 63.5 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "ca2701db-81f0-5368-b48d-fbe6ebaab056"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/8d93b6ef-9685-50fd-859d-fdd97abf86f1" (reference "#PWR0605") (unit 1))))
+)
+(symbol (lib_id "Device:C") (at 312.42 57.15 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "7d36cd07-95f9-5c04-b2aa-ea39850f0551")
+  (property "Reference" "C4202" (at 314.96 55.88 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Value" "1 µF" (at 314.96 58.42 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Footprint" "Capacitor_SMD:C_0402_1005Metric" (at 312.42 57.15 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "https://www.murata.com/en-us/products/productdetail?partno=GRM155R61A105KE15D" (at 312.42 57.15 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Description" "Capacitor, 1 µF, 10 V, X5R, 0402" (at 312.42 57.15 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Manufacturer" "Murata" (at 312.42 57.15 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "MPN" "GRM155R61A105KE15D" (at 312.42 57.15 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Block" "blk.usb-c" (at 312.42 57.15 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "f4bc34b7-8db0-5459-ae99-24e7da8fbb49"))
+  (pin "2" (uuid "0a77c8d9-53ac-5fac-bdf8-92ce88255d34"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/8d93b6ef-9685-50fd-859d-fdd97abf86f1" (reference "C4202") (unit 1))))
+)
+(wire (pts (xy 312.42 53.34) (xy 312.42 50.8)) (stroke (width 0) (type default)) (uuid "bdaf89dc-311d-51eb-b89e-cd06115261ba"))
+(wire (pts (xy 312.42 60.96) (xy 312.42 63.5)) (stroke (width 0) (type default)) (uuid "77bc0dc7-cadf-560b-8589-31433f0e8a49"))
+(symbol (lib_id "power:GND") (at 312.42 63.5 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "baa0b492-5e31-570b-816a-d042f0676c36")
+  (property "Reference" "#PWR0606" (at 312.42 63.5 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Value" "GND" (at 312.42 67.31 0) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "" (at 312.42 63.5 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "" (at 312.42 63.5 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "96effb7c-39c4-5fe7-9e29-2650e4f01424"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/8d93b6ef-9685-50fd-859d-fdd97abf86f1" (reference "#PWR0606") (unit 1))))
+)
+(symbol (lib_id "Device:R") (at 325.12 57.15 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "c40966e9-d998-5b20-be06-6280bea8b304")
+  (property "Reference" "R4201" (at 326.39 55.88 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Value" "10 kΩ" (at 326.39 58.42 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Footprint" "Resistor_SMD:R_0402_1005Metric" (at 325.12 57.15 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "https://yageogroup.com/en/ProductSearch/PartNumberSearch?part=RC0402FR-0710KL" (at 325.12 57.15 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Description" "Resistor, 10 kΩ, 1 %, 1/16 W, 0402" (at 325.12 57.15 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Manufacturer" "YAGEO" (at 325.12 57.15 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "MPN" "RC0402FR-0710KL" (at 325.12 57.15 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Block" "blk.usb-c" (at 325.12 57.15 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "d7769c2c-f1d2-5d19-a4bb-c9b5aa9b7a9b"))
+  (pin "2" (uuid "b9511518-8e62-50ad-85e1-b8d6c738c221"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/8d93b6ef-9685-50fd-859d-fdd97abf86f1" (reference "R4201") (unit 1))))
+)
+(wire (pts (xy 325.12 53.34) (xy 325.12 50.8)) (stroke (width 0) (type default)) (uuid "5b936905-2e26-58ef-99a8-ab7b45cd490a"))
+(wire (pts (xy 312.42 50.8) (xy 325.12 50.8)) (stroke (width 0) (type default)) (uuid "6ee2b55b-a596-533f-92b2-410df006139c"))
+(junction (at 312.42 50.8) (diameter 0) (color 0 0 0 0) (uuid "d570deb9-4209-524c-93df-39748aa36b66"))
+(symbol (lib_id "power:VCC") (at 312.42 50.8 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "fe7d9aea-3e5d-5fc8-9464-6bf04d337d52")
+  (property "Reference" "#PWR0607" (at 312.42 50.8 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Value" "vcc3v3_pmu" (at 312.42 46.99 0) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "" (at 312.42 50.8 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "" (at 312.42 50.8 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "bbf949b8-98b5-5e28-a99f-51e4ca8c18fc"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/8d93b6ef-9685-50fd-859d-fdd97abf86f1" (reference "#PWR0607") (unit 1))))
+)
+(rectangle (start 220.98 35.56) (end 337.82 128.27) (stroke (width 0) (type dash)) (fill (type none)) (uuid "d62996f1-f7dd-57c6-8246-cf95b61bc962"))
+(text "CC and SBU protection: TPD8S300A (line 63)" (exclude_from_sim no) (at 222.25 34.29 0) (effects (font (size 2.54 2.54)) (justify left bottom)) (uuid "b94b175f-0a27-584f-acdf-859a4b68d5e3"))
+(symbol (lib_id "Texas_Instruments:TPD4E05U06DQAR") (at 369.57 59.69 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "14f9b6ab-7f25-5ba5-b967-7f2f2dcab11c")
+  (property "Reference" "U4203" (at 363.22 43.18 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Value" "TPD4E05U06DQAR" (at 363.22 40.64 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Footprint" "Texas_Instruments:Texas_DQA0010A_USON-10_1x2.5mm_P0.5mm" (at 369.57 59.69 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "https://www.ti.com/lit/ds/symlink/tpd4e05u06.pdf" (at 369.57 59.69 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Description" "4-channel ESD protection, 0.5 pF, 5.5 V stand-off, IEC 61000-4-2 level 4, flow-through routing, USON-10 (DQA0010A) 1 x 2.5 mm" (at 369.57 59.69 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Manufacturer" "Texas Instruments" (at 369.57 59.69 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "MPN" "TPD4E05U06DQAR" (at 369.57 59.69 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Block" "blk.usb-c" (at 369.57 59.69 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "af1508c7-54cf-502c-811a-b1ceae6ed565"))
+  (pin "2" (uuid "ea49d4ad-6ab2-5d6a-a7a3-4dde466d043c"))
+  (pin "4" (uuid "b845198f-ed57-5b11-9517-b43d9cf1170b"))
+  (pin "5" (uuid "bca70d7c-315e-5329-b584-dbe7a6852429"))
+  (pin "10" (uuid "f0f4cfb8-a695-504b-9e0c-fca3bf83e518"))
+  (pin "9" (uuid "6ecf24be-96e4-5f5c-a6a4-ffd28ec30bc9"))
+  (pin "7" (uuid "939bb6bc-ddb6-5506-9890-236c74579bd6"))
+  (pin "6" (uuid "6bac82af-c8f5-5f71-89ef-f0612c990339"))
+  (pin "3" (uuid "aff8b1ec-9e66-5a6a-8076-c56c56a00a0d"))
+  (pin "8" (uuid "ecedc3b5-2886-5a94-9d5b-2d7bff992258"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/8d93b6ef-9685-50fd-859d-fdd97abf86f1" (reference "U4203") (unit 1))))
+)
+(wire (pts (xy 367.03 77.47) (xy 367.03 80.01)) (stroke (width 0) (type default)) (uuid "2529d013-df1e-5100-b10b-1ceac5c7b5c9"))
+(wire (pts (xy 372.11 77.47) (xy 372.11 80.01)) (stroke (width 0) (type default)) (uuid "3ea9e866-4f81-5efa-a406-ea2d86e60543"))
+(wire (pts (xy 367.03 80.01) (xy 372.11 80.01)) (stroke (width 0) (type default)) (uuid "182ebd4f-a980-510f-914b-e17f118a8542"))
+(wire (pts (xy 367.03 80.01) (xy 367.03 82.55)) (stroke (width 0) (type default)) (uuid "4f9e470d-c217-562f-baf5-67bce751086d"))
+(junction (at 367.03 80.01) (diameter 0) (color 0 0 0 0) (uuid "0b4c178c-b400-5494-b373-ec81813e50cf"))
+(symbol (lib_id "power:GND") (at 367.03 82.55 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "2cac695f-aca4-5f57-a1d8-5bdcaa330eca")
+  (property "Reference" "#PWR0608" (at 367.03 82.55 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Value" "GND" (at 367.03 86.36 0) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "" (at 367.03 82.55 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "" (at 367.03 82.55 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "d131cdf0-7323-556b-ba17-fdb18c108d10"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/8d93b6ef-9685-50fd-859d-fdd97abf86f1" (reference "#PWR0608") (unit 1))))
+)
+(wire (pts (xy 359.41 52.07) (xy 356.87 52.07)) (stroke (width 0) (type default)) (uuid "eb6db9de-d3c7-579e-9612-0fe1b3210fee"))
+(wire (pts (xy 359.41 54.61) (xy 356.87 54.61)) (stroke (width 0) (type default)) (uuid "0f128f95-427f-5282-85ae-b9248c1e4ff8"))
+(no_connect (at 359.41 59.69) (uuid "3433d2ce-a182-5dfc-859b-2f3b8c4e30c5"))
+(no_connect (at 359.41 62.23) (uuid "ed1e09a1-55cb-52d4-a2df-de82875691b0"))
+(no_connect (at 379.73 52.07) (uuid "55668f25-db18-5f10-b811-5de30c274eaa"))
+(no_connect (at 379.73 54.61) (uuid "6155d8f3-7b8b-5d85-9ab8-caae57b84f22"))
+(no_connect (at 379.73 59.69) (uuid "eee21195-752f-5efa-8881-1b50b9722087"))
+(no_connect (at 379.73 62.23) (uuid "ae747891-bb46-5621-bb82-4633ebcd48e0"))
+(rectangle (start 342.9 35.56) (end 400.05 88.9) (stroke (width 0) (type dash)) (fill (type none)) (uuid "de7bc43f-f8d3-566c-ab74-2f338c3830e2"))
+(text "D± ESD, 0.5 pF (line 62)" (exclude_from_sim no) (at 344.17 34.29 0) (effects (font (size 2.54 2.54)) (justify left bottom)) (uuid "08960633-3ed4-5d66-9a8d-5959594b8b7f"))
+(symbol (lib_id "Connector:TestPoint") (at 38.1 148.59 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom no) (on_board yes) (dnp no) (uuid "d47fc9b8-f239-5267-aa8c-6aab16e0fa67")
+  (property "Reference" "TP4201" (at 36.83 143.51 0) (effects (font (size 1.27 1.27)) (justify right)))
+  (property "Value" "USBC_SBU1" (at 36.83 146.05 0) (effects (font (size 1.27 1.27)) (justify right)))
+  (property "Footprint" "TestPoint:TestPoint_Pad_D1.0mm" (at 38.1 148.59 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "~" (at 38.1 148.59 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Description" "Test pad, 1.0 mm" (at 38.1 148.59 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Block" "blk.usb-c" (at 38.1 148.59 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "19474ce7-c1e8-54fc-bf11-1ea6a9112ea0"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/8d93b6ef-9685-50fd-859d-fdd97abf86f1" (reference "TP4201") (unit 1))))
+)
+(symbol (lib_id "Connector:TestPoint") (at 68.58 148.59 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom no) (on_board yes) (dnp no) (uuid "965a0cf3-9289-5e88-8e40-3965833d1b2c")
+  (property "Reference" "TP4202" (at 67.31 143.51 0) (effects (font (size 1.27 1.27)) (justify right)))
+  (property "Value" "USBC_SBU2" (at 67.31 146.05 0) (effects (font (size 1.27 1.27)) (justify right)))
+  (property "Footprint" "TestPoint:TestPoint_Pad_D1.0mm" (at 68.58 148.59 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "~" (at 68.58 148.59 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Description" "Test pad, 1.0 mm" (at 68.58 148.59 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Block" "blk.usb-c" (at 68.58 148.59 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "78c034c6-d83c-50fd-bfbc-b4bac6c9ce5d"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/8d93b6ef-9685-50fd-859d-fdd97abf86f1" (reference "TP4202") (unit 1))))
+)
+(symbol (lib_id "Connector:TestPoint") (at 99.06 148.59 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom no) (on_board yes) (dnp no) (uuid "7fb208af-48c0-5e29-b8e1-ec9d42a3d318")
+  (property "Reference" "TP4203" (at 97.79 143.51 0) (effects (font (size 1.27 1.27)) (justify right)))
+  (property "Value" "USBC_PROT_FLT_N" (at 97.79 146.05 0) (effects (font (size 1.27 1.27)) (justify right)))
+  (property "Footprint" "TestPoint:TestPoint_Pad_D1.0mm" (at 99.06 148.59 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "~" (at 99.06 148.59 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Description" "Test pad, 1.0 mm" (at 99.06 148.59 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Block" "blk.usb-c" (at 99.06 148.59 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "4e01816e-4f52-5090-9fe4-a8661d4af00c"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/8d93b6ef-9685-50fd-859d-fdd97abf86f1" (reference "TP4203") (unit 1))))
+)
+(rectangle (start 22.86 138.43) (end 104.14 171.45) (stroke (width 0) (type dash)) (fill (type none)) (uuid "966fc95a-0e50-5a98-87dc-0bc5dfb414e4"))
+(text "SBU and fault test pads" (exclude_from_sim no) (at 24.13 137.16 0) (effects (font (size 2.54 2.54)) (justify left bottom)) (uuid "dbb39482-3c62-55e5-a201-4e28289fc717"))
+(symbol (lib_id "onsemi:FUSB302BMPX") (at 149.86 185.42 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "6b6f9526-bb31-5141-af63-a92a0a879d5d")
+  (property "Reference" "U4204" (at 156.21 163.83 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Value" "FUSB302BMPX" (at 156.21 161.29 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Footprint" "onsemi:onsemi_510BR_WQFN-14-1EP_2.5x2.5mm_P0.5mm_EP1.45x1.45mm" (at 149.86 185.42 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "https://www.onsemi.com/pdf/datasheet/fusb302b-d.pdf" (at 149.86 185.42 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Description" "Programmable USB Type-C controller with USB PD BMC physical layer, I2C address 0x22, source/sink/DRP, dead-battery Rd, WQFN-14 (MLP) 2.5 x 2.5 mm, 0.5 mm pitch" (at 149.86 185.42 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Manufacturer" "onsemi" (at 149.86 185.42 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "MPN" "FUSB302BMPX" (at 149.86 185.42 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Block" "blk.usb-c" (at 149.86 185.42 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "6" (uuid "a4c0329e-20e7-58be-b5ee-60ba8964c798"))
+  (pin "7" (uuid "b8b229ea-3fd8-5848-b177-3d1338ab8907"))
+  (pin "2" (uuid "822f25d7-fbbc-5e2f-b95a-1e5641b12f79"))
+  (pin "5" (uuid "3c3de4b0-2a39-5325-933b-b2afd3d19c2a"))
+  (pin "10" (uuid "0b6f080c-e9db-535d-83f6-fddf9c6e00a3"))
+  (pin "11" (uuid "662385b7-a411-55fc-91f9-590badc6f435"))
+  (pin "1" (uuid "43b615b0-a553-5c12-b594-2b817abb4cd2"))
+  (pin "14" (uuid "b4f4affa-62ac-5eaf-a160-adaccc0d288a"))
+  (pin "3" (uuid "11ceec43-8283-575e-b7bd-410c850e2036"))
+  (pin "4" (uuid "231fc691-30f6-52e2-b6bd-e3770871f7fb"))
+  (pin "12" (uuid "172ad350-bd1c-5cb4-88da-a9a075092873"))
+  (pin "13" (uuid "31265235-49b2-5f5e-a511-aed6257bae1f"))
+  (pin "8" (uuid "e9f7fc9c-ffba-59c4-8db4-f0d97a11d2c5"))
+  (pin "9" (uuid "e223a0ee-51b6-5ef4-bc45-e27bb62c288a"))
+  (pin "15" (uuid "1dd2810c-75fe-5a3a-a24c-ef66122f215c"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/8d93b6ef-9685-50fd-859d-fdd97abf86f1" (reference "U4204") (unit 1))))
+)
+(wire (pts (xy 144.78 162.56) (xy 144.78 160.02)) (stroke (width 0) (type default)) (uuid "a36b942d-6cf0-544d-ab8f-dba93e4817c1"))
+(wire (pts (xy 147.32 162.56) (xy 147.32 160.02)) (stroke (width 0) (type default)) (uuid "21caeb34-7111-5420-9c44-443a10c649e9"))
+(wire (pts (xy 144.78 160.02) (xy 147.32 160.02)) (stroke (width 0) (type default)) (uuid "46ade513-7ef6-5c34-9e59-a48506aea590"))
+(wire (pts (xy 144.78 160.02) (xy 144.78 157.48)) (stroke (width 0) (type default)) (uuid "21c36815-46b2-5fad-a050-6e0be5b89358"))
+(junction (at 144.78 160.02) (diameter 0) (color 0 0 0 0) (uuid "56ff4492-92e9-5398-b0f5-f3c29b9bbb0b"))
+(symbol (lib_id "power:VCC") (at 144.78 157.48 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "8d599857-b5aa-54bb-86a1-f0fbb4ea9e31")
+  (property "Reference" "#PWR0609" (at 144.78 157.48 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Value" "vcc3v3_pmu" (at 144.78 153.67 90) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Footprint" "" (at 144.78 157.48 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "" (at 144.78 157.48 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "ed28aab3-ef5b-5da5-99ee-2f5f09f24598"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/8d93b6ef-9685-50fd-859d-fdd97abf86f1" (reference "#PWR0609") (unit 1))))
+)
+(wire (pts (xy 147.32 208.28) (xy 147.32 210.82)) (stroke (width 0) (type default)) (uuid "2cfc9391-e1e8-5f63-a6b8-80146b6070a3"))
+(wire (pts (xy 149.86 208.28) (xy 149.86 210.82)) (stroke (width 0) (type default)) (uuid "1198b150-5028-59d0-b629-b6bcdc6a8787"))
+(wire (pts (xy 152.4 208.28) (xy 152.4 210.82)) (stroke (width 0) (type default)) (uuid "8e003c7a-3308-5a9b-a601-9036c30f4e75"))
+(wire (pts (xy 147.32 210.82) (xy 152.4 210.82)) (stroke (width 0) (type default)) (uuid "a34df801-366d-5d86-81b2-b29de8e18c12"))
+(junction (at 149.86 210.82) (diameter 0) (color 0 0 0 0) (uuid "bb0c0d7d-02c6-5d2f-b9eb-8a1c959f8d10"))
+(wire (pts (xy 147.32 210.82) (xy 147.32 213.36)) (stroke (width 0) (type default)) (uuid "87f8d6cb-852e-584b-858a-ff2849032c55"))
+(junction (at 147.32 210.82) (diameter 0) (color 0 0 0 0) (uuid "698d3bb9-4053-568a-a27d-0a0325d160ca"))
+(symbol (lib_id "power:GND") (at 147.32 213.36 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "9854999f-b0e5-5550-871f-d6b36ab1985a")
+  (property "Reference" "#PWR0610" (at 147.32 213.36 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Value" "GND" (at 147.32 217.17 0) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "" (at 147.32 213.36 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "" (at 147.32 213.36 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "85584a8a-7734-5cd4-b7d6-927736212904"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/8d93b6ef-9685-50fd-859d-fdd97abf86f1" (reference "#PWR0610") (unit 1))))
+)
+(wire (pts (xy 137.16 180.34) (xy 134.62 180.34)) (stroke (width 0) (type default)) (uuid "627ad49a-f50f-5bd1-980e-a25497fbfe98"))
+(wire (pts (xy 137.16 182.88) (xy 134.62 182.88)) (stroke (width 0) (type default)) (uuid "0f311ec9-4305-59e9-9267-1a4fef32a3e1"))
+(wire (pts (xy 137.16 187.96) (xy 118.11 187.96)) (stroke (width 0) (type default)) (uuid "73ff3adf-4f8e-5543-bc9d-f5c47fed46bc"))
+(symbol (lib_id "power:VCC") (at 118.11 187.96 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "af486658-421d-55b9-90fb-1237200343d1")
+  (property "Reference" "#PWR0611" (at 118.11 187.96 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Value" "USBC_VBUS" (at 118.11 184.15 0) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "" (at 118.11 187.96 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "" (at 118.11 187.96 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "37421c5e-8419-5f96-9897-d166a0e13268"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/8d93b6ef-9685-50fd-859d-fdd97abf86f1" (reference "#PWR0611") (unit 1))))
+)
+(wire (pts (xy 162.56 180.34) (xy 165.1 180.34)) (stroke (width 0) (type default)) (uuid "a89c56a8-ad38-5b5e-8e9e-8e1c86915e75"))
+(wire (pts (xy 162.56 185.42) (xy 165.1 185.42)) (stroke (width 0) (type default)) (uuid "57224c45-8fc3-5d5e-ad14-6b5e001f9a6c"))
+(wire (pts (xy 162.56 187.96) (xy 165.1 187.96)) (stroke (width 0) (type default)) (uuid "ca9daadd-ef82-589a-9181-7d2a2361ac1b"))
+(wire (pts (xy 162.56 190.5) (xy 165.1 190.5)) (stroke (width 0) (type default)) (uuid "11802d64-62e4-5673-a0a2-328bcacc78e5"))
+(wire (pts (xy 162.56 193.04) (xy 165.1 193.04)) (stroke (width 0) (type default)) (uuid "f1e45452-fcbc-555b-9fb0-40d903c14c62"))
+(no_connect (at 152.4 162.56) (uuid "44b96d51-b829-5f4c-b449-ed4fc07c0d3a"))
+(no_connect (at 154.94 162.56) (uuid "197af5d2-5571-5c68-afe1-947e6f748534"))
+(symbol (lib_id "Device:C") (at 182.88 151.13 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "6fe0466f-1937-5e4d-a1ac-ed9d8aa58f1b")
+  (property "Reference" "C4203" (at 185.42 149.86 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Value" "1 µF" (at 185.42 152.4 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Footprint" "Capacitor_SMD:C_0402_1005Metric" (at 182.88 151.13 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "https://www.murata.com/en-us/products/productdetail?partno=GRM155R61A105KE15D" (at 182.88 151.13 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Description" "Capacitor, 1 µF, 10 V, X5R, 0402" (at 182.88 151.13 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Manufacturer" "Murata" (at 182.88 151.13 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "MPN" "GRM155R61A105KE15D" (at 182.88 151.13 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Block" "blk.usb-c" (at 182.88 151.13 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "1f166219-bfb0-517c-ab17-02b5cb997bb9"))
+  (pin "2" (uuid "6b6dc278-809f-53f5-a302-19aae67dc549"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/8d93b6ef-9685-50fd-859d-fdd97abf86f1" (reference "C4203") (unit 1))))
+)
+(wire (pts (xy 182.88 147.32) (xy 182.88 144.78)) (stroke (width 0) (type default)) (uuid "ae734ca4-275b-5e14-94ca-f8eb41768af3"))
+(wire (pts (xy 182.88 154.94) (xy 182.88 157.48)) (stroke (width 0) (type default)) (uuid "fe4ac63e-4b43-5b30-b6bb-44beb678c82f"))
+(symbol (lib_id "power:GND") (at 182.88 157.48 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "9ffaa3c2-7702-51d5-a62e-1ca764438ebc")
+  (property "Reference" "#PWR0612" (at 182.88 157.48 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Value" "GND" (at 182.88 161.29 0) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "" (at 182.88 157.48 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "" (at 182.88 157.48 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "86eed58a-8773-58af-914e-2e7660b86175"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/8d93b6ef-9685-50fd-859d-fdd97abf86f1" (reference "#PWR0612") (unit 1))))
+)
+(symbol (lib_id "Device:C") (at 195.58 151.13 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "cf54a390-1881-5cf2-992a-29f49396ff26")
+  (property "Reference" "C4204" (at 198.12 149.86 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Value" "100 nF" (at 198.12 152.4 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Footprint" "Capacitor_SMD:C_0402_1005Metric" (at 195.58 151.13 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "https://www.murata.com/en-us/products/productdetail?partno=GRM155R71C104KA88D" (at 195.58 151.13 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Description" "Capacitor, 100 nF, 16 V, X7R, 0402" (at 195.58 151.13 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Manufacturer" "Murata" (at 195.58 151.13 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "MPN" "GRM155R71C104KA88D" (at 195.58 151.13 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Block" "blk.usb-c" (at 195.58 151.13 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "fab2e3ff-adea-5073-a017-1a44e34b78ed"))
+  (pin "2" (uuid "fe6b1d45-f855-5b9c-a632-0fafa7a3f117"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/8d93b6ef-9685-50fd-859d-fdd97abf86f1" (reference "C4204") (unit 1))))
+)
+(wire (pts (xy 195.58 147.32) (xy 195.58 144.78)) (stroke (width 0) (type default)) (uuid "66f299e6-d093-59df-a86e-66ee683d5c41"))
+(wire (pts (xy 182.88 144.78) (xy 195.58 144.78)) (stroke (width 0) (type default)) (uuid "da17084f-731b-5f4a-8768-96444ce3ab6d"))
+(junction (at 182.88 144.78) (diameter 0) (color 0 0 0 0) (uuid "32ea690a-99b4-51c6-bb26-0e1232c07637"))
+(wire (pts (xy 195.58 154.94) (xy 195.58 157.48)) (stroke (width 0) (type default)) (uuid "39a472b5-0428-54a6-94b9-403094706d69"))
+(symbol (lib_id "power:GND") (at 195.58 157.48 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "38cf51e7-f597-523a-9ace-2566e3ec0fa7")
+  (property "Reference" "#PWR0613" (at 195.58 157.48 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Value" "GND" (at 195.58 161.29 0) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "" (at 195.58 157.48 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "" (at 195.58 157.48 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "ee5f91df-ecba-583c-98be-6b1a40937ed2"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/8d93b6ef-9685-50fd-859d-fdd97abf86f1" (reference "#PWR0613") (unit 1))))
+)
+(symbol (lib_id "power:VCC") (at 182.88 144.78 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "62cbbab1-509e-59e3-a6c5-09ca7f38ca87")
+  (property "Reference" "#PWR0614" (at 182.88 144.78 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Value" "vcc3v3_pmu" (at 182.88 140.97 0) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "" (at 182.88 144.78 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "" (at 182.88 144.78 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "f46ef6d4-9c56-5a82-b8e7-4601f503fb4b"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/8d93b6ef-9685-50fd-859d-fdd97abf86f1" (reference "#PWR0614") (unit 1))))
+)
+(rectangle (start 109.22 138.43) (end 222.25 219.71) (stroke (width 0) (type dash)) (fill (type none)) (uuid "25e3e59e-84a7-5ccd-99e9-c6b62edc2106"))
+(text "Port controller: FUSB302B at I2C1 0x22 (line 41)" (exclude_from_sim no) (at 110.49 137.16 0) (effects (font (size 2.54 2.54)) (justify left bottom)) (uuid "4ecd74ed-7bfa-5013-ab3a-fe02bc3988d6"))
+(symbol (lib_id "Device:R") (at 247.65 154.94 90) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "9d4668d5-9cc2-5e1e-aa79-82f95d0308ab")
+  (property "Reference" "R4202" (at 247.65 152.4 90) (effects (font (size 1.27 1.27))))
+  (property "Value" "2.2 Ω" (at 247.65 157.48 90) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "Resistor_SMD:R_0402_1005Metric" (at 247.65 154.94 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "https://yageogroup.com/en/ProductSearch/PartNumberSearch?part=RC0402FR-072R2L" (at 247.65 154.94 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Description" "Resistor, 2.2 Ω, 1 %, 1/16 W, 0402" (at 247.65 154.94 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Manufacturer" "YAGEO" (at 247.65 154.94 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "MPN" "RC0402FR-072R2L" (at 247.65 154.94 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Block" "blk.usb-c" (at 247.65 154.94 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "2087f1d7-5532-55ca-8c83-30eba205e144"))
+  (pin "2" (uuid "b8043b24-1127-58cb-a995-8d2c8a64b056"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/8d93b6ef-9685-50fd-859d-fdd97abf86f1" (reference "R4202") (unit 1))))
+)
+(wire (pts (xy 243.84 154.94) (xy 241.3 154.94)) (stroke (width 0) (type default)) (uuid "b31ff9d5-8ba2-5ee1-aec3-a66785e5f412"))
+(wire (pts (xy 251.46 154.94) (xy 254 154.94)) (stroke (width 0) (type default)) (uuid "5a81e8b4-33c8-5132-8814-37a2c7679f75"))
+(symbol (lib_id "Device:R") (at 247.65 165.1 90) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "8fa32edf-665d-56d0-90f2-6491442aa092")
+  (property "Reference" "R4203" (at 247.65 162.56 90) (effects (font (size 1.27 1.27))))
+  (property "Value" "2.2 Ω" (at 247.65 167.64 90) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "Resistor_SMD:R_0402_1005Metric" (at 247.65 165.1 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "https://yageogroup.com/en/ProductSearch/PartNumberSearch?part=RC0402FR-072R2L" (at 247.65 165.1 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Description" "Resistor, 2.2 Ω, 1 %, 1/16 W, 0402" (at 247.65 165.1 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Manufacturer" "YAGEO" (at 247.65 165.1 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "MPN" "RC0402FR-072R2L" (at 247.65 165.1 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Block" "blk.usb-c" (at 247.65 165.1 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "32595e32-ed59-5fc6-be6d-6449f3bfaaed"))
+  (pin "2" (uuid "f41e75d7-13b6-5907-9bb0-cd15351f4ffe"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/8d93b6ef-9685-50fd-859d-fdd97abf86f1" (reference "R4203") (unit 1))))
+)
+(wire (pts (xy 243.84 165.1) (xy 241.3 165.1)) (stroke (width 0) (type default)) (uuid "f18310e0-2d2d-5735-a871-e62c48f5a4a1"))
+(wire (pts (xy 251.46 165.1) (xy 254 165.1)) (stroke (width 0) (type default)) (uuid "5ed03509-c7af-569f-858f-5926f622da0a"))
+(symbol (lib_id "Device:R") (at 280.67 162.56 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "a0efd5cd-c520-5bff-a96c-5f7c9149ed96")
+  (property "Reference" "R4204" (at 281.94 161.29 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Value" "10 kΩ" (at 281.94 163.83 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Footprint" "Resistor_SMD:R_0402_1005Metric" (at 280.67 162.56 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "https://yageogroup.com/en/ProductSearch/PartNumberSearch?part=RC0402FR-0710KL" (at 280.67 162.56 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Description" "Resistor, 10 kΩ, 1 %, 1/16 W, 0402" (at 280.67 162.56 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Manufacturer" "YAGEO" (at 280.67 162.56 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "MPN" "RC0402FR-0710KL" (at 280.67 162.56 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Block" "blk.usb-c" (at 280.67 162.56 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "e97b8c0c-97ec-591a-850f-4de1f24ed2f4"))
+  (pin "2" (uuid "6a37f2df-d710-51e9-accf-3be91b6e40e6"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/8d93b6ef-9685-50fd-859d-fdd97abf86f1" (reference "R4204") (unit 1))))
+)
+(wire (pts (xy 280.67 158.75) (xy 280.67 156.21)) (stroke (width 0) (type default)) (uuid "3a78fd89-4c93-594e-9c3b-908544693812"))
+(symbol (lib_id "power:VCC") (at 280.67 156.21 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "b2a5790d-4539-53d7-8781-51a48c0853c6")
+  (property "Reference" "#PWR0615" (at 280.67 156.21 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Value" "USBC_VBUS" (at 280.67 152.4 0) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "" (at 280.67 156.21 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "" (at 280.67 156.21 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "e45873d1-ec38-5522-8295-4af252d4c882"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/8d93b6ef-9685-50fd-859d-fdd97abf86f1" (reference "#PWR0615") (unit 1))))
+)
+(symbol (lib_id "Device:R") (at 293.37 162.56 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "9ce2533b-427b-5a99-8da4-cd7f46cd8eb6")
+  (property "Reference" "R4205" (at 294.64 161.29 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Value" "15 kΩ" (at 294.64 163.83 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Footprint" "Resistor_SMD:R_0402_1005Metric" (at 293.37 162.56 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "https://yageogroup.com/en/ProductSearch/PartNumberSearch?part=RC0402FR-0715KL" (at 293.37 162.56 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Description" "Resistor, 15 kΩ, 1 %, 1/16 W, 0402" (at 293.37 162.56 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Manufacturer" "YAGEO" (at 293.37 162.56 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "MPN" "RC0402FR-0715KL" (at 293.37 162.56 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Block" "blk.usb-c" (at 293.37 162.56 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "dea8de66-cc89-597e-8669-26981feb3666"))
+  (pin "2" (uuid "de631127-e6fa-5bc5-a32f-eb2f82630f1f"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/8d93b6ef-9685-50fd-859d-fdd97abf86f1" (reference "R4205") (unit 1))))
+)
+(wire (pts (xy 293.37 158.75) (xy 293.37 156.21)) (stroke (width 0) (type default)) (uuid "5d3f2447-e7e7-536b-83de-d30c9d3ea540"))
+(wire (pts (xy 293.37 166.37) (xy 293.37 168.91)) (stroke (width 0) (type default)) (uuid "9fb8b9d8-9199-549f-a904-8a48a35acef3"))
+(symbol (lib_id "power:GND") (at 293.37 168.91 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "fe26fb85-13a8-5758-b684-c053fa4717a0")
+  (property "Reference" "#PWR0616" (at 293.37 168.91 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Value" "GND" (at 293.37 172.72 0) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "" (at 293.37 168.91 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "" (at 293.37 168.91 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "ed7915e6-7312-513b-b36e-159d0c4e7b31"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/8d93b6ef-9685-50fd-859d-fdd97abf86f1" (reference "#PWR0616") (unit 1))))
+)
+(rectangle (start 227.33 138.43) (end 372.11 186.69) (stroke (width 0) (type dash)) (fill (type none)) (uuid "de9e4be9-d340-5244-b89c-305042a3b126"))
+(text "D± series 2.2 Ω (HDG p. 56); VBUSDET divider (HDG Figure 2-43)" (exclude_from_sim no) (at 228.6 137.16 0) (effects (font (size 2.54 2.54)) (justify left bottom)) (uuid "a2cfb9cf-e9c7-59d8-be9a-30611f1eb43e"))
+(text_box "Notes\n1. Function: the main USB-C receptacle: USB 2.0 OTG0 and USB PD sink (5-12 V into the TPS2121)\n   or source (5 V from eFuse #C); FUSB302B with the mainline fusb302 + tcpm drivers.\n2. Absent state: never omitted. Dead battery: TPD8S300A RPD_Gx tied to C_CCx so a source\n   sees Rd with the protection unpowered (§9.2.2.2); its CC FETs pass once vcc3v3_pmu is up.\n3. D±: TPD4E05U06 (0.5 pF) at the receptacle; the TPD8S300A D1-D4 clamps are grounded as\n   unused (§9.2.2.6). Common-mode choke footprint (HDG Figure 2-44): not fitted, open item.\n4. VBUSDET: HDG divider 10 kΩ / 15 kΩ (3.0 V at 5 V); the pin's rating at 9-12 V VBUS is\n   UNVERIFIED (BOM §7 item 41): bench item before a PD contract above 5 V is enabled.\n5. VCONN not sourced (no e-marked cable supply): VCONN pins open, UNVERIFIED termination.\n6. SBU to test pads (debug UART option, feature blocks #9); the TPD8S300A FLT on a test pad." (exclude_from_sim no) (at 275.59 222.25 0) (size 129.54 26.67) (margins 1.905 1.905 1.905 1.905) (stroke (width 0) (type default)) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "4376fab5-7f16-5138-83ab-df32904aa87f"))
+(text "Interface" (exclude_from_sim no) (at 22.86 243.84 0) (effects (font (size 2.54 2.54)) (justify left bottom)) (uuid "5498434b-0f89-5467-a7e9-99205144fe33"))
+(table (column_count 3) (border (external yes) (header yes) (stroke (width 0) (type solid))) (separators (rows yes) (cols yes) (stroke (width 0) (type solid))) (column_widths 38.1 22.86 57.15) (row_heights 5.08 7.62 5.08 5.08 7.62 5.08) (cells (table_cell "Net" (exclude_from_sim no) (at 22.86 245.11 0) (size 38.1 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27) (bold yes)) (justify left top)) (uuid "8a514b06-a622-56e1-9b4f-a5db012174aa")) (table_cell "Direction" (exclude_from_sim no) (at 60.96 245.11 0) (size 22.86 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27) (bold yes)) (justify left top)) (uuid "1b79d624-8ff2-5d81-a133-c449304c7596")) (table_cell "Absent state (block not fitted)" (exclude_from_sim no) (at 83.82 245.11 0) (size 57.15 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27) (bold yes)) (justify left top)) (uuid "d2966dc5-6b2f-58be-af81-3a469107b245")) (table_cell "USBC_VBUS" (exclude_from_sim no) (at 22.86 250.19 0) (size 38.1 7.62) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "39e63193-1f2f-59e4-b79f-0b769d2b1a6a")) (table_cell "Supply in / out" (exclude_from_sim no) (at 60.96 250.19 0) (size 22.86 7.62) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "53406e25-9b3b-53a5-815e-fb49c4fcfd5a")) (table_cell "Sink to the TPS2121 IN1 (blk.charger); source from eFuse #C" (exclude_from_sim no) (at 83.82 250.19 0) (size 57.15 7.62) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "150b011a-bed2-5e97-8147-c5d2093c8733")) (table_cell "USBC_DP, USBC_DM" (exclude_from_sim no) (at 22.86 257.81 0) (size 38.1 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "529373a4-29be-58ec-92bf-4080f80f5a11")) (table_cell "Bidirectional" (exclude_from_sim no) (at 60.96 257.81 0) (size 22.86 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "25e61b46-cb60-5357-a99a-716bdb6a56b2")) (table_cell "OTG0, 2.2 Ω here; MaskROM download port" (exclude_from_sim no) (at 83.82 257.81 0) (size 57.15 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "d685e5b6-f498-5195-b0bb-f932113a19fb")) (table_cell "USBC_VBUSDET" (exclude_from_sim no) (at 22.86 262.89 0) (size 38.1 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "7ddea069-f2a1-54e4-b65a-6e7dad75abf1")) (table_cell "Output" (exclude_from_sim no) (at 60.96 262.89 0) (size 22.86 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "6b91b394-e916-5c7b-9ccd-33cba380af28")) (table_cell "OTG0 VBUSDET, 10 kΩ / 15 kΩ from VBUS" (exclude_from_sim no) (at 83.82 262.89 0) (size 57.15 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "6855088f-2340-59c6-9dc4-ec07a97e6284")) (table_cell "USBC_INT_N" (exclude_from_sim no) (at 22.86 267.97 0) (size 38.1 7.62) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "8bb3f4a4-d6bc-59cd-8964-7a424a9b5c6f")) (table_cell "Output" (exclude_from_sim no) (at 60.96 267.97 0) (size 22.86 7.62) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "f5efb157-b358-5d3d-b4a9-dc5618381fa6")) (table_cell "FUSB302B INT_N, open drain; pull-up on blk.soc-pmuio" (exclude_from_sim no) (at 83.82 267.97 0) (size 57.15 7.62) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "f5ab5d10-98a8-5fc9-8c7e-0283f97bed87")) (table_cell "I2C1_SCL, I2C1_SDA" (exclude_from_sim no) (at 22.86 275.59 0) (size 38.1 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "87373d7e-9caa-5234-bab2-2dee718c583d")) (table_cell "Bidirectional" (exclude_from_sim no) (at 60.96 275.59 0) (size 22.86 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "46dc2ae7-fa97-5418-9882-f5538aeee86c")) (table_cell "FUSB302B at 0x22" (exclude_from_sim no) (at 83.82 275.59 0) (size 57.15 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "b0deaa51-2c62-5d26-9be6-f6a5489a5a36"))))
+(text "Rails" (exclude_from_sim no) (at 148.59 243.84 0) (effects (font (size 2.54 2.54)) (justify left bottom)) (uuid "fae60fe0-5ecb-5d6f-98a9-15a242f6b25b"))
+(table (column_count 3) (border (external yes) (header yes) (stroke (width 0) (type solid))) (separators (rows yes) (cols yes) (stroke (width 0) (type solid))) (column_widths 27.94 35.56 55.88) (row_heights 5.08 7.62 5.08) (cells (table_cell "Rail" (exclude_from_sim no) (at 148.59 245.11 0) (size 27.94 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27) (bold yes)) (justify left top)) (uuid "e1271d1d-a3cd-5fa6-b142-9ffb31c023dc")) (table_cell "Capacitors" (exclude_from_sim no) (at 176.53 245.11 0) (size 35.56 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27) (bold yes)) (justify left top)) (uuid "8d47f5ce-ae10-5f96-87b8-eec130202122")) (table_cell "Requirement and source" (exclude_from_sim no) (at 212.09 245.11 0) (size 55.88 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27) (bold yes)) (justify left top)) (uuid "c31492c2-d204-5ded-9e06-7a2a6b16f903")) (table_cell "vcc3v3_pmu" (exclude_from_sim no) (at 148.59 250.19 0) (size 27.94 7.62) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "d0e330b5-f343-5527-a309-c87fe067b805")) (table_cell "1 µF + 100 nF (FUSB302B); 1 µF (TPD8S300A VPWR)" (exclude_from_sim no) (at 176.53 250.19 0) (size 35.56 7.62) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "32501d3c-cd90-5a31-96a7-2d4de2abd3fb")) (table_cell "Datasheets: TPD8S300A §10" (exclude_from_sim no) (at 212.09 250.19 0) (size 55.88 7.62) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "14309595-bb34-5f3f-9baa-89833177fa5b")) (table_cell "USBC_VBIAS" (exclude_from_sim no) (at 148.59 257.81 0) (size 27.94 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "a8bee8d6-73d9-5ff0-9c3e-4da08859ed62")) (table_cell "100 nF 50 V" (exclude_from_sim no) (at 176.53 257.81 0) (size 35.56 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "f691c78f-b969-581c-a323-04029335eeba")) (table_cell "TPD8S300A §9.2.2.1: ≥ 35 V rated" (exclude_from_sim no) (at 212.09 257.81 0) (size 55.88 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "96d1f83e-e845-5a99-9678-d64580b41ff2"))))
+(label "USBC_C_CC1" (at 39.37 76.2 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "47a37011-81a7-5ca4-a52c-cea9f87bc390"))
+(label "USBC_C_CC2" (at 39.37 78.74 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "9a3e43bd-e3c9-5f41-8213-02041f8f3a37"))
+(label "USBC_DP_C" (at 39.37 83.82 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "8f2f1150-812d-56a8-8dc1-c22305a60337"))
+(label "USBC_DM_C" (at 39.37 86.36 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "bec52f96-5052-5180-865d-8521cb66de61"))
+(label "USBC_DP_C" (at 39.37 88.9 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "71151140-9b63-5f16-baaf-06e94823df95"))
+(label "USBC_DM_C" (at 39.37 91.44 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "4eba25ea-0e9c-5e03-b624-923867203d44"))
+(label "USBC_C_SBU1" (at 39.37 96.52 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "c69fd1b5-d09a-578c-8de9-ef3ec956e909"))
+(label "USBC_C_SBU2" (at 39.37 99.06 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "a5bccc3c-4148-50bd-a450-d33a5e4a5fc8"))
+(label "USBC_C_CC1" (at 237.49 71.12 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "09f9acea-1991-5e1d-aeb0-08d04e95d943"))
+(label "USBC_C_CC2" (at 237.49 73.66 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "2ea34c86-3d75-5001-a383-ac57e260ff0f"))
+(label "USBC_C_CC1" (at 237.49 78.74 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "0dfeaf56-18f4-519c-8915-9f5178d6877b"))
+(label "USBC_C_CC2" (at 237.49 81.28 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "67b6fca2-8a96-5c5a-a63a-3dfdaf8c4763"))
+(label "USBC_C_SBU1" (at 237.49 86.36 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "667e7fe7-3200-5647-b323-fe23d2ae9bdd"))
+(label "USBC_C_SBU2" (at 237.49 88.9 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "4c5b3c50-3fe0-505a-aba8-b3434dad6e85"))
+(label "USBC_CC1" (at 267.97 71.12 0) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "40563800-b649-5f8f-94c1-7c681d73bcb9"))
+(label "USBC_CC2" (at 267.97 73.66 0) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "3080ab3e-b5db-56b5-ad13-927507d5497b"))
+(label "USBC_SBU1" (at 267.97 78.74 0) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "8688e7f4-3fbe-50dd-8e6b-084b444f30c7"))
+(label "USBC_SBU2" (at 267.97 81.28 0) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "cd56574d-369d-58bf-9b87-3bed43e97e31"))
+(label "USBC_PROT_FLT_N" (at 267.97 86.36 0) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "38168891-a1b7-5d27-a3f5-dae1b1c92909"))
+(label "USBC_VBIAS" (at 255.27 53.34 90) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "bd6ed8d0-5239-57f7-8e64-8b6c2786054c"))
+(label "USBC_VBIAS" (at 292.1 50.8 90) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "2fdf486c-7ae4-5137-9b86-d01df21037cc"))
+(label "USBC_PROT_FLT_N" (at 325.12 60.96 270) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "367712f4-ad37-5e21-ae0f-9399343344cb"))
+(label "USBC_DP_C" (at 356.87 52.07 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "79882626-1f58-5b39-b9fc-2752711992ad"))
+(label "USBC_DM_C" (at 356.87 54.61 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "99e08b16-fd0a-511b-950a-6e0e81878016"))
+(label "USBC_SBU1" (at 38.1 148.59 270) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "083cbccf-717e-5d67-848f-12831035578f"))
+(label "USBC_SBU2" (at 68.58 148.59 270) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "19de127f-f191-53f7-bc82-303e8a5451db"))
+(label "USBC_PROT_FLT_N" (at 99.06 148.59 270) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "24bf657b-ec65-51dd-98c2-4b8046f9f4e3"))
+(label "I2C1_SCL" (at 134.62 180.34 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "b5e11a18-fc37-5c20-a10c-8e85becf2531"))
+(label "I2C1_SDA" (at 134.62 182.88 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "e758be89-3f8a-505b-aed7-375ee6696432"))
+(label "USBC_INT_N" (at 165.1 180.34 0) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "24f18e7f-0079-5342-9580-f65d46d33be1"))
+(label "USBC_CC1" (at 165.1 185.42 0) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "f300ed81-6987-5dfd-9240-5cb13ecb1ac0"))
+(label "USBC_CC1" (at 165.1 187.96 0) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "088634a6-48f2-524a-a4c2-6b1b286f0628"))
+(label "USBC_CC2" (at 165.1 190.5 0) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "b1c35a57-ccb2-51d1-8024-f7852c4dcffb"))
+(label "USBC_CC2" (at 165.1 193.04 0) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "2029f6a7-4190-53ed-868b-a729e428c9c1"))
+(label "USBC_DP_C" (at 241.3 154.94 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "ad1158aa-5650-578f-bd75-a41a2e659163"))
+(label "USBC_DP" (at 254 154.94 0) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "d592c3c4-9613-5d90-afa8-e2d42b9a7e3d"))
+(label "USBC_DM_C" (at 241.3 165.1 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "79a9c1d3-01f9-55ca-9204-faf20557efff"))
+(label "USBC_DM" (at 254 165.1 0) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "ae1b5424-e59b-55e4-96c7-b4d5efe84906"))
+(label "USBC_VBUSDET" (at 280.67 166.37 270) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "25d28ef5-ea47-5fbf-b1e8-3f10339d0f55"))
+(label "USBC_VBUSDET" (at 293.37 156.21 90) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "68e84012-70b4-50dd-a9f9-37d80ab9277c"))
+(bus (pts (xy 45.72 234.95) (xy 50.8 234.95)) (stroke (width 0) (type default)) (uuid "7a97b8ff-d416-536b-86b1-27d52de2b95a"))
+(hierarchical_label "{I2C1}" (shape bidirectional) (at 45.72 234.95 180) (effects (font (size 1.27 1.27)) (justify right)) (uuid "cb7cbde9-c453-5eab-9a1a-0b2b08650099"))
+(bus (pts (xy 45.72 229.87) (xy 50.8 229.87)) (stroke (width 0) (type default)) (uuid "443162ad-ed9e-524a-a551-254f1ef9e87d"))
+(hierarchical_label "{IO_IRQ}" (shape bidirectional) (at 45.72 229.87 180) (effects (font (size 1.27 1.27)) (justify right)) (uuid "43f2a920-5c10-5cb6-9224-11af7b7a05d2"))
+(bus (pts (xy 45.72 224.79) (xy 50.8 224.79)) (stroke (width 0) (type default)) (uuid "4f123583-2102-50f2-962a-263e2ae6e6d4"))
+(hierarchical_label "{USB}" (shape bidirectional) (at 45.72 224.79 180) (effects (font (size 1.27 1.27)) (justify right)) (uuid "bb6ff220-6dcd-5e83-979f-62c46d854ca7"))
+(embedded_fonts no))

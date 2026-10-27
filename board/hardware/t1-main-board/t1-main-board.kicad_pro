@@ -1,0 +1,980 @@
+{
+  "meta": {
+    "filename": "t1-main-board.kicad_pro",
+    "version": 3
+  },
+  "erc": {
+    "erc_exclusions": [],
+    "meta": {
+      "version": 0
+    },
+    "rule_severities": {
+      "endpoint_off_grid": "error",
+      "four_way_junction": "error",
+      "pin_not_connected": "error",
+      "label_dangling": "error",
+      "hier_label_mismatch": "error",
+      "power_pin_not_driven": "error",
+      "unresolved_variable": "error",
+      "unannotated": "error",
+      "duplicate_reference": "error",
+      "missing_power_pin": "error",
+      "multiple_net_names": "error",
+      "similar_labels": "error",
+      "similar_power": "error",
+      "similar_label_and_power": "error",
+      "same_local_global_label": "error",
+      "same_local_global_power": "error",
+      "no_connect_connected": "error",
+      "no_connect_dangling": "error",
+      "wire_dangling": "error",
+      "unconnected_wire_endpoint": "error",
+      "pin_not_driven": "error",
+      "undefined_netclass": "error",
+      "ground_pin_not_ground": "error",
+      "lib_symbol_issues": "warning",
+      "lib_symbol_mismatch": "warning",
+      "footprint_link_issues": "warning",
+      "footprint_filter": "ignore",
+      "single_global_label": "warning",
+      "isolated_pin_label": "warning",
+      "missing_input_pin": "warning",
+      "missing_bidi_pin": "warning",
+      "missing_unit": "warning",
+      "net_not_bus_member": "warning",
+      "pin_to_pin": "warning",
+      "simulation_model_issue": "ignore",
+      "bus_definition_conflict": "error",
+      "bus_entry_needed": "error",
+      "bus_to_bus_conflict": "error",
+      "bus_to_net_conflict": "error",
+      "different_unit_footprint": "error",
+      "different_unit_net": "error",
+      "duplicate_sheet_names": "error",
+      "extra_units": "error",
+      "label_multiple_wires": "warning",
+      "unit_value_mismatch": "error",
+      "stacked_pin_name": "warning",
+      "field_name_whitespace": "warning"
+    }
+  },
+  "schematic": {
+    "page_layout_descr_file": "${KIPRJMOD}/../lib/opendap/drawing-sheets/opendap.kicad_wks",
+    "connection_grid_size": 50.0,
+    "annotate_start_num": 0,
+    "subpart_id_separator": 46,
+    "subpart_first_id": 65,
+    "drawing": {
+      "default_text_size": 50.0,
+      "default_line_thickness": 6.0,
+      "default_wire_thickness": 6.0,
+      "default_bus_thickness": 12.0,
+      "default_junction_size": 40.0,
+      "junction_size_choice": 3,
+      "label_size_ratio": 0.3,
+      "pin_symbol_size": 25.0,
+      "text_offset_ratio": 0.3,
+      "intersheets_ref_show": true,
+      "intersheets_ref_short": false,
+      "intersheets_ref_prefix": "[",
+      "intersheets_ref_suffix": "]",
+      "intersheets_ref_own_page": false,
+      "field_names": [
+        {
+          "name": "Manufacturer",
+          "url": false,
+          "visible": false
+        },
+        {
+          "name": "MPN",
+          "url": false,
+          "visible": false
+        },
+        {
+          "name": "Spec",
+          "url": false,
+          "visible": true
+        },
+        {
+          "name": "Block",
+          "url": false,
+          "visible": false
+        },
+        {
+          "name": "Constraints",
+          "url": false,
+          "visible": false
+        },
+        {
+          "name": "Manufacturer_2",
+          "url": false,
+          "visible": false
+        },
+        {
+          "name": "MPN_2",
+          "url": false,
+          "visible": false
+        },
+        {
+          "name": "Alternate",
+          "url": false,
+          "visible": false
+        },
+        {
+          "name": "Second_Source",
+          "url": false,
+          "visible": false
+        },
+        {
+          "name": "Checked",
+          "url": false,
+          "visible": false
+        }
+      ]
+    },
+    "meta": {
+      "version": 1
+    },
+    "bus_aliases": {
+      "DDR_CHA": [
+        "DDR_A0_A",
+        "DDR_A1_A",
+        "DDR_A2_A",
+        "DDR_A3_A",
+        "DDR_A4_A",
+        "DDR_A5_A",
+        "DDR_CS0_A_N",
+        "DDR_CKE0_A",
+        "DDR_ODT0_CA_A",
+        "DDR_CLKP_A",
+        "DDR_CLKN_A",
+        "DDR_DQ0_A",
+        "DDR_DQ1_A",
+        "DDR_DQ2_A",
+        "DDR_DQ3_A",
+        "DDR_DQ4_A",
+        "DDR_DQ5_A",
+        "DDR_DQ6_A",
+        "DDR_DQ7_A",
+        "DDR_DM0_A",
+        "DDR_DQS0P_A",
+        "DDR_DQS0N_A",
+        "DDR_DQ8_A",
+        "DDR_DQ9_A",
+        "DDR_DQ10_A",
+        "DDR_DQ11_A",
+        "DDR_DQ12_A",
+        "DDR_DQ13_A",
+        "DDR_DQ14_A",
+        "DDR_DQ15_A",
+        "DDR_DM1_A",
+        "DDR_DQS1P_A",
+        "DDR_DQS1N_A",
+        "DDR_RESET_N"
+      ],
+      "DDR_CHB": [
+        "DDR_A0_B",
+        "DDR_A1_B",
+        "DDR_A2_B",
+        "DDR_A3_B",
+        "DDR_A4_B",
+        "DDR_A5_B",
+        "DDR_CS0_B_N",
+        "DDR_CKE0_B",
+        "DDR_ODT0_CA_B",
+        "DDR_CLKP_B",
+        "DDR_CLKN_B",
+        "DDR_DQ0_B",
+        "DDR_DQ1_B",
+        "DDR_DQ2_B",
+        "DDR_DQ3_B",
+        "DDR_DQ4_B",
+        "DDR_DQ5_B",
+        "DDR_DQ6_B",
+        "DDR_DQ7_B",
+        "DDR_DM0_B",
+        "DDR_DQS0P_B",
+        "DDR_DQS0N_B",
+        "DDR_DQ8_B",
+        "DDR_DQ9_B",
+        "DDR_DQ10_B",
+        "DDR_DQ11_B",
+        "DDR_DQ12_B",
+        "DDR_DQ13_B",
+        "DDR_DQ14_B",
+        "DDR_DQ15_B",
+        "DDR_DM1_B",
+        "DDR_DQS1P_B",
+        "DDR_DQS1N_B"
+      ],
+      "EMMC": [
+        "EMMC_CLK",
+        "EMMC_CMD",
+        "EMMC_D0",
+        "EMMC_D1",
+        "EMMC_D2",
+        "EMMC_D3",
+        "EMMC_D4",
+        "EMMC_D5",
+        "EMMC_D6",
+        "EMMC_D7",
+        "EMMC_RST_N",
+        "EMMC_DS"
+      ],
+      "I2C0": [
+        "I2C0_SCL",
+        "I2C0_SDA"
+      ],
+      "I2C1": [
+        "I2C1_SCL",
+        "I2C1_SDA"
+      ],
+      "I2C2": [
+        "I2C2_SCL",
+        "I2C2_SDA"
+      ],
+      "AUDIO_I2S": [
+        "I2S_BCLK",
+        "I2S_LRCK",
+        "I2S_SDO0",
+        "DSD_L",
+        "DSD_R"
+      ],
+      "AUDIO_CTL": [
+        "DAC_I2C_SCL",
+        "DAC_I2C_SDA",
+        "DAC_RST_N",
+        "DAC_INT_N",
+        "DAC_VP_EN",
+        "DAC_DIG_EN",
+        "AUDIO_LN_EN",
+        "MCLK441_EN",
+        "MCLK48_EN",
+        "MCLK_DIV_RUN",
+        "HPA_RAIL_EN",
+        "HPA_LDO_EN",
+        "HPA_SE_EN",
+        "HPA_BAL_EN"
+      ],
+      "HP_SE": [
+        "HPSE_L",
+        "HPSE_R",
+        "HPSE_REF_L",
+        "HPSE_REF_R"
+      ],
+      "DAC_L_OUT": [
+        "DACL_AOUT_P",
+        "DACL_AOUT_N"
+      ],
+      "DAC_R_OUT": [
+        "DACR_AOUT_P",
+        "DACR_AOUT_N"
+      ],
+      "HP_BAL": [
+        "HPBAL_L_P",
+        "HPBAL_L_N",
+        "HPBAL_R_P",
+        "HPBAL_R_N"
+      ],
+      "PMIC_CTL": [
+        "CLK32K_PMIC",
+        "PMIC_INT_N",
+        "PMIC_SLEEP",
+        "SOC_RESET_N"
+      ],
+      "USB": [
+        "USBC_DP",
+        "USBC_DM",
+        "USBC_VBUSDET",
+        "HAT_USB3_SSTX_P",
+        "HAT_USB3_SSTX_N",
+        "HAT_USB3_SSRX_P",
+        "HAT_USB3_SSRX_N",
+        "HAT_USB3_DP",
+        "HAT_USB3_DM"
+      ],
+      "IO_IRQ": [
+        "CHG_INT_N",
+        "USBC_INT_N",
+        "HAT_PD_INT_N",
+        "EXP_INT_N",
+        "IMU_INT1"
+      ],
+      "IMON": [
+        "EFUSE_VBUS_IMON",
+        "EFUSE_HAT5V_IMON"
+      ],
+      "WL": [
+        "WL_SD_CLK",
+        "WL_SD_CMD",
+        "WL_SD_D0",
+        "WL_SD_D1",
+        "WL_SD_D2",
+        "WL_SD_D3",
+        "BT_UART_TXD",
+        "BT_UART_RXD",
+        "BT_UART_CTS",
+        "BT_UART_RTS",
+        "WL_WAKE_OUT",
+        "BT_WAKE_OUT",
+        "BT_WAKE_IN"
+      ],
+      "FP": [
+        "FP_DSI_CLK_P",
+        "FP_DSI_CLK_N",
+        "FP_DSI_D0_P",
+        "FP_DSI_D0_N",
+        "FP_DSI_D1_P",
+        "FP_DSI_D1_N",
+        "FP_DSI_D2_P",
+        "FP_DSI_D2_N",
+        "FP_DSI_D3_P",
+        "FP_DSI_D3_N",
+        "FP_I2C_SCL",
+        "FP_I2C_SDA",
+        "FP_SPI_SCLK",
+        "FP_SPI_MOSI",
+        "FP_SPI_MISO",
+        "FP_SPI_CS_N",
+        "FP_DBI_DC",
+        "FP_TP_INT",
+        "FP_TP_RST_N",
+        "FP_LCD_RST_N",
+        "FP_LCD_TE",
+        "FP_HID_INT_N",
+        "FP_ALS_INT_N",
+        "BL_PWM",
+        "MIC_EN",
+        "PDM_CLK0",
+        "PDM_DATA0"
+      ],
+      "EXP_IO": [
+        "FP_IO_EN",
+        "HAT_VBUS_DISCH",
+        "HAT5V_EN",
+        "USB_SRC_ON",
+        "HAPTIC_EN",
+        "NFC_PWR_EN",
+        "WL_PWR_EN",
+        "WL_PD_HOLD_N",
+        "HP_DET_SE",
+        "HP_DET_BAL",
+        "FP_DET_N",
+        "FP_GPIO0",
+        "FP_GPIO1",
+        "EFUSE_HAT5V_FLT_N",
+        "EFUSE_5V_FLT_N",
+        "EFUSE_VBUS_FLT_N"
+      ],
+      "SDMMC0": [
+        "SD_CLK",
+        "SD_CMD",
+        "SD_D0",
+        "SD_D1",
+        "SD_D2",
+        "SD_D3",
+        "SD_DET_N"
+      ],
+      "SPK_I2S": [
+        "SPK_BCLK",
+        "SPK_LRCK",
+        "SPK_SDIN",
+        "SPK_SD_MODE"
+      ],
+      "KEYS": [
+        "PWRON_N",
+        "SARADC_VOLUP",
+        "VOLDN_N",
+        "ACTION_BTN_N"
+      ],
+      "NFC": [
+        "NFC_FD_N",
+        "NFC_VEN",
+        "NFC_DWL_REQ",
+        "NFC_IRQ"
+      ],
+      "TPM": [
+        "TPM_RST_N",
+        "TPM_PIRQ_N"
+      ],
+      "RP": [
+        "RP_UART_TX",
+        "RP_UART_RX",
+        "RP_IRQ",
+        "RP_RUN",
+        "RP_SWCLK",
+        "RP_SWDIO",
+        "RP_BOOTSEL_DRV",
+        "RP_PWR_EN",
+        "RP_USB_DP",
+        "RP_USB_DM"
+      ]
+    }
+  },
+  "net_settings": {
+    "classes": [
+      {
+        "name": "Default",
+        "priority": 2147483647,
+        "wire_width": 6,
+        "bus_width": 12,
+        "clearance": 0.2,
+        "track_width": 0.2,
+        "via_diameter": 0.6,
+        "via_drill": 0.3,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
+        "diff_pair_width": 0.2,
+        "diff_pair_gap": 0.25,
+        "diff_pair_via_gap": 0.25,
+        "line_style": 0,
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "schematic_color": "rgba(0, 0, 0, 0.000)"
+      },
+      {
+        "name": "PWR_BAT",
+        "priority": 0,
+        "schematic_color": "rgba(0, 0, 0, 0.000)",
+        "pcb_color": "rgba(0, 0, 0, 0.000)"
+      },
+      {
+        "name": "BAT_SENSE",
+        "priority": 1,
+        "schematic_color": "rgba(0, 0, 0, 0.000)",
+        "pcb_color": "rgba(0, 0, 0, 0.000)"
+      },
+      {
+        "name": "PWR_VSYS",
+        "priority": 2,
+        "schematic_color": "rgba(0, 0, 0, 0.000)",
+        "pcb_color": "rgba(0, 0, 0, 0.000)"
+      },
+      {
+        "name": "PWR_VBUS",
+        "priority": 3,
+        "schematic_color": "rgba(0, 0, 0, 0.000)",
+        "pcb_color": "rgba(0, 0, 0, 0.000)"
+      },
+      {
+        "name": "PWR_5V1",
+        "priority": 4,
+        "schematic_color": "rgba(0, 0, 0, 0.000)",
+        "pcb_color": "rgba(0, 0, 0, 0.000)"
+      },
+      {
+        "name": "PWR_HAT5V",
+        "priority": 5,
+        "schematic_color": "rgba(0, 0, 0, 0.000)",
+        "pcb_color": "rgba(0, 0, 0, 0.000)"
+      },
+      {
+        "name": "PWR_AMP",
+        "priority": 6,
+        "schematic_color": "rgba(0, 0, 0, 0.000)",
+        "pcb_color": "rgba(0, 0, 0, 0.000)"
+      },
+      {
+        "name": "PWR_AUDIO",
+        "priority": 7,
+        "schematic_color": "rgba(0, 0, 0, 0.000)",
+        "pcb_color": "rgba(0, 0, 0, 0.000)"
+      },
+      {
+        "name": "SW_NODE",
+        "priority": 8,
+        "schematic_color": "rgba(0, 0, 0, 0.000)",
+        "pcb_color": "rgba(0, 0, 0, 0.000)"
+      },
+      {
+        "name": "AUDIO_ANALOG",
+        "priority": 9,
+        "schematic_color": "rgba(0, 0, 0, 0.000)",
+        "pcb_color": "rgba(0, 0, 0, 0.000)"
+      },
+      {
+        "name": "AUDIO_REF",
+        "priority": 10,
+        "schematic_color": "rgba(0, 0, 0, 0.000)",
+        "pcb_color": "rgba(0, 0, 0, 0.000)"
+      },
+      {
+        "name": "MCLK_50SE",
+        "priority": 11,
+        "schematic_color": "rgba(0, 0, 0, 0.000)",
+        "pcb_color": "rgba(0, 0, 0, 0.000)"
+      },
+      {
+        "name": "I2S_50SE",
+        "priority": 12,
+        "schematic_color": "rgba(0, 0, 0, 0.000)",
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "track_width": 0.188
+      },
+      {
+        "name": "USB2_90D",
+        "priority": 13,
+        "schematic_color": "rgba(0, 0, 0, 0.000)",
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "diff_pair_width": 0.126,
+        "diff_pair_gap": 0.1,
+        "track_width": 0.126
+      },
+      {
+        "name": "USB3_90D",
+        "priority": 14,
+        "schematic_color": "rgba(0, 0, 0, 0.000)",
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "diff_pair_width": 0.126,
+        "diff_pair_gap": 0.1,
+        "track_width": 0.126
+      },
+      {
+        "name": "MIPI_100D",
+        "priority": 15,
+        "schematic_color": "rgba(0, 0, 0, 0.000)",
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "diff_pair_width": 0.1355,
+        "diff_pair_gap": 0.175,
+        "track_width": 0.1355
+      },
+      {
+        "name": "DDR_50SE",
+        "priority": 16,
+        "schematic_color": "rgba(0, 0, 0, 0.000)",
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "track_width": 0.188
+      },
+      {
+        "name": "DDR_100D",
+        "priority": 17,
+        "schematic_color": "rgba(0, 0, 0, 0.000)",
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "diff_pair_width": 0.1355,
+        "diff_pair_gap": 0.175,
+        "track_width": 0.1355
+      },
+      {
+        "name": "EMMC_SD_50SE",
+        "priority": 18,
+        "schematic_color": "rgba(0, 0, 0, 0.000)",
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "track_width": 0.188
+      },
+      {
+        "name": "RF_50SE",
+        "priority": 19,
+        "schematic_color": "rgba(0, 0, 0, 0.000)",
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "track_width": 0.391
+      },
+      {
+        "name": "ZONE_CORE",
+        "priority": 20,
+        "schematic_color": "rgba(0, 0, 0, 0.000)",
+        "pcb_color": "rgba(0, 0, 0, 0.000)"
+      },
+      {
+        "name": "ZONE_AUDIO",
+        "priority": 21,
+        "schematic_color": "rgba(0, 0, 0, 0.000)",
+        "pcb_color": "rgba(0, 0, 0, 0.000)"
+      },
+      {
+        "name": "ZONE_POWER",
+        "priority": 22,
+        "schematic_color": "rgba(0, 0, 0, 0.000)",
+        "pcb_color": "rgba(0, 0, 0, 0.000)"
+      },
+      {
+        "name": "ZONE_IO",
+        "priority": 23,
+        "schematic_color": "rgba(0, 0, 0, 0.000)",
+        "pcb_color": "rgba(0, 0, 0, 0.000)"
+      },
+      {
+        "name": "ZONE_RADIO",
+        "priority": 24,
+        "schematic_color": "rgba(0, 0, 0, 0.000)",
+        "pcb_color": "rgba(0, 0, 0, 0.000)"
+      },
+      {
+        "name": "ZONE_FACEPLATE",
+        "priority": 25,
+        "schematic_color": "rgba(0, 0, 0, 0.000)",
+        "pcb_color": "rgba(0, 0, 0, 0.000)"
+      },
+      {
+        "name": "ZONE_SHARED",
+        "priority": 26,
+        "schematic_color": "rgba(0, 0, 0, 0.000)",
+        "pcb_color": "rgba(0, 0, 0, 0.000)"
+      }
+    ],
+    "meta": {
+      "version": 4
+    },
+    "netclass_assignments": null,
+    "netclass_patterns": [
+      {
+        "netclass": "PWR_BAT",
+        "pattern": "VBAT"
+      },
+      {
+        "netclass": "PWR_BAT",
+        "pattern": "*BAT_F"
+      },
+      {
+        "netclass": "PWR_BAT",
+        "pattern": "*BAT_P"
+      },
+      {
+        "netclass": "PWR_BAT",
+        "pattern": "BAT_N"
+      },
+      {
+        "netclass": "BAT_SENSE",
+        "pattern": "*BAT_MID"
+      },
+      {
+        "netclass": "BAT_SENSE",
+        "pattern": "*BAT_NTC"
+      },
+      {
+        "netclass": "PWR_VSYS",
+        "pattern": "VSYS"
+      },
+      {
+        "netclass": "PWR_VBUS",
+        "pattern": "USBC_VBUS"
+      },
+      {
+        "netclass": "PWR_VBUS",
+        "pattern": "VBUS_CHG"
+      },
+      {
+        "netclass": "PWR_VBUS",
+        "pattern": "*CHG_PMID"
+      },
+      {
+        "netclass": "PWR_5V1",
+        "pattern": "*P5V1_SRC"
+      },
+      {
+        "netclass": "PWR_5V1",
+        "pattern": "*P5V1_LIM"
+      },
+      {
+        "netclass": "PWR_HAT5V",
+        "pattern": "HAT_5V"
+      },
+      {
+        "netclass": "SW_NODE",
+        "pattern": "*_SW"
+      },
+      {
+        "netclass": "DDR_50SE",
+        "pattern": "*DDR_DQ?_?"
+      },
+      {
+        "netclass": "DDR_50SE",
+        "pattern": "*DDR_DQ??_?"
+      },
+      {
+        "netclass": "DDR_50SE",
+        "pattern": "*DDR_DM?_?"
+      },
+      {
+        "netclass": "DDR_50SE",
+        "pattern": "*DDR_A?_?"
+      },
+      {
+        "netclass": "DDR_50SE",
+        "pattern": "*DDR_CS0_?_N"
+      },
+      {
+        "netclass": "DDR_50SE",
+        "pattern": "*DDR_CKE0_?"
+      },
+      {
+        "netclass": "DDR_50SE",
+        "pattern": "*DDR_ODT0_CA_?"
+      },
+      {
+        "netclass": "DDR_100D",
+        "pattern": "*DDR_DQS?P_?"
+      },
+      {
+        "netclass": "DDR_100D",
+        "pattern": "*DDR_DQS?N_?"
+      },
+      {
+        "netclass": "DDR_100D",
+        "pattern": "*DDR_CLKP_?"
+      },
+      {
+        "netclass": "DDR_100D",
+        "pattern": "*DDR_CLKN_?"
+      },
+      {
+        "netclass": "EMMC_SD_50SE",
+        "pattern": "*EMMC_CLK*"
+      },
+      {
+        "netclass": "EMMC_SD_50SE",
+        "pattern": "*EMMC_CMD*"
+      },
+      {
+        "netclass": "EMMC_SD_50SE",
+        "pattern": "*EMMC_D?"
+      },
+      {
+        "netclass": "EMMC_SD_50SE",
+        "pattern": "*EMMC_DS"
+      },
+      {
+        "netclass": "EMMC_SD_50SE",
+        "pattern": "*SD_CLK"
+      },
+      {
+        "netclass": "EMMC_SD_50SE",
+        "pattern": "*SD_CMD"
+      },
+      {
+        "netclass": "EMMC_SD_50SE",
+        "pattern": "*SD_D?"
+      },
+      {
+        "netclass": "EMMC_SD_50SE",
+        "pattern": "*SD_CLK_M"
+      },
+      {
+        "netclass": "EMMC_SD_50SE",
+        "pattern": "*SD_CMD_M"
+      },
+      {
+        "netclass": "EMMC_SD_50SE",
+        "pattern": "*SD_D?_M"
+      },
+      {
+        "netclass": "EMMC_SD_50SE",
+        "pattern": "SD_CLK_C"
+      },
+      {
+        "netclass": "EMMC_SD_50SE",
+        "pattern": "SD_CMD_C"
+      },
+      {
+        "netclass": "EMMC_SD_50SE",
+        "pattern": "SD_D?_C"
+      },
+      {
+        "netclass": "USB2_90D",
+        "pattern": "*USBC_DP"
+      },
+      {
+        "netclass": "USB2_90D",
+        "pattern": "*USBC_DM"
+      },
+      {
+        "netclass": "USB2_90D",
+        "pattern": "*USBC_DP_C"
+      },
+      {
+        "netclass": "USB2_90D",
+        "pattern": "*USBC_DM_C"
+      },
+      {
+        "netclass": "USB2_90D",
+        "pattern": "*HAT_USB3_DP"
+      },
+      {
+        "netclass": "USB2_90D",
+        "pattern": "*HAT_USB3_DM"
+      },
+      {
+        "netclass": "USB2_90D",
+        "pattern": "*HAT_DP_C"
+      },
+      {
+        "netclass": "USB2_90D",
+        "pattern": "*HAT_DM_C"
+      },
+      {
+        "netclass": "USB3_90D",
+        "pattern": "*HAT_USB3_SS*"
+      },
+      {
+        "netclass": "USB3_90D",
+        "pattern": "*HAT_SSTX_C_?"
+      },
+      {
+        "netclass": "RF_50SE",
+        "pattern": "*WL_ANT?"
+      },
+      {
+        "netclass": "RF_50SE",
+        "pattern": "*WL_ANT?_J"
+      },
+      {
+        "netclass": "RF_50SE",
+        "pattern": "*WL_BT_IN"
+      },
+      {
+        "netclass": "MIPI_100D",
+        "pattern": "*FP_DSI_*"
+      },
+      {
+        "netclass": "PWR_AMP",
+        "pattern": "AUDIO_P7V0"
+      },
+      {
+        "netclass": "PWR_AMP",
+        "pattern": "AUDIO_N7V0"
+      },
+      {
+        "netclass": "PWR_AMP",
+        "pattern": "*HPA_P6V0*"
+      },
+      {
+        "netclass": "PWR_AMP",
+        "pattern": "*HPA_N6V0*"
+      },
+      {
+        "netclass": "PWR_AMP",
+        "pattern": "*HPA_P6_A"
+      },
+      {
+        "netclass": "PWR_AMP",
+        "pattern": "*HPA_P6_B"
+      },
+      {
+        "netclass": "PWR_AMP",
+        "pattern": "*HPA_N6_A"
+      },
+      {
+        "netclass": "PWR_AMP",
+        "pattern": "*HPA_N6_B"
+      },
+      {
+        "netclass": "PWR_AUDIO",
+        "pattern": "DAC1_VA"
+      },
+      {
+        "netclass": "PWR_AUDIO",
+        "pattern": "DAC2_VA"
+      },
+      {
+        "netclass": "PWR_AUDIO",
+        "pattern": "DAC_VP"
+      },
+      {
+        "netclass": "PWR_AUDIO",
+        "pattern": "DAC_DIG_1V8"
+      },
+      {
+        "netclass": "PWR_AUDIO",
+        "pattern": "AUDIO_2V2"
+      },
+      {
+        "netclass": "PWR_AUDIO",
+        "pattern": "MCLK_3V1"
+      },
+      {
+        "netclass": "PWR_AUDIO",
+        "pattern": "MCLK_1V8"
+      },
+      {
+        "netclass": "PWR_AUDIO",
+        "pattern": "*DAC?_VA_IN"
+      },
+      {
+        "netclass": "PWR_AUDIO",
+        "pattern": "*MCLK3V1_IN"
+      },
+      {
+        "netclass": "PWR_AUDIO",
+        "pattern": "*MCLK1V8_IN"
+      },
+      {
+        "netclass": "AUDIO_ANALOG",
+        "pattern": "*DAC?_AOUT_?"
+      },
+      {
+        "netclass": "AUDIO_ANALOG",
+        "pattern": "*HPS_*"
+      },
+      {
+        "netclass": "AUDIO_ANALOG",
+        "pattern": "*HPB_*"
+      },
+      {
+        "netclass": "AUDIO_ANALOG",
+        "pattern": "*HPSE_L"
+      },
+      {
+        "netclass": "AUDIO_ANALOG",
+        "pattern": "*HPSE_R"
+      },
+      {
+        "netclass": "AUDIO_ANALOG",
+        "pattern": "*HPBAL_?_?"
+      },
+      {
+        "netclass": "AUDIO_REF",
+        "pattern": "*HPSE_REF_?"
+      },
+      {
+        "netclass": "MCLK_50SE",
+        "pattern": "*MCLK_OSC"
+      },
+      {
+        "netclass": "MCLK_50SE",
+        "pattern": "*MCLK_L"
+      },
+      {
+        "netclass": "MCLK_50SE",
+        "pattern": "*MCLK_R"
+      },
+      {
+        "netclass": "MCLK_50SE",
+        "pattern": "*DIV?_Q"
+      },
+      {
+        "netclass": "I2S_50SE",
+        "pattern": "*I2S_BCLK"
+      },
+      {
+        "netclass": "I2S_50SE",
+        "pattern": "*I2S_LRCK"
+      },
+      {
+        "netclass": "I2S_50SE",
+        "pattern": "*I2S_SDO0"
+      },
+      {
+        "netclass": "I2S_50SE",
+        "pattern": "*DAC?_SCLK"
+      },
+      {
+        "netclass": "I2S_50SE",
+        "pattern": "*DAC?_LRCK"
+      },
+      {
+        "netclass": "I2S_50SE",
+        "pattern": "*DAC?_SDIN"
+      }
+    ]
+  },
+  "text_variables": {
+    "OPENDAP_PROJECT": "OpenDAP T1",
+    "OPENDAP_BOARD": "main board",
+    "OPENDAP_LICENCE": "CERN-OHL-S-2.0",
+    "OPENDAP_SOURCE": "github.com/opendap-project/board",
+    "OPENDAP_BASE_VARIANT": "full"
+  },
+  "sheets": [],
+  "libraries": {
+    "pinned_footprint_libs": [],
+    "pinned_symbol_libs": []
+  }
+}

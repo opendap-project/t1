@@ -1,0 +1,77 @@
+# MaskROM combo regression (design B, BOM v1.6 change 6). Values from the echo tables.
+version = 1
+
+[[check]]
+id = "window-covers-emmc-init"
+description = "Main + Vol- at power-on: D0 held low >= 1 s after RESETB (design B, all corners)"
+netlist = "maskrom-cold.cir"
+pattern = '^1 1 \S+ \S+ \S+ \S+ (\S+)'
+reduce = "all"
+min = 1000.0          # 1 s eMMC init after CMD1: JESD84, UNVERIFIED (standard not read)
+unit = "ms"
+source = "README Results; BOM v1.6 change 6"
+
+[[check]]
+id = "d0-forced-level"
+netlist = "maskrom-cold.cir"
+pattern = '^1 1 \S+ \S+ \S+ \S+ \S+ (\S+)'
+reduce = "all"
+max = 0.63            # VIL 0.35 x VCCQ: JESD84 value, UNVERIFIED
+unit = "V"
+source = "README Results"
+
+[[check]]
+id = "normal-boot-untouched"
+description = "Main only: D0 never held after RESETB"
+netlist = "maskrom-cold.cir"
+pattern = '^1 0 \S+ \S+ \S+ \S+ (\S+)'
+reduce = "all"
+max = 0.0
+unit = "ms"
+source = "BRD-035; README Results"
+
+[[check]]
+id = "resume-not-forced"
+netlist = "maskrom-resume.cir"
+pattern = '^SUP=1\s+\S+\s+(\S+)'
+reduce = "all"
+max = 0.0
+unit = "ms"
+source = "README Results; BOM v1.6 change 6"
+
+[[check]]
+id = "pwron-pressed-level"
+description = "In2 with PWRON pressed, 100 kOhm pull-up, -20..70 C"
+netlist = "maskrom-levels.cir"
+pattern = '^pressed: 100k \S+ (\S+)'
+reduce = "all"
+max = 350.0           # SN74LVC1G57/58 VT- min at 1.65 V
+unit = "mV"
+source = "SCES414P/SCES415N VT- min; README Results"
+
+[[check]]
+id = "pwron-released-level"
+description = "In2 released, VCC_RTC >= 0.7 V (netlist uses 20 kOhm)"
+netlist = "maskrom-levels.cir"
+pattern = '^released: (?:0\.7|1\.0|1\.26|1\.5|1\.8|3\.0) (\S+)'
+reduce = "all"
+min = 1.16            # VT+ max
+unit = "V"
+source = "SCES414P/SCES415N VT+ max; README Results"
+
+[[check]]
+id = "hs200-margin-high"
+description = "D0 high margin at mid-bit, 1 kOhm tap, COSS 25 pF"
+netlist = "maskrom-d0-si.cir"
+pattern = '^25p\s+1k\s+(?:\S+\s+){4}(\S+)'
+min = 0.0             # against VIH 1.125 V (JESD84, UNVERIFIED)
+unit = "V"
+source = "README Results"
+
+[[check]]
+id = "hs200-margin-low"
+netlist = "maskrom-d0-si.cir"
+pattern = '^25p\s+1k\s+(?:\S+\s+){5}(\S+)'
+min = 0.0             # against VIL 0.63 V (JESD84, UNVERIFIED)
+unit = "V"
+source = "README Results"

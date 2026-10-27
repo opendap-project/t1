@@ -1,0 +1,29 @@
+* TPS62136 pre-regulator: loop gain by voltage injection at one frequency,
+* 1.6 A load, forced PWM, TI transient model (SLVMC09). The injection source
+* sits between the output node and VOS / the feedback divider; the model's
+* internal 15 pF feed-forward capacitor (SLVSDV2 10.1.6) is inside the loop.
+.param VIN=8.8 CO=30u FINJ=100k TSTART=0.6m TSTOP=0.8m
+.include models/TPS62136_TRANS.lib
+VIN vin 0 {VIN}
+XU1 vin sw 0 fb2 fb vs pg en ss mode vsel TPS62136_TRANS
+VEN en 0 PWL(0 0 10u 0 11u 2)
+VMODE mode 0 2
+VSEL vsel 0 0
+RFB2 fb2 0 1G
+RPG pg 0 1G
+L1 sw lx 1.5u
+RL lx vout 14.3m
+C1 vout 0 {CO}
+Vinj vs vout SIN(0 10m {FINJ} {TSTART})
+R1 vs fb 442k
+R2 fb 0 100k
+Iload vout 0 PWL(0 0 0.3m 0 0.35m 1.6)
+.tran 2n {TSTOP} 0 5n
+.control
+set wr_singlescale
+set wr_vecnames
+run
+linearize v(vout) v(vs)
+wrdata loop.dat v(vout) v(vs)
+.endc
+.end

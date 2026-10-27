@@ -1,0 +1,218 @@
+# MCLK divider regression (ADR 0019). run.py simulates every corner of the two sides of the
+# clock path and its --json output has one case object per line:
+#   "in":  NSC5083D at 45.1584 / 49.152 MHz on MCLK_3V1 (3.054-3.147 V), symmetry 40 or 60 %,
+#          strong / typ / bound driver, into two SN74AUC1G74 clock inputs (2.5 or 4 pF) at the end
+#          of a 5 or 10 mm trace; AUC limits at MCLK_1V8 = 1.76-1.84 V.
+#   "out": one SN74AUC1G74 per DAC on MCLK_1V8, tPHL - tPLH = -0.7 / 0 / +0.7 ns, 15 or 56 ohm
+#          output, 27 ohm series resistor, 5 or 15 mm trace, XTI 1/4/10 pF; CS43198 limits at
+#          VL = 1.66-1.94 V, switching points anywhere between VIL and VIH.
+# budget.py prints the phase-noise and jitter budget against the CS43198 mask.
+# Limits: CS43198 DS1156F2 (Table 3-2 p. 12, Table 3-11 p. 19, §4.5.1 and Figure 4-11 p. 35);
+# SN74AUC1G74 SCES537D (pp. 3-5); NDK NZ2520SDA catalogue 1703A; TPS7A20 SBVS338H p. 6.
+version = 1
+
+[[check]]
+id = "xo-driver-calibration"
+description = "Bound oscillator model into 15 pF gives the catalogue's 6 ns Tr (model check)"
+netlist = "xo-calibration.cir"
+measure = "xo_tr_ns"
+min = 5.9
+max = 6.1
+unit = "ns"
+source = "NDK NZ2520SDA catalogue 1703A: Tr max 6 ns at CL max 15 pF"
+
+[[check]]
+id = "xo-load"
+description = "Capacitance on the oscillator net: two AUC clock pins, pads, trace, tri-stated oscillator"
+command = ["uv", "run", "run.py", "--json"]
+pattern = '"side": "in".*"xo_load_pf": ([-+0-9.eE]+)'
+reduce = "all"
+max = 15
+unit = "pF"
+source = "NDK NZ2520SDA catalogue 1703A: load CL max 15 pF"
+timeout = 900
+
+[[check]]
+id = "clk-high-level"
+description = "Lowest per-cycle peak at the divider clock pins"
+command = ["uv", "run", "run.py", "--json"]
+pattern = '"side": "in".*"clk_high_min_v": ([-+0-9.eE]+)'
+reduce = "all"
+min = 1.196
+unit = "V"
+source = "SN74AUC1G74 SCES537D p. 3: VIH = 0.65 x VCC at 1.84 V"
+timeout = 900
+
+[[check]]
+id = "clk-low-level"
+description = "Highest per-cycle valley at the divider clock pins"
+command = ["uv", "run", "run.py", "--json"]
+pattern = '"side": "in".*"clk_low_max_v": ([-+0-9.eE]+)'
+reduce = "all"
+max = 0.616
+unit = "V"
+source = "SN74AUC1G74 SCES537D p. 3: VIL = 0.35 x VCC at 1.76 V"
+timeout = 900
+
+[[check]]
+id = "clk-peak"
+command = ["uv", "run", "run.py", "--json"]
+pattern = '"side": "in".*"clk_peak_v": ([-+0-9.eE]+)'
+reduce = "all"
+max = 3.6
+unit = "V"
+source = "SN74AUC1G74 SCES537D p. 3: VI 0 to 3.6 V (recommended and absolute maximum)"
+timeout = 900
+
+[[check]]
+id = "clk-undershoot"
+command = ["uv", "run", "run.py", "--json"]
+pattern = '"side": "in".*"clk_valley_v": ([-+0-9.eE]+)'
+reduce = "all"
+min = -0.5
+unit = "V"
+source = "SN74AUC1G74 SCES537D p. 3: VI minimum -0.5 V (absolute maximum)"
+timeout = 900
+
+[[check]]
+id = "clk-pulse-width"
+description = "Shortest time above VIH or below VIL per cycle"
+command = ["uv", "run", "run.py", "--json"]
+pattern = '"side": "in".*"clk_pulse_min_s": ([-+0-9.eE]+)'
+reduce = "all"
+min = 1e-09
+unit = "s"
+source = "SN74AUC1G74 SCES537D p. 4: tw CLK high or low >= 1 ns at 1.8 V"
+timeout = 900
+
+[[check]]
+id = "clk-transition-rate"
+command = ["uv", "run", "run.py", "--json"]
+pattern = '"side": "in".*"clk_rate_ns_per_v": ([-+0-9.eE]+)'
+reduce = "all"
+max = 20
+unit = "ns/V"
+source = "SN74AUC1G74 SCES537D p. 3: input transition rate <= 20 ns/V"
+timeout = 900
+
+[[check]]
+id = "clk-single-crossing"
+description = "No ringing back across VIL or VIH at the divider clock pins"
+command = ["uv", "run", "run.py", "--json"]
+pattern = '"side": "in".*"clk_extra_crossings": ([-+0-9.eE]+)'
+reduce = "all"
+max = 0
+unit = "crossings"
+source = "SN74AUC1G74 SCES537D p. 4 (edge-triggered: a re-crossing is an extra toggle); ADR 0019"
+timeout = 900
+
+[[check]]
+id = "divider-load"
+description = "Trace, pad and XTI pin on each divider output"
+command = ["uv", "run", "run.py", "--json"]
+pattern = '"side": "out".*"ff_load_pf": ([-+0-9.eE]+)'
+reduce = "all"
+max = 15
+unit = "pF"
+source = "SN74AUC1G74 SCES537D p. 4: CLK -> Q 1.0-1.7 ns specified at CL = 15 pF"
+timeout = 900
+
+[[check]]
+id = "pin-high-level"
+command = ["uv", "run", "run.py", "--json"]
+pattern = '"side": "out".*"pin_high_min_v": ([-+0-9.eE]+)'
+reduce = "all"
+min = 1.358
+unit = "V"
+source = "CS43198 DS1156F2 Table 3-11 p. 19 (VIH 0.7 x VL), Table 3-2 p. 12 (VL <= 1.94 V)"
+timeout = 900
+
+[[check]]
+id = "pin-low-level"
+command = ["uv", "run", "run.py", "--json"]
+pattern = '"side": "out".*"pin_low_max_v": ([-+0-9.eE]+)'
+reduce = "all"
+max = 0.498
+unit = "V"
+source = "CS43198 DS1156F2 Table 3-11 p. 19 (VIL 0.3 x VL), Table 3-2 p. 12 (VL >= 1.66 V)"
+timeout = 900
+
+[[check]]
+id = "pin-peak"
+description = "XTI overshoot, highest over corners (MCLK_1V8 1.84 V)"
+command = ["uv", "run", "run.py", "--json"]
+pattern = '"side": "out".*"pin_peak_v": ([-+0-9.eE]+)'
+reduce = "all"
+max = 1.96
+unit = "V"
+source = "CS43198 DS1156F2 Table 3-2 p. 12 (VL-domain pins -0.3 to VL + 0.3 V)"
+timeout = 900
+
+[[check]]
+id = "pin-undershoot"
+command = ["uv", "run", "run.py", "--json"]
+pattern = '"side": "out".*"pin_valley_v": ([-+0-9.eE]+)'
+reduce = "all"
+min = -0.3
+unit = "V"
+source = "CS43198 DS1156F2 Table 3-2 p. 12 (VL-domain pins -0.3 to VL + 0.3 V)"
+timeout = 900
+
+[[check]]
+id = "pin-duty-min"
+description = "Duty at XTI with the divider's tPHL - tPLH spread, switching points anywhere in VIL..VIH"
+command = ["uv", "run", "run.py", "--json"]
+pattern = '"side": "out".*"pin_duty_min_pct": ([-+0-9.eE]+)'
+reduce = "all"
+min = 45.0
+unit = "%"
+source = "CS43198 DS1156F2 §4.5.1 p. 35 (external MCLK duty 45-55 %)"
+timeout = 900
+
+[[check]]
+id = "pin-duty-max"
+command = ["uv", "run", "run.py", "--json"]
+pattern = '"side": "out".*"pin_duty_max_pct": ([-+0-9.eE]+)'
+reduce = "all"
+max = 55.0
+unit = "%"
+source = "CS43198 DS1156F2 §4.5.1 p. 35 (external MCLK duty 45-55 %)"
+timeout = 900
+
+[[check]]
+id = "pin-single-crossing"
+description = "No ringing back across VIL or VIH at XTI"
+command = ["uv", "run", "run.py", "--json"]
+pattern = '"side": "out".*"pin_extra_crossings": ([-+0-9.eE]+)'
+reduce = "all"
+max = 0
+unit = "crossings"
+source = "CS43198 DS1156F2 Table 3-11 p. 19; ADR 0019"
+timeout = 900
+
+[[check]]
+id = "phase-noise-margin-1k"
+description = "Divided clock (oscillator, divider supply term and floor) below the CS43198 mask at 1kHz"
+command = ["uv", "run", "budget.py", "--json"]
+pattern = '"offset_hz": 1000.0.*"margin_db": ([-+0-9.eE]+)'
+min = 20.0
+unit = "dB"
+source = "CS43198 DS1156F2 Figure 4-11 p. 35; NZ2520SDA catalogue 1703A (49.152 MHz); ADR 0019 (20 dB margin)"
+
+[[check]]
+id = "phase-noise-margin-100k"
+description = "Divided clock (oscillator, divider supply term and floor) below the CS43198 mask at 100kHz"
+command = ["uv", "run", "budget.py", "--json"]
+pattern = '"offset_hz": 100000.0.*"margin_db": ([-+0-9.eE]+)'
+min = 20.0
+unit = "dB"
+source = "CS43198 DS1156F2 Figure 4-11 p. 35; NZ2520SDA catalogue 1703A (49.152 MHz); ADR 0019 (20 dB margin)"
+
+[[check]]
+id = "jitter-margin"
+description = "RMS jitter of the divided clock against the jitter the mask allows (100 Hz-10 MHz)"
+command = ["uv", "run", "budget.py", "--json"]
+pattern = '"item": "jitter".*"margin_db": ([-+0-9.eE]+)'
+min = 20.0
+unit = "dB"
+source = "CS43198 DS1156F2 Figure 4-11 p. 35; NZ2520SDA catalogue 1703A; LMK1C1102 SNAS791D p. 7 (floor analogue); ADR 0019"

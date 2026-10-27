@@ -1,0 +1,30 @@
+* TPS62136 VSYS_LV pre-regulator (BOM v1.5 line 113): load step
+* 0.1 A -> 2.0 A -> 0.1 A with TI's unencrypted PSpice transient model
+* (SLVMC09, TPS62136_TRANS.lib, not redistributed: see README.md).
+* Values: SLVSDV2 and BOM v1.5 lines 113-115. R1 / R2 = 442k / 100k (3.794 V),
+* XGL4020-152MEC (1.5 uH, 14.3 mOhm DCR max). CO is the EFFECTIVE output
+* capacitance. MODE: 0 = auto PFM/PWM, 2 = forced PWM.
+.param VIN=8.8 CO=30u L=1.5u MODE=0 ILO=0.1 IHI=2.0
+.include models/TPS62136_TRANS.lib
+VIN vin 0 {VIN}
+XU1 vin sw 0 fb2 fb vout pg en ss mode vsel TPS62136_TRANS
+VEN en 0 PWL(0 0 10u 0 11u 2)
+VMODE mode 0 {MODE}
+VSEL vsel 0 0
+RFB2 fb2 0 1G
+RPG pg 0 1G
+L1 sw lx {L}
+RL lx vout 14.3m
+C1 vout 0 {CO}
+R1 vout fb 442k
+R2 fb 0 100k
+Iload vout 0 PWL(0 0 0.3m 0 0.301m {ILO} 0.6m {ILO} 0.601m {IHI} 0.9m {IHI} 0.901m {ILO})
+.tran 2n 1.2m 0 10n
+.control
+set wr_singlescale
+set wr_vecnames
+run
+linearize v(vout) i(L1)
+wrdata step.dat v(vout) i(L1)
+.endc
+.end

@@ -1,0 +1,61 @@
+* dcs-buck-generic.lib - generic constant-on-time buck model
+*
+* An open behavioural model of a DCS-Control-class buck converter (constant
+* on-time, ripple emulation from the switch node, a slow integrator for DC
+* accuracy, valley comparator, minimum off-time, high-side peak and low-side
+* valley current limits, optional power save). It is NOT a vendor model: the
+* internals of TI's DCS-Control are not published. Its three free constants
+* (KR, TR, GINT) and the on-time extension (ETH) were set so that, with
+* TPS62136 parameters, it reproduces TI's own TPS62136 transient model
+* (SLVMC09) in load step, ripple and loop gain; see README.md.
+* Power-stage values come from the datasheets.
+*
+* Params:
+*   TONSEL  1 = TON = VOUT/(VIN*FSW) (TPS62903 Eq. 3, 1 MHz)
+*           2 = TON = KTON * VIN/(VIN-VOUT) (TPS62136 Eq. 1: KTON = 250 ns;
+*               TPS62903 Eq. 5 with AEE at 2.5 MHz: KTON = 100 ns)
+*   PFM     0 = forced PWM; 1 = power save (low side off at zero current)
+*   ETH     on-time extension: the on-time continues while the FB-referred error
+*           exceeds ETH [V] (large-signal behaviour; ETH=1 disables it)
+*   FSW     nominal switching frequency [Hz] (TONSEL=1)
+*   RHS RLS high- and low-side on-resistance [ohm]
+*   ILIMH   high-side peak current limit [A]; ILIML low-side valley limit [A]
+*   VREF    feedback reference [V]
+*   TOFFMIN minimum off time [s]
+*   KR      ripple-emulation gain [V/V]; TR ripple-emulation time constant [s]
+*   GINT    integrator gain [1/s]
+.subckt DCSBUCK vin sw vos fb gnd params: TONSEL=1 FSW=1e6 RHS=0.062 RLS=0.022
++ ILIMH=4.6 ILIML=4.4 VREF=0.6 TOFFMIN=80n KR=0.02 TR=2u GINT=2e4 KTON=250n PFM=0 ETH=5m
+* ripple emulation: low-pass of (VSW - VOS)
+Bx x gnd V = V(sw,gnd) - V(vos,gnd)
+Rr x r 1k
+Cr r gnd {TR/1k}
+* integrator: DC accuracy loop
+Bint gnd vint I = {GINT}*1n*(({VREF})-V(fb,gnd))
+Cint vint gnd 1n
+Rint vint gnd 1G
+* integrator clamp: +/-20 mV at the reference (anti-windup)
+Bclp vint gnd I = V(vint,gnd) > 0.02 ? (V(vint,gnd)-0.02)*0.1 : (V(vint,gnd) < -0.02 ? (V(vint,gnd)+0.02)*0.1 : 0)
+* comparator (valley-type): turn on when FB + ramp falls below VREF + VINT
+Bcmp cmp gnd V = ( ({VREF}) + V(vint,gnd) - V(fb,gnd) - {KR}*V(r,gnd) ) > 0 ? 1 : 0
+* on-time ramp (V = microseconds since turn-on)
+Bton gnd t I = V(q,gnd) > 0.5 ? 1m : -V(t,gnd)/10
+Ct t gnd 1n
+* off-time ramp
+Btof gnd o I = V(q,gnd) > 0.5 ? -V(o,gnd)/10 : 1m
+Co o gnd 1n
+Btgt tgt gnd V = {TONSEL} < 1.5 ? 1e6*max(V(vos,gnd),0.1)/(max(V(vin,gnd),0.5)*{FSW}) : {KTON}*1e6*V(vin,gnd)/max(V(vin,gnd)-V(vos,gnd),0.05)
+Bset set gnd V = (V(cmp,gnd) > 0.5 && V(o,gnd) > {TOFFMIN}*1e6 && I(Vil) < {ILIML}) ? 1 : 0
+Bext ext gnd V = ( ({VREF}) + V(vint,gnd) - V(fb,gnd) - {KR}*V(r,gnd) ) > {ETH} ? 1 : 0
+Brst rst gnd V = ((V(t,gnd) > V(tgt,gnd) && V(ext,gnd) < 0.5) || I(Vil) > {ILIMH}) ? 1 : 0
+Bq qn gnd V = (V(rst,gnd) < 0.5 && (V(set,gnd) > 0.5 || V(q,gnd) > 0.5)) ? 1 : 0
+Rq qn q 100
+Cq q gnd 10p
+* half bridge with on-resistance; inductor current is sensed by Vil (in series at SW)
+* zero-current latch for power save: set when the low side reaches 0 A, cleared at turn-on
+Bzn zn gnd V = ({PFM} > 0.5 && V(q,gnd) < 0.5 && (I(Vil) < 0 || V(z,gnd) > 0.5)) ? 1 : 0
+Rz zn z 100
+Cz z gnd 10p
+Bsw swi gnd V = V(q,gnd) > 0.5 ? V(vin,gnd) - I(Vil)*{RHS} : (V(z,gnd) > 0.5 ? V(vos,gnd) : -I(Vil)*{RLS})
+Vil swi sw 0
+.ends DCSBUCK

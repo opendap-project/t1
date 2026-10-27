@@ -1,0 +1,122 @@
+# MCLK attenuator regression (ADR 0010, BOM v1 §7 item 1). run.py simulates every corner (both
+# frequencies, CIN 1/4/10 pF, two trace layouts, MCLK_3V1 3.054-3.147 V, VL 1.66-1.94 V) and its
+# --json output has one case object per line. Pin checks read the "typ" driver (30 ohm, UNVERIFIED);
+# the oscillator-load check reads the "bound" driver (the weakest drive the NDK catalogue allows).
+# Limits: CS43198 DS1156F2 (Table 3-2 p. 12, Table 3-11 p. 19, §4.5.1 p. 35); NDK NZ2520SDA
+# catalogue 1703A (Tr/Tf <= 6 ns, CL <= 15 pF); TPS7A2031 SBVS338H p. 6 (3.1 V +/-1.5 %).
+version = 1
+
+[[check]]
+id = "xo-driver-calibration"
+description = "Bound oscillator model into 15 pF gives the catalogue's 6 ns Tr (model check)"
+netlist = "xo-calibration.cir"
+measure = "xo_tr_ns"
+min = 5.9
+max = 6.1
+unit = "ns"
+source = "NDK NZ2520SDA catalogue 1703A: Tr max 6 ns at CL max 15 pF"
+
+[[check]]
+id = "pin-high-level"
+description = "XTI high level, lowest over corners (VCC 3.054 V)"
+command = ["uv", "run", "run.py", "--json"]
+pattern = '"driver": "typ".*"pin_high_min_v": ([-+0-9.eE]+)'
+reduce = "all"
+min = 1.358           # VIH = 0.7 x VL at VL 1.94 V
+unit = "V"
+source = "CS43198 DS1156F2 Table 3-11 p. 19 (VIH 0.7 x VL), Table 3-2 p. 12 (VL <= 1.94 V); ADR 0010"
+timeout = 600
+
+[[check]]
+id = "pin-low-level"
+command = ["uv", "run", "run.py", "--json"]
+pattern = '"driver": "typ".*"pin_low_max_v": ([-+0-9.eE]+)'
+reduce = "all"
+max = 0.498           # VIL = 0.3 x VL at VL 1.66 V
+unit = "V"
+source = "CS43198 DS1156F2 Table 3-11 p. 19 (VIL 0.3 x VL), Table 3-2 p. 12 (VL >= 1.66 V)"
+timeout = 600
+
+[[check]]
+id = "pin-peak"
+description = "XTI overshoot, highest over corners (VCC 3.147 V)"
+command = ["uv", "run", "run.py", "--json"]
+pattern = '"driver": "typ".*"pin_peak_v": ([-+0-9.eE]+)'
+reduce = "all"
+max = 1.96            # VL + 0.3 V at VL 1.66 V
+unit = "V"
+source = "CS43198 DS1156F2 Table 3-2 p. 12 (VL-domain pins -0.3 to VL + 0.3 V)"
+timeout = 600
+
+[[check]]
+id = "pin-undershoot"
+command = ["uv", "run", "run.py", "--json"]
+pattern = '"driver": "typ".*"pin_valley_v": ([-+0-9.eE]+)'
+reduce = "all"
+min = -0.3
+unit = "V"
+source = "CS43198 DS1156F2 Table 3-2 p. 12 (VL-domain pins -0.3 to VL + 0.3 V)"
+timeout = 600
+
+[[check]]
+id = "pin-duty-min"
+description = "Duty at XTI for a 50 % source, switching points anywhere in VIL..VIH"
+command = ["uv", "run", "run.py", "--json"]
+pattern = '"driver": "typ".*"pin_duty_min_pct": ([-+0-9.eE]+)'
+reduce = "all"
+min = 45.0
+unit = "%"
+source = "CS43198 DS1156F2 §4.5.1 p. 35 (external MCLK duty 45-55 %)"
+timeout = 600
+
+[[check]]
+id = "pin-duty-max"
+command = ["uv", "run", "run.py", "--json"]
+pattern = '"driver": "typ".*"pin_duty_max_pct": ([-+0-9.eE]+)'
+reduce = "all"
+max = 55.0
+unit = "%"
+source = "CS43198 DS1156F2 §4.5.1 p. 35 (external MCLK duty 45-55 %)"
+timeout = 600
+
+[[check]]
+id = "pin-rise-time"
+command = ["uv", "run", "run.py", "--json"]
+pattern = '"driver": "typ".*"pin_rise_s": ([-+0-9.eE]+)'
+reduce = "all"
+max = 6e-9
+unit = "s"
+source = "ADR 0010 (edge not slowed materially): NZ2520SDA catalogue 1703A Tr max 6 ns"
+timeout = 600
+
+[[check]]
+id = "pin-fall-time"
+command = ["uv", "run", "run.py", "--json"]
+pattern = '"driver": "typ".*"pin_fall_s": ([-+0-9.eE]+)'
+reduce = "all"
+max = 6e-9
+unit = "s"
+source = "ADR 0010 (edge not slowed materially): NZ2520SDA catalogue 1703A Tf max 6 ns"
+timeout = 600
+
+[[check]]
+id = "pin-single-crossing"
+description = "No ringing back across VIL or VIH (one crossing per edge)"
+command = ["uv", "run", "run.py", "--json"]
+pattern = '"driver": "typ".*"pin_extra_crossings": ([-+0-9.eE]+)'
+reduce = "all"
+max = 0
+unit = "crossings"
+source = "ADR 0010 (edge inside the VL input limits); CS43198 DS1156F2 Table 3-11 p. 19"
+timeout = 600
+
+[[check]]
+id = "xo-load"
+description = "Oscillator edge into the attenuator with the weakest catalogue drive (<= its 15 pF edge)"
+command = ["uv", "run", "run.py", "--json"]
+pattern = '"driver": "bound".*"xo_rise_s": ([-+0-9.eE]+)'
+reduce = "all"
+max = 6e-9
+unit = "s"
+source = "NDK NZ2520SDA catalogue 1703A: CL max 15 pF, Tr max 6 ns"
+timeout = 600

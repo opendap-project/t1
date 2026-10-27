@@ -1,0 +1,35 @@
+* MCLK divider, input side (ADR 0019): NSC5083D at twice the MCLK frequency on MCLK_3V1 -> the
+* clock input of the SN74AUC1G74 divide-by-two (VCC = MCLK_1V8).
+*
+* Topology (one oscillator runs, the other is tri-stated; both outputs on one net):
+*   XO_on --[RX]--+-- trace D --+-- two CLK pins (2 x (CFF + CPAD)), RPD to ground
+*   XO_off -[RX]--+
+* Oscillator output: ideal edge (TRS) behind ROUT. NDK publishes no output impedance (catalogue
+* 1703A: Tr/Tf <= 6 ns into CL <= 15 pF, VOH >= 0.9 VCC): ROUT = 181 ohm with TRS = 1 ns is the
+* weakest linear driver that still meets Tr = 6 ns into 15 pF ("bound", see xo-calibration.cir);
+* ROUT = 10 ohm is a strong driver for the overshoot corner (UNVERIFIED). COFF: tri-stated
+* output capacitance (UNVERIFIED). The source symmetry is the catalogue's worst, 40 % or 60 %:
+* the divider uses rising edges only, so it must not matter.
+* CFF: SN74AUC1G74 input capacitance, 2.5 pF typical at VCC 2.5 V (SCES537D p. 4); no maximum is
+* given, so 2.5 and 5 pF are run. RPD: 100 kohm pull-down that holds CLK low while both
+* oscillators are tri-stated (AUC inputs must not float, SCES537D p. 3 note 1).
+* Trace: lossless 50 ohm line (PCB-I-09), TD = length x 7 ps/mm (stripline FR-4).
+* The circuit is linear: run.py simulates VCC = 1 V and scales the results.
+.param VCC=1 ROUT=30 TRS=1n F=49.152e6 DUTY=0.4 RX=33 CFF=2.5p COFF=2p CPAD=0.5p TDD=70p NPER=16
+.param T={1/F} PW={DUTY*T-TRS}
+Vsrc src 0 PULSE(0 {VCC} 2n {TRS} {TRS} {PW} {T})
+Rout src xo {ROUT}
+Cxo xo 0 1p
+Rx1 xo j {RX}
+Rx2 j xoff {RX}
+Coff xoff 0 {COFF}
+Td j 0 c 0 Z0=50 TD={TDD}
+Cc c 0 0.3p
+Cff c 0 {2*(CFF+CPAD)}
+Rpd c 0 100k
+.tran 10p {NPER*T} 0 10p
+.control
+run
+wrdata xo.dat v(xo) v(c) i(Vsrc)
+.endc
+.end

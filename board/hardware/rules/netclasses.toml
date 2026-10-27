@@ -1,0 +1,226 @@
+# OpenDAP T1 main board: net classes
+#
+# The contract between the schematic and the product rules
+# (t1-main-board.kicad_dru): a net in one of these classes gets the
+# constraints listed with it. IDs refer to docs/specs/pcb-design-constraints.md.
+# Impedance-controlled classes get their widths and gaps from
+# hardware/stackup/stackup-v3.toml (stackup v3, docs/specs/stackup-v3.md §5),
+# to be confirmed by the fab's DFM review. Keys: `stackup` names the stack;
+# `width_outer_um` / `gap_outer_um` hold for L1 and L6, `width_inner_um` /
+# `gap_inner_um` for L4 (drawn width; gap edge to edge within a pair);
+# `spacing_inner_um` is the minimum edge-to-edge space to any other net on L4
+# (PCB-S-24); `layers` are the only layers the class may route on (stackup
+# v3 §4, PCB-S-14), and only in the zones where the layer's references are
+# ground (stackup v3 §3: not L1 in the core zone, not L4 in the power and
+# radio zones). KiCad layer names on the 6-layer board: L1 = F.Cu, L2..L5 =
+# In1.Cu..In4.Cu, L6 = B.Cu.
+# Zone classes (ZONE_<NAME>, ZONE_SHARED, end of file) are assigned to every
+# net besides its signal class (floorplan v1 §4, PCB-S-17).
+# The KiCad project's net classes are generated from this file.
+# Rules also rely on footprint references, fields, pad properties and rule
+# areas; those conventions are in README.md ("Conventions the rules rely on").
+#
+# Impedance-controlled classes are named <name>_<ohms>D (differential) or
+# <name>_<ohms>SE (single-ended), the form kicad-lib's craft rules exempt
+# from their general width rules (pcb-craft-standard.md, composition).
+
+version = 1
+
+[[class]]
+name = "PWR_BAT"
+signals = "Battery contacts P+ (two contacts) through the fuse to the BQ25798 BAT pins; P- (two contacts) through the sense resistor to GND (ADR 0020)"
+design_current_a = 5.0
+constraints = ["PCB-P-01", "PCB-L-02", "PCB-L-05", "PCB-L-07"]
+
+[[class]]
+name = "BAT_SENSE"
+signals = "Battery contacts mid-cell tap (to the BQ28Z610-R1 VC1 filter) and pack NTC (to the BQ25798 TS network), up to their series parts and ESD diodes (ADR 0020)"
+constraints = ["PCB-L-02", "PCB-L-05", "PCB-L-08", "PCB-P-17"]
+
+[[class]]
+name = "PWR_VSYS"
+signals = "VSYS 6.0-8.8 V trunk from the BQ25798 SYS pins"
+design_current_a = 3.2
+constraints = ["PCB-P-02"]
+
+[[class]]
+name = "PWR_VBUS"
+signals = "USB-C VBUS through the TVS2200 and the TPS2121 to the BQ25798 VBUS; outer layers only in the I/O zone (PCB-P-22)"
+design_current_a = 3.0
+constraints = ["PCB-P-03", "PCB-P-22"]
+
+[[class]]
+name = "PWR_5V1"
+signals = "5.1 V TPS62903 output to eFuse #D (shared limiter), #D to the eFuse #A and #C inputs, and the eFuse #C output (USB-C source); HAT_5V is PWR_HAT5V"
+design_current_a = 2.52
+constraints = ["PCB-P-04", "PCB-P-22"]
+
+[[class]]
+name = "PWR_HAT5V"
+signals = "HAT_5V: VBUS of the HAT USB port in both directions under USB PD: eFuse #A output (source), the TPS2121 IN2 branch (sink) and the HAT connector VBUS contacts (hat-standard interface v2: 3.0 A continuous, 4.5 A fault ceiling; RFC 0014); outer pours only in the I/O zone (PCB-P-22)"
+design_current_a = 4.5
+constraints = ["PCB-P-20", "PCB-P-22"]
+
+[[class]]
+name = "PWR_AMP"
+signals = "Amplifier pre-rails +7 V / -7 V and the +6 V / -6 V LDO outputs; tracks, not pours, under AUDIO_ANALOG (PCB-A-20)"
+design_current_a = 0.3
+constraints = ["PCB-P-06", "PCB-A-07", "PCB-A-20"]
+
+[[class]]
+name = "PWR_AUDIO"
+signals = "Audio-zone rails other than the amplifier rails: CS43198 VA and VCP, the MCLK oscillator supplies, the audio LDO outputs; tracks, not pours, under AUDIO_ANALOG (PCB-A-20)"
+constraints = ["PCB-A-07", "PCB-A-20"]
+
+[[class]]
+name = "SW_NODE"
+signals = "Switch node of every converter (BQ25798, TPS62136, TPS62903, LMR33630C, TPS65131, RK809, RK860-0, TPS62840)"
+constraints = ["PCB-P-07", "PCB-P-08", "PCB-A-06"]
+
+[[class]]
+name = "AUDIO_ANALOG"
+signals = "CS43198 analog outputs, OPA1622 inputs and outputs, output networks, jack signal pins"
+constraints = ["PCB-A-06", "PCB-A-07", "PCB-A-10"]
+
+[[class]]
+name = "AUDIO_REF"
+signals = "CS43198 REFA and REFB, routed independently to each headphone connector's ground pin"
+constraints = ["PCB-A-03", "PCB-A-07"]
+
+[[class]]
+name = "MCLK_50SE"
+signals = "22.5792 MHz and 24.576 MHz oscillator outputs, the attenuator, CS43198 XTI; each branch at most 20 mm (sim/mclk-attenuator)"
+impedance_ohm = 50
+stackup = "stackup-v3"
+width_inner_um = 102.5
+layers = ["L4"]
+constraints = ["PCB-I-09", "PCB-S-14"]
+
+[[class]]
+name = "I2S_50SE"
+signals = "SoC to CS43198 ASP: SCLK, LRCK, SDIN"
+impedance_ohm = 50
+stackup = "stackup-v3"
+width_outer_um = 188.0
+width_inner_um = 102.5
+layers = ["L1", "L4", "L6"]
+constraints = ["PCB-I-08", "PCB-A-12", "PCB-S-14"]
+
+[[class]]
+name = "USB2_90D"
+signals = "Main USB-C D+/D- (OTG0), HAT D+/D- (USB3 HOST1 USB 2.0 pair)"
+differential_ohm = 90
+stackup = "stackup-v3"
+width_outer_um = 126.0
+gap_outer_um = 100.0
+width_inner_um = 97.0
+gap_inner_um = 150.0
+layers = ["L1", "L4", "L6"]
+constraints = ["PCB-I-01", "PCB-I-10", "PCB-S-14"]
+
+[[class]]
+name = "USB3_90D"
+signals = "HAT SSTX+/-, SSRX+/- (USB3 HOST1)"
+differential_ohm = 90
+stackup = "stackup-v3"
+width_outer_um = 126.0
+gap_outer_um = 100.0
+width_inner_um = 97.0
+gap_inner_um = 150.0
+layers = ["L1", "L4", "L6"]
+constraints = ["PCB-I-02", "PCB-I-10", "PCB-S-14"]
+
+[[class]]
+name = "MIPI_100D"
+signals = "Faceplate DSI lanes (DSI only: the HAT CSI-2 lanes are withdrawn, RFC 0014)"
+differential_ohm = 100
+stackup = "stackup-v3"
+width_outer_um = 135.5
+gap_outer_um = 175.0
+width_inner_um = 89.0
+gap_inner_um = 250.0
+layers = ["L1", "L4", "L6"]
+constraints = ["PCB-I-04", "PCB-I-10", "PCB-S-14"]
+
+[[class]]
+name = "DDR_50SE"
+signals = "LPDDR4X DQ, DM and CA (command and address)"
+impedance_ohm = 50
+stackup = "stackup-v3"
+width_outer_um = 188.0
+width_inner_um = 102.5
+spacing_inner_um = 307.5
+layers = ["L1", "L4", "L6"]
+constraints = ["PCB-I-05", "PCB-S-14", "PCB-S-24"]
+
+[[class]]
+name = "DDR_100D"
+signals = "LPDDR4X DQS and CK pairs"
+differential_ohm = 100
+stackup = "stackup-v3"
+width_outer_um = 135.5
+gap_outer_um = 175.0
+width_inner_um = 89.0
+gap_inner_um = 250.0
+spacing_inner_um = 307.5
+layers = ["L1", "L4", "L6"]
+constraints = ["PCB-I-05", "PCB-S-14", "PCB-S-24"]
+
+[[class]]
+name = "EMMC_SD_50SE"
+signals = "eMMC HS200, microSD SDR104 and the SDIO bus to the radio: clock, command and data"
+impedance_ohm = 50
+stackup = "stackup-v3"
+width_outer_um = 188.0
+width_inner_um = 102.5
+layers = ["L1", "L4", "L6"]
+constraints = ["PCB-I-06", "PCB-S-14"]
+
+[[class]]
+name = "RF_50SE"
+signals = "Radio module RF pins to the U.FL connectors"
+impedance_ohm = 50
+stackup = "stackup-v3"
+width_outer_um = 391.0
+layers = ["L1", "L6"]
+reference = "L3 under an L1 line, L4 (radio zone ground) under an L6 line; L2 (L5) cut out 1.6 mm wide (rule area RF_CUTOUT), same-layer ground >= 0.6 mm from the line"
+constraints = ["PCB-I-07", "PCB-R-01", "PCB-R-03", "PCB-S-14"]
+
+# Zone classes (floorplan v1 §2, §4): every net carries one of them besides its
+# signal class. A track of a net is allowed in a zone only with that zone's
+# class or ZONE_SHARED, or wholly inside a corridor (PCB-S-17).
+
+[[class]]
+name = "ZONE_CORE"
+signals = "Nets of the core zone: SoC, LPDDR4X, eMMC, microSD, PMIC, vdd_cpu buck, coprocessor, board control"
+constraints = ["PCB-S-16", "PCB-S-17"]
+
+[[class]]
+name = "ZONE_AUDIO"
+signals = "Nets of the audio zone: DACs, master clocks, output stages, jacks, ambient microphone"
+constraints = ["PCB-S-16", "PCB-S-17"]
+
+[[class]]
+name = "ZONE_POWER"
+signals = "Nets of the power zone: charger, gauge, battery path, converters, current monitors, speaker"
+constraints = ["PCB-S-16", "PCB-S-17"]
+
+[[class]]
+name = "ZONE_IO"
+signals = "Nets of the I/O zone: USB-C, HAT flat-cable connector and HAT port, faceplate supplies, main microphone"
+constraints = ["PCB-S-16", "PCB-S-17"]
+
+[[class]]
+name = "ZONE_RADIO"
+signals = "Nets of the radio zone: radio module, RF lines, U.FL feeds, case-antenna branch"
+constraints = ["PCB-S-16", "PCB-S-17"]
+
+[[class]]
+name = "ZONE_FACEPLATE"
+signals = "Nets of the faceplate connection area: FH35C contacts and their ESD"
+constraints = ["PCB-S-16", "PCB-S-17"]
+
+[[class]]
+name = "ZONE_SHARED"
+signals = "Nets every zone may carry: rails delivered by planes and pours that cross zones (VSYS, the system rails)"
+constraints = ["PCB-S-16", "PCB-S-17"]

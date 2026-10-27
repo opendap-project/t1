@@ -1,0 +1,293 @@
+# Craft check configuration of the T1 main board (odapkit craft check),
+# format in toolkit-hardware tools/pcb-craft-check.py.
+#
+# Prototype 1 targets Q1 (RFC 0010; board docs/specs/pcb-design-constraints.md).
+# The mirrored blocks below follow the schematic's references: one hundred-block
+# per sheet (CRAFT-116), so a pair drawn on two sheets differs by 100 and a pair
+# drawn on one sheet by the count of its first half. When the generator
+# renumbers a sheet, these tables follow it.
+version = 1
+target = "Q1"
+
+# The CS43198 pair is dual mono (BOM v1 line 18): blk.dac-l (21xx) is the left
+# channel, blk.dac-r (22xx) the right, each with its supplies, filters and
+# serial-port parts. R2207 (the right DAC's ADR resistor) has no counterpart:
+# the left DAC's ADR pin goes straight to ground.
+[[symmetry]]
+name = "DAC left / right (CS43198 dual mono)"
+a = ["U21??", "R210[1-6]", "C21??"]
+offset = 100
+axis = "vertical"
+
+# 4.4 mm balanced output stage: one OPA1622 package per leg (ADR 0012), the
+# left legs on blk.hpa-bal-l (28xx), the right legs on blk.hpa-bal-r (29xx).
+[[symmetry]]
+name = "Balanced output stage left / right"
+a = ["U28??", "R28??", "C28??"]
+offset = 100
+axis = "vertical"
+
+# 3.5 mm single-ended output stage: one OPA1622 package per channel (ADR 0012),
+# both on blk.hpa-se (26xx): channel L first, then channel R.
+[[symmetry]]
+name = "Single-ended output stage left / right: packages"
+a = ["U2601"]
+offset = 1
+axis = "vertical"
+
+[[symmetry]]
+name = "Single-ended output stage left / right: networks and ballasts"
+a = ["R260?", "R2610"]
+offset = 10
+axis = "vertical"
+
+[[symmetry]]
+name = "Single-ended output stage left / right: decoupling and network capacitors"
+a = ["C260[1-6]"]
+offset = 6
+axis = "vertical"
+
+# ---- [schematic]: written by generator/generate.py from the drawn sheets; edit the generator, not below.
+[schematic]
+rails = ["GND", "VSYS", "VSYS_LV", "vcc3v3_sys", "vdd_cpu", "vdd_logic", "vdd_gpu", "vdd_npu", "vcc_ddr", "vcc0v6_ddr", "vcc1v8_ddr", "vcc_1v8", "vccio6_1v8", "vdda0v9_image", "vdda_0v9", "vdda0v9_pmu", "FP_VCI", "vccio_sd", "vcc3v3_pmu", "vcca_1v8", "vcca1v8_pmu", "vcca1v8_image", "vcc3v3_sd", "DAC_VP", "DAC_DIG_1V8", "AUDIO_2V2", "DAC1_VA", "DAC2_VA", "MCLK_3V1", "MCLK_1V8", "AUDIO_P7V0", "AUDIO_N7V0", "HPA_P6V0", "HPA_N6V0", "USBC_VBUS", "HAT_5V", "VBUS_CHG", "VBAT", "BAT_N", "FP_3V3", "FP_1V8", "MIC_1V8", "FP_VCI_SRC", "vcc3v3_wl", "vcc1v8_wl", "NFC_VBAT", "RP_3V3", "RP_IOVDD_1V8"]
+netclasses = "../rules/netclasses.toml"
+
+[[schematic.block]]
+id = "blk.charger"
+interface = ["BAT_F", "BAT_MID", "{IO_IRQ}", "{EXP_IO}", "{I2C1}"]
+
+[[schematic.block]]
+id = "blk.charger-input"
+interface = ["{EXP_IO}"]
+
+[[schematic.block]]
+id = "blk.charger-core"
+interface = ["BAT_NTC", "CHG_BATP", "{IO_IRQ}", "CHG_SDRV", "{I2C1}"]
+
+[[schematic.block]]
+id = "blk.charger-battery"
+interface = ["BAT_F", "BAT_MID", "BAT_NTC", "CHG_BATP", "CHG_SDRV"]
+
+[[schematic.block]]
+id = "blk.gauge"
+interface = ["BAT_F", "BAT_MID", "{I2C1}"]
+
+[[schematic.block]]
+id = "blk.pwr-vsys-lv"
+interface = []
+
+[[schematic.block]]
+id = "blk.pwr-3v3-sys"
+interface = []
+
+[[schematic.block]]
+id = "blk.pmic"
+interface = ["{PMIC_CTL}", "{I2C0}", "{KEYS}", "VCC_DDR_SRC", "VDD_LOGIC_SRC"]
+
+[[schematic.block]]
+id = "blk.vdd-cpu"
+interface = ["{I2C0}"]
+
+[[schematic.block]]
+id = "blk.soc"
+interface = ["{DDR_CHA}", "{DDR_CHB}", "{EMMC}", "{KEYS}", "{AUDIO_CTL}", "{FP}", "{WL}", "{IO_IRQ}", "{PMIC_CTL}", "{AUDIO_I2S}", "{IMON}", "{USB}", "{I2C0}", "{I2C1}", "{I2C2}", "{NFC}", "{RP}", "{SDMMC0}", "{SPK_I2S}", "{TPM}", "VDD_LOGIC_SRC"]
+
+[[schematic.block]]
+id = "blk.soc-pmuio"
+interface = ["{KEYS}", "{WL}", "{IO_IRQ}", "{PMIC_CTL}", "{IMON}", "{FP}", "{I2C0}", "{I2C1}", "{I2C2}", "{NFC}", "{RP}", "{SDMMC0}", "{TPM}"]
+
+[[schematic.block]]
+id = "blk.soc-ddr"
+interface = ["{DDR_CHA}", "{DDR_CHB}"]
+
+[[schematic.block]]
+id = "blk.soc-vccio-a"
+interface = ["{EMMC}", "{WL}", "{NFC}", "{RP}", "{SDMMC0}", "{TPM}"]
+
+[[schematic.block]]
+id = "blk.soc-vccio-b"
+interface = ["{AUDIO_CTL}", "{FP}", "{AUDIO_I2S}", "{I2C2}", "{RP}", "{SPK_I2S}"]
+
+[[schematic.block]]
+id = "blk.soc-phy"
+interface = ["{FP}", "{USB}", "{RP}"]
+
+[[schematic.block]]
+id = "blk.soc-power"
+interface = ["VDD_LOGIC_SRC"]
+
+[[schematic.block]]
+id = "blk.soc-ground"
+interface = []
+
+[[schematic.block]]
+id = "blk.lpddr4x"
+interface = ["{DDR_CHA}", "{DDR_CHB}", "VCC_DDR_SRC"]
+
+[[schematic.block]]
+id = "blk.emmc"
+interface = ["{EMMC}"]
+
+[[schematic.block]]
+id = "blk.audio"
+interface = ["{AUDIO_CTL}", "{AUDIO_I2S}", "{HP_BAL}", "{HP_SE}"]
+
+[[schematic.block]]
+id = "blk.audio-supply"
+interface = ["{AUDIO_CTL}"]
+
+[[schematic.block]]
+id = "blk.mclk"
+interface = ["{AUDIO_CTL}", "MCLK_L", "MCLK_R"]
+
+[[schematic.block]]
+id = "blk.dac-l"
+interface = ["{AUDIO_CTL}", "{DAC_L_OUT}", "{AUDIO_I2S}", "{HP_SE}", "MCLK_L"]
+
+[[schematic.block]]
+id = "blk.dac-r"
+interface = ["{AUDIO_CTL}", "{DAC_R_OUT}", "{AUDIO_I2S}", "{HP_SE}", "MCLK_R"]
+
+[[schematic.block]]
+id = "blk.hpa-rails"
+interface = ["{AUDIO_CTL}"]
+
+[[schematic.block]]
+id = "blk.hpa-rails-pre"
+interface = ["{AUDIO_CTL}"]
+
+[[schematic.block]]
+id = "blk.hpa-rails-ldo"
+interface = ["{AUDIO_CTL}"]
+
+[[schematic.block]]
+id = "blk.hpa-se"
+interface = ["{DAC_L_OUT}", "{DAC_R_OUT}", "{AUDIO_CTL}", "{HP_SE}"]
+
+[[schematic.block]]
+id = "blk.hpa-bal"
+interface = ["{DAC_L_OUT}", "{DAC_R_OUT}", "{AUDIO_CTL}", "{HP_BAL}"]
+
+[[schematic.block]]
+id = "blk.hpa-bal-l"
+interface = ["{DAC_L_OUT}", "{AUDIO_CTL}", "HPA_N6V0_BAL", "HPA_P6V0_BAL", "{HP_BAL}"]
+
+[[schematic.block]]
+id = "blk.hpa-bal-r"
+interface = ["{DAC_R_OUT}", "{AUDIO_CTL}", "HPA_N6V0_BAL", "HPA_P6V0_BAL", "{HP_BAL}"]
+
+[[schematic.block]]
+id = "blk.jack-se"
+interface = ["{HP_SE}", "{EXP_IO}"]
+
+[[schematic.block]]
+id = "blk.jack-bal"
+interface = ["{HP_BAL}", "{EXP_IO}"]
+
+[[schematic.block]]
+id = "blk.usb-c"
+interface = ["{I2C1}", "{USB}", "{IO_IRQ}"]
+
+[[schematic.block]]
+id = "blk.pwr-5v1"
+interface = ["{EXP_IO}", "P5V1_SRC"]
+
+[[schematic.block]]
+id = "blk.usb-vbus-out"
+interface = ["{EXP_IO}", "{IMON}", "P5V1_LIM", "P5V1_SRC"]
+
+[[schematic.block]]
+id = "blk.hat-5v"
+interface = ["{EXP_IO}", "{IMON}", "HAT_CC", "{IO_IRQ}", "{I2C1}", "P5V1_LIM"]
+
+[[schematic.block]]
+id = "blk.hat-signals"
+interface = ["HAT_CC", "{USB}"]
+
+[[schematic.block]]
+id = "blk.radio"
+interface = ["{WL}", "WL_ANT0", "WL_ANT1", "WL_BT_IN", "{EXP_IO}"]
+
+[[schematic.block]]
+id = "blk.radio-module"
+interface = ["{WL}", "WL_ANT0", "WL_ANT1", "WL_BT_IN", "WL_PD_N"]
+
+[[schematic.block]]
+id = "blk.radio-power"
+interface = ["{EXP_IO}", "WL_PD_N"]
+
+[[schematic.block]]
+id = "blk.antennas"
+interface = ["WL_ANT0", "WL_ANT1", "WL_BT_IN"]
+
+[[schematic.block]]
+id = "blk.fp-connector"
+interface = ["BL_LEDA", "BL_LEDK", "{FP}", "{EXP_IO}", "PDM_CLK0_FP"]
+
+[[schematic.block]]
+id = "blk.fp-display"
+interface = ["{EXP_IO}"]
+
+[[schematic.block]]
+id = "blk.fp-backlight"
+interface = ["BL_LEDA", "BL_LEDK", "{FP}"]
+
+[[schematic.block]]
+id = "blk.fp-controls"
+interface = ["{FP}"]
+
+[[schematic.block]]
+id = "blk.mic-main"
+interface = ["{FP}", "PDM_CLK0_FP"]
+
+[[schematic.block]]
+id = "blk.gpio-expander"
+interface = ["{EXP_IO}", "{IO_IRQ}", "{I2C2}"]
+
+[[schematic.block]]
+id = "blk.board-id"
+interface = ["{I2C2}"]
+
+[[schematic.block]]
+id = "blk.imu"
+interface = ["{I2C2}", "{IO_IRQ}"]
+
+[[schematic.block]]
+id = "blk.speaker"
+interface = ["{SPK_I2S}"]
+
+[[schematic.block]]
+id = "blk.microsd"
+interface = ["{SDMMC0}"]
+
+[[schematic.block]]
+id = "blk.haptics"
+interface = ["{EXP_IO}", "{I2C2}"]
+
+[[schematic.block]]
+id = "blk.tpm"
+interface = ["{I2C2}", "{TPM}"]
+
+[[schematic.block]]
+id = "blk.nfc-tag"
+interface = ["{I2C2}", "{NFC}"]
+
+[[schematic.block]]
+id = "blk.nfc-reader"
+interface = ["{I2C2}", "{NFC}", "{EXP_IO}"]
+
+[[schematic.block]]
+id = "blk.rp2354"
+interface = ["{AUDIO_I2S}", "{RP}"]
+
+[[schematic.block]]
+id = "blk.rp2354-core"
+interface = ["{AUDIO_I2S}", "{RP}"]
+
+[[schematic.block]]
+id = "blk.rp2354-power"
+interface = ["{RP}"]
+
+[[schematic.block]]
+id = "blk.buttons"
+interface = ["{KEYS}"]

@@ -1,0 +1,80 @@
+# OpenDAP T1 main board: variant "production"
+#
+# Format: opendap.board-variant/v1, defined in docs/specs/feature-blocks.md §4.
+# Every block of the catalog appears exactly once under [blocks]. KiCad's
+# variant data, the BOM, pick-and-place, devicetree overlays and the device
+# description are generated from this file (RFC 0011 rule 7); nothing is
+# edited by hand per variant.
+#
+# 2026-10-25 (RFC 0014, HATs are USB only): blk.hat-3v3 and blk.hat-audio
+# are removed from the catalog.
+
+schema = "opendap.board-variant/v1"
+board = "t1-main-board"
+name = "production"
+kind = "production"
+status = "proposed"
+description = "Commercial and DIY editions (T1-004): ADR 0013 population, measurement links fitted as 0 ohm."
+target_level = "Q1"
+catalog = "docs/specs/feature-blocks.md"
+promise = [
+  "T1-040", "T1-004", "T1-049", "T1-072",
+  "BRD-003", "BRD-011", "BRD-012", "BRD-018", "BRD-022", "BRD-023", "BRD-024",
+  "BRD-026", "BRD-027", "BRD-029", "BRD-034", "BRD-037", "BRD-038", "BRD-040",
+  "BRD-044", "BRD-045", "BRD-048", "BRD-049", "BRD-050", "BRD-051", "BRD-052",
+]
+
+[instrumentation]
+links = "zero-ohm"
+test_points = "fit"
+
+[blocks]
+"blk.soc" = { state = "fit" }
+"blk.lpddr4x" = { state = "fit" }
+"blk.emmc" = { state = "alternate", alternate = "emmc-16gb", params = { capacity_gb = 16 }, open = "ADR 0013: 16 GB or 32 GB on the same footprint" }
+"blk.microsd" = { state = "fit" }
+"blk.board-id" = { state = "fit" }
+"blk.gpio-expander" = { state = "fit" }
+"blk.charger" = { state = "fit" }
+"blk.gauge" = { state = "fit" }
+"blk.usb-c" = { state = "fit" }
+"blk.pwr-vsys-lv" = { state = "fit" }
+"blk.pwr-3v3-sys" = { state = "fit" }
+"blk.pmic" = { state = "fit" }
+"blk.vdd-cpu" = { state = "fit" }
+"blk.pwr-5v1" = { state = "fit" }
+"blk.hat-5v" = { state = "fit" }
+"blk.usb-vbus-out" = { state = "fit" }
+"blk.current-monitors" = { state = "fit", params = { shunt_mohm = { vsys = 10, audio = 100, display = 100, hat = 20 } }, note = "ADR 0013: all four INA236 fitted in every variant" }
+"blk.hat-signals" = { state = "fit" }
+"blk.fp-connector" = { state = "fit" }
+"blk.fp-display" = { state = "fit" }
+"blk.fp-backlight" = { state = "fit" }
+"blk.fp-controls" = { state = "fit" }
+"blk.status-led" = { state = "fit" }
+"blk.mic-main" = { state = "fit" }
+"blk.audio" = { state = "fit" }
+"blk.audio-supply" = { state = "fit" }
+"blk.mclk" = { state = "fit" }
+"blk.dac-l" = { state = "fit" }
+"blk.dac-r" = { state = "fit" }
+"blk.hpa-rails" = { state = "fit" }
+"blk.hpa-se" = { state = "fit" }
+"blk.hpa-bal" = { state = "fit" }
+"blk.jack-se" = { state = "fit" }
+"blk.jack-bal" = { state = "fit" }
+"blk.speaker" = { state = "fit" }
+"blk.mic-ambient" = { state = "fit", note = "ADR 0013" }
+"blk.radio" = { state = "fit" }
+"blk.antennas" = { state = "fit" }
+"blk.nfc-tag" = { state = "fit" }
+"blk.nfc-reader" = { state = "dnp", open = "BOM line 127 lists the PN7160 as a DNP option in production; the ADR 0013 rule (keep should parts) has not been applied to it" }
+"blk.imu" = { state = "fit", note = "ADR 0013" }
+"blk.haptics" = { state = "fit" }
+"blk.tpm" = { state = "fit" }
+"blk.rp2354" = { state = "fit", note = "ADR 0013" }
+"blk.buttons" = { state = "fit" }
+"blk.maskrom" = { state = "fit" }
+"blk.debug" = { state = "fit" }
+"blk.cover-detect" = { state = "fit", note = "ADR 0020 item 7 (should): fitted" }
+"blk.shields" = { state = "dnp", note = "BOM line 90: fitted only if EMC or audio measurements require" }

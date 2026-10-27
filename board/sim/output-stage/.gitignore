@@ -1,0 +1,4 @@
+# Vendor models: download them here, never commit them (see README.md)
+models/
+# ngspice scratch netlists written by sweep.py
+_*.cir

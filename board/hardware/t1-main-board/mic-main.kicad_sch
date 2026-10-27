@@ -1,0 +1,1052 @@
+(kicad_sch (version 20260306) (generator "eeschema") (generator_version "10.0")
+(uuid "7324265c-2639-5281-b727-dd3e8c9ea8d9")
+(paper "A4")
+(title_block (title "Faceplate microphone supply") (date "2026-10-25") (rev "A") (company "The OpenDAP Project") (comment 1 "blk.mic-main") (comment 2 "MIC_1V8 current-limited switch and the PDM clock series resistor"))
+(lib_symbols (symbol "Connector:TestPoint"
+		(pin_numbers
+			(hide yes)
+		)
+		(pin_names
+			(offset 0.762)
+			(hide yes)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(duplicate_pin_numbers_are_jumpers no)
+		(property "Reference" "TP"
+			(at 0 6.858 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "TestPoint"
+			(at 0 5.08 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 5.08 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 5.08 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "test point"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_keywords" "test point tp"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_fp_filters" "Pin* Test*"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "TestPoint_0_1"
+			(circle
+				(center 0 3.302)
+				(radius 0.762)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+		)
+		(symbol "TestPoint_1_1"
+			(pin passive line
+				(at 0 0 90)
+				(length 2.54)
+				(name "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
+(symbol "Device:C"
+		(pin_numbers
+			(hide yes)
+		)
+		(pin_names
+			(offset 0.254)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(duplicate_pin_numbers_are_jumpers no)
+		(property "Reference" "C"
+			(at 0.635 2.54 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "C"
+			(at 0.635 -2.54 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 0.9652 -3.81 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Unpolarized capacitor"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_keywords" "cap capacitor"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_fp_filters" "C_*"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "C_0_1"
+			(polyline
+				(pts
+					(xy -2.032 0.762) (xy 2.032 0.762)
+				)
+				(stroke
+					(width 0.508)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy -2.032 -0.762) (xy 2.032 -0.762)
+				)
+				(stroke
+					(width 0.508)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+		)
+		(symbol "C_1_1"
+			(pin passive line
+				(at 0 3.81 270)
+				(length 2.794)
+				(name ""
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 0 -3.81 90)
+				(length 2.794)
+				(name ""
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
+(symbol "Device:R"
+		(pin_numbers
+			(hide yes)
+		)
+		(pin_names
+			(offset 0)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(duplicate_pin_numbers_are_jumpers no)
+		(property "Reference" "R"
+			(at 2.032 0 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "R"
+			(at 0 0 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at -1.778 0 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_keywords" "R res resistor"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_fp_filters" "R_*"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "R_0_1"
+			(rectangle
+				(start -1.016 -2.54)
+				(end 1.016 2.54)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+		)
+		(symbol "R_1_1"
+			(pin passive line
+				(at 0 3.81 270)
+				(length 1.27)
+				(name ""
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 0 -3.81 90)
+				(length 1.27)
+				(name ""
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
+(symbol "Texas_Instruments:TPS22945DCKR"
+		(pin_names
+			(offset 1.016)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(property "Reference" "U"
+			(at -7.62 16.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "TPS22945DCKR"
+			(at -7.62 -17.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Texas_Instruments:Texas_DCK0005A_SC-70-5_1.25x2mm_P0.65mm"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://www.ti.com/lit/ds/symlink/tps22945.pdf"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Current-limited load switch, 1.62-5.5 V, 0.4 Ohm P-channel, 100-200 mA limit, 10 ms blanking, 80 ms auto-restart, active-high ON, open-drain OC flag, SC-70-5 (DCK0005A)"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "Texas Instruments"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "TPS22945DCKR"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_keywords" "load switch current limit power switch TPS22945 SC-70 DCK"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_fp_filters" "Texas_DCK0005A_SC-70-5_1.25x2mm_P0.65mm*"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "TPS22945DCKR_1_1"
+			(rectangle
+				(start -7.62 12.7)
+				(end 7.62 -12.7)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type background)
+				)
+			)
+			(pin input line
+				(at -10.16 0 0)
+				(length 2.54)
+				(name "ON"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "4"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin power_out line
+				(at 10.16 0 180)
+				(length 2.54)
+				(name "VOUT"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin open_collector line
+				(at 10.16 -2.54 180)
+				(length 2.54)
+				(name "OC"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "3"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin power_in line
+				(at 0 15.24 270)
+				(length 2.54)
+				(name "VIN"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "5"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin power_in line
+				(at 0 -15.24 90)
+				(length 2.54)
+				(name "GND"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
+(symbol "power:GND"
+		(power global)
+		(pin_numbers
+			(hide yes)
+		)
+		(pin_names
+			(offset 0)
+			(hide yes)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(duplicate_pin_numbers_are_jumpers no)
+		(property "Reference" "#PWR"
+			(at 0 -6.35 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 0 -3.81 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_keywords" "global power"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "GND_0_1"
+			(polyline
+				(pts
+					(xy 0 0) (xy 0 -1.27) (xy 1.27 -1.27) (xy 0 -2.54) (xy -1.27 -1.27) (xy 0 -1.27)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+		)
+		(symbol "GND_1_1"
+			(pin power_in line
+				(at 0 0 270)
+				(length 0)
+				(name ""
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
+(symbol "power:VCC"
+		(power global)
+		(pin_numbers
+			(hide yes)
+		)
+		(pin_names
+			(offset 0)
+			(hide yes)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(duplicate_pin_numbers_are_jumpers no)
+		(property "Reference" "#PWR"
+			(at 0 -3.81 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "VCC"
+			(at 0 3.556 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"VCC\""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_keywords" "global power"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "VCC_0_1"
+			(polyline
+				(pts
+					(xy -0.762 1.27) (xy 0 2.54)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 0 2.54) (xy 0.762 1.27)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 0 0) (xy 0 2.54)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+		)
+		(symbol "VCC_1_1"
+			(pin power_in line
+				(at 0 0 90)
+				(length 0)
+				(name ""
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	))
+(symbol (lib_id "Texas_Instruments:TPS22945DCKR") (at 45.72 60.96 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "bde0a476-e630-5e06-84b9-da40cb608b34")
+  (property "Reference" "U5701" (at 46.99 45.72 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Value" "TPS22945DCKR" (at 46.99 43.18 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Footprint" "Texas_Instruments:Texas_DCK0005A_SC-70-5_1.25x2mm_P0.65mm" (at 45.72 60.96 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "https://www.ti.com/lit/ds/symlink/tps22945.pdf" (at 45.72 60.96 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Description" "Current-limited load switch, 1.62-5.5 V, 0.4 Ohm P-channel, 100-200 mA limit, 10 ms blanking, 80 ms auto-restart, active-high ON, open-drain OC flag, SC-70-5 (DCK0005A)" (at 45.72 60.96 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Manufacturer" "Texas Instruments" (at 45.72 60.96 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "MPN" "TPS22945DCKR" (at 45.72 60.96 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Block" "blk.mic-main" (at 45.72 60.96 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "4" (uuid "bc145b20-6cd9-562a-8225-0a9b9699164d"))
+  (pin "1" (uuid "e68b7156-8b98-596c-839c-37805a6a364d"))
+  (pin "3" (uuid "28e08b9b-4000-5382-96a0-81983aeced36"))
+  (pin "5" (uuid "9cb09d3f-0a9c-516c-9715-75a0e6de28e8"))
+  (pin "2" (uuid "fbe11d5e-6425-54ea-a011-698a49920777"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/a99d5100-269f-5c2b-8d9f-c948d2bbeff4" (reference "U5701") (unit 1))))
+)
+(wire (pts (xy 35.56 60.96) (xy 33.02 60.96)) (stroke (width 0) (type default)) (uuid "541d1d31-8c1f-5545-a3a4-012f74575d51"))
+(wire (pts (xy 55.88 60.96) (xy 60.96 60.96)) (stroke (width 0) (type default)) (uuid "21864a15-f8c1-5277-8e4d-aede6ed39e65"))
+(symbol (lib_id "power:VCC") (at 60.96 60.96 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "c7213181-09c9-57f6-b938-6cd125e2a7e5")
+  (property "Reference" "#PWR0746" (at 60.96 60.96 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Value" "MIC_1V8" (at 60.96 57.15 0) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "" (at 60.96 60.96 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "" (at 60.96 60.96 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "b2d9ae0f-9fd8-56e4-97d0-1e92cfec904d"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/a99d5100-269f-5c2b-8d9f-c948d2bbeff4" (reference "#PWR0746") (unit 1))))
+)
+(no_connect (at 55.88 63.5) (uuid "b8816c3b-27ea-5ce0-9539-f25a2745c441"))
+(wire (pts (xy 45.72 45.72) (xy 45.72 43.18)) (stroke (width 0) (type default)) (uuid "5a25db2a-a163-5df0-a914-7c6ca5c4027e"))
+(symbol (lib_id "power:VCC") (at 45.72 43.18 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "fb07d88e-d04f-54fd-9314-4a9a884649fe")
+  (property "Reference" "#PWR0747" (at 45.72 43.18 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Value" "vcc_1v8" (at 45.72 39.37 0) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "" (at 45.72 43.18 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "" (at 45.72 43.18 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "df7159de-cd45-594f-b2a1-70ff620124ab"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/a99d5100-269f-5c2b-8d9f-c948d2bbeff4" (reference "#PWR0747") (unit 1))))
+)
+(wire (pts (xy 45.72 76.2) (xy 45.72 78.74)) (stroke (width 0) (type default)) (uuid "fe98929e-d056-5ba3-99b1-0511f8da1d1a"))
+(symbol (lib_id "power:GND") (at 45.72 78.74 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "5096f839-ee95-5a8a-a5e5-c25311805cee")
+  (property "Reference" "#PWR0748" (at 45.72 78.74 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Value" "GND" (at 45.72 82.55 0) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "" (at 45.72 78.74 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "" (at 45.72 78.74 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "fb2648bd-bf65-57cf-90e2-881b52bf409b"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/a99d5100-269f-5c2b-8d9f-c948d2bbeff4" (reference "#PWR0748") (unit 1))))
+)
+(symbol (lib_id "Device:C") (at 73.66 48.26 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "1bfdbac1-b2f7-5e30-b046-864270c7f0ea")
+  (property "Reference" "C5701" (at 76.2 46.99 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Value" "1 µF" (at 76.2 49.53 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Footprint" "Capacitor_SMD:C_0402_1005Metric" (at 73.66 48.26 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "https://www.murata.com/en-us/products/productdetail?partno=GRM155R61A105KE15D" (at 73.66 48.26 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Description" "Capacitor, 1 µF, 10 V, X5R, 0402" (at 73.66 48.26 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Manufacturer" "Murata" (at 73.66 48.26 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "MPN" "GRM155R61A105KE15D" (at 73.66 48.26 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Block" "blk.mic-main" (at 73.66 48.26 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "8b8f22f2-0518-51a5-9372-1242c274222f"))
+  (pin "2" (uuid "f90e79ef-e7d6-548f-baf5-cd60db39416b"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/a99d5100-269f-5c2b-8d9f-c948d2bbeff4" (reference "C5701") (unit 1))))
+)
+(wire (pts (xy 73.66 44.45) (xy 73.66 41.91)) (stroke (width 0) (type default)) (uuid "a1780741-a5dd-5f22-975e-b84b594a455c"))
+(wire (pts (xy 73.66 52.07) (xy 73.66 54.61)) (stroke (width 0) (type default)) (uuid "11142acf-6b79-5ac5-92ee-00f25f9b885f"))
+(symbol (lib_id "power:GND") (at 73.66 54.61 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "d17db684-eed1-50d4-a9c3-ca948631e31c")
+  (property "Reference" "#PWR0749" (at 73.66 54.61 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Value" "GND" (at 73.66 58.42 0) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "" (at 73.66 54.61 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "" (at 73.66 54.61 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "d3894a44-728a-5138-aa0d-d6817bc9ee1c"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/a99d5100-269f-5c2b-8d9f-c948d2bbeff4" (reference "#PWR0749") (unit 1))))
+)
+(symbol (lib_id "power:VCC") (at 73.66 41.91 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "6d9b3623-e27e-55ce-a5b2-2233b2f0d153")
+  (property "Reference" "#PWR0750" (at 73.66 41.91 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Value" "vcc_1v8" (at 73.66 38.1 0) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "" (at 73.66 41.91 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "" (at 73.66 41.91 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "df5df915-31e7-5bd3-b872-4513a28bc9bb"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/a99d5100-269f-5c2b-8d9f-c948d2bbeff4" (reference "#PWR0750") (unit 1))))
+)
+(symbol (lib_id "Device:C") (at 88.9 48.26 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "61f20592-67d8-57a7-bddd-59bfa032538f")
+  (property "Reference" "C5702" (at 91.44 46.99 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Value" "1 µF" (at 91.44 49.53 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Footprint" "Capacitor_SMD:C_0402_1005Metric" (at 88.9 48.26 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "https://www.murata.com/en-us/products/productdetail?partno=GRM155R61A105KE15D" (at 88.9 48.26 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Description" "Capacitor, 1 µF, 10 V, X5R, 0402" (at 88.9 48.26 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Manufacturer" "Murata" (at 88.9 48.26 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "MPN" "GRM155R61A105KE15D" (at 88.9 48.26 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Block" "blk.mic-main" (at 88.9 48.26 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "55111ccd-5bcd-5f6d-929b-05d1f05a45ea"))
+  (pin "2" (uuid "a96c2cb8-7ea1-54e4-9c57-1991b1a73dd3"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/a99d5100-269f-5c2b-8d9f-c948d2bbeff4" (reference "C5702") (unit 1))))
+)
+(wire (pts (xy 88.9 44.45) (xy 88.9 41.91)) (stroke (width 0) (type default)) (uuid "387287a6-2a1f-57f3-a801-8fa1bbc0ea64"))
+(wire (pts (xy 88.9 52.07) (xy 88.9 54.61)) (stroke (width 0) (type default)) (uuid "48738040-107d-5d5c-b078-4f16461ce964"))
+(symbol (lib_id "power:GND") (at 88.9 54.61 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "6ec179ac-5dc9-56f9-a123-ffff4d86d5c2")
+  (property "Reference" "#PWR0751" (at 88.9 54.61 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Value" "GND" (at 88.9 58.42 0) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "" (at 88.9 54.61 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "" (at 88.9 54.61 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "b71f3f63-b817-5992-b6ed-109ef2b51e04"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/a99d5100-269f-5c2b-8d9f-c948d2bbeff4" (reference "#PWR0751") (unit 1))))
+)
+(symbol (lib_id "Device:R") (at 101.6 48.26 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "48bf4f9d-58d5-5356-835e-852a9de397ec")
+  (property "Reference" "R5701" (at 102.87 46.99 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Value" "10 kΩ" (at 102.87 49.53 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Footprint" "Resistor_SMD:R_0402_1005Metric" (at 101.6 48.26 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "https://yageogroup.com/en/ProductSearch/PartNumberSearch?part=RC0402FR-0710KL" (at 101.6 48.26 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Description" "Resistor, 10 kΩ, 1 %, 1/16 W, 0402" (at 101.6 48.26 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Manufacturer" "YAGEO" (at 101.6 48.26 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "MPN" "RC0402FR-0710KL" (at 101.6 48.26 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Block" "blk.mic-main" (at 101.6 48.26 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "65a6fff5-8b7d-5568-b889-c97344771c18"))
+  (pin "2" (uuid "1ead8f9d-1ec6-5e4c-ad70-67315fd30081"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/a99d5100-269f-5c2b-8d9f-c948d2bbeff4" (reference "R5701") (unit 1))))
+)
+(wire (pts (xy 101.6 44.45) (xy 101.6 41.91)) (stroke (width 0) (type default)) (uuid "064dc625-c25a-5381-901c-62b39e470765"))
+(wire (pts (xy 88.9 41.91) (xy 101.6 41.91)) (stroke (width 0) (type default)) (uuid "67a5ae07-da20-5c5e-a214-f44d0a868854"))
+(junction (at 88.9 41.91) (diameter 0) (color 0 0 0 0) (uuid "6675c695-56a4-5250-b6b0-df412bb07ccc"))
+(wire (pts (xy 101.6 52.07) (xy 101.6 54.61)) (stroke (width 0) (type default)) (uuid "09d161f9-c726-5875-b33f-cab7cad56810"))
+(symbol (lib_id "power:GND") (at 101.6 54.61 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "84acdab0-1a93-5a73-ba81-d8d7b4092457")
+  (property "Reference" "#PWR0752" (at 101.6 54.61 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Value" "GND" (at 101.6 58.42 0) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "" (at 101.6 54.61 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "" (at 101.6 54.61 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "9f43f020-4cc0-5fd3-96c4-de468cf8c627"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/a99d5100-269f-5c2b-8d9f-c948d2bbeff4" (reference "#PWR0752") (unit 1))))
+)
+(symbol (lib_id "power:VCC") (at 88.9 41.91 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "9b98f211-3029-5393-9f50-065d2e69f87a")
+  (property "Reference" "#PWR0753" (at 88.9 41.91 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Value" "MIC_1V8" (at 88.9 38.1 0) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "" (at 88.9 41.91 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "" (at 88.9 41.91 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "be92683c-8ad4-59c1-833a-b78924801f4b"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/a99d5100-269f-5c2b-8d9f-c948d2bbeff4" (reference "#PWR0753") (unit 1))))
+)
+(rectangle (start 22.86 35.56) (end 133.35 87.63) (stroke (width 0) (type dash)) (fill (type none)) (uuid "239a554c-4648-523a-85e4-520a69e10a55"))
+(text "MIC_1V8: TPS22945, 100-200 mA (BOM v1 line 146)" (exclude_from_sim no) (at 24.13 34.29 0) (effects (font (size 2.54 2.54)) (justify left bottom)) (uuid "a7f7694e-7a42-591c-97ae-8d0e63162da0"))
+(symbol (lib_id "Device:R") (at 157.48 45.72 90) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "357183a4-9e9a-5d4d-8984-705b79041fae")
+  (property "Reference" "R5702" (at 157.48 43.18 90) (effects (font (size 1.27 1.27))))
+  (property "Value" "22 Ω" (at 157.48 48.26 90) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "Resistor_SMD:R_0402_1005Metric" (at 157.48 45.72 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "https://yageogroup.com/en/ProductSearch/PartNumberSearch?part=RC0402FR-0722RL" (at 157.48 45.72 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Description" "Resistor, 22 Ω, 1 %, 1/16 W, 0402" (at 157.48 45.72 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Manufacturer" "YAGEO" (at 157.48 45.72 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "MPN" "RC0402FR-0722RL" (at 157.48 45.72 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Block" "blk.mic-main" (at 157.48 45.72 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "91abc592-f753-561a-992e-d96ca106822b"))
+  (pin "2" (uuid "baaa5fa6-01f4-524a-a80e-41a0de433d63"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/a99d5100-269f-5c2b-8d9f-c948d2bbeff4" (reference "R5702") (unit 1))))
+)
+(wire (pts (xy 153.67 45.72) (xy 151.13 45.72)) (stroke (width 0) (type default)) (uuid "695bda12-7bd7-5c23-b0e3-83452f415580"))
+(wire (pts (xy 161.29 45.72) (xy 163.83 45.72)) (stroke (width 0) (type default)) (uuid "ec551570-9b21-5815-af9a-3e335cda22aa"))
+(rectangle (start 138.43 35.56) (end 205.74 53.34) (stroke (width 0) (type dash)) (fill (type none)) (uuid "eaf1a80d-a18e-5f06-b5bf-44305c8972b7"))
+(text "PDM clock series (HDG p. 72)" (exclude_from_sim no) (at 139.7 34.29 0) (effects (font (size 2.54 2.54)) (justify left bottom)) (uuid "ababb02d-7aaf-538a-ab48-fc0c569b1cad"))
+(symbol (lib_id "Connector:TestPoint") (at 224.79 45.72 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom no) (on_board yes) (dnp no) (uuid "6ab2218c-2c2c-571f-b00e-de5a47cd0b35")
+  (property "Reference" "TP5701" (at 223.52 40.64 0) (effects (font (size 1.27 1.27)) (justify right)))
+  (property "Value" "MIC_1V8" (at 223.52 43.18 0) (effects (font (size 1.27 1.27)) (justify right)))
+  (property "Footprint" "TestPoint:TestPoint_Pad_D1.0mm" (at 224.79 45.72 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "~" (at 224.79 45.72 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Description" "Test pad, 1.0 mm" (at 224.79 45.72 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Block" "blk.mic-main" (at 224.79 45.72 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "8b937089-28cc-5171-8274-e02e4c1fd920"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/a99d5100-269f-5c2b-8d9f-c948d2bbeff4" (reference "TP5701") (unit 1))))
+)
+(wire (pts (xy 224.79 45.72) (xy 234.95 45.72)) (stroke (width 0) (type default)) (uuid "b42a6871-02fe-564f-a36d-4b74bbc2e7a2"))
+(symbol (lib_id "power:VCC") (at 234.95 45.72 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "dc012ad2-3175-5e74-91c3-55ba2557b035")
+  (property "Reference" "#PWR0754" (at 234.95 45.72 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Value" "MIC_1V8" (at 234.95 41.91 0) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "" (at 234.95 45.72 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "" (at 234.95 45.72 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "39c7dfe7-7cdd-5a12-9c9c-f287d356115b"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/a99d5100-269f-5c2b-8d9f-c948d2bbeff4" (reference "#PWR0754") (unit 1))))
+)
+(rectangle (start 210.82 35.56) (end 256.54 58.42) (stroke (width 0) (type dash)) (fill (type none)) (uuid "053fac81-655d-53a3-97bc-1701fcac180a"))
+(text "Test pad (PCB-T-02)" (exclude_from_sim no) (at 212.09 34.29 0) (effects (font (size 2.54 2.54)) (justify left bottom)) (uuid "de0a589c-38cd-5929-b7be-d8015ad408f2"))
+(text_box "Notes\n1. Function: MIC_1V8 for the faceplate microphone through a 100-200 mA switch (≤ 0.2 A ceiling).\n2. Absent state: MIC_EN low: MIC_1V8 off, discharged by 10 kΩ; PDM clock parked low.\n3. Open: the privacy-LED gate (BOM v1 line 35: DMG1012T, gate = MIC_1V8, LED anode from\n   FP_3V3) has no faceplate contact in pinout v1 §8.2; it is drawn when the LED's place is set." (exclude_from_sim no) (at 152.4 147.32 0) (size 129.54 13.97) (margins 1.905 1.905 1.905 1.905) (stroke (width 0) (type default)) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "6b24eaba-7418-59f7-8c2d-b78d006520b2"))
+(text "Rails" (exclude_from_sim no) (at 22.86 181.61 0) (effects (font (size 2.54 2.54)) (justify left bottom)) (uuid "3cf25c56-a22c-5cd8-b3d3-57a09613e0ff"))
+(table (column_count 3) (border (external yes) (header yes) (stroke (width 0) (type solid))) (separators (rows yes) (cols yes) (stroke (width 0) (type solid))) (column_widths 27.94 39.37 54.61) (row_heights 5.08 5.08) (cells (table_cell "Rail" (exclude_from_sim no) (at 22.86 182.88 0) (size 27.94 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27) (bold yes)) (justify left top)) (uuid "1ac397df-6797-5b00-b211-509282be4abe")) (table_cell "Capacitors" (exclude_from_sim no) (at 50.8 182.88 0) (size 39.37 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27) (bold yes)) (justify left top)) (uuid "a98c64b6-9074-54b6-898c-b4d93481e363")) (table_cell "Requirement and source" (exclude_from_sim no) (at 90.17 182.88 0) (size 54.61 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27) (bold yes)) (justify left top)) (uuid "8ed9f9f4-52c3-5064-8164-4f3396fea7e1")) (table_cell "vcc_1v8, MIC_1V8" (exclude_from_sim no) (at 22.86 187.96 0) (size 27.94 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "3f95030c-73d4-5024-ad98-f68e8888680b")) (table_cell "1 µF at IN and OUT" (exclude_from_sim no) (at 50.8 187.96 0) (size 39.37 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "7cac842d-436b-5a5a-a4af-1db614b4aa7c")) (table_cell "SLVS832D (value: capture choice)" (exclude_from_sim no) (at 90.17 187.96 0) (size 54.61 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "8e49a92c-77d8-5eaf-8028-a472d0ed5197"))))
+(text "Interface" (exclude_from_sim no) (at 22.86 151.13 0) (effects (font (size 2.54 2.54)) (justify left bottom)) (uuid "40f83215-8d8c-580f-a9d8-05330e279583"))
+(table (column_count 3) (border (external yes) (header yes) (stroke (width 0) (type solid))) (separators (rows yes) (cols yes) (stroke (width 0) (type solid))) (column_widths 45.72 25.4 50.8) (row_heights 5.08 5.08 5.08 7.62) (cells (table_cell "Net" (exclude_from_sim no) (at 22.86 152.4 0) (size 45.72 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27) (bold yes)) (justify left top)) (uuid "70a4fc6a-d8a2-50b1-8631-e0c68925fecc")) (table_cell "Direction" (exclude_from_sim no) (at 68.58 152.4 0) (size 25.4 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27) (bold yes)) (justify left top)) (uuid "ba248338-51db-546a-9c43-75436f132601")) (table_cell "Absent state (block not fitted)" (exclude_from_sim no) (at 93.98 152.4 0) (size 50.8 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27) (bold yes)) (justify left top)) (uuid "aa4b6634-71f0-5eb9-8013-91fd43fcf844")) (table_cell "MIC_EN" (exclude_from_sim no) (at 22.86 157.48 0) (size 45.72 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "e02ce7f2-0156-5544-8749-513efb0111ee")) (table_cell "Input" (exclude_from_sim no) (at 68.58 157.48 0) (size 25.4 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "185f1a8a-3c88-54e4-9f44-1d6fc5404582")) (table_cell "GPIO4_C0, SoC pull-down: off" (exclude_from_sim no) (at 93.98 157.48 0) (size 50.8 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "bb7a7c7c-c026-58f8-885b-c96ad9fbd243")) (table_cell "MIC_1V8" (exclude_from_sim no) (at 22.86 162.56 0) (size 45.72 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "d906b7db-afaa-5bcd-9917-fef166b1927a")) (table_cell "Supply out" (exclude_from_sim no) (at 68.58 162.56 0) (size 25.4 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "8823c310-b10f-5aeb-b883-53c3b2609428")) (table_cell "Contact 40; also blk.mic-ambient" (exclude_from_sim no) (at 93.98 162.56 0) (size 50.8 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "06ee0bbb-028e-5258-a198-3b1b85b3607d")) (table_cell "PDM_CLK0, PDM_CLK0_FP" (exclude_from_sim no) (at 22.86 167.64 0) (size 45.72 7.62) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "b81f93fc-e8fc-5930-9899-1e158ca3a7ee")) (table_cell "Output" (exclude_from_sim no) (at 68.58 167.64 0) (size 25.4 7.62) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "aec88802-0a16-5c55-a463-2a72c16aa243")) (table_cell "PDM_CLK0_M1, parked low while MIC_1V8 is off (G10)" (exclude_from_sim no) (at 93.98 167.64 0) (size 50.8 7.62) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "d9ec57f5-6e3b-593b-8444-919db00177ff"))))
+(label "MIC_EN" (at 33.02 60.96 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "4de14bf7-e8cc-5089-bc9b-4a68da9aa517"))
+(label "PDM_CLK0" (at 151.13 45.72 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "f45337d6-91e1-5d3d-979a-67e6d4581973"))
+(hierarchical_label "PDM_CLK0_FP" (shape passive) (at 163.83 45.72 0) (effects (font (size 1.27 1.27)) (justify left)) (uuid "63365b84-202b-535c-8666-3b7a1c45009b"))
+(bus (pts (xy 45.72 142.24) (xy 50.8 142.24)) (stroke (width 0) (type default)) (uuid "2260f268-90f6-50ce-a874-b642ea706a58"))
+(hierarchical_label "{FP}" (shape bidirectional) (at 45.72 142.24 180) (effects (font (size 1.27 1.27)) (justify right)) (uuid "d0d697b3-f937-5f5e-860b-39078e7c4120"))
+(embedded_fonts no))

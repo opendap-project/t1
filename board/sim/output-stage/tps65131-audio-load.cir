@@ -1,0 +1,37 @@
+* OpenDAP T1 board: TPS65131 +-7 V pre-rails under a full-scale sine load
+* Each rail supplies one half-cycle of every leg. Balanced output, both channels in
+* phase: the rail current is a full-wave rectified sine,
+*   I(t) = iq + ipk * |sin(2 pi f t)|
+* iq  = 20.8 mA (8 enabled OPA1622 halves, power tree §4.1) + 12 mA LDO ground (est.)
+* ipk = 2 legs x 200 mA (ADR 0012 / power tree §4.1 current per leg)
+* -> average 0.288 A, peak 0.433 A per rail.
+* Default: VIN 3.8 V, 1 kHz, typical stack, switch limit at its 1.8 A minimum.
+* Set ilim=10 to read the unconstrained peak; f=100 for a low-frequency tone.
+* Run: ngspice -b tps65131-audio-load.cir
+
+.include tps65131-switch-model.cir
+
+.param vin=3.8 f=1k ipk=0.400 iq=0.033 ilim=1.8
+.param rp=0.20 rn=0.44 dcr=0.16 l0=4.7u isat30=2.4 fs=1.38meg dis=8.4u dn=1.09 drs=0.05
+
+VIN vin 0 {vin}
+X1 vin vpos vneg ilp iln tps65131 params: ilim={ilim} rp={rp} rn={rn} dcr={dcr}
++ l0={l0} isat30={isat30} fs={fs} dis={dis} dn={dn} drs={drs}
+BLP vpos 0 I = {iq} + {ipk}*abs(sin(6.283185*{f}*time))
+BLN 0 vneg I = {iq} + {ipk}*abs(sin(6.283185*{f}*time))
+
+.ic v(vpos)=6.975 v(vneg)=-6.987 v(x1.vcp)=0.5 v(x1.vcn)=0.6
+.options method=gear reltol=1e-3 abstol=1e-9 itl4=50
+.tran 5n 2.4m 0 5n uic
+
+.control
+run
+meas tran iln_peak max v(iln) from=1.4m to=2.4m
+meas tran ilp_peak max v(ilp) from=1.4m to=2.4m
+meas tran vneg_max max v(vneg) from=1.4m to=2.4m
+meas tran vneg_min min v(vneg) from=1.4m to=2.4m
+meas tran vpos_min min v(vpos) from=1.4m to=2.4m
+meas tran vpos_max max v(vpos) from=1.4m to=2.4m
+meas tran iin avg i(VIN) from=1.4m to=2.4m
+.endc
+.end

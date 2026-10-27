@@ -1,0 +1,39 @@
+* OpenDAP T1 board: check of the TI OPA1622 model against SBOS727B Table 2
+* SBOS727B Figure 52 difference amplifier at +-5 V: R1 = R3 = 499, R2 = R4 = 768,
+* C = 470 pF; one amplifier; load RL. Sweep the input amplitude and report the
+* output peak and THD at each step. Table 2 reports the maximum output before
+* clipping: 95 mW into 16 ohm, 150 mW into 32 ohm.
+* Model: TI OPA1622 PSpice model SBOM958 Rev. D, placed in models/ (see README.md).
+* Run from this folder: ngspice -b opa1622-model-check.cir
+.include models/OPA1622.LIB
+.param vs=5 rl=16 va=1
+VCC vcc 0 {vs}
+VEE vee 0 {-vs}
+VD dp 0 SIN(0 {va} 1k)
+R3 dp np 499
+R4 np 0 768
+C2 np 0 470p
+R1 0 nm 499
+R2 nm out 768
+C1 nm out 470p
+XU np nm vcc vee out OPA1622
+RL out 0 {rl}
+.options method=gear rshunt=1e12 reltol=1e-3
+.tran 0.1u 3m 0 0.2u
+.control
+foreach rload 16 32
+  alterparam rl=$rload
+  foreach amp 0.9 1.0 1.1 1.15 1.2 1.25 1.3 1.4 1.6 1.8 2.0 2.1 2.2
+    alterparam va=$amp
+    reset
+    run
+    meas tran vop max v(out) from=1m to=3m
+    meas tran von min v(out) from=1m to=3m
+    echo "RL=$rload va=$amp"
+    linearize v(out)
+    fourier 1k v(out)
+    destroy all
+  end
+end
+.endc
+.end

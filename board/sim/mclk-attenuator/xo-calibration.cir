@@ -1,0 +1,20 @@
+* Oscillator driver model check: the "bound" driver (ROUT 181 ohm, TRS 1 ns) into the
+* catalogue's maximum load, CL = 15 pF (NDK NZ2520SDA catalogue 1703A), must give the
+* catalogue's maximum Tr/Tf = 6 ns (10-90 %). Prints xo_tr_ns and xo_tf_ns.
+.param VCC=1 ROUT=181 TRS=1n F=24.576e6 CL=15p
+.param T={1/F} PW={T/2-TRS}
+Vsrc src 0 PULSE(0 {VCC} 2n {TRS} {TRS} {PW} {T})
+Rout src xo {ROUT}
+Cxo xo 0 {CL}
+.tran 10p {3*T} 0 10p
+.control
+run
+meas tran tr10 WHEN v(xo)=0.1 RISE=2
+meas tran tr90 WHEN v(xo)=0.9 RISE=2
+meas tran tf90 WHEN v(xo)=0.9 FALL=2
+meas tran tf10 WHEN v(xo)=0.1 FALL=2
+let xo_tr_ns = (tr90 - tr10) * 1e9
+let xo_tf_ns = (tf10 - tf90) * 1e9
+print xo_tr_ns xo_tf_ns
+.endc
+.end

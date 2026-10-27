@@ -1,0 +1,188 @@
+# OpenDAP T1 main board: dual-stripline coupling case on stackup v2's dielectrics.
+#
+# Not a stackup of the board: stackup v2's cross-section with L3 and L4 both as routing layers
+# between the L2 and L5 grounds (a dual stripline, the zoned method's role D), solved with
+# toolkit-hardware's `odapkit stackup design` and `odapkit stackup coupling`. It gives the
+# impedance on the shared layers and the near-end (backward) crosstalk coefficient Kb between a
+# trace on L3 and one on L4, the number a zone needs before it routes fast classes on both
+# (docs/specs/stackup-v2.md §4). Dielectrics and Dk as stackup-v2.toml.
+
+version = 1
+name = "8-layer dual stripline L3/L4 (study case on stackup v2)"
+design_window_pct = 2.0
+
+[etch]
+outer_reduction_um = 10.0
+inner_reduction_um = 6.0
+
+[tolerance]
+dielectric_pct = 10
+er_pct = 5
+width_um = 10
+copper_pct = 15
+
+[[layer]]
+name = "Mask top"
+type = "mask"
+thickness_um = 20
+er = 3.8
+material = "LPI mask, ASSUMED"
+
+[[layer]]
+name = "L1"
+type = "copper"
+thickness_um = 35
+material = "outer"
+
+[[layer]]
+name = "PP L1-L2"
+type = "dielectric"
+thickness_um = 90
+er = 4.45
+material = "prepreg 3313"
+
+[[layer]]
+name = "L2"
+type = "copper"
+thickness_um = 25
+role = "ground"
+
+[[layer]]
+name = "PP L2-L3"
+type = "dielectric"
+thickness_um = 120
+er = 4.45
+material = "prepreg 2116"
+
+[[layer]]
+name = "L3"
+type = "copper"
+thickness_um = 18
+role = "routing (dual stripline, upper)"
+fills = "above"
+
+[[layer]]
+name = "Core L3-L4"
+type = "dielectric"
+thickness_um = 130
+er = 4.6
+material = "core 0.13 mm [PW-ST] (read as dielectric, UNVERIFIED)"
+
+[[layer]]
+name = "L4"
+type = "copper"
+thickness_um = 18
+role = "routing (dual stripline, lower)"
+fills = "below"
+
+[[layer]]
+name = "PP L4-L5"
+type = "dielectric"
+thickness_um = 90
+er = 4.45
+material = "prepreg 3313"
+
+[[layer]]
+name = "L5"
+type = "copper"
+thickness_um = 18
+role = "ground"
+
+[[layer]]
+name = "Core L5-L6"
+type = "dielectric"
+thickness_um = 130
+er = 4.6
+material = "core 0.13 mm"
+
+[[layer]]
+name = "L6"
+type = "copper"
+thickness_um = 18
+
+[[layer]]
+name = "PP L6-L7"
+type = "dielectric"
+thickness_um = 120
+er = 4.45
+material = "prepreg 2116"
+
+[[layer]]
+name = "L7"
+type = "copper"
+thickness_um = 25
+role = "ground"
+
+[[layer]]
+name = "PP L7-L8"
+type = "dielectric"
+thickness_um = 90
+er = 4.45
+material = "prepreg 3313"
+
+[[layer]]
+name = "L8"
+type = "copper"
+thickness_um = 35
+material = "outer"
+
+[[layer]]
+name = "Mask bottom"
+type = "mask"
+thickness_um = 20
+er = 3.8
+material = "LPI mask, ASSUMED"
+
+[[class]]
+name = "SE50-L3-dual"
+type = "se"
+target_ohm = 50
+tolerance_pct = 10
+layer = "L3"
+reference = ["L2", "L5"]
+solve = "width"
+width_um = 118.5
+z_ohm = 50.01
+
+[[class]]
+name = "SE50-L4-dual"
+type = "se"
+target_ohm = 50
+tolerance_pct = 10
+layer = "L4"
+reference = ["L2", "L5"]
+solve = "width"
+width_um = 95.0
+z_ohm = 50.02
+
+# Broadside coupling: a trace on L3 and one on L4, both 107 µm (the mean of the two SE50 widths;
+# the tool takes one width), laterally offset. Orthogonal routing meets only at crossings; the
+# offsets give the cost of a parallel run.
+
+[[coupling]]
+name = "SE50 L3/L4 stacked"
+layers = ["L3", "L4"]
+reference = ["L2", "L5"]
+width_um = 107
+offset_um = 0
+
+[[coupling]]
+name = "SE50 L3/L4 offset 1W"
+layers = ["L3", "L4"]
+reference = ["L2", "L5"]
+width_um = 107
+offset_um = 107
+
+[[coupling]]
+name = "SE50 L3/L4 offset 3W"
+layers = ["L3", "L4"]
+reference = ["L2", "L5"]
+width_um = 107
+offset_um = 321
+
+[[coupling]]
+name = "SE50 L3/L4 offset 5W"
+layers = ["L3", "L4"]
+reference = ["L2", "L5"]
+width_um = 107
+offset_um = 535

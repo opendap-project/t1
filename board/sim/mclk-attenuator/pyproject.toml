@@ -1,0 +1,6 @@
+[project]
+name = "opendap-board-sim-mclk-attenuator"
+version = "0.1.0"
+description = "ngspice simulation of the T1 master-clock path: NSC5083D at 3.1 V through a passive attenuator into two CS43198 XTI/MCLK inputs"
+requires-python = ">=3.10"
+dependencies = []

@@ -1,0 +1,1580 @@
+(kicad_sch (version 20260306) (generator "eeschema") (generator_version "10.0")
+(uuid "0f13efe0-0a50-565f-8a67-13c04688ca26")
+(paper "A3")
+(title_block (title "Fuel gauge") (date "2026-10-25") (rev "A") (company "The OpenDAP Project") (comment 1 "blk.gauge") (comment 2 "BQ28Z610-R1 on the pack side, its 3 mΩ sense resistor and board NTC (ADR 0017)"))
+(lib_symbols (symbol "Device:C"
+		(pin_numbers
+			(hide yes)
+		)
+		(pin_names
+			(offset 0.254)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(duplicate_pin_numbers_are_jumpers no)
+		(property "Reference" "C"
+			(at 0.635 2.54 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "C"
+			(at 0.635 -2.54 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 0.9652 -3.81 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Unpolarized capacitor"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_keywords" "cap capacitor"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_fp_filters" "C_*"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "C_0_1"
+			(polyline
+				(pts
+					(xy -2.032 0.762) (xy 2.032 0.762)
+				)
+				(stroke
+					(width 0.508)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy -2.032 -0.762) (xy 2.032 -0.762)
+				)
+				(stroke
+					(width 0.508)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+		)
+		(symbol "C_1_1"
+			(pin passive line
+				(at 0 3.81 270)
+				(length 2.794)
+				(name ""
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 0 -3.81 90)
+				(length 2.794)
+				(name ""
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
+(symbol "Device:R"
+		(pin_numbers
+			(hide yes)
+		)
+		(pin_names
+			(offset 0)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(duplicate_pin_numbers_are_jumpers no)
+		(property "Reference" "R"
+			(at 2.032 0 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "R"
+			(at 0 0 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at -1.778 0 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_keywords" "R res resistor"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_fp_filters" "R_*"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "R_0_1"
+			(rectangle
+				(start -1.016 -2.54)
+				(end 1.016 2.54)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+		)
+		(symbol "R_1_1"
+			(pin passive line
+				(at 0 3.81 270)
+				(length 1.27)
+				(name ""
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 0 -3.81 90)
+				(length 1.27)
+				(name ""
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
+(symbol "OpenDAP_Device:Thermistor_NTC"
+		(pin_numbers
+			(hide yes)
+		)
+		(pin_names
+			(offset 0)
+			(hide yes)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(property "Reference" "RT"
+			(at 3.048 1.27 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "Thermistor_NTC"
+			(at 3.048 -1.27 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "NTC thermistor; reference prefix RT (KLC S6.1), pins on the grid, none hidden"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_keywords" "thermistor NTC resistor temperature sensor"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_fp_filters" "R_*"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "Thermistor_NTC_0_1"
+			(rectangle
+				(start -1.016 2.54)
+				(end 1.016 -2.54)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type background)
+				)
+			)
+			(polyline
+				(pts
+					(xy -2.54 -2.286)
+					(xy -1.778 -2.286)
+					(xy 1.778 2.286)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(text "-t°"
+				(at -3.302 1.27 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+		)
+		(symbol "Thermistor_NTC_1_1"
+			(pin passive line
+				(at 0 5.08 270)
+				(length 2.54)
+				(name "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 0 -5.08 90)
+				(length 2.54)
+				(name "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
+(symbol "Texas_Instruments:BQ28Z610DRZR-R1"
+		(pin_names
+			(offset 1.016)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(property "Reference" "U"
+			(at -8.89 26.67 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "BQ28Z610DRZR-R1"
+			(at -8.89 -27.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Texas_Instruments:VSON-12-1EP_4x2.5mm_P0.4mm_EP2.45x1.95mm_ThermalVias"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://www.ti.com/lit/ds/symlink/bq28z610-r1.pdf"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Impedance Track gas gauge and protection controller for 1-2 series Li-ion packs, high-side N-FET drive, cell balancing, I2C, VSON-12 (DRZ) 4 x 2.5 mm"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "Texas Instruments"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "BQ28Z610DRZR-R1"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Second_Source" "Texas Instruments BQ40Z50-R2 (BOM v1 line 42, different package)"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_keywords" "fuel gauge gas gauge battery 2S li-ion protection I2C impedance track VSON DRZ"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_fp_filters" "VSON-12-1EP_4x2.5mm_P0.4mm_EP2.45x1.95mm_ThermalVias*"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "BQ28Z610DRZR-R1_1_1"
+			(rectangle
+				(start -8.89 21.59)
+				(end 8.89 -21.59)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type background)
+				)
+			)
+			(pin input line
+				(at -12.7 10.16 0)
+				(length 3.81)
+				(name "VC1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "12"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin input line
+				(at -12.7 5.08 0)
+				(length 3.81)
+				(name "SRP"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "3"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin input line
+				(at -12.7 2.54 0)
+				(length 3.81)
+				(name "SRN"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin bidirectional line
+				(at -12.7 -2.54 0)
+				(length 3.81)
+				(name "TS1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "4"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin bidirectional line
+				(at -12.7 -7.62 0)
+				(length 3.81)
+				(name "SCL"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "5"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin bidirectional line
+				(at -12.7 -10.16 0)
+				(length 3.81)
+				(name "SDA"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "6"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin input line
+				(at 12.7 10.16 180)
+				(length 3.81)
+				(name "PACK"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "8"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin output line
+				(at 12.7 5.08 180)
+				(length 3.81)
+				(name "CHG"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "9"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin output line
+				(at 12.7 2.54 180)
+				(length 3.81)
+				(name "DSG"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "7"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin power_in line
+				(at -2.54 25.4 270)
+				(length 3.81)
+				(name "VC2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "11"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 2.54 25.4 270)
+				(length 3.81)
+				(name "PBI"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "10"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin power_in line
+				(at -2.54 -25.4 90)
+				(length 3.81)
+				(name "VSS"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 2.54 -25.4 90)
+				(length 3.81)
+				(name "PWPD"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "13"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
+(symbol "power:GND"
+		(power global)
+		(pin_numbers
+			(hide yes)
+		)
+		(pin_names
+			(offset 0)
+			(hide yes)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(duplicate_pin_numbers_are_jumpers no)
+		(property "Reference" "#PWR"
+			(at 0 -6.35 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 0 -3.81 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_keywords" "global power"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "GND_0_1"
+			(polyline
+				(pts
+					(xy 0 0) (xy 0 -1.27) (xy 1.27 -1.27) (xy 0 -2.54) (xy -1.27 -1.27) (xy 0 -1.27)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+		)
+		(symbol "GND_1_1"
+			(pin power_in line
+				(at 0 0 270)
+				(length 0)
+				(name ""
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
+(symbol "power:PWR_FLAG"
+		(power global)
+		(pin_numbers
+			(hide yes)
+		)
+		(pin_names
+			(offset 0)
+			(hide yes)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(duplicate_pin_numbers_are_jumpers no)
+		(property "Reference" "#FLG"
+			(at 0 1.905 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "PWR_FLAG"
+			(at 0 3.81 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Special symbol for telling ERC where power comes from"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_keywords" "flag power"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "PWR_FLAG_0_0"
+			(pin power_out line
+				(at 0 0 90)
+				(length 0)
+				(name ""
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(symbol "PWR_FLAG_0_1"
+			(polyline
+				(pts
+					(xy 0 0) (xy 0 1.27) (xy -1.016 1.905) (xy 0 2.54) (xy 1.016 1.905) (xy 0 1.27)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
+(symbol "power:VCC"
+		(power global)
+		(pin_numbers
+			(hide yes)
+		)
+		(pin_names
+			(offset 0)
+			(hide yes)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(duplicate_pin_numbers_are_jumpers no)
+		(property "Reference" "#PWR"
+			(at 0 -3.81 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "VCC"
+			(at 0 3.556 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"VCC\""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_keywords" "global power"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "VCC_0_1"
+			(polyline
+				(pts
+					(xy -0.762 1.27) (xy 0 2.54)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 0 2.54) (xy 0.762 1.27)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 0 0) (xy 0 2.54)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+		)
+		(symbol "VCC_1_1"
+			(pin power_in line
+				(at 0 0 90)
+				(length 0)
+				(name ""
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	))
+(symbol (lib_id "Texas_Instruments:BQ28Z610DRZR-R1") (at 52.07 77.47 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "bee95331-d434-527d-8834-bac29606bcce")
+  (property "Reference" "U801" (at 55.88 53.34 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Value" "BQ28Z610DRZR-R1" (at 55.88 50.8 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Footprint" "Texas_Instruments:VSON-12-1EP_4x2.5mm_P0.4mm_EP2.45x1.95mm_ThermalVias" (at 52.07 77.47 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "https://www.ti.com/lit/ds/symlink/bq28z610-r1.pdf" (at 52.07 77.47 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Description" "Impedance Track gas gauge and protection controller for 1-2 series Li-ion packs, high-side N-FET drive, cell balancing, I2C, VSON-12 (DRZ) 4 x 2.5 mm" (at 52.07 77.47 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Manufacturer" "Texas Instruments" (at 52.07 77.47 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "MPN" "BQ28Z610DRZR-R1" (at 52.07 77.47 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Second_Source" "Texas Instruments BQ40Z50-R2 (BOM v1 line 42, different package)" (at 52.07 77.47 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Block" "blk.gauge" (at 52.07 77.47 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Constraints" "PCB-P-01" (at 52.07 77.47 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "12" (uuid "ff6a748d-8a87-581e-84f0-f9203e03208e"))
+  (pin "3" (uuid "74650331-d0df-5463-b325-ff89a9e9369f"))
+  (pin "2" (uuid "9c0fb12e-85f2-58f8-9f8a-6554b2056f74"))
+  (pin "4" (uuid "e3efb17d-c77a-5fb8-bb88-3f7ae6243158"))
+  (pin "5" (uuid "3d28d982-425b-53fb-92c1-0068a52c3f17"))
+  (pin "6" (uuid "a23a1ae8-cdef-5c1a-a59f-6257b0e43d92"))
+  (pin "8" (uuid "256b9024-74e4-5dd4-9dc4-0fbedb5a1443"))
+  (pin "9" (uuid "ef874fea-ec53-5d54-bc20-843df2265cf3"))
+  (pin "7" (uuid "c558d827-01b5-5e71-9dde-75e3d6388133"))
+  (pin "11" (uuid "75559d29-87d0-5f08-81fe-1ac3e24ab028"))
+  (pin "10" (uuid "0f0baa2b-5ad6-5234-8b3e-58e2cf0eacf8"))
+  (pin "1" (uuid "d9b9d4d7-daa5-5861-b436-edd17b46c97f"))
+  (pin "13" (uuid "ce9b9012-7822-57bb-8518-da0448a35e58"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/2837ef7b-885a-5647-b2a8-03c2f978c57d" (reference "U801") (unit 1))))
+)
+(wire (pts (xy 49.53 102.87) (xy 49.53 105.41)) (stroke (width 0) (type default)) (uuid "265ca109-a11a-5e8b-a047-bef46539e263"))
+(wire (pts (xy 54.61 102.87) (xy 54.61 105.41)) (stroke (width 0) (type default)) (uuid "45fbfb02-73cf-5374-8336-5d0435fd47c2"))
+(wire (pts (xy 49.53 105.41) (xy 54.61 105.41)) (stroke (width 0) (type default)) (uuid "0e4d8e3e-75ac-5d48-a57a-f7d492e56a6e"))
+(wire (pts (xy 49.53 105.41) (xy 49.53 107.95)) (stroke (width 0) (type default)) (uuid "a06c7bdd-7166-5006-b475-18684882d016"))
+(junction (at 49.53 105.41) (diameter 0) (color 0 0 0 0) (uuid "686b6e9f-7e80-5484-9d46-74b4c0f2babe"))
+(symbol (lib_id "power:VCC") (at 49.53 107.95 180) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "59d340a7-5412-5efe-9b22-e6205e083877")
+  (property "Reference" "#PWR0059" (at 49.53 107.95 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Value" "BAT_N" (at 49.53 112.395 0) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "" (at 49.53 107.95 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "" (at 49.53 107.95 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "8059eed3-5555-565b-a63a-ddc8cba94cbd"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/2837ef7b-885a-5647-b2a8-03c2f978c57d" (reference "#PWR0059") (unit 1))))
+)
+(wire (pts (xy 39.37 67.31) (xy 36.83 67.31)) (stroke (width 0) (type default)) (uuid "c9888461-999c-5fd7-b0c1-29bb25d220a5"))
+(wire (pts (xy 39.37 72.39) (xy 36.83 72.39)) (stroke (width 0) (type default)) (uuid "f361bd59-7a62-5a0f-bff3-e5b80314fff4"))
+(wire (pts (xy 39.37 74.93) (xy 36.83 74.93)) (stroke (width 0) (type default)) (uuid "bca8661e-310b-551b-bc9a-2239e424ee57"))
+(wire (pts (xy 39.37 80.01) (xy 36.83 80.01)) (stroke (width 0) (type default)) (uuid "48dde668-f3f1-58d3-82d5-fa888a4df25e"))
+(wire (pts (xy 39.37 85.09) (xy 36.83 85.09)) (stroke (width 0) (type default)) (uuid "2c174f48-99c5-541c-b051-1d39db3e503e"))
+(wire (pts (xy 39.37 87.63) (xy 36.83 87.63)) (stroke (width 0) (type default)) (uuid "11138fde-00eb-5559-babc-f3e07fa301e2"))
+(wire (pts (xy 64.77 67.31) (xy 67.31 67.31)) (stroke (width 0) (type default)) (uuid "583c7df4-3ea0-5941-bce4-310f73fa0cc5"))
+(no_connect (at 64.77 72.39) (uuid "872f3764-f7b6-546f-aa00-a496cde95974"))
+(no_connect (at 64.77 74.93) (uuid "af80be01-5189-588c-9988-ec263522f66c"))
+(wire (pts (xy 49.53 52.07) (xy 49.53 49.53)) (stroke (width 0) (type default)) (uuid "a547c632-0630-55ac-8515-24571e83a1d3"))
+(wire (pts (xy 54.61 52.07) (xy 54.61 49.53)) (stroke (width 0) (type default)) (uuid "d596ac1d-3c83-5de2-b061-68fd702fb430"))
+(symbol (lib_id "Device:C") (at 85.09 55.88 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "af2e21ad-4bf5-502e-810c-316bddc25624")
+  (property "Reference" "C801" (at 87.63 54.61 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Value" "100 nF" (at 87.63 57.15 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Footprint" "Capacitor_SMD:C_0402_1005Metric" (at 85.09 55.88 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "https://www.murata.com/en-us/products/productdetail?partno=GRM155R71C104KA88D" (at 85.09 55.88 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Description" "Capacitor, 100 nF, 16 V, X7R, 0402" (at 85.09 55.88 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Manufacturer" "Murata" (at 85.09 55.88 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "MPN" "GRM155R71C104KA88D" (at 85.09 55.88 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Block" "blk.gauge" (at 85.09 55.88 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "3ee521e9-fedc-5119-b1e9-aefd19817e59"))
+  (pin "2" (uuid "404fb890-b322-58ac-a0b2-cbf0fdebe12c"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/2837ef7b-885a-5647-b2a8-03c2f978c57d" (reference "C801") (unit 1))))
+)
+(wire (pts (xy 85.09 52.07) (xy 85.09 49.53)) (stroke (width 0) (type default)) (uuid "9974eaa9-da44-5aba-a644-f6e6829eba4d"))
+(symbol (lib_id "power:VCC") (at 85.09 59.69 180) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "ffb7d40e-1db9-54d4-9e9d-06fb127be2b3")
+  (property "Reference" "#PWR0060" (at 85.09 59.69 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Value" "BAT_N" (at 85.09 64.135 0) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "" (at 85.09 59.69 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "" (at 85.09 59.69 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "bc011414-1541-55a8-8f32-c79cdee16895"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/2837ef7b-885a-5647-b2a8-03c2f978c57d" (reference "#PWR0060") (unit 1))))
+)
+(symbol (lib_id "Device:C") (at 99.06 55.88 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "b8665557-70a7-515c-80ed-6fdadadcb185")
+  (property "Reference" "C802" (at 101.6 54.61 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Value" "1 µF" (at 101.6 57.15 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Spec" "25 V X5R" (at 101.6 59.69 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Footprint" "Capacitor_SMD:C_0402_1005Metric" (at 99.06 55.88 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "https://www.murata.com/en-us/products/productdetail?partno=GRM155R61E105KA12D" (at 99.06 55.88 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Description" "Capacitor, 1 µF, 25 V, X5R, 0402" (at 99.06 55.88 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Manufacturer" "Murata" (at 99.06 55.88 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "MPN" "GRM155R61E105KA12D" (at 99.06 55.88 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Block" "blk.gauge" (at 99.06 55.88 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "f0c487d8-7dbe-58db-bcd8-b6b5529a8a98"))
+  (pin "2" (uuid "f341f9e4-d272-5c98-be4d-f9dfef296226"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/2837ef7b-885a-5647-b2a8-03c2f978c57d" (reference "C802") (unit 1))))
+)
+(wire (pts (xy 99.06 52.07) (xy 99.06 49.53)) (stroke (width 0) (type default)) (uuid "4b70c715-40a7-57dd-94a1-2af1c5a8da2d"))
+(symbol (lib_id "Device:C") (at 114.3 55.88 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "1725893f-98cb-5ce3-8c23-01ecddb5769b")
+  (property "Reference" "C803" (at 116.84 54.61 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Value" "2.2 µF" (at 116.84 57.15 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Footprint" "Capacitor_SMD:C_0402_1005Metric" (at 114.3 55.88 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "https://www.murata.com/en-us/products/productdetail?partno=GRM155R61A225KE95D" (at 114.3 55.88 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Description" "Capacitor, 2.2 µF, 10 V, X5R, 0402" (at 114.3 55.88 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Manufacturer" "Murata" (at 114.3 55.88 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "MPN" "GRM155R61A225KE95D" (at 114.3 55.88 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Block" "blk.gauge" (at 114.3 55.88 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "2540bec5-88b7-56ae-9986-e9ea929548ce"))
+  (pin "2" (uuid "deee6f92-b4c1-5eed-805b-8622e072f82e"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/2837ef7b-885a-5647-b2a8-03c2f978c57d" (reference "C803") (unit 1))))
+)
+(wire (pts (xy 114.3 52.07) (xy 114.3 49.53)) (stroke (width 0) (type default)) (uuid "db87a0ad-ece9-563b-a972-2f52c173c832"))
+(symbol (lib_id "power:VCC") (at 114.3 59.69 180) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "2ebbdd44-cfc6-5a0a-b759-2edcefc790c6")
+  (property "Reference" "#PWR0061" (at 114.3 59.69 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Value" "BAT_N" (at 114.3 64.135 0) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "" (at 114.3 59.69 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "" (at 114.3 59.69 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "a4c6f375-9539-5aed-8a5a-1322b1415417"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/2837ef7b-885a-5647-b2a8-03c2f978c57d" (reference "#PWR0061") (unit 1))))
+)
+(symbol (lib_id "Device:C") (at 85.09 93.98 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "3426bb8f-acf9-5108-9043-28df3d33a5d9")
+  (property "Reference" "C804" (at 87.63 92.71 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Value" "100 nF" (at 87.63 95.25 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Footprint" "Capacitor_SMD:C_0402_1005Metric" (at 85.09 93.98 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "https://www.murata.com/en-us/products/productdetail?partno=GRM155R71C104KA88D" (at 85.09 93.98 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Description" "Capacitor, 100 nF, 16 V, X7R, 0402" (at 85.09 93.98 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Manufacturer" "Murata" (at 85.09 93.98 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "MPN" "GRM155R71C104KA88D" (at 85.09 93.98 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Block" "blk.gauge" (at 85.09 93.98 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "3575bd0d-3c6d-5a81-9b8e-0bee6c37a24e"))
+  (pin "2" (uuid "7012f9b0-d9ed-59b4-a653-7d846ea60433"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/2837ef7b-885a-5647-b2a8-03c2f978c57d" (reference "C804") (unit 1))))
+)
+(wire (pts (xy 85.09 90.17) (xy 85.09 87.63)) (stroke (width 0) (type default)) (uuid "e7ee3675-7c9e-5551-b918-ea73cc2fe1af"))
+(symbol (lib_id "power:VCC") (at 85.09 97.79 180) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "d53d3764-a79f-567b-b697-11be7d40c0d9")
+  (property "Reference" "#PWR0062" (at 85.09 97.79 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Value" "BAT_N" (at 85.09 102.235 0) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "" (at 85.09 97.79 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "" (at 85.09 97.79 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "a23343c0-68ea-5e8a-8586-2e4c9769ea89"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/2837ef7b-885a-5647-b2a8-03c2f978c57d" (reference "#PWR0062") (unit 1))))
+)
+(symbol (lib_id "Device:C") (at 99.06 93.98 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "297d91c4-adee-5543-988b-7675df011609")
+  (property "Reference" "C805" (at 101.6 92.71 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Value" "100 nF" (at 101.6 95.25 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Footprint" "Capacitor_SMD:C_0402_1005Metric" (at 99.06 93.98 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "https://www.murata.com/en-us/products/productdetail?partno=GRM155R71C104KA88D" (at 99.06 93.98 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Description" "Capacitor, 100 nF, 16 V, X7R, 0402" (at 99.06 93.98 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Manufacturer" "Murata" (at 99.06 93.98 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "MPN" "GRM155R71C104KA88D" (at 99.06 93.98 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Block" "blk.gauge" (at 99.06 93.98 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "e2c4390a-ab9f-50e3-b93e-597bce1e926f"))
+  (pin "2" (uuid "4308b18b-8e1b-5365-805b-ebb8e21b70f8"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/2837ef7b-885a-5647-b2a8-03c2f978c57d" (reference "C805") (unit 1))))
+)
+(wire (pts (xy 99.06 90.17) (xy 99.06 87.63)) (stroke (width 0) (type default)) (uuid "e165ba60-5be5-567e-9768-97e6ca53ec50"))
+(symbol (lib_id "power:VCC") (at 99.06 97.79 180) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "7fe9e27c-d821-5ea5-8343-f732bc51ada8")
+  (property "Reference" "#PWR0063" (at 99.06 97.79 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Value" "BAT_N" (at 99.06 102.235 0) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "" (at 99.06 97.79 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "" (at 99.06 97.79 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "7a60df57-7fb5-5049-9f6c-d2cfc40175af"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/2837ef7b-885a-5647-b2a8-03c2f978c57d" (reference "#PWR0063") (unit 1))))
+)
+(symbol (lib_id "Device:C") (at 113.03 93.98 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "8d1f588d-a0c0-5ba3-aa75-594751af4d2c")
+  (property "Reference" "C806" (at 115.57 92.71 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Value" "100 nF" (at 115.57 95.25 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Footprint" "Capacitor_SMD:C_0402_1005Metric" (at 113.03 93.98 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "https://www.murata.com/en-us/products/productdetail?partno=GRM155R71C104KA88D" (at 113.03 93.98 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Description" "Capacitor, 100 nF, 16 V, X7R, 0402" (at 113.03 93.98 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Manufacturer" "Murata" (at 113.03 93.98 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "MPN" "GRM155R71C104KA88D" (at 113.03 93.98 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Block" "blk.gauge" (at 113.03 93.98 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "4007ae76-6804-5694-b467-e02bd2f613b0"))
+  (pin "2" (uuid "36e69451-e1e7-5394-a357-159b715b6998"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/2837ef7b-885a-5647-b2a8-03c2f978c57d" (reference "C806") (unit 1))))
+)
+(wire (pts (xy 113.03 90.17) (xy 113.03 87.63)) (stroke (width 0) (type default)) (uuid "a18c0f08-cb87-5734-8884-9bb71ff8c6d8"))
+(symbol (lib_id "OpenDAP_Device:Thermistor_NTC") (at 130.81 93.98 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "70d5140a-eee3-5977-91f1-c533625a3417")
+  (property "Reference" "RT801" (at 133.35 92.71 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Value" "10 kΩ" (at 133.35 95.25 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Footprint" "Resistor_SMD:R_0402_1005Metric" (at 130.81 93.98 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "https://www.murata.com/en-us/products/productdetail?partno=NCP15XH103F03RC" (at 130.81 93.98 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Description" "NTC thermistor, 10 kOhm 1 %, B 3380 K, 0402" (at 130.81 93.98 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Manufacturer" "Murata" (at 130.81 93.98 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "MPN" "NCP15XH103F03RC" (at 130.81 93.98 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Block" "blk.gauge" (at 130.81 93.98 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "916cbc48-367c-5080-888a-c8fb379b20f7"))
+  (pin "2" (uuid "7c981957-1776-5283-8703-fe3b81e1c175"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/2837ef7b-885a-5647-b2a8-03c2f978c57d" (reference "RT801") (unit 1))))
+)
+(wire (pts (xy 130.81 88.9) (xy 130.81 87.63)) (stroke (width 0) (type default)) (uuid "e7e519cf-2999-5c2a-8348-99d80b6bcc2e"))
+(symbol (lib_id "power:VCC") (at 130.81 99.06 180) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "0ec5bdc8-6c02-5bf2-924e-da6decafd2e9")
+  (property "Reference" "#PWR0064" (at 130.81 99.06 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Value" "BAT_N" (at 130.81 103.505 0) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "" (at 130.81 99.06 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "" (at 130.81 99.06 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "c45275ba-8ac1-509e-a6d6-96a06a51a623"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/2837ef7b-885a-5647-b2a8-03c2f978c57d" (reference "#PWR0064") (unit 1))))
+)
+(rectangle (start 22.86 35.56) (end 143.51 114.3) (stroke (width 0) (type dash)) (fill (type none)) (uuid "919fc597-817e-59d9-b609-663766ecabcf"))
+(text "Gauge: BQ28Z610-R1, gauge only (ADR 0014, ADR 0017)" (exclude_from_sim no) (at 24.13 34.29 0) (effects (font (size 2.54 2.54)) (justify left bottom)) (uuid "145d734d-e074-5702-a082-4cf3c60a9c8c"))
+(symbol (lib_id "Device:R") (at 167.64 45.72 90) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "a3f14d5c-3509-5241-8e25-011e28fed530")
+  (property "Reference" "R801" (at 167.64 43.18 90) (effects (font (size 1.27 1.27))))
+  (property "Value" "100 Ω" (at 167.64 48.26 90) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "Resistor_SMD:R_0402_1005Metric" (at 167.64 45.72 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "https://yageogroup.com/en/ProductSearch/PartNumberSearch?part=RC0402FR-07100RL" (at 167.64 45.72 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Description" "Resistor, 100 Ω, 1 %, 1/16 W, 0402" (at 167.64 45.72 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Manufacturer" "YAGEO" (at 167.64 45.72 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "MPN" "RC0402FR-07100RL" (at 167.64 45.72 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Block" "blk.gauge" (at 167.64 45.72 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "0ea83aea-df53-5353-9d08-a4f049168d2f"))
+  (pin "2" (uuid "0f43b67d-3c2c-5104-8d94-4cd6fd70373e"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/2837ef7b-885a-5647-b2a8-03c2f978c57d" (reference "R801") (unit 1))))
+)
+(wire (pts (xy 163.83 45.72) (xy 161.29 45.72)) (stroke (width 0) (type default)) (uuid "6a72a343-d9b9-5004-ad5d-fbe01f8d4d19"))
+(wire (pts (xy 171.45 45.72) (xy 173.99 45.72)) (stroke (width 0) (type default)) (uuid "7e9e713b-b599-58fc-8b51-ac011f0317c7"))
+(symbol (lib_id "Device:R") (at 167.64 55.88 90) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "b1c3aab7-effc-5741-92cd-f46385a8a0fb")
+  (property "Reference" "R802" (at 167.64 53.34 90) (effects (font (size 1.27 1.27))))
+  (property "Value" "5.1 Ω" (at 167.64 58.42 90) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "Resistor_SMD:R_0402_1005Metric" (at 167.64 55.88 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "https://yageogroup.com/en/ProductSearch/PartNumberSearch?part=RC0402FR-075R1L" (at 167.64 55.88 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Description" "Resistor, 5.1 Ω, 1 %, 1/16 W, 0402" (at 167.64 55.88 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Manufacturer" "YAGEO" (at 167.64 55.88 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "MPN" "RC0402FR-075R1L" (at 167.64 55.88 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Block" "blk.gauge" (at 167.64 55.88 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "00cd3714-a286-52a2-81b7-ebb8167d602c"))
+  (pin "2" (uuid "330e5407-58bf-55f1-84b1-405bf160374f"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/2837ef7b-885a-5647-b2a8-03c2f978c57d" (reference "R802") (unit 1))))
+)
+(wire (pts (xy 163.83 55.88) (xy 161.29 55.88)) (stroke (width 0) (type default)) (uuid "e8fdf7fa-c3db-5760-bdb1-751d2fd1c3e9"))
+(wire (pts (xy 171.45 55.88) (xy 173.99 55.88)) (stroke (width 0) (type default)) (uuid "57ba8428-d54e-526c-91fc-69b3d3e03f2c"))
+(symbol (lib_id "Device:R") (at 167.64 71.12 90) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "d82290ab-e358-55b6-98b8-04db1565959d")
+  (property "Reference" "R803" (at 167.64 68.58 90) (effects (font (size 1.27 1.27))))
+  (property "Value" "10 Ω" (at 167.64 73.66 90) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "Resistor_SMD:R_0402_1005Metric" (at 167.64 71.12 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "https://yageogroup.com/en/ProductSearch/PartNumberSearch?part=RC0402FR-0710RL" (at 167.64 71.12 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Description" "Resistor, 10 Ω, 1 %, 1/16 W, 0402" (at 167.64 71.12 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Manufacturer" "YAGEO" (at 167.64 71.12 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "MPN" "RC0402FR-0710RL" (at 167.64 71.12 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Block" "blk.gauge" (at 167.64 71.12 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "4be9122f-aaa6-52a5-8d8c-78686d0b937f"))
+  (pin "2" (uuid "626bf79e-cffa-5bbe-8135-cafa208097a9"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/2837ef7b-885a-5647-b2a8-03c2f978c57d" (reference "R803") (unit 1))))
+)
+(wire (pts (xy 163.83 71.12) (xy 161.29 71.12)) (stroke (width 0) (type default)) (uuid "cc26d1c1-292e-55f0-bb11-3acbe2062d43"))
+(symbol (lib_id "power:VCC") (at 161.29 71.12 90) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "003ad8cd-1fea-550c-ab73-9a18d78bb6af")
+  (property "Reference" "#PWR0065" (at 161.29 71.12 90) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Value" "VBAT" (at 158.75 71.12 270) (effects (font (size 1.27 1.27)) (justify right)))
+  (property "Footprint" "" (at 161.29 71.12 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "" (at 161.29 71.12 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "176e3842-8aea-502b-ac2e-a3414d8a0d7d"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/2837ef7b-885a-5647-b2a8-03c2f978c57d" (reference "#PWR0065") (unit 1))))
+)
+(wire (pts (xy 171.45 71.12) (xy 173.99 71.12)) (stroke (width 0) (type default)) (uuid "5f24d9cf-d9a2-544c-b7ef-4d4c518e2233"))
+(symbol (lib_id "Device:R") (at 167.64 81.28 90) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "5656831f-6224-5308-ad72-c1439a0efab3")
+  (property "Reference" "R804" (at 167.64 78.74 90) (effects (font (size 1.27 1.27))))
+  (property "Value" "100 Ω" (at 167.64 83.82 90) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "Resistor_SMD:R_0402_1005Metric" (at 167.64 81.28 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "https://yageogroup.com/en/ProductSearch/PartNumberSearch?part=RC0402FR-07100RL" (at 167.64 81.28 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Description" "Resistor, 100 Ω, 1 %, 1/16 W, 0402" (at 167.64 81.28 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Manufacturer" "YAGEO" (at 167.64 81.28 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "MPN" "RC0402FR-07100RL" (at 167.64 81.28 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Block" "blk.gauge" (at 167.64 81.28 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "2397547e-51f9-5a50-8df9-b0ccf191c2d8"))
+  (pin "2" (uuid "79728c6e-5d59-5f86-8d3b-1b40fe041087"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/2837ef7b-885a-5647-b2a8-03c2f978c57d" (reference "R804") (unit 1))))
+)
+(wire (pts (xy 163.83 81.28) (xy 161.29 81.28)) (stroke (width 0) (type default)) (uuid "e412a284-651a-58f6-a5ef-3a588c795792"))
+(symbol (lib_id "power:VCC") (at 161.29 81.28 90) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "7574f53f-cd11-5738-acb2-c1a08c5c4aa7")
+  (property "Reference" "#PWR0066" (at 161.29 81.28 90) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Value" "BAT_N" (at 158.75 81.28 270) (effects (font (size 1.27 1.27)) (justify right)))
+  (property "Footprint" "" (at 161.29 81.28 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "" (at 161.29 81.28 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "3e2b5eaf-c3ba-5a4a-862b-62f7f3f7eae2"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/2837ef7b-885a-5647-b2a8-03c2f978c57d" (reference "#PWR0066") (unit 1))))
+)
+(wire (pts (xy 171.45 81.28) (xy 173.99 81.28)) (stroke (width 0) (type default)) (uuid "738ae927-4382-5115-ba65-f50000e59ed7"))
+(symbol (lib_id "Device:R") (at 167.64 91.44 90) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "aa9208ef-85f8-55ea-9217-9b5dd4e49222")
+  (property "Reference" "R805" (at 167.64 88.9 90) (effects (font (size 1.27 1.27))))
+  (property "Value" "100 Ω" (at 167.64 93.98 90) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "Resistor_SMD:R_0402_1005Metric" (at 167.64 91.44 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "https://yageogroup.com/en/ProductSearch/PartNumberSearch?part=RC0402FR-07100RL" (at 167.64 91.44 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Description" "Resistor, 100 Ω, 1 %, 1/16 W, 0402" (at 167.64 91.44 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Manufacturer" "YAGEO" (at 167.64 91.44 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "MPN" "RC0402FR-07100RL" (at 167.64 91.44 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Block" "blk.gauge" (at 167.64 91.44 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "901cb915-bc2e-548d-9399-a3d6d17e3b94"))
+  (pin "2" (uuid "281488c9-c13f-54fb-8d42-a6519e736ff6"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/2837ef7b-885a-5647-b2a8-03c2f978c57d" (reference "R805") (unit 1))))
+)
+(wire (pts (xy 163.83 91.44) (xy 158.75 91.44)) (stroke (width 0) (type default)) (uuid "3ed1eb76-2876-5b4d-b5d2-b3f56084d45d"))
+(symbol (lib_id "power:GND") (at 158.75 91.44 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "4b41d118-de6e-53f8-a245-fac8632a261e")
+  (property "Reference" "#PWR0067" (at 158.75 91.44 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Value" "GND" (at 158.75 95.25 0) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "" (at 158.75 91.44 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "" (at 158.75 91.44 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "39787bd3-0d25-5253-90de-24ca91b4bdcd"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/2837ef7b-885a-5647-b2a8-03c2f978c57d" (reference "#PWR0067") (unit 1))))
+)
+(wire (pts (xy 171.45 91.44) (xy 173.99 91.44)) (stroke (width 0) (type default)) (uuid "4814db73-9580-5573-8439-a39c0fb1a946"))
+(symbol (lib_id "Device:R") (at 167.64 101.6 90) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "3e8a0537-2396-5a16-a575-7a22c819bfbc")
+  (property "Reference" "R806" (at 167.64 99.06 90) (effects (font (size 1.27 1.27))))
+  (property "Value" "100 Ω" (at 167.64 104.14 90) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "Resistor_SMD:R_0402_1005Metric" (at 167.64 101.6 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "https://yageogroup.com/en/ProductSearch/PartNumberSearch?part=RC0402FR-07100RL" (at 167.64 101.6 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Description" "Resistor, 100 Ω, 1 %, 1/16 W, 0402" (at 167.64 101.6 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Manufacturer" "YAGEO" (at 167.64 101.6 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "MPN" "RC0402FR-07100RL" (at 167.64 101.6 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Block" "blk.gauge" (at 167.64 101.6 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "ee95da46-ee3e-5cc7-b711-516e566d2900"))
+  (pin "2" (uuid "471c7e1b-c7a0-5116-8b82-f68cf114ecf4"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/2837ef7b-885a-5647-b2a8-03c2f978c57d" (reference "R806") (unit 1))))
+)
+(wire (pts (xy 163.83 101.6) (xy 161.29 101.6)) (stroke (width 0) (type default)) (uuid "1b1b7321-cfc1-5342-9707-780bdeb1cf7b"))
+(wire (pts (xy 171.45 101.6) (xy 173.99 101.6)) (stroke (width 0) (type default)) (uuid "49413c3a-308d-55f7-9e57-117051d5001c"))
+(symbol (lib_id "Device:R") (at 167.64 111.76 90) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "ead9ec9a-961b-5d06-a9b9-561fed5543a7")
+  (property "Reference" "R807" (at 167.64 109.22 90) (effects (font (size 1.27 1.27))))
+  (property "Value" "100 Ω" (at 167.64 114.3 90) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "Resistor_SMD:R_0402_1005Metric" (at 167.64 111.76 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "https://yageogroup.com/en/ProductSearch/PartNumberSearch?part=RC0402FR-07100RL" (at 167.64 111.76 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Description" "Resistor, 100 Ω, 1 %, 1/16 W, 0402" (at 167.64 111.76 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Manufacturer" "YAGEO" (at 167.64 111.76 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "MPN" "RC0402FR-07100RL" (at 167.64 111.76 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Block" "blk.gauge" (at 167.64 111.76 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "fd0ce29c-0748-500c-bca6-ea35461935e8"))
+  (pin "2" (uuid "c8c6b299-ad35-52c1-a9ba-86260ab9a09e"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/2837ef7b-885a-5647-b2a8-03c2f978c57d" (reference "R807") (unit 1))))
+)
+(wire (pts (xy 163.83 111.76) (xy 161.29 111.76)) (stroke (width 0) (type default)) (uuid "c5739711-a83a-5ea0-b7e7-c19c124a961d"))
+(wire (pts (xy 171.45 111.76) (xy 173.99 111.76)) (stroke (width 0) (type default)) (uuid "72294f3d-2aa5-52f1-bf3a-1dd20c68389d"))
+(rectangle (start 148.59 35.56) (end 215.9 119.38) (stroke (width 0) (type dash)) (fill (type none)) (uuid "8700bd68-6c93-59c6-93a6-ed5eb2095dda"))
+(text "Inputs (SLUSE07B Figure 9-1)" (exclude_from_sim no) (at 149.86 34.29 0) (effects (font (size 2.54 2.54)) (justify left bottom)) (uuid "a1db071d-24b7-52ba-a10d-98a1974c1255"))
+(symbol (lib_id "Device:R") (at 242.57 45.72 90) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "01c29f4a-ed45-5df3-a766-9ee17a8ae465")
+  (property "Reference" "R808" (at 242.57 43.18 90) (effects (font (size 1.27 1.27))))
+  (property "Value" "3 mΩ" (at 242.57 48.26 90) (effects (font (size 1.27 1.27))))
+  (property "Spec" "1206" (at 242.57 50.8 90) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "Resistor_SMD:R_1206_3216Metric" (at 242.57 45.72 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "https://www.vishay.com/docs/30100/wsl.pdf" (at 242.57 45.72 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Description" "Current-sense resistor, 3 mOhm, 1 %, 0.25 W, 1206 metal strip" (at 242.57 45.72 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Manufacturer" "Vishay Dale" (at 242.57 45.72 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "MPN" "WSL12063L000FEA" (at 242.57 45.72 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Second_Source" "Vishay WSL12063L000FEA18 (BOM v1 line 43)" (at 242.57 45.72 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Manufacturer_2" "Vishay Dale" (at 242.57 45.72 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "MPN_2" "WSL12063L000FEA18" (at 242.57 45.72 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Block" "blk.gauge" (at 242.57 45.72 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Constraints" "PCB-P-01" (at 242.57 45.72 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "002daf8f-3407-5c49-a8de-2ea47072db81"))
+  (pin "2" (uuid "c8bc5279-f5e6-5631-9e00-420c6210118d"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/2837ef7b-885a-5647-b2a8-03c2f978c57d" (reference "R808") (unit 1))))
+)
+(wire (pts (xy 238.76 45.72) (xy 231.14 45.72)) (stroke (width 0) (type default)) (uuid "1d6db3c5-97db-52a5-86ff-bcc251330904"))
+(symbol (lib_id "power:VCC") (at 231.14 45.72 90) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "870ea320-b341-5f27-b3b2-1d16ebeaded1")
+  (property "Reference" "#PWR0068" (at 231.14 45.72 90) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Value" "BAT_N" (at 228.6 45.72 270) (effects (font (size 1.27 1.27)) (justify right)))
+  (property "Footprint" "" (at 231.14 45.72 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "" (at 231.14 45.72 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "133b8ec0-8e21-5eab-967d-2d1de842af16"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/2837ef7b-885a-5647-b2a8-03c2f978c57d" (reference "#PWR0068") (unit 1))))
+)
+(wire (pts (xy 246.38 45.72) (xy 254 45.72)) (stroke (width 0) (type default)) (uuid "6f7fefe2-6f40-546a-9453-f30756958f50"))
+(symbol (lib_id "power:GND") (at 254 45.72 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "38c368d3-a7db-552a-860f-b563c0b34cd9")
+  (property "Reference" "#PWR0069" (at 254 45.72 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Value" "GND" (at 254 49.53 0) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "" (at 254 45.72 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "" (at 254 45.72 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "76df69b2-3350-5ba8-a2b8-e817fe4b5b8a"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/2837ef7b-885a-5647-b2a8-03c2f978c57d" (reference "#PWR0069") (unit 1))))
+)
+(junction (at 233.68 45.72) (diameter 0) (color 0 0 0 0) (uuid "aca5e805-4488-5b5d-9930-91e91095da21"))
+(wire (pts (xy 233.68 45.72) (xy 233.68 48.26)) (stroke (width 0) (type default)) (uuid "ee975294-d775-5845-b23d-e6314a6d6861"))
+(symbol (lib_id "power:PWR_FLAG") (at 233.68 48.26 180) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "6a9d9a41-e932-58c4-a671-6a23be6fc63b")
+  (property "Reference" "#FLG0002" (at 233.68 48.26 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Value" "PWR_FLAG" (at 233.68 53.34 0) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "" (at 233.68 48.26 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "" (at 233.68 48.26 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "b4b10a0f-1ede-5230-a61f-0275878f3481"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/2837ef7b-885a-5647-b2a8-03c2f978c57d" (reference "#FLG0002") (unit 1))))
+)
+(rectangle (start 220.98 35.56) (end 339.09 60.96) (stroke (width 0) (type dash)) (fill (type none)) (uuid "b1fb5c42-31c9-524d-a4bf-cd21445bc4d5"))
+(text "Sense resistor, low side, Kelvin (ADR 0017 item 4)" (exclude_from_sim no) (at 222.25 34.29 0) (effects (font (size 2.54 2.54)) (justify left bottom)) (uuid "fb767a32-8578-55e8-96be-f6d49be946b8"))
+(text_box "Notes\n1. Function: BQ28Z610-R1 reads both cells (VC2 after the fuse, VC1 on the tap) and counts charge\n   on a 3 mΩ low-side sense resistor; the pack PCM protects and balances (ADR 0014, ADR 0017).\n2. Absent state: never omitted. Storage: Blackbird OS sends MAC 0x0010 twice, then the BQ25798\n   enters shutdown mode; the ship FET opens, PACK falls and the gauge shuts down (ADR 0017 item 3).\n3. VSS, PWPD and every gauge capacitor return to BAT_N, the cell side of the sense resistor;\n   SRP to the cell side, SRN to GND, each through 100 Ω, 100 nF at the pins (SLUSE07B Figure 9-1).\n4. CHG and DSG open (no FETs: SLUSE07B §8.3.14; TI E2E 903283, forum guidance).\n5. TS1: board NTC NCP15XH103F03RC against the pocket floor (BOM v1 line 48).\n6. Golden image, CC Gain calibration per board: ADR 0017 items 4-5." (exclude_from_sim no) (at 275.59 224.79 0) (size 129.54 24.13) (margins 1.905 1.905 1.905 1.905) (stroke (width 0) (type default)) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "be918e79-659e-509f-ac1d-3053cfa28497"))
+(text "Interface" (exclude_from_sim no) (at 22.86 243.84 0) (effects (font (size 2.54 2.54)) (justify left bottom)) (uuid "a48742a9-6b38-5159-9a45-ef17d0726333"))
+(table (column_count 3) (border (external yes) (header yes) (stroke (width 0) (type solid))) (separators (rows yes) (cols yes) (stroke (width 0) (type solid))) (column_widths 38.1 22.86 57.15) (row_heights 5.08 7.62 5.08 5.08 7.62 5.08) (cells (table_cell "Net" (exclude_from_sim no) (at 22.86 245.11 0) (size 38.1 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27) (bold yes)) (justify left top)) (uuid "c9eeb67b-448d-5e22-b43e-022cc38e9b98")) (table_cell "Direction" (exclude_from_sim no) (at 60.96 245.11 0) (size 22.86 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27) (bold yes)) (justify left top)) (uuid "ab3a29a0-ad6a-56ed-b49e-c76f5527623d")) (table_cell "Absent state (block not fitted)" (exclude_from_sim no) (at 83.82 245.11 0) (size 57.15 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27) (bold yes)) (justify left top)) (uuid "d60a18cf-3002-5c2b-aac4-b05c6ab4b044")) (table_cell "BAT_F" (exclude_from_sim no) (at 22.86 250.19 0) (size 38.1 7.62) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "068ef618-5fe2-5e8d-93ba-3123bdde4d32")) (table_cell "Passive" (exclude_from_sim no) (at 60.96 250.19 0) (size 22.86 7.62) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "d9e7c0b5-ef2d-5eba-953a-45ebc9697489")) (table_cell "Pack side of the ship FET, after the 5 A fuse (blk.charger)" (exclude_from_sim no) (at 83.82 250.19 0) (size 57.15 7.62) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "cd6a0db1-eb6b-57f4-9538-c1133b11ba19")) (table_cell "BAT_MID" (exclude_from_sim no) (at 22.86 257.81 0) (size 38.1 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "1ffe561e-17a1-525f-abe8-9d24abce7f24")) (table_cell "Passive" (exclude_from_sim no) (at 60.96 257.81 0) (size 22.86 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "4555f27a-fcf8-5d6a-a149-9fff453abea6")) (table_cell "Mid-cell tap contact (blk.charger)" (exclude_from_sim no) (at 83.82 257.81 0) (size 57.15 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "eebc9481-2c37-51ac-9ce0-a3fc8e9525ed")) (table_cell "BAT_N" (exclude_from_sim no) (at 22.86 262.89 0) (size 38.1 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "c2faf3d5-c589-525d-b5fc-eb7c366e7c47")) (table_cell "Passive" (exclude_from_sim no) (at 60.96 262.89 0) (size 22.86 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "a45fb152-1a1b-58c6-b475-0a29ae3783bc")) (table_cell "P- contacts: cell negative, the gauge's VSS" (exclude_from_sim no) (at 83.82 262.89 0) (size 57.15 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "9c22c16d-53af-5108-a1c6-63f991c0de22")) (table_cell "VBAT" (exclude_from_sim no) (at 22.86 267.97 0) (size 38.1 7.62) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "bc1a1c27-c808-52e9-b328-99a779dcd7c3")) (table_cell "Passive" (exclude_from_sim no) (at 60.96 267.97 0) (size 22.86 7.62) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "a0651db1-18f4-5e76-b56f-7610c90288f3")) (table_cell "BQ25798 BAT node: PACK senses the switched side (ADR 0017 item 2)" (exclude_from_sim no) (at 83.82 267.97 0) (size 57.15 7.62) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "aecaf858-bc20-5ce0-aff1-6b9fa760334d")) (table_cell "I2C1_SCL, I2C1_SDA" (exclude_from_sim no) (at 22.86 275.59 0) (size 38.1 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "a2d81577-1e49-566c-b699-0ef0809443b4")) (table_cell "Bidirectional" (exclude_from_sim no) (at 60.96 275.59 0) (size 22.86 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "3af872f2-b3b2-5b25-b383-47b21fc36490")) (table_cell "0x55; pull-ups on blk.soc-pmuio" (exclude_from_sim no) (at 83.82 275.59 0) (size 57.15 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "24fd81e6-02e6-57b5-abcc-7bd71b04ac62"))))
+(text "Rails" (exclude_from_sim no) (at 148.59 243.84 0) (effects (font (size 2.54 2.54)) (justify left bottom)) (uuid "6969cce7-541a-5d0b-861f-d7ae484528bb"))
+(table (column_count 3) (border (external yes) (header yes) (stroke (width 0) (type solid))) (separators (rows yes) (cols yes) (stroke (width 0) (type solid))) (column_widths 27.94 35.56 55.88) (row_heights 5.08 5.08 5.08) (cells (table_cell "Rail" (exclude_from_sim no) (at 148.59 245.11 0) (size 27.94 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27) (bold yes)) (justify left top)) (uuid "e28a06f5-98d9-55a4-af0f-acc5494ddd4b")) (table_cell "Capacitors" (exclude_from_sim no) (at 176.53 245.11 0) (size 35.56 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27) (bold yes)) (justify left top)) (uuid "a1c9f367-4183-555b-b792-0cf5a0c8abb7")) (table_cell "Requirement and source" (exclude_from_sim no) (at 212.09 245.11 0) (size 55.88 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27) (bold yes)) (justify left top)) (uuid "ace635dd-227f-5e04-ab54-3608a5623feb")) (table_cell "GAUGE_VC2" (exclude_from_sim no) (at 148.59 250.19 0) (size 27.94 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "657d778b-629b-5f0c-bdc5-7f33c1788b96")) (table_cell "1 µF to VC1 (5 Ω in)" (exclude_from_sim no) (at 176.53 250.19 0) (size 35.56 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "efc770cf-45c1-5b62-bec7-4a2f1d6be223")) (table_cell "SLUSE07B Figure 9-1" (exclude_from_sim no) (at 212.09 250.19 0) (size 55.88 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "035c9289-8c53-5d55-af98-91110c2f85b5")) (table_cell "GAUGE_PBI" (exclude_from_sim no) (at 148.59 255.27 0) (size 27.94 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "e25c10c8-e886-5dcc-9a8e-343c94040858")) (table_cell "2.2 µF" (exclude_from_sim no) (at 176.53 255.27 0) (size 35.56 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "439f82bd-0b33-5c95-b190-042e050706dd")) (table_cell "SLUSE07B §7.3, Figure 9-1" (exclude_from_sim no) (at 212.09 255.27 0) (size 55.88 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "e9545fc5-1216-5439-bf3f-5ab1d4f38ef6"))))
+(junction (at 172.72 55.88) (diameter 0) (color 0 0 0 0) (uuid "c3e94b43-4c3c-5f6b-8d6c-770440e30f9a"))
+(wire (pts (xy 172.72 55.88) (xy 172.72 58.42)) (stroke (width 0) (type default)) (uuid "1c1f3533-1432-5fb4-8fd8-ec4c524e7ab9"))
+(symbol (lib_id "power:PWR_FLAG") (at 172.72 58.42 180) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "d6e44101-4bb0-5252-96d5-33b54fd854db")
+  (property "Reference" "#FLG0046" (at 172.72 58.42 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Value" "PWR_FLAG" (at 172.72 63.5 0) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "" (at 172.72 58.42 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "" (at 172.72 58.42 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "739accc8-7a37-55f7-9051-765a37870288"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/2837ef7b-885a-5647-b2a8-03c2f978c57d" (reference "#FLG0046") (unit 1))))
+)
+(label "GAUGE_VC1" (at 36.83 67.31 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "6f1b22aa-d372-5487-a81d-c119e8f6ac73"))
+(label "GAUGE_SRP" (at 36.83 72.39 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "840aaa51-0f9f-565e-aa81-4eeaa16091cd"))
+(label "GAUGE_SRN" (at 36.83 74.93 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "ea16b692-65c0-5f9b-99e3-c053f267d690"))
+(label "GAUGE_TS1" (at 36.83 80.01 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "78803fca-0c32-5ebc-8721-9e082aeebc7b"))
+(label "GAUGE_SCL" (at 36.83 85.09 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "1d43ec7f-e21f-5f0e-83dd-54686e165639"))
+(label "GAUGE_SDA" (at 36.83 87.63 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "022b73a2-6adc-5959-b7bb-99cb8ea45ac3"))
+(label "GAUGE_PACK" (at 67.31 67.31 0) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "4a2d4315-2de3-5565-ad9a-2363d5b124fd"))
+(label "GAUGE_VC2" (at 49.53 49.53 90) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "694a1726-f5b8-5222-9e75-335dfcccffa1"))
+(label "GAUGE_PBI" (at 54.61 49.53 90) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "4e14c1b6-f0df-55cc-b8ea-098a3d8489d4"))
+(label "GAUGE_VC1" (at 85.09 49.53 90) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "668ca981-dcec-52d3-a034-20548bdb19a2"))
+(label "GAUGE_VC1" (at 99.06 59.69 270) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "4c6e9d71-9bc7-5fc7-9c85-abaf3099e471"))
+(label "GAUGE_VC2" (at 99.06 49.53 90) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "c1ca2239-e754-5499-9fac-abb2da1866b5"))
+(label "GAUGE_PBI" (at 114.3 49.53 90) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "e1df52eb-1ea0-5c97-9179-3a5c0fcce2be"))
+(label "GAUGE_SRP" (at 85.09 87.63 90) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "b66caab3-050e-5fec-b5cb-8da7642a6209"))
+(label "GAUGE_SRN" (at 99.06 87.63 90) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "a480925b-00bb-58ee-9c04-b568d872ac0b"))
+(label "GAUGE_SRN" (at 113.03 97.79 270) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "9c55c9a3-e4c5-5556-a094-bf87c9356afb"))
+(label "GAUGE_SRP" (at 113.03 87.63 90) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "72252a5a-6ec3-5c7c-84aa-881349d19c71"))
+(label "GAUGE_TS1" (at 130.81 87.63 90) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "333590e2-fceb-548d-a1e7-971d1e00585a"))
+(hierarchical_label "BAT_MID" (shape passive) (at 161.29 45.72 180) (effects (font (size 1.27 1.27)) (justify right)) (uuid "d6e120c0-8179-5e43-84b5-572e09bc735b"))
+(label "GAUGE_VC1" (at 173.99 45.72 0) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "a8ebcd28-ce86-5fad-9d30-8176f313d1cc"))
+(hierarchical_label "BAT_F" (shape passive) (at 161.29 55.88 180) (effects (font (size 1.27 1.27)) (justify right)) (uuid "2a975768-f0b0-52d4-9b3c-073792056a07"))
+(label "GAUGE_VC2" (at 173.99 55.88 0) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "314effdc-bbba-5d0f-8df7-51f38dc90eed"))
+(label "GAUGE_PACK" (at 173.99 71.12 0) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "238b695f-9fd9-5c48-827c-6a497404bc95"))
+(label "GAUGE_SRP" (at 173.99 81.28 0) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "3cb2026f-023f-5fa4-a5cc-d9f06dc671b5"))
+(label "GAUGE_SRN" (at 173.99 91.44 0) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "54437b79-7152-535b-b152-78c1ba04960f"))
+(label "I2C1_SCL" (at 161.29 101.6 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "692cc441-d42e-51ac-9ceb-025396b7b28f"))
+(label "GAUGE_SCL" (at 173.99 101.6 0) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "9cc224fd-34ca-5e0a-a465-4a062746eef7"))
+(label "I2C1_SDA" (at 161.29 111.76 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "1441cad0-59e5-5386-a783-1da90b39b0de"))
+(label "GAUGE_SDA" (at 173.99 111.76 0) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "10654737-fc5f-52b3-b9ee-a70bce9173b8"))
+(bus (pts (xy 45.72 234.95) (xy 50.8 234.95)) (stroke (width 0) (type default)) (uuid "0a51691e-cc8f-53ec-a1c2-08ffeaf6f6ee"))
+(hierarchical_label "{I2C1}" (shape bidirectional) (at 45.72 234.95 180) (effects (font (size 1.27 1.27)) (justify right)) (uuid "edf601d5-b312-5a40-9b2d-22422ade6d18"))
+(embedded_fonts no))

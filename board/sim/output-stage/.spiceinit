@@ -1,0 +1,2 @@
+* ngspice start-up file for this study: PSpice compatibility for the TI OPA1622 model
+set ngbehavior=ps

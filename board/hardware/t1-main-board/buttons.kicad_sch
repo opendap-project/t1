@@ -1,0 +1,959 @@
+(kicad_sch (version 20260306) (generator "eeschema") (generator_version "10.0")
+(uuid "51ce842a-a035-561d-8048-78435ddae69a")
+(paper "A4")
+(title_block (title "Side buttons") (date "2026-10-25") (rev "A") (company "The OpenDAP Project") (comment 1 "blk.buttons") (comment 2 "Power, Action, Vol+ and Vol-, each with its ESD diode"))
+(lib_symbols (symbol "Device:D_TVS"
+		(pin_numbers
+			(hide yes)
+		)
+		(pin_names
+			(offset 1.016)
+			(hide yes)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(duplicate_pin_numbers_are_jumpers no)
+		(property "Reference" "D"
+			(at 0 2.54 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "D_TVS"
+			(at 0 -2.54 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Bidirectional transient-voltage-suppression diode"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_keywords" "diode TVS thyrector"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_fp_filters" "TO-???* *_Diode_* *SingleDiode* D_*"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "D_TVS_0_1"
+			(polyline
+				(pts
+					(xy -2.54 1.27) (xy -2.54 -1.27) (xy 2.54 1.27) (xy 2.54 -1.27) (xy -2.54 1.27)
+				)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 0.508 1.27) (xy 0 1.27) (xy 0 -1.27) (xy -0.508 -1.27)
+				)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 1.27 0) (xy -1.27 0)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+		)
+		(symbol "D_TVS_1_1"
+			(pin passive line
+				(at -3.81 0 0)
+				(length 2.54)
+				(name "A1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 3.81 0 180)
+				(length 2.54)
+				(name "A2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
+(symbol "Device:R"
+		(pin_numbers
+			(hide yes)
+		)
+		(pin_names
+			(offset 0)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(duplicate_pin_numbers_are_jumpers no)
+		(property "Reference" "R"
+			(at 2.032 0 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "R"
+			(at 0 0 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at -1.778 0 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_keywords" "R res resistor"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_fp_filters" "R_*"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "R_0_1"
+			(rectangle
+				(start -1.016 -2.54)
+				(end 1.016 2.54)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+		)
+		(symbol "R_1_1"
+			(pin passive line
+				(at 0 3.81 270)
+				(length 1.27)
+				(name ""
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 0 -3.81 90)
+				(length 1.27)
+				(name ""
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
+(symbol "Switch:SW_Push"
+		(pin_numbers
+			(hide yes)
+		)
+		(pin_names
+			(offset 1.016)
+			(hide yes)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(duplicate_pin_numbers_are_jumpers no)
+		(property "Reference" "SW"
+			(at 1.27 2.54 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "SW_Push"
+			(at 0 -1.524 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 0 5.08 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 5.08 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Push button switch, generic, two pins"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_keywords" "switch normally-open pushbutton push-button"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "SW_Push_0_1"
+			(circle
+				(center -2.032 0)
+				(radius 0.508)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 0 1.27) (xy 0 3.048)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(circle
+				(center 2.032 0)
+				(radius 0.508)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 2.54 1.27) (xy -2.54 1.27)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(pin passive line
+				(at -5.08 0 0)
+				(length 2.54)
+				(name "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 5.08 0 180)
+				(length 2.54)
+				(name "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
+(symbol "power:GND"
+		(power global)
+		(pin_numbers
+			(hide yes)
+		)
+		(pin_names
+			(offset 0)
+			(hide yes)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(duplicate_pin_numbers_are_jumpers no)
+		(property "Reference" "#PWR"
+			(at 0 -6.35 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 0 -3.81 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_keywords" "global power"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "GND_0_1"
+			(polyline
+				(pts
+					(xy 0 0) (xy 0 -1.27) (xy 1.27 -1.27) (xy 0 -2.54) (xy -1.27 -1.27) (xy 0 -1.27)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+		)
+		(symbol "GND_1_1"
+			(pin power_in line
+				(at 0 0 270)
+				(length 0)
+				(name ""
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
+(symbol "power:VCC"
+		(power global)
+		(pin_numbers
+			(hide yes)
+		)
+		(pin_names
+			(offset 0)
+			(hide yes)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(duplicate_pin_numbers_are_jumpers no)
+		(property "Reference" "#PWR"
+			(at 0 -3.81 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "VCC"
+			(at 0 3.556 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"VCC\""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_keywords" "global power"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "VCC_0_1"
+			(polyline
+				(pts
+					(xy -0.762 1.27) (xy 0 2.54)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 0 2.54) (xy 0.762 1.27)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 0 0) (xy 0 2.54)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+		)
+		(symbol "VCC_1_1"
+			(pin power_in line
+				(at 0 0 90)
+				(length 0)
+				(name ""
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	))
+(symbol (lib_id "Switch:SW_Push") (at 30.48 60.96 270) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "02a16f34-8631-5b9d-a0a5-2091a6ae19d8")
+  (property "Reference" "SW5501" (at 36.83 59.69 270) (effects (font (size 1.27 1.27))))
+  (property "Value" "PTS815" (at 36.83 62.23 270) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "T1_Main_Board:SW_CK_PTS815" (at 30.48 60.96 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "https://www.ckswitches.com/media/2768/pts815.pdf" (at 30.48 60.96 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Description" "Tactile switch, SPST-NO, top actuated, 4.2 x 3.2 x 2.5 mm, 180 gf" (at 30.48 60.96 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Manufacturer" "C&K" (at 30.48 60.96 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "MPN" "PTS815SJM250SMTRLFS" (at 30.48 60.96 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Block" "blk.buttons" (at 30.48 60.96 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "43c27369-02bf-5609-b83a-33d72b20db0a"))
+  (pin "2" (uuid "39ae1119-6198-5b25-bda6-bc84044a9415"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/afc5e553-cbff-5b60-bd19-e1f58e5228b5" (reference "SW5501") (unit 1))))
+)
+(wire (pts (xy 30.48 55.88) (xy 30.48 53.34)) (stroke (width 0) (type default)) (uuid "9837c860-5ba4-5e98-8672-a702eb114229"))
+(wire (pts (xy 30.48 66.04) (xy 30.48 68.58)) (stroke (width 0) (type default)) (uuid "6cf85272-50ef-546e-8470-817024028544"))
+(symbol (lib_id "power:GND") (at 30.48 68.58 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "465d6ac1-1b98-5c24-b714-8b330b3902ec")
+  (property "Reference" "#PWR0805" (at 30.48 68.58 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Value" "GND" (at 30.48 72.39 0) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "" (at 30.48 68.58 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "" (at 30.48 68.58 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "339981f9-f3f3-5410-9444-3eb31f4933fd"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/afc5e553-cbff-5b60-bd19-e1f58e5228b5" (reference "#PWR0805") (unit 1))))
+)
+(symbol (lib_id "Switch:SW_Push") (at 60.96 60.96 270) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "45f284af-e80a-5426-bb52-58f8775d1a70")
+  (property "Reference" "SW5502" (at 67.31 59.69 270) (effects (font (size 1.27 1.27))))
+  (property "Value" "PTS815" (at 67.31 62.23 270) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "T1_Main_Board:SW_CK_PTS815" (at 60.96 60.96 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "https://www.ckswitches.com/media/2768/pts815.pdf" (at 60.96 60.96 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Description" "Tactile switch, SPST-NO, top actuated, 4.2 x 3.2 x 2.5 mm, 180 gf" (at 60.96 60.96 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Manufacturer" "C&K" (at 60.96 60.96 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "MPN" "PTS815SJM250SMTRLFS" (at 60.96 60.96 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Block" "blk.buttons" (at 60.96 60.96 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "c3573b9a-311c-53b2-ba96-78c6a15f04db"))
+  (pin "2" (uuid "d9c629f2-8669-5e8f-a73b-508ae5b45e80"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/afc5e553-cbff-5b60-bd19-e1f58e5228b5" (reference "SW5502") (unit 1))))
+)
+(wire (pts (xy 60.96 55.88) (xy 60.96 53.34)) (stroke (width 0) (type default)) (uuid "4382b2ba-eac2-5e5f-93ef-c56c5216a24f"))
+(wire (pts (xy 60.96 66.04) (xy 60.96 68.58)) (stroke (width 0) (type default)) (uuid "dc3084e4-2396-584b-abc1-21e1a039da31"))
+(symbol (lib_id "power:GND") (at 60.96 68.58 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "d0365e04-5b43-5ec8-a8a7-6e70e36d8e8f")
+  (property "Reference" "#PWR0806" (at 60.96 68.58 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Value" "GND" (at 60.96 72.39 0) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "" (at 60.96 68.58 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "" (at 60.96 68.58 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "ce12bafb-d293-5e96-bb57-201795c28ea3"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/afc5e553-cbff-5b60-bd19-e1f58e5228b5" (reference "#PWR0806") (unit 1))))
+)
+(symbol (lib_id "Switch:SW_Push") (at 91.44 60.96 270) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "70c3a1b0-10de-550b-9c4d-a8d9088d2911")
+  (property "Reference" "SW5503" (at 97.79 59.69 270) (effects (font (size 1.27 1.27))))
+  (property "Value" "PTS815" (at 97.79 62.23 270) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "T1_Main_Board:SW_CK_PTS815" (at 91.44 60.96 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "https://www.ckswitches.com/media/2768/pts815.pdf" (at 91.44 60.96 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Description" "Tactile switch, SPST-NO, top actuated, 4.2 x 3.2 x 2.5 mm, 180 gf" (at 91.44 60.96 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Manufacturer" "C&K" (at 91.44 60.96 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "MPN" "PTS815SJM250SMTRLFS" (at 91.44 60.96 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Block" "blk.buttons" (at 91.44 60.96 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "ee16d721-1ed9-54eb-a091-d496827adb86"))
+  (pin "2" (uuid "594cbb09-f9f4-5a36-9ad5-61b6ef5df2b9"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/afc5e553-cbff-5b60-bd19-e1f58e5228b5" (reference "SW5503") (unit 1))))
+)
+(wire (pts (xy 91.44 55.88) (xy 91.44 53.34)) (stroke (width 0) (type default)) (uuid "b0a512ee-9a8f-5237-ba98-22c8132723f3"))
+(wire (pts (xy 91.44 66.04) (xy 91.44 68.58)) (stroke (width 0) (type default)) (uuid "035efe8d-641d-5700-9805-b8addb075a7a"))
+(symbol (lib_id "power:GND") (at 91.44 68.58 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "8dc1a6a8-85d0-53d2-9fba-7500cd6ccd35")
+  (property "Reference" "#PWR0807" (at 91.44 68.58 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Value" "GND" (at 91.44 72.39 0) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "" (at 91.44 68.58 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "" (at 91.44 68.58 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "74549f9d-3d42-512b-9d40-0100f6d32455"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/afc5e553-cbff-5b60-bd19-e1f58e5228b5" (reference "#PWR0807") (unit 1))))
+)
+(symbol (lib_id "Switch:SW_Push") (at 121.92 60.96 270) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "e4927a29-4e73-5ee3-91d6-3511329f971e")
+  (property "Reference" "SW5504" (at 128.27 59.69 270) (effects (font (size 1.27 1.27))))
+  (property "Value" "Action (part open)" (at 135.89 62.23 270) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "Button_Switch_SMD:SW_Push_1P1T_NO_CK_KMR2" (at 121.92 60.96 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "https://www.ckswitches.com/media/1479/kmr2.pdf" (at 121.92 60.96 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Description" "Action button, SPST-NO: part open (BOM v1 line 76), KMR221GLFS placeholder" (at 121.92 60.96 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Manufacturer" "C&K" (at 121.92 60.96 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "MPN" "KMR221GLFS" (at 121.92 60.96 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Block" "blk.buttons" (at 121.92 60.96 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "e6439ae3-4c05-5fc8-93a1-edd671d016db"))
+  (pin "2" (uuid "6e9889d1-36a0-5e88-a807-3093958257d2"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/afc5e553-cbff-5b60-bd19-e1f58e5228b5" (reference "SW5504") (unit 1))))
+)
+(wire (pts (xy 121.92 55.88) (xy 121.92 53.34)) (stroke (width 0) (type default)) (uuid "81175391-d692-5e75-b9e6-32fc2343c886"))
+(wire (pts (xy 121.92 66.04) (xy 121.92 68.58)) (stroke (width 0) (type default)) (uuid "7a99db91-3cbf-5d94-9c3c-90afd405990e"))
+(symbol (lib_id "power:GND") (at 121.92 68.58 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "536bbc12-aa66-501a-862e-ba449ddc3cb8")
+  (property "Reference" "#PWR0808" (at 121.92 68.58 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Value" "GND" (at 121.92 72.39 0) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "" (at 121.92 68.58 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "" (at 121.92 68.58 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "91a6498a-7517-511e-8b1a-c640e8f6ca3b"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/afc5e553-cbff-5b60-bd19-e1f58e5228b5" (reference "#PWR0808") (unit 1))))
+)
+(rectangle (start 22.86 35.56) (end 158.75 78.74) (stroke (width 0) (type dash)) (fill (type none)) (uuid "760126bc-0fca-5f8b-a5b7-9e1cb1091297"))
+(text "Buttons (BOM v1 lines 76, 77)" (exclude_from_sim no) (at 24.13 34.29 0) (effects (font (size 2.54 2.54)) (justify left bottom)) (uuid "95de08d4-b1f6-5477-b48a-e5ed11f51cdf"))
+(symbol (lib_id "Device:R") (at 176.53 48.26 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "0423af9f-3011-52ea-a8a3-089e3107498d")
+  (property "Reference" "R5501" (at 177.8 46.99 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Value" "100 kΩ" (at 177.8 49.53 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Footprint" "Resistor_SMD:R_0402_1005Metric" (at 176.53 48.26 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "https://yageogroup.com/en/ProductSearch/PartNumberSearch?part=RC0402FR-07100KL" (at 176.53 48.26 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Description" "Resistor, 100 kΩ, 1 %, 1/16 W, 0402" (at 176.53 48.26 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Manufacturer" "YAGEO" (at 176.53 48.26 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "MPN" "RC0402FR-07100KL" (at 176.53 48.26 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Block" "blk.buttons" (at 176.53 48.26 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "c4304b0f-ab9c-560e-8895-e034cf57155b"))
+  (pin "2" (uuid "a3da0a99-e286-5a3f-babc-717d21196b60"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/afc5e553-cbff-5b60-bd19-e1f58e5228b5" (reference "R5501") (unit 1))))
+)
+(wire (pts (xy 176.53 44.45) (xy 176.53 41.91)) (stroke (width 0) (type default)) (uuid "f7cdb97d-94f8-5e4b-8ea5-f7c22eea5e0a"))
+(symbol (lib_id "power:VCC") (at 176.53 41.91 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "01bde4ce-8b90-5a99-a7d2-fc820f6441d1")
+  (property "Reference" "#PWR0809" (at 176.53 41.91 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Value" "vcca1v8_pmu" (at 176.53 38.1 0) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "" (at 176.53 41.91 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "" (at 176.53 41.91 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "1ad62c63-9b71-5200-b37a-c5f0ec132665"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/afc5e553-cbff-5b60-bd19-e1f58e5228b5" (reference "#PWR0809") (unit 1))))
+)
+(rectangle (start 163.83 35.56) (end 245.11 66.04) (stroke (width 0) (type dash)) (fill (type none)) (uuid "df3a6654-8462-5afc-9969-59924500fa4e"))
+(text "Vol- pull-up 100 kΩ (pinout v1 §4)" (exclude_from_sim no) (at 165.1 34.29 0) (effects (font (size 2.54 2.54)) (justify left bottom)) (uuid "f88ef6a6-3bbc-5858-bbd3-ce89acbfa0b5"))
+(symbol (lib_id "Device:D_TVS") (at 30.48 113.03 90) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "f85ea33e-4467-530f-84a2-6646d1e64d4f")
+  (property "Reference" "D5501" (at 35.92 111.76 90) (effects (font (size 1.27 1.27))))
+  (property "Value" "TPD1E10B06" (at 38.82 114.3 90) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "Package_SON:Texas_DPY0002A_0.6x1mm_P0.65mm" (at 30.48 113.03 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "https://www.ti.com/lit/ds/symlink/tpd1e10b06.pdf" (at 30.48 113.03 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Description" "ESD protection diode, bidirectional, 5.5 V working, 12 pF, X1SON-2 (DPY)" (at 30.48 113.03 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Manufacturer" "Texas Instruments" (at 30.48 113.03 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "MPN" "TPD1E10B06DPYR" (at 30.48 113.03 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Second_Source" "onsemi ESD9B5.0ST5G (BOM v1 line 36; other land)" (at 30.48 113.03 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Block" "blk.buttons" (at 30.48 113.03 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "bb7fc16b-38d3-5782-ae1d-8a38487a135e"))
+  (pin "2" (uuid "a25445ee-3a94-56f0-b587-d96ad3863ded"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/afc5e553-cbff-5b60-bd19-e1f58e5228b5" (reference "D5501") (unit 1))))
+)
+(wire (pts (xy 30.48 109.22) (xy 30.48 106.68)) (stroke (width 0) (type default)) (uuid "7c4e2c76-2b64-5f79-86cc-fceb48e54ce9"))
+(wire (pts (xy 30.48 116.84) (xy 30.48 119.38)) (stroke (width 0) (type default)) (uuid "a63434e1-1e9c-57e0-90cd-880b6c2544ae"))
+(symbol (lib_id "power:GND") (at 30.48 119.38 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "ba5dad61-b465-523e-9b56-8b16fb0db9a4")
+  (property "Reference" "#PWR0810" (at 30.48 119.38 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Value" "GND" (at 30.48 123.19 0) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "" (at 30.48 119.38 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "" (at 30.48 119.38 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "ebfb0bc4-cb47-587d-9f7a-7fa568347b5d"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/afc5e553-cbff-5b60-bd19-e1f58e5228b5" (reference "#PWR0810") (unit 1))))
+)
+(symbol (lib_id "Device:D_TVS") (at 53.34 113.03 90) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "5da3e1f5-f955-59bd-83a1-a0ab8cf2e015")
+  (property "Reference" "D5502" (at 58.78 111.76 90) (effects (font (size 1.27 1.27))))
+  (property "Value" "TPD1E10B06" (at 61.68 114.3 90) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "Package_SON:Texas_DPY0002A_0.6x1mm_P0.65mm" (at 53.34 113.03 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "https://www.ti.com/lit/ds/symlink/tpd1e10b06.pdf" (at 53.34 113.03 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Description" "ESD protection diode, bidirectional, 5.5 V working, 12 pF, X1SON-2 (DPY)" (at 53.34 113.03 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Manufacturer" "Texas Instruments" (at 53.34 113.03 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "MPN" "TPD1E10B06DPYR" (at 53.34 113.03 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Second_Source" "onsemi ESD9B5.0ST5G (BOM v1 line 36; other land)" (at 53.34 113.03 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Block" "blk.buttons" (at 53.34 113.03 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "72473571-c991-5826-9cb7-4a494f1d09a2"))
+  (pin "2" (uuid "77381d1c-960a-5728-90f3-1c1c3731e089"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/afc5e553-cbff-5b60-bd19-e1f58e5228b5" (reference "D5502") (unit 1))))
+)
+(wire (pts (xy 53.34 109.22) (xy 53.34 106.68)) (stroke (width 0) (type default)) (uuid "907109e9-1286-5b1c-87eb-15d1a2615c5c"))
+(wire (pts (xy 53.34 116.84) (xy 53.34 119.38)) (stroke (width 0) (type default)) (uuid "6d918762-39ec-523b-b697-18dd918b1fe1"))
+(symbol (lib_id "power:GND") (at 53.34 119.38 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "db89cb4f-ea4f-5cbe-9188-45f5b142fcb3")
+  (property "Reference" "#PWR0811" (at 53.34 119.38 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Value" "GND" (at 53.34 123.19 0) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "" (at 53.34 119.38 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "" (at 53.34 119.38 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "cc09c10a-4eec-57fc-a7ac-c3f0cfeff25a"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/afc5e553-cbff-5b60-bd19-e1f58e5228b5" (reference "#PWR0811") (unit 1))))
+)
+(symbol (lib_id "Device:D_TVS") (at 76.2 113.03 90) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "49244786-7659-5464-9146-1ddfd11dd098")
+  (property "Reference" "D5503" (at 81.64 111.76 90) (effects (font (size 1.27 1.27))))
+  (property "Value" "TPD1E10B06" (at 84.54 114.3 90) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "Package_SON:Texas_DPY0002A_0.6x1mm_P0.65mm" (at 76.2 113.03 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "https://www.ti.com/lit/ds/symlink/tpd1e10b06.pdf" (at 76.2 113.03 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Description" "ESD protection diode, bidirectional, 5.5 V working, 12 pF, X1SON-2 (DPY)" (at 76.2 113.03 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Manufacturer" "Texas Instruments" (at 76.2 113.03 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "MPN" "TPD1E10B06DPYR" (at 76.2 113.03 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Second_Source" "onsemi ESD9B5.0ST5G (BOM v1 line 36; other land)" (at 76.2 113.03 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Block" "blk.buttons" (at 76.2 113.03 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "c8903c64-5bc7-5be9-9fc0-9a45d9b21ce3"))
+  (pin "2" (uuid "d286ffe6-25f6-5ec7-9c1a-ebac2b6d8d06"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/afc5e553-cbff-5b60-bd19-e1f58e5228b5" (reference "D5503") (unit 1))))
+)
+(wire (pts (xy 76.2 109.22) (xy 76.2 106.68)) (stroke (width 0) (type default)) (uuid "aa440435-7d40-5bfd-89ee-cc945fd1bb3d"))
+(wire (pts (xy 76.2 116.84) (xy 76.2 119.38)) (stroke (width 0) (type default)) (uuid "fe9a2277-b3d4-518f-84af-7fd48ce424e8"))
+(symbol (lib_id "power:GND") (at 76.2 119.38 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "11393330-18e0-5d1d-9687-371d2f175d86")
+  (property "Reference" "#PWR0812" (at 76.2 119.38 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Value" "GND" (at 76.2 123.19 0) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "" (at 76.2 119.38 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "" (at 76.2 119.38 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "0d2ea046-c75c-5ae9-a6eb-1d82fae5c955"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/afc5e553-cbff-5b60-bd19-e1f58e5228b5" (reference "#PWR0812") (unit 1))))
+)
+(symbol (lib_id "Device:D_TVS") (at 99.06 113.03 90) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "3101dae2-87b6-5b4c-89cc-735a1f8367b1")
+  (property "Reference" "D5504" (at 104.5 111.76 90) (effects (font (size 1.27 1.27))))
+  (property "Value" "TPD1E10B06" (at 107.4 114.3 90) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "Package_SON:Texas_DPY0002A_0.6x1mm_P0.65mm" (at 99.06 113.03 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "https://www.ti.com/lit/ds/symlink/tpd1e10b06.pdf" (at 99.06 113.03 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Description" "ESD protection diode, bidirectional, 5.5 V working, 12 pF, X1SON-2 (DPY)" (at 99.06 113.03 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Manufacturer" "Texas Instruments" (at 99.06 113.03 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "MPN" "TPD1E10B06DPYR" (at 99.06 113.03 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Second_Source" "onsemi ESD9B5.0ST5G (BOM v1 line 36; other land)" (at 99.06 113.03 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Block" "blk.buttons" (at 99.06 113.03 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "4f70db81-c36f-5e1e-8d42-be42cb3ce095"))
+  (pin "2" (uuid "5ca68b6e-a3fc-5783-852f-65b4ead07f38"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/afc5e553-cbff-5b60-bd19-e1f58e5228b5" (reference "D5504") (unit 1))))
+)
+(wire (pts (xy 99.06 109.22) (xy 99.06 106.68)) (stroke (width 0) (type default)) (uuid "d22b809f-a387-5be4-b138-1b4c04d853a2"))
+(wire (pts (xy 99.06 116.84) (xy 99.06 119.38)) (stroke (width 0) (type default)) (uuid "9d733eb9-05c2-56ac-939b-83a1c9bc2a05"))
+(symbol (lib_id "power:GND") (at 99.06 119.38 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "0f202877-bea8-5400-b8f9-4ef8d70387ab")
+  (property "Reference" "#PWR0813" (at 99.06 119.38 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Value" "GND" (at 99.06 123.19 0) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "" (at 99.06 119.38 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "" (at 99.06 119.38 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "9aceeb4f-cf6a-508b-8340-6486a4323557"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/afc5e553-cbff-5b60-bd19-e1f58e5228b5" (reference "#PWR0813") (unit 1))))
+)
+(rectangle (start 22.86 88.9) (end 121.92 128.27) (stroke (width 0) (type dash)) (fill (type none)) (uuid "5bf79d12-9ed2-5151-8bbe-6495f3121056"))
+(text "ESD: 4 x TPD1E10B06 (BOM v1 line 74)" (exclude_from_sim no) (at 24.13 87.63 0) (effects (font (size 2.54 2.54)) (justify left bottom)) (uuid "e950678e-e85d-59a3-b1a7-62408720a540"))
+(text_box "Notes\n1. Function: the four body buttons (T1-014, T1-015; BRD-016, -017, -035, -036): Power to the\n   RK809 PWRON, Vol+ and Vol- on their own SARADC inputs, Action on a PMUIO2 wake ball.\n2. Absent state: never omitted; released lines read high through their pulls.\n3. Vol- is pulled to the always-on vcca1v8_pmu, which also feeds the MaskROM gate: a pull to\n   vcca_1v8 would read pressed while that rail is still off (pinout v1 §4, Vol- row).\n4. Open: the Action part (BOM v1 line 76; T1-022 deeper travel); KMR221GLFS is the BOM's\n   placeholder on the KMR2 land. The PTS815 land (T1_Main_Board:SW_CK_PTS815) is not drawn:\n   which terminals are common is not legible in the C&K copy (parts-lib sheet), UNVERIFIED." (exclude_from_sim no) (at 152.4 138.43 0) (size 129.54 22.86) (margins 1.905 1.905 1.905 1.905) (stroke (width 0) (type default)) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "8b566d48-f9f1-5eba-a454-1655a2af7d3d"))
+(text "Interface" (exclude_from_sim no) (at 22.86 156.21 0) (effects (font (size 2.54 2.54)) (justify left bottom)) (uuid "28ac37d4-252d-5508-851b-eb8893c53e97"))
+(table (column_count 3) (border (external yes) (header yes) (stroke (width 0) (type solid))) (separators (rows yes) (cols yes) (stroke (width 0) (type solid))) (column_widths 45.72 25.4 50.8) (row_heights 5.08 7.62 7.62 7.62 7.62) (cells (table_cell "Net" (exclude_from_sim no) (at 22.86 157.48 0) (size 45.72 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27) (bold yes)) (justify left top)) (uuid "0a339295-290d-54d9-96c7-83a5b2b8a8a6")) (table_cell "Direction" (exclude_from_sim no) (at 68.58 157.48 0) (size 25.4 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27) (bold yes)) (justify left top)) (uuid "481419d8-c065-5243-a776-8a96dd3f3b40")) (table_cell "Absent state (block not fitted)" (exclude_from_sim no) (at 93.98 157.48 0) (size 50.8 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27) (bold yes)) (justify left top)) (uuid "7f74c88c-a9b1-5bba-abfb-7da6cd4fed98")) (table_cell "PWRON_N" (exclude_from_sim no) (at 22.86 162.56 0) (size 45.72 7.62) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "8020fc06-ff33-5851-a902-991c1b62790f")) (table_cell "Output" (exclude_from_sim no) (at 68.58 162.56 0) (size 25.4 7.62) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "d8ad154f-ab7c-5db3-a58d-587e648d0b10")) (table_cell "RK809 PWRON (blk.pmic, 100 nF there); also blk.maskrom through the BAT54" (exclude_from_sim no) (at 93.98 162.56 0) (size 50.8 7.62) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "a0ad9fab-1935-53c4-8035-eeb53c1b6cb3")) (table_cell "SARADC_VOLUP" (exclude_from_sim no) (at 22.86 170.18 0) (size 45.72 7.62) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "b4fc5011-9f73-5a34-9fca-b7039deb7d84")) (table_cell "Output" (exclude_from_sim no) (at 68.58 170.18 0) (size 25.4 7.62) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "2f5ff6db-7258-5e9a-82a6-81f080327f49")) (table_cell "SARADC_VIN0: 10 kΩ to vcca_1v8 and 1 nF on blk.soc-pmuio; reads released" (exclude_from_sim no) (at 93.98 170.18 0) (size 50.8 7.62) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "6c0eb43f-b1fc-5f1f-827d-1cd53f6f5b90")) (table_cell "VOLDN_N" (exclude_from_sim no) (at 22.86 177.8 0) (size 45.72 7.62) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "db80279d-6030-5ef9-ad89-914faf57c6f6")) (table_cell "Output" (exclude_from_sim no) (at 68.58 177.8 0) (size 25.4 7.62) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "c0216557-ed35-592f-95e0-f95bfeeced8c")) (table_cell "SARADC_VIN1 and the MaskROM gate: 100 kΩ to vcca1v8_pmu here, 1 nF at the SoC" (exclude_from_sim no) (at 93.98 177.8 0) (size 50.8 7.62) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "1a23b37b-b5b1-50ce-a381-2cf80532c421")) (table_cell "ACTION_BTN_N" (exclude_from_sim no) (at 22.86 185.42 0) (size 45.72 7.62) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "7db3f702-6ee5-54f5-a3e6-497277156bbf")) (table_cell "Output" (exclude_from_sim no) (at 68.58 185.42 0) (size 25.4 7.62) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "6a1f1f68-527d-5dbc-b656-73bdea2ac9c7")) (table_cell "GPIO0_C2 wake: 4.7 kΩ to vcca1v8_pmu on blk.soc-pmuio; reads released" (exclude_from_sim no) (at 93.98 185.42 0) (size 50.8 7.62) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "8dc05a72-15e2-5423-9764-ab89c00b2bfb"))))
+(label "PWRON_N" (at 30.48 53.34 90) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "4e1c2ab5-9077-5a9d-8f5c-6a617b638e46"))
+(label "SARADC_VOLUP" (at 60.96 53.34 90) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "91451f33-148c-54c7-9573-0996c7be5d14"))
+(label "VOLDN_N" (at 91.44 53.34 90) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "c8249c45-ff6f-568e-bc6b-7badef4317a7"))
+(label "ACTION_BTN_N" (at 121.92 53.34 90) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "fe462c55-0e4d-5234-8e75-05837ba85bef"))
+(label "VOLDN_N" (at 176.53 52.07 270) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "73f5a201-0900-5037-b3e0-d9ed82fdebe3"))
+(label "PWRON_N" (at 30.48 106.68 90) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "80167256-6cd1-5b9f-8f0b-a38d04732bcf"))
+(label "SARADC_VOLUP" (at 53.34 106.68 90) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "24e49b46-5ef8-5d3b-ba9a-46e6512a96b5"))
+(label "VOLDN_N" (at 76.2 106.68 90) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "b7f6394f-1c09-526c-9e3d-221fb3955cae"))
+(label "ACTION_BTN_N" (at 99.06 106.68 90) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "b2b24aed-1116-5790-ade0-3b01c457f592"))
+(bus (pts (xy 45.72 147.32) (xy 50.8 147.32)) (stroke (width 0) (type default)) (uuid "4c92a09f-be8f-5a8a-96a8-0fcea7b34f4d"))
+(hierarchical_label "{KEYS}" (shape bidirectional) (at 45.72 147.32 180) (effects (font (size 1.27 1.27)) (justify right)) (uuid "2f402887-f92f-51f7-8c32-d4464637370e"))
+(embedded_fonts no))

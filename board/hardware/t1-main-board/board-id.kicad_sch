@@ -1,0 +1,694 @@
+(kicad_sch (version 20260306) (generator "eeschema") (generator_version "10.0")
+(uuid "79927b5f-27c5-5496-bfad-821d39ce75c9")
+(paper "A4")
+(title_block (title "Board EEPROM") (date "2026-10-25") (rev "A") (company "The OpenDAP Project") (comment 1 "blk.board-id") (comment 2 "AT24C02D board identity EEPROM on I2C2 at 0x50"))
+(lib_symbols (symbol "Device:C"
+		(pin_numbers
+			(hide yes)
+		)
+		(pin_names
+			(offset 0.254)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(duplicate_pin_numbers_are_jumpers no)
+		(property "Reference" "C"
+			(at 0.635 2.54 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "C"
+			(at 0.635 -2.54 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 0.9652 -3.81 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Unpolarized capacitor"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_keywords" "cap capacitor"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_fp_filters" "C_*"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "C_0_1"
+			(polyline
+				(pts
+					(xy -2.032 0.762) (xy 2.032 0.762)
+				)
+				(stroke
+					(width 0.508)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy -2.032 -0.762) (xy 2.032 -0.762)
+				)
+				(stroke
+					(width 0.508)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+		)
+		(symbol "C_1_1"
+			(pin passive line
+				(at 0 3.81 270)
+				(length 2.794)
+				(name ""
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 0 -3.81 90)
+				(length 2.794)
+				(name ""
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
+(symbol "Microchip:AT24C02D-STUM-T"
+		(pin_names
+			(offset 1.016)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(property "Reference" "U"
+			(at -5.08 19.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "AT24C02D-STUM-T"
+			(at -5.08 -20.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Microchip:Microchip_5TS1_SOT-23-5_1.6x2.9mm_P0.95mm"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://ww1.microchip.com/downloads/aemDocuments/documents/MPD/ProductDocuments/DataSheets/AT24C01D-AT24C02D-I2C-Compatible-Two-Wire-Serial-EEPROM-1-Kbit-2-Kbit-DS20006064.pdf"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Serial EEPROM, 2 kbit (256 x 8), I2C 1 MHz at 2.5-3.6 V / 400 kHz at 1.7-3.6 V, 8-byte page, write protect, fixed address 0x50, 5-lead SOT23 (5TS1)"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "Microchip"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "AT24C02D-STUM-T"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_keywords" "EEPROM I2C serial memory 2 kbit AT24C02D 24C02 SOT23-5"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_fp_filters" "Microchip_5TS1_SOT-23-5_1.6x2.9mm_P0.95mm*"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "AT24C02D-STUM-T_1_1"
+			(rectangle
+				(start -5.08 15.24)
+				(end 5.08 -15.24)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type background)
+				)
+			)
+			(pin input line
+				(at -7.62 2.54 0)
+				(length 2.54)
+				(name "SCL"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin bidirectional line
+				(at -7.62 0 0)
+				(length 2.54)
+				(name "SDA"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "3"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin input line
+				(at -7.62 -5.08 0)
+				(length 2.54)
+				(name "WP"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "5"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin power_in line
+				(at 0 17.78 270)
+				(length 2.54)
+				(name "VCC"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "4"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin power_in line
+				(at 0 -17.78 90)
+				(length 2.54)
+				(name "GND"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
+(symbol "power:GND"
+		(power global)
+		(pin_numbers
+			(hide yes)
+		)
+		(pin_names
+			(offset 0)
+			(hide yes)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(duplicate_pin_numbers_are_jumpers no)
+		(property "Reference" "#PWR"
+			(at 0 -6.35 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 0 -3.81 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_keywords" "global power"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "GND_0_1"
+			(polyline
+				(pts
+					(xy 0 0) (xy 0 -1.27) (xy 1.27 -1.27) (xy 0 -2.54) (xy -1.27 -1.27) (xy 0 -1.27)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+		)
+		(symbol "GND_1_1"
+			(pin power_in line
+				(at 0 0 270)
+				(length 0)
+				(name ""
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
+(symbol "power:VCC"
+		(power global)
+		(pin_numbers
+			(hide yes)
+		)
+		(pin_names
+			(offset 0)
+			(hide yes)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(duplicate_pin_numbers_are_jumpers no)
+		(property "Reference" "#PWR"
+			(at 0 -3.81 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "VCC"
+			(at 0 3.556 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"VCC\""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_keywords" "global power"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "VCC_0_1"
+			(polyline
+				(pts
+					(xy -0.762 1.27) (xy 0 2.54)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 0 2.54) (xy 0.762 1.27)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 0 0) (xy 0 2.54)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+		)
+		(symbol "VCC_1_1"
+			(pin power_in line
+				(at 0 0 90)
+				(length 0)
+				(name ""
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	))
+(symbol (lib_id "Microchip:AT24C02D-STUM-T") (at 45.72 63.5 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "9e5ffb2f-ba48-5c43-923d-bc14b991fa7b")
+  (property "Reference" "U5801" (at 52.07 50.8 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Value" "AT24C02D-STUM-T" (at 52.07 48.26 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Footprint" "Microchip:Microchip_5TS1_SOT-23-5_1.6x2.9mm_P0.95mm" (at 45.72 63.5 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "https://ww1.microchip.com/downloads/aemDocuments/documents/MPD/ProductDocuments/DataSheets/AT24C01D-AT24C02D-I2C-Compatible-Two-Wire-Serial-EEPROM-1-Kbit-2-Kbit-DS20006064.pdf" (at 45.72 63.5 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Description" "Serial EEPROM, 2 kbit (256 x 8), I2C 1 MHz at 2.5-3.6 V / 400 kHz at 1.7-3.6 V, 8-byte page, write protect, fixed address 0x50, 5-lead SOT23 (5TS1)" (at 45.72 63.5 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Manufacturer" "Microchip" (at 45.72 63.5 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "MPN" "AT24C02D-STUM-T" (at 45.72 63.5 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Block" "blk.board-id" (at 45.72 63.5 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "1e76a029-8b29-54c7-881b-8eb1b1f803d1"))
+  (pin "3" (uuid "ca0fa08e-2b49-5fc9-9dc5-1ff542b3edb0"))
+  (pin "5" (uuid "21681c2b-8d83-5139-b734-4753eae7a3c4"))
+  (pin "4" (uuid "fd9c35ce-3c63-50d1-bce7-556e95d2f665"))
+  (pin "2" (uuid "bbc0a70d-6ada-5621-95ef-b7add2a383d9"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/5b273614-fd04-534a-8238-3227aff193cb" (reference "U5801") (unit 1))))
+)
+(wire (pts (xy 38.1 60.96) (xy 35.56 60.96)) (stroke (width 0) (type default)) (uuid "4f1075be-03ec-5fc2-997a-29ad4f7f7c43"))
+(wire (pts (xy 38.1 63.5) (xy 35.56 63.5)) (stroke (width 0) (type default)) (uuid "972ad699-8775-5b90-a66b-21ba5e004c29"))
+(wire (pts (xy 38.1 68.58) (xy 35.56 68.58)) (stroke (width 0) (type default)) (uuid "e3538177-128b-5ac4-a6a6-681c85d1a753"))
+(symbol (lib_id "power:GND") (at 35.56 68.58 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "8ff355b8-8e02-5f11-87f8-5b26e6b4d548")
+  (property "Reference" "#PWR0769" (at 35.56 68.58 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Value" "GND" (at 35.56 72.39 0) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "" (at 35.56 68.58 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "" (at 35.56 68.58 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "649b1089-d9c5-52ce-acee-6dc2471d6c42"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/5b273614-fd04-534a-8238-3227aff193cb" (reference "#PWR0769") (unit 1))))
+)
+(wire (pts (xy 45.72 45.72) (xy 45.72 43.18)) (stroke (width 0) (type default)) (uuid "aa015bbd-5af7-5752-ac0e-cd54b737a178"))
+(symbol (lib_id "power:VCC") (at 45.72 43.18 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "9e97f301-6017-5c11-8789-98ee88f63821")
+  (property "Reference" "#PWR0770" (at 45.72 43.18 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Value" "vcca1v8_pmu" (at 45.72 39.37 0) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "" (at 45.72 43.18 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "" (at 45.72 43.18 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "98744249-f929-54ff-950d-53e734a398f7"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/5b273614-fd04-534a-8238-3227aff193cb" (reference "#PWR0770") (unit 1))))
+)
+(wire (pts (xy 45.72 81.28) (xy 45.72 83.82)) (stroke (width 0) (type default)) (uuid "09eff3e6-8fa5-5e44-8690-7c4b1774513f"))
+(symbol (lib_id "power:GND") (at 45.72 83.82 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "f3638a06-0407-52ed-8b5b-eda015e8e704")
+  (property "Reference" "#PWR0771" (at 45.72 83.82 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Value" "GND" (at 45.72 87.63 0) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "" (at 45.72 83.82 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "" (at 45.72 83.82 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "5127733b-def8-5288-906f-42942a26d8da"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/5b273614-fd04-534a-8238-3227aff193cb" (reference "#PWR0771") (unit 1))))
+)
+(symbol (lib_id "Device:C") (at 80.01 48.26 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "6d3720db-8b8b-5d56-ae79-df2f263ddfa6")
+  (property "Reference" "C5801" (at 82.55 46.99 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Value" "100 nF" (at 82.55 49.53 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Footprint" "Capacitor_SMD:C_0402_1005Metric" (at 80.01 48.26 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "https://www.murata.com/en-us/products/productdetail?partno=GRM155R71C104KA88D" (at 80.01 48.26 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Description" "Capacitor, 100 nF, 16 V, X7R, 0402" (at 80.01 48.26 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Manufacturer" "Murata" (at 80.01 48.26 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "MPN" "GRM155R71C104KA88D" (at 80.01 48.26 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Block" "blk.board-id" (at 80.01 48.26 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "5eb772bf-6a56-5540-ab21-3437f93a2d02"))
+  (pin "2" (uuid "17b4db89-8922-5df4-a273-c52b441504a9"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/5b273614-fd04-534a-8238-3227aff193cb" (reference "C5801") (unit 1))))
+)
+(wire (pts (xy 80.01 44.45) (xy 80.01 41.91)) (stroke (width 0) (type default)) (uuid "1a3533e9-02c0-5007-882e-6c5fdb0b3896"))
+(wire (pts (xy 80.01 52.07) (xy 80.01 54.61)) (stroke (width 0) (type default)) (uuid "de16af89-5953-5bea-98f6-16279dbcfa16"))
+(symbol (lib_id "power:GND") (at 80.01 54.61 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "3ce74a81-43b8-529f-ae8f-d562d2eb2090")
+  (property "Reference" "#PWR0772" (at 80.01 54.61 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Value" "GND" (at 80.01 58.42 0) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "" (at 80.01 54.61 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "" (at 80.01 54.61 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "4e7b921d-4cf6-5679-b36e-ff52e166ce66"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/5b273614-fd04-534a-8238-3227aff193cb" (reference "#PWR0772") (unit 1))))
+)
+(symbol (lib_id "power:VCC") (at 80.01 41.91 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "d9270539-9e48-57dc-968e-577dcf4ad6be")
+  (property "Reference" "#PWR0773" (at 80.01 41.91 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Value" "vcca1v8_pmu" (at 80.01 38.1 0) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "" (at 80.01 41.91 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "" (at 80.01 41.91 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "fff0d2ac-0feb-54c0-b28d-06453cba3fbc"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/5b273614-fd04-534a-8238-3227aff193cb" (reference "#PWR0773") (unit 1))))
+)
+(rectangle (start 22.86 35.56) (end 93.98 92.71) (stroke (width 0) (type dash)) (fill (type none)) (uuid "b9fe9a47-6d2d-5b7d-b676-fa4f6618a9a5"))
+(text "AT24C02D at I2C2 0x50" (exclude_from_sim no) (at 24.13 34.29 0) (effects (font (size 2.54 2.54)) (justify left bottom)) (uuid "46bd58ff-3373-5120-9637-e1fa279b00af"))
+(text_box "Notes\n1. Function: the board identity EEPROM (board revision, variant, serial), read by Blackbird OS.\n2. Absent state: never omitted. Supply vcca1v8_pmu, as the rest of I2C2 (G16 proposal).\n3. WP tied low: writable; write protection by software. The supply rail is the G16 proposal,\n   not stated in the BOM." (exclude_from_sim no) (at 152.4 147.32 0) (size 129.54 13.97) (margins 1.905 1.905 1.905 1.905) (stroke (width 0) (type default)) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "6cba644b-cdd5-5e73-997a-1c7c898dbd57"))
+(text "Rails" (exclude_from_sim no) (at 22.86 181.61 0) (effects (font (size 2.54 2.54)) (justify left bottom)) (uuid "be63ae7e-0091-5af8-930b-876e7b84ae47"))
+(table (column_count 3) (border (external yes) (header yes) (stroke (width 0) (type solid))) (separators (rows yes) (cols yes) (stroke (width 0) (type solid))) (column_widths 27.94 39.37 54.61) (row_heights 5.08 5.08) (cells (table_cell "Rail" (exclude_from_sim no) (at 22.86 182.88 0) (size 27.94 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27) (bold yes)) (justify left top)) (uuid "2da623bf-b6b8-5910-9dbd-977a6a094d77")) (table_cell "Capacitors" (exclude_from_sim no) (at 50.8 182.88 0) (size 39.37 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27) (bold yes)) (justify left top)) (uuid "d9175e4a-c34c-5414-9ebe-7e04ef814761")) (table_cell "Requirement and source" (exclude_from_sim no) (at 90.17 182.88 0) (size 54.61 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27) (bold yes)) (justify left top)) (uuid "80fe3f86-93aa-5913-a315-fce3c4c39c0b")) (table_cell "vcca1v8_pmu" (exclude_from_sim no) (at 22.86 187.96 0) (size 27.94 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "5704d712-3e8f-530a-80f1-dc151d19fbe7")) (table_cell "100 nF" (exclude_from_sim no) (at 50.8 187.96 0) (size 39.37 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "953128cb-4d99-5a1a-aca8-10ef2d52677b")) (table_cell "8871F (value: capture choice)" (exclude_from_sim no) (at 90.17 187.96 0) (size 54.61 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "e94c70c6-51a5-55e0-a3c8-800ee8b48790"))))
+(text "Interface" (exclude_from_sim no) (at 22.86 163.83 0) (effects (font (size 2.54 2.54)) (justify left bottom)) (uuid "3a84ad7a-7a92-5480-887d-69e611e08002"))
+(table (column_count 3) (border (external yes) (header yes) (stroke (width 0) (type solid))) (separators (rows yes) (cols yes) (stroke (width 0) (type solid))) (column_widths 45.72 25.4 50.8) (row_heights 5.08 5.08) (cells (table_cell "Net" (exclude_from_sim no) (at 22.86 165.1 0) (size 45.72 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27) (bold yes)) (justify left top)) (uuid "35633ca6-8c51-5107-a55d-f87983a27e14")) (table_cell "Direction" (exclude_from_sim no) (at 68.58 165.1 0) (size 25.4 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27) (bold yes)) (justify left top)) (uuid "f3ae7a29-85a1-5db7-9730-ebd02f764a5a")) (table_cell "Absent state (block not fitted)" (exclude_from_sim no) (at 93.98 165.1 0) (size 50.8 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27) (bold yes)) (justify left top)) (uuid "75c3c797-8e67-5822-be16-ec84c1f866eb")) (table_cell "I2C2_SCL, I2C2_SDA" (exclude_from_sim no) (at 22.86 170.18 0) (size 45.72 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "b8f165c4-effa-5284-9382-5e24e7d6decc")) (table_cell "Bidirectional" (exclude_from_sim no) (at 68.58 170.18 0) (size 25.4 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "0db17161-6482-5fc6-99ed-496d6d547e1f")) (table_cell "0x50; pull-ups on blk.soc-pmuio" (exclude_from_sim no) (at 93.98 170.18 0) (size 50.8 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "e20a4def-db4a-52a4-8478-1715a86afc66"))))
+(label "I2C2_SCL" (at 35.56 60.96 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "2333eea4-9b9d-58d3-b61a-87510d6cf064"))
+(label "I2C2_SDA" (at 35.56 63.5 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "6800a547-e7a1-53b0-8d4d-4de49b945f71"))
+(bus (pts (xy 45.72 154.94) (xy 50.8 154.94)) (stroke (width 0) (type default)) (uuid "8a58f455-41bb-5bc1-b125-bc1e44dc901b"))
+(hierarchical_label "{I2C2}" (shape bidirectional) (at 45.72 154.94 180) (effects (font (size 1.27 1.27)) (justify right)) (uuid "86154c8d-e9c2-50ef-8afd-e55f55ddd3a0"))
+(embedded_fonts no))

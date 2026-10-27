@@ -1,0 +1,1136 @@
+(version 1)
+# Composed by `odapkit dru` from hardware/t1-main-board/t1-main-board.dru.toml. Do not edit by hand:
+# edit the sources and run `odapkit dru compose hardware/t1-main-board/t1-main-board.dru.toml`.
+
+# Source: hardware/lib/opendap/design-rules/pcbway-hdi/pcbway-hdi.kicad_dru
+# sha256: 040c35fff7e3acf66ee354da15dc22a6b98faea54786589c4a7a195c884e1d7e
+
+# OpenDAP fab rules: PCBWay advanced HDI (laser microvias, blind and buried vias)
+#
+# Process: PCBWay advanced HDI, 1+N+1 to 6+N+6 builds, stacked or staggered
+# copper-filled microvias. Stackup assumed: 18 um (1/2 oz) base copper on every
+# layer, FR-4. See README.md for the stackup, what DRC cannot check, and the
+# values still UNVERIFIED.
+#
+# Every value is a PCBWay published figure, copied in
+# design-rules/pcbway-capabilities.md (pages fetched 2026-10-22) and
+# cited by its source key:
+#   [P1]  https://www.pcbway.com/capabilities.html
+#   [P2]  https://www.pcbway.com/advanced-pcb-capabilities.html
+#   [P3]  https://www.pcbway.com/hdi-pcb.html
+#   [P10] https://www.pcbway.com/pcb_prototype/PCB_BGA.html
+#   [P16] https://www.pcbway.com/HighQualityOrderOnline.aspx
+# Where PCBWay gives a normal value and a tighter limit, the rule uses the
+# normal value. A product that needs the limit overrides the rule in its own
+# product rules, in a named area or net class.
+#
+# Mil figures are written in mil (1 mil = 0.0254 mm), exactly as published.
+# KiCad applies the LAST matching rule for a constraint: general rules come
+# first, specific ones after them.
+#
+# Use: copy next to the KiCad project as <project>.kicad_dru.
+
+
+# --- Copper clearance and track width ---
+
+# Track/space, HDI, <= 18 um base: 3/3 mil, the normal order option; 0.065 mm
+# is the floor for a BGA escape area only. [P3, P16]
+(rule "PCBWay HDI: Copper clearance (outer)"
+	(layer outer)
+	(constraint clearance (min 3mil))
+)
+
+# Same figure on inner layers. [P3, P16]
+(rule "PCBWay HDI: Copper clearance (inner)"
+	(layer inner)
+	(constraint clearance (min 3mil))
+)
+
+# BGA pad to line: 3 mil (advanced factory; 2.5 mil prototype limit). [P10]
+# After the general clearance rules so that it decides for BGA pads.
+(rule "PCBWay HDI: BGA pad to track"
+	(condition "(A.Type == 'Pad' && A.Fabrication_Property == 'BGA pad' && (B.Type == 'Track' || B.Type == 'Arc')) || (B.Type == 'Pad' && B.Fabrication_Property == 'BGA pad' && (A.Type == 'Track' || A.Type == 'Arc'))")
+	(constraint clearance (min 3mil))
+)
+
+# Track width, outer: 3 mil. [P3, P16]
+(rule "PCBWay HDI: Track width (outer)"
+	(layer outer)
+	(constraint track_width (min 3mil))
+)
+
+# Track width, inner: 3 mil. [P3, P16]
+(rule "PCBWay HDI: Track width (inner)"
+	(layer inner)
+	(constraint track_width (min 3mil))
+)
+
+
+# --- BGA ---
+
+# BGA pad >= 0.25 mm (prototype factory figure; the advanced factory states
+# 0.20 mm, 0.15 mm sample limit). Pads marked with the "BGA pad" fabrication
+# property. [P10]
+(rule "PCBWay HDI: BGA pad size"
+	(condition "A.Type == 'Pad' && A.Fabrication_Property == 'BGA pad'")
+	(constraint assertion "A.Size_X >= 0.25mm && A.Size_Y >= 0.25mm")
+)
+
+
+# --- Drilling ---
+
+# Mechanical drill 0.20-6.5 mm (advanced, normal; 0.15 mm is the HDI-page
+# minimum and stays a product override). Every drilled hole: pads, through,
+# blind and buried vias. [P1]
+(rule "PCBWay HDI: Mechanical drill"
+	(condition "A.Type == 'Pad' || (A.Type == 'Via' && A.Via_Type != 'Micro')")
+	(constraint hole_size (min 0.2mm) (max 6.5mm))
+)
+
+# Laser drill: 4 mil standard, 8 mil maximum (dielectric <= 0.15 mm). The
+# minimum is set to 0.1 mm, the laser hole of PCBWay's own published 8-layer
+# HDI example; 3 mil is reviewed and stays a product override. [P3]
+(rule "PCBWay HDI: Laser microvia drill"
+	(condition "A.Type == 'Via' && A.Via_Type == 'Micro'")
+	(constraint hole_size (min 0.1mm) (max 8mil))
+)
+
+# Microvia ring: 3 mil, the advanced minimum via ring, applied to a
+# 0.10 mm laser hole in a 0.25 mm land (0.075 mm). PCBWay publishes no
+# microvia-specific land: UNVERIFIED, see README. [P2, P3]
+(rule "PCBWay HDI: Laser microvia annular ring"
+	(condition "A.Type == 'Via' && A.Via_Type == 'Micro'")
+	(constraint annular_width (min 0.075mm))
+)
+
+# Via annular ring, outer, 18-35 um copper: >= 5 mil normal (4 mil medium,
+# 3 mil advanced minimum). Mechanical vias. [P1, P2]
+(rule "PCBWay HDI: Mechanical via annular ring"
+	(condition "A.Type == 'Via' && A.Via_Type != 'Micro'")
+	(constraint annular_width (min 5mil))
+)
+
+# Hole to hole, vias <= 0.45 mm: >= 11 mil. Mechanical vias. [P1]
+(rule "PCBWay HDI: Via hole to hole"
+	(condition "A.Type == 'Via' && B.Type == 'Via' && A.Via_Type != 'Micro' && B.Via_Type != 'Micro'")
+	(constraint hole_to_hole (min 11mil))
+)
+
+
+# --- Hole to copper ---
+
+# Hole to conductor, outer layers: 6 mil (advanced). Mechanical holes. [P2]
+(rule "PCBWay HDI: Hole to copper (outer)"
+	(layer outer)
+	(condition "A.Type == 'Pad' || (A.Type == 'Via' && A.Via_Type != 'Micro')")
+	(constraint hole_clearance (min 6mil))
+)
+
+# Hole to inner conductor, 8 layers: >= 9 mil normal (7 mil medium, 6 mil
+# high difficulty). Mechanical holes. [P1]
+(rule "PCBWay HDI: Hole to copper (inner)"
+	(layer inner)
+	(condition "A.Type == 'Pad' || (A.Type == 'Via' && A.Via_Type != 'Micro')")
+	(constraint hole_clearance (min 9mil))
+)
+
+
+# --- Board edge ---
+
+# Line to board edge (milled): 0.20 mm. [P1]
+(rule "PCBWay HDI: Copper to board edge"
+	(constraint edge_clearance (min 0.2mm))
+)
+
+
+# --- Legend ---
+
+# Silkscreen line >= 0.15 mm (character stroke). [P1]
+(rule "PCBWay HDI: Silkscreen line width"
+	(layer "?.SilkS")
+	(condition "A.Type == 'Text' || A.Type == 'Text Box'")
+	(constraint text_thickness (min 0.15mm))
+)
+
+# Silkscreen height >= 0.8 mm. [P1]
+(rule "PCBWay HDI: Silkscreen text height"
+	(layer "?.SilkS")
+	(condition "A.Type == 'Text' || A.Type == 'Text Box'")
+	(constraint text_height (min 0.8mm))
+)
+
+# Source: hardware/lib/opendap/design-rules/opendap-craft/opendap-craft.kicad_dru
+# sha256: 9d58249d1ce04c5aec2bd640111a607f00e10c4878d23ea4f97b8976b1b2c357
+
+# OpenDAP craft rules: the part of the OpenDAP PCB craft standard that KiCad DRC can check
+#
+# Standard: docs/specs/pcb-craft-standard.md (CRAFT-xx IDs). Every rule name
+# carries its CRAFT ID and its quality level (RFC 0010): Q0-Q1 rules are
+# errors, Q2-Q4 rules are warnings. The rest of the standard is checked by
+# `odapkit craft check` (toolkit-hardware) or by review.
+#
+# Composition: these rules sit after a fab rule set and before the product
+# rules in a board's <project>.dru.toml (odapkit dru compose). They only use
+# constraints the fab sets do not use (assertion, silk_clearance, track_angle,
+# track_segment_length), so they never relax a fab limit. KiCad applies every
+# matching assertion, so a product rule cannot relax them either: the
+# exemptions are built in, and are the only ones:
+#   - impedance-controlled net classes, named after their impedance as the
+#     T1 board names them: <name>_<ohms>D (differential, for example
+#     USB3_90D) or <name>_<ohms>SE (single-ended). Their widths come from the
+#     stackup; they are exempt from CRAFT-40 and CRAFT-43;
+#   - rule areas named CRAFT-EXEMPT* or containing ESCAPE (a BGA escape,
+#     where the fab floors apply): the copper inside them is exempt from
+#     CRAFT-40, CRAFT-41, CRAFT-43 and CRAFT-47.
+#
+# Property names (Height, Thickness, Font, Orientation, Mirrored, Line_Width,
+# Fill, Diameter, Hole, Width, Start_X...) were each tested with kicad-cli
+# 10.0.7, failing and passing: an unknown property makes an assertion fail on
+# every object instead of reporting an error. track_angle takes bare degrees:
+# "135deg" makes KiCad drop the whole rules file without an error.
+#
+# Use: compose it with odapkit dru, or copy it next to the KiCad project as
+# <project>.kicad_dru.
+
+
+# --- Silkscreen ---
+
+# CRAFT-01: one typeface, KiCad's stroke font, regular and upright (KLC F5.1
+# sizes are given in this font; a stroke font plots as lines of one width).
+(rule "OpenDAP CRAFT-01 [Q2]: Silk text in the stroke font, regular, upright"
+	(severity warning)
+	(condition "A.Type == 'Text' && A.Visible && (A.Layer == 'F.SilkS' || A.Layer == 'B.SilkS')")
+	(constraint assertion "A.Font == 'KiCad Font' && A.Italic == 0 && A.Bold == 0")
+)
+
+# CRAFT-02: text sizes from the closed set, height x stroke, width = height:
+# 0.8 x 0.15 (dense areas only), 1.0 x 0.15 (reference designators, KLC
+# F5.1), 1.6 x 0.24 (labels), 2.0 x 0.30 (board name). 0.8 mm and 0.15 mm are
+# the prototype fab's minimums.
+(rule "OpenDAP CRAFT-02 [Q2]: Silk text size from the set"
+	(severity warning)
+	(condition "A.Type == 'Text' && A.Visible && (A.Layer == 'F.SilkS' || A.Layer == 'B.SilkS')")
+	(constraint assertion "A.Width == A.Height && ((A.Height == 0.8mm && A.Thickness == 0.15mm) || (A.Height == 1.0mm && A.Thickness == 0.15mm) || (A.Height == 1.6mm && A.Thickness == 0.24mm) || (A.Height == 2.0mm && A.Thickness == 0.3mm))")
+)
+
+# CRAFT-03: two reading directions, from the bottom edge (0) and from the
+# right edge (90). A flipped footprint keeps its text angle, so the same two
+# values hold on the bottom side.
+(rule "OpenDAP CRAFT-03 [Q2]: Silk text at 0 or 90 degrees"
+	(severity warning)
+	(condition "A.Type == 'Text' && A.Visible && (A.Layer == 'F.SilkS' || A.Layer == 'B.SilkS')")
+	(constraint assertion "A.Orientation == 0 || A.Orientation == 90")
+)
+
+# CRAFT-04: text reads from its own side: unmirrored on top, mirrored on the
+# bottom.
+(rule "OpenDAP CRAFT-04 [Q1]: Silk text reads from its own side"
+	(condition "A.Type == 'Text' && A.Visible && (A.Layer == 'F.SilkS' || A.Layer == 'B.SilkS')")
+	(constraint assertion "(A.Layer == 'F.SilkS' && A.Mirrored == 0) || (A.Layer == 'B.SilkS' && A.Mirrored == 1)")
+)
+
+# CRAFT-05: one silk stroke, 0.15 mm, for every outline and mark (KLC F5.1
+# allows 0.10-0.15 mm; the prototype fab's minimum line is 0.15 mm). Filled marks (pin-1
+# triangles, dots, the brand mark) have no stroke and are not checked.
+(rule "OpenDAP CRAFT-05 [Q2]: Silk line width 0.15 mm"
+	(severity warning)
+	(condition "A.Type == 'Graphic' && A.Fill == 'None' && (A.Layer == 'F.SilkS' || A.Layer == 'B.SilkS')")
+	(constraint assertion "A.Line_Width == 0.15mm")
+)
+
+# CRAFT-07: silk keeps 0.15 mm from pads (JLCPCB's minimum to pads; KLC F5.1
+# recommends 0.2 mm). KiCad measures this to the pad copper and reports it as
+# silk_over_copper. Silk inside a mask opening is CRAFT-06, a Board Setup
+# check.
+(rule "OpenDAP CRAFT-07 [Q2]: Silk clearance to pads"
+	(severity warning)
+	(condition "A.Type == 'Pad' || B.Type == 'Pad'")
+	(constraint silk_clearance (min 0.15mm))
+)
+
+# CRAFT-07, vias: silk keeps 0.15 mm from every via land. KiCad measures silk
+# to the via hole, so the value is 0.15 mm plus the largest ring in the
+# CRAFT-45 set (0.30 / 0.60 mm: 0.15 mm).
+(rule "OpenDAP CRAFT-07 [Q2]: Silk clearance to vias"
+	(severity warning)
+	(condition "A.Type == 'Via' || B.Type == 'Via'")
+	(constraint silk_clearance (min 0.3mm))
+)
+
+# CRAFT-08 (silk 0.5 mm from the board edge) is not here: in kicad-cli
+# 10.0.7, silk_clearance against Edge.Cuts skips silk lines and reports
+# inconsistent distances for text (0.8 to 3.0 mm for the same text-to-cutout
+# geometry). odapkit craft check measures it instead.
+
+# CRAFT-09: silk text keeps 0.15 mm from any other silk, so every character
+# stands alone. KiCad measures text through a polygon approximation: expect
+# about 0.1 mm of spread near the limit.
+(rule "OpenDAP CRAFT-09 [Q2]: Silk text clear of other silk"
+	(severity warning)
+	(condition "(A.Type == 'Text' || B.Type == 'Text') && (A.Layer == 'F.SilkS' || A.Layer == 'B.SilkS') && (B.Layer == 'F.SilkS' || B.Layer == 'B.SilkS')")
+	(constraint silk_clearance (min 0.15mm))
+)
+
+
+# --- Routing ---
+
+# Impedance classes are named <NAME>_<ohms>D or <NAME>_<ohms>SE with 10-299
+# ohms; the patterns require a digit after the underscore so names such as
+# BAT_SENSE are not taken for impedance classes.
+
+# CRAFT-40: every straight segment at a multiple of 45 degrees (0.001 mm
+# tolerance on the coordinates). Arcs are checked by odapkit craft check
+# (CRAFT-42): KiCad DRC gives arcs no property of their own.
+(rule "OpenDAP CRAFT-40 [Q2]: Track segments at multiples of 45 degrees"
+	(severity warning)
+	(condition "A.Type == 'Track' && !(A.NetClass == '*_1?D' || A.NetClass == '*_2?D' || A.NetClass == '*_3?D' || A.NetClass == '*_4?D' || A.NetClass == '*_5?D' || A.NetClass == '*_6?D' || A.NetClass == '*_7?D' || A.NetClass == '*_8?D' || A.NetClass == '*_9?D' || A.NetClass == '*_1??D' || A.NetClass == '*_2??D' || A.NetClass == '*_1?SE' || A.NetClass == '*_2?SE' || A.NetClass == '*_3?SE' || A.NetClass == '*_4?SE' || A.NetClass == '*_5?SE' || A.NetClass == '*_6?SE' || A.NetClass == '*_7?SE' || A.NetClass == '*_8?SE' || A.NetClass == '*_9?SE' || A.NetClass == '*_1??SE' || A.NetClass == '*_2??SE') && !A.intersectsArea('CRAFT-EXEMPT*') && !A.intersectsArea('*ESCAPE*')")
+	(constraint assertion "(A.End_X - A.Start_X < 0.001mm && A.End_X - A.Start_X > -0.001mm) || (A.End_Y - A.Start_Y < 0.001mm && A.End_Y - A.Start_Y > -0.001mm) || ((A.End_X - A.Start_X) - (A.End_Y - A.Start_Y) < 0.001mm && (A.End_X - A.Start_X) - (A.End_Y - A.Start_Y) > -0.001mm) || ((A.End_X - A.Start_X) + (A.End_Y - A.Start_Y) < 0.001mm && (A.End_X - A.Start_X) + (A.End_Y - A.Start_Y) > -0.001mm)")
+)
+
+# CRAFT-41: no right-angle or acute corners between connected segments
+# (the angle between them is at least 135 degrees). Bare degrees: see header.
+(rule "OpenDAP CRAFT-41 [Q3]: Track corners of 135 degrees or more"
+	(severity warning)
+	(condition "A.Type == 'Track' && !A.intersectsArea('CRAFT-EXEMPT*') && !A.intersectsArea('*ESCAPE*')")
+	(constraint track_angle (min 135))
+)
+
+# CRAFT-43: track widths from the OpenDAP series (mm): 0.08, 0.1, 0.15, 0.2,
+# 0.25, 0.3, 0.4, 0.5, 0.6, 0.8, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 5.0;
+# copper wider than 5 mm is a pour in all but name and is not checked.
+# Impedance classes take their widths from the stackup instead.
+(rule "OpenDAP CRAFT-43 [Q2]: Track width from the series"
+	(severity warning)
+	(condition "A.Type == 'Track' && !(A.NetClass == '*_1?D' || A.NetClass == '*_2?D' || A.NetClass == '*_3?D' || A.NetClass == '*_4?D' || A.NetClass == '*_5?D' || A.NetClass == '*_6?D' || A.NetClass == '*_7?D' || A.NetClass == '*_8?D' || A.NetClass == '*_9?D' || A.NetClass == '*_1??D' || A.NetClass == '*_2??D' || A.NetClass == '*_1?SE' || A.NetClass == '*_2?SE' || A.NetClass == '*_3?SE' || A.NetClass == '*_4?SE' || A.NetClass == '*_5?SE' || A.NetClass == '*_6?SE' || A.NetClass == '*_7?SE' || A.NetClass == '*_8?SE' || A.NetClass == '*_9?SE' || A.NetClass == '*_1??SE' || A.NetClass == '*_2??SE') && !A.intersectsArea('CRAFT-EXEMPT*') && !A.intersectsArea('*ESCAPE*')")
+	(constraint assertion "A.Width == 0.08mm || A.Width == 0.1mm || A.Width == 0.15mm || A.Width == 0.2mm || A.Width == 0.25mm || A.Width == 0.3mm || A.Width == 0.4mm || A.Width == 0.5mm || A.Width == 0.6mm || A.Width == 0.8mm || A.Width == 1.0mm || A.Width == 1.5mm || A.Width == 2.0mm || A.Width == 2.5mm || A.Width == 3.0mm || A.Width == 3.5mm || A.Width == 4.0mm || A.Width == 5.0mm || A.Width > 5.0mm")
+)
+
+# CRAFT-45: vias from the OpenDAP set, drill / land (mm): 0.10 / 0.25 (laser
+# microvia), 0.20 / 0.46, 0.30 / 0.60. Each meets the prototype fab's HDI and
+# multilayer drill and ring minimums (0.075 mm microvia ring, 5 mil
+# mechanical ring).
+(rule "OpenDAP CRAFT-45 [Q2]: Via from the set"
+	(severity warning)
+	(condition "A.Type == 'Via'")
+	(constraint assertion "(A.Hole == 0.1mm && A.Diameter == 0.25mm) || (A.Hole == 0.2mm && A.Diameter == 0.46mm) || (A.Hole == 0.3mm && A.Diameter == 0.6mm)")
+)
+
+# CRAFT-47: no jogs: no straight segment shorter than 0.1 mm.
+(rule "OpenDAP CRAFT-47 [Q4]: No track segment shorter than 0.1 mm"
+	(severity warning)
+	(condition "A.Type == 'Track' && !A.intersectsArea('CRAFT-EXEMPT*') && !A.intersectsArea('*ESCAPE*')")
+	(constraint track_segment_length (min 0.1mm))
+)
+
+# Source: hardware/rules/t1-main-board.kicad_dru
+# sha256: a0c187a76c090721b50cad751096c1a045576164172b0599293b5c6f517c6138
+
+# OpenDAP T1 main board: product rules
+#
+# The T1's own limits, composed on top of the PCBWay HDI fab rule set
+# (kicad-lib design-rules/pcbway-hdi) and the OpenDAP craft rule set
+# (kicad-lib design-rules/opendap-craft) into the project's
+# <project>.kicad_dru. Rules PCB-G, -P, -A, -I, -S and -R enforce constraints of
+# docs/specs/pcb-design-constraints.md (Draft v0.15); rules PCB-V, -H, -B, -D,
+# -W and -L enforce the constraints of the same families there, and
+# hardware/rules/README.md keys the source of every value, primary or
+# secondary. The net
+# classes the conditions use are in netclasses.toml; the reference, field,
+# pad-property and rule-area conventions are in README.md.
+#
+# Names carry the lowest quality level at which the rule is mandatory
+# (RFC 0010): "T1 PCB-H-01 [Q1]: ...".
+# Severity: a rule at Q0 or Q1 whose value has a source is an error. A rule
+# at Q2 to Q4, or one whose value is still UNVERIFIED, is a warning, seen at
+# every DRC run without blocking a commit.
+#
+# KiCad applies the LAST matching rule for a constraint: general rules first,
+# area and net-class overrides after them. Angles are bare degrees: KiCad
+# 10.0.7 drops the whole file on "90deg".
+
+
+# --- Geometry (PCB-G) ---
+
+# PCB-G-01: general track and space 0.1 / 0.1 mm, margin over the fab minimum.
+(rule "T1 PCB-G-01 [Q1]: Copper clearance"
+	(constraint clearance (min 0.1mm))
+)
+
+(rule "T1 PCB-G-01 [Q1]: Track width"
+	(constraint track_width (min 0.1mm))
+)
+
+# PCB-G-02: inside the RK3566 escape area (rule area named BGA_ESCAPE), the
+# HDI floor 0.065 mm applies [P3]; it overrides PCB-G-01 there.
+(rule "T1 PCB-G-02 [Q1]: Copper clearance in the BGA escape"
+	(condition "A.intersectsArea('BGA_ESCAPE')")
+	(constraint clearance (min 0.065mm))
+)
+
+(rule "T1 PCB-G-02 [Q1]: Track width in the BGA escape"
+	(condition "A.intersectsArea('BGA_ESCAPE')")
+	(constraint track_width (min 0.065mm))
+)
+
+# PCB-G-03: laser microvia land 0.25 mm (0.10 mm drill keeps the 3 mil ring).
+(rule "T1 PCB-G-03 [Q1]: Microvia diameter"
+	(condition "A.Type == 'Via' && A.Via_Type == 'Micro'")
+	(constraint via_diameter (min 0.25mm))
+)
+
+# PCB-G-04: mechanical via pad 0.45 mm minimum (0.20 mm drill).
+(rule "T1 PCB-G-04 [Q1]: Mechanical via diameter"
+	(condition "A.Type == 'Via' && A.Via_Type != 'Micro'")
+	(constraint via_diameter (min 0.45mm))
+)
+
+# PCB-G-05: copper to board edge 0.30 mm (fab 0.20 mm plus the outline
+# tolerance).
+(rule "T1 PCB-G-05 [Q1]: Copper to board edge"
+	(constraint edge_clearance (min 0.3mm))
+)
+
+# --- Voltage spacing (PCB-V) ---
+# IPC-2221B Table 6-1 (quoted by Altair's Pollex documentation, secondary):
+# 0-15 V and 16-30 V need B1 internal 0.05 mm, B2 external uncoated 0.1 mm
+# and B4 external under a polymer coating 0.05 mm, which PCB-G-01 and
+# PCB-G-02 already meet. Uncoated component terminations (A6) need 0.13 mm
+# at 0-15 V and 0.25 mm at 16-30 V: more than the general clearance, so the
+# two rules below. A part's own pin spacing is the manufacturer's, so pad
+# pairs of one footprint are left out (A.Parent != B.Parent). These rules
+# come before the net-class clearances (PCB-A-06, PCB-I-09), which override
+# them with larger values.
+
+# PCB-V-01: every exposed termination (pad) on an outer layer to copper of
+# another net, 0.13 mm (A6, 0-15 V: every net of the board in steady state).
+# The RK3566 escape area keeps PCB-G-02.
+(rule "T1 PCB-V-01 [Q1]: Exposed termination spacing"
+	(layer outer)
+	(condition "(A.Type == 'Pad' || B.Type == 'Pad') && A.Parent != B.Parent && !A.intersectsArea('BGA_ESCAPE') && !B.intersectsArea('BGA_ESCAPE')")
+	(constraint clearance (min 0.13mm))
+)
+
+# PCB-V-02: VBUS input pads, 0.25 mm (A6, 16-30 V): VBUS can reach the
+# TVS2200 clamp, 28.4 V, during a surge, and a faulty source can hold it
+# above 15 V up to the 22 V standoff.
+(rule "T1 PCB-V-02 [Q1]: VBUS termination spacing"
+	(layer outer)
+	(condition "((A.Type == 'Pad' && A.hasNetclass('PWR_VBUS')) || (B.Type == 'Pad' && B.hasNetclass('PWR_VBUS'))) && A.Parent != B.Parent")
+	(constraint clearance (min 0.25mm))
+)
+
+
+# --- Power (PCB-P) ---
+# Track minimums from the IPC-2221 formula at a 10 degC rise: outer layers at
+# 35 um finished copper, inner layers at 18 um (HDI base copper). Pours are
+# the intended conductors for PCB-P-01 to PCB-P-03; these rules catch a thin
+# track on those nets.
+
+(rule "T1 PCB-P-01 [Q0]: Battery path track width (outer)"
+	(layer outer)
+	(condition "A.hasNetclass('PWR_BAT')")
+	(constraint track_width (min 2.8mm))
+)
+
+(rule "T1 PCB-P-01 [Q0]: Battery path track width (inner)"
+	(layer inner)
+	(condition "A.hasNetclass('PWR_BAT')")
+	(constraint track_width (min 14.0mm))
+)
+
+(rule "T1 PCB-P-02 [Q0]: VSYS track width (outer)"
+	(layer outer)
+	(condition "A.hasNetclass('PWR_VSYS')")
+	(constraint track_width (min 1.5mm))
+)
+
+(rule "T1 PCB-P-02 [Q0]: VSYS track width (inner)"
+	(layer inner)
+	(condition "A.hasNetclass('PWR_VSYS')")
+	(constraint track_width (min 7.6mm))
+)
+
+(rule "T1 PCB-P-03 [Q0]: VBUS input track width (outer)"
+	(layer outer)
+	(condition "A.hasNetclass('PWR_VBUS')")
+	(constraint track_width (min 1.4mm))
+)
+
+(rule "T1 PCB-P-03 [Q0]: VBUS input track width (inner)"
+	(layer inner)
+	(condition "A.hasNetclass('PWR_VBUS')")
+	(constraint track_width (min 6.9mm))
+)
+
+# PCB-P-04 at the maximum trip of eFuse #D, the shared 5.1 V limiter, with
+# the RILM tolerance (2.52 A, TI SLVSFC9C Equation 7; power tree v0.8,
+# RFC 0015): IPC-2221 at 10 C, outer 1.08 mm (35 um), inner 5.44 mm (18 um).
+# PCB-P-05 (HAT_3V3) is withdrawn (RFC 0014).
+(rule "T1 PCB-P-04 [Q0]: 5.1 V source track width (outer)"
+	(layer outer)
+	(condition "A.hasNetclass('PWR_5V1')")
+	(constraint track_width (min 1.1mm))
+)
+
+(rule "T1 PCB-P-04 [Q0]: 5.1 V source track width (inner)"
+	(layer inner)
+	(condition "A.hasNetclass('PWR_5V1')")
+	(constraint track_width (min 5.5mm))
+)
+
+# PCB-P-20: HAT VBUS (HAT_5V) in both directions under USB PD at the
+# hat-standard interface v2 fault ceiling, 4.5 A (section 5.1; 3.0 A
+# continuous; RFC 0014). IPC-2221 at 10 degC: outer 129.7 mil2 / 1.378 mil =
+# 2.39 mm -> 2.4 mm; inner 337.5 mil2 / 0.709 mil = 12.10 mm -> 12.1 mm. The
+# T1's own trips stay inside it: eFuse #A 1.981 A maximum at RILM 1.87 kOhm,
+# TPS2121 IN2 2.95 A maximum (BOM lines 44, 45).
+(rule "T1 PCB-P-20 [Q0]: HAT 5 V track width (outer)"
+	(layer outer)
+	(condition "A.hasNetclass('PWR_HAT5V')")
+	(constraint track_width (min 2.4mm))
+)
+
+(rule "T1 PCB-P-20 [Q0]: HAT 5 V track width (inner)"
+	(layer inner)
+	(condition "A.hasNetclass('PWR_HAT5V')")
+	(constraint track_width (min 12.1mm))
+)
+
+# PCB-P-06: amplifier rails, 0.3 mm on every layer (the current needs less;
+# the width keeps the rail impedance low).
+(rule "T1 PCB-P-06 [Q1]: Amplifier rail track width"
+	(condition "A.hasNetclass('PWR_AMP')")
+	(constraint track_width (min 0.3mm))
+)
+
+
+# --- Audio (PCB-A) and clocks (PCB-I-09) ---
+
+# PCB-A-06: switch nodes and power inductors away from the analog audio
+# copper. 5 mm is UNVERIFIED until the power and audio test board.
+(rule "T1 PCB-A-06 [Q1]: Switch node to analog audio"
+	(severity warning)
+	(condition "(A.hasNetclass('SW_NODE') && B.hasNetclass('AUDIO_ANALOG')) || (B.hasNetclass('SW_NODE') && A.hasNetclass('AUDIO_ANALOG'))")
+	(constraint clearance (min 5mm))
+)
+
+# PCB-A-07: no digital or switching track inside the analog audio area (rule
+# area named AUDIO_ANALOG). Allowed there: analog audio, amplifier rails,
+# DAC references and ground.
+(rule "T1 PCB-A-07 [Q1]: Foreign track in the analog audio area"
+	(condition "A.Type == 'Track' && A.intersectsArea('AUDIO_ANALOG') && !A.hasNetclass('AUDIO_ANALOG') && !A.hasNetclass('AUDIO_REF') && !A.hasNetclass('PWR_AMP') && !A.hasNetclass('PWR_AUDIO') && A.NetName != 'GND'")
+	(constraint disallow track)
+)
+
+# PCB-I-09: the master clock runs on an inner layer between two ground
+# planes, with spacing to every other signal; no guard traces (Hubing,
+# LearnEMC). Spacing 3 x W: stackup v3 sets W = 102.5 um on L4, so 3 x W =
+# 0.3075 mm (arithmetic); the rule keeps 0.31 mm, which meets it. UNVERIFIED
+# until the fab's DFM review confirms the stackup. The branch length limit
+# (20 mm per branch, sim/mclk-attenuator) is a CHK item.
+(rule "T1 PCB-I-09 [Q1]: Master clock to other nets"
+	(severity warning)
+	(condition "(A.hasNetclass('MCLK_50SE') && !B.hasNetclass('MCLK_50SE') && B.NetName != 'GND') || (B.hasNetclass('MCLK_50SE') && !A.hasNetclass('MCLK_50SE') && A.NetName != 'GND')")
+	(constraint clearance (min 0.31mm))
+)
+
+
+# --- Zones (PCB-S-16 to PCB-S-18; floorplan v1, docs/specs/floorplan-v1.md) ---
+# The board is divided into zones that share the physical layers, each using
+# the layers under it for its own roles (stackup v3 §3). Each zone is one or
+# more rule areas ZONE_<NAME>; the declared crossings are rule areas
+# ZONE_CORRIDOR. Every net carries the net class of its zone, ZONE_<NAME>,
+# besides its signal class (KiCad 10 nets may carry several classes), or
+# ZONE_SHARED for nets every zone may carry (rails delivered by planes).
+# PCB-S-17: a track of another zone's net is allowed in a zone only when it
+# lies wholly inside a corridor. GND is shared. Partition rules with no
+# numeric value: errors.
+
+(rule "T1 PCB-S-17 [Q1]: Foreign track in the core zone"
+	(condition "A.Type == 'Track' && A.intersectsArea('ZONE_CORE') && !A.hasNetclass('ZONE_CORE') && !A.hasNetclass('ZONE_SHARED') && A.NetName != 'GND' && !A.enclosedByArea('ZONE_CORRIDOR')")
+	(constraint disallow track)
+)
+
+(rule "T1 PCB-S-17 [Q1]: Foreign track in the audio zone"
+	(condition "A.Type == 'Track' && A.intersectsArea('ZONE_AUDIO') && !A.hasNetclass('ZONE_AUDIO') && !A.hasNetclass('ZONE_SHARED') && A.NetName != 'GND' && !A.enclosedByArea('ZONE_CORRIDOR')")
+	(constraint disallow track)
+)
+
+(rule "T1 PCB-S-17 [Q1]: Foreign track in the power zone"
+	(condition "A.Type == 'Track' && A.intersectsArea('ZONE_POWER') && !A.hasNetclass('ZONE_POWER') && !A.hasNetclass('ZONE_SHARED') && A.NetName != 'GND' && !A.enclosedByArea('ZONE_CORRIDOR')")
+	(constraint disallow track)
+)
+
+(rule "T1 PCB-S-17 [Q1]: Foreign track in the I/O zone"
+	(condition "A.Type == 'Track' && A.intersectsArea('ZONE_IO') && !A.hasNetclass('ZONE_IO') && !A.hasNetclass('ZONE_SHARED') && A.NetName != 'GND' && !A.enclosedByArea('ZONE_CORRIDOR')")
+	(constraint disallow track)
+)
+
+(rule "T1 PCB-S-17 [Q1]: Foreign track in the radio zone"
+	(condition "A.Type == 'Track' && A.intersectsArea('ZONE_RADIO') && !A.hasNetclass('ZONE_RADIO') && !A.hasNetclass('ZONE_SHARED') && A.NetName != 'GND' && !A.enclosedByArea('ZONE_CORRIDOR')")
+	(constraint disallow track)
+)
+
+(rule "T1 PCB-S-17 [Q1]: Foreign track in the faceplate zone"
+	(condition "A.Type == 'Track' && A.intersectsArea('ZONE_FACEPLATE') && !A.hasNetclass('ZONE_FACEPLATE') && !A.hasNetclass('ZONE_SHARED') && A.NetName != 'GND' && !A.enclosedByArea('ZONE_CORRIDOR')")
+	(constraint disallow track)
+)
+
+# PCB-S-18: under a corridor the references of the routing layers (L2 for L1,
+# L3 and L5 for L4, L5 for L6) are ground, so a crossing changes no
+# reference: no copper of another net on In1.Cu, In2.Cu or In4.Cu inside
+# ZONE_CORRIDOR. Zones without a net (rule areas) are left out.
+(rule "T1 PCB-S-18 [Q1]: Foreign copper on a corridor reference layer"
+	(condition "A.intersectsArea('ZONE_CORRIDOR') && (A.Layer == 'In1.Cu' || A.Layer == 'In2.Cu' || A.Layer == 'In4.Cu') && A.NetName != 'GND' && (A.Type != 'Zone' || A.NetName != '')")
+	(constraint disallow track via zone)
+)
+
+# PCB-S-25: the ground layers of each zone carry only ground (stackup v3
+# §3): L5 (In4.Cu) under every zone, the full-layer ground; L2 (In1.Cu) in
+# every zone but the core, where it is the core and system rails' plane; L3
+# (In2.Cu) in every zone but the power zone, where it is a battery and VSYS
+# pour layer. Vias pass through (their antipads are the fab's); tracks and
+# fills of another net are refused. Rule areas (zones without a net) are left
+# out. Corridors are PCB-S-18. Partition rules with no numeric value: errors.
+(rule "T1 PCB-S-25 [Q1]: Foreign copper on the full-layer ground"
+	(condition "A.Layer == 'In4.Cu' && A.NetName != 'GND' && A.Type != 'Via' && (A.Type != 'Zone' || A.NetName != '')")
+	(constraint disallow track zone)
+)
+
+(rule "T1 PCB-S-25 [Q1]: Foreign copper on L2 outside the core zone"
+	(condition "A.Layer == 'In1.Cu' && (A.intersectsArea('ZONE_AUDIO') || A.intersectsArea('ZONE_POWER') || A.intersectsArea('ZONE_IO') || A.intersectsArea('ZONE_RADIO') || A.intersectsArea('ZONE_FACEPLATE')) && A.NetName != 'GND' && A.Type != 'Via' && (A.Type != 'Zone' || A.NetName != '')")
+	(constraint disallow track zone)
+)
+
+(rule "T1 PCB-S-25 [Q1]: Foreign copper on L3 outside the power zone"
+	(condition "A.Layer == 'In2.Cu' && (A.intersectsArea('ZONE_CORE') || A.intersectsArea('ZONE_AUDIO') || A.intersectsArea('ZONE_IO') || A.intersectsArea('ZONE_RADIO')) && A.NetName != 'GND' && A.Type != 'Via' && (A.Type != 'Zone' || A.NetName != '')")
+	(constraint disallow track zone)
+)
+
+# PCB-P-22: in the I/O zone no inner layer carries power (stackup v3 §3: L2,
+# L3 and L5 ground, L4 the fast layer), so the HAT VBUS (PWR_HAT5V), the
+# USB-C VBUS (PWR_VBUS) and the 5.1 V source (PWR_5V1) run as outer pours
+# (PCB-P-03, P-04, P-20 outer widths). Vias pass through. A partition rule
+# with no numeric value: an error.
+(rule "T1 PCB-P-22 [Q0]: VBUS on an inner layer in the I/O zone"
+	(condition "(A.hasNetclass('PWR_HAT5V') || A.hasNetclass('PWR_VBUS') || A.hasNetclass('PWR_5V1')) && A.Layer != 'F.Cu' && A.Layer != 'B.Cu' && A.intersectsArea('ZONE_IO') && A.Type != 'Via'")
+	(constraint disallow track zone)
+)
+
+# PCB-A-20: stackup v3 has no audio power layer: under AUDIO_ANALOG the audio
+# rails (PWR_AMP, PWR_AUDIO) run as tracks (PCB-P-06), L2, L3 and L5 stay
+# ground (PCB-S-25) and L4 carries the zone's MCLK, DAC serial-port, analog
+# and reference nets (PCB-A-07 keeps foreign tracks out on every layer). This
+# rule refuses a pour of any net but GND on an inner layer of the area.
+(rule "T1 PCB-A-20 [Q1]: Inner pour in the analog audio area"
+	(condition "A.Type == 'Zone' && A.NetName != '' && A.NetName != 'GND' && A.Layer != 'F.Cu' && A.Layer != 'B.Cu' && A.intersectsArea('AUDIO_ANALOG')")
+	(constraint disallow zone)
+)
+
+
+# --- Stackup layers and impedance classes (PCB-S-14, PCB-I, PCB-R-03) ---
+# Stackup v3 (docs/specs/stackup-v3.md, hardware/stackup/stackup-v3.toml):
+# six copper layers, roles by zone. KiCad names: L1 = F.Cu, L2 = In1.Cu,
+# L3 = In2.Cu, L4 = In3.Cu, L5 = In4.Cu, L6 = B.Cu. Routing layers L1, L4, L6;
+# L5 a full-layer ground; L2 and L3 ground by zone (L2 the core and system
+# rails' plane in the core zone, L3 a pour layer in the power zone); L4 the
+# stripline, a pour layer in the power zone and power or RF ground in the
+# radio zone.
+#
+# Impedance classes are the net classes named <name>_<ohms>D or
+# <name>_<ohms>SE (README.md), matched here with the same wildcards the craft
+# rules use for their exemption. BAT_SENSE also matches '*_???SE' ("_SENSE")
+# and is not an impedance class, so the rules leave it out by name.
+
+# PCB-S-14: impedance classes route only on L1, L4 and L6, never on a plane
+# layer (stackup v3 §4). A layer partition with no numeric value: an error.
+(rule "T1 PCB-S-14 [Q1]: Impedance class on a plane layer"
+	(condition "(A.NetClass == '*_??D' || A.NetClass == '*_???D' || A.NetClass == '*_??SE' || A.NetClass == '*_???SE') && !A.hasNetclass('BAT_SENSE') && A.Layer != 'F.Cu' && A.Layer != 'In3.Cu' && A.Layer != 'B.Cu'")
+	(constraint disallow track)
+)
+
+# PCB-S-14 with the zone maps (stackup v3 §3): L1's reference L2 is the
+# core and system rails' plane in the core zone; L4 is a pour layer in the
+# power zone (L3 too) and power or ground in the radio zone. Corridors keep
+# every reference (PCB-S-18).
+(rule "T1 PCB-S-14 [Q1]: Impedance class on L1 in the core zone"
+	(condition "(A.NetClass == '*_??D' || A.NetClass == '*_???D' || A.NetClass == '*_??SE' || A.NetClass == '*_???SE') && !A.hasNetclass('BAT_SENSE') && A.Layer == 'F.Cu' && A.intersectsArea('ZONE_CORE') && !A.enclosedByArea('ZONE_CORRIDOR')")
+	(constraint disallow track)
+)
+
+(rule "T1 PCB-S-14 [Q1]: Impedance class on L4 in the power or radio zone"
+	(condition "(A.NetClass == '*_??D' || A.NetClass == '*_???D' || A.NetClass == '*_??SE' || A.NetClass == '*_???SE') && !A.hasNetclass('BAT_SENSE') && A.Layer == 'In3.Cu' && (A.intersectsArea('ZONE_POWER') || A.intersectsArea('ZONE_RADIO')) && !A.enclosedByArea('ZONE_CORRIDOR')")
+	(constraint disallow track)
+)
+
+# PCB-S-14 with PCB-I-09: the master clock is a stripline, L4 only.
+(rule "T1 PCB-S-14 [Q1]: Master clock on an outer layer"
+	(condition "A.hasNetclass('MCLK_50SE') && (A.Layer == 'F.Cu' || A.Layer == 'B.Cu')")
+	(constraint disallow track)
+)
+
+# PCB-S-14 with PCB-I-07: the RF line is a microstrip, L1 or L6 only.
+(rule "T1 PCB-S-14 [Q1]: RF line on an inner layer"
+	(condition "A.hasNetclass('RF_50SE') && A.Layer != 'F.Cu' && A.Layer != 'B.Cu'")
+	(constraint disallow track)
+)
+
+# Track widths per class and layer (PCB-I-01 to I-09; stackup v3 §5).
+# KiCad holds one width per net class, so the widths are per-layer rules on
+# the class names: outer = L1/L6, inner = L4 (PCB-S-14 keeps the classes
+# off the other inner layers). Each rule is min / opt / max = the computed
+# width -5 % / exact / +5 %. Why 5 %: the drawn width is the class width, so
+# any departure is a mistake (another class's or layer's width, a default
+# track); a 5 % width error moves Z by 2-3 % (stackup v3 §5.1), a third of
+# the fab's +-10 % window, which the fab's own corners need. The minimum
+# never goes below 0.075 mm, the fab's published HDI 3/3 mil order option:
+# these rules come after the fab's 3 mil (0.0762 mm) track rule and replace
+# it for these classes (PCB-G-01 exception, constraints v0.11). Inside
+# BGA_ESCAPE the escape floor PCB-G-02 applies instead. Widths rest on
+# stackup v3, whose thicknesses, Dk and etch are assumptions until the fab's
+# DFM review: every rule here is UNVERIFIED, a warning, until then.
+
+# UNVERIFIED (stackup v3, DFM review): SE50 outer 188.0 um (120 um of 2116
+# to the reference; stackup v2: 134.5 um).
+(rule "T1 PCB-I-05/06/08 [Q1]: 50 ohm single-ended width (outer)"
+	(severity warning)
+	(layer outer)
+	(condition "(A.hasNetclass('DDR_50SE') || A.hasNetclass('EMMC_SD_50SE') || A.hasNetclass('I2S_50SE')) && !A.intersectsArea('BGA_ESCAPE')")
+	(constraint track_width (min 0.1786mm) (opt 0.188mm) (max 0.1974mm))
+)
+
+# UNVERIFIED (stackup v3, DFM review): SE50 inner (L4) 102.5 um, MCLK included.
+(rule "T1 PCB-I-05/06/08/09 [Q1]: 50 ohm single-ended width (inner)"
+	(severity warning)
+	(layer inner)
+	(condition "(A.hasNetclass('DDR_50SE') || A.hasNetclass('EMMC_SD_50SE') || A.hasNetclass('I2S_50SE') || A.hasNetclass('MCLK_50SE')) && !A.intersectsArea('BGA_ESCAPE')")
+	(constraint track_width (min 0.0974mm) (opt 0.1025mm) (max 0.1076mm))
+)
+
+# UNVERIFIED (stackup v3, DFM review): D90 outer 126.0 um.
+(rule "T1 PCB-I-01/02 [Q1]: 90 ohm pair width (outer)"
+	(severity warning)
+	(layer outer)
+	(condition "(A.hasNetclass('USB2_90D') || A.hasNetclass('USB3_90D')) && !A.intersectsArea('BGA_ESCAPE')")
+	(constraint track_width (min 0.1197mm) (opt 0.126mm) (max 0.1323mm))
+)
+
+# UNVERIFIED (stackup v3, DFM review): D90 inner (L4) 97.0 um.
+(rule "T1 PCB-I-01/02 [Q1]: 90 ohm pair width (inner)"
+	(severity warning)
+	(layer inner)
+	(condition "(A.hasNetclass('USB2_90D') || A.hasNetclass('USB3_90D')) && !A.intersectsArea('BGA_ESCAPE')")
+	(constraint track_width (min 0.0922mm) (opt 0.097mm) (max 0.1018mm))
+)
+
+# UNVERIFIED (stackup v3, DFM review): D100 outer 135.5 um.
+(rule "T1 PCB-I-04/05 [Q1]: 100 ohm pair width (outer)"
+	(severity warning)
+	(layer outer)
+	(condition "(A.hasNetclass('MIPI_100D') || A.hasNetclass('DDR_100D')) && !A.intersectsArea('BGA_ESCAPE')")
+	(constraint track_width (min 0.1287mm) (opt 0.1355mm) (max 0.1422mm))
+)
+
+# UNVERIFIED (stackup v3, DFM review): D100 inner (L4) 89.0 um.
+(rule "T1 PCB-I-04/05 [Q1]: 100 ohm pair width (inner)"
+	(severity warning)
+	(layer inner)
+	(condition "(A.hasNetclass('MIPI_100D') || A.hasNetclass('DDR_100D')) && !A.intersectsArea('BGA_ESCAPE')")
+	(constraint track_width (min 0.0846mm) (opt 0.089mm) (max 0.0934mm))
+)
+
+# UNVERIFIED (stackup v3, DFM review): RF50 391 um over L3 (L4) with L2 (L5)
+# cut out (PCB-I-07, PCB-R-03). Murata's own rule gives 423 um, within the
+# +-0.25 mm Murata allows.
+(rule "T1 PCB-I-07 [Q1]: RF line width"
+	(severity warning)
+	(layer outer)
+	(condition "A.hasNetclass('RF_50SE')")
+	(constraint track_width (min 0.3715mm) (opt 0.391mm) (max 0.4105mm))
+)
+
+# PCB-S-24: LPDDR4X on the inner layer keeps 3 x W from every other net
+# (stackup v3 §4.4: L4 lies 430 um under L3 and 90 um over L5, so its edge
+# coupling is higher than an inner layer between two near grounds; near-end
+# coupling of two SE50 traces at 3 x W spacing 1.85 %, at 2 x W 3.81 %).
+# 3 x 102.5 um = 0.3075 mm (arithmetic). Placed before the pair gaps, which
+# decide between the two halves of a DQS or CK pair. Outside BGA_ESCAPE,
+# where the escape floor decides. UNVERIFIED until the fab's DFM review
+# confirms the stackup.
+(rule "T1 PCB-S-24 [Q1]: LPDDR4X spacing on the inner layer"
+	(severity warning)
+	(layer inner)
+	(condition "(((A.hasNetclass('DDR_50SE') || A.hasNetclass('DDR_100D')) && B.NetName != 'GND') || ((B.hasNetclass('DDR_50SE') || B.hasNetclass('DDR_100D')) && A.NetName != 'GND')) && !A.intersectsArea('BGA_ESCAPE') && !B.intersectsArea('BGA_ESCAPE')")
+	(constraint clearance (min 0.3075mm))
+)
+
+# Gap within a differential pair, edge to edge, per layer (stackup v3 §5),
+# as a clearance between the two nets of a pair (isCoupledDiffPair): the
+# minimum of a 5 % band like the widths, never below PCB-G-01's 0.1 mm
+# general space. KiCad's own diff_pair_gap constraint would also check the
+# maximum and give the router its gap, but KiCad 10.0.7 reports it without
+# the rule's name ("(<name> maximum gap ...)"), so check_drc.py cannot
+# attribute it; it waits with diff_pair_uncoupled (README.md). Until then the
+# maximum gap is a CHK item and the router takes the gap from the KiCad net
+# class.
+
+# UNVERIFIED (stackup v3, DFM review): 90 ohm outer gap 100 um, at the
+# 0.1 mm floor (the general clearance; kept so the class carries its gap).
+(rule "T1 PCB-I-01/02 [Q1]: 90 ohm pair gap (outer)"
+	(severity warning)
+	(layer outer)
+	(condition "A.isCoupledDiffPair() && (A.hasNetclass('USB2_90D') || A.hasNetclass('USB3_90D')) && !A.intersectsArea('BGA_ESCAPE')")
+	(constraint clearance (min 0.1mm))
+)
+
+# UNVERIFIED (stackup v3, DFM review): 90 ohm inner gap 150 um, -5 %.
+(rule "T1 PCB-I-01/02 [Q1]: 90 ohm pair gap (inner)"
+	(severity warning)
+	(layer inner)
+	(condition "A.isCoupledDiffPair() && (A.hasNetclass('USB2_90D') || A.hasNetclass('USB3_90D')) && !A.intersectsArea('BGA_ESCAPE')")
+	(constraint clearance (min 0.1425mm))
+)
+
+# UNVERIFIED (stackup v3, DFM review): 100 ohm outer gap 175 um, -5 %.
+(rule "T1 PCB-I-04/05 [Q1]: 100 ohm pair gap (outer)"
+	(severity warning)
+	(layer outer)
+	(condition "A.isCoupledDiffPair() && (A.hasNetclass('MIPI_100D') || A.hasNetclass('DDR_100D')) && !A.intersectsArea('BGA_ESCAPE')")
+	(constraint clearance (min 0.1663mm))
+)
+
+# UNVERIFIED (stackup v3, DFM review): 100 ohm inner gap 250 um, -5 %.
+(rule "T1 PCB-I-04/05 [Q1]: 100 ohm pair gap (inner)"
+	(severity warning)
+	(layer inner)
+	(condition "A.isCoupledDiffPair() && (A.hasNetclass('MIPI_100D') || A.hasNetclass('DDR_100D')) && !A.intersectsArea('BGA_ESCAPE')")
+	(constraint clearance (min 0.2375mm))
+)
+
+# PCB-I-07: same-layer ground keeps 0.6 mm from the RF line (stackup v3
+# §4.5). Pads are left out (the module's and the U.FL's own ground pads
+# follow Murata's copied layout, PCB-R-03). Zone fills follow the rule, so
+# the pour pulls back by itself. UNVERIFIED (solver on the assumed stack,
+# DFM review).
+(rule "T1 PCB-I-07 [Q1]: RF line to same-layer ground"
+	(severity warning)
+	(layer outer)
+	(condition "(A.hasNetclass('RF_50SE') && A.Type != 'Pad' && B.NetName == 'GND' && B.Type != 'Pad') || (B.hasNetclass('RF_50SE') && B.Type != 'Pad' && A.NetName == 'GND' && A.Type != 'Pad')")
+	(constraint clearance (min 0.6mm))
+)
+
+# PCB-R-03: rule area RF_CUTOUT = the L2 (L5) cut-out under the RF line,
+# 1.6 mm wide centred on it and 0.6 mm past each end (stackup v3 §4.5),
+# drawn on the cut layer and the pour layer of the line's side only: In1.Cu
+# and In2.Cu for an L1 line, In4.Cu and In3.Cu for an L6 line. The area
+# keeps out zone fills on the cut layer (its own keepout setting); these
+# rules catch tracks and vias there, and any copper of another net on the
+# L3 (L4) ground pour under the line. Partition rules: errors.
+(rule "T1 PCB-R-03 [Q1]: Copper in the RF ground cut-out"
+	(condition "A.intersectsArea('RF_CUTOUT') && (A.Layer == 'In1.Cu' || A.Layer == 'In4.Cu')")
+	(constraint disallow track via zone)
+)
+
+(rule "T1 PCB-R-03 [Q1]: Foreign copper on the RF ground pour"
+	(condition "A.intersectsArea('RF_CUTOUT') && (A.Layer == 'In2.Cu' || A.Layer == 'In3.Cu') && A.NetName != 'GND'")
+	(constraint disallow track via zone)
+)
+
+
+# --- Mounting holes (PCB-H) ---
+# Mounting holes are footprints H*. The screw is not chosen (M2 or M1.6
+# class, UNVERIFIED), so the head rings are sized for the larger case: an M2
+# screw with an ISO 7089 washer (outer diameter 5.0 mm) in an ISO 273 fine
+# clearance hole (2.2 mm). Ring from the hole edge: (5.0 - 2.2) / 2 = 1.4 mm
+# (arithmetic). Warnings until the case fixes the screw.
+
+# PCB-H-01: no part under the screw head or washer: the courtyard of every
+# other footprint keeps 1.4 mm from the mounting hole. UNVERIFIED until the
+# screw is chosen.
+(rule "T1 PCB-H-01 [Q1]: Part under the screw head"
+	(severity warning)
+	(condition "A.memberOfFootprint('H*') && B.Type == 'Footprint' && B.Reference != 'H*'")
+	(constraint physical_hole_clearance (min 1.4mm))
+)
+
+# PCB-H-02: no copper of another net under the head on the outer layers
+# (a plated hole's own net, GND, may be there). Rockchip's high-speed guide
+# also keeps traces away from mounting holes (HSPCB p. 12). The 1.4 mm ring
+# is UNVERIFIED until the screw is chosen.
+(rule "T1 PCB-H-02 [Q1]: Copper under the screw head"
+	(severity warning)
+	(layer outer)
+	(condition "A.memberOfFootprint('H*')")
+	(constraint hole_clearance (min 1.4mm))
+)
+
+# PCB-H-03: a plated mounting hole is on GND, never floating or on another
+# net. Plated versus non-plated is not decided (CHK-H-02).
+(rule "T1 PCB-H-03 [Q2]: Plated mounting hole on GND"
+	(severity warning)
+	(condition "A.Type == 'Pad' && A.memberOfFootprint('H*') && A.isPlated()")
+	(constraint assertion "A.NetName == 'GND'")
+)
+
+# PCB-H-04: mounting hole to board edge 1.5 mm, the low end of the
+# 1.5-2 mm that fabricators' design guides give against cracking (ALLPCB,
+# secondary; no primary source: UNVERIFIED). The fab minimum is far lower
+# (JLCPCB 0.4 mm, drill to outline).
+(rule "T1 PCB-H-04 [Q1]: Mounting hole to board edge"
+	(severity warning)
+	(condition "A.memberOfFootprint('H*') && B.Layer == 'Edge.Cuts'")
+	(constraint physical_hole_clearance (min 1.5mm))
+)
+
+# PCB-H-05: MLCCs (C*) away from the screw holes, which bend the board when
+# the screws are tightened. Murata asks for "as far away from the screw holes
+# as possible" without a number; 3 mm (the head ring plus 1.6 mm) is
+# UNVERIFIED.
+(rule "T1 PCB-H-05 [Q1]: MLCC to mounting hole"
+	(severity warning)
+	(condition "A.memberOfFootprint('H*') && B.Type == 'Footprint' && B.Reference == 'C*'")
+	(constraint physical_hole_clearance (min 3mm))
+)
+
+# PCB-H-06: BGA balls away from the screw holes (board flex fatigues the
+# joints). 5 mm is UNVERIFIED.
+(rule "T1 PCB-H-06 [Q2]: BGA to mounting hole"
+	(severity warning)
+	(condition "A.memberOfFootprint('H*') && B.Fabrication_Property == 'BGA pad'")
+	(constraint physical_hole_clearance (min 5mm))
+)
+
+
+# --- Board edges and panelisation (PCB-B) ---
+# The board is routed and held in the fab's panel by tabs with rails [P20].
+# Rule areas named BREAK_TAB mark each tab position on the outline.
+
+# PCB-B-01: no courtyard closer than 0.3 mm to the board edge (the copper
+# edge clearance PCB-G-05 applied to the part's body); edge connectors J*
+# and side buttons SW* are exempt and may overhang. UNVERIFIED.
+(rule "T1 PCB-B-01 [Q1]: Part to board edge"
+	(severity warning)
+	(condition "A.Type == 'Footprint' && B.Layer == 'Edge.Cuts' && A.Reference != 'J*' && A.Reference != 'SW*'")
+	(constraint physical_clearance (min 0.3mm))
+)
+
+# PCB-B-02: copper to the edge at a break tab 0.4 mm, JLCPCB's figure for
+# copper to a V-cut, the nearest published value for a broken edge
+# (JLCPCB capabilities, Outline; the fab publishes none): UNVERIFIED for tabs.
+(rule "T1 PCB-B-02 [Q1]: Copper to edge at a break tab"
+	(severity warning)
+	(condition "A.intersectsArea('BREAK_TAB')")
+	(constraint edge_clearance (min 0.4mm))
+)
+
+# PCB-B-03: MLCCs at least 0.2 in (5.08 mm) from an edge that is broken at
+# depanelisation (KYOCERA AVX, quoted by DigiKey TechForum, secondary). A
+# routed edge is exempt by the same source, so the rule applies at tabs.
+(rule "T1 PCB-B-03 [Q1]: MLCC at a break tab"
+	(condition "A.Type == 'Footprint' && A.Reference == 'C*' && A.intersectsArea('BREAK_TAB') && B.Layer == 'Edge.Cuts'")
+	(constraint physical_clearance (min 5.08mm))
+)
+
+
+# --- Assembly (PCB-D) ---
+
+# PCB-D-01: a BGA that may need rework (footprint field Rework = BGA:
+# RK3566, LPDDR4X, eMMC) keeps 2 mm courtyard to courtyard for the rework
+# nozzle. UNVERIFIED.
+(rule "T1 PCB-D-01 [Q1]: BGA rework clearance"
+	(severity warning)
+	(condition "A.getField('Rework') == 'BGA' || B.getField('Rework') == 'BGA'")
+	(constraint courtyard_clearance (min 2mm))
+)
+
+# PCB-D-02: fiducial copper dot 1.0-3.0 mm, round (SMEMA 3.1 practice as
+# quoted by LCSC's fiducial guide, secondary: 1.0 mm recommended).
+(rule "T1 PCB-D-02 [Q1]: Fiducial size"
+	(condition "A.Type == 'Pad' && A.Fabrication_Property == 'Fiducial*'")
+	(constraint assertion "A.Size_X >= 1.0mm && A.Size_X <= 3.0mm && A.Size_Y == A.Size_X")
+)
+
+# PCB-D-03: fiducial clear area: a 3 mm diameter window around a 1 mm dot,
+# so nothing within 1.0 mm of the dot's edge (LCSC, secondary).
+(rule "T1 PCB-D-03 [Q1]: Fiducial clear area"
+	(condition "A.Fabrication_Property == 'Fiducial*' && B.Type != 'Footprint' && B.Layer != 'Edge.Cuts'")
+	(constraint physical_clearance (min 1mm))
+)
+
+# PCB-D-04: fiducial to board edge 3.85 mm (LCSC, secondary). With rails the
+# conveyor holds the rails, so this is a Q2 item for unpanelised builds.
+(rule "T1 PCB-D-04 [Q2]: Fiducial to board edge"
+	(severity warning)
+	(condition "A.Type == 'Pad' && A.Fabrication_Property == 'Fiducial*'")
+	(constraint edge_clearance (min 3.85mm))
+)
+
+# PCB-D-05: silkscreen to board edge 0.3 mm, UNVERIFIED (no fab publishes
+# one). KiCad 10.0.7 reports silk text near the edge and any silk the edge
+# clips; silk lines inside the distance are a review item.
+(rule "T1 PCB-D-05 [Q2]: Silkscreen to board edge"
+	(severity warning)
+	(condition "B.Layer == 'Edge.Cuts'")
+	(constraint silk_clearance (min 0.3mm))
+)
+
+# Test points (TP*, pad property "Test point pad"): JLCPCB's DFT guide
+# (secondary): pad 1.0-1.27 mm, 2.54 mm pitch for fixtures, 1.0 mm from
+# component bodies, 3.8 mm from the edge. Production-test items: Q2.
+
+# PCB-D-06: test pad at least 1.0 mm.
+(rule "T1 PCB-D-06 [Q2]: Test point size"
+	(severity warning)
+	(condition "A.Type == 'Pad' && A.Fabrication_Property == 'Test point pad'")
+	(constraint assertion "A.Size_X >= 1.0mm && A.Size_Y >= 1.0mm")
+)
+
+# PCB-D-07: 2.54 mm pitch between 1.0 mm pads: 1.54 mm edge to edge
+# (arithmetic).
+(rule "T1 PCB-D-07 [Q2]: Test point spacing"
+	(severity warning)
+	(condition "A.Fabrication_Property == 'Test point pad' && B.Fabrication_Property == 'Test point pad'")
+	(constraint physical_clearance (min 1.54mm))
+)
+
+# PCB-D-08: test pad 1.0 mm from other parts' pads (the guide's distance
+# to component bodies, measured to their pads; bodies are a review item).
+(rule "T1 PCB-D-08 [Q2]: Test point to other pads"
+	(severity warning)
+	(condition "A.Fabrication_Property == 'Test point pad' && B.Type == 'Pad' && B.Fabrication_Property != 'Test point pad'")
+	(constraint physical_clearance (min 1mm))
+)
+
+# PCB-D-09: test pad 3.8 mm from the board edge.
+(rule "T1 PCB-D-09 [Q2]: Test point to board edge"
+	(severity warning)
+	(condition "A.Type == 'Pad' && A.Fabrication_Property == 'Test point pad'")
+	(constraint edge_clearance (min 3.8mm))
+)
+
+# PCB-D-10: a via in or near an SMD pad wicks solder unless it is filled
+# and capped (IPC-4761 type VII; the fab offers "filled with resin and
+# capped" [P11, P16]). An open via keeps its hole 0.2 mm from SMD pads
+# (UNVERIFIED distance); a filled and capped via may sit in the pad.
+(rule "T1 PCB-D-10 [Q1]: Open via near an SMD pad"
+	(severity warning)
+	(condition "A.Type == 'Via' && B.Pad_Type == 'SMD' && !(A.Filling == 'Filled' && A.Capping == 'Capped')")
+	(constraint physical_hole_clearance (min 0.2mm))
+)
+
+
+# --- Routing hygiene (PCB-W) ---
+# Acute angles (acid traps), 45-degree routing and short segments are in the
+# craft rule set (CRAFT-40, -41, -47); not repeated here.
+
+# PCB-W-01: no copper neck or sliver narrower than the narrowest track:
+# 0.1 mm (PCB-G-01), 0.065 mm in the RK3566 escape (PCB-G-02, the fab HDI
+# [P3]). Catches pours necked between obstacles. KiCad 10.0.7 reports a neck
+# only when it is about 0.01 mm or more under the limit.
+(rule "T1 PCB-W-01 [Q1]: Copper neck"
+	(severity error)
+	(constraint connection_width (min 0.1mm))
+)
+
+# PCB-W-01 for impedance classes: a neck is measured against 0.075 mm, the
+# PCB-G-01 exception floor (stackup v3's narrowest impedance width is 89.0 um,
+# 84.6 um at the -5 % band; the floor stays for the fab's 3/3 mil option). Placed before the escape rule, which still decides inside
+# BGA_ESCAPE.
+(rule "T1 PCB-W-01 [Q1]: Copper neck on impedance classes"
+	(severity error)
+	(condition "(A.NetClass == '*_??D' || A.NetClass == '*_???D' || A.NetClass == '*_??SE' || A.NetClass == '*_???SE') && !A.hasNetclass('BAT_SENSE')")
+	(constraint connection_width (min 0.075mm))
+)
+
+(rule "T1 PCB-W-01 [Q1]: Copper neck in the BGA escape"
+	(severity error)
+	(condition "A.intersectsArea('BGA_ESCAPE')")
+	(constraint connection_width (min 0.065mm))
+)
+
+# PCB-W-02: teardrops on every via, for the HDI's 0.075 mm microvia ring
+# (the fab minimum [P2, P3]): they keep the track joined if the drill wanders.
+# UNVERIFIED as a requirement (no fab or IPC text retrieved).
+(rule "T1 PCB-W-02 [Q2]: Teardrops on vias"
+	(severity warning)
+	(condition "A.Type == 'Via'")
+	(constraint assertion "A.Enable_Teardrops")
+)
+
+# PCB-W-03: vias per net of a high-speed pair, from Rockchip's high-speed PCB
+# guide (RK3568 HSPCB V1.0.0): USB 3 at most 2 (Table 2), MIPI at most 4
+# (Table 10), USB 2 never more than 6 (Table 1). Signal-integrity items: Q2.
+# The PCIe and HAT extension counts are withdrawn (RFC 0014).
+(rule "T1 PCB-W-03 [Q2]: Vias per USB 2 line"
+	(severity warning)
+	(condition "A.hasNetclass('USB2_90D')")
+	(constraint via_count (max 6))
+)
+
+(rule "T1 PCB-W-03 [Q2]: Vias per USB 3 line"
+	(severity warning)
+	(condition "A.hasNetclass('USB3_90D')")
+	(constraint via_count (max 2))
+)
+
+(rule "T1 PCB-W-03 [Q2]: Vias per MIPI line"
+	(severity warning)
+	(condition "A.hasNetclass('MIPI_100D')")
+	(constraint via_count (max 4))
+)
+
+
+# --- Battery interface and heat placement (PCB-L) ---
+# Safety items (BRD-049, ADR 0020): Q0, except the ESD placement (Q1).
+# Rules with an UNVERIFIED distance are warnings; partition rules, which
+# carry no numeric value, are errors.
+
+# PCB-L-01: no heat source (footprint field Thermal = hot: converters,
+# eFuses, charger, SoC, PMIC) over the battery pocket. The rule area
+# BATTERY_POCKET is the pocket's footprint grown by a margin, 3 mm
+# UNVERIFIED (README.md).
+(rule "T1 PCB-L-01 [Q0]: Hot part at the battery pocket"
+	(severity warning)
+	(condition "A.Type == 'Footprint' && A.getField('Thermal') == 'hot' && A.intersectsArea('BATTERY_POCKET')")
+	(constraint disallow footprint)
+)
+
+# PCB-L-02, PCB-L-05: inside the battery contact area (rule area
+# BATTERY_CONNECTOR = the pocket-floor contact window plus 1 mm, ADR 0020),
+# only unfused battery copper: PWR_BAT (P+, P-), BAT_SENSE (mid-cell tap,
+# NTC) and GND. No other net's track or via where a short has no fuse ahead
+# of it. A partition decision under BRD-049, with no numeric value: an error.
+(rule "T1 PCB-L-02 [Q0]: Foreign track at the battery contacts"
+	(condition "(A.Type == 'Track' || A.Type == 'Via') && A.intersectsArea('BATTERY_CONNECTOR') && !A.hasNetclass('PWR_BAT') && !A.hasNetclass('BAT_SENSE') && A.NetName != 'GND'")
+	(constraint disallow track via)
+)
+
+# PCB-L-05: the same partition for pads: no pad of another net inside the
+# contact area (pads with no net, such as locating holes, are allowed).
+# ADR 0020 item 2; partition rule with no numeric value: an error.
+(rule "T1 PCB-L-05 [Q0]: Foreign pad at the battery contacts"
+	(condition "A.Type == 'Pad' && A.intersectsArea('BATTERY_CONNECTOR') && A.NetName != '' && !A.hasNetclass('PWR_BAT') && !A.hasNetclass('BAT_SENSE') && A.NetName != 'GND'")
+	(constraint disallow pad)
+)
+
+# PCB-L-04: the empty position of the contact row (P+, P+, empty, mid-cell
+# tap, NTC, P-, P-; ADR 0020 item 2) carries no copper, so a pack displaced
+# by one pitch puts P+ only over bare board. Rule area
+# BATTERY_CONTACT_EMPTY = the 7.00 x 2.70 mm pad position left empty
+# (KYOCERA AVX drawing 70-9258-001-1X0-00XS sheet 2). Sourced: an error.
+# Zones without a net are left out: KiCad 10.0.7 counts a rule area (a
+# floorplan zone overlapping the position) as a zone here.
+(rule "T1 PCB-L-04 [Q0]: Copper at the empty battery contact position"
+	(condition "A.intersectsArea('BATTERY_CONTACT_EMPTY') && (A.Type != 'Zone' || A.NetName != '')")
+	(constraint disallow track via pad zone)
+)
+
+# PCB-L-08: the TPD1E10B06 on the mid-cell tap and NTC contacts (footprint
+# field ESD = battery) sit within 3 mm of their contact: rule area
+# BATTERY_ESD = the contact pads grown by 3 mm. The 3 mm is an estimate,
+# as PCB-E-01, UNVERIFIED (no primary source): a warning.
+(rule "T1 PCB-L-08 [Q1]: Battery contact ESD away from the contacts"
+	(severity warning)
+	(condition "A.Type == 'Footprint' && A.getField('ESD') == 'battery' && !A.intersectsArea('BATTERY_ESD')")
+	(constraint disallow footprint)
+)

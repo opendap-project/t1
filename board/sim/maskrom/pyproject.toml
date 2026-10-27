@@ -1,0 +1,6 @@
+[project]
+name = "opendap-board-sim-maskrom"
+version = "0.1.0"
+description = "ngspice simulation of the T1 MaskROM combo (Main + Vol- at power-on): timing, levels, eMMC_D0 signal integrity"
+requires-python = ">=3.10"
+dependencies = []

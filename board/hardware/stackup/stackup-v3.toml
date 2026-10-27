@@ -1,0 +1,335 @@
+# OpenDAP T1 main board: stackup v3 (machine-readable).
+#
+# Approved by the maintainers on 2026-10-25: six layers, HDI 2+2+2, one full-layer ground (L5),
+# zone-local grounds on L2 and L3, with the trades listed in docs/specs/stackup-v3.md §0.
+# Explained in docs/specs/stackup-v3.md; replaces stackup v2 (eight layers). To be confirmed by
+# the fab's DFM review: every thickness, copper weight and Dk here is the fab's published data or
+# a stated assumption. Checked with toolkit-hardware's
+# `odapkit stackup check hardware/stackup/stackup-v3.toml`; format in toolkit-hardware
+# docs/specs/stackup-method.md.
+#
+# Layers top (front, faceplate side, +z) to bottom (back, battery side, the SoC). Thicknesses in
+# µm: dielectrics as pressed, copper as finished. Roles vary by zone (docs/specs/stackup-v3.md §3);
+# the role below is the layer's role where impedance classes route.
+
+version = 1
+name = "t1-main-board stackup v3"
+build = "HDI 2+2+2, 6 layers, stacked copper-filled microvias L1-L2-L3 and L6-L5-L4, through vias L1-L6"
+material = "FR-4 Tg 170 (the fab offers Shengyi S1000-2M); Dk values are the fab's published stack-up table values, frequency not stated"
+design_window_pct = 2.0
+
+[etch]
+# Trapezoidal etch: the top of a trace is narrower than the drawn width. ASSUMPTION
+# (typical values, not published by the fab); the solver uses the mean width.
+outer_reduction_um = 10.0
+inner_reduction_um = 6.0
+
+[tolerance]
+# Fab corners for the sensitivity report (ASSUMPTIONS, as stackups v1 and v2).
+dielectric_pct = 10
+er_pct = 5
+width_um = 10
+copper_pct = 15
+
+[thickness]
+# PCB-S-01: 1.0-1.2 mm (ADR 0016). Nominal + the fab's ±0.10 mm within 1.2 mm.
+min_mm = 1.0
+max_mm = 1.2
+tolerance_mm = 0.1
+source = "PCB-S-01; fab thickness tolerance [P1]"
+
+[[distance]]
+# PCB-R-03: Murata asks for 230-240 µm between the RF trace and its ground (E2B-09-1413 §3.5.1).
+from = "L1"
+to = "L3"
+min_um = 230
+max_um = 240
+source = "PCB-R-03 (RF microstrip on L1 over the L3 ground, L2 cut out)"
+
+[[distance]]
+from = "L6"
+to = "L4"
+min_um = 230
+max_um = 240
+source = "PCB-R-03 (RF microstrip on L6 over the radio zone's L4 ground, L5 cut out)"
+
+[[distance]]
+# PCB-S-12: the SoC core and LPDDR4X rails' plane (L2, core zone) paired with the L3 ground
+# across a laser-class prepreg of at most 90 µm, on the side nearer the front decoupling.
+from = "L2"
+to = "L3"
+min_um = 0
+max_um = 90
+source = "PCB-S-12"
+
+[[layer]]
+name = "Mask top"
+type = "mask"
+thickness_um = 20
+er = 3.8
+material = "LPI solder mask, thickness and Dk ASSUMED (not published by the fab)"
+
+[[layer]]
+name = "L1"
+type = "copper"
+thickness_um = 35
+role = "signal: front parts, microstrip over L2, RF option over L3; in the core zone the SoC decoupling and core-rail pours"
+material = "18 µm base plated (the fab: 0.5 oz plated to 1 oz)"
+
+[[layer]]
+name = "PP L1-L2"
+type = "dielectric"
+thickness_um = 120
+er = 4.45
+material = "prepreg 2116 RC58% (the fab's Dk 4.45), laser-drillable"
+
+[[layer]]
+name = "L2"
+type = "copper"
+thickness_um = 25
+role = "ground in every zone but the core (core and system rails' plane there, paired with L3); L1's reference"
+fills = "above"
+material = "12 µm base plated in the L2-L3 laser step (ASSUMED 25 µm)"
+
+[[layer]]
+name = "PP L2-L3"
+type = "dielectric"
+thickness_um = 90
+er = 4.45
+material = "prepreg 3313 RC58% (the fab's Dk 4.45), laser-drillable; the core-rail plane pair (PCB-S-12)"
+
+[[layer]]
+name = "L3"
+type = "copper"
+thickness_um = 18
+role = "ground in every zone but the power zone (pours there); L4's upper reference; the RF ground under an L1 line"
+fills = "above"
+material = "18 µm (core copper)"
+
+[[layer]]
+name = "Core L3-L4"
+type = "dielectric"
+thickness_um = 430
+er = 4.6
+material = "core 0.43 mm (the fab's core Dk 4.6), read as dielectric thickness (UNVERIFIED: the table lists cores with copper)"
+
+[[layer]]
+name = "L4"
+type = "copper"
+thickness_um = 18
+role = "stripline (L3/L5): SoC escape, LPDDR4X, eMMC, fast I/O, MCLK; pours in the power zone; power or RF ground in the radio zone"
+fills = "below"
+material = "18 µm (core copper)"
+
+[[layer]]
+name = "PP L4-L5"
+type = "dielectric"
+thickness_um = 90
+er = 4.45
+material = "prepreg 3313 RC58% (the fab's Dk 4.45), laser-drillable"
+
+[[layer]]
+name = "L5"
+type = "copper"
+thickness_um = 25
+role = "ground, full layer (L6's and L4's reference)"
+fills = "below"
+material = "12 µm base plated in the L5-L4 laser step (ASSUMED 25 µm)"
+
+[[layer]]
+name = "PP L5-L6"
+type = "dielectric"
+thickness_um = 120
+er = 4.45
+material = "prepreg 2116 RC58% (the fab's Dk 4.45), laser-drillable"
+
+[[layer]]
+name = "L6"
+type = "copper"
+thickness_um = 35
+role = "signal: RK3566, LPDDR4X, eMMC, microstrip over L5, RF option over L4"
+material = "18 µm base plated"
+
+[[layer]]
+name = "Mask bottom"
+type = "mask"
+thickness_um = 20
+er = 3.8
+material = "LPI solder mask, ASSUMED"
+
+[[class]]
+name = "SE50-L1"
+netclasses = ["DDR_50SE", "EMMC_SD_50SE", "I2S_50SE"]
+type = "se"
+target_ohm = 50
+tolerance_pct = 10
+layer = "L1"
+reference = ["L2"]
+solve = "width"
+constraints = "PCB-I-05, I-06, I-08"
+width_um = 188.0
+z_ohm = 50.0
+
+[[class]]
+name = "D90-L1"
+netclasses = ["USB2_90D", "USB3_90D"]
+type = "diff"
+target_ohm = 90
+tolerance_pct = 10
+layer = "L1"
+reference = ["L2"]
+solve = "width"
+gap_um = 100
+constraints = "PCB-I-01, I-02"
+width_um = 126.0
+z_ohm = 90.0
+
+[[class]]
+name = "D100-L1"
+netclasses = ["MIPI_100D", "DDR_100D"]
+type = "diff"
+target_ohm = 100
+tolerance_pct = 10
+layer = "L1"
+reference = ["L2"]
+solve = "width"
+gap_um = 175
+constraints = "PCB-I-04, I-05"
+width_um = 135.5
+z_ohm = 100.02
+
+[[class]]
+name = "SE50-L6"
+netclasses = ["DDR_50SE", "EMMC_SD_50SE", "I2S_50SE"]
+type = "se"
+target_ohm = 50
+tolerance_pct = 10
+layer = "L6"
+reference = ["L5"]
+solve = "width"
+constraints = "PCB-I-05, I-06, I-08"
+width_um = 188.0
+z_ohm = 50.0
+
+[[class]]
+name = "D90-L6"
+netclasses = ["USB2_90D", "USB3_90D"]
+type = "diff"
+target_ohm = 90
+tolerance_pct = 10
+layer = "L6"
+reference = ["L5"]
+solve = "width"
+gap_um = 100
+constraints = "PCB-I-01, I-02"
+width_um = 126.0
+z_ohm = 90.0
+
+[[class]]
+name = "D100-L6"
+netclasses = ["MIPI_100D", "DDR_100D"]
+type = "diff"
+target_ohm = 100
+tolerance_pct = 10
+layer = "L6"
+reference = ["L5"]
+solve = "width"
+gap_um = 175
+constraints = "PCB-I-04, I-05"
+width_um = 135.5
+z_ohm = 100.02
+
+[[class]]
+name = "SE50-L4"
+netclasses = ["DDR_50SE", "EMMC_SD_50SE", "I2S_50SE", "MCLK_50SE"]
+type = "se"
+target_ohm = 50
+tolerance_pct = 10
+layer = "L4"
+reference = ["L3", "L5"]
+solve = "width"
+constraints = "PCB-I-05, I-06, I-08, I-09"
+width_um = 102.5
+z_ohm = 50.0
+
+[[class]]
+name = "D90-L4"
+netclasses = ["USB2_90D", "USB3_90D"]
+type = "diff"
+target_ohm = 90
+tolerance_pct = 10
+layer = "L4"
+reference = ["L3", "L5"]
+solve = "width"
+gap_um = 150
+constraints = "PCB-I-01, I-02"
+width_um = 97.0
+z_ohm = 89.98
+
+[[class]]
+name = "D100-L4"
+netclasses = ["MIPI_100D", "DDR_100D"]
+type = "diff"
+target_ohm = 100
+tolerance_pct = 10
+layer = "L4"
+reference = ["L3", "L5"]
+solve = "width"
+gap_um = 250
+constraints = "PCB-I-04, I-05"
+width_um = 89.0
+z_ohm = 100.05
+
+[[class]]
+name = "RF50-L1"
+netclasses = ["RF_50SE"]
+type = "se"
+target_ohm = 50
+tolerance_pct = 10
+layer = "L1"
+reference = ["L3"]
+solve = "width"
+cutout_um = 1600            # L2 cut out 1.6 mm wide under the line
+coplanar_gap_um = 600       # same-layer ground pour kept 0.6 mm from the line edges
+constraints = "PCB-I-07, PCB-R-03"
+width_um = 391.0
+z_ohm = 50.01
+
+[[class]]
+name = "RF50-L6"
+netclasses = ["RF_50SE"]
+type = "se"
+target_ohm = 50
+tolerance_pct = 10
+layer = "L6"
+reference = ["L4"]
+solve = "width"
+cutout_um = 1600            # L5 cut out 1.6 mm wide under the line
+coplanar_gap_um = 600       # same-layer ground pour kept 0.6 mm from the line edges
+constraints = "PCB-I-07, PCB-R-03"
+width_um = 391.0
+z_ohm = 50.01
+
+[[coupling]]
+# Edge coupling of two SE50 traces on L4 at 1W spacing (centre to centre W + 1W).
+name = "L4 SE50 at 1W spacing"
+layers = ["L4", "L4"]
+reference = ["L3", "L5"]
+width_um = 102.5
+offset_um = 205.0
+
+[[coupling]]
+# Edge coupling of two SE50 traces on L4 at 2W spacing (centre to centre W + 2W).
+name = "L4 SE50 at 2W spacing"
+layers = ["L4", "L4"]
+reference = ["L3", "L5"]
+width_um = 102.5
+offset_um = 307.5
+
+[[coupling]]
+# Edge coupling of two SE50 traces on L4 at 3W spacing (centre to centre W + 3W).
+name = "L4 SE50 at 3W spacing"
+layers = ["L4", "L4"]
+reference = ["L3", "L5"]
+width_um = 102.5
+offset_um = 410.0

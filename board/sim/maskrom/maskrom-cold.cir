@@ -1,0 +1,61 @@
+* MaskROM combo (BRD-035, board ADR 0009): cold power-on with Main + Vol- held
+* (MaskROM request) and with Main only (normal boot).
+* Design A = BOM v1.5 lines 78, 97, 98: TPS3839G18 on vcc_1v8 (td 120-350 ms),
+*            PWRON_N pull-up 20 kohm, 100 ohm from the FET to eMMC_D0.
+* Design B = the fix in README.md (Results): TPS3808G01 on vcca1v8_pmu (SENSE
+*            divider 280k / 100k, 1.54 V) with
+*            CT = 390 nF (td 1.21-3.43 s incl. CT +/-10 %), pull-up 100 kohm,
+*            1 kohm to eMMC_D0.
+* Corners: supervisor delay (min / typ / max) and RK809 PWRON_ON_TIME (OTP
+* 100 ms or 500 ms). D0 pull-up 4.7 kohm (strongest assumed).
+* Prints when eMMC_D0 is released relative to RESETB, and the highest D0
+* level while it is forced (must stay below VIL = 0.35 x VCCQ = 0.63 V).
+*
+.param TKEY=500m SLOT18=1 SLOTPMU=2 NSLOT=5 TRST=2m TSUSP=100 TRESUME=101
+.param SUP=0 TD=120m RPWR=20k RD0=100 RPU=4.7k VOLPRESS=1
+* Main pressed at 0.5 s with 5 ms of contact chatter; Vol- 50 ms later; both
+* released at 4.5 s
+Vmain mainb 0 PWL(0 0 0.5 0 0.501 1 0.502 0 0.5035 1 0.505 0 0.507 1 4.5 1 4.501 0)
+Vvol volb 0 PWL(0 0 0.55 0 0.551 {VOLPRESS} 0.553 0 0.555 {VOLPRESS} 4.5 {VOLPRESS} 4.501 0)
+.include maskrom-model.inc
+.ic v(on)=0 v(onq)=0 v(s)=0 v(kt)=0 v(td)=0 v(h2)=1 v(h0)=1 v(hw)=0 v(pwron)=3.0 v(voldn)=0
+.tran 50u 5 0 50u uic
+.control
+echo "design(0=A,1=B) Vol- TKEY TD RESETB(s) D0_released(s) D0_low_after_RESETB(ms) D0_max_while_forced(V)"
+foreach design 0 1
+  if $design = 0
+    alterparam SUP = 0
+    alterparam RPWR = 20k
+    alterparam RD0 = 100
+    set tds = ( 120m 200m 350m )
+  else
+    alterparam SUP = 1
+    alterparam RPWR = 100k
+    alterparam RD0 = 1k
+    set tds = ( 1.21 2.23 3.43 )
+  end
+  foreach vp 1 0
+    alterparam VOLPRESS = $vp
+    foreach tk 100m 500m
+      alterparam TKEY = $tk
+      foreach td $tds
+        alterparam TD = $td
+        reset
+        run
+        meas tran trst WHEN v(resetb)=0.9 RISE=1
+        meas tran trel WHEN v(d0)=0.63 RISE=LAST
+        let held = (trel - trst)*1000
+        let a = trst
+        let b = trel - 1m
+        if b > a
+          meas tran vd0 MAX v(d0) from=$&a to=$&b
+        else
+          let vd0 = 0
+        end
+        echo "$design $vp $tk $td $&trst $&trel $&held $&vd0"
+      end
+    end
+  end
+end
+.endc
+.end

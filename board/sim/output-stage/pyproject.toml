@@ -1,0 +1,6 @@
+[project]
+name = "opendap-board-sim-output-stage"
+version = "0.1.0"
+description = "ngspice simulation of the T1 headphone output stage (TPS65131 pre-rails, LT3045/LT3094, paralleled OPA1622)"
+requires-python = ">=3.10"
+dependencies = []

@@ -1,0 +1,45 @@
+* OpenDAP T1 board: TPS65131 +-7 V pre-rails at one DC load point
+* Default point: VIN 3.8 V (2S tree pre-regulated rail), 0.433 A on each rail
+* (instantaneous peak of a full-scale sine into balanced 32 ohm, both channels,
+* ADR 0012 figures), worst-case parameter stack, switch limit disabled (ilim 10 A)
+* so the unconstrained peak switch current can be read.
+* Change vin, iload and the stack (see README.md) to reproduce the other rows.
+* Run: ngspice -b tps65131-dc-load.cir
+
+.include tps65131-switch-model.cir
+
+.param vin=3.8
+.param iload=0.433
+.param ilim=10
+* worst-case stack: max Rds(on), max DCR, -20 % inductance, rated Isat(-30 %),
+* minimum frequency, max-VF rectifier fit
+.param rp=0.30 rn=0.62 dcr=0.19 l0=3.76u isat30=2.1 fs=1.25meg dis=7.5u dn=1.18 drs=0.07
+* typical stack: rp=0.20 rn=0.44 dcr=0.16 l0=4.7u isat30=2.4 fs=1.38meg dis=8.4u dn=1.09 drs=0.05
+
+VIN vin 0 {vin}
+X1 vin vpos vneg ilp iln tps65131 params: ilim={ilim} rp={rp} rn={rn} dcr={dcr}
++ l0={l0} isat30={isat30} fs={fs} dis={dis} dn={dn} drs={drs}
+ILP vpos 0 {iload}
+ILN 0 vneg {iload}
+
+.ic v(vpos)=6.975 v(vneg)=-6.987 v(x1.vcp)=1.0 v(x1.vcn)=1.6
+.options method=gear reltol=1e-3 abstol=1e-9 itl4=50
+.tran 5n 0.6m 0 5n uic
+
+.control
+run
+meas tran vpos_avg avg v(vpos) from=0.5m to=0.6m
+meas tran vneg_avg avg v(vneg) from=0.5m to=0.6m
+meas tran ilp_peak max v(ilp) from=0.5m to=0.6m
+meas tran iln_peak max v(iln) from=0.5m to=0.6m
+meas tran iln_avg avg v(iln) from=0.5m to=0.6m
+meas tran vneg_pp pp v(vneg) from=0.5m to=0.6m
+meas tran vpos_pp pp v(vpos) from=0.5m to=0.6m
+meas tran iin avg i(VIN) from=0.5m to=0.6m
+let inv_pct = iln_peak/1.8*100
+let boost_pct = ilp_peak/1.8*100
+print inv_pct boost_pct
+* regulation lost (|vneg_avg| well below 6.99 V) means the inverter cannot carry
+* the load: its real peak current would sit at the switch limit
+.endc
+.end

@@ -1,0 +1,6 @@
+[project]
+name = "opendap-board-sim-flex-impedance"
+version = "0.1.0"
+description = "2D field solver for the T1 flat cables: differential impedance, coupling, conductor loss and power-conductor sizing"
+requires-python = ">=3.10"
+dependencies = ["numpy>=2.0", "scipy>=1.13"]

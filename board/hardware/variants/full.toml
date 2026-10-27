@@ -1,0 +1,75 @@
+# OpenDAP T1 main board: variant "full"
+#
+# Format: opendap.board-variant/v1, defined in docs/specs/feature-blocks.md §4.
+# Every block of the catalog appears exactly once under [blocks]. KiCad's
+# variant data, the BOM, pick-and-place, devicetree overlays and the device
+# description are generated from this file (RFC 0011 rule 7); nothing is
+# edited by hand per variant.
+#
+# 2026-10-25 (RFC 0014, HATs are USB only): blk.hat-3v3 and blk.hat-audio
+# are removed from the catalog.
+
+schema = "opendap.board-variant/v1"
+board = "t1-main-board"
+name = "full"
+kind = "full"
+status = "proposed"
+description = "Prototype 1: every block, every should part and every measurement link with its shunt value (RFC 0011 rule 1, BRD-053)."
+target_level = "Q1"
+catalog = "docs/specs/feature-blocks.md"
+promise = ["T1-040", "BRD-049", "BRD-053"]
+
+[instrumentation]
+links = "shunt"
+test_points = "fit"
+
+[blocks]
+"blk.soc" = { state = "fit" }
+"blk.lpddr4x" = { state = "fit" }
+"blk.emmc" = { state = "fit", params = { capacity_gb = 32 }, note = "BRD-037: 32 GB on prototypes" }
+"blk.microsd" = { state = "fit" }
+"blk.board-id" = { state = "fit" }
+"blk.gpio-expander" = { state = "fit" }
+"blk.charger" = { state = "fit" }
+"blk.gauge" = { state = "fit" }
+"blk.usb-c" = { state = "fit" }
+"blk.pwr-vsys-lv" = { state = "fit" }
+"blk.pwr-3v3-sys" = { state = "fit" }
+"blk.pmic" = { state = "fit" }
+"blk.vdd-cpu" = { state = "fit" }
+"blk.pwr-5v1" = { state = "fit" }
+"blk.hat-5v" = { state = "fit" }
+"blk.usb-vbus-out" = { state = "fit" }
+"blk.current-monitors" = { state = "fit", params = { shunt_mohm = { vsys = 10, audio = 100, display = 100, hat = 20 } } }
+"blk.hat-signals" = { state = "fit" }
+"blk.fp-connector" = { state = "fit" }
+"blk.fp-display" = { state = "fit" }
+"blk.fp-backlight" = { state = "fit" }
+"blk.fp-controls" = { state = "fit" }
+"blk.status-led" = { state = "fit" }
+"blk.mic-main" = { state = "fit" }
+"blk.audio" = { state = "fit" }
+"blk.audio-supply" = { state = "fit" }
+"blk.mclk" = { state = "fit" }
+"blk.dac-l" = { state = "fit" }
+"blk.dac-r" = { state = "fit" }
+"blk.hpa-rails" = { state = "fit" }
+"blk.hpa-se" = { state = "fit" }
+"blk.hpa-bal" = { state = "fit" }
+"blk.jack-se" = { state = "fit" }
+"blk.jack-bal" = { state = "fit" }
+"blk.speaker" = { state = "fit" }
+"blk.mic-ambient" = { state = "fit" }
+"blk.radio" = { state = "fit" }
+"blk.antennas" = { state = "fit" }
+"blk.nfc-tag" = { state = "fit" }
+"blk.nfc-reader" = { state = "fit" }
+"blk.imu" = { state = "fit" }
+"blk.haptics" = { state = "fit" }
+"blk.tpm" = { state = "fit" }
+"blk.rp2354" = { state = "fit" }
+"blk.buttons" = { state = "fit" }
+"blk.maskrom" = { state = "fit" }
+"blk.debug" = { state = "fit" }
+"blk.cover-detect" = { state = "fit", note = "ADR 0020 item 7 (should): fitted on prototype 1 (RFC 0011 rule 1)" }
+"blk.shields" = { state = "dnp", note = "BOM line 90: fitted only if EMC or audio measurements require" }

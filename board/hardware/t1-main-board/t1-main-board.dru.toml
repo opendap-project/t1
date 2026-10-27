@@ -1,0 +1,11 @@
+# Rule sources of the T1 main board's KiCad project, in composition order:
+# fab rules, craft rules, product rules. Paths are relative to the
+# repository root. `odapkit dru compose` writes t1-main-board.kicad_dru from
+# this file; `odapkit dru check` (pre-commit hook kicad-dru-composed) fails
+# when that file is stale.
+version = 1
+sources = [
+  "hardware/lib/opendap/design-rules/pcbway-hdi/pcbway-hdi.kicad_dru",
+  "hardware/lib/opendap/design-rules/opendap-craft/opendap-craft.kicad_dru",
+  "hardware/rules/t1-main-board.kicad_dru",
+]

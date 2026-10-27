@@ -1,0 +1,824 @@
+(kicad_sch (version 20260306) (generator "eeschema") (generator_version "10.0")
+(uuid "9358de98-eae4-528c-82d4-50815a89512d")
+(paper "A4")
+(title_block (title "3.5 mm headphone jack") (date "2026-10-25") (rev "A") (company "The OpenDAP Project") (comment 1 "blk.jack-se") (comment 2 "Single-ended output jack with ESD, plug detect and the reference net ties"))
+(lib_symbols (symbol "Device:D_TVS"
+		(pin_numbers
+			(hide yes)
+		)
+		(pin_names
+			(offset 1.016)
+			(hide yes)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(duplicate_pin_numbers_are_jumpers no)
+		(property "Reference" "D"
+			(at 0 2.54 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "D_TVS"
+			(at 0 -2.54 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Bidirectional transient-voltage-suppression diode"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_keywords" "diode TVS thyrector"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_fp_filters" "TO-???* *_Diode_* *SingleDiode* D_*"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "D_TVS_0_1"
+			(polyline
+				(pts
+					(xy -2.54 1.27) (xy -2.54 -1.27) (xy 2.54 1.27) (xy 2.54 -1.27) (xy -2.54 1.27)
+				)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 0.508 1.27) (xy 0 1.27) (xy 0 -1.27) (xy -0.508 -1.27)
+				)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 1.27 0) (xy -1.27 0)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+		)
+		(symbol "D_TVS_1_1"
+			(pin passive line
+				(at -3.81 0 0)
+				(length 2.54)
+				(name "A1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 3.81 0 180)
+				(length 2.54)
+				(name "A2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
+(symbol "Device:NetTie_2"
+		(pin_numbers
+			(hide yes)
+		)
+		(pin_names
+			(offset 0)
+			(hide yes)
+		)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(in_pos_files yes)
+		(duplicate_pin_numbers_are_jumpers no)
+		(property "Reference" "NT"
+			(at 0 1.27 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "NetTie_2"
+			(at 0 -1.27 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Net tie, 2 pins"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_keywords" "net tie short"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_fp_filters" "Net*Tie*"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "NetTie_2_0_1"
+			(polyline
+				(pts
+					(xy -1.27 0) (xy 1.27 0)
+				)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+		)
+		(symbol "NetTie_2_1_1"
+			(pin passive line
+				(at -2.54 0 0)
+				(length 2.54)
+				(name "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 2.54 0 180)
+				(length 2.54)
+				(name "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
+(symbol "Same_Sky:SJ2-35954D-SMT-TR"
+		(pin_names
+			(offset 1.016)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(property "Reference" "J"
+			(at -8.89 17.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "SJ2-35954D-SMT-TR"
+			(at -8.89 -17.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Same_Sky:Same_Sky_SJ2-35954D-SMT-TR_Jack_3.5mm_TRRS_Horizontal"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://www.sameskydevices.com/product/resource/sj2-3595x-smt.pdf"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "3.5 mm 4-conductor (TRRS) audio jack, right angle, SMT, tip and ring-1 switches, tape and reel"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "Same Sky"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "SJ2-35954D-SMT-TR"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Second_Source" "Same Sky SJ2-35894D-SMT-TR (BOM v1 line 30)"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_keywords" "audio jack 3.5mm TRRS headphone SMT switch Same Sky SJ2-3595"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_fp_filters" "Same_Sky_SJ2-35954D-SMT-TR_Jack_3.5mm_TRRS_Horizontal*"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "SJ2-35954D-SMT-TR_1_1"
+			(rectangle
+				(start -8.89 16.51)
+				(end 8.89 -16.51)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type background)
+				)
+			)
+			(pin passive line
+				(at -12.7 10.16 0)
+				(length 3.81)
+				(name "TIP"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at -12.7 7.62 0)
+				(length 3.81)
+				(name "TIP_SW"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "10"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at -12.7 2.54 0)
+				(length 3.81)
+				(name "RING1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "3"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at -12.7 0 0)
+				(length 3.81)
+				(name "RING1_SW"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "11"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at -12.7 -5.08 0)
+				(length 3.81)
+				(name "RING2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "4"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at -12.7 -10.16 0)
+				(length 3.81)
+				(name "SLEEVE"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
+(symbol "power:GND"
+		(power global)
+		(pin_numbers
+			(hide yes)
+		)
+		(pin_names
+			(offset 0)
+			(hide yes)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(duplicate_pin_numbers_are_jumpers no)
+		(property "Reference" "#PWR"
+			(at 0 -6.35 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 0 -3.81 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_keywords" "global power"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "GND_0_1"
+			(polyline
+				(pts
+					(xy 0 0) (xy 0 -1.27) (xy 1.27 -1.27) (xy 0 -2.54) (xy -1.27 -1.27) (xy 0 -1.27)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+		)
+		(symbol "GND_1_1"
+			(pin power_in line
+				(at 0 0 270)
+				(length 0)
+				(name ""
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	))
+(symbol (lib_id "Same_Sky:SJ2-35954D-SMT-TR") (at 52.07 62.23 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "02e18c33-bab7-5b91-b504-7e2a31db453b")
+  (property "Reference" "J3401" (at 43.18 43.18 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Value" "SJ2-35954D-SMT-TR" (at 43.18 40.64 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Footprint" "Same_Sky:Same_Sky_SJ2-35954D-SMT-TR_Jack_3.5mm_TRRS_Horizontal" (at 52.07 62.23 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "https://www.sameskydevices.com/product/resource/sj2-3595x-smt.pdf" (at 52.07 62.23 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Description" "3.5 mm 4-conductor (TRRS) audio jack, right angle, SMT, tip and ring-1 switches, tape and reel" (at 52.07 62.23 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Manufacturer" "Same Sky" (at 52.07 62.23 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "MPN" "SJ2-35954D-SMT-TR" (at 52.07 62.23 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Second_Source" "Same Sky SJ2-35894D-SMT-TR (BOM v1 line 30)" (at 52.07 62.23 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Block" "blk.jack-se" (at 52.07 62.23 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Constraints" "PCB-A-11 PCB-A-17" (at 52.07 62.23 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "2" (uuid "ae73968c-9664-5711-83d5-a02e30ca9c6c"))
+  (pin "10" (uuid "ccd64bec-2916-5d61-9409-8e006494ee73"))
+  (pin "3" (uuid "1f15f50d-f82a-574e-bfcc-c673106bfba0"))
+  (pin "11" (uuid "b85f554a-74ba-5e6f-92b4-ec842d89be9a"))
+  (pin "4" (uuid "10675d1c-3cd7-50a1-bc14-547befc5a302"))
+  (pin "1" (uuid "40c84b2f-512f-5547-a3ac-c07989cf3854"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/f0b30e4a-e851-56e5-9afb-2c2e4bae6c00" (reference "J3401") (unit 1))))
+)
+(wire (pts (xy 39.37 52.07) (xy 36.83 52.07)) (stroke (width 0) (type default)) (uuid "5a617312-0541-5df4-91e2-10d2c0ace5be"))
+(wire (pts (xy 39.37 54.61) (xy 36.83 54.61)) (stroke (width 0) (type default)) (uuid "72b413bb-3425-5112-99e0-99c46610d8d9"))
+(wire (pts (xy 39.37 59.69) (xy 36.83 59.69)) (stroke (width 0) (type default)) (uuid "821d5ed5-c373-5a1d-ab5d-62198a5af7cb"))
+(no_connect (at 39.37 62.23) (uuid "3bac33be-832e-5736-81e8-c2c697514fd7"))
+(wire (pts (xy 39.37 67.31) (xy 27.94 67.31)) (stroke (width 0) (type default)) (uuid "a228871f-ffde-5689-94ca-377dd1c04fde"))
+(symbol (lib_id "power:GND") (at 27.94 67.31 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "9003a35d-cc37-55ef-8286-7503a6d54a40")
+  (property "Reference" "#PWR0575" (at 27.94 67.31 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Value" "GND" (at 27.94 71.12 0) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "" (at 27.94 67.31 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "" (at 27.94 67.31 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "60d3d7ac-2119-5d16-aae9-f030e5991654"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/f0b30e4a-e851-56e5-9afb-2c2e4bae6c00" (reference "#PWR0575") (unit 1))))
+)
+(wire (pts (xy 39.37 72.39) (xy 36.83 72.39)) (stroke (width 0) (type default)) (uuid "bec9178c-7cfb-51dd-ad89-f51396247e01"))
+(symbol (lib_id "power:GND") (at 36.83 72.39 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "d7d26613-fd3f-5a2e-9865-8c31cf9b2cd1")
+  (property "Reference" "#PWR0576" (at 36.83 72.39 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Value" "GND" (at 36.83 76.2 0) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "" (at 36.83 72.39 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "" (at 36.83 72.39 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "43672a7b-e971-563d-90f6-d6e3278dda3c"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/f0b30e4a-e851-56e5-9afb-2c2e4bae6c00" (reference "#PWR0576") (unit 1))))
+)
+(rectangle (start 22.86 35.56) (end 80.01 81.28) (stroke (width 0) (type dash)) (fill (type none)) (uuid "24612801-0162-5ba5-a4c6-c41870ec639b"))
+(text "3.5 mm jack (SJ2-35954D)" (exclude_from_sim no) (at 24.13 34.29 0) (effects (font (size 2.54 2.54)) (justify left bottom)) (uuid "3e8ef5f4-71cc-5a04-babd-892ee193d208"))
+(symbol (lib_id "Device:NetTie_2") (at 106.68 45.72 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom no) (on_board yes) (dnp no) (uuid "66d3724f-a07f-510d-8059-4bcd051eee42")
+  (property "Reference" "NT3401" (at 104.14 43.18 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Value" "NetTie" (at 104.14 49.53 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Footprint" "NetTie:NetTie-2_SMD_Pad0.5mm" (at 106.68 45.72 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "~" (at 106.68 45.72 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Description" "Net tie: a reference trace joins ground at the headphone jack's ground pin (PCB-A-03, -16)" (at 106.68 45.72 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Block" "blk.jack-se" (at 106.68 45.72 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "68f64e19-4baa-572c-ac71-61e21ec4dbc8"))
+  (pin "2" (uuid "4ba4dc61-1035-559e-b5d4-5ad2f7ce7a2b"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/f0b30e4a-e851-56e5-9afb-2c2e4bae6c00" (reference "NT3401") (unit 1))))
+)
+(wire (pts (xy 104.14 45.72) (xy 101.6 45.72)) (stroke (width 0) (type default)) (uuid "77d6d483-d114-5a5d-9f06-34901e624ec5"))
+(wire (pts (xy 109.22 45.72) (xy 114.3 45.72)) (stroke (width 0) (type default)) (uuid "357a7f95-4151-5e54-8734-5e43fabe641b"))
+(symbol (lib_id "power:GND") (at 114.3 45.72 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "a24a969b-57b7-5d13-b0ae-c10cea076451")
+  (property "Reference" "#PWR0577" (at 114.3 45.72 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Value" "GND" (at 114.3 49.53 0) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "" (at 114.3 45.72 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "" (at 114.3 45.72 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "4df7bce5-20a7-56ca-817a-9e67f75c30a0"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/f0b30e4a-e851-56e5-9afb-2c2e4bae6c00" (reference "#PWR0577") (unit 1))))
+)
+(symbol (lib_id "Device:NetTie_2") (at 106.68 58.42 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom no) (on_board yes) (dnp no) (uuid "b276d8ec-9583-5ee4-9ca5-83e8bd103aca")
+  (property "Reference" "NT3402" (at 104.14 55.88 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Value" "NetTie" (at 104.14 62.23 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Footprint" "NetTie:NetTie-2_SMD_Pad0.5mm" (at 106.68 58.42 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "~" (at 106.68 58.42 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Description" "Net tie: a reference trace joins ground at the headphone jack's ground pin (PCB-A-03, -16)" (at 106.68 58.42 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Block" "blk.jack-se" (at 106.68 58.42 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "83fa50e3-7964-52a3-accc-61bdac028f3a"))
+  (pin "2" (uuid "c122b37e-81bc-578b-b72e-8f91816fe058"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/f0b30e4a-e851-56e5-9afb-2c2e4bae6c00" (reference "NT3402") (unit 1))))
+)
+(wire (pts (xy 104.14 58.42) (xy 101.6 58.42)) (stroke (width 0) (type default)) (uuid "dcc9da88-02d2-592e-a130-ad171e5de7aa"))
+(wire (pts (xy 109.22 58.42) (xy 114.3 58.42)) (stroke (width 0) (type default)) (uuid "feab1047-528c-5ee1-807a-50f6aedf76fc"))
+(symbol (lib_id "power:GND") (at 114.3 58.42 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "45190746-8f34-5531-826b-c06912587c77")
+  (property "Reference" "#PWR0578" (at 114.3 58.42 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Value" "GND" (at 114.3 62.23 0) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "" (at 114.3 58.42 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "" (at 114.3 58.42 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "e7333b07-1142-53ec-b872-1d2d0a127371"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/f0b30e4a-e851-56e5-9afb-2c2e4bae6c00" (reference "#PWR0578") (unit 1))))
+)
+(rectangle (start 85.09 35.56) (end 198.12 66.04) (stroke (width 0) (type dash)) (fill (type none)) (uuid "a7ff5981-8a05-5e62-8e5a-7a3d1ae72c5b"))
+(text "Reference net ties at the sleeve (PCB-A-03, -16)" (exclude_from_sim no) (at 86.36 34.29 0) (effects (font (size 2.54 2.54)) (justify left bottom)) (uuid "ba474354-b658-51a5-b88e-8681b6ecd671"))
+(symbol (lib_id "Device:D_TVS") (at 30.48 111.76 90) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "6a13c581-d940-508a-a309-961d80b35b95")
+  (property "Reference" "D3401" (at 35.92 110.49 90) (effects (font (size 1.27 1.27))))
+  (property "Value" "TPD1E10B06" (at 38.82 113.03 90) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "Package_SON:Texas_DPY0002A_0.6x1mm_P0.65mm" (at 30.48 111.76 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "https://www.ti.com/lit/ds/symlink/tpd1e10b06.pdf" (at 30.48 111.76 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Description" "ESD protection diode, bidirectional, 5.5 V working, 12 pF, X1SON-2 (DPY)" (at 30.48 111.76 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Manufacturer" "Texas Instruments" (at 30.48 111.76 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "MPN" "TPD1E10B06DPYR" (at 30.48 111.76 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Second_Source" "onsemi ESD9B5.0ST5G (BOM v1 line 36; other land)" (at 30.48 111.76 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Block" "blk.jack-se" (at 30.48 111.76 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "b01b6f03-3799-5e3d-9f56-9cd1fdae96b2"))
+  (pin "2" (uuid "fd931f5e-a45a-57c1-8c82-23de9c7f2b3c"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/f0b30e4a-e851-56e5-9afb-2c2e4bae6c00" (reference "D3401") (unit 1))))
+)
+(wire (pts (xy 30.48 107.95) (xy 30.48 105.41)) (stroke (width 0) (type default)) (uuid "833fbe18-7bb4-5049-9256-57e643f7a708"))
+(wire (pts (xy 30.48 115.57) (xy 30.48 118.11)) (stroke (width 0) (type default)) (uuid "98fe7b84-7ff2-5783-b459-2fcb5f88e3d6"))
+(symbol (lib_id "power:GND") (at 30.48 118.11 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "6ebe8609-a934-5ca8-ae9f-1b39a9375667")
+  (property "Reference" "#PWR0579" (at 30.48 118.11 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Value" "GND" (at 30.48 121.92 0) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "" (at 30.48 118.11 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "" (at 30.48 118.11 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "e6160e8d-fc1e-510e-ba88-5a594662c6df"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/f0b30e4a-e851-56e5-9afb-2c2e4bae6c00" (reference "#PWR0579") (unit 1))))
+)
+(symbol (lib_id "Device:D_TVS") (at 53.34 111.76 90) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "46829063-a197-5702-84ab-a983bf806c66")
+  (property "Reference" "D3402" (at 58.78 110.49 90) (effects (font (size 1.27 1.27))))
+  (property "Value" "TPD1E10B06" (at 61.68 113.03 90) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "Package_SON:Texas_DPY0002A_0.6x1mm_P0.65mm" (at 53.34 111.76 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "https://www.ti.com/lit/ds/symlink/tpd1e10b06.pdf" (at 53.34 111.76 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Description" "ESD protection diode, bidirectional, 5.5 V working, 12 pF, X1SON-2 (DPY)" (at 53.34 111.76 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Manufacturer" "Texas Instruments" (at 53.34 111.76 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "MPN" "TPD1E10B06DPYR" (at 53.34 111.76 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Second_Source" "onsemi ESD9B5.0ST5G (BOM v1 line 36; other land)" (at 53.34 111.76 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Block" "blk.jack-se" (at 53.34 111.76 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "7d39cfca-e16f-5130-8a51-b95293061962"))
+  (pin "2" (uuid "c1529189-35a3-5e30-acd3-e2a5fe4186e8"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/f0b30e4a-e851-56e5-9afb-2c2e4bae6c00" (reference "D3402") (unit 1))))
+)
+(wire (pts (xy 53.34 107.95) (xy 53.34 105.41)) (stroke (width 0) (type default)) (uuid "6a1d4ec1-934c-5dc7-948d-6099edf1bae4"))
+(wire (pts (xy 53.34 115.57) (xy 53.34 118.11)) (stroke (width 0) (type default)) (uuid "e7851518-2cb3-5dc3-a93c-735e201a2140"))
+(symbol (lib_id "power:GND") (at 53.34 118.11 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "4c4c1049-1090-53af-9479-573be7ff2187")
+  (property "Reference" "#PWR0580" (at 53.34 118.11 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Value" "GND" (at 53.34 121.92 0) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "" (at 53.34 118.11 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "" (at 53.34 118.11 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "9606f4c6-3611-5c97-ad29-a842dd3ea9f7"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/f0b30e4a-e851-56e5-9afb-2c2e4bae6c00" (reference "#PWR0580") (unit 1))))
+)
+(symbol (lib_id "Device:D_TVS") (at 76.2 111.76 90) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "752321e4-3593-535b-adc2-1d5237ca2c98")
+  (property "Reference" "D3403" (at 81.64 110.49 90) (effects (font (size 1.27 1.27))))
+  (property "Value" "TPD1E10B06" (at 84.54 113.03 90) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "Package_SON:Texas_DPY0002A_0.6x1mm_P0.65mm" (at 76.2 111.76 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "https://www.ti.com/lit/ds/symlink/tpd1e10b06.pdf" (at 76.2 111.76 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Description" "ESD protection diode, bidirectional, 5.5 V working, 12 pF, X1SON-2 (DPY)" (at 76.2 111.76 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Manufacturer" "Texas Instruments" (at 76.2 111.76 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "MPN" "TPD1E10B06DPYR" (at 76.2 111.76 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Second_Source" "onsemi ESD9B5.0ST5G (BOM v1 line 36; other land)" (at 76.2 111.76 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Block" "blk.jack-se" (at 76.2 111.76 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "f533dd49-b75c-5be4-ac66-abb6ffbc1718"))
+  (pin "2" (uuid "b2511fb1-38e0-591e-baed-2e37ce435495"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/f0b30e4a-e851-56e5-9afb-2c2e4bae6c00" (reference "D3403") (unit 1))))
+)
+(wire (pts (xy 76.2 107.95) (xy 76.2 105.41)) (stroke (width 0) (type default)) (uuid "c9309f31-ee18-54da-ac87-7d2d67d8b692"))
+(wire (pts (xy 76.2 115.57) (xy 76.2 118.11)) (stroke (width 0) (type default)) (uuid "bc5aa965-cc2a-55e7-8b08-38c5c5434e69"))
+(symbol (lib_id "power:GND") (at 76.2 118.11 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "8a3cddac-f96c-5f51-b5f9-509c0129b8ce")
+  (property "Reference" "#PWR0581" (at 76.2 118.11 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Value" "GND" (at 76.2 121.92 0) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "" (at 76.2 118.11 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "" (at 76.2 118.11 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "1" (uuid "9cbc2313-08ec-57f6-a9b0-c5e808386780"))
+  (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/f0b30e4a-e851-56e5-9afb-2c2e4bae6c00" (reference "#PWR0581") (unit 1))))
+)
+(rectangle (start 22.86 91.44) (end 99.06 127) (stroke (width 0) (type dash)) (fill (type none)) (uuid "e352dce2-fa9d-5f8d-beaa-6afdc6bf7d30"))
+(text "ESD and detect (BOM v1 line 36)" (exclude_from_sim no) (at 24.13 90.17 0) (effects (font (size 2.54 2.54)) (justify left bottom)) (uuid "ff59823f-0478-5e28-b8a2-0b8ee9f3358e"))
+(text_box "Notes\n1. Function: 3.5 mm TRRS jack used as TRS (tip L, ring 1 R, ring 2 and sleeve ground; BOM v1\n   line 30); TPD1E10B06 on each output and the detect line (line 36).\n2. Absent state: passive. Plug detect: the tip switch (pin 10, normally closed to the tip,\n   UNVERIFIED by text) on HP_DET_SE, read by expander P10 with its pull-up on the host side.\n3. HPSE_REF_L and _R (DAC REFA, REFB and the SE references) each a separate trace joining\n   ground at the sleeve pin through a net tie (PCB-A-03, PCB-A-16, PCB-A-17).\n4. Open: RF filter footprints near the jack (PCB-A-19, Q2); the detect polarity (sample)." (exclude_from_sim no) (at 152.4 140.97 0) (size 129.54 20.32) (margins 1.905 1.905 1.905 1.905) (stroke (width 0) (type default)) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "4dd6a5cb-6b7e-5d69-a01b-12556be05d11"))
+(text "Interface" (exclude_from_sim no) (at 22.86 168.91 0) (effects (font (size 2.54 2.54)) (justify left bottom)) (uuid "b0e9ff12-6730-59b6-84b4-bf005ce1ad36"))
+(table (column_count 3) (border (external yes) (header yes) (stroke (width 0) (type solid))) (separators (rows yes) (cols yes) (stroke (width 0) (type solid))) (column_widths 45.72 25.4 50.8) (row_heights 5.08 5.08 5.08 7.62) (cells (table_cell "Net" (exclude_from_sim no) (at 22.86 170.18 0) (size 45.72 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27) (bold yes)) (justify left top)) (uuid "c6b8a64c-f055-5328-b24d-4bae1bd418d2")) (table_cell "Direction" (exclude_from_sim no) (at 68.58 170.18 0) (size 25.4 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27) (bold yes)) (justify left top)) (uuid "e0b53ab2-7965-5eb0-829a-c8a4e467d96b")) (table_cell "Absent state (block not fitted)" (exclude_from_sim no) (at 93.98 170.18 0) (size 50.8 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27) (bold yes)) (justify left top)) (uuid "6eb9c280-1fb7-583d-a0c1-e0cf1ee8545b")) (table_cell "HPSE_L, HPSE_R" (exclude_from_sim no) (at 22.86 175.26 0) (size 45.72 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "d6db6030-71de-58b2-ba71-2a26e567288c")) (table_cell "Input" (exclude_from_sim no) (at 68.58 175.26 0) (size 25.4 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "aa682e2a-06ad-55b6-974f-16efc82fb848")) (table_cell "Not applicable: never omitted (BRD-011)" (exclude_from_sim no) (at 93.98 175.26 0) (size 50.8 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "c303c655-f4a6-5fff-b2a8-fe39f5f5c0b6")) (table_cell "HPSE_REF_L, HPSE_REF_R" (exclude_from_sim no) (at 22.86 180.34 0) (size 45.72 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "00d12df5-9d21-5d40-b8e6-0324b3997881")) (table_cell "Passive" (exclude_from_sim no) (at 68.58 180.34 0) (size 25.4 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "736f0769-4597-524b-b6cc-dc98d367dff5")) (table_cell "Join ground at the sleeve pin only" (exclude_from_sim no) (at 93.98 180.34 0) (size 50.8 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "4cc2de1b-cabc-543f-9f24-83064fb1896f")) (table_cell "HP_DET_SE" (exclude_from_sim no) (at 22.86 185.42 0) (size 45.72 7.62) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "6da0cf38-22bf-5a34-a4a1-03359cc43303")) (table_cell "Output" (exclude_from_sim no) (at 68.58 185.42 0) (size 25.4 7.62) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "1403b0c1-46cd-5d30-991f-821b7484ee38")) (table_cell "Pull-up on the host side; reads the tip switch" (exclude_from_sim no) (at 93.98 185.42 0) (size 50.8 7.62) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "9be833c7-25d8-5ff9-8869-58b344e0ad61"))))
+(label "HPSE_L" (at 36.83 52.07 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "b749a2ca-22d4-5b68-be96-24e653083c54"))
+(label "HP_DET_SE" (at 36.83 54.61 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "6970309c-9540-5f7a-b9ec-e9704db93c4a"))
+(label "HPSE_R" (at 36.83 59.69 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "19150b53-f858-5d7e-9306-06d5b6c33459"))
+(label "HPSE_REF_L" (at 101.6 45.72 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "e720481c-79b7-5541-b75c-7f66ca80eed2"))
+(label "HPSE_REF_R" (at 101.6 58.42 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "28ae5361-bbdf-51be-b543-68bfa842548d"))
+(label "HPSE_L" (at 30.48 105.41 90) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "431dc9ca-c395-5752-930e-8892e14a5fbd"))
+(label "HPSE_R" (at 53.34 105.41 90) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "822b1401-cdbe-58b7-a633-06265d307890"))
+(label "HP_DET_SE" (at 76.2 105.41 90) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "8aba2bba-8429-586b-8419-13a55d116942"))
+(bus (pts (xy 45.72 160.02) (xy 50.8 160.02)) (stroke (width 0) (type default)) (uuid "0a13f212-91a5-50e7-a7ba-53a9270a0e00"))
+(hierarchical_label "{EXP_IO}" (shape bidirectional) (at 45.72 160.02 180) (effects (font (size 1.27 1.27)) (justify right)) (uuid "9456fe5e-006c-52f1-ad6b-631ae76116fa"))
+(bus (pts (xy 45.72 154.94) (xy 50.8 154.94)) (stroke (width 0) (type default)) (uuid "23b4ee34-1382-593e-8ef4-d8dd6f3d7b89"))
+(hierarchical_label "{HP_SE}" (shape bidirectional) (at 45.72 154.94 180) (effects (font (size 1.27 1.27)) (justify right)) (uuid "251db1c7-928c-560b-8553-73c9875446d6"))
+(embedded_fonts no))

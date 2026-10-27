@@ -1,0 +1,33 @@
+* MCLK divider, output side (ADR 0019): one SN74AUC1G74 per DAC, on MCLK_1V8; its Q output
+* drives one CS43198 XTI/MCLK input (VL domain) through a series resistor and one trace. The two
+* dividers are identical, so one is simulated.
+*
+* Topology:
+*   Q --[RS]-- trace B -- XTI (CIN + CPAD, 550 kohm pull-down)
+* The flip-flop is a behavioural source: Q toggles on every rising clock edge, so the output
+* period is exactly two oscillator periods and the high time is one oscillator period plus
+* DLT = tPHL - tPLH. SCES537D p. 4 (CL = 15 pF, VCC 1.8 V +/- 0.15 V) gives CLK -> Q 1.0 to
+* 1.7 ns, so |DLT| <= 0.7 ns over process, supply and temperature: run.py runs DLT = -0.7, 0
+* and +0.7 ns (the load stays at or under 15 pF, ff_load_pf).
+* Output driver: ideal edge (TRS) behind ROUT. SCES537D p. 4 gives VOH >= 1.2 V at -8 mA and
+* VOL <= 0.45 V at 8 mA with VCC = 1.65 V, so the weakest output is about 56 ohm ("bound");
+* ROUT = 15 ohm is a strong driver for the overshoot corner (UNVERIFIED: TI publishes no output
+* impedance). TRS = 0.3 ns intrinsic edge (UNVERIFIED).
+* CIN: CS43198 input capacitance, 10 pF maximum (DS1156F2 Table 3-11, p. 19); no minimum.
+* CPAD: pad and via (UNVERIFIED). Traces: lossless 50 ohm lines, 7 ps/mm.
+* The circuit is linear: run.py simulates VCC = 1 V and scales the results.
+.param VCC=1 ROUT=56 TRS=0.3n F=24.576e6 DLT=0 RS=27 CIN=10p CPAD=0.5p TDB=105p NPER=12
+.param T={1/F} PW={T/2+DLT-TRS}
+Vsrc src 0 PULSE(0 {VCC} 2n {TRS} {TRS} {PW} {T})
+Rout src q {ROUT}
+Cq q 0 2p
+Rs1 q a1 {RS}
+T1 a1 0 e1 0 Z0=50 TD={TDB}
+Cin1 e1 0 {CIN+CPAD}
+Rpd1 e1 0 550k
+.tran 10p {NPER*T} 0 10p
+.control
+run
+wrdata xti.dat v(q) v(e1) i(Vsrc)
+.endc
+.end

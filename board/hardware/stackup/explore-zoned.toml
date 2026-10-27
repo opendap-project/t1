@@ -1,0 +1,194 @@
+# OpenDAP T1 main board: layer-count exploration over the floorplan zones.
+#
+# Input to toolkit-hardware's `odapkit stackup explore` (format in its
+# docs/specs/stackup-method.md §5). Every candidate stack of 4, 6, 8 and 10 layers, every
+# build and every symmetric dielectric sequence from the palette below is enumerated, pruned by
+# the needs of each zone and ranked. Zones and their needs: docs/specs/floorplan-v1.md §2-3;
+# the stack chosen from it: docs/specs/stackup-v2.md (superseded by stackup v3). Dielectric values: the fab's stack-up table
+# [PW-ST] and minimum impedance dielectric [P12] (source keys of docs/specs/stackup-v1.md).
+
+version = 1
+name = "T1 main board, zoned layer count"
+layer_counts = [4, 6, 8, 10]
+builds = ["through", "1+N+1", "2+N+2"]
+
+# Impedance classes solved on every fast layer of the candidates: name, type, target ohm,
+# [outer gap, inner gap] µm (stackup v1 §5 gap choices). Dk of the multi-sheet prepregs is the
+# thickness-weighted mean of the sheets (ASSUMED).
+classes = [
+  ["SE50", "se", 50, [0, 0]],
+  ["D90", "diff", 90, [100, 150]],
+  ["D100", "diff", 100, [175, 250]],
+]
+
+[thickness]
+# PCB-S-01: 1.0-1.2 mm (ADR 0016 z budget), nominal + the fab's ±0.10 mm within the maximum.
+min_mm = 1.0
+max_mm = 1.2
+tolerance_mm = 0.1
+target_mm = 1.0       # ADR 0016 item 5: a 1.0 mm board returns 0.2 mm to the body
+
+[copper]
+# As stackup v1 §1: outer 18 µm base plated to 35 µm, laser-level copper 12 µm base plated to
+# 25 µm (ASSUMED), inner 18 µm; LPI mask 20 µm per side (ASSUMED).
+outer_um = 35
+hdi_plated_um = 25
+inner_um = 18
+mask_um = 20
+
+[etch]
+# As stackup v1 (ASSUMED trapezoid).
+outer_reduction_um = 10.0
+inner_reduction_um = 6.0
+
+[rules]
+min_trace_um = 75     # the fab's HDI 3/3 mil order option (PCB-G-01 exception)
+width_gate_class = "D100" # the narrowest class (stackup v1 §5): every fast layer must hold it at min_trace_um or wider
+impedance_top_k = 400 # full class geometry for every passing candidate (cached per local geometry)
+pair_max_um = 90      # PCB-S-12 (constraints v0.14): the core-rail plane paired with ground across a
+                      # laser prepreg, 1080 (65 µm) or 3313 (90 µm); 65 µm only in v0.13 and before
+laser_max_um = 150    # the fab's laser drilling, dielectric <= 0.15 mm [P3]
+
+[rf]
+# PCB-R-03: Murata 2EL, 50 ohm microstrip over a ground 230-240 µm below it.
+min_um = 230
+max_um = 240
+
+# Dielectric palette. Prepregs: the fab's stack-up table [PW-ST], pressed thickness of a single
+# sheet (1080 0.0565-0.0705, 3313 0.0855-0.0925, 2116 0.1055-0.1195, 7628 0.1715-0.1855 mm;
+# the values used are those of stackup v1, or the middle of the fab's range). Cores: 50 µm is
+# the fab's minimum impedance dielectric [P12] (stackup v1); 103 µm the core of stackup v1;
+# 65, 130, 230, 300 and 430 µm are core thicknesses listed in [PW-ST] (0.065, 0.13, 0.23, 0.3,
+# 0.43 mm), read as
+# dielectric thickness (UNVERIFIED: the table may include copper).
+[[dielectric]]
+name = "1080"
+kind = "prepreg"
+um = 65
+er = 4.21
+laser = true
+[[dielectric]]
+name = "3313"
+kind = "prepreg"
+um = 90
+er = 4.45
+laser = true
+[[dielectric]]
+name = "2116"
+kind = "prepreg"
+um = 120
+er = 4.45
+laser = true
+[[dielectric]]
+name = "7628"
+kind = "prepreg"
+um = 180
+er = 4.74
+# Two sheets pressed together (sum of the single-sheet values, ASSUMED: the fab's DFM review
+# gives the pressed thickness of a multi-sheet opening).
+[[dielectric]]
+name = "1080x2"
+kind = "prepreg"
+um = 130
+er = 4.21
+laser = true
+[[dielectric]]
+name = "1080+3313"
+kind = "prepreg"
+um = 155
+er = 4.35
+[[dielectric]]
+name = "3313x2"
+kind = "prepreg"
+um = 180
+er = 4.45
+[[dielectric]]
+name = "1080+2116"
+kind = "prepreg"
+um = 185
+er = 4.37
+[[dielectric]]
+name = "2116x2"
+kind = "prepreg"
+um = 240
+er = 4.45
+[[dielectric]]
+name = "c50"
+kind = "core"
+um = 50
+er = 4.6
+[[dielectric]]
+name = "c65"
+kind = "core"
+um = 65
+er = 4.6
+[[dielectric]]
+name = "c103"
+kind = "core"
+um = 103
+er = 4.6
+[[dielectric]]
+name = "c130"
+kind = "core"
+um = 130
+er = 4.6
+[[dielectric]]
+name = "c230"
+kind = "core"
+um = 230
+er = 4.6
+[[dielectric]]
+name = "c300"
+kind = "core"
+um = 300
+er = 4.6
+[[dielectric]]
+name = "c430"
+kind = "core"
+um = 430
+er = 4.6
+
+# Zones (floorplan v1 §2). Layer 1 is the front (top), the last layer the back (bottom, the
+# SoC side, ADR 0016).
+[[zone]]
+name = "core"                 # SoC, LPDDR4X, eMMC, PMIC
+soc = "bottom"
+outer_fast = "soc"            # the SoC side routes DDR and the ring escape; the front holds the decoupling
+outer_power_ok = ["top"]      # the front may carry rail pours between the decoupling
+soc_side_inner_fast = 1       # BGA escape study: every core signal escapes on one inner layer
+power_planes = 2              # core rails and system rails (BGA escape study: one layer each)
+paired_power = 1              # PCB-S-12
+
+[[zone]]
+name = "audio"                # DACs, MCLK, amplifiers, jacks
+outer_fast = "both"
+stripline_gg = 1              # PCB-I-09: MCLK between two grounds
+# audio rails: no plane required (PCB-P-06 sets 0.3 mm tracks); a plane area where the zone has
+# a free layer (stackup v1 §4.5), never shared with another rail
+
+[[zone]]
+name = "power"                # charger, converters, battery path
+outer_fast = "both"           # PCB-P-08: ground under switch nodes
+pour_layers = 2               # PCB-P-01: the 5 A path needs a pour on two or more inner layers
+low_speed_next_to_power = true
+
+[[zone]]
+name = "radio"                # module, RF lines, U.FL, antenna feed
+outer_fast = "both"
+rf = true
+
+[[zone]]
+name = "io"                   # USB-C, HAT connector, faceplate connector
+outer_fast = "both"
+# RFC 0014 (HATs are USB only): the pairs that leave the core through this zone are the main
+# USB-C D+/D- (1), the HAT USB 3 SSTX/SSRX and D+/D- (3) and the faceplate DSI (5): 9 pairs
+# (was about 13 with PCIe, CSI-2 and the HAT extension). At the inner D90/D100 geometry plus
+# the PCB-I-02 spacing (4 x W) a pair takes <= 0.75 mm of width (arithmetic), so the 9 pairs
+# need 6.8 mm of the 12.4 mm column on one layer: one inner fast layer besides the two outer
+# ones (the back one is lost over the battery-contact window, PCB-L-02).
+inner_fast = 1
+
+[[zone]]
+name = "corridor"             # declared crossings between zones
+outer_fast = "both"
+inner_fast = 1                # as io: the core-io corridor carries the same pairs

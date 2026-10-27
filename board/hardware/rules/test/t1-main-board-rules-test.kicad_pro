@@ -1,0 +1,520 @@
+{
+  "board": {
+    "design_settings": {
+      "rule_severities": {
+        "isolated_copper": "ignore",
+        "lib_footprint_issues": "ignore",
+        "lib_footprint_mismatch": "ignore",
+        "missing_courtyard": "ignore",
+        "track_dangling": "ignore",
+        "via_dangling": "ignore"
+      },
+      "rules": {
+        "min_clearance": 0.0,
+        "min_connection": 0.0,
+        "min_copper_edge_clearance": 0.0,
+        "min_groove_width": 0.0,
+        "min_hole_clearance": 0.0,
+        "min_hole_to_hole": 0.0,
+        "min_microvia_diameter": 0.0,
+        "min_microvia_drill": 0.0,
+        "min_silk_clearance": 0.0,
+        "min_text_height": 0.0,
+        "min_text_thickness": 0.0,
+        "min_through_hole_diameter": 0.0,
+        "min_track_width": 0.0,
+        "min_via_annular_width": 0.0,
+        "min_via_diameter": 0.0
+      }
+    }
+  },
+  "meta": {
+    "filename": "t1-main-board-rules-test.kicad_pro",
+    "version": 3
+  },
+  "net_settings": {
+    "classes": [
+      {
+        "clearance": 0.0,
+        "diff_pair_gap": 0.1,
+        "diff_pair_via_gap": 0.1,
+        "diff_pair_width": 0.1,
+        "microvia_diameter": 0.2,
+        "microvia_drill": 0.1,
+        "name": "Default",
+        "priority": 2147483647,
+        "track_width": 0.0,
+        "via_diameter": 0.4,
+        "via_drill": 0.2
+      },
+      {
+        "clearance": 0.0,
+        "diff_pair_gap": 0.1,
+        "diff_pair_via_gap": 0.1,
+        "diff_pair_width": 0.1,
+        "microvia_diameter": 0.2,
+        "microvia_drill": 0.1,
+        "name": "PWR_BAT",
+        "priority": 0,
+        "track_width": 0.0,
+        "via_diameter": 0.4,
+        "via_drill": 0.2
+      },
+      {
+        "clearance": 0.0,
+        "diff_pair_gap": 0.1,
+        "diff_pair_via_gap": 0.1,
+        "diff_pair_width": 0.1,
+        "microvia_diameter": 0.2,
+        "microvia_drill": 0.1,
+        "name": "PWR_VSYS",
+        "priority": 1,
+        "track_width": 0.0,
+        "via_diameter": 0.4,
+        "via_drill": 0.2
+      },
+      {
+        "clearance": 0.0,
+        "diff_pair_gap": 0.1,
+        "diff_pair_via_gap": 0.1,
+        "diff_pair_width": 0.1,
+        "microvia_diameter": 0.2,
+        "microvia_drill": 0.1,
+        "name": "PWR_VBUS",
+        "priority": 2,
+        "track_width": 0.0,
+        "via_diameter": 0.4,
+        "via_drill": 0.2
+      },
+      {
+        "clearance": 0.0,
+        "diff_pair_gap": 0.1,
+        "diff_pair_via_gap": 0.1,
+        "diff_pair_width": 0.1,
+        "microvia_diameter": 0.2,
+        "microvia_drill": 0.1,
+        "name": "PWR_5V1",
+        "priority": 3,
+        "track_width": 0.0,
+        "via_diameter": 0.4,
+        "via_drill": 0.2
+      },
+      {
+        "clearance": 0.0,
+        "diff_pair_gap": 0.1,
+        "diff_pair_via_gap": 0.1,
+        "diff_pair_width": 0.1,
+        "microvia_diameter": 0.2,
+        "microvia_drill": 0.1,
+        "name": "PWR_AMP",
+        "priority": 4,
+        "track_width": 0.0,
+        "via_diameter": 0.4,
+        "via_drill": 0.2
+      },
+      {
+        "clearance": 0.0,
+        "diff_pair_gap": 0.1,
+        "diff_pair_via_gap": 0.1,
+        "diff_pair_width": 0.1,
+        "microvia_diameter": 0.2,
+        "microvia_drill": 0.1,
+        "name": "SW_NODE",
+        "priority": 5,
+        "track_width": 0.0,
+        "via_diameter": 0.4,
+        "via_drill": 0.2
+      },
+      {
+        "clearance": 0.0,
+        "diff_pair_gap": 0.1,
+        "diff_pair_via_gap": 0.1,
+        "diff_pair_width": 0.1,
+        "microvia_diameter": 0.2,
+        "microvia_drill": 0.1,
+        "name": "AUDIO_ANALOG",
+        "priority": 6,
+        "track_width": 0.0,
+        "via_diameter": 0.4,
+        "via_drill": 0.2
+      },
+      {
+        "clearance": 0.0,
+        "diff_pair_gap": 0.1,
+        "diff_pair_via_gap": 0.1,
+        "diff_pair_width": 0.1,
+        "microvia_diameter": 0.2,
+        "microvia_drill": 0.1,
+        "name": "AUDIO_REF",
+        "priority": 7,
+        "track_width": 0.0,
+        "via_diameter": 0.4,
+        "via_drill": 0.2
+      },
+      {
+        "clearance": 0.0,
+        "diff_pair_gap": 0.1,
+        "diff_pair_via_gap": 0.1,
+        "diff_pair_width": 0.1,
+        "microvia_diameter": 0.2,
+        "microvia_drill": 0.1,
+        "name": "MCLK_50SE",
+        "priority": 8,
+        "track_width": 0.0,
+        "via_diameter": 0.4,
+        "via_drill": 0.2
+      },
+      {
+        "clearance": 0.0,
+        "diff_pair_gap": 0.1,
+        "diff_pair_via_gap": 0.1,
+        "diff_pair_width": 0.1,
+        "microvia_diameter": 0.2,
+        "microvia_drill": 0.1,
+        "name": "USB2_90D",
+        "priority": 9,
+        "track_width": 0.0,
+        "via_diameter": 0.4,
+        "via_drill": 0.2
+      },
+      {
+        "clearance": 0.0,
+        "diff_pair_gap": 0.1,
+        "diff_pair_via_gap": 0.1,
+        "diff_pair_width": 0.1,
+        "microvia_diameter": 0.2,
+        "microvia_drill": 0.1,
+        "name": "USB3_90D",
+        "priority": 10,
+        "track_width": 0.0,
+        "via_diameter": 0.4,
+        "via_drill": 0.2
+      },
+      {
+        "clearance": 0.0,
+        "diff_pair_gap": 0.1,
+        "diff_pair_via_gap": 0.1,
+        "diff_pair_width": 0.1,
+        "microvia_diameter": 0.2,
+        "microvia_drill": 0.1,
+        "name": "MIPI_100D",
+        "priority": 11,
+        "track_width": 0.0,
+        "via_diameter": 0.4,
+        "via_drill": 0.2
+      },
+      {
+        "clearance": 0.0,
+        "diff_pair_gap": 0.1,
+        "diff_pair_via_gap": 0.1,
+        "diff_pair_width": 0.1,
+        "microvia_diameter": 0.2,
+        "microvia_drill": 0.1,
+        "name": "BAT_SENSE",
+        "priority": 12,
+        "track_width": 0.0,
+        "via_diameter": 0.4,
+        "via_drill": 0.2
+      },
+      {
+        "clearance": 0.0,
+        "diff_pair_gap": 0.1,
+        "diff_pair_via_gap": 0.1,
+        "diff_pair_width": 0.1,
+        "microvia_diameter": 0.2,
+        "microvia_drill": 0.1,
+        "name": "PWR_HAT5V",
+        "priority": 13,
+        "track_width": 0.0,
+        "via_diameter": 0.4,
+        "via_drill": 0.2
+      },
+      {
+        "clearance": 0.0,
+        "diff_pair_gap": 0.1,
+        "diff_pair_via_gap": 0.1,
+        "diff_pair_width": 0.1,
+        "microvia_diameter": 0.2,
+        "microvia_drill": 0.1,
+        "name": "DDR_50SE",
+        "priority": 14,
+        "track_width": 0.0,
+        "via_diameter": 0.4,
+        "via_drill": 0.2
+      },
+      {
+        "clearance": 0.0,
+        "diff_pair_gap": 0.1,
+        "diff_pair_via_gap": 0.1,
+        "diff_pair_width": 0.1,
+        "microvia_diameter": 0.2,
+        "microvia_drill": 0.1,
+        "name": "DDR_100D",
+        "priority": 15,
+        "track_width": 0.0,
+        "via_diameter": 0.4,
+        "via_drill": 0.2
+      },
+      {
+        "clearance": 0.0,
+        "diff_pair_gap": 0.1,
+        "diff_pair_via_gap": 0.1,
+        "diff_pair_width": 0.1,
+        "microvia_diameter": 0.2,
+        "microvia_drill": 0.1,
+        "name": "EMMC_SD_50SE",
+        "priority": 16,
+        "track_width": 0.0,
+        "via_diameter": 0.4,
+        "via_drill": 0.2
+      },
+      {
+        "clearance": 0.0,
+        "diff_pair_gap": 0.1,
+        "diff_pair_via_gap": 0.1,
+        "diff_pair_width": 0.1,
+        "microvia_diameter": 0.2,
+        "microvia_drill": 0.1,
+        "name": "I2S_50SE",
+        "priority": 17,
+        "track_width": 0.0,
+        "via_diameter": 0.4,
+        "via_drill": 0.2
+      },
+      {
+        "clearance": 0.0,
+        "diff_pair_gap": 0.1,
+        "diff_pair_via_gap": 0.1,
+        "diff_pair_width": 0.1,
+        "microvia_diameter": 0.2,
+        "microvia_drill": 0.1,
+        "name": "RF_50SE",
+        "priority": 18,
+        "track_width": 0.0,
+        "via_diameter": 0.4,
+        "via_drill": 0.2
+      },
+      {
+        "clearance": 0.0,
+        "diff_pair_gap": 0.1,
+        "diff_pair_via_gap": 0.1,
+        "diff_pair_width": 0.1,
+        "microvia_diameter": 0.2,
+        "microvia_drill": 0.1,
+        "name": "PWR_AUDIO",
+        "priority": 19,
+        "track_width": 0.0,
+        "via_diameter": 0.4,
+        "via_drill": 0.2
+      },
+      {
+        "clearance": 0.0,
+        "diff_pair_gap": 0.1,
+        "diff_pair_via_gap": 0.1,
+        "diff_pair_width": 0.1,
+        "microvia_diameter": 0.2,
+        "microvia_drill": 0.1,
+        "name": "ZONE_CORE",
+        "priority": 20,
+        "track_width": 0.0,
+        "via_diameter": 0.4,
+        "via_drill": 0.2
+      },
+      {
+        "clearance": 0.0,
+        "diff_pair_gap": 0.1,
+        "diff_pair_via_gap": 0.1,
+        "diff_pair_width": 0.1,
+        "microvia_diameter": 0.2,
+        "microvia_drill": 0.1,
+        "name": "ZONE_AUDIO",
+        "priority": 21,
+        "track_width": 0.0,
+        "via_diameter": 0.4,
+        "via_drill": 0.2
+      },
+      {
+        "clearance": 0.0,
+        "diff_pair_gap": 0.1,
+        "diff_pair_via_gap": 0.1,
+        "diff_pair_width": 0.1,
+        "microvia_diameter": 0.2,
+        "microvia_drill": 0.1,
+        "name": "ZONE_POWER",
+        "priority": 22,
+        "track_width": 0.0,
+        "via_diameter": 0.4,
+        "via_drill": 0.2
+      },
+      {
+        "clearance": 0.0,
+        "diff_pair_gap": 0.1,
+        "diff_pair_via_gap": 0.1,
+        "diff_pair_width": 0.1,
+        "microvia_diameter": 0.2,
+        "microvia_drill": 0.1,
+        "name": "ZONE_IO",
+        "priority": 23,
+        "track_width": 0.0,
+        "via_diameter": 0.4,
+        "via_drill": 0.2
+      },
+      {
+        "clearance": 0.0,
+        "diff_pair_gap": 0.1,
+        "diff_pair_via_gap": 0.1,
+        "diff_pair_width": 0.1,
+        "microvia_diameter": 0.2,
+        "microvia_drill": 0.1,
+        "name": "ZONE_RADIO",
+        "priority": 24,
+        "track_width": 0.0,
+        "via_diameter": 0.4,
+        "via_drill": 0.2
+      },
+      {
+        "clearance": 0.0,
+        "diff_pair_gap": 0.1,
+        "diff_pair_via_gap": 0.1,
+        "diff_pair_width": 0.1,
+        "microvia_diameter": 0.2,
+        "microvia_drill": 0.1,
+        "name": "ZONE_FACEPLATE",
+        "priority": 25,
+        "track_width": 0.0,
+        "via_diameter": 0.4,
+        "via_drill": 0.2
+      },
+      {
+        "clearance": 0.0,
+        "diff_pair_gap": 0.1,
+        "diff_pair_via_gap": 0.1,
+        "diff_pair_width": 0.1,
+        "microvia_diameter": 0.2,
+        "microvia_drill": 0.1,
+        "name": "ZONE_SHARED",
+        "priority": 26,
+        "track_width": 0.0,
+        "via_diameter": 0.4,
+        "via_drill": 0.2
+      }
+    ],
+    "meta": {
+      "version": 4
+    },
+    "netclass_patterns": [
+      {
+        "netclass": "PWR_BAT",
+        "pattern": "PWR_BAT_*"
+      },
+      {
+        "netclass": "PWR_VSYS",
+        "pattern": "PWR_VSYS_*"
+      },
+      {
+        "netclass": "PWR_VBUS",
+        "pattern": "PWR_VBUS_*"
+      },
+      {
+        "netclass": "PWR_5V1",
+        "pattern": "PWR_5V1_*"
+      },
+      {
+        "netclass": "PWR_AMP",
+        "pattern": "PWR_AMP_*"
+      },
+      {
+        "netclass": "SW_NODE",
+        "pattern": "SW_NODE_*"
+      },
+      {
+        "netclass": "AUDIO_ANALOG",
+        "pattern": "AUDIO_ANALOG_*"
+      },
+      {
+        "netclass": "AUDIO_REF",
+        "pattern": "AUDIO_REF_*"
+      },
+      {
+        "netclass": "MCLK_50SE",
+        "pattern": "MCLK_50SE_*"
+      },
+      {
+        "netclass": "USB2_90D",
+        "pattern": "USB2_90D_*"
+      },
+      {
+        "netclass": "USB3_90D",
+        "pattern": "USB3_90D_*"
+      },
+      {
+        "netclass": "MIPI_100D",
+        "pattern": "MIPI_100D_*"
+      },
+      {
+        "netclass": "BAT_SENSE",
+        "pattern": "BAT_SENSE_*"
+      },
+      {
+        "netclass": "PWR_HAT5V",
+        "pattern": "PWR_HAT5V_*"
+      },
+      {
+        "netclass": "DDR_50SE",
+        "pattern": "DDR_50SE_*"
+      },
+      {
+        "netclass": "DDR_100D",
+        "pattern": "DDR_100D_*"
+      },
+      {
+        "netclass": "EMMC_SD_50SE",
+        "pattern": "EMMC_SD_50SE_*"
+      },
+      {
+        "netclass": "I2S_50SE",
+        "pattern": "I2S_50SE_*"
+      },
+      {
+        "netclass": "RF_50SE",
+        "pattern": "RF_50SE_*"
+      },
+      {
+        "netclass": "PWR_AUDIO",
+        "pattern": "PWR_AUDIO_*"
+      },
+      {
+        "netclass": "ZONE_CORE",
+        "pattern": "ZONE_CORE_*"
+      },
+      {
+        "netclass": "ZONE_AUDIO",
+        "pattern": "ZONE_AUDIO_*"
+      },
+      {
+        "netclass": "ZONE_POWER",
+        "pattern": "ZONE_POWER_*"
+      },
+      {
+        "netclass": "ZONE_IO",
+        "pattern": "ZONE_IO_*"
+      },
+      {
+        "netclass": "ZONE_RADIO",
+        "pattern": "ZONE_RADIO_*"
+      },
+      {
+        "netclass": "ZONE_FACEPLATE",
+        "pattern": "ZONE_FACEPLATE_*"
+      },
+      {
+        "netclass": "ZONE_SHARED",
+        "pattern": "ZONE_SHARED_*"
+      },
+      {
+        "netclass": "ZONE_SHARED",
+        "pattern": "*_ZS"
+      }
+    ]
+  }
+}

@@ -1,0 +1,6 @@
+[project]
+name = "opendap-board-sim-mclk-divider"
+version = "0.1.0"
+description = "ngspice simulation of the T1 master-clock path: NSC5083D at twice the frequency, SN74AUC1G74 divide-by-two on MCLK_1V8, two CS43198 XTI/MCLK inputs"
+requires-python = ">=3.10"
+dependencies = []

@@ -1,0 +1,63 @@
+* OpenDAP T1 board: -7 V pre-rail from VSYS with an LMR33630C as an inverting buck-boost
+* Topology per TI SNVA856B (Working With Inverting Buck-Boost Converters): the IC
+* ground (AGND, PGND) is the -7 V rail, the inductor goes from SW to system ground.
+* LMR33630C: 2.1 MHz (1.8 MHz min), HS limit 3.85 A min, LS (valley) limit 2.9 A min,
+* VIN to PGND 36 V recommended, 38 V absolute (TI SNVSAN3F).
+* Inductor: Coilcraft XGL4020-222ME (2.2 uH, 21.5 mOhm max, Isat(-30 %) 6.2 A typ).
+* Output: -1.0 V x (1 + 100k/16.5k) = -7.06 V.
+* Load: start-up at 10 mA, then a full-wave rectified sine (both channels in phase)
+*   I(t) = iq + ipk*|sin(2 pi f t)|   from t = tload
+* Defaults: VSYS 6.0 V (minimum), peak 0.433 A (ADR 0012 figures), 1 kHz.
+* Change ipk/iq to 0.69 A DC (ipk=0 iq=0.69) for the LDO current-limit case.
+*
+* Model: TI LMR33630C unencrypted PSpice transient model, SNVMBG5 Rev. A
+* ("Final 1.10", topologies Buck and Inverting Buck Boost). TI copyright, all rights
+* reserved: not redistributed. Download https://www.ti.com/lit/zip/SNVMBG5 and put
+* LMR33630C_TRANS.lib in models/.
+* Run from this folder: ngspice -b lmr33630-ibb.cir   (about 15-25 min for 5 ms)
+
+.include models/LMR33630C_TRANS.lib
+.include tps65131-switch-model.cir
+
+.param vsys=6.0 ipk=0.400 iq=0.033 f=1k tload=2.5m
+
+VSYS vin 0 {vsys}
+* input capacitors: VIN to the IC ground (-7 V) and VIN to system ground (SNVA856B §5)
+CIN1 vin vneg 10u
+CIN2 vin vneg 10u
+CIN3 vin 0 4.7u
+XU1 vneg boot en fb nc pg vneg vneg sw vcc vin vin LMR33630C_TRANS params: MODE=0 FASTSS=1
+CBOOT boot sw 100n
+CVCC vcc vneg 1u
+* EN tied to VIN through 100k (always on with VSYS); a level shifter from
+* HPA_RAIL_EN replaces this in the design (SNVA856B §7.1)
+REN vin en 100k
+CEN en vneg 10n
+RPG vcc pg 100k
+CSW sw vneg 200p
+XL sw 0 il lsat params: l0=2.2u dcr=0.0215 isat30=6.2
+* output: 3 x 22 uF 16 V X7R, about 30 uF effective at 7 V (est.)
+COUT 0 co 30u
+RESR co vneg 3m
+RFT 0 fb 100k
+CFF 0 fb 22p
+RFB fb vneg 16.5k
+BLOAD 0 vneg I = time < {tload} ? 0.010 : {iq} + {ipk}*abs(sin(6.283185*{f}*(time-{tload})))
+
+.options method=gear reltol=2e-3 abstol=1e-8 vntol=1e-5 itl4=200 rshunt=1e9 gmin=1e-10
+.tran 2n 5m 0 2n
+
+.control
+run
+meas tran vneg_idle avg v(vneg) from=2.0m to=2.4m
+meas tran vneg_su_min min v(vneg) from=0 to=2.4m
+meas tran t_90pct when v(vneg)=-6.35 fall=1
+meas tran il_peak max v(il) from=3m to=5m
+meas tran il_valley min v(il) from=3m to=5m
+meas tran vneg_min min v(vneg) from=3m to=5m
+meas tran vneg_max max v(vneg) from=3m to=5m
+meas tran iin avg i(VSYS) from=3m to=5m
+let hs_pct = il_peak/3.85*100
+print hs_pct
+.endc
+.end

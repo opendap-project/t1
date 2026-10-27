@@ -1,0 +1,28 @@
+* TPS62903 HAT_5V / USB-C source buck (BOM v1.5 line 91): load step
+* 0.1 A -> 1.6 A -> 0.1 A, generic DCS-Control-class model (dcs-buck-generic.lib).
+* Datasheet values: SLVSES3A. VSET 5.1 V, 2.5 MHz with AEE: on-time
+* 100 ns x VIN / (VIN - VOUT) (Eq. 5), auto PFM/PWM. Inductor XGL4020-102MEC
+* (1.0 uH, 9.0 mOhm DCR max). CO is the EFFECTIVE output capacitance.
+* run.py overrides the .param line below for each corner.
+.param VIN=8.8 CO=10u L=1u RHS=0.062 ILIMH=4.6 PFM=1 ILO=0.1 IHI=1.6
+.include dcs-buck-generic.lib
+VIN vin 0 {VIN}
+XU vin sw vout fb 0 DCSBUCK params: TONSEL=2 KTON=100n PFM={PFM} RHS={RHS} RLS=0.022
++ ILIMH={ILIMH} ILIML=4.4 VREF=0.6 TOFFMIN=80n
+L1 sw lx {L}
+RL lx vout 9m
+C1 vout 0 {CO}
+* VSET mode: internal divider, modelled as 750k / 100k (0.6 V x 8.5 = 5.1 V)
+R1 vout fb 750k
+R2 fb 0 100k
+Iload vout 0 PWL(0 0 0.3m 0 0.301m {ILO} 0.6m {ILO} 0.601m {IHI} 0.9m {IHI} 0.901m {ILO})
+.ic v(vout)=5.1
+.tran 1n 1.2m 0 4n uic
+.control
+set wr_singlescale
+set wr_vecnames
+run
+linearize v(vout) i(L1)
+wrdata step.dat v(vout) i(L1)
+.endc
+.end

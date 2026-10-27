@@ -1,0 +1,56 @@
+# VSYS bucks regression. run.py computes the metrics (no .meas); the checks read its --json output
+# (one case object per line: "group", "case", then the metrics in SI units).
+version = 1
+
+[[model]]
+id = "tps62136"
+manufacturer = "Texas Instruments"
+mpn = "TPS62136RGXR"
+file = "SLVMC09"                # parts-lib manifest: kind = "spice", SLVMC09A
+member = "TPS62136_PSPICE_TRANS/TPS62136_TRANS.lib"
+dest = "models/TPS62136_TRANS.lib"
+sha256 = "252dce79505a414bd31e4bd2209334de90761d277894c759c3f88da003439a56"
+
+[[check]]
+id = "tps62903-step-il-peak"
+description = "TPS62903 inductor peak in 0.1->1.6 A steps, all corners (generic model)"
+command = ["uv", "run", "run.py", "--json", "step903"]
+pattern = '"case": "s903_[^"]*".*"il_pk_a": ([-+0-9.eE]+)'
+reduce = "all"
+max = 3.2             # 80 % of the 4.0 A minimum high-side limit
+unit = "A"
+source = "BRD-049; SLVSES3A; README Results"
+
+[[check]]
+id = "tps62136-step-lowest"
+description = "VSYS_LV lowest in 0.1->2.0 A steps (TI model, 2-4 min per case)"
+command = ["uv", "run", "run.py", "--json", "step136"]
+pattern = '"case": "s136_v(?:6\.0|8\.8|7\.4)_[^"]*".*"v_min_v": ([-+0-9.eE]+)'
+reduce = "all"
+min = 3.4             # MCLK LDO input minimum on VSYS_LV
+unit = "V"
+source = "README Results"
+models = ["tps62136"]
+timeout = 3600
+
+[[check]]
+id = "tps62136-step-il-peak"
+command = ["uv", "run", "run.py", "--json", "step136"]
+pattern = '"case": "s136_v(?:6\.0|8\.8|7\.4)_[^"]*".*"il_pk_a": ([-+0-9.eE]+)'
+reduce = "all"
+max = 3.84            # 80 % of the 4.8 A minimum high-side limit
+unit = "A"
+source = "BRD-049; SLVSDV2; README Results"
+models = ["tps62136"]
+timeout = 3600
+
+[[check]]
+id = "tps62136-phase-margin"
+command = ["uv", "run", "run.py", "--json", "loop136"]
+pattern = '"case": "l136_[^"]*".*"phase_margin_deg": ([-+0-9.eE]+)'
+reduce = "all"
+min = 45.0
+unit = "deg"
+source = "README Results"
+models = ["tps62136"]
+timeout = 7200

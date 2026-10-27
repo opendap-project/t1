@@ -303,3 +303,7 @@ interface = ["{I2C2}", "{LED}"]
 [[schematic.block]]
 id = "blk.debug"
 interface = ["{DEBUG}", "{AUDIO_I2S}", "{PMIC_CTL}", "{KEYS}"]
+
+[[schematic.block]]
+id = "blk.cover-detect"
+interface = ["{KEYS}"]

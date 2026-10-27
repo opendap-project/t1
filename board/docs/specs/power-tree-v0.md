@@ -97,7 +97,7 @@ With [BOM v1.11](bom-v1.md#changes-in-v111): hat-standard [HAT interface v1.1](h
 2. **BRD-049 margins re-checked through the contacts (§4.7.1):** worst continuous 3.2 A puts 2.0 A on the hotter contact, **33 %** of its 6 A; the 5 A protective limit 3.1 A, **52 %**; the full budget (2.4 A) 1.5 A, 25 %. Heat at an end-of-life resistance of 20 mΩ per contact (**UNVERIFIED**): 0.08 W on the hotter contact and ≈ 0.26 W in the four power contacts at 3.2 A; 0.19 W and ≈ 0.63 W at 5 A, for the PCM's trip time only.
 3. **Path resistance (§4.7):** ≈ 65 mΩ with the contacts at end of life (est., was ≈ 38–48 mΩ): ≈ 0.21 V and ≈ 0.66 W at 3.2 A. The cell pair must hold ≈ 6.8 V under load for VSYS = 6.6 V (was ≈ 6.7 V).
 4. **Insertion (§4.7.1):** BATP gets 47 nF to GND behind its 100 Ω (SLUSDV2C Figure 8-2 note 2; BOM line 115); with no adapter the ship FET is off at insertion and is the soft start; with an adapter present the pulse into the BAT node (≈ 63 A peak for ≈ 2 µs, est.) is 0.07 % of the fuse's melting I²t.
-5. **Cover detect (should, BOM line 143):** one GPIO input with a pull-up; no rail or regulator change. The pull-up value is set at schematic capture against the suspend budget (100 kΩ at 1.8 V draws 18 µA while a closed cover grounds the input, arithmetic).
+5. **Cover detect (should, BOM line 143):** one GPIO input with a pull-up; no rail or regulator change. The pull-up value is set at schematic capture against the suspend budget (100 kΩ at 1.8 V draws 18 µA while a closed cover grounds the input, arithmetic). Captured (2026-10-26): GPIO0_A6 is on PMUIO1 at 3.3 V, so 100 kΩ to vcc3v3_pmu draws 33 µA with the cover closed (arithmetic), and keeps VIH (2.0 V, RK3566 DS 1.1 Table 3-3) with up to 13 µA of input leakage.
 
 ## Changes in v0.3
 

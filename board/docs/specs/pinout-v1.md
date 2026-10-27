@@ -81,6 +81,7 @@ Columns: ball; pad (the GPIO name with its reset suffix; the full mux list is in
 | 1T20 | GPIO0_B0_u | CLK32K_IN | PMUIO2, 1.8 V, vcca1v8_pmu | pull-up | `CLK32K_PMIC` | `blk.pmic` | core | RK809 CLK32K is open drain (RK809 DS p. 15): pull-up to vcca1v8_pmu; level 0.65 × VDD to VDD + 0.3 (HDG p. 17, Table 2-2) |
 | AJ37 | GPIO0_B1_u | I2C0_SCL | PMUIO2, 1.8 V, vcca1v8_pmu | pull-up | `I2C0_SCL` | `blk.pmic` | ring, inner (microvia) | RK809 0x20, TPS62869 0x42 (ADR 0021; RK860-0 0x40 until BOM v1.11). Pull-ups to vcca1v8_pmu |
 | AK38 | GPIO0_B2_u | I2C0_SDA | PMUIO2, 1.8 V, vcca1v8_pmu | pull-up | `I2C0_SDA` | `blk.pmic` | ring, outer | As I2C0_SCL |
+| AJ38 | GPIO0_A6_d | GPIO in | PMUIO1, 3.3 V fixed, vcc3v3_pmu | pull-down until pinctrl: reads the cover closed, as with the block unfitted | `COVER_DET_N` | `blk.cover-detect` | ring, outer | Back-cover detect (BOM line 143, ADR 0020 item 7; G22, 2026-10-26): low with the cover closed, 100 kΩ pull-up to vcc3v3_pmu; wake (RFC 0014: was `HAT_INT_N`, then `SPARE_0A6`) |
 | AM37 | GPIO0_C2_d | GPIO in | PMUIO2, 1.8 V, vcca1v8_pmu | pull-down until pinctrl; external pull-up to vcca1v8_pmu wins | `ACTION_BTN_N` | `blk.buttons` | ring, inner (microvia) | Action button (BRD-036); wake |
 | 1V19 | GPIO0_D0_u | UART2_RX_M0 | PMUIO2, 1.8 V, vcca1v8_pmu | pull-up: idle UART level | `DBG_UART_RX` | `blk.debug` | core | BootROM/TPL/U-Boot console (HDG p. 61); 1.8 V pads (BRD-047) |
 | 1U18 | GPIO0_D1_u | UART2_TX_M0 | PMUIO2, 1.8 V, vcca1v8_pmu | pull-up | `DBG_UART_TX` | `blk.debug` | core | As DBG_UART_RX |
@@ -327,7 +328,6 @@ The 16 PCIe 2.0 and CSI RX PHY balls above stay unconnected in v1. Reserved on 2
 | 1B20 | GPIO2_C4_d | VCCIO4, 1.8 V, vcc_1v8 | _d | `RSVD_15P4_SPI_CS` | Kept free: SPI2_CS0_M0 (O6 closed 2026-10-24: unassigned spare reserved for a variant) |
 | 1V6 | GPIO4_C4_d | VCCIO7, 3.3 V, vcc3v3_sys | _d, plus 100 kΩ pull-down | `MCLK_DIV_RUN` | Clear of both MCLK dividers (ADR 0019; `blk.audio.clock`). Held low at reset, so the dividers stay cleared until the driver releases them after MCLK_1V8 is up; the SN74AUC1G74 inputs tolerate 3.6 V at any VCC (SCES537D p. 3). Driven high only while MCLK_1V8 is on (Ioff is specified at 2.7 V only). Assigned 2026-10-24, BOM v1.9 item 39 |
 | 1V5 | GPIO4_D1_u | VCCIO7, 3.3 V, vcc3v3_sys | _u | `SPARE_4D1` | Spare 3.3 V GPIO, test pad; pull-up at reset, so not for an enable |
-| AJ38 | GPIO0_A6_d | PMUIO1, 3.3 V, vcc3v3_pmu | _d | `SPARE_0A6` | Spare 3.3 V GPIO, wake-capable (PMUIO1), test pad; a candidate for the cover detect (feature blocks G22) (RFC 0014: was `HAT_INT_N`) |
 | A22 | GPIO1_A0_u | VCCIO1, 3.3 V, vcc3v3_sys | _u | `SPARE_1A0` | Spare 3.3 V GPIO, test pad (RFC 0014: was `HAT_EXT_SEL`) |
 | B22 | GPIO1_A1_u | VCCIO1, 3.3 V, vcc3v3_sys | _u | `SPARE_1A1` | Spare 3.3 V GPIO, test pad (RFC 0014: was `HAT_EXT_PD`) |
 | B24 | GPIO1_A5_d | VCCIO1, 3.3 V, vcc3v3_sys | _d | `SPARE_1A5` | Spare 3.3 V GPIO, test pad (RFC 0014: was `HAT_ID_EN`) |
@@ -471,6 +471,7 @@ Every DSI0, CSI and HDMI pair in the ring has one ball on row AP (inner) and its
 | G15, G16 | `EXP_INT_N` on PMUIO0; I2C2 on PMUIO2 with pull-ups on vcca1v8_pmu, the same rail as the bank | BOM v1.8 line 93, §4.2 |
 | G20 Haptics | `HAPTIC_EN` on expander P04 | BOM v1.8 line 93 |
 | G21 I2S parking | Same as G2: `_d` balls and a pinctrl sleep state | BOM v1.8 line 134 |
+| G22 Cover detect | `COVER_DET_N` on GPIO0_A6 (AJ38, PMUIO1, 3.3 V, wake-capable), the only spare GPIO0 ball; low with the cover closed. Accepted (2026-10-26). Basis: feature blocks G22 (a spare GPIO that wakes from suspend), BOM v1 line 143; the ball's reset pull-down reads the cover-closed level, the absent state the block record gives | BOM v1 line 143 |
 
 G11–G13 and G17–G19 need no SoC ball.
 

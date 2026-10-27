@@ -2207,7 +2207,7 @@
 (label "NFC_FD_N" (at 41.91 49.53 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "3f14053a-ff05-5495-b553-36cce89da0c2"))
 (label "NFC_IRQ" (at 41.91 52.07 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "32d2c787-6ce9-5d4b-b18d-10495bb596ad"))
 (label "EXP_INT_N" (at 41.91 54.61 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "eca881ba-dfb9-515f-960a-209718ef94fb"))
-(label "SPARE_0A6" (at 41.91 57.15 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "97a26c8c-875f-58b7-96fc-7932706b3b5c"))
+(label "COVER_DET_N" (at 41.91 57.15 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "ea65ee13-566a-51ce-8a2b-22474453b03c"))
 (label "PMIC_SLEEP" (at 41.91 59.69 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "f6537540-2443-55b0-a94e-8be55ef28c32"))
 (label "FP_HID_INT_N" (at 41.91 62.23 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "df0a5fa2-3725-52a2-a033-1433b1a43d75"))
 (label "SD_DET_N" (at 41.91 64.77 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "8ebd988d-f343-556f-9d27-9c26f4fbf4d1"))

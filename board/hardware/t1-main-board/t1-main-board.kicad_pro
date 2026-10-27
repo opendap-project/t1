@@ -385,7 +385,8 @@
         "PWRON_N",
         "SARADC_VOLUP",
         "VOLDN_N",
-        "ACTION_BTN_N"
+        "ACTION_BTN_N",
+        "COVER_DET_N"
       ],
       "NFC": [
         "NFC_FD_N",
@@ -405,7 +406,6 @@
       "DEBUG": [
         "DBG_UART_TX",
         "DBG_UART_RX",
-        "SPARE_0A6",
         "SPARE_1A0",
         "SPARE_1A1",
         "SPARE_1A3",

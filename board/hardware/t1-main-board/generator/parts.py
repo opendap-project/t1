@@ -354,6 +354,9 @@ PARTS = {
                   src="BOM v1 line 15"),
     "TP": dict(kind="TP", value="TP", Footprint="TestPoint:TestPoint_Pad_D1.0mm", Datasheet="~",
                Description="Test pad, 1.0 mm", src="PCB-T-02 test access"),
+    "PAD_COVER": dict(kind="TP", value="TP", Footprint="TestPoint:TestPoint_Pad_2.0x2.0mm", Datasheet="~",
+                      Description="Board-edge contact pad, ENIG, for the back cover's actuator (size set with the case, UNVERIFIED)",
+                      src="BOM v1 line 143; PCB-L-10"),
     "NT": dict(kind="NT", value="NetTie", Footprint="NetTie:NetTie-2_SMD_Pad0.5mm", Datasheet="~",
                Description="Net tie: a separate trace leaves the net here (remote sense)", src="board ADR 0021 item 4"),
 }

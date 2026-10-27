@@ -22,7 +22,9 @@ def sheets(proj):
                      "LP5521 RGB LED driver on I2C2 at 0x32: charge pump, LED_R/G/B to the faceplate, link #22", "A4")
     dbg = proj.sheet("debug.kicad_sch", "blk.debug", "Test and debug access",
                      "Debug UART, I2S/DSD and bring-up pads, spare GPIO pads and rail test pads", "A3")
-    return cmon, led, dbg
+    cov = proj.sheet("cover-detect.kicad_sch", "blk.cover-detect", "Cover detect",
+                     "Back-cover detect input: board-edge contact pads, pull-up, ESD", "A4")
+    return cmon, led, dbg, cov
 
 
 # ---------------------------------------------------------------------- blk.current-monitors
@@ -237,7 +239,59 @@ def draw_debug(s, variants):
         "2. Absent state: pads only, nothing fitted. The block's measurement links sit on their blocks'",
         "   sheets (power tree §4.12); the RP2354A SWD pads on blk.rp2354-core; one MCLK pad on each DAC sheet.",
         "3. Spares pinout v1 leaves without a pad (the audio-bank balls next to I2S1, FSPI_D3) carry",
-        "   no-connect flags on the SoC sheets.",
+        "   no-connect flags on the SoC sheets; GPIO0_A6 is the cover detect input (blk.cover-detect).",
         "4. I2S/DSD pads: BCLK is also the DSD clock (DSDCLK from I2S_BCLK, blk.dac-l/-r); stubs from",
         "   the DAC path at most 1 mm, as the coprocessor taps (PCB-A-12).",
+    ])
+
+
+# ---------------------------------------------------------------------- blk.cover-detect
+
+def draw_cover_detect(s, variants):
+    """blk.cover-detect (#50): BOM v1 line 143, PCB-L-10, ADR 0020 item 7, G22 (pinout v1 §7)."""
+    from blocks_audio import tvs_group
+    from parts import fields
+    import library
+    f = Flow(s)
+
+    def contact():
+        g = Group(s, "Contact pads at the board edge (BOM v1 line 143; PCB-L-10)")
+        tsym = library.load("Connector", "TestPoint")
+        for i, (net, val) in enumerate((("COVER_DET_N", "COVER"), ("GND", "COVER_GND"))):
+            x = 116.84 + i * 25.4
+            ref = s.next_ref("TP")
+            s.place(tsym, ref, x, 101.6, fields=fields("PAD_COVER", s.block), value=val, in_bom=False,
+                    ref_at=(x - 1.27, 96.52), val_at=(x - 1.27, 99.06))
+            from draw import _justify_right
+            _justify_right(s)
+            if net == "GND":
+                s.wire((x, 101.6), (x, 104.14))
+                s.power("GND", x, 104.14)
+            else:
+                s.point(net, x, 101.6, "down", "pas")
+        g.add((116.84 - 2.54 - 12.0, 93.98, 116.84 + 25.4 + 2.54, 101.6 + 2.54 + len("COVER_DET_N") * 1.16))
+        return g.close()
+    grp(f, contact)
+
+    def pull():
+        g = Group(s, "Pull-up to vcc3v3_pmu")
+        g.add(prow(s, 101.6, 109.22, [("R_100k", "vcc3v3_pmu", "COVER_DET_N")]))
+        return g.close()
+    grp(f, pull)
+    grp(f, lambda: tvs_group(s, "ESD at the pad (TPD1E10B06)", ["COVER_DET_N"]))
+    s.iface_rows = [
+        ["COVER_DET_N", "Output", "GPIO0_A6 reset pull-down reads cover closed; the description omits the input (dnp)"],
+    ]
+    s.rail_rows = [["(none)", "-", "No supply on this sheet: the pull-up hangs from vcc3v3_pmu"]]
+    corner_notes(s, [
+        "1. Function: back-cover detect (ADR 0020 item 7, should): low while the cover is closed; on",
+        "   a rise Blackbird OS syncs storage and powers off in order (ADR 0017 item 3), before the",
+        "   pack can be reached. It protects data, never safety (T1-086 is met without it).",
+        "2. Absent state: dnp: the ball's reset pull-down holds the cover-closed level and the device",
+        "   description omits the input; no other block depends on it.",
+        "3. GPIO0_A6 (PMUIO1, 3.3 V, wake-capable; pinout v1 §7, G22). 100 kΩ to vcc3v3_pmu: 33 µA",
+        "   with the cover closed; VIH 2.0 V holds with up to 13 µA of leakage (DS 1.1 Table 3-3).",
+        "   Pinctrl turns the ball's 16-43 kΩ pull-down off. Software: gpio-keys (a switch event).",
+        "4. Open (case input): the actuator. Two pads, the input and ground, take a conductive bridge",
+        "   on the cover or a two-terminal switch on the same lands; pad size UNVERIFIED.",
     ])

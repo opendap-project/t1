@@ -131,7 +131,7 @@ def bus_aliases():
             "SDMMC0": ["SD_CLK", "SD_CMD", "SD_D0", "SD_D1", "SD_D2", "SD_D3", "SD_DET_N"],
             "SPK_I2S": ["SPK_BCLK", "SPK_LRCK", "SPK_SDIN", "SPK_SD_MODE"],
             # the root's SoC symbol stays within its row: control lines of the I2C2 and button blocks
-            "KEYS": ["PWRON_N", "SARADC_VOLUP", "VOLDN_N", "ACTION_BTN_N"],
+            "KEYS": ["PWRON_N", "SARADC_VOLUP", "VOLDN_N", "ACTION_BTN_N", "COVER_DET_N"],
             "NFC": ["NFC_FD_N", "NFC_VEN", "NFC_DWL_REQ", "NFC_IRQ"],
             "TPM": ["TPM_RST_N", "TPM_PIRQ_N"],
             "LED": ["LED_R", "LED_G", "LED_B"],
@@ -189,7 +189,7 @@ def main():
     exp, bid, imu, spk, sd = blocks_io.sheets(proj)
     hap, tpm, tag, rdr, rp = blocks_should.sheets(proj)
     btn = blocks_io.sheets_buttons(proj)
-    cmon, led, dbg = blocks_instr.sheets(proj)
+    cmon, led, dbg, cov = blocks_instr.sheets(proj)
 
     # the root in reading rows (CRAFT-111): overviews in the top row; then power blocks as power
     # flows; then the SoC and its memories. A list stacks its sheets in one column.
@@ -199,7 +199,7 @@ def main():
              [soc, [ddr, emmc], audio, [jse, jbal], rp, [None, cmon], [None, dbg]]),
             ("USB ports (the 5.1 V source, USB-C, the HAT port) and the radio",
              [p5v1, vout, usbc, hats, hat5v, radio, ant]),
-            ("Faceplate interface; control, storage and sensors", [[fpc, fpd, mic], [fpb, fpk, led], [spk, sd, exp], [bid, imu, hap], [tpm, tag, btn], [rdr]])]
+            ("Faceplate interface; control, storage and sensors", [[fpc, fpd, mic], [fpb, fpk, led], [spk, sd, exp], [bid, imu, hap], [tpm, tag, btn], [rdr], [cov]])]
 
     kids = {charger: [ckids[k] for k in blocks_charger.KIDS], soc: [subs[n] for n, *_ in blocks_soc.SUBS],
             audio: [akids[k] for k in blocks_audio.reading_order()],
@@ -267,6 +267,7 @@ def main():
     blocks_should.draw_rp2354(rp, variants)
     blocks_instr.draw_current_monitors(cmon, variants)
     blocks_instr.draw_status_led(led, variants)
+    blocks_instr.draw_cover_detect(cov, variants)
     blocks_instr.draw_debug(dbg, variants)      # last: its rail pads cover what no other sheet probes
     for s in proj.sheets:
         if s.role.startswith("blk."):
@@ -276,7 +277,7 @@ def main():
     overview.draw_interconnect(inter)
 
     for s in [power, inter, charger, gauge, vsys_lv, v3v3, pmic, vcpu, soc, ddr, emmc, audio, jse, jbal,
-              p5v1, usbc, vout, hat5v, hats, radio, ant, fpc, fpd, fpb, fpk, mic, exp, bid, sd, imu, spk, hap, tpm, tag, rdr, btn, rp, cmon, led, dbg]:
+              p5v1, usbc, vout, hat5v, hats, radio, ant, fpc, fpd, fpb, fpk, mic, exp, bid, sd, imu, spk, hap, tpm, tag, rdr, btn, rp, cmon, led, dbg, cov]:
         root.child(s, 0, 0, w=25.4)
     for name, *_ in blocks_soc.SUBS:
         soc.child(subs[name], 0, 0, w=76.2)

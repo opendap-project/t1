@@ -848,7 +848,7 @@ Proposed parts come from families already in the BOM where possible; Nothing her
 | G19 | `blk.board-id` | Supply rail not stated | vcca1v8_pmu, with the variant name in the EEPROM map | — | **Closed** (line 17): VCC on vcca1v8_pmu |
 | G20 | `blk.haptics` | DRV2605L EN has no GPIO | A spare expander line (five are spare, line 93) with a pull-down | — | **Closed** (lines 93, 123): `HAPTIC_EN` on an expander spare with pull-down (pinout v1) |
 | G21 | `blk.audio` | No hardware guarantee that the I2S lines are parked before DAC_DIG_1V8 is removed (power tree §5 states it as a software step) | G2's series-resistor footprints plus a driver sequence test at bring-up | — | **Narrowed** (line 134): series footprints at the DAC end; the driver sequence test at bring-up remains |
-| G22 | `blk.cover-detect` | No GPIO assigned (BOM v1.10, ADR 0020 item 7) | A spare GPIO that wakes from suspend, so the input is seen while suspended | — | **Open**: for the pinout owner (BOM §7 item 42) |
+| G22 | `blk.cover-detect` | No GPIO assigned (BOM v1.10, ADR 0020 item 7) | A spare GPIO that wakes from suspend, so the input is seen while suspended | — | **Closed** (2026-10-26, pinout v1 §7): `COVER_DET_N` on GPIO0_A6 (PMUIO1, wake-capable) |
 
 ## 8. Sources
 

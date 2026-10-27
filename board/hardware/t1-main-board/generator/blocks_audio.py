@@ -138,8 +138,8 @@ def draw_supply(s, variants):
     blk = s.block
     f = Flow(s)
     grp(f, lambda: ic_group(s, "DAC_VP switch", "Texas_Instruments", "TPS22919DCKR",
-                            {"IN": "VSYS_LV", "ON": "DAC_VP_EN", "NC": None, "VOUT": "DAC_VP", "QOD": "DAC_VP",
-                             "GND": "GND"}, rows=[[("C_1u_0402", "VSYS_LV", "GND")]]))
+                            {"IN": "VSYS_LV_AUDIO", "ON": "DAC_VP_EN", "NC": None, "VOUT": "DAC_VP", "QOD": "DAC_VP",
+                             "GND": "GND"}, rows=[[("C_1u_0402", "VSYS_LV_AUDIO", "GND")]]))
     grp(f, lambda: ic_group(s, "DAC_DIG_1V8 switch", "Texas_Instruments", "TPS22919DCKR",
                             {"IN": "vcc_1v8", "ON": "DAC_DIG_EN", "NC": None, "VOUT": "DAC_DIG_1V8_SRC",
                              "QOD": "DAC_DIG_1V8_SRC", "GND": "GND"}, rows=[[("C_1u_0402", "vcc_1v8", "GND")]]))
@@ -148,11 +148,11 @@ def draw_supply(s, variants):
     def buck():
         g = Group(s, "AUDIO_2V2 pre-buck (TPS62840)")
         u = ic(s, "Texas_Instruments", "TPS62840DLCR", 101.6, 101.6,
-               {"VIN": "VSYS_LV", "EN": "AUDIO_LN_EN", "MODE": "GND", "STOP": "GND", "VSET": "AUDIO_VSET",
+               {"VIN": "VSYS_LV_AUDIO", "EN": "AUDIO_LN_EN", "MODE": "GND", "STOP": "GND", "VSET": "AUDIO_VSET",
                 "SW": "AUDIO_SW", "VOS": "AUDIO_2V2_SRC", "GND": "GND"})
         g.add(u.bbox)
         g.add(two_pin_box(s, "L_DFE201610E_2R2", u.bbox[2] + 22.86, 93.98, "AUDIO_SW", "AUDIO_2V2_SRC", prefix="L"))
-        g.add(under(s, u.bbox, [("C_4u7_0402_10V", "VSYS_LV", "GND"), ("R_4k32", "AUDIO_VSET", "GND"),
+        g.add(under(s, u.bbox, [("C_4u7_0402_10V", "VSYS_LV_AUDIO", "GND"), ("R_4k32", "AUDIO_VSET", "GND"),
                                 ("C_10u_0402_4V", "AUDIO_2V2_SRC", "GND")], x=u.bbox[0] + 2.54))
         return g.close()
     grp(f, buck, newline=True)
@@ -162,7 +162,7 @@ def draw_supply(s, variants):
         ["AUDIO_LN_EN", "Input", "Pulled down on the host side: TPS62840 off, output discharged"],
     ]
     s.rail_rows = [
-        ["VSYS_LV", "1 µF; 4.7 µF 10 V (TPS62840 VIN)", "TPS22919 CIN 1 µF (SLVSEN5B §10); TPS62840 CI 4.7 µF (SLVSEC6D Table 2)"],
+        ["VSYS_LV_AUDIO", "1 µF; 4.7 µF 10 V (TPS62840 VIN)", "TPS22919 CIN 1 µF (SLVSEN5B §10); TPS62840 CI 4.7 µF (SLVSEC6D Table 2)"],
         ["vcc_1v8", "1 µF", "TPS22919 CIN 1 µF (SLVSEN5B §10)"],
         ["AUDIO_2V2", "10 µF 4 V", "TPS62840 CO 10 µF (SLVSEC6D Table 2); each LDO adds 1 µF"],
     ]
@@ -175,7 +175,7 @@ def draw_supply(s, variants):
         "3. Sequence (power tree §6.2): DAC_VP_EN first, then DAC_DIG_EN and AUDIO_LN_EN; VP off last.",
         "4. TPS62840 MODE and STOP low: power save (SLVSEC6D p. 5); MODE high is the fallback if",
         "   bursts are audible (UNVERIFIED, BOM v1 line 27). Links L1 #25, #26 (0 Ω in production).",
-        "5. The audio INA236 shunt on the VSYS_LV branch is part of blk.current-monitors (not drawn).",
+        "5. VSYS_LV_AUDIO: the audio branch of VSYS_LV behind the 0x41 INA236 shunt (blk.current-monitors).",
         "6. Unless noted: resistors 1 % 0402; capacitors X5R/X7R rated at least twice the rail.",
     ])
 
@@ -188,7 +188,7 @@ def draw_mclk(s, variants):
     grp(f, lambda: ic_group(s, "Interlock (G3)", "Texas_Instruments", "SN74LVC1G57DCKR",
                             {"In0": "vcca1v8_pmu", "In1": "AUDIO_LN_EN", "In2": "DAC_DIG_1V8", "Y": "MCLK_3V1_EN",
                              "VCC": "vcca1v8_pmu", "GND": "GND"}, rows=[[("C_100n_0402", "vcca1v8_pmu", "GND")]]))
-    grp(f, lambda: link_group(s, "LINK_L1", "VSYS_LV", "MCLK3V1_IN", variants, "Link #27"))
+    grp(f, lambda: link_group(s, "LINK_L1", "VSYS_LV_AUDIO", "MCLK3V1_IN", variants, "Link #27"))
     grp(f, lambda: ic_group(s, "MCLK_3V1 LDO", "Texas_Instruments", "TPS7A2031PDBVR",
                             {"IN": "MCLK3V1_IN", "EN": "MCLK_3V1_EN", "N/C": None, "OUT": "MCLK_3V1", "GND": "GND"},
                             rows=[[("C_1u_0402", "MCLK3V1_IN", "GND"), ("C_1u_0402", "MCLK_3V1", "GND")]]))
@@ -368,7 +368,7 @@ def draw_rails(s, variants):
     def boost():
         g = Group(s, "+7 V pre-rail: TPS65131 boost (ADR 0015 item 2)")
         u = ic(s, "Texas_Instruments", "TPS65131RGER", 101.6, 101.6,
-               {"VIN": "HPA_BOOST_VIN", "INP": "HPA_BOOST_SW", "INN": "VSYS_LV", "ENP": "HPA_RAIL_EN",
+               {"VIN": "HPA_BOOST_VIN", "INP": "HPA_BOOST_SW", "INN": "VSYS_LV_AUDIO", "ENP": "HPA_RAIL_EN",
                 "PSP": "HPA_BOOST_VIN", "ENN": "GND", "PSN": "GND", "NC": None,
                 "VPOS": "AUDIO_P7V0", "FBP": "HPA_BOOST_FB", "CP": "HPA_BOOST_CP", "OUTN": None, "VNEG": "GND",
                 "FBN": "GND", "CN": None, "VREF": "HPA_BOOST_VREF", "BSW": None,
@@ -376,8 +376,8 @@ def draw_rails(s, variants):
         g.add(u.bbox)
         x0 = u.bbox[2] + 5.08
         s.flag_net("HPA_BOOST_VIN", since=s.mark()[1], side="right")   # fed through the 100 Ω filter
-        g.add(two_pin_box(s, "R_100", x0 + 17.78, u.bbox[1] + 7.62, "VSYS_LV", "HPA_BOOST_VIN"))
-        g.add(two_pin_box(s, "L_DFE252012F_4R7", x0 + 17.78, u.bbox[1] + 22.86, "VSYS_LV", "HPA_BOOST_SW", prefix="L"))
+        g.add(two_pin_box(s, "R_100", x0 + 17.78, u.bbox[1] + 7.62, "VSYS_LV_AUDIO", "HPA_BOOST_VIN"))
+        g.add(two_pin_box(s, "L_DFE252012F_4R7", x0 + 17.78, u.bbox[1] + 22.86, "VSYS_LV_AUDIO", "HPA_BOOST_SW", prefix="L"))
         yd = u.bbox[1] + 38.1
         d = part(s, "Diode", "PMEG2010AEH", x0 + 22.86, yd, {"2": "", "1": ""}, key="D_PMEG2010AEH", angle=180,
                  prefix="D")
@@ -393,7 +393,7 @@ def draw_rails(s, variants):
         g.add(prow(s, max(x0 + 50.8, snap_up(dv[2] + 5.08)), yd + 33.02, [("C_10n_0402_C0G", "HPA_BOOST_CP", "GND"),
                                               ("C_220n_0402", "HPA_BOOST_VREF", "GND")]))
         g.add(prow(s, u.bbox[0] + 2.54, u.bbox[3] + 15.24, [("C_100n_0402", "HPA_BOOST_VIN", "GND"),
-                                                           ("C_4u7_0402", "VSYS_LV", "GND"), ("C_4u7_0402", "VSYS_LV", "GND"),
+                                                           ("C_4u7_0402", "VSYS_LV_AUDIO", "GND"), ("C_4u7_0402", "VSYS_LV_AUDIO", "GND"),
                                                            ("C_4u7_0805_25V", "AUDIO_P7V0", "GND"),
                                                            ("C_4u7_0805_25V", "AUDIO_P7V0", "GND"),
                                                            ("C_4u7_0805_25V", "AUDIO_P7V0", "GND"),
@@ -404,7 +404,7 @@ def draw_rails(s, variants):
     def inverter():
         g = Group(s, "-7 V pre-rail: LMR33630C inverting buck-boost (ADR 0015 item 1)")
         u = ic(s, "Texas_Instruments", "LMR33630CRNXR", 101.6, 101.6,
-               {"VIN": "VSYS", "EN": "HPA_N7_EN", "NC": None, "SW": "HPA_N7_SW", "BOOT": "HPA_N7_BOOT",
+               {"VIN": "VSYS_AUDIO", "EN": "HPA_N7_EN", "NC": None, "SW": "HPA_N7_SW", "BOOT": "HPA_N7_BOOT",
                 "VCC": "HPA_N7_VCC", "FB": "HPA_N7_FB", "PG": None, "PGND": "AUDIO_N7V0", "AGND": "AUDIO_N7V0"})
         g.add(u.bbox)
         x0 = u.bbox[2] + 5.08
@@ -413,9 +413,9 @@ def draw_rails(s, variants):
                       cff="C_22p_0402", cff_on="bottom", flag_top=True))
         g.add(prow(s, x0 + 50.8, u.bbox[1] + 33.02, [("C_100n_0402", "HPA_N7_BOOT", "HPA_N7_SW"),
                                                     ("C_1u_0402", "HPA_N7_VCC", "AUDIO_N7V0")]))
-        g.add(prow(s, u.bbox[0] + 2.54, u.bbox[3] + 15.24, [("C_10u_0805_25V", "VSYS", "AUDIO_N7V0"),
-                                                           ("C_10u_0805_25V", "VSYS", "AUDIO_N7V0"),
-                                                           ("C_4u7_0805_25V", "VSYS", "GND"),
+        g.add(prow(s, u.bbox[0] + 2.54, u.bbox[3] + 15.24, [("C_10u_0805_25V", "VSYS_AUDIO", "AUDIO_N7V0"),
+                                                           ("C_10u_0805_25V", "VSYS_AUDIO", "AUDIO_N7V0"),
+                                                           ("C_4u7_0805_25V", "VSYS_AUDIO", "GND"),
                                                            ("C_22u_1206_16V", "AUDIO_N7V0", "GND"),
                                                            ("C_22u_1206_16V", "AUDIO_N7V0", "GND"),
                                                            ("C_22u_1206_16V", "AUDIO_N7V0", "GND")]))
@@ -428,8 +428,8 @@ def draw_rails(s, variants):
         q1 = part(s, "Transistor_FET", "DMG1012T", 127.0, 116.84, {"1": "HPA_RAIL_EN", "3": "HPA_N7_LS_G", "2": "GND"},
                   key="Q_DMG1012T", prefix="Q")
         g.add((114.3, 101.6, 139.7, 129.54))
-        g.add(prow(s, 147.32, 109.22, [("R_100k", "VSYS", "HPA_N7_LS_G")]))
-        part(s, "Transistor_FET", "DMP3099L", 175.26, 116.84, {"1": "HPA_N7_LS_G", "3": "VSYS", "2": "HPA_N7_LS_D"},
+        g.add(prow(s, 147.32, 109.22, [("R_100k", "VSYS_AUDIO", "HPA_N7_LS_G")]))
+        part(s, "Transistor_FET", "DMP3099L", 175.26, 116.84, {"1": "HPA_N7_LS_G", "3": "VSYS_AUDIO", "2": "HPA_N7_LS_D"},
              key="Q_DMP3099L", prefix="Q")
         g.add((160.02, 101.6, 190.5, snap_up(124.46 + len("HPA_N7_LS_D") * 1.16 + 2.54)))   # the drain label below
         g.add(prow(s, 200.66, 109.22, [("R_100k", "HPA_N7_LS_D", "HPA_N7_EN"), ("R_100k", "HPA_N7_EN", "AUDIO_N7V0")]))
@@ -441,18 +441,18 @@ def draw_rails(s, variants):
         ["AUDIO_P7V0, AUDIO_N7V0", "Supply out", "Off; the LDOs behind them off first (power tree §6.3)"],
     ]
     s.rail_rows = [
-        ["VSYS_LV", "2 x 4.7 µF (INP, INN); 100 nF at VIN behind 100 Ω", "SLVS493E Fig. 8-1, Table 8-1"],
+        ["VSYS_LV_AUDIO", "2 x 4.7 µF (INP, INN); 100 nF at VIN behind 100 Ω", "SLVS493E Fig. 8-1, Table 8-1"],
         ["AUDIO_P7V0", "4 x 4.7 µF 25 V X7R; 15 pF feed-forward", "BOM v1 line 111 (SLVS493E Eq. 7, 11)"],
-        ["VSYS (-7 V IC)", "2 x 10 µF 25 V to -7 V; 4.7 µF 25 V to GND", "BOM v1 line 118 (SNVA856B Fig. 3-1)"],
+        ["VSYS_AUDIO (-7 V IC)", "2 x 10 µF 25 V to -7 V; 4.7 µF 25 V to GND", "BOM v1 line 118 (SNVA856B Fig. 3-1)"],
         ["AUDIO_N7V0", "3 x 22 µF 16 V X7R 1206; 22 pF feed-forward", "BOM v1 line 118"],
     ]
     corner_notes(s, [
-        "1. Function: AUDIO_P7V0 (TPS65131 boost from VSYS_LV, 475 kΩ / 100 kΩ: 6.97 V), AUDIO_N7V0",
-        "   (LMR33630C inverting buck-boost from VSYS, IC ground = -7 V, 100 kΩ / 16.5 kΩ: -7.06 V), then",
+        "1. Function: AUDIO_P7V0 (TPS65131 boost from VSYS_LV_AUDIO, 475 kΩ / 100 kΩ: 6.97 V), AUDIO_N7V0",
+        "   (LMR33630C inverting buck-boost from VSYS_AUDIO, IC ground = -7 V, 100 kΩ / 16.5 kΩ: -7.06 V), then",
         "   HPA_P6V0 / HPA_N6V0 from two LT3045 and two LT3094 in parallel (ADR 0015; BOM lines 22-26, 116-119).",
         "2. Absent state: HPA_RAIL_EN and HPA_LDO_EN pulled down: both pre-rails and the LDOs off.",
         "3. TPS65131 inverter half unused: ENN, PSN, VNEG, FBN to ground, OUTN and CN open, INN on",
-        "   VSYS_LV with 4.7 µF (BOM line 22; no single-output case in SLVS493E, UNVERIFIED).",
+        "   VSYS_LV_AUDIO with 4.7 µF (BOM line 22; no single-output case in SLVS493E, UNVERIFIED).",
         "4. LMR33630C: EN through the two-FET shifter of SNVA856B Fig. 7-1; PG and NC unused.",
         "5. LDOs: SET tied, 2 x 60.4 kΩ (6.04 V), 2 x 0.47 µF (≈ 65 ms); RILIM 523 Ω / 13.0 kΩ; PGFB to",
         "   IN; PG open; OUT and OUTS joined, then a 20 mΩ trace ballast (net tie) to the shared rail.",

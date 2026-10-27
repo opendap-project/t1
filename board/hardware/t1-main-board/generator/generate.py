@@ -27,6 +27,7 @@ sys.path.insert(0, HERE)
 import blocks_audio  # noqa: E402
 import blocks_charger  # noqa: E402
 import blocks_faceplate  # noqa: E402
+import blocks_instr  # noqa: E402
 import blocks_io  # noqa: E402
 import blocks_should  # noqa: E402
 import blocks_mem  # noqa: E402
@@ -46,7 +47,7 @@ from sch import RAILS, snap  # noqa: E402
 PATTERNS = {
     "PWR_BAT": ["VBAT", "*BAT_F", "*BAT_P", "BAT_N"],
     "BAT_SENSE": ["*BAT_MID", "*BAT_NTC"],
-    "PWR_VSYS": ["VSYS"],
+    "PWR_VSYS": ["VSYS", "VSYS_SRC", "VSYS_AUDIO", "VSYS_P5V1"],
     "PWR_VBUS": ["USBC_VBUS", "VBUS_CHG", "*CHG_PMID"],
     "PWR_5V1": ["*P5V1_SRC", "*P5V1_LIM"],
     "PWR_HAT5V": ["HAT_5V"],
@@ -186,12 +187,14 @@ def main():
     exp, bid, imu, spk, sd = blocks_io.sheets(proj)
     hap, tpm, tag, rdr, rp = blocks_should.sheets(proj)
     btn = blocks_io.sheets_buttons(proj)
+    cmon = blocks_instr.sheets(proj)
 
     # the root in reading rows (CRAFT-111): overviews in the top row; then power blocks as power
     # flows; then the SoC and its memories. A list stacks its sheets in one column.
     rows = [("Overviews, then the power blocks in the order power flows",
              [power, inter, charger, gauge, vsys_lv, v3v3, pmic, vcpu]),
-            ("SoC, memory and the coprocessor; audio, from the DACs to the jacks", [soc, [ddr, emmc], audio, [jse, jbal], rp]),
+            ("SoC, memory and the coprocessor; audio, from the DACs to the jacks; instrumentation",
+             [soc, [ddr, emmc], audio, [jse, jbal], rp, [None, cmon]]),
             ("USB ports (the 5.1 V source, USB-C, the HAT port) and the radio",
              [p5v1, vout, usbc, hats, hat5v, radio, ant]),
             ("Faceplate interface; control, storage and sensors", [[fpc, fpd, fpk], [fpb, mic, spk], [exp, bid, sd], [imu, hap, tpm], [tag], [rdr], [btn]])]
@@ -260,6 +263,7 @@ def main():
     blocks_io.draw_buttons(btn, variants)
     blocks_should.draw_reader(rdr, variants)
     blocks_should.draw_rp2354(rp, variants)
+    blocks_instr.draw_current_monitors(cmon, variants)
     for s in proj.sheets:
         if s.role.startswith("blk."):
             finalize_tables(s)
@@ -268,7 +272,7 @@ def main():
     overview.draw_interconnect(inter)
 
     for s in [power, inter, charger, gauge, vsys_lv, v3v3, pmic, vcpu, soc, ddr, emmc, audio, jse, jbal,
-              p5v1, usbc, vout, hat5v, hats, radio, ant, fpc, fpd, fpb, fpk, mic, exp, bid, sd, imu, spk, hap, tpm, tag, rdr, btn, rp]:
+              p5v1, usbc, vout, hat5v, hats, radio, ant, fpc, fpd, fpb, fpk, mic, exp, bid, sd, imu, spk, hap, tpm, tag, rdr, btn, rp, cmon]:
         root.child(s, 0, 0, w=25.4)
     for name, *_ in blocks_soc.SUBS:
         soc.child(subs[name], 0, 0, w=76.2)

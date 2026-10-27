@@ -45,7 +45,7 @@ test_points = "fit"
 "blk.pwr-5v1" = { state = "fit" }
 "blk.hat-5v" = { state = "fit" }
 "blk.usb-vbus-out" = { state = "fit" }
-"blk.current-monitors" = { state = "fit", params = { shunt_mohm = { vsys = 10, audio = 100, display = 100, hat = 20 } }, note = "ADR 0013: all four INA236 fitted in every variant" }
+"blk.current-monitors" = { state = "fit", params = { shunt_mohm = { vsys = 10, audio_vsys_lv = 20, audio_vsys = 20, display = 100, hat = 20 } }, note = "ADR 0013: every INA236 fitted in every variant (five: BOM v1 lines 54, 136)" }
 "blk.hat-signals" = { state = "fit" }
 "blk.fp-connector" = { state = "fit" }
 "blk.fp-display" = { state = "fit" }

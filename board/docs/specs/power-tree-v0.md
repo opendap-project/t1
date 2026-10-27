@@ -700,6 +700,8 @@ The DAC VP pair (0.06 mA) and the always-on logic (expander, EEPROM, gates) have
 | 0x43 | HAT | 5.1 V buck input | 20 mΩ | 4.1 A | ≈ 1.3 A |
 | 0x48 (v0.2) | Audio, VSYS side | LMR33630C VIN | 20 mΩ | 4.1 A | 0.35 A sine, ≈ 1.0 A LDO-trip case |
 
+Rail names of the measured branches in the schematic (`blk.current-monitors`): `VSYS_SRC` is the BQ25798 SYS node, the supply side of the 0x40 shunt, whose load side is `VSYS`; the load sides of the other shunts are `VSYS_LV_AUDIO` (0x41), `VSYS_LV_BL` (0x42), `VSYS_P5V1` (0x43) and `VSYS_AUDIO` (0x48). Each feeds only the consumers named in its row.
+
 ### 4.13 vcca1v8_pmu budget (v0.2)
 
 RK809 LDO8 from VCC7 = vcc3v3_sys. The DC table gives 400 mA at VIN 3.6 V / VOUT 3.3 V and 200 mA at VIN 2 V / VOUT 1.8 V (RK809 Rev 1.01 p. 18); the T1's 3.3 V in, 1.8 V out is not tabulated, so both figures are checked.

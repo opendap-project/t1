@@ -644,6 +644,18 @@
         "pattern": "VSYS"
       },
       {
+        "netclass": "PWR_VSYS",
+        "pattern": "VSYS_SRC"
+      },
+      {
+        "netclass": "PWR_VSYS",
+        "pattern": "VSYS_AUDIO"
+      },
+      {
+        "netclass": "PWR_VSYS",
+        "pattern": "VSYS_P5V1"
+      },
+      {
         "netclass": "PWR_VBUS",
         "pattern": "USBC_VBUS"
       },

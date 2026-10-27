@@ -37,6 +37,9 @@ RAILS = [
     "vcc3v3_wl", "vcc1v8_wl",
     # NFC controller and coprocessor (power tree v0.2 §3)
     "NFC_VBAT", "RP_3V3", "RP_IOVDD_1V8",
+    # the branches the INA236 shunts measure (power tree §4.12, G11): supply side of the VSYS shunt
+    # (BQ25798 SYS), then the load side of each branch shunt
+    "VSYS_SRC", "VSYS_LV_AUDIO", "VSYS_AUDIO", "VSYS_LV_BL", "VSYS_P5V1",
 ]
 
 
@@ -532,6 +535,9 @@ class Sheet:
                 self.junction(xc, ys[0])
                 self.wire((xc, ys[0]), (xc + d[0] * 2.54, ys[0]))
                 self.attach(net, xc + d[0] * 2.54, ys[0], "left" if d[0] < 0 else "right")
+                # the turned symbol's value reads outward from the stub end: the part's bbox holds it
+                far = pl.__dict__.setdefault("reach", {})
+                far[d[0]] = max(far.get(d[0], 0.0), reach + 2.54 + len(net) * 1.16 + 1.27)
                 continue
             for p, _ in run:
                 px, py = pl.pos(p)

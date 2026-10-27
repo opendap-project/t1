@@ -64,7 +64,7 @@ def draw_parent(s):
         "2. Absent state: never omitted. Pack out: with no adapter the BQ25798 is unpowered and the ship",
         "   FET off, so an inserted pack meets a soft start; with an adapter it reports no battery.",
         "3. Drawn on three sub-sheets (blk.charger-*), sheets of blk.charger as the SoC's sub-sheets.",
-        "4. The VSYS INA236 shunt sits between SYS and VSYS when blk.current-monitors is drawn.",
+        "4. SYS leaves as VSYS_SRC; the VSYS INA236 shunt (10 mΩ, blk.current-monitors) makes VSYS.",
     ])
 
 
@@ -124,7 +124,7 @@ def draw_core(s, variants):
             "D+": None, "D-": None, "SCL": "I2C1_SCL", "SDA": "I2C1_SDA", "CE": "CHG_CE", "QON": "CHG_QON",
             "TS": "BAT_NTC", "ILIM_HIZ": "CHG_REGN", "PROG": "CHG_PROG",
             "PMID": "CHG_PMID", "BTST1": "CHG_BTST1", "SW1": "CHG1_SW", "SW2": "CHG2_SW", "BTST2": "CHG_BTST2",
-            "SYS": "VSYS", "BAT": "VBAT", "BATP": "CHG_BATP", "SDRV": "CHG_SDRV", "REGN": "CHG_REGN",
+            "SYS": "VSYS_SRC", "BAT": "VBAT", "BATP": "CHG_BATP", "SDRV": "CHG_SDRV", "REGN": "CHG_REGN",
             "STAT": "CHG_STAT", "INT": "CHG_INT_N", "GND": "GND"}
     grp(f, lambda: ic_group(
         s, "Charger: BQ25798, 1.5 MHz, 2S (BOM v1 lines 39, 115)", "Texas_Instruments", "BQ25798RQMR", pins,
@@ -144,7 +144,7 @@ def draw_core(s, variants):
             y = b[3] + 20.32                    # room for the next row's vertical label
         x = g.boxes[-1][2] + 7.62
         y = 127.0
-        for row in ([("C_10u_0805_25V", "VSYS", "GND")] * 5 + [("C_100n_0402_50V", "VSYS", "GND")],
+        for row in ([("C_10u_0805_25V", "VSYS_SRC", "GND")] * 5 + [("C_100n_0402_50V", "VSYS_SRC", "GND")],
                     [("C_10u_0805_25V", "VBAT", "GND")] * 2):
             b = g.add(prow(s, x, y, row))
             y = b[3] + 12.7
@@ -163,7 +163,7 @@ def draw_core(s, variants):
     grp(f, probes, newline=True)
     s.iface_rows = [
         ["VBUS_CHG", "Supply in", "From the TPS2121 (blk.charger-input)"],
-        ["VSYS", "Supply out", "Not applicable: never omitted"],
+        ["VSYS_SRC", "Supply out", "SYS output to the VSYS INA236 shunt (blk.current-monitors); never omitted"],
         ["VBAT", "Passive", "BAT node to the ship FET (blk.charger-battery)"],
         ["CHG_SDRV, CHG_BATP, BAT_NTC", "Passive", "Ship FET gate, pack-side sense, pack NTC (blk.charger-battery)"],
         ["I2C1_SCL, I2C1_SDA", "Bidirectional", "BQ25798 at 0x6B; pull-ups on blk.soc-pmuio"],
@@ -172,7 +172,7 @@ def draw_core(s, variants):
     s.rail_rows = [
         ["VBUS_CHG", "2 x 10 µF 25 V + 100 nF", "SLUSDV2C Table 5-1, §8.2.2.3"],
         ["CHG_PMID", "3 x 10 µF 25 V + 100 nF", "SLUSDV2C Table 5-1 (no backup mode)"],
-        ["VSYS", "5 x 10 µF + 100 nF (25 V parts)", "SLUSDV2C §8.2.2.4: 16 V or higher at 2S"],
+        ["VSYS_SRC", "5 x 10 µF + 100 nF (25 V parts)", "SLUSDV2C §8.2.2.4: 16 V or higher at 2S"],
         ["VBAT", "2 x 10 µF", "SLUSDV2C Table 5-1"],
         ["CHG_REGN", "4.7 µF 10 V", "SLUSDV2C Table 5-1"],
     ]

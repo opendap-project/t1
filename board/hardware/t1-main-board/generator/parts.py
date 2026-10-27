@@ -118,6 +118,25 @@ PARTS = {
     "R_523": _r("523 Ω", "523R", size="0603", src="LT3045 RILIM 523 Ω 1 % (BOM v1 line 109)"),
     "R_13k": _r("13 kΩ", "13K", size="0603", src="LT3094 RILIM 13.0 kΩ 1 % (BOM v1 line 109)"),
     "R_1R0": _r("1 Ω", "1R", size="0603", src="HP-amp ballast 1.0 Ω 1 % 0603 (BOM v1 line 107)"),
+    # INA236 shunts (BOM v1 lines 54, 136; power tree §4.12): fitted in every variant (ADR 0013)
+    "R_SHUNT_10m_2512": dict(kind="R", value="10 mΩ", Footprint="Resistor_SMD:R_2512_6332Metric", Datasheet=VISHAY_WSL,
+                             Description="Current-sense resistor, 10 mOhm, 1 %, 1 W, 2512 metal strip: INA236 VSYS shunt",
+                             Manufacturer="Vishay Dale", MPN="WSL2512R0100FEA", spec="2512 1 W",
+                             src="BOM v1 line 54: VSYS shunt 10 mΩ, 1 W or more, 2512 (doc 30100: WSL2512 1.0 W)"),
+    "R_SHUNT_20m_2010": dict(kind="R", value="20 mΩ", Footprint="Resistor_SMD:R_2010_5025Metric", Datasheet=VISHAY_WSL,
+                             Description="Current-sense resistor, 20 mOhm, 1 %, 0.5 W, 2010 metal strip: INA236 HAT shunt",
+                             Manufacturer="Vishay Dale", MPN="WSL2010R0200FEA", spec="2010 0.5 W",
+                             src="BOM v1 line 54: HAT shunt 20 mΩ, 0.5 W or more (doc 30100: WSL2010 0.5 W); part: "
+                                 "capture choice in the line 43 family"),
+    "R_SHUNT_20m_1206": dict(kind="R", value="20 mΩ", Footprint="Resistor_SMD:R_1206_3216Metric", Datasheet=VISHAY_WSL,
+                             Description="Current-sense resistor, 20 mOhm, 1 %, 0.25 W, 1206 metal strip: INA236 audio shunt",
+                             Manufacturer="Vishay Dale", MPN="WSL1206R0200FEA", spec="1206",
+                             src="BOM v1 lines 54 (audio, v1.8) and 136 (LMR33630C input): WSL1206R0200FEA"),
+    "R_SHUNT_100m_1206": dict(kind="R", value="100 mΩ", Footprint="Resistor_SMD:R_1206_3216Metric", Datasheet=VISHAY_WSL,
+                              Description="Current-sense resistor, 100 mOhm, 1 %, 0.25 W, 1206 metal strip: INA236 display shunt",
+                              Manufacturer="Vishay Dale", MPN="WSL1206R1000FEA", spec="1206",
+                              src="BOM v1 line 54: display shunt 100 mΩ (doc 30100: WSL1206 to 0.2 Ω); part: "
+                                  "capture choice in the line 43 family"),
     # measurement links (BOM v1 line 137): shunt in `full`, 0 Ohm jumper in `production`
     "LINK_H5": dict(kind="R", value="5 mΩ", Footprint="Resistor_SMD:R_1206_3216Metric", Datasheet=VISHAY_WSL,
                     Description="Current-sense resistor, 5 mOhm, 1 %, 0.5 W, 1206 metal strip: measurement link H5",

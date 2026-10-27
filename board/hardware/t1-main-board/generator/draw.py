@@ -601,6 +601,8 @@ def prow(sheet, x, y, specs, gap=2.54, dnp=False, extra=None):
             else:
                 sheet.attach(b_net, b_[0], b_[1], "down")
             bot_need = max(bot_need, 2.54 + (6.35 if b_net in RAILS else net_text(b_net)))
+            if b_net in RAILS and b_net != "GND":      # a rail value centred below the part
+                left = min(left, xs - net_text(b_net) / 2)
             xs_prev, lw = xs, part_text(key)
             if b_net in RAILS and b_net != "GND":
                 lw = max(lw, net_text(b_net) / 2)

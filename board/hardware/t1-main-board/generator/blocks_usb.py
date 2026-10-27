@@ -133,11 +133,11 @@ def draw_pwr_5v1(s, variants):
     f = Flow(s)
     grp(f, lambda: ic_group(
         s, "TPS62903, 5.1 V, 2.5 MHz (BOM v1 lines 91, 92, 121)", "Texas_Instruments", "TPS62903RPJR",
-        {"VIN": "VSYS", "EN": "P5V1_EN", "MODE/S-CONF": "P5V1_MODE", "SS/TR": "P5V1_SS", "SW": "P5V1_SW",
+        {"VIN": "VSYS_P5V1", "EN": "P5V1_EN", "MODE/S-CONF": "P5V1_MODE", "SS/TR": "P5V1_SS", "SW": "P5V1_SW",
          "VOS": "P5V1_SRC", "FB/VSET": "P5V1_VSET", "PG": "P5V1_PG", "GND": "GND"},
         rows=[[("R_95k3", "P5V1_VSET", "GND"), ("R_26k1", "P5V1_MODE", "GND"), ("C_10n_0402", "P5V1_SS", "GND"),
                ("R_100k", "P5V1_EN", "GND")],
-              [("C_10u_0805_25V", "VSYS", "GND"), ("C_22u_1210_25V", "P5V1_SRC", "GND")]],
+              [("C_10u_0805_25V", "VSYS_P5V1", "GND"), ("C_22u_1210_25V", "P5V1_SRC", "GND")]],
         extra={"Constraints": "PCB-P-07"}))
 
     def stage():
@@ -159,14 +159,14 @@ def draw_pwr_5v1(s, variants):
         return g.close()
     grp(f, probe)
     s.iface_rows = [
-        ["VSYS", "Supply in", "The INA236 HAT channel shunt sits at this input (blk.current-monitors, not drawn yet)"],
+        ["VSYS_P5V1", "Supply in", "VSYS through the HAT INA236 shunt (0x43, blk.current-monitors)"],
         ["HAT5V_EN, USB_SRC_ON", "Input", "Expander P02, P03, pulled down: the buck off"],
         ["P5V1_SRC", "Supply out", "Off, discharged (output discharge on, MODE 26.1 kΩ)"],
     ]
-    s.rail_rows = [["VSYS", "10 µF 25 V", "SLVSES3A Table 8-1"],
+    s.rail_rows = [["VSYS_P5V1", "10 µF 25 V", "SLVSES3A Table 8-1"],
                    ["P5V1_SRC", "22 µF 25 V X7R 1210", "BOM v1 line 121: ≥ 12 µF effective at 5.1 V"]]
     corner_notes(s, [
-        "1. Function: TPS62903 VSYS to 5.1 V, 1.6 A design (53 % of 3 A), for the HAT VBUS and the",
+        "1. Function: TPS62903 VSYS (VSYS_P5V1) to 5.1 V, 1.6 A design (53 % of 3 A), for the HAT VBUS and the",
         "   USB-C source through eFuse #D (ADR 0014; power tree §4.6).",
         "2. Absent state: EN pulled down (100 kΩ): off, output discharged.",
         "3. EN = HAT5V_EN OR USB_SRC_ON in hardware: one BAT54J from each (BOM v1 line 91).",

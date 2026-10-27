@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+import os
+
 from sch import RAILS as RAILS_ORDER, snap
 from draw import corner_notes
 from sexpr import n, q
@@ -13,8 +15,13 @@ RAIL_ROWS = [
     ["HAT_5V", "5 V", "HAT port: eFuse #A source, or a source HAT", "HAT5V_EN (TCPM)", "TPS2121 IN2, FUSB302B01", "PWR_HAT5V", "eFuse #A IMON"],
     ["VBUS_CHG", "5-12 V", "TPS2121 (blk.charger-input)", "input priority", "BQ25798 VBUS", "PWR_VBUS", "-"],
     ["VBAT", "6.0-8.4 V", "BQ25798 BAT, 2S pack (blk.charger-core)", "ship FET to the pack", "BQ25798 BATFET, gauge PACK", "PWR_BAT", "gauge (blk.gauge)"],
-    ["VSYS", "6.0-8.8 V", "BQ25798 SYS (blk.charger-core)", "ship FET", "TPS62136, TPS62903, LMR33630C", "PWR_VSYS", "INA236 0x40"],
+    ["VSYS", "6.0-8.8 V", "BQ25798 SYS (VSYS_SRC) through the 10 mΩ shunt", "ship FET", "TPS62136, TPS62903, LMR33630C", "PWR_VSYS", "INA236 0x40"],
+    ["VSYS_SRC", "6.0-8.8 V", "BQ25798 SYS (blk.charger-core)", "-", "VSYS shunt 10 mΩ (blk.current-monitors)", "PWR_VSYS", "INA236 0x40 (IN+)"],
+    ["VSYS_AUDIO", "6.0-8.8 V", "VSYS through 20 mΩ (blk.current-monitors)", "-", "LMR33630C and its EN shifter (blk.hpa-rails-pre)", "PWR_VSYS", "INA236 0x48"],
+    ["VSYS_P5V1", "6.0-8.8 V", "VSYS through 20 mΩ (blk.current-monitors)", "-", "TPS62903 VIN (blk.pwr-5v1)", "PWR_VSYS", "INA236 0x43"],
     ["VSYS_LV", "3.8 V", "TPS62136 (blk.pwr-vsys-lv)", "always on (EN = VSYS)", "RK809 VCC1-4, TPS62869, TPS62827, audio, display", "-", "H5 link"],
+    ["VSYS_LV_AUDIO", "3.8 V", "VSYS_LV through 20 mΩ (blk.current-monitors)", "-", "DAC_VP switch, TPS62840, link #27, TPS65131", "-", "INA236 0x41"],
+    ["VSYS_LV_BL", "3.8 V", "VSYS_LV through 100 mΩ (blk.current-monitors)", "-", "TPS61160 VIN (blk.fp-backlight)", "-", "INA236 0x42"],
     ["vcc3v3_sys", "3.3 V", "TPS62827 (blk.pwr-3v3-sys)", "always on (EN = VSYS_LV)", "RK809 VCC5-9, eMMC VCC, SoC VCCIO1/5/7, USB", "-", "H5 link"],
     ["vdd_cpu", "0.85-1.15 V", "TPS62869 (blk.vdd-cpu)", "EN from vcc3v3_pmu; I2C DVS", "SoC CPU", "-", "H5 link"],
     ["vdd_logic", "0.90 V", "RK809 BUCK1 (blk.pmic)", "off in suspend", "SoC logic", "-", "H5 link (blk.soc)"],
@@ -78,7 +85,7 @@ def draw_power(s):
         "1. Rail names are the power tree's; every power symbol on every sheet names one (CRAFT-84, -85).",
         "2. Only the rails of the blocks drawn so far are listed; the rest join with their blocks.",
         "3. Measure: the block measurement links of BOM v1 line 137 (shunt in full, 0 Ω in production,",
-        "   H5 kept); INA236 channels are in blk.current-monitors (not drawn yet).",
+        "   H5 kept); the five INA236 channels and their shunts are on blk.current-monitors.",
         "4. PWR_FLAG: KiCad 10.0.7's ERC reports a flag on a net island of power symbols as",
         "   pin_not_connected, so each flag sits on the sheet that feeds its rail, on a branch of the",
         "   rail's wire outside the block's groups (link load side, inductor output). Local nets fed",
@@ -118,7 +125,7 @@ def reading_order(rows):
     for _title, items in rows:
         cols = [it if isinstance(it, list) else [it] for it in items]
         for k in range(max(len(c) for c in cols)):
-            out += [c[k] for c in cols if len(c) > k]
+            out += [c[k] for c in cols if len(c) > k and c[k] is not None]
     return out
 
 
@@ -135,7 +142,10 @@ def layout_rows(sheet, rows, x0=25.4, y0=25.4, gap=5.08, hgap=5.08, head=3.81, w
     widths come in steps of width_step. Every stack level of every row sits in a band of its own
     (BAND), so the plot reads in the page order whatever the boxes' heights. The layout fails
     (SystemExit) instead of letting a symbol, label or file name reach the frame or the title
-    block. Returns the bottom y of the last row; the headings are kept in sheet.headings."""
+    block. Returns the bottom y of the last row; the headings are kept in sheet.headings.
+
+    A column may leave a stack level empty (None): its next box sits in the next band, below a
+    shorter neighbour's level or the notes box (draw_root checks the notes against every box)."""
     from draw import frame, tb_box, MARGIN
     W, H = frame(sheet)
     tx0, ty0, _, _ = tb_box(sheet)
@@ -145,34 +155,39 @@ def layout_rows(sheet, rows, x0=25.4, y0=25.4, gap=5.08, hgap=5.08, head=3.81, w
     y = y0
     last_band = None
     for title, items in rows:
-        cols = [[by[s] for s in (it if isinstance(it, list) else [it])] for it in items]
+        cols = [[by[s] if s is not None else None for s in (it if isinstance(it, list) else [it])] for it in items]
         for col in cols:
-            w = max(cs.w for cs in col)
+            w = max(cs.w for cs in col if cs is not None)
             w = snap(width_step * -(-round(w / width_step, 6) // 1)) if w > 30.48 else w
             for cs in col:
-                cs.w = w
+                if cs is not None:
+                    cs.w = w
         sheet.headings.append((title, x0, y))
-        top = snap(y + head + max(cols[i][0].ext["top"] for i in range(len(cols))))
+        top = snap(y + head + max(c[0].ext["top"] for c in cols if c[0] is not None))
         # stacked symbols share one line per stack level across the row; each level in a band of
         # its own, below the previous level's band
         lines = []
         for k in range(max(len(c) for c in cols)):
-            ln = top if k == 0 else snap(max(lines[k - 1] + 2.54 + c[k - 1].h + 5.08 + c[k].ext["top"]
-                                              for c in cols if len(c) > k))
+            ln = top if k == 0 else snap(max(lines[k - 1] + 2.54 + (c[k - 1].h if c[k - 1] else 0.0) + 5.08
+                                              + (c[k].ext["top"] if c[k] else 0.0) for c in cols if len(c) > k))
             while last_band is not None and _band(ln + 2.54) <= last_band:
                 ln = snap(ln + 1.27)
             lines.append(ln)
             last_band = _band(ln + 2.54)
+            if os.environ.get("T1_LAYOUT_DEBUG"):
+                print(f"layout: root row {title[:20]!r} level {k}: line {ln:.1f}")
         x = x0
         placed = []
         for col in cols:
-            le = max(cs.ext["left"] for cs in col)
-            re_ = max(cs.ext["right"] for cs in col)
-            w = col[0].w
+            le = max(cs.ext["left"] for cs in col if cs is not None)
+            re_ = max(cs.ext["right"] for cs in col if cs is not None)
+            w = next(cs.w for cs in col if cs is not None)
             cx = snap(x + le)
             if cx + w + re_ > x_max:
                 raise SystemExit(f"generator: row {title!r} does not fit the root sheet")
             for k, cs in enumerate(col):
+                if cs is None:
+                    continue
                 cs.x, cs.y = cx, snap(lines[k] + 2.54)   # sheet name above
                 cy = cs.y + cs.h + 5.08                    # file name below the box
                 # the frame, and the title block in the lower right corner
@@ -221,11 +236,23 @@ def draw_root(root):
     # the notes sit at the right end of the second row, clear of its symbols, so the bottom row
     # keeps the space above the title block for blocks
     from draw import frame, MARGIN
-    corner_notes(root, w=99.06, y=root.headings[1][2] + 5.08, right=frame(root)[0] - MARGIN - CLEAR, lines=[
+    notes_y = root.headings[1][2] + 5.08
+    lines = [
         "1. Reading order: overviews first, then blocks left to right as power and signals flow;",
         "   page numbers follow it (CRAFT-111). The SoC's sub-sheets follow the SoC.",
         "2. Rails cross the hierarchy as power symbols named as the power tree; signals as sheet pins",
         "   named as each block's interface (CRAFT-112). Buses cross as one bus pin through the",
         "   project's bus aliases (DDR_CHA, DDR_CHB, EMMC); their members keep their names.",
         "3. Blocks not drawn yet are listed in the README; nets to them end in local labels.",
-    ])
+    ]
+    corner_notes(root, w=99.06, y=notes_y, right=frame(root)[0] - MARGIN - CLEAR, lines=lines)
+    # a box in an empty stack level (layout_rows) may sit below the notes, never on them
+    from draw import G
+    h = G * -(-((len(lines) + 1) * 2.03 + 3.81) // G)      # as corner_notes sizes the box
+    nx1 = frame(root)[0] - MARGIN - CLEAR
+    nx0, ny0, ny1 = nx1 - 99.06, notes_y, notes_y + h
+    for cs in root.children:
+        bx0, by0 = cs.x - cs.ext["left"], cs.y - 3.81 - cs.ext["top"]
+        bx1, by1 = cs.x + cs.w + cs.ext["right"], cs.y + cs.h + 5.08
+        if bx0 < nx1 and bx1 > nx0 and by0 < ny1 and by1 > ny0:
+            raise SystemExit(f"generator: {cs.sheet.name} meets the root notes")

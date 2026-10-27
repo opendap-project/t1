@@ -1,6 +1,6 @@
 # T1 main board project
 
-The KiCad 10 project of the T1 main board. The schematic is being captured block by block ([feature-block catalog](../../docs/specs/feature-blocks.md), [RFC 0011](https://github.com/opendap-project/rfcs/blob/main/text/0011-feature-blocks-and-variants.md)); the layout is not started. Prototype 1 targets quality level Q1 ([RFC 0010](https://github.com/opendap-project/rfcs/blob/main/text/0010-quality-levels.md)).
+The KiCad 10 project of the T1 main board. The schematic is captured block by block ([feature-block catalog](../../docs/specs/feature-blocks.md), [RFC 0011](https://github.com/opendap-project/rfcs/blob/main/text/0011-feature-blocks-and-variants.md)); the project has no layout yet. Prototype 1 targets quality level Q1 ([RFC 0010](https://github.com/opendap-project/rfcs/blob/main/text/0010-quality-levels.md)).
 
 The schematic is generated: `generator/` writes every sheet, the project file, the library tables and the project-local library parts from the board's data. Edit the generator and run it again; never edit a generated file by hand. A rerun with no change in its inputs writes byte-identical files (every UUID is derived from a stable key).
 
@@ -40,30 +40,31 @@ Drawn from 2026-10-25. Every sheet carries the block's notes (function, absent s
 | 35-37 | `rp2354*.kicad_sch` | `blk.rp2354`, `-core`, `-power` | RP2354A (one reference, three units): system and GPIO units with the 12 MHz oscillator, BOOTSEL N-FET, 27 Ω USB series, the five I2S/DSD tap positions and test pads; the supply unit with its 3.3 µH core regulator, RP_3V3 and RP_IOVDD_1V8 switches, links #21 and #30 |
 | 38 | `emmc.kicad_sch` | `blk.emmc` | Samsung KLMBG2JETD-B041 eMMC, 16 GB alternate |
 | 39 | `jack-bal.kicad_sch` | `blk.jack-bal` | The 4.4 mm jack |
-| 40 | `pwr-5v1.kicad_sch` | `blk.pwr-5v1` | TPS62903 5.1 V source, enabled by either port (OR of HAT5V_EN, USB_SRC_ON) |
-| 41 | `usb-vbus-out.kicad_sch` | `blk.usb-vbus-out` | eFuse #D (shared limiter) and eFuse #C (USB-C source), TPS259470A (RFC 0015) |
-| 42 | `usb-c.kicad_sch` | `blk.usb-c` | USB4105 receptacle, TVS2200, TPD8S300A, TPD4E05U06, FUSB302B, VBUSDET divider |
-| 43 | `hat-signals.kicad_sch` | `blk.hat-signals` | DF40C-50DS flat-cable receptacle (interface v2 §9.2), USB 3 TX AC coupling |
-| 44 | `hat-5v.kicad_sch` | `blk.hat-5v` | eFuse #A, FUSB302B01 (USB PD on the HAT port), VBUS discharge (RFC 0014) |
-| 45-47 | `radio*.kicad_sch` | `blk.radio`, `-module`, `-power` | Murata Type 2EL by unit with its SDIO series positions; TPS22919 AVDD33, TPS62826 AVDD18, links #11, #12, SN74AXC1T45 PDn hold |
-| 48 | `antennas.kicad_sch` | `blk.antennas` | ANT0 and ANT1 paths with matching positions, U.FL, the 10 pF shared link (ADR 0018) |
-| 49 | `fp-connector.kicad_sch` | `blk.fp-connector` | FH35C-51S contacts (pinout v1 §8.2), 6 × TPD4E05U06, TPS22950 FP_3V3, TPS22945 FP_1V8, links #23 and #31 |
-| 50 | `fp-backlight.kicad_sch` | `blk.fp-backlight` | TPS61160, 22 µH, PMEG6010CEH, RSET 3.32 Ω |
-| 51 | `gpio-expander.kicad_sch` | `blk.gpio-expander` | TCA6416A at 0x21 with the off-state pull-downs and the input pull-ups |
-| 52 | `imu.kicad_sch` | `blk.imu` | LSM6DSV16X at 0x6A, INT1 wake, link #32 |
-| 53 | `nfc-tag.kicad_sch` | `blk.nfc-tag` | NT3H2111 NTAG I2C plus at 0x55, field detect, loop antenna contacts, link #33 |
-| 54 | `nfc-reader.kicad_sch` | `blk.nfc-reader` | PN7160 at 0x28, NFC_VBAT switch and link #18, EMC filter, matching and RX path (AN13219 first-iteration values), 27.12 MHz crystal, antenna contacts |
-| 55 | `buttons.kicad_sch` | `blk.buttons` | Power, Vol+, Vol− (PTS815) and Action (part open) to ground, 4 × TPD1E10B06, the Vol− pull-up |
-| 56 | `fp-display.kicad_sch` | `blk.fp-display` | TPS22945 FP_VCI after RK809 LDO4, link #24 |
-| 57 | `mic-main.kicad_sch` | `blk.mic-main` | TPS22945 MIC_1V8, PDM clock series resistor |
-| 58 | `board-id.kicad_sch` | `blk.board-id` | AT24C02D at 0x50 |
-| 59 | `haptics.kicad_sch` | `blk.haptics` | DRV2605L at 0x5A, LRA contacts, link #19 |
-| 60 | `fp-controls.kicad_sch` | `blk.fp-controls` | I2C3, interrupt and SPI CS pulls on FP_3V3, the GT911 strap footprint |
-| 61 | `speaker.kicad_sch` | `blk.speaker` | MAX98357A, gain 3 dB, SD_MODE position, speaker pads, link #17 |
-| 62 | `microsd.kicad_sch` | `blk.microsd` | DM3AT socket, 22 Ω series, detect, 2 × TPD4E05U06, link #16 |
-| 63 | `tpm.kicad_sch` | `blk.tpm` | SLB9673 TPM 2.0 at 0x2E, always on, link #20 |
+| 40 | `current-monitors.kicad_sch` | `blk.current-monitors` | Five INA236 on I2C1 (0x40-0x43, 0x48) and their shunts: VSYS 10 mΩ, audio VSYS_LV and VSYS sides 20 mΩ each, display 100 mΩ, HAT 20 mΩ |
+| 41 | `pwr-5v1.kicad_sch` | `blk.pwr-5v1` | TPS62903 5.1 V source, enabled by either port (OR of HAT5V_EN, USB_SRC_ON) |
+| 42 | `usb-vbus-out.kicad_sch` | `blk.usb-vbus-out` | eFuse #D (shared limiter) and eFuse #C (USB-C source), TPS259470A (RFC 0015) |
+| 43 | `usb-c.kicad_sch` | `blk.usb-c` | USB4105 receptacle, TVS2200, TPD8S300A, TPD4E05U06, FUSB302B, VBUSDET divider |
+| 44 | `hat-signals.kicad_sch` | `blk.hat-signals` | DF40C-50DS flat-cable receptacle (interface v2 §9.2), USB 3 TX AC coupling |
+| 45 | `hat-5v.kicad_sch` | `blk.hat-5v` | eFuse #A, FUSB302B01 (USB PD on the HAT port), VBUS discharge (RFC 0014) |
+| 46-48 | `radio*.kicad_sch` | `blk.radio`, `-module`, `-power` | Murata Type 2EL by unit with its SDIO series positions; TPS22919 AVDD33, TPS62826 AVDD18, links #11, #12, SN74AXC1T45 PDn hold |
+| 49 | `antennas.kicad_sch` | `blk.antennas` | ANT0 and ANT1 paths with matching positions, U.FL, the 10 pF shared link (ADR 0018) |
+| 50 | `fp-connector.kicad_sch` | `blk.fp-connector` | FH35C-51S contacts (pinout v1 §8.2), 6 × TPD4E05U06, TPS22950 FP_3V3, TPS22945 FP_1V8, links #23 and #31 |
+| 51 | `fp-backlight.kicad_sch` | `blk.fp-backlight` | TPS61160, 22 µH, PMEG6010CEH, RSET 3.32 Ω |
+| 52 | `gpio-expander.kicad_sch` | `blk.gpio-expander` | TCA6416A at 0x21 with the off-state pull-downs and the input pull-ups |
+| 53 | `imu.kicad_sch` | `blk.imu` | LSM6DSV16X at 0x6A, INT1 wake, link #32 |
+| 54 | `nfc-tag.kicad_sch` | `blk.nfc-tag` | NT3H2111 NTAG I2C plus at 0x55, field detect, loop antenna contacts, link #33 |
+| 55 | `nfc-reader.kicad_sch` | `blk.nfc-reader` | PN7160 at 0x28, NFC_VBAT switch and link #18, EMC filter, matching and RX path (AN13219 first-iteration values), 27.12 MHz crystal, antenna contacts |
+| 56 | `buttons.kicad_sch` | `blk.buttons` | Power, Vol+, Vol− (PTS815) and Action (part open) to ground, 4 × TPD1E10B06, the Vol− pull-up |
+| 57 | `fp-display.kicad_sch` | `blk.fp-display` | TPS22945 FP_VCI after RK809 LDO4, link #24 |
+| 58 | `mic-main.kicad_sch` | `blk.mic-main` | TPS22945 MIC_1V8, PDM clock series resistor |
+| 59 | `board-id.kicad_sch` | `blk.board-id` | AT24C02D at 0x50 |
+| 60 | `haptics.kicad_sch` | `blk.haptics` | DRV2605L at 0x5A, LRA contacts, link #19 |
+| 61 | `fp-controls.kicad_sch` | `blk.fp-controls` | I2C3, interrupt and SPI CS pulls on FP_3V3, the GT911 strap footprint |
+| 62 | `speaker.kicad_sch` | `blk.speaker` | MAX98357A, gain 3 dB, SD_MODE position, speaker pads, link #17 |
+| 63 | `microsd.kicad_sch` | `blk.microsd` | DM3AT socket, 22 Ω series, detect, 2 × TPD4E05U06, link #16 |
+| 64 | `tpm.kicad_sch` | `blk.tpm` | SLB9673 TPM 2.0 at 0x2E, always on, link #20 |
 
-Not drawn yet: `blk.current-monitors`, `blk.status-led`, `blk.mic-ambient`, `blk.maskrom`, `blk.debug`, `blk.cover-detect` (their kicad-lib parts exist). Nets from the drawn sheets to those blocks end in a local label, which ERC lists as `isolated_pin_label` (a warning). The RK3566 USB, multi-PHY and CSI RX units are on `blk.soc-phy`; the reserved balls (`RSVD_*` in pinout v1) and the unused PHY balls carry no-connect flags.
+Not drawn yet: `blk.status-led`, `blk.mic-ambient`, `blk.maskrom`, `blk.debug`, `blk.cover-detect` (their kicad-lib parts exist). Nets from the drawn sheets to those blocks end in a local label, which ERC lists as `isolated_pin_label` (a warning). The RK3566 USB, multi-PHY and CSI RX units are on `blk.soc-phy`; the reserved balls (`RSVD_*` in pinout v1) and the unused PHY balls carry no-connect flags.
 
 The SoC is one catalog block, `blk.soc`, drawn as a parent sheet with seven sub-sheets. The craft check names a sheet's block by its file, so the sub-sheets carry IDs of their own (`blk.soc-ddr` and so on) and their parts carry them in the `Block` field. The charger, the coprocessor, the radio, the amplifier rails and the balanced stage are drawn the same way (`blk.charger-core`, `blk.radio-module`, `blk.hpa-rails-pre`, `blk.hpa-bal-l` and so on). The audio host-side parts (DAC I2C isolation, the enables' pull-downs, the RX-clock option) sit on `blk.soc-vccio-b`, next to the balls they serve.
 
@@ -72,7 +73,7 @@ The SoC is one catalog block, `blk.soc`, drawn as a parent sheet with seven sub-
 - Values carry their unit with an SI prefix and a space (CRAFT-141): `22 Ω`, `4.7 kΩ`, `100 nF`. Ratings the sheet's "unless noted" line does not cover go to `Spec`.
 - Rails connect through power symbols named as the power tree; signals through labels, hierarchical labels where they cross the hierarchy. Global labels are not used.
 - Net names are pinout v1's (active low ends in `_N`, upper case, CRAFT-84).
-- Measurement links (BOM v1 line 137; numbered as power tree §4.12) carry their shunt in the base design (the full variant). The production variant fits 0 Ω jumpers (except H5), written into each link as a KiCad 10 design variant from `../variants/*.toml`; the eMMC's 16 GB alternate is written the same way. `odapkit variant sync` will take this over when it exists (feature-blocks spec §6).
+- Measurement links (BOM v1 line 137; numbered as power tree §4.12) carry their shunt in the base design (the full variant). The production variant fits 0 Ω jumpers (except H5), written into each link as a KiCad 10 design variant from `../variants/*.toml`; the eMMC's 16 GB alternate is written the same way. The generator writes this variant data itself; the feature-blocks spec §6 assigns it to `odapkit variant sync`, which does not exist yet.
 - Parts the BOM does not name (generic capacitors and resistors) are capture choices from the Murata GRM and Yageo RC families (`generator/parts.py`). Their stock and effective capacitance under DC bias are **UNVERIFIED** until the BOM pass.
 - `PWR_FLAG`s sit on the sheet that feeds each rail, on a branch of the rail's wire outside the block's groups (a link's load side, an inductor output). A local net fed through a passive part (`TPM_VDD` through its link, `RP_DVDD` through the inductor, `GAUGE_VC2` through its input resistor) stays a local net, not a power-tree rail, and takes its flag the same way: on a branch of the wire that leaves the feeding part, never in a detached label-and-flag row. KiCad 10.0.7's ERC reports a flag on a net island of power symbols alone as `pin_not_connected` (tested again on 2026-10-25, also with a project ERC exclusion), so the flags cannot go on the power overview.
 - Buses cross the hierarchy through the project's bus aliases (`schematic.bus_aliases` in the `.kicad_pro`): `DDR_CHA` (with `DDR_RESET_N`), `DDR_CHB`, `EMMC`, `I2C0`, `I2C1`, `I2C2`, `PMIC_CTL`, for the audio block `AUDIO_I2S`, `AUDIO_CTL`, `DAC_L_OUT`, `DAC_R_OUT`, `HP_SE`, `HP_BAL`, and for the ports and IO `USB`, `IO_IRQ`, `IMON`, `WL`, `FP`, `EXP_IO` (the expander's port lines), `SDMMC0`, `SPK_I2S`, and for the control lines of the buttons, the I2C2 blocks and the coprocessor `KEYS`, `NFC`, `TPM`, `RP`. A sheet pin `{ALIAS}` carries every member; inside a sheet the members keep local labels at their pins and one hierarchical label `{ALIAS}` on a bus stub joins them. The members keep their pinout names.
@@ -114,6 +115,12 @@ The GUI review findings of 2026-10-25 are applied: the root carries the LPDDR4X 
 
 The audio block (pages 18-31) was reviewed on SVG plots of every sheet: its sheets lay their groups out in rows (`draw.Flow`), and the amplifier rails and the balanced stage are split into sub-sheets so that no sheet runs past its circuit band.
 
+## Capture decisions
+
+Details the board documents left open, decided at capture. Each sheet's notes repeat them.
+
+- `blk.current-monitors`: Accepted (2026-10-26). The shunts sit on this sheet with their INA236, and each measured branch is a rail of its own, named in power tree §4.12: `VSYS_SRC` (BQ25798 SYS, the supply side of the VSYS shunt), `VSYS_LV_AUDIO`, `VSYS_AUDIO` (the LMR33630C with its enable shifter), `VSYS_LV_BL`, `VSYS_P5V1`; their PWR_FLAGs hang from the shunts' load-side wires. Shunt parts in the Vishay WSL family of line 43: WSL2512R0100FEA (VSYS, 10 mΩ, 1 W), WSL2010R0200FEA (HAT, 20 mΩ, 0.5 W), WSL1206R1000FEA (display), WSL1206R0200FEA (both audio channels, named by the BOM). A0 = GND, VS, SDA, SCL for 0x40-0x43; ALERT open; no input filter. Basis: BOM v1 lines 54 and 136 (values, ratings, addresses), power tree §4.12 (positions), Vishay doc 30100 (WSL2512 1 W, WSL2010 0.5 W, WSL1206 to 0.2 Ω), SBOSA81D Table 7-1 and §8.1.4 (the filter is only for transients near the 500 kHz sampling harmonics).
+
 ## Open items
 
 Listed per sheet in each sheet's notes. In short:
@@ -128,7 +135,8 @@ Listed per sheet in each sheet's notes. In short:
 - `blk.buttons`: the Action part is open (BOM line 76; KMR221GLFS placeholder on KiCad's KMR2 land); the PTS815 land `T1_Main_Board:SW_CK_PTS815` is not drawn until the C&K drawing shows which terminals are common (parts-lib sheet, **UNVERIFIED**). The switches use KiCad's two-pin `Switch:SW_Push`.
 - `blk.microsd`: detect switch wiring against the Hirose drawing.
 - `blk.mic-main`: links #34 and #35 (one per MIC_1V8 branch, power tree §4.12) come with `blk.mic-ambient`, which sets the second branch.
-- `blk.charger-*`: the pack NTC type behind the TS divider (**UNVERIFIED**); the Mill-Max 0965 pogo fallback land (BOM v1 line 47); the P+ TVS part (DNP, line 142); the VSYS INA236 shunt comes with `blk.current-monitors`.
+- `blk.current-monitors`: the RK3566 I2C1 against the 100 ns extra hold the INA236 asks for at A0 = SDA (0x42, SBOSA81D p. 16), **UNVERIFIED** until bring-up; the stock KiCad 2512, 2010 and 1206 lands against the WSL pad table (doc 30100 p. 2).
+- `blk.charger-*`: the pack NTC type behind the TS divider (**UNVERIFIED**); the Mill-Max 0965 pogo fallback land (BOM v1 line 47); the P+ TVS part (DNP, line 142).
 - `blk.gauge`: CHG and DSG left open (no FETs, SLUSE07B §8.3.14); golden image and CC Gain calibration per board (ADR 0017 items 4-5).
 - `blk.pwr-3v3-sys`: the Würth 744373240047 inductor land (`T1_Main_Board:L_Wuerth_WE-LHMI_4020`) is not drawn; the data sheet was not retrieved.
 - `blk.vdd-cpu`: the XGL4012-221MEC land is taken as the 4020 family's (**UNVERIFIED**).

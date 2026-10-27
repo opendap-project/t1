@@ -161,14 +161,14 @@ def draw_backlight(s, variants):
     f = Flow(s)
     grp(f, lambda: ic_group(
         s, "TPS61160, RSET 3.32 Ω for 60 mA (BOM v1 line 51)", "Texas_Instruments", "TPS61160DRVR",
-        {"VIN": "VSYS_LV", "CTRL": "BL_PWM", "SW": "BL_SW", "FB": "BL_LEDK", "COMP": "BL_COMP", "GND": "GND", "EP": "GND"},
-        rows=[[("C_4u7_0603_10V", "VSYS_LV", "GND"), ("C_220n_0402", "BL_COMP", "GND"),
+        {"VIN": "VSYS_LV_BL", "CTRL": "BL_PWM", "SW": "BL_SW", "FB": "BL_LEDK", "COMP": "BL_COMP", "GND": "GND", "EP": "GND"},
+        rows=[[("C_4u7_0603_10V", "VSYS_LV_BL", "GND"), ("C_220n_0402", "BL_COMP", "GND"),
                ("R_3R32", "BL_LEDK", "GND")]],
         extra={"Constraints": "PCB-P-07"}))
 
     def stage():
         g = Group(s, "Inductor, rectifier, output capacitor (lines 52, 53)")
-        g.add(two_pin_box(s, "L_LQH3NPN220", 109.22, 101.6, "VSYS_LV", "BL_SW", prefix="L"))
+        g.add(two_pin_box(s, "L_LQH3NPN220", 109.22, 101.6, "VSYS_LV_BL", "BL_SW", prefix="L"))
         part(s, "Diode", "PMEG6010CEH", 116.84, 116.84, {"1": "BL_LEDA", "2": "BL_SW"}, key="D_PMEG6010CEH", angle=180,
              prefix="D", ref_at=(116.84, 116.84 - 6.35), val_at=(116.84, 116.84 - 3.81), stub=5.08)
         g.add((96.52, 106.68, 137.16, 119.38))
@@ -176,14 +176,14 @@ def draw_backlight(s, variants):
         return g.close()
     grp(f, stage)
     s.iface_rows = [
-        ["VSYS_LV", "Supply in", "3.8 V; the display INA236 shunt position on this input is open (G11)"],
+        ["VSYS_LV_BL", "Supply in", "VSYS_LV 3.8 V through the display INA236 shunt (0x42, blk.current-monitors)"],
         ["BL_PWM", "Input", "PWM8_M0, SoC pull-down: off"],
         ["BL_LEDA, BL_LEDK", "Output", "Contacts 46, 45: the LED string between them"],
     ]
-    s.rail_rows = [["VSYS_LV", "4.7 µF", "BOM v1 §8 (CIN 4.7 µF); SLVS791E §8.2.1.2.5: 1-4.7 µF"],
+    s.rail_rows = [["VSYS_LV_BL", "4.7 µF", "BOM v1 §8 (CIN 4.7 µF); SLVS791E §8.2.1.2.5: 1-4.7 µF"],
                    ["BL_LEDA", "1 µF 50 V", "BOM v1 §8; SLVS791E: 0.47-10 µF"]]
     corner_notes(s, [
-        "1. Function: TPS61160 boost LED driver from VSYS_LV, 60.2 mA (RSET 3.32 Ω, VFB 200 mV); strings",
+        "1. Function: TPS61160 boost LED driver from VSYS_LV_BL, 60.2 mA (RSET 3.32 Ω, VFB 200 mV); strings",
         "   up to 22 V; open-LED threshold 25-27 V at SW keeps BL_LEDA below 30 V (SLVS791E §6.5).",
         "2. Absent state: CTRL low (SoC pull-down): off; an open string is bounded by the threshold.",
         "3. COMP 220 nF as the datasheet's typical application (SLVS791E Figure 15); inductor 22 µH",

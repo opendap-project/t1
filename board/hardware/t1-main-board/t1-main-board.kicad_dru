@@ -323,7 +323,7 @@
 )
 
 # Source: hardware/rules/t1-main-board.kicad_dru
-# sha256: a0c187a76c090721b50cad751096c1a045576164172b0599293b5c6f517c6138
+# sha256: fd290056a00c9b36a3655e9d23d79ae79b666ecd7ba47193cd641db8c76e9900
 
 # OpenDAP T1 main board: product rules
 #
@@ -527,10 +527,13 @@
 # LearnEMC). Spacing 3 x W: stackup v3 sets W = 102.5 um on L4, so 3 x W =
 # 0.3075 mm (arithmetic); the rule keeps 0.31 mm, which meets it. UNVERIFIED
 # until the fab's DFM review confirms the stackup. The branch length limit
-# (20 mm per branch, sim/mclk-attenuator) is a CHK item.
+# (20 mm per branch, sim/mclk-attenuator) is a CHK item. Pads of one
+# footprint are left out (as PCB-V-01): the pitch of the part's own pins
+# (CS43198 0.4 mm, divider and oscillator pins) is the maker's land, not a
+# routing choice.
 (rule "T1 PCB-I-09 [Q1]: Master clock to other nets"
 	(severity warning)
-	(condition "(A.hasNetclass('MCLK_50SE') && !B.hasNetclass('MCLK_50SE') && B.NetName != 'GND') || (B.hasNetclass('MCLK_50SE') && !A.hasNetclass('MCLK_50SE') && A.NetName != 'GND')")
+	(condition "((A.hasNetclass('MCLK_50SE') && !B.hasNetclass('MCLK_50SE') && B.NetName != 'GND') || (B.hasNetclass('MCLK_50SE') && !A.hasNetclass('MCLK_50SE') && A.NetName != 'GND')) && !(A.Type == 'Pad' && B.Type == 'Pad' && A.Parent == B.Parent)")
 	(constraint clearance (min 0.31mm))
 )
 

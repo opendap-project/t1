@@ -43,7 +43,7 @@
     "T1 PCB-I-05/06/08/09 [Q1]: 50 ohm single-ended width (inner)": 2,
     "T1 PCB-I-07 [Q1]: RF line to same-layer ground": 1,
     "T1 PCB-I-07 [Q1]: RF line width": 2,
-    "T1 PCB-I-09 [Q1]: Master clock to other nets": 1,
+    "T1 PCB-I-09 [Q1]: Master clock to other nets": 2,
     "T1 PCB-L-01 [Q0]: Hot part at the battery pocket": 1,
     "T1 PCB-L-02 [Q0]: Foreign track at the battery contacts": 1,
     "T1 PCB-L-04 [Q0]: Copper at the empty battery contact position": 1,

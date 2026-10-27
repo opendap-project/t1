@@ -23,7 +23,7 @@ import sys
 HERE = os.path.dirname(os.path.abspath(__file__))
 RULES = os.path.normpath(os.path.join(HERE, "..", "t1-main-board.kicad_dru"))
 sys.path.insert(0, os.path.normpath(
-    os.path.join(HERE, "..", "..", "lib", "opendap", "design-rules", "tools")))
+    os.path.join(HERE, "..", "..", "lib", "opendap", "kicad", "design-rules", "tools")))
 
 import pcbnew  # noqa: E402
 import testboard as tbm  # noqa: E402
@@ -421,6 +421,24 @@ class ProductTestBoard(TestBoard):
             self.widen(bx + pad + FAR)
         self.add_row(name, 2 * FAR + pad, build)
 
+    def own_pads_row(self, name, pad, netclass):
+        """Two SMD pads of other nets, the first in NETCLASS, closer than the rule's clearance:
+        in two footprints (fail) and in one footprint (pass), for a rule that leaves a
+        footprint's own pins out."""
+        gap = 0.2
+        assert gap < self.rule(name).value("clearance")
+
+        def build(x, y, fail):
+            a, b = self.class_net(netclass), self._net()
+            fp = self.part("U", x, y)
+            self._pad(fp, x + pad / 2, y, pad, net=a)
+            bx = x + pad + gap + pad / 2
+            fp_b = self.part("U", bx, y) if fail else fp
+            p2 = self._pad(fp_b, bx, y, pad, net=b)
+            p2.SetNumber("2")
+            self.widen(bx + pad + FAR)
+        self.add_row(name, 2 * FAR + pad, build)
+
     def pad_to_edge_row(self, name, pad, prop):
         gap = self.rule(name).value("edge_clearance")
 
@@ -779,6 +797,7 @@ def main():
         .value("track_width", "opt")
     tb.clearance_row(P + "PCB-I-09 [Q1]: Master clock to other nets", width=mclk_w,
                      net_a="MCLK_50SE", layer=L4, width_b=0.1)
+    tb.own_pads_row(P + "PCB-I-09 [Q1]: Master clock to other nets", 0.3, "MCLK_50SE")
 
     # Mounting holes (PCB-H)
     tb.hole_to_part_row(P + "PCB-H-01 [Q1]: Part under the screw head", 2.2, "R")

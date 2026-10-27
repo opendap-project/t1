@@ -317,7 +317,7 @@ def main():
     classes, pats = netclasses(os.environ.get("T1_NETCLASSES") or os.path.join(HW, "rules", "netclasses.toml"),
                                PATTERNS)
     with open(os.path.join(PROJECT_DIR, "t1-main-board.kicad_pro"), "w", encoding="utf-8") as fh:
-        fh.write(project_file(classes, pats, "${KIPRJMOD}/../lib/opendap/drawing-sheets/opendap.kicad_wks",
+        fh.write(project_file(classes, pats, "${KIPRJMOD}/../lib/opendap/kicad/drawing-sheets/opendap.kicad_wks",
                               proj.aliases, base_variant()))
     with open(os.path.join(PROJECT_DIR, "sym-lib-table"), "w", encoding="utf-8") as fh:
         fh.write(SYM_TABLE)

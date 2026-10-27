@@ -111,7 +111,7 @@ odapkit dru check
 
 The generator's inputs are the pinout (`../pinout/pinout-v1.csv`), the net classes (`../rules/netclasses.toml`; set `T1_NETCLASSES` to read another copy), the variant files (`../variants/*.toml`), kicad-lib (`../lib/opendap`) and the block definitions in `generator/`. Rerun it when any of them changes: the net classes and their patterns in the project, the variant data and the interface lists follow.
 
-The PDF plot uses kicad-lib's OpenDAP colour theme (CRAFT-103): copy `../lib/opendap/colour-themes/opendap.json` into KiCad's `colors` folder first (on macOS `~/Library/Preferences/kicad/10.0/colors/`). Plots are generated outputs and are not committed.
+The PDF plot uses kicad-lib's OpenDAP colour theme (CRAFT-103): copy `../lib/opendap/kicad/colour-themes/opendap.json` into KiCad's `colors` folder first (on macOS `~/Library/Preferences/kicad/10.0/colors/`). Plots are generated outputs and are not committed.
 
 ## Status (2026-10-27)
 

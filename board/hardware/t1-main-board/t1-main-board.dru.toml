@@ -5,7 +5,7 @@
 # when that file is stale.
 version = 1
 sources = [
-  "hardware/lib/opendap/design-rules/pcbway-hdi/pcbway-hdi.kicad_dru",
-  "hardware/lib/opendap/design-rules/opendap-craft/opendap-craft.kicad_dru",
+  "hardware/lib/opendap/kicad/design-rules/pcbway-hdi/pcbway-hdi.kicad_dru",
+  "hardware/lib/opendap/kicad/design-rules/opendap-craft/opendap-craft.kicad_dru",
   "hardware/rules/t1-main-board.kicad_dru",
 ]

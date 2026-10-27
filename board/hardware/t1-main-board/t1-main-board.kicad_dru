@@ -2,7 +2,7 @@
 # Composed by `odapkit dru` from hardware/t1-main-board/t1-main-board.dru.toml. Do not edit by hand:
 # edit the sources and run `odapkit dru compose hardware/t1-main-board/t1-main-board.dru.toml`.
 
-# Source: hardware/lib/opendap/design-rules/pcbway-hdi/pcbway-hdi.kicad_dru
+# Source: hardware/lib/opendap/kicad/design-rules/pcbway-hdi/pcbway-hdi.kicad_dru
 # sha256: 040c35fff7e3acf66ee354da15dc22a6b98faea54786589c4a7a195c884e1d7e
 
 # OpenDAP fab rules: PCBWay advanced HDI (laser microvias, blind and buried vias)
@@ -159,7 +159,7 @@
 	(constraint text_height (min 0.8mm))
 )
 
-# Source: hardware/lib/opendap/design-rules/opendap-craft/opendap-craft.kicad_dru
+# Source: hardware/lib/opendap/kicad/design-rules/opendap-craft/opendap-craft.kicad_dru
 # sha256: 9d58249d1ce04c5aec2bd640111a607f00e10c4878d23ea4f97b8976b1b2c357
 
 # OpenDAP craft rules: the part of the OpenDAP PCB craft standard that KiCad DRC can check

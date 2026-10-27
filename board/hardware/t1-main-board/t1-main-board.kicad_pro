@@ -59,7 +59,7 @@
     }
   },
   "schematic": {
-    "page_layout_descr_file": "${KIPRJMOD}/../lib/opendap/drawing-sheets/opendap.kicad_wks",
+    "page_layout_descr_file": "${KIPRJMOD}/../lib/opendap/kicad/drawing-sheets/opendap.kicad_wks",
     "connection_grid_size": 50.0,
     "annotate_start_num": 0,
     "subpart_id_separator": 46,

@@ -475,7 +475,7 @@ def _sym_table():
     rows = []
     for nick, (_path, kind) in library.LIBS.items():
         if kind == "opendap":
-            uri, descr = f"${{KIPRJMOD}}/../lib/opendap/symbols/{nick}.kicad_sym", "kicad-lib"
+            uri, descr = f"${{KIPRJMOD}}/../lib/opendap/kicad/symbols/{nick}.kicad_sym", "kicad-lib"
         elif kind == "local":
             uri, descr = f"${{KIPRJMOD}}/../lib/symbols/{nick}.kicad_sym", "Project-only symbols, written by generator/"
         else:
@@ -494,7 +494,7 @@ FP_STOCK = ["Capacitor_SMD", "Resistor_SMD", "Inductor_SMD", "Crystal", "TestPoi
 
 
 def _fp_table():
-    rows = [f'  (lib (name "{n}")(type "KiCad")(uri "${{KIPRJMOD}}/../lib/opendap/footprints/{n}.pretty")(options "")(descr "kicad-lib"))'
+    rows = [f'  (lib (name "{n}")(type "KiCad")(uri "${{KIPRJMOD}}/../lib/opendap/kicad/footprints/{n}.pretty")(options "")(descr "kicad-lib"))'
             for n in FP_OPENDAP]
     rows.append('  (lib (name "T1_Main_Board")(type "KiCad")(uri "${KIPRJMOD}/../lib/footprints/T1_Main_Board.pretty")'
                 '(options "")(descr "Project-only footprints, written by generator/"))')

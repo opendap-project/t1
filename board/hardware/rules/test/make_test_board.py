@@ -11,7 +11,7 @@ Run with KiCad's Python, from any directory:
   /Applications/KiCad/KiCad.app/Contents/Frameworks/Python.framework/Versions/Current/bin/python3 \
       hardware/rules/test/make_test_board.py
 Then check it with:
-  python3 hardware/lib/opendap/design-rules/tools/check_drc.py \
+  python3 hardware/lib/opendap/kicad/design-rules/tools/check_drc.py \
       hardware/rules/test/t1-main-board-rules-test.kicad_pcb
 """
 

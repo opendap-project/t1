@@ -1,6 +1,6 @@
 """Project-local library parts the board needs and kicad-lib does not carry yet (hardware/lib/).
 
-Each part is drawn from its parts-lib spec sheet, to the craft standard's symbol rules (§9.3):
+Each part is drawn from its datasheet, to the craft standard's symbol rules (§9.3):
 2.54 mm pins on the 2.54 mm grid, no hidden pins, supply in at the left (converter), output at the
 right, ground at the bottom."""
 
@@ -27,7 +27,7 @@ def _pin(kind, x, y, angle, name, number):
 
 
 def tps7a1006():
-    """TI TPS7A1006PDSER, 0.6 V LDO with bias input, WSON-6 DSE0006A (parts-lib sheet: SBVS314B p. 3,
+    """TI TPS7A1006PDSER, 0.6 V LDO with bias input, WSON-6 DSE0006A (SBVS314B p. 3,
     p. 24 Figure 45). Pin 2 is NC: visible, it takes a no-connect flag (CRAFT-125)."""
     props = [
         ("Reference", "U", (-7.62, 7.62), False, "left"),
@@ -58,8 +58,8 @@ def tps7a1006():
 
 
 def dfe252012f():
-    """Murata DFE252012F land: two pads 0.8 x 2.0 mm, 1.2 mm apart, 2.8 mm overall (parts-lib sheet,
-    Murata J(E)TE243A-0017B-01 p. 5); no copper or vias under the body (p. 7, notice 2)."""
+    """Murata DFE252012F land: two pads 0.8 x 2.0 mm, 1.2 mm apart, 2.8 mm overall
+    (Murata J(E)TE243A-0017B-01 p. 5); no copper or vias under the body (p. 7, notice 2)."""
     return "\n".join([
         '(footprint "L_Murata_DFE252012F" (version 20241229) (generator "t1-main-board-generator")',
         '\t(layer "F.Cu")',
@@ -80,8 +80,8 @@ def dfe252012f():
 
 
 def dfe201610e():
-    """Murata DFE201610E land: two pads 0.8 x 1.8 mm, 0.8 mm apart, 2.4 mm overall (parts-lib sheet,
-    Murata J(E)TE243A-0001 p. 5, "Recommended PCB pattern"); body 2.0 x 1.6 mm."""
+    """Murata DFE201610E land: two pads 0.8 x 1.8 mm, 0.8 mm apart, 2.4 mm overall
+    (Murata J(E)TE243A-0001 p. 5, "Recommended PCB pattern"); body 2.0 x 1.6 mm."""
     return "\n".join([
         '(footprint "L_Murata_DFE201610E" (version 20241229) (generator "t1-main-board-generator")',
         '\t(layer "F.Cu")',
@@ -103,7 +103,7 @@ def dfe201610e():
 
 def aota_b201610():
     """Abracon AOTA-B201610S3R3-101-T land: two pads 1.0 x 1.6 mm, 1.0 mm apart, 3.0 mm overall
-    (parts-lib sheet, Abracon Rev A p. 4 "Recommended Land Pattern"); body 2.0 x 1.6 mm. Pad 1 is
+    (Abracon Rev A p. 4 "Recommended Land Pattern"); body 2.0 x 1.6 mm. Pad 1 is
     the polarity-dot (+) terminal, marked on the silk (RP2350 DS Figure 28)."""
     return "\n".join([
         '(footprint "L_Abracon_AOTA-B201610" (version 20241229) (generator "t1-main-board-generator")',

@@ -4,7 +4,7 @@ blk.fp-backlight (#23), blk.fp-controls (#24) and blk.mic-main (#26).
 Sources: t1 faceplate interface v1 and t1 ADR 0005 (supply classes and fault ceilings); BOM v1
 lines 51-53, 71, 75, 145, 146 and the v1.11 changes (BC4); power tree v0 §2, §3, §4.5; pinout v1
 §3 (Faceplate, expander P00, P12-P14) and §8.2 (contact positions); feature blocks records 21-26;
-TI SLVS791E (TPS61160), SLVSFJ2B (TPS22950), SLVS832D (TPS22945); the parts-lib sheets."""
+TI SLVS791E (TPS61160), SLVSFJ2B (TPS22950), SLVS832D (TPS22945); the libs generator data."""
 
 from __future__ import annotations
 

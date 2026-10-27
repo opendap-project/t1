@@ -3,7 +3,7 @@ the PDn hold translator, and both antenna paths.
 
 Sources: board ADR 0018; BOM v1 lines 50, 55-58, 129-131, 137 (links 11, 12), 148; power tree v0
 §2, §4.12; pinout v1 (SDMMC1, UART1, wake balls, expander P06, P07); feature blocks records 39-40;
-Murata E2B-09-1413 Figure 5, Figures 9-10, E2B-54-1953 §4.3.3 (parts-lib sheet LBES5PL2EL-923)."""
+Murata E2B-09-1413 Figure 5, Figures 9-10, E2B-54-1953 §4.3.3 (LBES5PL2EL-923)."""
 
 from __future__ import annotations
 

@@ -5,7 +5,7 @@ Sources: BOM v1 lines 34, 35, 54, 74, 78, 79, 86-89, 97, 98, 105, 136, 137, 143;
 §4.12 (links and INA236 positions); pinout v1 §3 and the ball table; feature blocks records 18,
 25, 38, 48-50 and G10-G12, G22; TI SBOSA81D (INA236), SNVS441I (LP5521), SBVS050N (TPS3808),
 SCES414P / SCES415N (SN74LVC1G57 / 1G58); Infineon IM73D122V01 data sheet v1.00; Vishay doc
-30100 (WSL); the parts-lib sheets."""
+30100 (WSL); the libs generator data."""
 
 from __future__ import annotations
 

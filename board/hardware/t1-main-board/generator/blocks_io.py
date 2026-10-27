@@ -4,7 +4,7 @@ blk.imu (#43), blk.speaker (#37) and blk.microsd (#4).
 Sources: BOM v1 lines 11, 32, 33, 59, 73, 93 and the v1.8 changes (G1, G15, G16); pinout v1 §3
 (Power path and expander, Storage, Audio, Radio and sensors) and the expander port table; feature
 blocks records 4-6, 37, 43; TI SCPS194F (TCA6416A), Microchip 8871F (AT24C02D), ST DS13510
-(LSM6DSV16X), Analog Devices MAX98357A Rev 11, RK3566 HDG 1.1 p. 52; the parts-lib sheets."""
+(LSM6DSV16X), Analog Devices MAX98357A Rev 11, RK3566 HDG 1.1 p. 52; the libs generator data."""
 
 from __future__ import annotations
 
@@ -254,5 +254,5 @@ def draw_buttons(s, variants):
         "   vcca_1v8 would read pressed while that rail is still off (pinout v1 §4, Vol- row).",
         "4. Open: the Action part (BOM v1 line 76; T1-022 deeper travel); KMR221GLFS is the BOM's",
         "   placeholder on the KMR2 land. The PTS815 land (T1_Main_Board:SW_CK_PTS815) is not drawn:",
-        "   which terminals are common is not legible in the C&K copy (parts-lib sheet), UNVERIFIED.",
+        "   which terminals are common is not legible in the C&K copy (PTS 815 p. B-44), UNVERIFIED.",
     ])

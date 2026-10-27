@@ -4,7 +4,7 @@ blk.nfc-tag (#41). Prototypes fit every option (BRD-053).
 Sources: BOM v1 lines 122-126 and the v1.7 and v1.8 changes (G5, G6, G20); pinout v1 §3 (Radio,
 NFC, sensors, key holder) and the expander table (P04); feature blocks records 41, 44, 45; TI
 SLOS854D (DRV2605L), Infineon OPTIGA TPM SLB 9673 data sheet Rev. 1.3, NXP NT3H2111_2211 Rev. 3.6;
-the parts-lib sheets."""
+the libs generator data."""
 
 from __future__ import annotations
 

@@ -1,6 +1,6 @@
 # ADR 0022: LPDDR4X: Micron MT53E1G32D2FW-046, CXMT CXDB5CBAM-MA-B as second source
 
-- **Status:** Accepted
+- **Status:** Superseded by [ADR 0024](0024-lpddr4x-micron-mt53e1g32d2fw-with-cxmt-second-source-restated.md) (2026-10-27; restated with datasheet citations, decision unchanged). Previously: Accepted (2026-10-25).
 - **Date:** 2026-10-25
 - **Replaces:** the BOM v1 line 8 choice, Samsung K4UBE3D4AB-MGCL, and its SK hynix H9HCNNNCPMMLXR-NEE alternate
 

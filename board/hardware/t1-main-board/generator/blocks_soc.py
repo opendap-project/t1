@@ -207,7 +207,7 @@ def _soc_phy(s, y0, variants):
     ])
 
 
-# HDG 1.1 pp. 35-41 (Figs. 2-17 to 2-26), the parts-lib RK3566 sheet: near-SoC decoupling.
+# HDG 1.1 pp. 35-41 (Figs. 2-17 to 2-26), RK3566 DS 1.1: near-SoC decoupling.
 SOC_DECOUPLING = [
     ("vdd_cpu", ["C_4u7_0402", "C_4u7_0402", "C_22u_0603", "C_22u_0603"],
      "2 x 4.7 µF 0402 + 22 µF 0603 (HDG Fig. 2-17; ADR 0021 item 3), plus one 22 µF 0603 for the load-release "

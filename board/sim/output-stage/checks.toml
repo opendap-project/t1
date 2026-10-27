@@ -6,7 +6,7 @@ version = 1
 id = "lmr33630c"
 manufacturer = "Texas Instruments"
 mpn = "LMR33630CRNXR"
-file = "SNVMBG5"                # parts-lib manifest: kind = "spice", SNVMBG5A (zip sha256 bf3d8f3b…)
+file = "SNVMBG5"                # libs parts manifest: kind = "spice", SNVMBG5A (zip sha256 bf3d8f3b…)
 member = "LMR33630C_PSPICE_TRANS/LMR33630C_TRANS.lib"
 dest = "models/LMR33630C_TRANS.lib"
 sha256 = "b6ca4171f65db8d9f5c70ad0f06d6da9c164d84ef134c095dd220bb47ef70906"
@@ -15,7 +15,7 @@ sha256 = "b6ca4171f65db8d9f5c70ad0f06d6da9c164d84ef134c095dd220bb47ef70906"
 id = "opa1622"                  # used by opa1622-*.cir (no regression check yet)
 manufacturer = "Texas Instruments"
 mpn = "OPA1622IDRCR"
-file = "SBOM958"                # parts-lib manifest: kind = "spice", SBOM958D (zip sha256 1bafa50b…)
+file = "SBOM958"                # libs parts manifest: kind = "spice", SBOM958D (zip sha256 1bafa50b…)
 member = "OPA1622.LIB"
 dest = "models/OPA1622.LIB"
 sha256 = "9dfaf17ed53e37d8930376f042379e828d96bc7d10349fed0dc058daf695223e"

@@ -4,7 +4,7 @@ blk.hat-5v (#15) and blk.hat-signals (#19).
 Sources: BOM v1 lines 41, 44, 61-70, 91, 92, 102, 121; power tree v0 §2, §4.6, §4.7; pinout v1
 (USB balls, SARADC_VIN2/VIN3, expander P01-P03, P15-P17, USBC_INT_N, HAT_PD_INT_N); feature blocks
 records 9, 14-16, 19; hat-standard interface v2 §9.2; RFC 0014, RFC 0015; RK3566 HDG 1.1 pp. 55-56;
-the parts-lib sheets (FUSB302BMPX, TPD8S300ARUKR, TPD4E05U06DQAR, TVS2200DRVR, TPS259470ARPWR,
+the libs generator data (FUSB302BMPX, TPD8S300ARUKR, TPD4E05U06DQAR, TVS2200DRVR, TPS259470ARPWR,
 TPS62903RPJR)."""
 
 from __future__ import annotations

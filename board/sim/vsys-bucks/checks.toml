@@ -6,7 +6,7 @@ version = 1
 id = "tps62136"
 manufacturer = "Texas Instruments"
 mpn = "TPS62136RGXR"
-file = "SLVMC09"                # parts-lib manifest: kind = "spice", SLVMC09A
+file = "SLVMC09"                # libs parts manifest: kind = "spice", SLVMC09A
 member = "TPS62136_PSPICE_TRANS/TPS62136_TRANS.lib"
 dest = "models/TPS62136_TRANS.lib"
 sha256 = "252dce79505a414bd31e4bd2209334de90761d277894c759c3f88da003439a56"

@@ -3,8 +3,8 @@ path from the BQ25798 BAT node to the six battery contacts, and the fuel gauge.
 
 Sources: board ADRs 0014, 0017, 0020; BOM v1 lines 39-48, 104, 115, 120, 142; power tree v0 §2,
 §4.7, §4.7.1; pinout v1 (I2C1, CHG_INT_N, expander P02 and P03); feature blocks §3 records 7 and 8;
-TI SLUSDV2C (BQ25798), SLVSEA3F (TPS2121), SLUSE07B Figure 9-1 (BQ28Z610-R1); the parts-lib
-sheets."""
+TI SLUSDV2C (BQ25798), SLVSEA3F (TPS2121), SLUSE07B Figure 9-1 (BQ28Z610-R1); the parts'
+datasheets, as cited in the libs generator data."""
 
 from __future__ import annotations
 

@@ -1,7 +1,7 @@
 """Part data for the parts the schematic places from KiCad's generic symbols (passives, crystal,
 inductors, test pads, net ties).
 
-Parts named by the BOM, an ADR or a parts-lib sheet carry that source in `src`. Generic passives
+Parts named by the BOM, an ADR or a datasheet carry that source in `src`. Generic passives
 (capacitors and resistors whose value, rating and size come from a data sheet or the BOM but whose
 orderable part the BOM does not name) are capture choices from the Murata GRM and Yageo RC
 families: their stock and the effective capacitance under DC bias are not checked here (UNVERIFIED),

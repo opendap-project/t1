@@ -27,7 +27,7 @@ Results are below.
 `tps62136-3v8-*.cir` need TI's **TPS62136 PSpice Unencrypted Transient Model**,
 [SLVMC09](https://www.ti.com/lit/zip/SLVMC09) (model "Final 1.1", 20MAR2017; the link serves
 revision SLVMC09A without login). It is TI copyright, all rights reserved, so it is not
-redistributed. `odapkit sim fetch` downloads it through the parts-lib manifest (`kind = "spice"`),
+redistributed. `odapkit sim fetch` downloads it through the libs parts manifest (`kind = "spice"`),
 checks both hashes and places `TPS62136_PSPICE_TRANS/TPS62136_TRANS.lib` in `models/` (ignored
 by git); or unzip it by hand. The copy used on
 2026-10-22: `SLVMC09.zip` sha256 `764f65e3e817b73ef0690637fb1a08ab7fa04ec5a1858b203dc7cf555a04ad99`,

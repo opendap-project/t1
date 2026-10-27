@@ -3,7 +3,7 @@ audio host-side parts on blk.soc-vccio-b.
 
 Sources: board ADRs 0001, 0010, 0012, 0015, 0019; BOM v1 lines 18-37, 107-111, 116-119, 133-135,
 137, 139-141; power tree v0 §2, §3, §4.12, §5, §6.2-6.3; pinout v1 §3 (audio balls, expander
-lines); feature blocks §3.5; PCB design constraints PCB-A-01 to A-19; the parts-lib sheets.
+lines); feature blocks §3.5; PCB design constraints PCB-A-01 to A-19; the parts' datasheets, as cited in the libs generator data.
 Circuits are wired through labels at the IC pins; small networks are hand-wired."""
 
 from __future__ import annotations

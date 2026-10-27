@@ -1,6 +1,6 @@
 # ADR 0021: vdd_cpu buck: TI TPS62869 instead of the Rockchip RK860-0
 
-- **Status:** Accepted
+- **Status:** Superseded by [ADR 0023](0023-vdd-cpu-buck-ti-tps62869-restated.md) (2026-10-27; restated with datasheet citations, decision unchanged). Previously: Accepted (2026-10-25).
 - **Date:** 2026-10-25
 
 ## Context

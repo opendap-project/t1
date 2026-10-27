@@ -22,7 +22,7 @@ below.
 ## Vendor models (not in this repository)
 
 Two netlists need TI models, which are TI copyright with all rights reserved, so they
-are not redistributed here. `odapkit sim fetch` downloads both through the parts-lib manifest
+are not redistributed here. `odapkit sim fetch` downloads both through the libs parts manifest
 (`kind = "spice"`; the links serve SBOM958D and SNVMBG5A without login), checks the hashes in
 `checks.toml` and puts them in `models/` (ignored by git); or place them there by hand:
 

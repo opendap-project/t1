@@ -11,7 +11,7 @@
 
 ## Sources
 
-Every document is listed in the parts-lib `manifest.toml` (URL, revision, sha256) and read from the local cache; none is committed.
+Every document is listed in the libs `parts/manifest.toml` (URL, revision, sha256) and read from the local cache; none is committed.
 
 | Short | Document | Revision |
 |---|---|---|
@@ -20,9 +20,9 @@ Every document is listed in the parts-lib `manifest.toml` (URL, revision, sha256
 | IOD | Rockchip *RK3566 RK3568 IO Domain Configuration Developer Guide* (RK-SM-YF-905) | V1.0.2, 2021-06-02 |
 | HSPCB | Rockchip *RK3568 High Speed PCB Design Guide* (RK-YH-YJ-6012) | V1.0.0, 2021-04-12 |
 | RK809 | Rockchip *RK809 Datasheet* | Rev 1.01, 2018 |
-| RP2350 | Raspberry Pi *RP2350 Datasheet* | build 2026-01-10 (parts-lib RP2354A entry) |
+| RP2350 | Raspberry Pi *RP2350 Datasheet* | build 2026-01-10 (libs parts manifest, RP2354A entry) |
 | — | TI SCES898C (SN74AXC4T774), SCES875C (SN74AXC8T245), SCPS194F (TCA6416A), SCPS113O (PCA9306), SLUSE07B (BQ28Z610-R1); onsemi FUSB302B/D Rev. 5; Analog Devices MAX98357A; Goodix GT911 v09 | as cached |
-| — | parts-lib `Murata/LBES5PL2EL-923.md` (Murata E2B-54-1953 Table 3, E2B-09-1413) | 2026-10-24 |
+| — | Murata *Type 2EL/2DL/2LL/2KL Unified Design Guide* E2B-54-1953 (Table 3) and *Type 2EL/2DL Hardware Application Note* E2B-09-1413 | Rev. 2.0, 2025-08-21; Rev. 9.0, 2026-05-21 |
 
 The *RK3566_PinOut* document (with "usage of unused pins") and the *RK3566 IO Power Domain Checklist* that HDG p. 4 names were not found; what depends on them is open item O2.
 
@@ -208,7 +208,7 @@ Columns: ball; pad (the GPIO name with its reset suffix; the full mux list is in
 
 #### RP2354A GPIO allocation (2026-10-26)
 
-Accepted (2026-10-26) for `blk.rp2354`. Basis: BOM v1 lines 12, 89 and 134, the feature-block record 46 and G4, power tree §4.12 and the RP2350 data sheet (Release 8). Every line the SoC side reaches lands on an FT pad (GPIO0–25), which accepts 3.63 V with IOVDD at 0 V (G4), and GPIO0–15 come out of reset pulled down (parts-lib RP2354A sheet).
+Accepted (2026-10-26) for `blk.rp2354`. Basis: BOM v1 lines 12, 89 and 134, the feature-block record 46 and G4, power tree §4.12 and the RP2350 data sheet (Release 8). Every line the SoC side reaches lands on an FT pad (GPIO0–25), which accepts 3.63 V with IOVDD at 0 V (G4), and GPIO0–15 come out of reset pulled down (RP2350 datasheet).
 
 | RP2354A pin | GPIO | Net | Function | Why |
 |---|---|---|---|---|
@@ -413,7 +413,7 @@ The fuel-gauge alert of v0 §2.3 has no source: the BQ28Z610-R1 has no alert pin
 | C15 | Domain map taken from the RK3568 datasheet | v0 risk 1 | Every domain re-read on DS 1.1 and HDG (§1). PMUIO0 holds four free 1.8 V GPIO (GPIO0_D3–D6), now used for always-on lines |
 | C16 | FUSB302B on a 1.8 V I2C1 **UNVERIFIED** | v0 §5.1 | VIH 1.32 V (FUSB302B/D Rev. 5 p. 16): fits |
 | C17 | `CLK32K_IN` level not stated | v0 §2.3 | RK809 CLK32K is open drain (RK809 p. 15): pull-up to vcca1v8_pmu, level 0.65 × VDD to VDD + 0.3 (HDG p. 17, Table 2-2) |
-| C18 | `CLK32K_OUT1` reserved as the radio sleep clock | v0 §2.2 | Not needed: the Type 2EL has no 32.768 kHz input (E2B-54-1953 Table 3, parts-lib note). GPIO2_C6 now carries `NFC_DWL_REQ` |
+| C18 | `CLK32K_OUT1` reserved as the radio sleep clock | v0 §2.2 | Not needed: the Type 2EL has no 32.768 kHz input (E2B-54-1953 Table 3). GPIO2_C6 now carries `NFC_DWL_REQ` |
 | C19 | Radio PDn on a VCCIO4 ball while v1 drafts put it on a PMU ball | BOM v1.8 item 1 (module VIO on vcc_1v8, radio switched off in suspend) | `WL_PDN` on GPIO2_B7, same rail as the module VIO, so it never drives an unpowered module |
 | C20 | RP2354A RUN with an open-drain driver on a `_d` ball: the internal pull-down and a weak pull-up leave RUN between thresholds at reset | DS p. 53; RP2350 p. 17 (RUN in the IOVDD domain) | `RP_RUN` (GPIO4_C1) with 4.7 kΩ to RP_IOVDD_1V8 (≥ 1.39 V at reset); SoC pulls low to reset |
 | C21 | Open-drain interrupts on `_d` balls with "a pull-up": undefined strength | DS p. 53 (16–43 kΩ) | External pull-ups ≤ 4.7 kΩ on every open-drain line that lands on a `_d` ball (B9) |
@@ -429,7 +429,7 @@ The fuel-gauge alert of v0 §2.3 has no source: the BQ28Z610-R1 has no alert pin
 
 Of the 174 signal balls the T1 uses outside the LPDDR4X interface, 69 are core balls (0.65 mm), 50 sit on the outer ring and escape on L1, 11 are inner-ring balls behind a gap (L1 between two outer balls, 0.55 mm copper gap at 0.8 mm spacing), and 44 are inner-ring balls behind an outer ball, which need a laser microvia in the ring-to-core channel (layout rules §3: dog-bone microvias fit, through vias do not). The CSV `notes` column gives the class per ball.
 
-Audio balls in the ring (the parts-lib RK3566 sheet lists part of them):
+Audio balls in the ring (DS Table 2-1):
 
 | Ball | Net | Class | Consequence |
 |---|---|---|---|

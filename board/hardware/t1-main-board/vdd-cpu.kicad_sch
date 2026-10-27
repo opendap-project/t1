@@ -1848,6 +1848,7 @@
 (label "I2C0_SDA" (at 104.14 78.74 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "307d6aef-d631-5863-9475-396d9cf093fe"))
 (label "I2C0_SCL" (at 104.14 81.28 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "2091e830-0926-51ed-9cfb-75a097b149ed"))
 (label "VDD_CPU_PG" (at 129.54 93.98 270) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "46c81330-fb97-56c6-a921-bd9205f7ae3f"))
+(label "VDD_CPU_SW" (at 134.62 76.2 90) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "d7bcf98c-7eb6-5e81-a48d-5823f1b2ae43"))
 (label "VDD_CPU_PG" (at 40.64 134.62 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "3a0eb27f-0e00-5005-866b-6ba110c0d0be"))
 (bus (pts (xy 45.72 247.65) (xy 50.8 247.65)) (stroke (width 0) (type default)) (uuid "9cd0337c-8aa0-514b-a67c-a198f5b7fb32"))
 (hierarchical_label "{I2C0}" (shape bidirectional) (at 45.72 247.65 180) (effects (font (size 1.27 1.27)) (justify right)) (uuid "ddd62ddc-8c1d-5e65-93f0-1680ff147c24"))

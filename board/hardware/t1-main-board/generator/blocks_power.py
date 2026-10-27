@@ -73,6 +73,7 @@ def draw_vsys_lv(s, variants):
     xl = 233.68                                  # measurement link
     ll, lr = hpart(s, "L_XGL4020_152", 129.54, yo, prefix="L")   # its rating inside the group
     s.wire(P["2"], ll)
+    s.point("VSYS_LV_SW", round((P["2"][0] + ll[0]) / 2 / 1.27) * 1.27, yo, "up")   # switch node (SW_NODE)
     s.wire(lr, (xl - 11.43, yo))
     s.wire(P["6"], (134.62, P["6"][1]), (134.62, yo))
     s.junction(134.62, yo)
@@ -168,6 +169,7 @@ def draw_3v3(s, variants):
     xl = 233.68
     ll, lr = hpart(s, "L_744373240047", 129.54, yo, prefix="L")   # its rating inside the group
     s.wire(P["5"], ll)
+    s.point("VCC3V3_SYS_SW", round((P["5"][0] + ll[0]) / 2 / 1.27) * 1.27, yo, "up")   # switch node (SW_NODE)
     s.wire(lr, (xl - 11.43, yo))
     rt, rb = vpart(s, "R_453k", 142.24, 76.2)
     s.wire((142.24, yo), rt)
@@ -273,6 +275,7 @@ def draw_vdd_cpu(s, variants):
     xl = 254.0
     ll, lr = hpart(s, "L_XGL4012_221", 147.32, yo, prefix="L")   # its text inside the group
     s.wire(P["7"], ll)
+    s.point("VDD_CPU_SW", round((P["7"][0] + ll[0]) / 2 / 1.27) * 1.27, yo, "up")   # switch node (SW_NODE)
     s.wire(lr, (xl - 11.43, yo))
     for cx in (152.4, 167.64):                    # pitch: the rating clears the next capacitor and ground
         c1, c2 = vpart(s, "C_22u_0603", cx, 76.2)

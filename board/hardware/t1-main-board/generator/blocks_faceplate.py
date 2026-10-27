@@ -132,9 +132,9 @@ def draw_display(s, variants):
     f = Flow(s)
     grp(f, lambda: switch_group(
         s, "FP_VCI: TPS22945 after RK809 LDO4 (BOM v1 line 146)", "TPS22945DCKR",
-        {"VIN": "FP_VCI_SRC", "VOUT": "FP_VCI_SW", "ON": "FP_IO_EN", "OC": None, "GND": "GND"},
-        rows=[[("C_1u_0402", "FP_VCI_SRC", "GND"), ("C_1u_0402", "FP_VCI_SW", "GND"), ("R_10k", "FP_VCI_SW", "GND")]]))
-    grp(f, lambda: link_group(s, "LINK_M", "FP_VCI_SW", "FP_VCI", variants, "Link #24"))
+        {"VIN": "FP_VCI_SRC", "VOUT": "FP_VCI_OUT", "ON": "FP_IO_EN", "OC": None, "GND": "GND"},
+        rows=[[("C_1u_0402", "FP_VCI_SRC", "GND"), ("C_1u_0402", "FP_VCI_OUT", "GND"), ("R_10k", "FP_VCI_OUT", "GND")]]))
+    grp(f, lambda: link_group(s, "LINK_M", "FP_VCI_OUT", "FP_VCI", variants, "Link #24"))
 
     s.iface_rows = [
         ["FP_VCI_SRC", "Supply in", "RK809 LDO4, 2.8 V (DT-adjustable)"],
@@ -142,7 +142,7 @@ def draw_display(s, variants):
         ["FP_VCI", "Supply out", "Contact 44: off with FP_IO_EN low, whatever the LDO4 OTP state"],
         ["FP_DSI_CLK_P/N, FP_DSI_D0-D3_P/N", "Output", "DSI0 from blk.soc-phy straight to the connector"],
     ]
-    s.rail_rows = [["FP_VCI_SRC, FP_VCI_SW", "1 µF at IN and OUT", "SLVS832D (value: capture choice)"]]
+    s.rail_rows = [["FP_VCI_SRC, FP_VCI_OUT", "1 µF at IN and OUT", "SLVS832D (value: capture choice)"]]
     corner_notes(s, [
         "1. Function: the panel supply FP_VCI through a 100-200 mA switch, since the RK809 states no LDO4",
         "   trip and its OTP start-up state is unknown (power tree §2, v0.5); DSI0 lanes to contacts 2-15.",

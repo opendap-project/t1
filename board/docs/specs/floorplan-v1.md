@@ -90,7 +90,7 @@ The DRC side (rules and test rows in [`hardware/rules/`](../../hardware/rules/))
 3. **PCB-L-01 against ADR 0016.** PCB-L-01 keeps every part with `Thermal` = `hot` out of `BATTERY_POCKET` (pocket + 3 mm), while ADR 0016 puts the SoC there; the floorplan draws the area on the back layer only, and DRC warns for the SoC, the PMIC and the TPS62903. The constraint's owner decides whether L-01 means the back side only, a dissipation threshold, or another place for the converters.
 4. **Faceplate connection area** size and the FH35C position; the area is at 106 %.
 5. **Mounting holes** and the screw (PCB-M-08, PCB-H): positions above are placeholders.
-6. **Zone net classes** come with the schematic: every net gets its zone class (or `ZONE_SHARED`) besides its signal class ([`netclasses.toml`](../../hardware/rules/netclasses.toml)).
+6. **Zone net classes:** closed (2026-10-27): every net gets its zone class (or `ZONE_SHARED`) besides its signal class ([`netclasses.toml`](../../hardware/rules/netclasses.toml)), from the schematic generator ([placement v1](placement-v1.md) §6 item 2).
 7. **The DF40C-50DS footprint:** closed (2026-10-27): kicad-lib carries it, and [placement v1](placement-v1.md) places it.
 
 ## 7. Placement
@@ -100,4 +100,4 @@ The DRC side (rules and test rows in [`hardware/rules/`](../../hardware/rules/))
 - **Real courtyards.** §2.1's method on the real footprints gives a board need of 113 % of both sides (77 % above): core band 227 %, power band 258 %, power back and front 165 %, audio front 254 %, faceplate area 109 % (placement v1 §3.1). The courtyards alone cover 68 % of both sides.
 - **Zone changes** (placement v1 §4): the audio zone grows to y 2.4 (every layer) and y 14 (front); the power zone to y 0, to x 4.0 above the contact window, over the HAT strip's front and over part of the I/O column's back; the core takes the top band from x −5.5 to 3; the faceplate area's front is the faceplate zone's alone; the core–audio and core–power corridors move with their boundaries; `blk.audio-supply` (a buck) belongs to the power zone.
 - **Fixed parts moved:** the RK809-5 above the SoC at (−6.0, 25.7), the RP2354A at (−16.0, 24.5), the microSD at x 13.5, the LPDDR4X at x 16.9, the U.FLs at x −14.0 and −8.3.
-- §6 items 1 (band capacity), 2 (4.4 mm jack), 3 (PCB-L-01), 4 (faceplate area), 5 (mounting holes) and 6 (zone net classes) stay open; placement v1 §5 and §6 give their state.
+- §6 items 1 (band capacity), 2 (4.4 mm jack), 3 (PCB-L-01), 4 (faceplate area), and 5 (mounting holes) stay open, 6 (zone net classes) is closed; placement v1 §5 and §6 give their state.

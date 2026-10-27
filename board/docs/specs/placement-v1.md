@@ -20,7 +20,7 @@
 
 ## 2. What is placed
 
-All 1,012 parts: 826 on the front, 186 on the back, plus the eight fiducials and four holes. The schematic parity check finds no difference. Six parts stand on courtyard-only placeholders, because their lands are not drawn yet (hardware/t1-main-board/README.md, open items): L1001 and L5101 (Würth WE-LHMI 4020), L5401 (Murata LQH3NP), SW6901–SW6903 (C&K PTS815).
+All 1,012 parts: 828 on the front, 184 on the back, plus the eight fiducials and four holes. The schematic parity check finds no difference. Six parts stand on courtyard-only placeholders, because their lands are not drawn yet (hardware/t1-main-board/README.md, open items): L1001 and L5101 (Würth WE-LHMI 4020), L5401 (Murata LQH3NP), SW6901–SW6903 (C&K PTS815).
 
 | Part | Where (device frame, mm) | Side | Basis |
 |---|---|---|---|
@@ -97,7 +97,7 @@ Each changes floorplan v1 where the real footprints did not fit it; the tool's `
 
 ## 5. Checks
 
-**DRC** with the composed rules (KiCad 10.0.7, `pcb/build.py --drc`): **0 errors**, 499 unconnected items (expected: not routed), schematic parity 0. Warnings (613): 588 silk items of the library footprints against the craft rules (CRAFT-05, CRAFT-07, Q2) and 9 silk overlaps, 6 PCB-I-09 (master-clock spacing between pins of one footprint: the DAC's MCLK pin and its neighbours, and the dividers' pins; the rule does not leave a footprint's own pins out as PCB-V-01 does), 2 PCB-L-01 (the SoC and the PMIC over the pocket, floorplan v1 §6 item 3), 6 library issues (the placeholders), 2 PCB-D-05 (edge connectors' silk at the edge, Q2).
+**DRC** with the composed rules (KiCad 10.0.7, `pcb/build.py --drc`): **0 errors**, 499 unconnected items (expected: not routed), schematic parity 0. Warnings (607): 588 silk items of the library footprints against the craft rules (CRAFT-05, CRAFT-07, Q2) and 9 silk overlaps, 2 PCB-L-01 (the SoC and the PMIC over the pocket, floorplan v1 §6 item 3), 6 library issues (the placeholders), 2 PCB-D-05 (edge connectors' silk at the edge, Q2). PCB-I-09 leaves a footprint's own pads out since 2026-10-27, as PCB-V-01 does (it fired six times between the DAC's MCLK pin and its neighbours and between the dividers' pins).
 
 **Placement checks** (`pcb/checks.py`): no courtyard overlap, no part outside its zone, no part in a hole ring or within 0.3 mm of the edge (J*, SW* exempt), no through hole under another part. Height findings:
 
@@ -113,8 +113,8 @@ Each changes floorplan v1 where the real footprints did not fit it; the tool's `
 ## 6. Open items
 
 1. **Routing density.** The real parts need 113 % of the board with the floorplan's factor 1.7 (§3.1); the placement leaves a factor of about 1.5. Proposals for the maintainers, none applied: ≤ 1.0 mm capacitors where the charger's twelve 0805 and the converters' 0805 and 1206 stand (they would move to the front); ≤ 1.5 mm inductors for the band inductors (vdd_cpu next to the SoC); the speaker on a case shelf above low parts, which frees 165 mm² of band; smaller test pads than 1.0 mm (the 166 pads of 1.0 mm take about 730 mm² of courtyard).
-2. **Zone net classes** (floorplan v1 §6 item 6, PCB-S-16): nets carry no `ZONE_*` class yet, so PCB-S-17 has nothing to check until they do.
-3. **Switch-node class:** KiCad names some switch nodes automatically (`Net-(U1201-SW)`, U901, U1001), which the `SW_NODE` pattern `*_SW` misses, while `FP_VCI_SW` (a load-switch output) matches it.
+2. **Zone net classes:** closed (2026-10-27). Every net but GND carries the `ZONE_<NAME>` class of each zone whose blocks it touches (the zones of `pcb/plan.py`; the faceplate connector's sheet also the faceplate zone), a rail used in more than one zone `ZONE_SHARED`; the generator writes them as net-class patterns (`zone_patterns` in `generator/generate.py`). Of 1,080 nets: 911 in one zone, 104 in two, 36 in three, 28 shared rails, GND none.
+3. **Switch-node class:** closed (2026-10-27). The generator names every switch node `*_SW` (`VSYS_LV_SW`, `VCC3V3_SYS_SW`, `VDD_CPU_SW`, `RP_VREG_SW`, was `RP_VREG_LX`), and the faceplate display switch's output is `FP_VCI_OUT` (was `FP_VCI_SW`), so `SW_NODE` holds the 18 switch nodes and nothing else.
 4. **Lands not drawn:** WE-LHMI 4020, LQH3NP, PTS815 (placeholders, §2).
 5. **Case inputs:** mounting holes, corner radii, pocket reliefs (J4001, J6201, side buttons), speaker contacts and body, antenna and NFC contact positions.
 6. **Legend:** reference designators are on the fabrication layers only; the silk legend (CRAFT-10, CRAFT-12) is placed at a later stage.

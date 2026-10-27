@@ -347,7 +347,7 @@ def draw_rp2354(parent, variants):
     pmap = {"1": "RP_IOVDD_1V8", "11": "RP_IOVDD_1V8", "20": "RP_IOVDD_1V8", "30": "RP_IOVDD_1V8",
             "38": "RP_IOVDD_1V8", "45": "RP_IOVDD_1V8", "54": "RP_3V3", "53": "RP_3V3", "44": "RP_3V3",
             "49": "RP_3V3", "46": "RP_VREG_AVDD", "6": "RP_DVDD", "23": "RP_DVDD", "39": "RP_DVDD",
-            "48": "RP_VREG_LX", "50": "RP_DVDD", "47": "GND", "EP": "GND"}
+            "48": "RP_VREG_SW", "50": "RP_DVDD", "47": "GND", "EP": "GND"}
 
     def power():
         g = Group(s, "RP2354A supplies, core regulator (DS §6.1, §6.3.8; HDG §2.2.1)")
@@ -360,7 +360,7 @@ def draw_rp2354(parent, variants):
              ("C_100n_0402", "RP_3V3", "GND")],
             [("C_4u7_0402", "RP_DVDD", "GND"), ("C_100n_0402", "RP_DVDD", "GND"), ("C_100n_0402", "RP_DVDD", "GND"),
              ("R_33", "RP_3V3", "RP_VREG_AVDD"), ("C_4u7_0402", "RP_VREG_AVDD", "GND")],
-            [("L_AOTA_3R3", "RP_VREG_LX", "RP_DVDD")]]))
+            [("L_AOTA_3R3", "RP_VREG_SW", "RP_DVDD")]]))
         return g.close()
     grp(f, power)
 

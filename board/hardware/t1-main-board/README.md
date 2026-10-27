@@ -79,7 +79,8 @@ The SoC is one catalog block, `blk.soc`, drawn as a parent sheet with seven sub-
 
 - Values carry their unit with an SI prefix and a space (CRAFT-141): `22 Ω`, `4.7 kΩ`, `100 nF`. Ratings the sheet's "unless noted" line does not cover go to `Spec`.
 - Rails connect through power symbols named as the power tree; signals through labels, hierarchical labels where they cross the hierarchy. Global labels are not used.
-- Net names are pinout v1's (active low ends in `_N`, upper case, CRAFT-84).
+- Net names are pinout v1's (active low ends in `_N`, upper case, CRAFT-84). A converter's switch node is named `<RAIL>_SW` and no other net ends in `_SW`, so the `SW_NODE` class pattern finds every switch node.
+- Zone net classes (PCB-S-16, S-17): every net but GND gets the `ZONE_<NAME>` class of each zone whose blocks it touches, from the block zones of `pcb/plan.py` (`zone_patterns` in `generate.py`); a rail used in more than one zone gets `ZONE_SHARED`. Nets KiCad names from a pin (`Net-(…)`, `unconnected-(…)`) take the zone of their part's sheet.
 - Measurement links (BOM v1 line 137; numbered as power tree §4.12) carry their shunt in the base design (the full variant). The production variant fits 0 Ω jumpers (except H5), written into each link as a KiCad 10 design variant from `../variants/*.toml`; the eMMC's 16 GB alternate is written the same way. The generator writes this variant data itself; the feature-blocks spec §6 assigns it to `odapkit variant sync`, which does not exist yet.
 - Parts the BOM does not name (generic capacitors and resistors) are capture choices from the Murata GRM and Yageo RC families (`generator/parts.py`). Their stock and effective capacitance under DC bias are **UNVERIFIED** until the BOM pass.
 - `PWR_FLAG`s sit on the sheet that feeds each rail, on a branch of the rail's wire outside the block's groups (a link's load side, an inductor output). A local net fed through a passive part (`TPM_VDD` through its link, `RP_DVDD` through the inductor, `GAUGE_VC2` through its input resistor) stays a local net, not a power-tree rail, and takes its flag the same way: on a branch of the wire that leaves the feeding part, never in a detached label-and-flag row. KiCad 10.0.7's ERC reports a flag on a net island of power symbols alone as `pin_not_connected` (tested again on 2026-10-25, also with a project ERC exclusion), so the flags cannot go on the power overview.
@@ -115,7 +116,7 @@ The PDF plot uses kicad-lib's OpenDAP colour theme (CRAFT-103): copy `../lib/ope
 
 ## Status (2026-10-27)
 
-Board (placement v1): all 1,012 parts placed (826 front, 186 back), six on courtyard-only placeholders for the lands not drawn; DRC with the composed rules 0 errors, 499 unconnected items (not routed; a warning at this stage, project setting), schematic parity 0. The placement's facts, decisions and open items are in [placement v1](../../docs/specs/placement-v1.md).
+Board (placement v1): all 1,012 parts placed (828 front, 184 back), six on courtyard-only placeholders for the lands not drawn; DRC with the composed rules 0 errors, 499 unconnected items (not routed; a warning at this stage, project setting), schematic parity 0. The placement's facts, decisions and open items are in [placement v1](../../docs/specs/placement-v1.md).
 
 Schematic (2026-10-26):
 

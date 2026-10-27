@@ -126,6 +126,7 @@ class Sheet:
         self.base = None
         self.inst_path = None
         self.junctions = set()
+        self.rails_here = set()    # rails with a power symbol on this sheet (zone net classes)
 
     # ------------------------------------------------------------------ basics
     def use(self, sym):
@@ -297,6 +298,7 @@ class Sheet:
             sym = library.load("power", "GND" if rail == "GND" else "VCC")
             ref = self.project.next_power("#PWR")
             value = rail
+            self.rails_here.add(rail)
             if rail == "GND":
                 angle = 0
         self.use(sym)

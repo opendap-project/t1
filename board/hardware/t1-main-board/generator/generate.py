@@ -314,8 +314,10 @@ def main():
     for s in proj.sheets:
         with open(os.path.join(PROJECT_DIR, s.name), "w", encoding="utf-8") as fh:
             fh.write(proj.render(s))
+    pats_all = dict(PATTERNS)
+    pats_all.update(zone_patterns(proj))
     classes, pats = netclasses(os.environ.get("T1_NETCLASSES") or os.path.join(HW, "rules", "netclasses.toml"),
-                               PATTERNS)
+                               pats_all)
     with open(os.path.join(PROJECT_DIR, "t1-main-board.kicad_pro"), "w", encoding="utf-8") as fh:
         fh.write(project_file(classes, pats, "${KIPRJMOD}/../lib/opendap/kicad/drawing-sheets/opendap.kicad_wks",
                               proj.aliases, base_variant()))
@@ -332,6 +334,52 @@ def main():
     if bad:
         raise SystemExit(f"generator: {len(bad)} zone collision(s)")
     print(f"generated {len(proj.sheets)} sheets, {sum(1 for _ in proj.parts)} placed units")
+
+
+def zone_patterns(proj):
+    """Zone net classes (floorplan v1 §2, §4; PCB-S-16, S-17): every net but GND carries the class
+    of each zone whose blocks it touches, ZONE_<NAME>, and a rail (power symbol) used in more than
+    one zone carries ZONE_SHARED instead, since planes and pours deliver it. A block's zone is the
+    placement plan's (pcb/plan.py, with its moves against the floorplan); the faceplate connector's
+    sheet also touches the faceplate zone (the FH35C and its ESD, ADR 0016 item 1). Nets KiCad names
+    from a pin (`Net-(R1-Pad1)`, `unconnected-(…)`) take the zone of the part's sheet. Patterns match the net's last
+    path element, so they hold wherever KiCad names a hierarchical net."""
+    sys.path.insert(0, os.path.join(HERE, "..", "pcb"))
+    import plan   # noqa: E402  (pure data: the zone of every block)
+    zones_of = {}
+    for s in proj.sheets:
+        z = plan.ZONE_OF_BLOCK.get(s.block) if s.block else None
+        if z:
+            zones_of[s] = {z, "FACEPLATE"} if s.block == "blk.fp-connector" else {z}
+    net_zones = {}
+    for s, zs in zones_of.items():
+        for net in [p.net for p in s.points] + sorted(s.rails_here):
+            net_zones.setdefault(net, set()).update(zs)
+    rails = set(RAILS) | set(proj.rails_used)
+    out = {}
+    for net in sorted(net_zones):
+        if net == "GND":
+            continue
+        zs = net_zones[net]
+        if net in rails:
+            cls = ["ZONE_SHARED"] if len(zs) > 1 else ["ZONE_" + next(iter(zs))]
+            pat = net
+        else:
+            cls = ["ZONE_" + z for z in sorted(zs)]
+            pat = "*/" + net
+        for c in cls:
+            out.setdefault(c, []).append(pat)
+    units = {}
+    for s in proj.sheets:
+        for pl in s.placed:
+            units[pl.ref] = units.get(pl.ref, 0) + 1
+    for s, zs in sorted(zones_of.items(), key=lambda kv: kv[0].name):
+        for ref in sorted({pl.ref for pl in s.placed if not pl.ref.startswith("#")}):
+            sep = ("-", ".") if units[ref] > 1 else ("-",)    # a unit of a multi-unit part: `U1101.Codec-…`
+            for z in sorted(zs):
+                for head in ("Net-(", "unconnected-("):
+                    out.setdefault("ZONE_" + z, []).extend(head + ref + c + "*" for c in sep)
+    return out
 
 
 SOC_RIGHT = {"{DEBUG}", "PDM_CLK1", "PDM_DATA1"}

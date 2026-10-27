@@ -7,7 +7,7 @@ Run with KiCad's Python (pcbnew, numpy), from any directory, one stack per run:
     $PY hardware/studies/bga-escape/escape.py                    # v3 (default), z8, v1-10l
 
 Inputs (read only):
-- the RK3566 footprint from kicad-lib (workspace repos.tsv, ODAP_KICAD_LIB_DIR, or the submodule
+- the RK3566 footprint from libs (kicad/; workspace repos.tsv, ODAP_KICAD_LIB_DIR, or the submodule
   hardware/lib/opendap once it carries the part);
 - the ball nets from hardware/pinout/pinout-v1.csv;
 - the composed T1 rules hardware/t1-main-board/t1-main-board.kicad_dru, copied next to the study
@@ -193,13 +193,13 @@ def kicad_lib_dir():
         with open(tsv) as fh:
             for line in fh:
                 f = line.rstrip("\n").split("\t")
-                if len(f) == 2 and f[1] == "opendap-project/kicad-lib":
-                    cands.append(os.path.join(ws, f[0]))
-    cands.append(os.path.join(BOARD_REPO, "hardware", "lib", "opendap"))
+                if len(f) == 2 and f[1] == "opendap-project/libs":
+                    cands.append(os.path.join(ws, f[0], "kicad"))
+    cands.append(os.path.join(BOARD_REPO, "hardware", "lib", "opendap", "kicad"))
     for c in cands:
         if c and os.path.exists(os.path.join(c, "footprints", FP_LIB, FP_NAME + ".kicad_mod")):
             return c
-    sys.exit("RK3566 footprint not found in kicad-lib (set ODAP_KICAD_LIB_DIR)")
+    sys.exit("RK3566 footprint not found in libs (kicad/) (set ODAP_KICAD_LIB_DIR)")
 
 
 # ------------------------------------------------------------------ obstacle model

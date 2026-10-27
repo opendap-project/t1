@@ -198,9 +198,9 @@ def kicad_lib_dir():
     if os.path.exists(tsv):
         for line in open(tsv):
             f = line.rstrip("\n").split("\t")
-            if len(f) == 2 and f[1] == "opendap-project/kicad-lib":
-                cands.append(os.path.join(ws, f[0]))
-    cands.append(os.path.join(BOARD_REPO, "hardware", "lib", "opendap"))
+            if len(f) == 2 and f[1] == "opendap-project/libs":
+                cands.append(os.path.join(ws, f[0], "kicad"))
+    cands.append(os.path.join(BOARD_REPO, "hardware", "lib", "opendap", "kicad"))
     for c in cands:
         if c and os.path.exists(os.path.join(c, "footprints", "Rockchip.pretty")):
             return c

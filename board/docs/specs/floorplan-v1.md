@@ -1,6 +1,6 @@
 # Floorplan v1 of the T1 main board
 
-- **Status:** Draft v1 (2026-10-25). Basis: the maintainers' direction of 2026-10-25: the board is dense, with parts on both sides; functions are grouped into isolated zones that share the physical layers, each zone using the layers under it for its own needs, so the board needs as few layers and as few full-layer grounds as the zones allow. Nothing here is placed by a designer, routed or measured: it is the plan placement starts from.
+- **Status:** Draft v1 (2026-10-25; §7 added 2026-10-27 from [placement v1](placement-v1.md)). Basis: the maintainers' direction of 2026-10-25: the board is dense, with parts on both sides; functions are grouped into isolated zones that share the physical layers, each zone using the layers under it for its own needs, so the board needs as few layers and as few full-layer grounds as the zones allow. Nothing here is placed by a designer, routed or measured: it is the plan placement starts from.
 - **Study board:** [`hardware/studies/floorplan/`](../../hardware/studies/floorplan/): `floorplan.py` builds a KiCad board with the outline, the zones and corridors as named rule areas, the height and battery areas, the mounting holes and every part whose position the product fixes (kicad-lib footprints), and writes the area budget (`floorplan-v1.result.json`). DRC with the composed T1 rules: **0 errors**; warnings in §6 item 3.
 - **Inputs:** [PCB design constraints](pcb-design-constraints.md) v0.14 (PCB-M, PCB-Z, PCB-L, PCB-R rows), [ADR 0016](../adr/0016-front-side-height-under-the-display.md), [ADR 0020](../adr/0020-battery-connected-through-contacts.md), [feature blocks](feature-blocks.md), [BOM v1](bom-v1.md) v1.14, the [HAT flat cable](hat-flat-cable.md) v1 ([RFC 0014](https://github.com/opendap-project/rfcs/blob/main/text/0014-hat-interface-v2-usb-only.md), [RFC 0015](https://github.com/opendap-project/rfcs/blob/main/text/0015-hat-connector-pogo-field-and-usb-c-port-hat.md)), [pinout v1](pinout-v1.md), [stackup v3](stackup-v3.md) (layer references updated from stackup v2 on 2026-10-25). Footprints: kicad-lib `88508b6`.
 
@@ -91,4 +91,13 @@ The DRC side (rules and test rows in [`hardware/rules/`](../../hardware/rules/))
 4. **Faceplate connection area** size and the FH35C position; the area is at 106 %.
 5. **Mounting holes** and the screw (PCB-M-08, PCB-H): positions above are placeholders.
 6. **Zone net classes** come with the schematic: every net gets its zone class (or `ZONE_SHARED`) besides its signal class ([`netclasses.toml`](../../hardware/rules/netclasses.toml)).
-7. **The DF40C-50DS footprint** is not in kicad-lib yet; the study draws its body from the catalog (12.6 × 3.38 mm).
+7. **The DF40C-50DS footprint:** closed (2026-10-27): kicad-lib carries it, and [placement v1](placement-v1.md) places it.
+
+## 7. Placement
+
+[Placement v1](placement-v1.md) (2026-10-27) places every part of the schematic on this floorplan, with the board file `hardware/t1-main-board/t1-main-board.kicad_pcb`. Facts it adds here:
+
+- **Real courtyards.** §2.1's method on the real footprints gives a board need of 113 % of both sides (77 % above): core band 227 %, power band 258 %, power back and front 165 %, audio front 254 %, faceplate area 109 % (placement v1 §3.1). The courtyards alone cover 68 % of both sides.
+- **Zone changes** (placement v1 §4): the audio zone grows to y 2.4 (every layer) and y 14 (front); the power zone to y 0, to x 4.0 above the contact window, over the HAT strip's front and over part of the I/O column's back; the core takes the top band from x −5.5 to 3; the faceplate area's front is the faceplate zone's alone; the core–audio and core–power corridors move with their boundaries; `blk.audio-supply` (a buck) belongs to the power zone.
+- **Fixed parts moved:** the RK809-5 above the SoC at (−6.0, 25.7), the RP2354A at (−16.0, 24.5), the microSD at x 13.5, the LPDDR4X at x 16.9, the U.FLs at x −14.0 and −8.3.
+- §6 items 1 (band capacity), 2 (4.4 mm jack), 3 (PCB-L-01), 4 (faceplate area), 5 (mounting holes) and 6 (zone net classes) stay open; placement v1 §5 and §6 give their state.

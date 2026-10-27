@@ -220,10 +220,11 @@ Rail classes from t1 ADR 0005; every conductor is rated (IPC-2221B, external lay
 | F7 | Focus LCDs | Master drawing: tail lengths, TFT tail pitch, contact side |
 | F8 | Faceplate-touch | Replace the assumed DK, etch and coverlay model in `stackup-v0.toml` with the fab's answer and rerun `odapkit stackup check` |
 | F9 | Faceplate-touch | Identity controller part (interface BC7) and microphone pins |
+| F10 | Faceplate-touch | The KiCad project in `hardware/faceplate-flex/`, once the outline of §9 exists: the 2-layer stack-up of §3, `pcbway-flex` rules plus the `MIPI_100D` class (94 / 150 µm), the FH35C tail as a footprint drawn from catalog p. 5 and the drawing for approval, the FH12-20S and FH12-6S footprints, the parts of §4, and the stiffener and bend areas on user layers |
 
-## 11. Next step: the KiCad project
+## 11. KiCad project
 
-Only the stack-up file is added now (`hardware/faceplate-flex/stackup-v0.toml`): the flex needs the mechanics' outline (§9) before a KiCad project is more than a placeholder. Next, in `hardware/faceplate-flex/`: the KiCad project with the 2-layer stack-up of §3, `pcbway-flex` rules plus the `MIPI_100D` class (94 / 150 µm), the FH35C tail as a footprint drawn from catalog p. 5 and the drawing for approval, the FH12-20S and FH12-6S footprints, the parts of §4, and the stiffener and bend areas on user layers.
+`hardware/faceplate-flex/` holds the stack-up file only (`stackup-v0.toml`): the flex needs the mechanics' outline (§9) before a KiCad project is more than a placeholder. What the project contains is item F10 of §10.
 
 ## 12. Sources
 

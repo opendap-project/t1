@@ -136,7 +136,7 @@ def _soc_pmuio(s, y0, variants):
         "   is UNVERIFIED (BOM v1 line 15), so 18 pF is matched to it at bring-up.",
         "4. Pull-ups: I2C 2.2 kΩ (BOM v1 §5); interrupts 4.7 kΩ (pinout v1 B9); PMIC_INT_N 10 kΩ",
         "   (RK809 DS Fig. 1-1); SOC_RESET_N and FLASH_VOL_SEL 10 kΩ: capture choice, HDG gives none.",
-        "5. Nets to blocks not yet drawn end in a local label (ERC warning isolated_pin_label).",
+        "5. A net with one pin by design ends in a local label (ERC warning isolated_pin_label).",
         "6. Unless noted: resistors 1 % 0402; capacitors 0402 X7R, C0G where marked.",
     ])
     s.rail_rows = [["vcca_1v8", "4 x 1 nF on VIN0-VIN3", "1 nF per input; 10 kΩ on VIN0 (HDG 1.1 p. 60)"]]
@@ -171,7 +171,7 @@ def _soc_vccio_a(s, y0, variants):
         "2. Absent state: not applicable (the SoC is never omitted). Balls with no function take a",
         "   no-connect flag; unused-pin handling per RK3566_PinOut is open (pinout v1 O2).",
         "3. Series parts of HDG 1.1 (22 Ω on SDMMC0, eMMC CLK) sit on the sheets of their blocks.",
-        "4. Nets to blocks not yet drawn end in a local label (ERC warning isolated_pin_label).",
+        "4. A net with one pin by design ends in a local label (ERC warning isolated_pin_label).",
     ])
 
 
@@ -190,7 +190,7 @@ def _soc_vccio_b(s, y0, variants):
         "   DAC_DIG_1V8 is off (BOM v1 line 133, G2; 0 Ω bypasses DNP), DAC_INT_N pulled up on",
         "   DAC_DIG_1V8, every audio enable and DAC_RST_N pulled down (B9, PCB-A-13; 100 kΩ capture",
         "   choice); DNP 0 Ω RX-clock fallbacks (pinout v1). I2S series parts sit at the DACs.",
-        "4. Nets to blocks not yet drawn end in a local label (ERC warning isolated_pin_label).",
+        "4. A net with one pin by design ends in a local label (ERC warning isolated_pin_label).",
     ])
 
 
@@ -203,7 +203,7 @@ def _soc_phy(s, y0, variants):
         "2. Absent state: not applicable (the SoC is never omitted).",
         "3. USB 2 series resistors (2.2 Ω, HDG 1.1 p. 59) and the USB 3 SSTX AC capacitors sit on the",
         "   sheets of their blocks (blk.usb-c, blk.hat-signals).",
-        "4. Nets to blocks not yet drawn end in a local label (ERC warning isolated_pin_label).",
+        "4. A net with one pin by design ends in a local label (ERC warning isolated_pin_label).",
     ])
 
 

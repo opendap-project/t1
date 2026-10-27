@@ -247,7 +247,7 @@ def draw_root(root):
         "2. Rails cross the hierarchy as power symbols named as the power tree; signals as sheet pins",
         "   named as each block's interface (CRAFT-112). Buses cross as one bus pin through the",
         "   project's bus aliases (DDR_CHA, DDR_CHB, EMMC); their members keep their names.",
-        "3. Blocks not drawn yet are listed in the README; nets to them end in local labels.",
+        "3. Every block in use has a sheet; a net with a single pin by design ends in a local label.",
     ]
     corner_notes(root, w=99.06, y=notes_y, right=frame(root)[0] - MARGIN - CLEAR, lines=lines)
     # a box in an empty stack level (layout_rows) may sit below the notes, never on them

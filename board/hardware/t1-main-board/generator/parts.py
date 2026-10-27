@@ -58,6 +58,8 @@ PARTS = {
     "C_3n3_0402": _c("3.3 nF", "GRM155R71H332KA01D", "0402", 50, "X7R"),
     "C_1n_0402": _c("1 nF", "GRM155R71H102KA01D", "0402", 50, "X7R"),
     "C_1u_0402_10V": _c("1 µF", "GRM155R61A105KE15D", "0402", 10, "X5R"),
+    "C_390n_0603": _c("390 nF", "GRM188R71C394KA01D", "0603", 16, "X7R",
+                      src="TPS3808 CT 390 nF X7R ±10 % (BOM v1 line 97); part capture choice"),
     "C_470n_0402": _c("470 nF", "GRM155R61A474KE15D", "0402", 10, "X5R",
                       src="LP5521 CFLY1, CFLY2 470 nF X5R, 6.3 V or more (SNVS441I p. 37, Table 36); part capture choice"),
     # audio (blk.audio and children; BOM v1 lines 22-29, 108-118, 140) --------------------------
@@ -103,6 +105,7 @@ PARTS = {
     "R_51k": _r("51 kΩ", "51K"),
     "R_86k6": _r("86.6 kΩ", "86K6"),
     "R_100k": _r("100 kΩ", "100K"),
+    "R_280k": _r("280 kΩ", "280K", src="TPS3808 SENSE divider 280 kΩ / 100 kΩ 1 % (BOM v1 line 97)"),
     "R_442k": _r("442 kΩ", "442K"),
     "R_453k": _r("453 kΩ", "453K"),
     "R_470k": _r("470 kΩ", "470K"),

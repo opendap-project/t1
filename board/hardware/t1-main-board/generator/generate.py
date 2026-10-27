@@ -189,14 +189,14 @@ def main():
     exp, bid, imu, spk, sd = blocks_io.sheets(proj)
     hap, tpm, tag, rdr, rp = blocks_should.sheets(proj)
     btn = blocks_io.sheets_buttons(proj)
-    cmon, led, dbg, cov, amb = blocks_instr.sheets(proj)
+    cmon, led, dbg, cov, amb, rom = blocks_instr.sheets(proj)
 
     # the root in reading rows (CRAFT-111): overviews in the top row; then power blocks as power
     # flows; then the SoC and its memories. A list stacks its sheets in one column.
     rows = [("Overviews, then the power blocks in the order power flows",
              [power, inter, charger, gauge, vsys_lv, v3v3, pmic, vcpu]),
-            ("SoC, memory and the coprocessor; audio, from the DACs to the jacks; instrumentation",
-             [soc, [ddr, emmc], [audio, amb], [jse, jbal], rp, [None, cmon], [None, dbg]]),
+            ("SoC, memory, the coprocessor and MaskROM entry; audio, from the DACs to the jacks; instrumentation and debug",
+             [soc, [ddr, emmc], [audio, amb], [jse, jbal], [rp, rom], [None, cmon], [None, dbg]]),
             ("USB ports (the 5.1 V source, USB-C, the HAT port) and the radio",
              [p5v1, vout, usbc, hats, hat5v, radio, ant]),
             ("Faceplate interface; control, storage and sensors", [[fpc, fpd, mic], [fpb, fpk, led], [spk, sd, exp], [bid, imu, hap], [tpm, tag, btn], [rdr], [cov]])]
@@ -269,6 +269,7 @@ def main():
     blocks_instr.draw_status_led(led, variants)
     blocks_instr.draw_cover_detect(cov, variants)
     blocks_instr.draw_mic_ambient(amb, variants)
+    blocks_instr.draw_maskrom(rom, variants)
     blocks_instr.draw_debug(dbg, variants)      # last: its rail pads cover what no other sheet probes
     for s in proj.sheets:
         if s.role.startswith("blk."):
@@ -278,7 +279,7 @@ def main():
     overview.draw_interconnect(inter)
 
     for s in [power, inter, charger, gauge, vsys_lv, v3v3, pmic, vcpu, soc, ddr, emmc, audio, jse, jbal,
-              p5v1, usbc, vout, hat5v, hats, radio, ant, fpc, fpd, fpb, fpk, mic, exp, bid, sd, imu, spk, hap, tpm, tag, rdr, btn, rp, cmon, led, dbg, cov, amb]:
+              p5v1, usbc, vout, hat5v, hats, radio, ant, fpc, fpd, fpb, fpk, mic, exp, bid, sd, imu, spk, hap, tpm, tag, rdr, btn, rp, cmon, led, dbg, cov, amb, rom]:
         root.child(s, 0, 0, w=25.4)
     for name, *_ in blocks_soc.SUBS:
         soc.child(subs[name], 0, 0, w=76.2)

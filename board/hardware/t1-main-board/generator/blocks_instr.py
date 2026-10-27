@@ -26,7 +26,9 @@ def sheets(proj):
                      "Back-cover detect input: board-edge contact pads, pull-up, ESD", "A4")
     amb = proj.sheet("mic-ambient.kicad_sch", "blk.mic-ambient", "Ambient microphone",
                      "IM73D122 PDM microphone on PDM CLK1 and SDI1, on its own MIC_1V8 branch (link #35)", "A4")
-    return cmon, led, dbg, cov, amb
+    rom = proj.sheet("maskrom.kicad_sch", "blk.maskrom", "MaskROM entry",
+                     "Power + Vol- at power-on pull eMMC D0 low inside a boot window: TPS3808, two gates, BAT54, FET", "A3")
+    return cmon, led, dbg, cov, amb, rom
 
 
 # ---------------------------------------------------------------------- blk.current-monitors
@@ -334,4 +336,81 @@ def draw_mic_ambient(s, variants):
         "   microphone on SDI1. 22 Ω series on the clock at the SoC (pinout v1 AK2).",
         "4. VDD from MIC_1V8 through link #35, 10 Ω (power tree §4.12: 1 mA or less, est.).",
         "5. PCB: 0.8 mm acoustic port under the microphone, ground ring as the land (DS v1.00 Fig. 13).",
+    ])
+
+
+# ---------------------------------------------------------------------- blk.maskrom
+
+def draw_maskrom(s, variants):
+    """blk.maskrom (#48): BOM v1 lines 35, 78, 97, 98 (v1.6, simulated in sim/maskrom): Power and
+    Vol- held at a cold power-on pull eMMC_D0 low through 1 kΩ while the TPS3808 window is open."""
+    from blocks_audio import ic_group
+    from draw import part, tp
+    f = Flow(s)
+    grp(f, lambda: ic_group(
+        s, "Boot window: TPS3808G01, 1.21-3.43 s (BOM v1 line 97)", "Texas_Instruments", "TPS3808G01DBVR",
+        {"SENSE": "MASKROM_SENSE", "MR": None, "CT": "MASKROM_CT", "RESET": "WINDOW_N", "VDD": "vcca1v8_pmu",
+         "GND": "GND"},
+        rows=[[("C_100n_0402", "vcca1v8_pmu", "GND"), ("R_100k", "vcca1v8_pmu", "WINDOW_N")],
+              [("R_280k", "vcca1v8_pmu", "MASKROM_SENSE"), ("R_100k", "MASKROM_SENSE", "GND"),
+               ("C_390n_0603", "MASKROM_CT", "GND")]]))
+    grp(f, lambda: ic_group(
+        s, "Both keys: SN74LVC1G57 (BOM v1 line 98)", "Texas_Instruments", "SN74LVC1G57DCKR",
+        {"In0": "VOLDN_N", "In1": "GND", "In2": "MASKROM_KEY", "Y": "MASKROM_BOTH", "VCC": "vcca1v8_pmu",
+         "GND": "GND"},
+        rows=[[("C_100n_0402", "vcca1v8_pmu", "GND"), ("R_100k", "vcca1v8_pmu", "MASKROM_KEY")]]))
+
+    def isolation():
+        g = Group(s, "PWRON isolation: BAT54 (BOM v1 line 78)")
+        u = ic(s, "Nexperia", "BAT54", 101.6, 101.6, {"A": "MASKROM_KEY", "K": "PWRON_N", "NC": None}, prefix="D")
+        g.add(u.bbox)
+        return g.close()
+    grp(f, isolation)
+    grp(f, lambda: ic_group(
+        s, "Inside the window: SN74LVC1G58 (BOM v1 line 98)", "Texas_Instruments", "SN74LVC1G58DCKR",
+        {"In0": "MASKROM_BOTH", "In1": "vcca1v8_pmu", "In2": "WINDOW_N", "Y": "MASKROM_GATE", "VCC": "vcca1v8_pmu",
+         "GND": "GND"},
+        rows=[[("C_100n_0402", "vcca1v8_pmu", "GND")]]), newline=True)
+
+    def pull():
+        g = Group(s, "eMMC D0 pull: DMG1012T, 1 kΩ (BOM v1 line 35)")
+        g.add(prow(s, 101.6, 109.22, [("R_100k", "MASKROM_GATE", "GND")]))
+        part(s, "Transistor_FET", "DMG1012T", 127.0, 116.84, {"1": "MASKROM_GATE", "3": "MASKROM_D0", "2": "GND"},
+             key="Q_DMG1012T", prefix="Q")
+        g.add((114.3, 101.6, 139.7, 129.54))
+        g.add(prow(s, 152.4, 109.22, [("R_1k", "MASKROM_D0", "EMMC_D0")]))
+        return g.close()
+    grp(f, pull)
+
+    def probe():
+        g = Group(s, "Test pad (PCB-T-09)")
+        tp(s, 116.84, 101.6, "WINDOW_N", text="left")
+        s.point("WINDOW_N", 116.84, 101.6, "down", "pas")
+        g.add((116.84 - 2.54 - 9.3, 93.98, 116.84 + 2.54, 101.6 + 2.54 + 8 * 1.16))
+        return g.close()
+    grp(f, probe)
+    s.iface_rows = [
+        ["PWRON_N", "Input", "RK809 PWRON, through the BAT54 (cathode on PWRON): no load on the power key"],
+        ["VOLDN_N", "Input", "Vol- with its 100 kΩ pull-up on blk.buttons"],
+        ["EMMC_D0", "Bidirectional", "Never omitted; the FET off (gate pull-down) leaves D0 free, even with vcca1v8_pmu down"],
+    ]
+    s.rail_rows = [
+        ["vcca1v8_pmu", "100 nF at the TPS3808 and at each gate", "SBVS050N (0.1 µF at VDD); gates: capture choice"],
+        ["MASKROM_CT", "390 nF X7R ±10 %", "BOM v1 line 97: td = CT / 175 nF + 0.5 ms"],
+    ]
+    corner_notes(s, [
+        "1. Function: MaskROM entry from the buttons (BRD-035, BRD-043 must; board ADR 0009): Power and Vol-",
+        "   held at a cold power-on pull eMMC_D0 low, so the BootROM falls through to USB download.",
+        "2. Absent state: never omitted (always on, vcca1v8_pmu); the gate pull-down holds the FET off",
+        "   and D0 free while vcca1v8_pmu is down (feature-block record 48).",
+        "3. Window: TPS3808G01 on vcca1v8_pmu, SENSE 280 kΩ / 100 kΩ (trip 1.54 V), CT 390 nF: td 2.23 s",
+        "   typical, 1.21-3.43 s (spread scaled from the 180 nF row, UNVERIFIED that it scales); WINDOW_N",
+        "   is RESET, open drain, 100 kΩ to vcca1v8_pmu; MR open (internal pull-up).",
+        "4. Logic on vcca1v8_pmu (Schmitt inputs): 1G57 In2 = PWRON through the BAT54 with 100 kΩ up, In1",
+        "   = GND, In0 = Vol-: high when both are pressed; 1G58 In2 = WINDOW_N, In1 = VCC, In0 = that: high",
+        "   only inside the window, into the DMG1012T gate (100 kΩ down); its drain pulls D0 through 1 kΩ.",
+        "5. Simulated (sim/maskrom): D0 held 1.20-3.42 s after RESETB, never at resume, normal boot",
+        "   untouched; the 1 kΩ stub costs 0.04 V of HS200 margin. A warm restart keeps vcca1v8_pmu up and",
+        "   does not reopen the window: MaskROM through the buttons needs a full power-off.",
+        "6. PCB: the 1 kΩ sits on the D0 trace with a stub of 3 mm or less (BOM v1 line 35).",
     ])

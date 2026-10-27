@@ -41,34 +41,35 @@ Drawn from 2026-10-25. Every sheet carries the block's notes (function, absent s
 | 38 | `emmc.kicad_sch` | `blk.emmc` | Samsung KLMBG2JETD-B041 eMMC, 16 GB alternate |
 | 39 | `mic-ambient.kicad_sch` | `blk.mic-ambient` | IM73D122 on PDM CLK1 and SDI1, 22 Ω clock series, link #35 from MIC_1V8 |
 | 40 | `jack-bal.kicad_sch` | `blk.jack-bal` | The 4.4 mm jack |
-| 41 | `current-monitors.kicad_sch` | `blk.current-monitors` | Five INA236 on I2C1 (0x40-0x43, 0x48) and their shunts: VSYS 10 mΩ, audio VSYS_LV and VSYS sides 20 mΩ each, display 100 mΩ, HAT 20 mΩ |
-| 42 | `debug.kicad_sch` | `blk.debug` | Debug UART2 and I2S/DSD pads with ground, reset and PMIC pads, the spare SoC GPIO pads (the `DEBUG` bus), a pad on every rail no other sheet probes |
-| 43 | `pwr-5v1.kicad_sch` | `blk.pwr-5v1` | TPS62903 5.1 V source, enabled by either port (OR of HAT5V_EN, USB_SRC_ON) |
-| 44 | `usb-vbus-out.kicad_sch` | `blk.usb-vbus-out` | eFuse #D (shared limiter) and eFuse #C (USB-C source), TPS259470A (RFC 0015) |
-| 45 | `usb-c.kicad_sch` | `blk.usb-c` | USB4105 receptacle, TVS2200, TPD8S300A, TPD4E05U06, FUSB302B, VBUSDET divider |
-| 46 | `hat-signals.kicad_sch` | `blk.hat-signals` | DF40C-50DS flat-cable receptacle (interface v2 §9.2), USB 3 TX AC coupling |
-| 47 | `hat-5v.kicad_sch` | `blk.hat-5v` | eFuse #A, FUSB302B01 (USB PD on the HAT port), VBUS discharge (RFC 0014) |
-| 48-50 | `radio*.kicad_sch` | `blk.radio`, `-module`, `-power` | Murata Type 2EL by unit with its SDIO series positions; TPS22919 AVDD33, TPS62826 AVDD18, links #11, #12, SN74AXC1T45 PDn hold |
-| 51 | `antennas.kicad_sch` | `blk.antennas` | ANT0 and ANT1 paths with matching positions, U.FL, the 10 pF shared link (ADR 0018) |
-| 52 | `fp-connector.kicad_sch` | `blk.fp-connector` | FH35C-51S contacts (pinout v1 §8.2), 6 × TPD4E05U06, TPS22950 FP_3V3, TPS22945 FP_1V8, links #23 and #31 |
-| 53 | `fp-backlight.kicad_sch` | `blk.fp-backlight` | TPS61160, 22 µH, PMEG6010CEH, RSET 3.32 Ω |
-| 54 | `speaker.kicad_sch` | `blk.speaker` | MAX98357A, gain 3 dB, SD_MODE position, speaker pads, link #17 |
-| 55 | `board-id.kicad_sch` | `blk.board-id` | AT24C02D at 0x50 |
-| 56 | `tpm.kicad_sch` | `blk.tpm` | SLB9673 TPM 2.0 at 0x2E, always on, link #20 |
-| 57 | `nfc-reader.kicad_sch` | `blk.nfc-reader` | PN7160 at 0x28, NFC_VBAT switch and link #18, EMC filter, matching and RX path (AN13219 first-iteration values), 27.12 MHz crystal, antenna contacts |
-| 58 | `cover-detect.kicad_sch` | `blk.cover-detect` | COVER_DET_N on GPIO0_A6 (in the `KEYS` bus): board-edge input and ground pads, 100 kΩ to vcc3v3_pmu, TPD1E10B06 |
-| 59 | `fp-display.kicad_sch` | `blk.fp-display` | TPS22945 FP_VCI after RK809 LDO4, link #24 |
-| 60 | `fp-controls.kicad_sch` | `blk.fp-controls` | I2C3, interrupt and SPI CS pulls on FP_3V3, the GT911 strap footprint |
-| 61 | `microsd.kicad_sch` | `blk.microsd` | DM3AT socket, 22 Ω series, detect, 2 × TPD4E05U06, link #16 |
-| 62 | `imu.kicad_sch` | `blk.imu` | LSM6DSV16X at 0x6A, INT1 wake, link #32 |
-| 63 | `nfc-tag.kicad_sch` | `blk.nfc-tag` | NT3H2111 NTAG I2C plus at 0x55, field detect, loop antenna contacts, link #33 |
-| 64 | `mic-main.kicad_sch` | `blk.mic-main` | TPS22945 MIC_1V8, link #34 to the faceplate branch MIC_1V8_FP, PDM clock series resistor |
-| 65 | `status-led.kicad_sch` | `blk.status-led` | LP5521 at 0x32 on I2C2, charge pump, LED_R/G/B to the faceplate as the `LED` bus, link #22 |
-| 66 | `gpio-expander.kicad_sch` | `blk.gpio-expander` | TCA6416A at 0x21 with the off-state pull-downs and the input pull-ups |
-| 67 | `haptics.kicad_sch` | `blk.haptics` | DRV2605L at 0x5A, LRA contacts, link #19 |
-| 68 | `buttons.kicad_sch` | `blk.buttons` | Power, Vol+, Vol− (PTS815) and Action (part open) to ground, 4 × TPD1E10B06, the Vol− pull-up |
+| 41 | `maskrom.kicad_sch` | `blk.maskrom` | TPS3808G01 boot window (WINDOW_N), SN74LVC1G57 and SN74LVC1G58 on vcca1v8_pmu, BAT54 from PWRON_N, DMG1012T pulling EMMC_D0 through 1 kΩ |
+| 42 | `current-monitors.kicad_sch` | `blk.current-monitors` | Five INA236 on I2C1 (0x40-0x43, 0x48) and their shunts: VSYS 10 mΩ, audio VSYS_LV and VSYS sides 20 mΩ each, display 100 mΩ, HAT 20 mΩ |
+| 43 | `debug.kicad_sch` | `blk.debug` | Debug UART2 and I2S/DSD pads with ground, reset and PMIC pads, the spare SoC GPIO pads (the `DEBUG` bus), a pad on every rail no other sheet probes |
+| 44 | `pwr-5v1.kicad_sch` | `blk.pwr-5v1` | TPS62903 5.1 V source, enabled by either port (OR of HAT5V_EN, USB_SRC_ON) |
+| 45 | `usb-vbus-out.kicad_sch` | `blk.usb-vbus-out` | eFuse #D (shared limiter) and eFuse #C (USB-C source), TPS259470A (RFC 0015) |
+| 46 | `usb-c.kicad_sch` | `blk.usb-c` | USB4105 receptacle, TVS2200, TPD8S300A, TPD4E05U06, FUSB302B, VBUSDET divider |
+| 47 | `hat-signals.kicad_sch` | `blk.hat-signals` | DF40C-50DS flat-cable receptacle (interface v2 §9.2), USB 3 TX AC coupling |
+| 48 | `hat-5v.kicad_sch` | `blk.hat-5v` | eFuse #A, FUSB302B01 (USB PD on the HAT port), VBUS discharge (RFC 0014) |
+| 49-51 | `radio*.kicad_sch` | `blk.radio`, `-module`, `-power` | Murata Type 2EL by unit with its SDIO series positions; TPS22919 AVDD33, TPS62826 AVDD18, links #11, #12, SN74AXC1T45 PDn hold |
+| 52 | `antennas.kicad_sch` | `blk.antennas` | ANT0 and ANT1 paths with matching positions, U.FL, the 10 pF shared link (ADR 0018) |
+| 53 | `fp-connector.kicad_sch` | `blk.fp-connector` | FH35C-51S contacts (pinout v1 §8.2), 6 × TPD4E05U06, TPS22950 FP_3V3, TPS22945 FP_1V8, links #23 and #31 |
+| 54 | `fp-backlight.kicad_sch` | `blk.fp-backlight` | TPS61160, 22 µH, PMEG6010CEH, RSET 3.32 Ω |
+| 55 | `speaker.kicad_sch` | `blk.speaker` | MAX98357A, gain 3 dB, SD_MODE position, speaker pads, link #17 |
+| 56 | `board-id.kicad_sch` | `blk.board-id` | AT24C02D at 0x50 |
+| 57 | `tpm.kicad_sch` | `blk.tpm` | SLB9673 TPM 2.0 at 0x2E, always on, link #20 |
+| 58 | `nfc-reader.kicad_sch` | `blk.nfc-reader` | PN7160 at 0x28, NFC_VBAT switch and link #18, EMC filter, matching and RX path (AN13219 first-iteration values), 27.12 MHz crystal, antenna contacts |
+| 59 | `cover-detect.kicad_sch` | `blk.cover-detect` | COVER_DET_N on GPIO0_A6 (in the `KEYS` bus): board-edge input and ground pads, 100 kΩ to vcc3v3_pmu, TPD1E10B06 |
+| 60 | `fp-display.kicad_sch` | `blk.fp-display` | TPS22945 FP_VCI after RK809 LDO4, link #24 |
+| 61 | `fp-controls.kicad_sch` | `blk.fp-controls` | I2C3, interrupt and SPI CS pulls on FP_3V3, the GT911 strap footprint |
+| 62 | `microsd.kicad_sch` | `blk.microsd` | DM3AT socket, 22 Ω series, detect, 2 × TPD4E05U06, link #16 |
+| 63 | `imu.kicad_sch` | `blk.imu` | LSM6DSV16X at 0x6A, INT1 wake, link #32 |
+| 64 | `nfc-tag.kicad_sch` | `blk.nfc-tag` | NT3H2111 NTAG I2C plus at 0x55, field detect, loop antenna contacts, link #33 |
+| 65 | `mic-main.kicad_sch` | `blk.mic-main` | TPS22945 MIC_1V8, link #34 to the faceplate branch MIC_1V8_FP, PDM clock series resistor |
+| 66 | `status-led.kicad_sch` | `blk.status-led` | LP5521 at 0x32 on I2C2, charge pump, LED_R/G/B to the faceplate as the `LED` bus, link #22 |
+| 67 | `gpio-expander.kicad_sch` | `blk.gpio-expander` | TCA6416A at 0x21 with the off-state pull-downs and the input pull-ups |
+| 68 | `haptics.kicad_sch` | `blk.haptics` | DRV2605L at 0x5A, LRA contacts, link #19 |
+| 69 | `buttons.kicad_sch` | `blk.buttons` | Power, Vol+, Vol− (PTS815) and Action (part open) to ground, 4 × TPD1E10B06, the Vol− pull-up |
 
-Not drawn yet: `blk.maskrom`. Nets from the drawn sheets to those blocks end in a local label, which ERC lists as `isolated_pin_label` (a warning). The RK3566 USB, multi-PHY and CSI RX units are on `blk.soc-phy`; the reserved balls (`RSVD_*` in pinout v1), the spares pinout v1 leaves without a pad and the unused PHY balls carry no-connect flags.
+Every block in use in the feature-block catalog has its sheet; the shield-can footprints of the variant files (`blk.shields`, BOM v1 line 90, not fitted) have none yet. The RK3566 USB, multi-PHY and CSI RX units are on `blk.soc-phy`; the reserved balls (`RSVD_*` in pinout v1), the spares pinout v1 leaves without a pad and the unused PHY balls carry no-connect flags.
 
 The SoC is one catalog block, `blk.soc`, drawn as a parent sheet with seven sub-sheets. The craft check names a sheet's block by its file, so the sub-sheets carry IDs of their own (`blk.soc-ddr` and so on) and their parts carry them in the `Block` field. The charger, the coprocessor, the radio, the amplifier rails and the balanced stage are drawn the same way (`blk.charger-core`, `blk.radio-module`, `blk.hpa-rails-pre`, `blk.hpa-bal-l` and so on). The audio host-side parts (DAC I2C isolation, the enables' pull-downs, the RX-clock option) sit on `blk.soc-vccio-b`, next to the balls they serve.
 
@@ -111,7 +112,7 @@ The PDF plot uses kicad-lib's OpenDAP colour theme (CRAFT-103): copy `../lib/ope
 
 ## Status (2026-10-26)
 
-ERC: no errors (warnings: `isolated_pin_label` for nets to blocks not drawn yet, six `footprint_link_issues` for the undrawn Würth, Murata LQH3NP and C&K PTS815 lands, one `lib_symbol_mismatch` for KiCad's stock DMP3099L, five `pin_to_pin` for inputs tied to ground next to a `PWR_FLAG`). `odapkit craft check`: Q1 met, Q2 reached (Q3 debt: CRAFT-114, -127). `generator/overlaps.py`: no text collides with text or lines on any sheet, and the clearances above hold (2026-10-26: 386 pin numbers met no-connect crosses before kicad-lib's pin lengths grew with their numbers, CRAFT-121; none after). Every new sheet was reviewed on its SVG plot, region by region. The generator's output does not depend on Python's hash seed (checked with two seeds on 2026-10-26).
+ERC: no errors (warnings: four `isolated_pin_label`, each a net with one pin by design: `WL_1V8_EN_GPIO` (the DNP enable option on `blk.radio-power`), `MCLK441_ST` and `MCLK48_ST` (the oscillator ST nets between their 0 Ω and pull-down on `blk.mclk`), `SPARE_2B7` (pinout v1 D38, its pull-down holding the module PDn path idle); six `footprint_link_issues` for the undrawn Würth, Murata LQH3NP and C&K PTS815 lands, one `lib_symbol_mismatch` for KiCad's stock DMP3099L, five `pin_to_pin` for inputs tied to ground next to a `PWR_FLAG`). `odapkit craft check`: Q1 met, Q2 reached (Q3 debt: CRAFT-114, -127). `generator/overlaps.py`: no text collides with text or lines on any sheet, and the clearances above hold (2026-10-26: 386 pin numbers met no-connect crosses before kicad-lib's pin lengths grew with their numbers, CRAFT-121; none after). Every new sheet was reviewed on its plot, region by region (the six blocks of 2026-10-26 on PDF crops at 200 dpi). The generator's output does not depend on Python's hash seed (checked with two seeds on 2026-10-26).
 
 On the root, the notes sit at the right end of the second row, so the bottom row keeps the space above the title block for blocks (the `blk.nfc-tag` symbol met the notes box on 2026-10-26).
 
@@ -128,6 +129,7 @@ Details the board documents left open, decided at capture. Each sheet's notes re
 - `blk.debug`: Accepted (2026-10-26). The I2S/DSD pads take I2S_BCLK as the DSD clock (the DACs take DSDCLK from it), and each DAC sheet carries the pad on its own MCLK; reset, PMIC and power-key pads cover PCB-T-09's SoC and PMIC items; every spare whose pinout v1 row names a test pad has one, the rest carry no-connect flags; rail pads are generated for each power-tree rail that no other sheet probes (PCB-T-02). Basis: BOM v1 lines 86-88, pinout v1 spare rows, PCB-T-01, -02, -09, feature-block record 49.
 - `blk.cover-detect`: Accepted (2026-10-26). `COVER_DET_N` on GPIO0_A6 (AJ38), recorded in pinout v1 §7 (G22); 100 kΩ to vcc3v3_pmu (33 µA with the cover closed); an input pad and a ground pad, so a conductive bridge on the cover or a two-terminal switch closes it. Basis: feature blocks G22 and record 50 (wake-capable spare; the reset pull-down gives the absent state), BOM v1 line 143, power tree item 5 of the cover-detect change, RK3566 DS 1.1 Table 3-3 (VIH 2.0 V, pulls 16-43 kΩ).
 - `blk.mic-ambient`, `blk.mic-main`: Accepted (2026-10-26). LR to ground (data on the falling clock edge, DATA1), the only microphone on SDI1; 1 µF and 100 nF at VDD; link #34 makes the faceplate branch the rail `MIC_1V8_FP` (contact 40), link #35 feeds the ambient microphone on its own sheet. On the root, the two PDM lines leave the SoC's right edge with the debug bus, so its left edge does not grow. Basis: IM73D122V01 data sheet v1.00 Table 5 note 4, §3.5, Table 8; pinout v1 AK2 and 1P2; power tree §4.12 links 34-35 (G10); feature-block record 38.
+- `blk.maskrom`: Accepted (2026-10-26). Drawn as BOM v1 lines 35, 78, 97 and 98 give it, with 100 nF at each gate's VCC (capture choice) and a test pad on WINDOW_N (PCB-T-09); EMMC_D0 joins through the `EMMC` bus, so the root takes the eMMC bus by labels. Basis: BOM v1 lines 35, 78, 97, 98 (v1.6) and sim/maskrom; feature-block record 48.
 
 ## Open items
 
@@ -143,6 +145,7 @@ Listed per sheet in each sheet's notes. In short:
 - `blk.buttons`: the Action part is open (BOM line 76; KMR221GLFS placeholder on KiCad's KMR2 land); the PTS815 land `T1_Main_Board:SW_CK_PTS815` is not drawn until the C&K drawing shows which terminals are common (parts-lib sheet, **UNVERIFIED**). The switches use KiCad's two-pin `Switch:SW_Push`.
 - `blk.microsd`: detect switch wiring against the Hirose drawing.
 - `blk.current-monitors`: the RK3566 I2C1 against the 100 ns extra hold the INA236 asks for at A0 = SDA (0x42, SBOSA81D p. 16), **UNVERIFIED** until bring-up; the stock KiCad 2512, 2010 and 1206 lands against the WSL pad table (doc 30100 p. 2).
+- `blk.maskrom`: the TPS3808 delay spread at 390 nF, scaled from the 180 nF row (**UNVERIFIED**, BOM v1 line 97).
 - `blk.cover-detect`: the actuator and the pad size (case inputs, BOM §7 item 42); the RK3566 input leakage on GPIO0_A6 (**UNVERIFIED**, 13 µA keeps VIH with 100 kΩ).
 - `blk.charger-*`: the pack NTC type behind the TS divider (**UNVERIFIED**); the Mill-Max 0965 pogo fallback land (BOM v1 line 47); the P+ TVS part (DNP, line 142).
 - `blk.gauge`: CHG and DSG left open (no FETs, SLUSE07B §8.3.14); golden image and CC Gain calibration per board (ADR 0017 items 4-5).

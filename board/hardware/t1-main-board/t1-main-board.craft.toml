@@ -311,3 +311,7 @@ interface = ["{KEYS}"]
 [[schematic.block]]
 id = "blk.mic-ambient"
 interface = ["PDM_CLK1", "PDM_DATA1"]
+
+[[schematic.block]]
+id = "blk.maskrom"
+interface = ["{EMMC}", "{KEYS}"]

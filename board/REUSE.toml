@@ -25,6 +25,12 @@ SPDX-FileCopyrightText = "2026 The OpenDAP Project"
 SPDX-License-Identifier = "GPL-3.0-or-later"
 
 [[annotations]]
+path = ["hardware/t1-main-board/pcb/*.py", "hardware/t1-main-board/pcb/tests/*.py"]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2026 The OpenDAP Project"
+SPDX-License-Identifier = "GPL-3.0-or-later"
+
+[[annotations]]
 path = "hardware/t1-main-board/generator/*.py"
 precedence = "aggregate"
 SPDX-FileCopyrightText = "2026 The OpenDAP Project"

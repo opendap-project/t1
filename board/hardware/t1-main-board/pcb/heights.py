@@ -31,11 +31,11 @@ OVERRIDES = {
     "T1_Main_Board:L_Wuerth_WE-LHMI_4020": (2.0, "Wuerth WE-LHMI 4020: 4.0 x 4.0 x 2.0 mm (size code), UNVERIFIED: sheet not retrieved"),
     "T1_Main_Board:SW_CK_PTS815": (2.5, "C&K PTS815: height UNVERIFIED (drawing not retrieved), taken as a band part"),
     "Inductor_SMD:L_Coilcraft_XxL4020": (2.1, "Coilcraft XAL4020/XGL4020: 2.1 mm max (PCB-Z-05)"),
-    "Hirose:Hirose_DF40C-50DS-0.4V_2x25_P0.4mm_Vertical": (1.6, "DF40C-50DS: 1.45 +- 0.15 mm (PCB-Z-05, RFC 0015)"),
+    "hirose:Hirose_DF40C-50DS-0.4V_2x25_P0.4mm_Vertical": (1.6, "DF40C-50DS: 1.45 +- 0.15 mm (PCB-Z-05, RFC 0015)"),
     "Fuse:Fuse_Littelfuse-NANO2-451_453": (2.69, "Littelfuse NANO2 451/453 body 6.10 x 2.69 x 2.69 mm, UNVERIFIED (catalog figure, no KiCad model)"),
     "Package_SON:Texas_DPY0002A_0.6x1mm_P0.65mm": (0.4, "TI DPY0002A (X1SON) 0.4 mm maximum package height, no KiCad model"),
     "Package_TO_SOT_SMD:SOT-523": (0.8, "SOT-523 (SC-89) outline 0.8 mm maximum, no KiCad model; UNVERIFIED against each part's sheet"),
-    "Hirose:Hirose_FH35C-51S-0.3SHW_1x51-1MP_P0.3mm_Horizontal": (1.0, "FH35C: 0.9 +- 0.1 mm (PCB-Z-03, ADR 0016)"),
+    "hirose:Hirose_FH35C-51S-0.3SHW_1x51-1MP_P0.3mm_Horizontal": (1.0, "FH35C: 0.9 +- 0.1 mm (PCB-Z-03, ADR 0016)"),
 }
 
 

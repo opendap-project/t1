@@ -144,7 +144,7 @@ def decouple(sheet, rail, keys, x, y, block, refs_out=None, pitch=10.16):
 
 
 KIND_SYMBOL = {"R": "R", "C": "C", "L": "L", "F": "Fuse", "RT": "Thermistor_NTC"}
-KIND_LIB = {"RT": "OpenDAP_Device"}            # stock Device:Thermistor_NTC carries TH (CRAFT-130)
+KIND_LIB = {"RT": "opendap-generic"}            # stock Device:Thermistor_NTC carries TH (CRAFT-130)
 
 
 def text_dx(kind):

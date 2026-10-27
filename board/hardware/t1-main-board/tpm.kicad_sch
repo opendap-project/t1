@@ -420,7 +420,7 @@
 		)
 		(embedded_fonts no)
 	)
-(symbol "Infineon:SLB9673XU20FW2613XTMA1"
+(symbol "infineon:SLB9673XU20FW2613XTMA1"
 		(pin_names
 			(offset 1.016)
 		)
@@ -445,7 +445,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Infineon:Infineon_PG-UQFN-32-1_5x5mm_P0.5mm_EP3.6x3.6mm"
+		(property "Footprint" "infineon:Infineon_PG-UQFN-32-1_5x5mm_P0.5mm_EP3.6x3.6mm"
 			(at 0 0 0)
 			(hide yes)
 			(effects
@@ -1495,10 +1495,10 @@
 		)
 		(embedded_fonts no)
 	))
-(symbol (lib_id "Infineon:SLB9673XU20FW2613XTMA1") (at 69.85 87.63 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "a67a9f94-25cf-531d-aaf5-002386c567bc")
+(symbol (lib_id "infineon:SLB9673XU20FW2613XTMA1") (at 69.85 87.63 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "a67a9f94-25cf-531d-aaf5-002386c567bc")
   (property "Reference" "U5701" (at 76.2 50.8 0) (effects (font (size 1.27 1.27)) (justify left)))
   (property "Value" "SLB9673XU20FW2613XTMA1" (at 76.2 48.26 0) (effects (font (size 1.27 1.27)) (justify left)))
-  (property "Footprint" "Infineon:Infineon_PG-UQFN-32-1_5x5mm_P0.5mm_EP3.6x3.6mm" (at 69.85 87.63 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Footprint" "infineon:Infineon_PG-UQFN-32-1_5x5mm_P0.5mm_EP3.6x3.6mm" (at 69.85 87.63 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Datasheet" "https://www.farnell.com/datasheets/4146092.pdf" (at 69.85 87.63 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Description" "OPTIGA TPM SLB 9673 TPM 2.0, I2C up to 1 MHz, 1.8 V or 3.3 V, -40 to 85 C, PG-UQFN-32 5 x 5 mm, 0.5 mm pitch, exposed pad" (at 69.85 87.63 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Manufacturer" "Infineon" (at 69.85 87.63 0) (effects (font (size 1.27 1.27))) (hide yes))

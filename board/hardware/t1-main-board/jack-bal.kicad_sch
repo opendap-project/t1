@@ -168,7 +168,7 @@
 		)
 		(embedded_fonts no)
 	)
-(symbol "G_Switch:GT-3321667P-01"
+(symbol "g-switch:GT-3321667P-01"
 		(pin_names
 			(offset 1.016)
 		)
@@ -193,7 +193,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "G_Switch:G_Switch_GT-3321667P-01_Jack_4.4mm_5Pole_Horizontal"
+		(property "Footprint" "g-switch:G_Switch_GT-3321667P-01_Jack_4.4mm_5Pole_Horizontal"
 			(at 0 0 0)
 			(hide yes)
 			(effects
@@ -566,10 +566,10 @@
 		)
 		(embedded_fonts no)
 	))
-(symbol (lib_id "G_Switch:GT-3321667P-01") (at 52.07 64.77 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "dd5fa99f-1fb1-5011-9331-203b452ec825")
+(symbol (lib_id "g-switch:GT-3321667P-01") (at 52.07 64.77 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "dd5fa99f-1fb1-5011-9331-203b452ec825")
   (property "Reference" "J4001" (at 43.18 43.18 0) (effects (font (size 1.27 1.27)) (justify left)))
   (property "Value" "GT-3321667P-01" (at 43.18 40.64 0) (effects (font (size 1.27 1.27)) (justify left)))
-  (property "Footprint" "G_Switch:G_Switch_GT-3321667P-01_Jack_4.4mm_5Pole_Horizontal" (at 52.07 64.77 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Footprint" "g-switch:G_Switch_GT-3321667P-01_Jack_4.4mm_5Pole_Horizontal" (at 52.07 64.77 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Datasheet" "https://datasheet.lcsc.com/datasheet/pdf/b77c36e71c4d9ede06dc371db399f62a.pdf" (at 52.07 64.77 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Description" "4.4 mm 5-pole phone jack (balanced headphone), right angle, plated-slot terminals, detect switch, 2 locating pegs" (at 52.07 64.77 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Manufacturer" "G-Switch" (at 52.07 64.77 0) (effects (font (size 1.27 1.27))) (hide yes))

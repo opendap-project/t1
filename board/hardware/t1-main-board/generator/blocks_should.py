@@ -59,7 +59,7 @@ def pads(s, title, nets, key="TP"):
 def draw_haptics(s, variants):
     f = Flow(s)
     grp(f, lambda: ic_group(
-        s, "DRV2605L at I2C2 0x5A (BOM v1 line 123)", "Texas_Instruments", "DRV2605LDGSR",
+        s, "DRV2605L at I2C2 0x5A (BOM v1 line 123)", "texas-instruments", "DRV2605LDGSR",
         {"SCL": "I2C2_SCL", "SDA": "I2C2_SDA", "EN": "HAPTIC_EN", "IN/TRIG": "GND", "OUT+": "LRA_P",
          "OUT-": "LRA_N", "REG": "HAPTIC_REG", "VDD": "HAPTIC_VDD", "VDD/NC": "HAPTIC_VDD", "GND": "GND"},
         rows=[[("C_1u_0402", "HAPTIC_VDD", "GND"), ("C_1u_0402", "HAPTIC_REG", "GND")]]))
@@ -86,7 +86,7 @@ def draw_tpm(s, variants):
             "GPIO_00": None, "GPIO_01": None, "GPIO_02": None, "NCI": None, "NC": None, "I2C_PIRQ#": "TPM_PIRQ_N",
             "VDD": "TPM_VDD", "NCI/VDD": "TPM_VDD", "GND": "GND", "NCI/GND": "GND", "EP": "GND"}
     grp(f, lambda: ic_group(
-        s, "SLB9673 TPM 2.0 at I2C2 0x2E (BOM v1 line 122)", "Infineon", "SLB9673XU20FW2613XTMA1", pins,
+        s, "SLB9673 TPM 2.0 at I2C2 0x2E (BOM v1 line 122)", "infineon", "SLB9673XU20FW2613XTMA1", pins,
         rows=[[("C_1u_0402", "TPM_VDD", "GND"), ("C_100n_0402", "TPM_VDD", "GND"),
                ("C_100n_0402", "TPM_VDD", "GND"), ("C_100n_0402", "TPM_VDD", "GND")],
               [("R_2k2", "TPM_VDD", "TPM_RST_N")]], pad_left=15.24, rows_dx=5.08))
@@ -109,7 +109,7 @@ def draw_tpm(s, variants):
 def draw_tag(s, variants):
     f = Flow(s)
     grp(f, lambda: ic_group(
-        s, "NT3H2111 NTAG I2C plus at I2C2 0x55 (BOM v1 line 125)", "NXP", "NT3H2111W0FHKH",
+        s, "NT3H2111 NTAG I2C plus at I2C2 0x55 (BOM v1 line 125)", "nxp", "NT3H2111W0FHKH",
         {"SCL": "I2C2_SCL", "SDA": "I2C2_SDA", "FD": "NFC_FD_N", "LA": "NFC_TAG_LA", "LB": "NFC_TAG_LB",
          "VOUT": None, "VCC": "NFC_TAG_VCC", "VSS": "GND"},
         rows=[[("C_100n_0402", "NFC_TAG_VCC", "GND")]]))
@@ -152,7 +152,7 @@ def draw_reader(s, variants):
     def controller():
         from draw import row_need
         g = Group(s, "PN7160 at I2C2 0x28 (BOM v1 line 127; AN12988 Table 9)")
-        u = ic(s, "NXP", "PN7160A1HN-C100E", 101.6, 101.6, pins)
+        u = ic(s, "nxp", "PN7160A1HN-C100E", 101.6, 101.6, pins)
         # VDD(PAD) sits next to VDD(TX): its rail symbol stands above the NFC_TVDD label's text
         px, py = u.pos(u.pin("6"))
         s.wire((px, py), (px, py - 15.24))
@@ -182,7 +182,7 @@ def draw_reader(s, variants):
 
     def xtal():
         g = Group(s, "27.12 MHz crystal (DS Table 17; AN14518 Table 9)")
-        ysym = library.load("OpenDAP_Device", "Crystal_GND24")
+        ysym = library.load("opendap-generic", "Crystal_GND24")
         p = PARTS["Y_27M12"]
         pl = s.place(ysym, s.next_ref("Y"), 127.0, 101.6, fields=fields("Y_27M12", s.block), value=p["value"],
                      ref_at=(130.81, 96.52), val_at=(130.81, 107.95))
@@ -197,7 +197,7 @@ def draw_reader(s, variants):
     grp(col, xtal)
 
     grp(col, lambda: ic_group(
-        s, "NFC_VBAT switch (BOM v1 line 50)", "Texas_Instruments", "TPS22919DCKR",
+        s, "NFC_VBAT switch (BOM v1 line 50)", "texas-instruments", "TPS22919DCKR",
         {"IN": "VSYS_LV", "ON": "NFC_PWR_EN", "NC": None, "VOUT": "NFC_VBAT_SRC", "QOD": "NFC_VBAT_SRC",
          "GND": "GND"}, rows=[[("C_1u_0402", "VSYS_LV", "GND")]]))
     f.x_right = col.x_right
@@ -269,10 +269,10 @@ TAPS = [("I2S_BCLK", "RP_TAP_BCLK"), ("I2S_LRCK", "RP_TAP_LRCK"), ("I2S_SDO0", "
 
 
 def rp_unit(s, ref, unit, mapping, title, rows=(), rows_dx=5.08):
-    """One unit of the RP2354A (kicad-lib Raspberry_Pi:RP2354A, three units) with passive rows."""
+    """One unit of the RP2354A (kicad-lib raspberry-pi:RP2354A, three units) with passive rows."""
     from draw import ic as _ic, prow, row_need, unit_box, unit_extent
     import library
-    sym = library.load("Raspberry_Pi", "RP2354A")
+    sym = library.load("raspberry-pi", "RP2354A")
     g = Group(s, title)
     pl = s.place(sym, ref, 101.6, 101.6, unit=unit, fields={"Block": s.block})
     s.connect_all(pl, mapping)
@@ -331,7 +331,7 @@ def draw_rp2354(parent, variants):
     def osc():
         from draw import ic as _ic
         g = Group(s, "12 MHz oscillator on RP_IOVDD_1V8 (BOM v1 line 14)")
-        u = _ic(s, "ECS", "ECS-2016MV-120-BN-TR", 101.6, 101.6,
+        u = _ic(s, "ecs", "ECS-2016MV-120-BN-TR", 101.6, 101.6,
                 {"TRI-STATE": None, "OUTPUT": "RP_XIN", "VDD": "RP_IOVDD_1V8", "GND": "GND"}, prefix="Y", value="12 MHz")
         g.add(u.bbox)
         g.add(prow(s, u.bbox[2] + 15.24, 109.22, [("C_100n_0402", "RP_IOVDD_1V8", "GND")]))
@@ -368,11 +368,11 @@ def draw_rp2354(parent, variants):
 
     col = column(s, f, w=110.0)
     grp(col, lambda: ic_group(
-        s, "RP_3V3 switch (BOM v1 line 50)", "Texas_Instruments", "TPS22919DCKR",
+        s, "RP_3V3 switch (BOM v1 line 50)", "texas-instruments", "TPS22919DCKR",
         {"IN": "vcc3v3_sys", "ON": "RP_PWR_EN", "NC": None, "VOUT": "RP_3V3_SRC", "QOD": "RP_3V3_SRC",
          "GND": "GND"}, rows=[[("C_1u_0402", "vcc3v3_sys", "GND")]]))
     grp(col, lambda: ic_group(
-        s, "RP_IOVDD_1V8 switch (BOM v1 line 50)", "Texas_Instruments", "TPS22919DCKR",
+        s, "RP_IOVDD_1V8 switch (BOM v1 line 50)", "texas-instruments", "TPS22919DCKR",
         {"IN": "vcc_1v8", "ON": "RP_PWR_EN", "NC": None, "VOUT": "RP_IOVDD_1V8_SRC", "QOD": "RP_IOVDD_1V8_SRC",
          "GND": "GND"}, rows=[[("C_1u_0402", "vcc_1v8", "GND")]]))
     f.x_right = col.x_right

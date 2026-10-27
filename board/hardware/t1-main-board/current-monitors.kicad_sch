@@ -297,500 +297,6 @@
 		)
 		(embedded_fonts no)
 	)
-(symbol "Texas_Instruments:INA236AIDDFR"
-		(pin_names
-			(offset 1.016)
-		)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(property "Reference" "U"
-			(at -7.62 19.05 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "INA236AIDDFR"
-			(at -7.62 -20.32 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Texas_Instruments:Texas_DDF0008A_SOT-23-8_1.6x2.9mm_P0.65mm"
-			(at 0 0 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" "https://www.ti.com/lit/ds/symlink/ina236.pdf"
-			(at 0 0 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Current, voltage and power monitor, 16-bit, -0.3 to 48 V common mode, 1.2 V-compliant I2C, address option A (0x40-0x43), alert output, SOT-23-THIN-8 (DDF0008A)"
-			(at 0 0 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Manufacturer" "Texas Instruments"
-			(at 0 0 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "MPN" "INA236AIDDFR"
-			(at 0 0 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "ki_keywords" "current monitor power monitor shunt I2C INA236 SOT-23 DDF"
-			(at 0 0 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "ki_fp_filters" "Texas_DDF0008A_SOT-23-8_1.6x2.9mm_P0.65mm*"
-			(at 0 0 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(symbol "INA236AIDDFR_1_1"
-			(rectangle
-				(start -7.62 15.24)
-				(end 7.62 -15.24)
-				(stroke
-					(width 0.254)
-					(type default)
-				)
-				(fill
-					(type background)
-				)
-			)
-			(pin input line
-				(at -10.16 5.08 0)
-				(length 2.54)
-				(name "IN+"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "1"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin input line
-				(at -10.16 2.54 0)
-				(length 2.54)
-				(name "IN-"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "2"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin input line
-				(at -10.16 -2.54 0)
-				(length 2.54)
-				(name "SCL"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "5"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin bidirectional line
-				(at -10.16 -5.08 0)
-				(length 2.54)
-				(name "SDA"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "6"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin input line
-				(at -10.16 -7.62 0)
-				(length 2.54)
-				(name "A0"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "7"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin open_collector line
-				(at 10.16 5.08 180)
-				(length 2.54)
-				(name "ALERT"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "8"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin power_in line
-				(at 0 17.78 270)
-				(length 2.54)
-				(name "VS"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "4"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin power_in line
-				(at 0 -17.78 90)
-				(length 2.54)
-				(name "GND"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "3"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-		)
-		(embedded_fonts no)
-	)
-(symbol "Texas_Instruments:INA236BIDDFR"
-		(pin_names
-			(offset 1.016)
-		)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(property "Reference" "U"
-			(at -7.62 19.05 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "INA236BIDDFR"
-			(at -7.62 -20.32 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Texas_Instruments:Texas_DDF0008A_SOT-23-8_1.6x2.9mm_P0.65mm"
-			(at 0 0 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" "https://www.ti.com/lit/ds/symlink/ina236.pdf"
-			(at 0 0 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Current, voltage and power monitor, 16-bit, -0.3 to 48 V common mode, 1.2 V-compliant I2C, address option B (0x48-0x4B), alert output, SOT-23-THIN-8 (DDF0008A)"
-			(at 0 0 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Manufacturer" "Texas Instruments"
-			(at 0 0 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "MPN" "INA236BIDDFR"
-			(at 0 0 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "ki_keywords" "current monitor power monitor shunt I2C INA236 SOT-23 DDF"
-			(at 0 0 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "ki_fp_filters" "Texas_DDF0008A_SOT-23-8_1.6x2.9mm_P0.65mm*"
-			(at 0 0 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(symbol "INA236BIDDFR_1_1"
-			(rectangle
-				(start -7.62 15.24)
-				(end 7.62 -15.24)
-				(stroke
-					(width 0.254)
-					(type default)
-				)
-				(fill
-					(type background)
-				)
-			)
-			(pin input line
-				(at -10.16 5.08 0)
-				(length 2.54)
-				(name "IN+"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "1"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin input line
-				(at -10.16 2.54 0)
-				(length 2.54)
-				(name "IN-"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "2"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin input line
-				(at -10.16 -2.54 0)
-				(length 2.54)
-				(name "SCL"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "5"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin bidirectional line
-				(at -10.16 -5.08 0)
-				(length 2.54)
-				(name "SDA"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "6"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin input line
-				(at -10.16 -7.62 0)
-				(length 2.54)
-				(name "A0"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "7"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin open_collector line
-				(at 10.16 5.08 180)
-				(length 2.54)
-				(name "ALERT"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "8"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin power_in line
-				(at 0 17.78 270)
-				(length 2.54)
-				(name "VS"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "4"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin power_in line
-				(at 0 -17.78 90)
-				(length 2.54)
-				(name "GND"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "3"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-		)
-		(embedded_fonts no)
-	)
 (symbol "power:GND"
 		(power global)
 		(pin_numbers
@@ -1159,11 +665,505 @@
 			)
 		)
 		(embedded_fonts no)
+	)
+(symbol "texas-instruments:INA236AIDDFR"
+		(pin_names
+			(offset 1.016)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(property "Reference" "U"
+			(at -7.62 19.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "INA236AIDDFR"
+			(at -7.62 -20.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "texas-instruments:Texas_DDF0008A_SOT-23-8_1.6x2.9mm_P0.65mm"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://www.ti.com/lit/ds/symlink/ina236.pdf"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Current, voltage and power monitor, 16-bit, -0.3 to 48 V common mode, 1.2 V-compliant I2C, address option A (0x40-0x43), alert output, SOT-23-THIN-8 (DDF0008A)"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "Texas Instruments"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "INA236AIDDFR"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_keywords" "current monitor power monitor shunt I2C INA236 SOT-23 DDF"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_fp_filters" "Texas_DDF0008A_SOT-23-8_1.6x2.9mm_P0.65mm*"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "INA236AIDDFR_1_1"
+			(rectangle
+				(start -7.62 15.24)
+				(end 7.62 -15.24)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type background)
+				)
+			)
+			(pin input line
+				(at -10.16 5.08 0)
+				(length 2.54)
+				(name "IN+"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin input line
+				(at -10.16 2.54 0)
+				(length 2.54)
+				(name "IN-"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin input line
+				(at -10.16 -2.54 0)
+				(length 2.54)
+				(name "SCL"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "5"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin bidirectional line
+				(at -10.16 -5.08 0)
+				(length 2.54)
+				(name "SDA"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "6"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin input line
+				(at -10.16 -7.62 0)
+				(length 2.54)
+				(name "A0"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "7"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin open_collector line
+				(at 10.16 5.08 180)
+				(length 2.54)
+				(name "ALERT"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "8"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin power_in line
+				(at 0 17.78 270)
+				(length 2.54)
+				(name "VS"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "4"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin power_in line
+				(at 0 -17.78 90)
+				(length 2.54)
+				(name "GND"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "3"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
+(symbol "texas-instruments:INA236BIDDFR"
+		(pin_names
+			(offset 1.016)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(property "Reference" "U"
+			(at -7.62 19.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "INA236BIDDFR"
+			(at -7.62 -20.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "texas-instruments:Texas_DDF0008A_SOT-23-8_1.6x2.9mm_P0.65mm"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://www.ti.com/lit/ds/symlink/ina236.pdf"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Current, voltage and power monitor, 16-bit, -0.3 to 48 V common mode, 1.2 V-compliant I2C, address option B (0x48-0x4B), alert output, SOT-23-THIN-8 (DDF0008A)"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "Texas Instruments"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "INA236BIDDFR"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_keywords" "current monitor power monitor shunt I2C INA236 SOT-23 DDF"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_fp_filters" "Texas_DDF0008A_SOT-23-8_1.6x2.9mm_P0.65mm*"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "INA236BIDDFR_1_1"
+			(rectangle
+				(start -7.62 15.24)
+				(end 7.62 -15.24)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type background)
+				)
+			)
+			(pin input line
+				(at -10.16 5.08 0)
+				(length 2.54)
+				(name "IN+"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin input line
+				(at -10.16 2.54 0)
+				(length 2.54)
+				(name "IN-"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin input line
+				(at -10.16 -2.54 0)
+				(length 2.54)
+				(name "SCL"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "5"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin bidirectional line
+				(at -10.16 -5.08 0)
+				(length 2.54)
+				(name "SDA"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "6"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin input line
+				(at -10.16 -7.62 0)
+				(length 2.54)
+				(name "A0"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "7"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin open_collector line
+				(at 10.16 5.08 180)
+				(length 2.54)
+				(name "ALERT"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "8"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin power_in line
+				(at 0 17.78 270)
+				(length 2.54)
+				(name "VS"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "4"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin power_in line
+				(at 0 -17.78 90)
+				(length 2.54)
+				(name "GND"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "3"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
 	))
-(symbol (lib_id "Texas_Instruments:INA236AIDDFR") (at 49.53 63.5 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "d1d20a80-5a0d-5466-9e22-e607bb4eb1bd")
+(symbol (lib_id "texas-instruments:INA236AIDDFR") (at 49.53 63.5 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "d1d20a80-5a0d-5466-9e22-e607bb4eb1bd")
   (property "Reference" "U4201" (at 50.8 45.72 0) (effects (font (size 1.27 1.27)) (justify left)))
   (property "Value" "INA236AIDDFR" (at 50.8 43.18 0) (effects (font (size 1.27 1.27)) (justify left)))
-  (property "Footprint" "Texas_Instruments:Texas_DDF0008A_SOT-23-8_1.6x2.9mm_P0.65mm" (at 49.53 63.5 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Footprint" "texas-instruments:Texas_DDF0008A_SOT-23-8_1.6x2.9mm_P0.65mm" (at 49.53 63.5 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Datasheet" "https://www.ti.com/lit/ds/symlink/ina236.pdf" (at 49.53 63.5 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Description" "Current, voltage and power monitor, 16-bit, -0.3 to 48 V common mode, 1.2 V-compliant I2C, address option A (0x40-0x43), alert output, SOT-23-THIN-8 (DDF0008A)" (at 49.53 63.5 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Manufacturer" "Texas Instruments" (at 49.53 63.5 0) (effects (font (size 1.27 1.27))) (hide yes))
@@ -1303,10 +1303,10 @@
 )
 (rectangle (start 22.86 35.56) (end 138.43 118.11) (stroke (width 0) (type dash)) (fill (type none)) (uuid "1b5c4b5c-d4e1-52c3-940b-b4dfaa4e8bd9"))
 (text "VSYS at 0x40: BQ25798 SYS output, 10 mΩ (line 54)" (exclude_from_sim no) (at 24.13 34.29 0) (effects (font (size 2.54 2.54)) (justify left bottom)) (uuid "1d7a1d47-0ad8-585a-9fdb-6610ac70d9e3"))
-(symbol (lib_id "Texas_Instruments:INA236AIDDFR") (at 182.88 63.5 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "a9cc48d8-f633-57a3-b127-31e9c49d3527")
+(symbol (lib_id "texas-instruments:INA236AIDDFR") (at 182.88 63.5 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "a9cc48d8-f633-57a3-b127-31e9c49d3527")
   (property "Reference" "U4202" (at 184.15 45.72 0) (effects (font (size 1.27 1.27)) (justify left)))
   (property "Value" "INA236AIDDFR" (at 184.15 43.18 0) (effects (font (size 1.27 1.27)) (justify left)))
-  (property "Footprint" "Texas_Instruments:Texas_DDF0008A_SOT-23-8_1.6x2.9mm_P0.65mm" (at 182.88 63.5 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Footprint" "texas-instruments:Texas_DDF0008A_SOT-23-8_1.6x2.9mm_P0.65mm" (at 182.88 63.5 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Datasheet" "https://www.ti.com/lit/ds/symlink/ina236.pdf" (at 182.88 63.5 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Description" "Current, voltage and power monitor, 16-bit, -0.3 to 48 V common mode, 1.2 V-compliant I2C, address option A (0x40-0x43), alert output, SOT-23-THIN-8 (DDF0008A)" (at 182.88 63.5 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Manufacturer" "Texas Instruments" (at 182.88 63.5 0) (effects (font (size 1.27 1.27))) (hide yes))
@@ -1446,10 +1446,10 @@
 )
 (rectangle (start 143.51 35.56) (end 261.62 118.11) (stroke (width 0) (type dash)) (fill (type none)) (uuid "943bcf66-4ae7-5ed2-880d-9a1ea321f58b"))
 (text "Audio, VSYS_LV side, at 0x41: 20 mΩ (line 54, G11)" (exclude_from_sim no) (at 144.78 34.29 0) (effects (font (size 2.54 2.54)) (justify left bottom)) (uuid "35614125-5385-520d-aaf5-94d8ea6884f9"))
-(symbol (lib_id "Texas_Instruments:INA236AIDDFR") (at 295.91 63.5 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "1f096c7e-c3a4-56aa-aeff-a14be2dc1668")
+(symbol (lib_id "texas-instruments:INA236AIDDFR") (at 295.91 63.5 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "1f096c7e-c3a4-56aa-aeff-a14be2dc1668")
   (property "Reference" "U4203" (at 297.18 45.72 0) (effects (font (size 1.27 1.27)) (justify left)))
   (property "Value" "INA236AIDDFR" (at 297.18 43.18 0) (effects (font (size 1.27 1.27)) (justify left)))
-  (property "Footprint" "Texas_Instruments:Texas_DDF0008A_SOT-23-8_1.6x2.9mm_P0.65mm" (at 295.91 63.5 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Footprint" "texas-instruments:Texas_DDF0008A_SOT-23-8_1.6x2.9mm_P0.65mm" (at 295.91 63.5 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Datasheet" "https://www.ti.com/lit/ds/symlink/ina236.pdf" (at 295.91 63.5 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Description" "Current, voltage and power monitor, 16-bit, -0.3 to 48 V common mode, 1.2 V-compliant I2C, address option A (0x40-0x43), alert output, SOT-23-THIN-8 (DDF0008A)" (at 295.91 63.5 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Manufacturer" "Texas Instruments" (at 295.91 63.5 0) (effects (font (size 1.27 1.27))) (hide yes))
@@ -1581,10 +1581,10 @@
 )
 (rectangle (start 266.7 35.56) (end 377.19 118.11) (stroke (width 0) (type dash)) (fill (type none)) (uuid "fe091add-5e69-51d8-8fcb-58df5bf2e462"))
 (text "Display at 0x42: TPS61160 VIN, 100 mΩ (line 54)" (exclude_from_sim no) (at 267.97 34.29 0) (effects (font (size 2.54 2.54)) (justify left bottom)) (uuid "4e4ef59a-a149-598b-a56c-ca94c634c62e"))
-(symbol (lib_id "Texas_Instruments:INA236AIDDFR") (at 50.8 156.21 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "9f379360-8a70-5fec-ae92-6881da9c1262")
+(symbol (lib_id "texas-instruments:INA236AIDDFR") (at 50.8 156.21 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "9f379360-8a70-5fec-ae92-6881da9c1262")
   (property "Reference" "U4204" (at 52.07 138.43 0) (effects (font (size 1.27 1.27)) (justify left)))
   (property "Value" "INA236AIDDFR" (at 52.07 135.89 0) (effects (font (size 1.27 1.27)) (justify left)))
-  (property "Footprint" "Texas_Instruments:Texas_DDF0008A_SOT-23-8_1.6x2.9mm_P0.65mm" (at 50.8 156.21 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Footprint" "texas-instruments:Texas_DDF0008A_SOT-23-8_1.6x2.9mm_P0.65mm" (at 50.8 156.21 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Datasheet" "https://www.ti.com/lit/ds/symlink/ina236.pdf" (at 50.8 156.21 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Description" "Current, voltage and power monitor, 16-bit, -0.3 to 48 V common mode, 1.2 V-compliant I2C, address option A (0x40-0x43), alert output, SOT-23-THIN-8 (DDF0008A)" (at 50.8 156.21 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Manufacturer" "Texas Instruments" (at 50.8 156.21 0) (effects (font (size 1.27 1.27))) (hide yes))
@@ -1716,10 +1716,10 @@
 )
 (rectangle (start 22.86 128.27) (end 130.81 210.82) (stroke (width 0) (type dash)) (fill (type none)) (uuid "bff813c0-55ef-52d3-bf48-18c62abfc2d5"))
 (text "HAT at 0x43: 5.1 V buck input, 20 mΩ (line 54)" (exclude_from_sim no) (at 24.13 127 0) (effects (font (size 2.54 2.54)) (justify left bottom)) (uuid "704e84cc-fa62-5a8c-8270-83b12e54a686"))
-(symbol (lib_id "Texas_Instruments:INA236BIDDFR") (at 165.1 156.21 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "03c1b4b7-a69c-59ef-9af5-dcbaa733e8d7")
+(symbol (lib_id "texas-instruments:INA236BIDDFR") (at 165.1 156.21 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "03c1b4b7-a69c-59ef-9af5-dcbaa733e8d7")
   (property "Reference" "U4205" (at 166.37 138.43 0) (effects (font (size 1.27 1.27)) (justify left)))
   (property "Value" "INA236BIDDFR" (at 166.37 135.89 0) (effects (font (size 1.27 1.27)) (justify left)))
-  (property "Footprint" "Texas_Instruments:Texas_DDF0008A_SOT-23-8_1.6x2.9mm_P0.65mm" (at 165.1 156.21 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Footprint" "texas-instruments:Texas_DDF0008A_SOT-23-8_1.6x2.9mm_P0.65mm" (at 165.1 156.21 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Datasheet" "https://www.ti.com/lit/ds/symlink/ina236.pdf" (at 165.1 156.21 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Description" "Current, voltage and power monitor, 16-bit, -0.3 to 48 V common mode, 1.2 V-compliant I2C, address option B (0x48-0x4B), alert output, SOT-23-THIN-8 (DDF0008A)" (at 165.1 156.21 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Manufacturer" "Texas Instruments" (at 165.1 156.21 0) (effects (font (size 1.27 1.27))) (hide yes))

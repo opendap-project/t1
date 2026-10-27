@@ -598,7 +598,7 @@
 		)
 		(embedded_fonts no)
 	)
-(symbol "OpenDAP_Device:Crystal"
+(symbol "opendap-generic:Crystal"
 		(pin_numbers
 			(hide yes)
 		)
@@ -775,7 +775,376 @@
 		)
 		(embedded_fonts no)
 	)
-(symbol "Rockchip_PMIC:RK809-5"
+(symbol "power:GND"
+		(power global)
+		(pin_numbers
+			(hide yes)
+		)
+		(pin_names
+			(offset 0)
+			(hide yes)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(duplicate_pin_numbers_are_jumpers no)
+		(property "Reference" "#PWR"
+			(at 0 -6.35 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 0 -3.81 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_keywords" "global power"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "GND_0_1"
+			(polyline
+				(pts
+					(xy 0 0) (xy 0 -1.27) (xy 1.27 -1.27) (xy 0 -2.54) (xy -1.27 -1.27) (xy 0 -1.27)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+		)
+		(symbol "GND_1_1"
+			(pin power_in line
+				(at 0 0 270)
+				(length 0)
+				(name ""
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
+(symbol "power:PWR_FLAG"
+		(power global)
+		(pin_numbers
+			(hide yes)
+		)
+		(pin_names
+			(offset 0)
+			(hide yes)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(duplicate_pin_numbers_are_jumpers no)
+		(property "Reference" "#FLG"
+			(at 0 1.905 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "PWR_FLAG"
+			(at 0 3.81 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Special symbol for telling ERC where power comes from"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_keywords" "flag power"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "PWR_FLAG_0_0"
+			(pin power_out line
+				(at 0 0 90)
+				(length 0)
+				(name ""
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(symbol "PWR_FLAG_0_1"
+			(polyline
+				(pts
+					(xy 0 0) (xy 0 1.27) (xy -1.016 1.905) (xy 0 2.54) (xy 1.016 1.905) (xy 0 1.27)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
+(symbol "power:VCC"
+		(power global)
+		(pin_numbers
+			(hide yes)
+		)
+		(pin_names
+			(offset 0)
+			(hide yes)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(duplicate_pin_numbers_are_jumpers no)
+		(property "Reference" "#PWR"
+			(at 0 -3.81 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "VCC"
+			(at 0 3.556 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"VCC\""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_keywords" "global power"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "VCC_0_1"
+			(polyline
+				(pts
+					(xy -0.762 1.27) (xy 0 2.54)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 0 2.54) (xy 0.762 1.27)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 0 0) (xy 0 2.54)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+		)
+		(symbol "VCC_1_1"
+			(pin power_in line
+				(at 0 0 90)
+				(length 0)
+				(name ""
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
+(symbol "rockchip:RK809-5"
 		(pin_names
 			(offset 1.016)
 		)
@@ -800,7 +1169,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Rockchip_PMIC:QFN-68-1EP_7x7mm_P0.35mm_EP5.49x5.49mm_ThermalVias"
+		(property "Footprint" "rockchip:QFN-68-1EP_7x7mm_P0.35mm_EP5.49x5.49mm_ThermalVias"
 			(at 0 0 0)
 			(hide yes)
 			(effects
@@ -2180,389 +2549,20 @@
 			)
 		)
 		(embedded_fonts no)
-	)
-(symbol "power:GND"
-		(power global)
-		(pin_numbers
-			(hide yes)
-		)
-		(pin_names
-			(offset 0)
-			(hide yes)
-		)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(duplicate_pin_numbers_are_jumpers no)
-		(property "Reference" "#PWR"
-			(at 0 -6.35 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "GND"
-			(at 0 -3.81 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 0 0 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 0 0 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 0 0 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "ki_keywords" "global power"
-			(at 0 0 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(symbol "GND_0_1"
-			(polyline
-				(pts
-					(xy 0 0) (xy 0 -1.27) (xy 1.27 -1.27) (xy 0 -2.54) (xy -1.27 -1.27) (xy 0 -1.27)
-				)
-				(stroke
-					(width 0)
-					(type default)
-				)
-				(fill
-					(type none)
-				)
-			)
-		)
-		(symbol "GND_1_1"
-			(pin power_in line
-				(at 0 0 270)
-				(length 0)
-				(name ""
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "1"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-		)
-		(embedded_fonts no)
-	)
-(symbol "power:PWR_FLAG"
-		(power global)
-		(pin_numbers
-			(hide yes)
-		)
-		(pin_names
-			(offset 0)
-			(hide yes)
-		)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(duplicate_pin_numbers_are_jumpers no)
-		(property "Reference" "#FLG"
-			(at 0 1.905 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "PWR_FLAG"
-			(at 0 3.81 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 0 0 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 0 0 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Special symbol for telling ERC where power comes from"
-			(at 0 0 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "ki_keywords" "flag power"
-			(at 0 0 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(symbol "PWR_FLAG_0_0"
-			(pin power_out line
-				(at 0 0 90)
-				(length 0)
-				(name ""
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "1"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-		)
-		(symbol "PWR_FLAG_0_1"
-			(polyline
-				(pts
-					(xy 0 0) (xy 0 1.27) (xy -1.016 1.905) (xy 0 2.54) (xy 1.016 1.905) (xy 0 1.27)
-				)
-				(stroke
-					(width 0)
-					(type default)
-				)
-				(fill
-					(type none)
-				)
-			)
-		)
-		(embedded_fonts no)
-	)
-(symbol "power:VCC"
-		(power global)
-		(pin_numbers
-			(hide yes)
-		)
-		(pin_names
-			(offset 0)
-			(hide yes)
-		)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(duplicate_pin_numbers_are_jumpers no)
-		(property "Reference" "#PWR"
-			(at 0 -3.81 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "VCC"
-			(at 0 3.556 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 0 0 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 0 0 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"VCC\""
-			(at 0 0 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "ki_keywords" "global power"
-			(at 0 0 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(symbol "VCC_0_1"
-			(polyline
-				(pts
-					(xy -0.762 1.27) (xy 0 2.54)
-				)
-				(stroke
-					(width 0)
-					(type default)
-				)
-				(fill
-					(type none)
-				)
-			)
-			(polyline
-				(pts
-					(xy 0 2.54) (xy 0.762 1.27)
-				)
-				(stroke
-					(width 0)
-					(type default)
-				)
-				(fill
-					(type none)
-				)
-			)
-			(polyline
-				(pts
-					(xy 0 0) (xy 0 2.54)
-				)
-				(stroke
-					(width 0)
-					(type default)
-				)
-				(fill
-					(type none)
-				)
-			)
-		)
-		(symbol "VCC_1_1"
-			(pin power_in line
-				(at 0 0 90)
-				(length 0)
-				(name ""
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "1"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-		)
-		(embedded_fonts no)
 	))
 (rectangle (start 22.86 27.94) (end 203.2 193.04) (stroke (width 0) (type dash)) (fill (type none)) (uuid "396dcb92-c811-58f9-8893-e7f3f43d7b3d"))
 (text "RK809-5" (exclude_from_sim no) (at 24.13 26.67 0) (effects (font (size 2.54 2.54)) (justify left bottom)) (uuid "82cd22d8-6302-530d-a598-9355503e8ab6"))
-(symbol (lib_id "Rockchip_PMIC:RK809-5") (at 68.58 81.28 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "fe38d7e3-8bc3-5452-aa84-79e8a9cd1924")
+(symbol (lib_id "rockchip:RK809-5") (at 68.58 81.28 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "fe38d7e3-8bc3-5452-aa84-79e8a9cd1924")
   (property "Reference" "U1101" (at 59.69 113.03 0) (effects (font (size 1.27 1.27)) (justify left)))
   (property "Value" "RK809-5" (at 59.69 110.49 0) (effects (font (size 1.27 1.27)) (justify left)))
-  (property "Footprint" "Rockchip_PMIC:QFN-68-1EP_7x7mm_P0.35mm_EP5.49x5.49mm_ThermalVias" (at 68.58 81.28 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Footprint" "rockchip:QFN-68-1EP_7x7mm_P0.35mm_EP5.49x5.49mm_ThermalVias" (at 68.58 81.28 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Datasheet" "https://rockchip.fr/RK809%20datasheet%20V1.01.pdf" (at 68.58 81.28 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Description" "PMIC: five synchronous bucks, nine LDOs, two power switches, RTC with 32.768 kHz output, fuel gauge, audio codec; QFN68 7 x 7 mm, 0.35 mm pitch, exposed ground pad" (at 68.58 81.28 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Manufacturer" "Rockchip" (at 68.58 81.28 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "MPN" "RK809-5" (at 68.58 81.28 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Second_Source" "Rockchip RK809-5A (BOM v1 line 2)" (at 68.58 81.28 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Block" "blk.pmic" (at 68.58 81.28 0) (effects (font (size 1.27 1.27))) (hide yes))
-  (property "Manufacturer_2" "Rockchip" (at 68.58 81.28 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Manufacturer_2" "rockchip" (at 68.58 81.28 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "MPN_2" "RK809-5A" (at 68.58 81.28 0) (effects (font (size 1.27 1.27))) (hide yes))
   (pin "12" (uuid "fde2b3ba-9614-502e-ad42-fabb2e43ab36"))
   (pin "13" (uuid "10d63f9b-8143-5fe5-93e5-5d8e38e017b1"))
@@ -2651,17 +2651,17 @@
   (pin "1" (uuid "f4dc38c0-9eb2-51ee-83ff-fc5c4a6b9f6d"))
   (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/17ca007d-d661-5052-8fa8-f3468133f957" (reference "#PWR0091") (unit 1))))
 )
-(symbol (lib_id "Rockchip_PMIC:RK809-5") (at 68.58 162.56 0) (unit 2) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "3127445b-6fe7-52db-b1fa-6b7a7bf4d55b")
+(symbol (lib_id "rockchip:RK809-5") (at 68.58 162.56 0) (unit 2) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "3127445b-6fe7-52db-b1fa-6b7a7bf4d55b")
   (property "Reference" "U1101" (at 59.69 191.77 0) (effects (font (size 1.27 1.27)) (justify left)))
   (property "Value" "RK809-5" (at 59.69 189.23 0) (effects (font (size 1.27 1.27)) (justify left)))
-  (property "Footprint" "Rockchip_PMIC:QFN-68-1EP_7x7mm_P0.35mm_EP5.49x5.49mm_ThermalVias" (at 68.58 162.56 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Footprint" "rockchip:QFN-68-1EP_7x7mm_P0.35mm_EP5.49x5.49mm_ThermalVias" (at 68.58 162.56 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Datasheet" "https://rockchip.fr/RK809%20datasheet%20V1.01.pdf" (at 68.58 162.56 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Description" "PMIC: five synchronous bucks, nine LDOs, two power switches, RTC with 32.768 kHz output, fuel gauge, audio codec; QFN68 7 x 7 mm, 0.35 mm pitch, exposed ground pad" (at 68.58 162.56 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Manufacturer" "Rockchip" (at 68.58 162.56 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "MPN" "RK809-5" (at 68.58 162.56 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Second_Source" "Rockchip RK809-5A (BOM v1 line 2)" (at 68.58 162.56 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Block" "blk.pmic" (at 68.58 162.56 0) (effects (font (size 1.27 1.27))) (hide yes))
-  (property "Manufacturer_2" "Rockchip" (at 68.58 162.56 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Manufacturer_2" "rockchip" (at 68.58 162.56 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "MPN_2" "RK809-5A" (at 68.58 162.56 0) (effects (font (size 1.27 1.27))) (hide yes))
   (pin "23" (uuid "312b18d0-5761-5624-aad6-40d45e902641"))
   (pin "21" (uuid "701baf70-b41a-5106-b9d2-336e117ac57b"))
@@ -2788,17 +2788,17 @@
   (pin "1" (uuid "d1bb8d20-d094-594b-93f8-1ba4809a2afc"))
   (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/17ca007d-d661-5052-8fa8-f3468133f957" (reference "#PWR0102") (unit 1))))
 )
-(symbol (lib_id "Rockchip_PMIC:RK809-5") (at 160.02 81.28 0) (unit 3) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "cd9b1a0c-77f4-5a6a-8bc2-13ca6533e876")
+(symbol (lib_id "rockchip:RK809-5") (at 160.02 81.28 0) (unit 3) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "cd9b1a0c-77f4-5a6a-8bc2-13ca6533e876")
   (property "Reference" "U1101" (at 148.59 52.07 0) (effects (font (size 1.27 1.27)) (justify left)))
   (property "Value" "RK809-5" (at 148.59 49.53 0) (effects (font (size 1.27 1.27)) (justify left)))
-  (property "Footprint" "Rockchip_PMIC:QFN-68-1EP_7x7mm_P0.35mm_EP5.49x5.49mm_ThermalVias" (at 160.02 81.28 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Footprint" "rockchip:QFN-68-1EP_7x7mm_P0.35mm_EP5.49x5.49mm_ThermalVias" (at 160.02 81.28 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Datasheet" "https://rockchip.fr/RK809%20datasheet%20V1.01.pdf" (at 160.02 81.28 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Description" "PMIC: five synchronous bucks, nine LDOs, two power switches, RTC with 32.768 kHz output, fuel gauge, audio codec; QFN68 7 x 7 mm, 0.35 mm pitch, exposed ground pad" (at 160.02 81.28 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Manufacturer" "Rockchip" (at 160.02 81.28 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "MPN" "RK809-5" (at 160.02 81.28 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Second_Source" "Rockchip RK809-5A (BOM v1 line 2)" (at 160.02 81.28 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Block" "blk.pmic" (at 160.02 81.28 0) (effects (font (size 1.27 1.27))) (hide yes))
-  (property "Manufacturer_2" "Rockchip" (at 160.02 81.28 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Manufacturer_2" "rockchip" (at 160.02 81.28 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "MPN_2" "RK809-5A" (at 160.02 81.28 0) (effects (font (size 1.27 1.27))) (hide yes))
   (pin "1" (uuid "0b188b7c-231a-5e35-be86-3f3782944427"))
   (pin "2" (uuid "3e6f5468-e09a-54fd-9a28-cde99eecf820"))
@@ -2853,17 +2853,17 @@
 (wire (pts (xy 175.26 76.2) (xy 177.8 76.2)) (stroke (width 0) (type default)) (uuid "02cea39e-6749-58f1-9b69-79f4d4bf9ec7"))
 (wire (pts (xy 175.26 78.74) (xy 177.8 78.74)) (stroke (width 0) (type default)) (uuid "54c8aa7c-3c8d-5536-a60e-bdfa2600e66d"))
 (wire (pts (xy 175.26 81.28) (xy 177.8 81.28)) (stroke (width 0) (type default)) (uuid "706b5b71-6c1c-5f19-b4e0-4958d2dbcd86"))
-(symbol (lib_id "Rockchip_PMIC:RK809-5") (at 160.02 154.94 0) (unit 4) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "87dd8efd-dd05-552d-b0bf-ab9165a12497")
+(symbol (lib_id "rockchip:RK809-5") (at 160.02 154.94 0) (unit 4) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "87dd8efd-dd05-552d-b0bf-ab9165a12497")
   (property "Reference" "U1101" (at 146.05 186.69 0) (effects (font (size 1.27 1.27)) (justify left)))
   (property "Value" "RK809-5" (at 146.05 184.15 0) (effects (font (size 1.27 1.27)) (justify left)))
-  (property "Footprint" "Rockchip_PMIC:QFN-68-1EP_7x7mm_P0.35mm_EP5.49x5.49mm_ThermalVias" (at 160.02 154.94 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Footprint" "rockchip:QFN-68-1EP_7x7mm_P0.35mm_EP5.49x5.49mm_ThermalVias" (at 160.02 154.94 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Datasheet" "https://rockchip.fr/RK809%20datasheet%20V1.01.pdf" (at 160.02 154.94 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Description" "PMIC: five synchronous bucks, nine LDOs, two power switches, RTC with 32.768 kHz output, fuel gauge, audio codec; QFN68 7 x 7 mm, 0.35 mm pitch, exposed ground pad" (at 160.02 154.94 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Manufacturer" "Rockchip" (at 160.02 154.94 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "MPN" "RK809-5" (at 160.02 154.94 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Second_Source" "Rockchip RK809-5A (BOM v1 line 2)" (at 160.02 154.94 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Block" "blk.pmic" (at 160.02 154.94 0) (effects (font (size 1.27 1.27))) (hide yes))
-  (property "Manufacturer_2" "Rockchip" (at 160.02 154.94 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Manufacturer_2" "rockchip" (at 160.02 154.94 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "MPN_2" "RK809-5A" (at 160.02 154.94 0) (effects (font (size 1.27 1.27))) (hide yes))
   (pin "14" (uuid "185a9412-10f1-5eaa-b10c-d88f92f71575"))
   (pin "15" (uuid "363edab0-f0b7-5c7c-b885-5b74964b5117"))
@@ -3514,7 +3514,7 @@
 )
 (junction (at 375.92 80.01) (diameter 0) (color 0 0 0 0) (uuid "79540f80-e821-5a56-9804-6b70f58a5a7a"))
 (wire (pts (xy 375.92 80.01) (xy 375.92 92.71)) (stroke (width 0) (type default)) (uuid "68ec0f47-2276-556b-8c09-20adb24884b2"))
-(symbol (lib_id "OpenDAP_Device:Crystal") (at 370.84 111.76 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "0acda195-3b7b-54c8-8a53-041ad402f0f7")
+(symbol (lib_id "opendap-generic:Crystal") (at 370.84 111.76 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "0acda195-3b7b-54c8-8a53-041ad402f0f7")
   (property "Reference" "Y1101" (at 367.03 106.68 0) (effects (font (size 1.27 1.27)) (justify left)))
   (property "Value" "32.768 kHz" (at 367.03 116.84 0) (effects (font (size 1.27 1.27)) (justify left)))
   (property "Footprint" "Crystal:Crystal_SMD_3215-2Pin_3.2x1.5mm" (at 370.84 111.76 0) (effects (font (size 1.27 1.27))) (hide yes))

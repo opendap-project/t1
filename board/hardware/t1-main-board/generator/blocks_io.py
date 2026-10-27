@@ -46,7 +46,7 @@ def draw_expander(s, variants):
     pins.update({"SCL": "I2C2_SCL", "SDA": "I2C2_SDA", "INT": "EXP_INT_N", "RESET": "EXP_RESET_N",
                  "ADDR": "vcc3v3_sys", "VCCI": "vcca1v8_pmu", "VCCP": "vcc3v3_sys", "GND": "GND", "EP": "GND"})
     grp(f, lambda: ic_group(
-        s, "TCA6416A at I2C2 0x21 (BOM v1 line 93)", "Texas_Instruments", "TCA6416ARTWR", pins,
+        s, "TCA6416A at I2C2 0x21 (BOM v1 line 93)", "texas-instruments", "TCA6416ARTWR", pins,
         rows=[[("C_100n_0402", "vcca1v8_pmu", "GND"), ("C_100n_0402", "vcc3v3_sys", "GND"),
                ("R_10k", "vcca1v8_pmu", "EXP_RESET_N")]], pad_left=15.24))
 
@@ -83,7 +83,7 @@ def draw_expander(s, variants):
 def draw_board_id(s, variants):
     f = Flow(s)
     grp(f, lambda: ic_group(
-        s, "AT24C02D at I2C2 0x50", "Microchip", "AT24C02D-STUM-T",
+        s, "AT24C02D at I2C2 0x50", "microchip", "AT24C02D-STUM-T",
         {"SCL": "I2C2_SCL", "SDA": "I2C2_SDA", "WP": "GND", "VCC": "vcca1v8_pmu", "GND": "GND"},
         rows=[[("C_100n_0402", "vcca1v8_pmu", "GND")]]))
     s.iface_rows = [["I2C2_SCL, I2C2_SDA", "Bidirectional", "0x50; pull-ups on blk.soc-pmuio"]]
@@ -101,7 +101,7 @@ def draw_board_id(s, variants):
 def draw_imu(s, variants):
     f = Flow(s)
     grp(f, lambda: ic_group(
-        s, "LSM6DSV16X at I2C2 0x6A (BOM v1 line 59)", "STMicroelectronics", "LSM6DSV16XTR",
+        s, "LSM6DSV16X at I2C2 0x6A (BOM v1 line 59)", "stmicroelectronics", "LSM6DSV16XTR",
         {"SDA": "I2C2_SDA", "SCL": "I2C2_SCL", "CS": "IMU_VDD", "SDO/SA0": "GND", "INT1": "IMU_INT1",
          "INT2": None, "SDx/AH1/Qvar1": "GND", "SCx/AH2/Qvar2": "GND", "OCS_Aux": None, "SDO_Aux": None,
          "Vdd": "IMU_VDD", "Vdd_IO": "IMU_VDD", "GND": "GND"},
@@ -125,7 +125,7 @@ def draw_imu(s, variants):
 def draw_speaker(s, variants):
     f = Flow(s)
     grp(f, lambda: ic_group(
-        s, "MAX98357A, I2S3 (BOM v1 line 32)", "Analog_Devices", "MAX98357AETE",
+        s, "MAX98357A, I2S3 (BOM v1 line 32)", "analog-devices", "MAX98357AETE",
         {"DIN": "SPK_SDIN", "BCLK": "SPK_BCLK", "LRCLK": "SPK_LRCK", "SD_MODE": "SPK_SD", "GAIN_SLOT": "SPK_GAIN",
          "OUTP": "SPK_P", "OUTN": "SPK_N", "VDD": "SPK_VDD", "NC": None, "GND": "GND", "EP": "GND"},
         rows=[[("C_10u_0603", "SPK_VDD", "GND"), ("C_100n_0402", "SPK_VDD", "GND"), ("R_100k", "SPK_VDD", "SPK_GAIN")]]))
@@ -165,7 +165,7 @@ def draw_speaker(s, variants):
 def draw_microsd(s, variants):
     f = Flow(s)
     grp(f, lambda: ic_group(
-        s, "DM3AT-SF-PEJM5 socket (BOM v1 line 11)", "Hirose", "DM3AT-SF-PEJM5",
+        s, "DM3AT-SF-PEJM5 socket (BOM v1 line 11)", "hirose", "DM3AT-SF-PEJM5",
         {"VDD": "SD_VDD", "CD/DAT3": "SD_D3_C", "CMD": "SD_CMD_C", "CLK": "SD_CLK_C", "DAT0": "SD_D0_C",
          "DAT1": "SD_D1_C", "DAT2": "SD_D2_C", "DET_A": "SD_DET_C", "DET_B": "GND", "VSS": "GND", "SHIELD": "GND"},
         rows=[[("C_10u_0603", "SD_VDD", "GND"), ("C_100n_0402", "SD_VDD", "GND")]], prefix="J"))
@@ -183,7 +183,7 @@ def draw_microsd(s, variants):
         g = Group(s, "ESD: 2 x TPD4E05U06 (BOM v1 line 73)")
         x = 101.6
         for a, b, c, d in (("SD_CLK_C", "SD_CMD_C", "SD_D0_C", "SD_D1_C"), ("SD_D2_C", "SD_D3_C", None, None)):
-            u = ic(s, "Texas_Instruments", "TPD4E05U06DQAR", x, 101.6,
+            u = ic(s, "texas-instruments", "TPD4E05U06DQAR", x, 101.6,
                    {"D1+": a, "D1-": b, "D2+": c, "D2-": d, "NC": None, "GND": "GND"})
             g.add(u.bbox)
             x = snap(x + (u.bbox[2] - u.bbox[0]) + 7.62)     # the next one 7.62 mm clear of this one's text

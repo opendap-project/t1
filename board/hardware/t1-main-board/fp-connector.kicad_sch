@@ -420,7 +420,7 @@
 		)
 		(embedded_fonts no)
 	)
-(symbol "Hirose:FH35C-51S-0.3SHW"
+(symbol "hirose:FH35C-51S-0.3SHW"
 		(pin_names
 			(offset 1.016)
 		)
@@ -445,7 +445,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Hirose:Hirose_FH35C-51S-0.3SHW_1x51-1MP_P0.3mm_Horizontal"
+		(property "Footprint" "hirose:Hirose_FH35C-51S-0.3SHW_1x51-1MP_P0.3mm_Horizontal"
 			(at 0 0 0)
 			(hide yes)
 			(effects
@@ -1450,693 +1450,6 @@
 		)
 		(embedded_fonts no)
 	)
-(symbol "Texas_Instruments:TPD4E05U06DQAR"
-		(pin_names
-			(offset 1.016)
-		)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(property "Reference" "U"
-			(at -6.35 15.24 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "TPD4E05U06DQAR"
-			(at -6.35 -20.32 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Texas_Instruments:Texas_DQA0010A_USON-10_1x2.5mm_P0.5mm"
-			(at 0 0 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" "https://www.ti.com/lit/ds/symlink/tpd4e05u06.pdf"
-			(at 0 0 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "4-channel ESD protection, 0.5 pF, 5.5 V stand-off, IEC 61000-4-2 level 4, flow-through routing, USON-10 (DQA0010A) 1 x 2.5 mm"
-			(at 0 0 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Manufacturer" "Texas Instruments"
-			(at 0 0 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "MPN" "TPD4E05U06DQAR"
-			(at 0 0 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "ki_keywords" "ESD TVS protection USB high-speed low capacitance TPD4E05U06 USON DQA"
-			(at 0 0 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "ki_fp_filters" "Texas_DQA0010A_USON-10_1x2.5mm_P0.5mm*"
-			(at 0 0 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(symbol "TPD4E05U06DQAR_1_1"
-			(rectangle
-				(start -6.35 13.97)
-				(end 6.35 -13.97)
-				(stroke
-					(width 0.254)
-					(type default)
-				)
-				(fill
-					(type background)
-				)
-			)
-			(pin passive line
-				(at -10.16 7.62 0)
-				(length 3.81)
-				(name "D1+"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "1"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin passive line
-				(at -10.16 5.08 0)
-				(length 3.81)
-				(name "D1-"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "2"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin passive line
-				(at -10.16 0 0)
-				(length 3.81)
-				(name "D2+"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "4"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin passive line
-				(at -10.16 -2.54 0)
-				(length 3.81)
-				(name "D2-"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "5"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin passive line
-				(at 10.16 7.62 180)
-				(length 3.81)
-				(name "NC"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "10"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin passive line
-				(at 10.16 5.08 180)
-				(length 3.81)
-				(name "NC"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "9"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin passive line
-				(at 10.16 0 180)
-				(length 3.81)
-				(name "NC"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "7"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin passive line
-				(at 10.16 -2.54 180)
-				(length 3.81)
-				(name "NC"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "6"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin power_in line
-				(at -2.54 -17.78 90)
-				(length 3.81)
-				(name "GND"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "3"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin power_in line
-				(at 2.54 -17.78 90)
-				(length 3.81)
-				(name "GND"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "8"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-		)
-		(embedded_fonts no)
-	)
-(symbol "Texas_Instruments:TPS22945DCKR"
-		(pin_names
-			(offset 1.016)
-		)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(property "Reference" "U"
-			(at -7.62 16.51 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "TPS22945DCKR"
-			(at -7.62 -17.78 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Texas_Instruments:Texas_DCK0005A_SC-70-5_1.25x2mm_P0.65mm"
-			(at 0 0 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" "https://www.ti.com/lit/ds/symlink/tps22945.pdf"
-			(at 0 0 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Current-limited load switch, 1.62-5.5 V, 0.4 Ohm P-channel, 100-200 mA limit, 10 ms blanking, 80 ms auto-restart, active-high ON, open-drain OC flag, SC-70-5 (DCK0005A)"
-			(at 0 0 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Manufacturer" "Texas Instruments"
-			(at 0 0 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "MPN" "TPS22945DCKR"
-			(at 0 0 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "ki_keywords" "load switch current limit power switch TPS22945 SC-70 DCK"
-			(at 0 0 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "ki_fp_filters" "Texas_DCK0005A_SC-70-5_1.25x2mm_P0.65mm*"
-			(at 0 0 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(symbol "TPS22945DCKR_1_1"
-			(rectangle
-				(start -7.62 12.7)
-				(end 7.62 -12.7)
-				(stroke
-					(width 0.254)
-					(type default)
-				)
-				(fill
-					(type background)
-				)
-			)
-			(pin input line
-				(at -10.16 0 0)
-				(length 2.54)
-				(name "ON"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "4"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin power_out line
-				(at 10.16 0 180)
-				(length 2.54)
-				(name "VOUT"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "1"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin open_collector line
-				(at 10.16 -2.54 180)
-				(length 2.54)
-				(name "OC"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "3"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin power_in line
-				(at 0 15.24 270)
-				(length 2.54)
-				(name "VIN"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "5"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin power_in line
-				(at 0 -15.24 90)
-				(length 2.54)
-				(name "GND"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "2"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-		)
-		(embedded_fonts no)
-	)
-(symbol "Texas_Instruments:TPS22950YBHR"
-		(pin_names
-			(offset 1.016)
-		)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(property "Reference" "U"
-			(at -8.89 19.05 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "TPS22950YBHR"
-			(at -8.89 -20.32 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Texas_Instruments:Texas_YBH0006_DSBGA-6_0.706x1.106mm_Layout2x3_P0.4mm"
-			(at 0 0 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" "https://www.ti.com/lit/ds/symlink/tps22950.pdf"
-			(at 0 0 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Load switch with adjustable current limit (RILIM, 0.05-3.5 A), 1.8-5.5 V, 34 mOhm, auto-retry, reverse-current blocking, quick output discharge, open-drain FLT, WCSP-6 0.7 x 1.1 mm (YBH0006)"
-			(at 0 0 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Manufacturer" "Texas Instruments"
-			(at 0 0 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "MPN" "TPS22950YBHR"
-			(at 0 0 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "ki_keywords" "load switch current limit power switch reverse current blocking TPS22950 WCSP DSBGA YBH"
-			(at 0 0 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "ki_fp_filters" "Texas_YBH0006_DSBGA-6_0.706x1.106mm_Layout2x3_P0.4mm*"
-			(at 0 0 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(symbol "TPS22950YBHR_1_1"
-			(rectangle
-				(start -8.89 13.97)
-				(end 8.89 -13.97)
-				(stroke
-					(width 0.254)
-					(type default)
-				)
-				(fill
-					(type background)
-				)
-			)
-			(pin input line
-				(at -12.7 2.54 0)
-				(length 3.81)
-				(name "ON"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "A1"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin passive line
-				(at -12.7 0 0)
-				(length 3.81)
-				(name "ILIM"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "C2"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin power_out line
-				(at 12.7 2.54 180)
-				(length 3.81)
-				(name "VOUT"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "B2"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin open_collector line
-				(at 12.7 0 180)
-				(length 3.81)
-				(name "FLT"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "A2"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin power_in line
-				(at 0 17.78 270)
-				(length 3.81)
-				(name "VIN"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "B1"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin power_in line
-				(at 0 -17.78 90)
-				(length 3.81)
-				(name "GND"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "C1"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-		)
-		(embedded_fonts no)
-	)
 (symbol "power:GND"
 		(power global)
 		(pin_numbers
@@ -2505,11 +1818,698 @@
 			)
 		)
 		(embedded_fonts no)
+	)
+(symbol "texas-instruments:TPD4E05U06DQAR"
+		(pin_names
+			(offset 1.016)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(property "Reference" "U"
+			(at -6.35 15.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "TPD4E05U06DQAR"
+			(at -6.35 -20.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "texas-instruments:Texas_DQA0010A_USON-10_1x2.5mm_P0.5mm"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://www.ti.com/lit/ds/symlink/tpd4e05u06.pdf"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "4-channel ESD protection, 0.5 pF, 5.5 V stand-off, IEC 61000-4-2 level 4, flow-through routing, USON-10 (DQA0010A) 1 x 2.5 mm"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "Texas Instruments"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "TPD4E05U06DQAR"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_keywords" "ESD TVS protection USB high-speed low capacitance TPD4E05U06 USON DQA"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_fp_filters" "Texas_DQA0010A_USON-10_1x2.5mm_P0.5mm*"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "TPD4E05U06DQAR_1_1"
+			(rectangle
+				(start -6.35 13.97)
+				(end 6.35 -13.97)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type background)
+				)
+			)
+			(pin passive line
+				(at -10.16 7.62 0)
+				(length 3.81)
+				(name "D1+"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at -10.16 5.08 0)
+				(length 3.81)
+				(name "D1-"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at -10.16 0 0)
+				(length 3.81)
+				(name "D2+"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "4"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at -10.16 -2.54 0)
+				(length 3.81)
+				(name "D2-"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "5"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 10.16 7.62 180)
+				(length 3.81)
+				(name "NC"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "10"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 10.16 5.08 180)
+				(length 3.81)
+				(name "NC"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "9"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 10.16 0 180)
+				(length 3.81)
+				(name "NC"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "7"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 10.16 -2.54 180)
+				(length 3.81)
+				(name "NC"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "6"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin power_in line
+				(at -2.54 -17.78 90)
+				(length 3.81)
+				(name "GND"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "3"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin power_in line
+				(at 2.54 -17.78 90)
+				(length 3.81)
+				(name "GND"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "8"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
+(symbol "texas-instruments:TPS22945DCKR"
+		(pin_names
+			(offset 1.016)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(property "Reference" "U"
+			(at -7.62 16.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "TPS22945DCKR"
+			(at -7.62 -17.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "texas-instruments:Texas_DCK0005A_SC-70-5_1.25x2mm_P0.65mm"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://www.ti.com/lit/ds/symlink/tps22945.pdf"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Current-limited load switch, 1.62-5.5 V, 0.4 Ohm P-channel, 100-200 mA limit, 10 ms blanking, 80 ms auto-restart, active-high ON, open-drain OC flag, SC-70-5 (DCK0005A)"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "Texas Instruments"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "TPS22945DCKR"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_keywords" "load switch current limit power switch TPS22945 SC-70 DCK"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_fp_filters" "Texas_DCK0005A_SC-70-5_1.25x2mm_P0.65mm*"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "TPS22945DCKR_1_1"
+			(rectangle
+				(start -7.62 12.7)
+				(end 7.62 -12.7)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type background)
+				)
+			)
+			(pin input line
+				(at -10.16 0 0)
+				(length 2.54)
+				(name "ON"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "4"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin power_out line
+				(at 10.16 0 180)
+				(length 2.54)
+				(name "VOUT"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin open_collector line
+				(at 10.16 -2.54 180)
+				(length 2.54)
+				(name "OC"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "3"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin power_in line
+				(at 0 15.24 270)
+				(length 2.54)
+				(name "VIN"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "5"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin power_in line
+				(at 0 -15.24 90)
+				(length 2.54)
+				(name "GND"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
+(symbol "texas-instruments:TPS22950YBHR"
+		(pin_names
+			(offset 1.016)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(property "Reference" "U"
+			(at -8.89 19.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "TPS22950YBHR"
+			(at -8.89 -20.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "texas-instruments:Texas_YBH0006_DSBGA-6_0.706x1.106mm_Layout2x3_P0.4mm"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://www.ti.com/lit/ds/symlink/tps22950.pdf"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Load switch with adjustable current limit (RILIM, 0.05-3.5 A), 1.8-5.5 V, 34 mOhm, auto-retry, reverse-current blocking, quick output discharge, open-drain FLT, WCSP-6 0.7 x 1.1 mm (YBH0006)"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "Texas Instruments"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "TPS22950YBHR"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_keywords" "load switch current limit power switch reverse current blocking TPS22950 WCSP DSBGA YBH"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_fp_filters" "Texas_YBH0006_DSBGA-6_0.706x1.106mm_Layout2x3_P0.4mm*"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "TPS22950YBHR_1_1"
+			(rectangle
+				(start -8.89 13.97)
+				(end 8.89 -13.97)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type background)
+				)
+			)
+			(pin input line
+				(at -12.7 2.54 0)
+				(length 3.81)
+				(name "ON"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "A1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at -12.7 0 0)
+				(length 3.81)
+				(name "ILIM"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "C2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin power_out line
+				(at 12.7 2.54 180)
+				(length 3.81)
+				(name "VOUT"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "B2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin open_collector line
+				(at 12.7 0 180)
+				(length 3.81)
+				(name "FLT"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "A2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin power_in line
+				(at 0 17.78 270)
+				(length 3.81)
+				(name "VIN"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "B1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin power_in line
+				(at 0 -17.78 90)
+				(length 3.81)
+				(name "GND"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "C1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
 	))
-(symbol (lib_id "Hirose:FH35C-51S-0.3SHW") (at 66.04 82.55 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "c5f41f25-ba1e-5cfe-a7ee-0b8b2eea0c5c")
+(symbol (lib_id "hirose:FH35C-51S-0.3SHW") (at 66.04 82.55 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "c5f41f25-ba1e-5cfe-a7ee-0b8b2eea0c5c")
   (property "Reference" "J5301" (at 54.61 43.18 0) (effects (font (size 1.27 1.27)) (justify left)))
   (property "Value" "FH35C-51S-0.3SHW" (at 54.61 40.64 0) (effects (font (size 1.27 1.27)) (justify left)))
-  (property "Footprint" "Hirose:Hirose_FH35C-51S-0.3SHW_1x51-1MP_P0.3mm_Horizontal" (at 66.04 82.55 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Footprint" "hirose:Hirose_FH35C-51S-0.3SHW_1x51-1MP_P0.3mm_Horizontal" (at 66.04 82.55 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Datasheet" "https://www.hirose.com/en/product/series/FH35C" (at 66.04 82.55 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Description" "FH35C dual-sided FPC connector, 51 contacts, 0.3 mm pitch staggered (2 rows at 0.6 mm), 0.9 mm high, back-flip actuator, horizontal SMT" (at 66.04 82.55 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Manufacturer" "Hirose" (at 66.04 82.55 0) (effects (font (size 1.27 1.27))) (hide yes))
@@ -2687,10 +2687,10 @@
 )
 (rectangle (start 22.86 35.56) (end 167.64 129.54) (stroke (width 0) (type dash)) (fill (type none)) (uuid "65b5511c-efb9-5c4c-93d9-58a8fbd66686"))
 (text "FH35C-51S-0.3SHW, contacts per pinout v1 §8.2 (BOM v1 line 71)" (exclude_from_sim no) (at 24.13 34.29 0) (effects (font (size 2.54 2.54)) (justify left bottom)) (uuid "0b00bc8c-d519-5320-b177-ca48f182947c"))
-(symbol (lib_id "Texas_Instruments:TPD4E05U06DQAR") (at 203.2 59.69 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "e563cc76-add0-5bde-81e4-b6fdc5fb00f9")
+(symbol (lib_id "texas-instruments:TPD4E05U06DQAR") (at 203.2 59.69 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "e563cc76-add0-5bde-81e4-b6fdc5fb00f9")
   (property "Reference" "U5301" (at 196.85 43.18 0) (effects (font (size 1.27 1.27)) (justify left)))
   (property "Value" "TPD4E05U06DQAR" (at 196.85 40.64 0) (effects (font (size 1.27 1.27)) (justify left)))
-  (property "Footprint" "Texas_Instruments:Texas_DQA0010A_USON-10_1x2.5mm_P0.5mm" (at 203.2 59.69 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Footprint" "texas-instruments:Texas_DQA0010A_USON-10_1x2.5mm_P0.5mm" (at 203.2 59.69 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Datasheet" "https://www.ti.com/lit/ds/symlink/tpd4e05u06.pdf" (at 203.2 59.69 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Description" "4-channel ESD protection, 0.5 pF, 5.5 V stand-off, IEC 61000-4-2 level 4, flow-through routing, USON-10 (DQA0010A) 1 x 2.5 mm" (at 203.2 59.69 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Manufacturer" "Texas Instruments" (at 203.2 59.69 0) (effects (font (size 1.27 1.27))) (hide yes))
@@ -2729,10 +2729,10 @@
 (no_connect (at 213.36 54.61) (uuid "c031f610-2348-5d5a-aacc-ac7a192d3972"))
 (no_connect (at 213.36 59.69) (uuid "58c69ab6-f35d-5aae-a0ee-a02457b797ae"))
 (no_connect (at 213.36 62.23) (uuid "0b860476-270c-516a-b77d-00f2df187515"))
-(symbol (lib_id "Texas_Instruments:TPD4E05U06DQAR") (at 264.16 59.69 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "3e995969-1610-5188-a2df-698d6b5b4be7")
+(symbol (lib_id "texas-instruments:TPD4E05U06DQAR") (at 264.16 59.69 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "3e995969-1610-5188-a2df-698d6b5b4be7")
   (property "Reference" "U5302" (at 257.81 43.18 0) (effects (font (size 1.27 1.27)) (justify left)))
   (property "Value" "TPD4E05U06DQAR" (at 257.81 40.64 0) (effects (font (size 1.27 1.27)) (justify left)))
-  (property "Footprint" "Texas_Instruments:Texas_DQA0010A_USON-10_1x2.5mm_P0.5mm" (at 264.16 59.69 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Footprint" "texas-instruments:Texas_DQA0010A_USON-10_1x2.5mm_P0.5mm" (at 264.16 59.69 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Datasheet" "https://www.ti.com/lit/ds/symlink/tpd4e05u06.pdf" (at 264.16 59.69 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Description" "4-channel ESD protection, 0.5 pF, 5.5 V stand-off, IEC 61000-4-2 level 4, flow-through routing, USON-10 (DQA0010A) 1 x 2.5 mm" (at 264.16 59.69 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Manufacturer" "Texas Instruments" (at 264.16 59.69 0) (effects (font (size 1.27 1.27))) (hide yes))
@@ -2771,10 +2771,10 @@
 (no_connect (at 274.32 54.61) (uuid "d269d8bc-4169-5a17-acd8-45bd27cd5543"))
 (no_connect (at 274.32 59.69) (uuid "2f555984-ab5b-58d2-98b3-fc3f9574ed44"))
 (no_connect (at 274.32 62.23) (uuid "07e1f3cb-d27f-5591-bb3c-05c403173dd0"))
-(symbol (lib_id "Texas_Instruments:TPD4E05U06DQAR") (at 325.12 59.69 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "eeb880ae-8c15-5b64-83fe-8c21005d0af5")
+(symbol (lib_id "texas-instruments:TPD4E05U06DQAR") (at 325.12 59.69 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "eeb880ae-8c15-5b64-83fe-8c21005d0af5")
   (property "Reference" "U5303" (at 318.77 43.18 0) (effects (font (size 1.27 1.27)) (justify left)))
   (property "Value" "TPD4E05U06DQAR" (at 318.77 40.64 0) (effects (font (size 1.27 1.27)) (justify left)))
-  (property "Footprint" "Texas_Instruments:Texas_DQA0010A_USON-10_1x2.5mm_P0.5mm" (at 325.12 59.69 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Footprint" "texas-instruments:Texas_DQA0010A_USON-10_1x2.5mm_P0.5mm" (at 325.12 59.69 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Datasheet" "https://www.ti.com/lit/ds/symlink/tpd4e05u06.pdf" (at 325.12 59.69 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Description" "4-channel ESD protection, 0.5 pF, 5.5 V stand-off, IEC 61000-4-2 level 4, flow-through routing, USON-10 (DQA0010A) 1 x 2.5 mm" (at 325.12 59.69 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Manufacturer" "Texas Instruments" (at 325.12 59.69 0) (effects (font (size 1.27 1.27))) (hide yes))
@@ -2813,10 +2813,10 @@
 (no_connect (at 335.28 54.61) (uuid "f26988d5-86a7-5108-be24-35741e574ed3"))
 (no_connect (at 335.28 59.69) (uuid "718999f1-4a97-591b-8e06-4d67ce56a85a"))
 (no_connect (at 335.28 62.23) (uuid "13747203-663f-59dc-a65c-8efc0b9ab8c5"))
-(symbol (lib_id "Texas_Instruments:TPD4E05U06DQAR") (at 203.2 107.95 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "f6db3642-a4c0-52ff-a5ac-8ebc03d2219c")
+(symbol (lib_id "texas-instruments:TPD4E05U06DQAR") (at 203.2 107.95 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "f6db3642-a4c0-52ff-a5ac-8ebc03d2219c")
   (property "Reference" "U5304" (at 196.85 91.44 0) (effects (font (size 1.27 1.27)) (justify left)))
   (property "Value" "TPD4E05U06DQAR" (at 196.85 88.9 0) (effects (font (size 1.27 1.27)) (justify left)))
-  (property "Footprint" "Texas_Instruments:Texas_DQA0010A_USON-10_1x2.5mm_P0.5mm" (at 203.2 107.95 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Footprint" "texas-instruments:Texas_DQA0010A_USON-10_1x2.5mm_P0.5mm" (at 203.2 107.95 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Datasheet" "https://www.ti.com/lit/ds/symlink/tpd4e05u06.pdf" (at 203.2 107.95 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Description" "4-channel ESD protection, 0.5 pF, 5.5 V stand-off, IEC 61000-4-2 level 4, flow-through routing, USON-10 (DQA0010A) 1 x 2.5 mm" (at 203.2 107.95 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Manufacturer" "Texas Instruments" (at 203.2 107.95 0) (effects (font (size 1.27 1.27))) (hide yes))
@@ -2855,10 +2855,10 @@
 (no_connect (at 213.36 102.87) (uuid "6a5e7cad-4190-5e27-8a5f-5dafd8a9d5e3"))
 (no_connect (at 213.36 107.95) (uuid "5780dff3-ebf0-5ba4-a64d-f7339d5ffc88"))
 (no_connect (at 213.36 110.49) (uuid "b2bf31f6-3928-58f8-8083-8fdaf3b6f12d"))
-(symbol (lib_id "Texas_Instruments:TPD4E05U06DQAR") (at 264.16 107.95 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "39ef08ea-d3cf-5e6e-be0c-6ed0aa47f0e8")
+(symbol (lib_id "texas-instruments:TPD4E05U06DQAR") (at 264.16 107.95 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "39ef08ea-d3cf-5e6e-be0c-6ed0aa47f0e8")
   (property "Reference" "U5305" (at 257.81 91.44 0) (effects (font (size 1.27 1.27)) (justify left)))
   (property "Value" "TPD4E05U06DQAR" (at 257.81 88.9 0) (effects (font (size 1.27 1.27)) (justify left)))
-  (property "Footprint" "Texas_Instruments:Texas_DQA0010A_USON-10_1x2.5mm_P0.5mm" (at 264.16 107.95 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Footprint" "texas-instruments:Texas_DQA0010A_USON-10_1x2.5mm_P0.5mm" (at 264.16 107.95 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Datasheet" "https://www.ti.com/lit/ds/symlink/tpd4e05u06.pdf" (at 264.16 107.95 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Description" "4-channel ESD protection, 0.5 pF, 5.5 V stand-off, IEC 61000-4-2 level 4, flow-through routing, USON-10 (DQA0010A) 1 x 2.5 mm" (at 264.16 107.95 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Manufacturer" "Texas Instruments" (at 264.16 107.95 0) (effects (font (size 1.27 1.27))) (hide yes))
@@ -2897,10 +2897,10 @@
 (no_connect (at 274.32 102.87) (uuid "9d2eba4a-7d40-52a5-b14d-90c37cee8a4a"))
 (no_connect (at 274.32 107.95) (uuid "4a3578dc-7908-5832-a02f-6c8a975a77c6"))
 (no_connect (at 274.32 110.49) (uuid "24ceef54-3063-5cd9-8b05-2d6d16a3d238"))
-(symbol (lib_id "Texas_Instruments:TPD4E05U06DQAR") (at 325.12 107.95 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "3bd57927-89ef-51d7-a782-8254d5ec4f2d")
+(symbol (lib_id "texas-instruments:TPD4E05U06DQAR") (at 325.12 107.95 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "3bd57927-89ef-51d7-a782-8254d5ec4f2d")
   (property "Reference" "U5306" (at 318.77 91.44 0) (effects (font (size 1.27 1.27)) (justify left)))
   (property "Value" "TPD4E05U06DQAR" (at 318.77 88.9 0) (effects (font (size 1.27 1.27)) (justify left)))
-  (property "Footprint" "Texas_Instruments:Texas_DQA0010A_USON-10_1x2.5mm_P0.5mm" (at 325.12 107.95 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Footprint" "texas-instruments:Texas_DQA0010A_USON-10_1x2.5mm_P0.5mm" (at 325.12 107.95 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Datasheet" "https://www.ti.com/lit/ds/symlink/tpd4e05u06.pdf" (at 325.12 107.95 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Description" "4-channel ESD protection, 0.5 pF, 5.5 V stand-off, IEC 61000-4-2 level 4, flow-through routing, USON-10 (DQA0010A) 1 x 2.5 mm" (at 325.12 107.95 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Manufacturer" "Texas Instruments" (at 325.12 107.95 0) (effects (font (size 1.27 1.27))) (hide yes))
@@ -3011,10 +3011,10 @@
 )
 (rectangle (start 344.17 35.56) (end 401.32 73.66) (stroke (width 0) (type dash)) (fill (type none)) (uuid "81ded545-e840-54d3-bc4b-d7acd4d5315f"))
 (text "Detect, spares (P12-P14)" (exclude_from_sim no) (at 345.44 34.29 0) (effects (font (size 2.54 2.54)) (justify left bottom)) (uuid "4e90c7a4-e1ce-5595-a716-1e29d7577baf"))
-(symbol (lib_id "Texas_Instruments:TPS22950YBHR") (at 53.34 175.26 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "8040e357-6d3a-50a5-856d-9214846c61c3")
+(symbol (lib_id "texas-instruments:TPS22950YBHR") (at 53.34 175.26 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "8040e357-6d3a-50a5-856d-9214846c61c3")
   (property "Reference" "U5307" (at 54.61 158.75 0) (effects (font (size 1.27 1.27)) (justify left)))
   (property "Value" "TPS22950YBHR" (at 54.61 156.21 0) (effects (font (size 1.27 1.27)) (justify left)))
-  (property "Footprint" "Texas_Instruments:Texas_YBH0006_DSBGA-6_0.706x1.106mm_Layout2x3_P0.4mm" (at 53.34 175.26 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Footprint" "texas-instruments:Texas_YBH0006_DSBGA-6_0.706x1.106mm_Layout2x3_P0.4mm" (at 53.34 175.26 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Datasheet" "https://www.ti.com/lit/ds/symlink/tps22950.pdf" (at 53.34 175.26 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Description" "Load switch with adjustable current limit (RILIM, 0.05-3.5 A), 1.8-5.5 V, 34 mOhm, auto-retry, reverse-current blocking, quick output discharge, open-drain FLT, WCSP-6 0.7 x 1.1 mm (YBH0006)" (at 53.34 175.26 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Manufacturer" "Texas Instruments" (at 53.34 175.26 0) (effects (font (size 1.27 1.27))) (hide yes))
@@ -3274,10 +3274,10 @@
   (pin "1" (uuid "ef028b92-1ef7-5599-86f4-7757f59afdba"))
   (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/9e8b2556-cdef-5221-9552-48f8c1718797" (reference "#FLG0035") (unit 1))))
 )
-(symbol (lib_id "Texas_Instruments:TPS22945DCKR") (at 276.86 172.72 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "22c62c8a-542a-5201-95a1-f887ada4cc56")
+(symbol (lib_id "texas-instruments:TPS22945DCKR") (at 276.86 172.72 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "22c62c8a-542a-5201-95a1-f887ada4cc56")
   (property "Reference" "U5308" (at 278.13 157.48 0) (effects (font (size 1.27 1.27)) (justify left)))
   (property "Value" "TPS22945DCKR" (at 278.13 154.94 0) (effects (font (size 1.27 1.27)) (justify left)))
-  (property "Footprint" "Texas_Instruments:Texas_DCK0005A_SC-70-5_1.25x2mm_P0.65mm" (at 276.86 172.72 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Footprint" "texas-instruments:Texas_DCK0005A_SC-70-5_1.25x2mm_P0.65mm" (at 276.86 172.72 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Datasheet" "https://www.ti.com/lit/ds/symlink/tps22945.pdf" (at 276.86 172.72 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Description" "Current-limited load switch, 1.62-5.5 V, 0.4 Ohm P-channel, 100-200 mA limit, 10 ms blanking, 80 ms auto-restart, active-high ON, open-drain OC flag, SC-70-5 (DCK0005A)" (at 276.86 172.72 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Manufacturer" "Texas Instruments" (at 276.86 172.72 0) (effects (font (size 1.27 1.27))) (hide yes))

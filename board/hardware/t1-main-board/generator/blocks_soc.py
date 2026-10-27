@@ -33,7 +33,7 @@ SUBS = [
 ]
 
 def build(proj, variants):
-    soc_sym = library.load("Rockchip", "RK3566")
+    soc_sym = library.load("rockchip", "RK3566")
     pins = pinout.load()
     nets = {ball: d["net"] for ball, d in pins.items()}
     parent = proj.sheet("soc.kicad_sch", "blk.soc", "SoC", "The RK3566 application processor, one sub-sheet per IO domain or function", "A3")
@@ -78,7 +78,7 @@ def _soc_pmuio(s, y0, variants):
     y = max(y0 + 12.7, 130.81)
     x = 30.48
     s.group_box("24 MHz crystal (HDG 1.1 pp. 16-17)", 25.4, y - 5.08, 104.14, 45.72)
-    ysym = library.load("OpenDAP_Device", "Crystal_GND24")
+    ysym = library.load("opendap-generic", "Crystal_GND24")
     yref = s.next_ref("Y")
     p = PARTS["Y_24M"]
     pl = s.place(ysym, yref, 76.2, y + 17.78, fields=fields("Y_24M", blk), value=p["value"],

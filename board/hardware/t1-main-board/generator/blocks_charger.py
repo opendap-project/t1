@@ -71,7 +71,7 @@ def draw_parent(s):
 def draw_input(s, variants):
     f = Flow(s)
     grp(f, lambda: ic_group(
-        s, "Input mux: TPS2121, USB-C on IN1 with priority (BOM v1 line 45)", "Texas_Instruments", "TPS2121RUXR",
+        s, "Input mux: TPS2121, USB-C on IN1 with priority (BOM v1 line 45)", "texas-instruments", "TPS2121RUXR",
         {"IN1": "USBC_VBUS", "IN2": "HAT_5V", "OUT": "VBUS_CHG", "OV1": "MUX_OV1", "OV2": "MUX_OV2",
          "PR1": "MUX_PR1", "CP2": "GND", "ST": "MUX_ST", "ILM": "MUX_ILM", "SS": "MUX_SS", "GND": "GND"},
         rows=[[("R_1M02", "USBC_VBUS", "MUX_OV1"), ("R_100k", "MUX_OV1", "GND"),
@@ -127,7 +127,7 @@ def draw_core(s, variants):
             "SYS": "VSYS_SRC", "BAT": "VBAT", "BATP": "CHG_BATP", "SDRV": "CHG_SDRV", "REGN": "CHG_REGN",
             "STAT": "CHG_STAT", "INT": "CHG_INT_N", "GND": "GND"}
     grp(f, lambda: ic_group(
-        s, "Charger: BQ25798, 1.5 MHz, 2S (BOM v1 lines 39, 115)", "Texas_Instruments", "BQ25798RQMR", pins,
+        s, "Charger: BQ25798, 1.5 MHz, 2S (BOM v1 lines 39, 115)", "texas-instruments", "BQ25798RQMR", pins,
         rows=[[("R_6k04", "CHG_PROG", "GND"), ("R_10k", "CHG_CE", "GND"), ("C_4u7_0603_10V", "CHG_REGN", "GND"),
                ("R_5k23", "CHG_REGN", "BAT_NTC"), ("R_30k1", "BAT_NTC", "GND"), ("R_10k", "CHG_REGN", "CHG_STAT")],
               [("C_47n_0402", "CHG_BTST1", "CHG1_SW"), ("C_47n_0402", "CHG_BTST2", "CHG2_SW"),
@@ -192,7 +192,7 @@ def draw_battery(s, variants):
 
     def battery_path():
         g = Group(s, "Battery path: ship FET, 5 A fuse, BATP (ADR 0014 item 6, ADR 0017, ADR 0020 item 6)")
-        q = ic(s, "Texas_Instruments", "CSD17575Q3", 116.84, 101.6, {"G": "CHG_SDRV", "S": "VBAT", "D": "BAT_F"},
+        q = ic(s, "texas-instruments", "CSD17575Q3", 116.84, 101.6, {"G": "CHG_SDRV", "S": "VBAT", "D": "BAT_F"},
                prefix="Q", extra={"Constraints": "PCB-L-09"})
         g.add(q.bbox)
         x = q.bbox[2] + 22.86
@@ -211,7 +211,7 @@ def draw_battery(s, variants):
         for i, (net, role) in enumerate(order):
             x = 109.22 + (i % 3) * 45.72
             y = 101.6 + (i // 3) * 20.32
-            u = ic(s, "KYOCERA_AVX", "70-9258-001-120-006", x, y, {"1": net}, prefix="J",
+            u = ic(s, "kyocera-avx", "70-9258-001-120-006", x, y, {"1": net}, prefix="J",
                    extra={"Contact": role, "Constraints": "PCB-L-04 PCB-L-05 PCB-L-06"})
             g.add(u.bbox)
         return g.close()
@@ -250,7 +250,7 @@ def draw_gauge(s, variants):
             "SDA": "GAUGE_SDA", "VC2": "GAUGE_VC2", "PBI": "GAUGE_PBI", "PACK": "GAUGE_PACK", "CHG": None,
             "DSG": None, "VSS": "BAT_N", "PWPD": "BAT_N"}
     grp(f, lambda: ic_group(
-        s, "Gauge: BQ28Z610-R1, gauge only (ADR 0014, ADR 0017)", "Texas_Instruments", "BQ28Z610DRZR-R1", pins,
+        s, "Gauge: BQ28Z610-R1, gauge only (ADR 0014, ADR 0017)", "texas-instruments", "BQ28Z610DRZR-R1", pins,
         rows=[[("C_100n_0402", "GAUGE_VC1", "BAT_N"), ("C_1u_0402_25V", "GAUGE_VC2", "GAUGE_VC1"),
                ("C_2u2_0402", "GAUGE_PBI", "BAT_N")],
               [("C_100n_0402", "GAUGE_SRP", "BAT_N"), ("C_100n_0402", "GAUGE_SRN", "BAT_N"),

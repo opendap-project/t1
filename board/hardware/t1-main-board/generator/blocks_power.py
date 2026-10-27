@@ -34,7 +34,7 @@ def draw_vsys_lv(s, variants):
     m0 = s.mark()
     yr, yg = 45.72, 101.6                      # VSYS rail, ground baseline
     X, Y = 101.6, 73.66
-    pl = _ic(s, "Texas_Instruments", "TPS62136RGXR", X, Y,
+    pl = _ic(s, "texas-instruments", "TPS62136RGXR", X, Y,
              {"Second_Source": "Texas Instruments TPS62136RGXT (same part, 250-piece reel; BOM v1 line 113)",
               "Manufacturer_2": "Texas Instruments", "MPN_2": "TPS62136RGXT"})
     P = {k: pl.pos(pl.pin(k)) for k in ("8", "10", "11", "9", "2", "6", "5", "4", "7", "1", "3")}
@@ -144,7 +144,7 @@ def draw_3v3(s, variants):
     m0 = s.mark()
     yr, yg = 45.72, 101.6
     X, Y = 101.6, 73.66
-    pl = _ic(s, "Texas_Instruments", "TPS62827DMQR", X, Y,
+    pl = _ic(s, "texas-instruments", "TPS62827DMQR", X, Y,
              {"Second_Source": "Texas Instruments TPS62826DMQR (3 A, same land, only while the peak stays <= 2.4 A; BOM v1 line 6)",
               "Manufacturer_2": "Texas Instruments", "MPN_2": "TPS62826DMQR"})
     P = {k: pl.pos(pl.pin(k)) for k in ("1", "5", "3", "2", "6", "4")}
@@ -233,7 +233,7 @@ def draw_vdd_cpu(s, variants):
     m0 = s.mark()
     yr, yg = 45.72, 101.6
     X, Y = 116.84, 73.66
-    pl = _ic(s, "Texas_Instruments", "TPS6286910CRQYR", X, Y,
+    pl = _ic(s, "texas-instruments", "TPS6286910CRQYR", X, Y,
              {"Manufacturer_2": "Texas Instruments", "MPN_2": "TPS628691ARQYR", "Constraints": "PCB-P-07"})
     P = {k: pl.pos(pl.pin(k)) for k in ("4", "5", "6", "7", "8", "9", "3", "1", "2")}
     # input
@@ -378,10 +378,10 @@ def draw_pmic(s, variants):
     output stage as a row on the right; decoupling grouped by rail (CRAFT-171)."""
     blk = s.block
     s.bus_row = 8               # the supply inputs reach down to the tables: bus ports in one row
-    sym = library.load("Rockchip_PMIC", "RK809-5")
+    sym = library.load("rockchip", "RK809-5")
     ref = s.next_ref("U")
     f = {"Block": blk,
-         "Second_Source": "Rockchip RK809-5A (BOM v1 line 2)", "Manufacturer_2": "Rockchip", "MPN_2": "RK809-5A"}
+         "Second_Source": "Rockchip RK809-5A (BOM v1 line 2)", "Manufacturer_2": "rockchip", "MPN_2": "RK809-5A"}
     # ---- units
     s.group_box("RK809-5", 22.86, 27.94, 180.34, 165.1)
     u1 = s.place(sym, ref, 68.58, 81.28, unit=1, fields=f)
@@ -468,7 +468,7 @@ def draw_pmic(s, variants):
     s.wire((x + 7.62, 80.01), (x + 7.62, 92.71))
     s.point("PMIC_VDC", x + 7.62, 92.71, "down", "pas")
     # 32.768 kHz crystal (load capacitors open, note 7)
-    xsym = library.load("OpenDAP_Device", "Crystal")
+    xsym = library.load("opendap-generic", "Crystal")
     xref = s.next_ref("Y")
     xp = dict(Footprint="Crystal:Crystal_SMD_3215-2Pin_3.2x1.5mm", Datasheet="https://www.sii.co.jp/hubfs/SC-32S_Leaflet_e_26.pdf",
               Description="Crystal, 32.768 kHz, 20 ppm, CL 7 pF, 3.2 x 1.5 mm (orderable code UNVERIFIED)",

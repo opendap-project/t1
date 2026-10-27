@@ -67,7 +67,7 @@ def draw_module(s, variants):
     import library
     from draw import flow_units
     f = Flow(s)
-    sym = library.load("Murata", MODULE)
+    sym = library.load("murata", MODULE)
     names = sorted({p.name for p in sym.pins})
     by_name = module_pins(names)
     nets = {p.number: by_name.get(p.name) for p in sym.pins}
@@ -96,19 +96,19 @@ def draw_module(s, variants):
 def draw_power(s, variants):
     f = Flow(s)
     grp(f, lambda: ic_group(
-        s, "PDn hold translator: SN74AXC1T45 (line 148)", "Texas_Instruments", "SN74AXC1T45DCKR",
+        s, "PDn hold translator: SN74AXC1T45 (line 148)", "texas-instruments", "SN74AXC1T45DCKR",
         {"VCCA": "vcc3v3_sys", "VCCB": "vcc1v8_wl", "A": "WL_PD_HOLD_N", "B": "WL_PD_N", "DIR": "vcc3v3_sys",
          "GND": "GND"},
         rows=[[("C_100n_0402", "vcc3v3_sys", "GND"), ("C_100n_0402", "vcc1v8_wl", "GND"),
                ("R_100k", "WL_PD_N", "GND"), ("R_100k", "WL_PD_HOLD_N", "GND")]], pad_left=15.24), newline=True)
 
     grp(f, lambda: ic_group(
-        s, "AVDD33 switch: TPS22919 (line 50)", "Texas_Instruments", "TPS22919DCKR",
+        s, "AVDD33 switch: TPS22919 (line 50)", "texas-instruments", "TPS22919DCKR",
         {"IN": "vcc3v3_sys", "ON": "WL_PWR_EN", "NC": None, "VOUT": "WL_3V3_SRC", "QOD": "WL_3V3_SRC", "GND": "GND"},
         rows=[[("C_1u_0402", "vcc3v3_sys", "GND"), ("R_100k", "WL_PWR_EN", "GND")]]))
     grp(f, lambda: link_group(s, "LINK_H20", "WL_3V3_SRC", "vcc3v3_wl", variants, "Link #11"))
     grp(f, lambda: ic_group(
-        s, "AVDD18 buck: TPS62826, 1.8 V (lines 129-131)", "Texas_Instruments", "TPS62826DMQR",
+        s, "AVDD18 buck: TPS62826, 1.8 V (lines 129-131)", "texas-instruments", "TPS62826DMQR",
         {"VIN": "VSYS_LV", "EN": "WL_1V8_EN", "SW": "WL_1V8_SW", "FB": "WL_1V8_FB", "PG": None, "GND": "GND"},
         rows=[[("C_10u_0603_X7R", "VSYS_LV", "GND"), ("C_22u_0603", "WL_1V8_SRC", "GND"),
                ("R_200k_0603", "vcc1v8_wl", "WL_1V8_FB"), ("C_120p_0402", "vcc1v8_wl", "WL_1V8_FB"),
@@ -181,7 +181,7 @@ def draw_antennas(s, variants):
                           **({} if fitted else {"extra": {"Alternate": "ant1-dedicated"}})))
         g.add(prow(s, 101.6, 132.08, [("C_NF_0603", ant, "GND"), ("C_NF_0603", j_net, "GND")], dnp=True,
                        extra={"Alternate": "rf-match"}))
-        u = ic(s, "Hirose", "U.FL-R-SMT-1", 147.32, 106.68, {"SIG": j_net, "GND": "GND"}, prefix="J",
+        u = ic(s, "hirose", "U.FL-R-SMT-1", 147.32, 106.68, {"SIG": j_net, "GND": "GND"}, prefix="J",
                extra={"Constraints": "PCB-R-02 PCB-R-03"})
         g.add(u.bbox)
         return g.close()

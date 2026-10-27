@@ -2,654 +2,7 @@
 (uuid "ad514982-2a31-5f51-8f3d-5fe6ccf6a6b9")
 (paper "A3")
 (title_block (title "Amplifier rails: +-6 V LDOs") (date "2026-10-25") (rev "A") (company "The OpenDAP Project") (comment 1 "blk.hpa-rails-ldo") (comment 2 "Two LT3045 and two LT3094 in parallel with trace ballasts (ADR 0015 item 3)"))
-(lib_symbols (symbol "Analog_Devices:LT3045EDD"
-		(pin_names
-			(offset 1.016)
-		)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(property "Reference" "U"
-			(at -8.89 20.32 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "LT3045EDD"
-			(at -8.89 -25.4 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Analog_Devices:Analog_DD_DFN-10-1EP_3x3mm_P0.5mm_EP1.65x2.38mm"
-			(at 0 0 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" "https://www.analog.com/media/en/technical-documentation/data-sheets/lt3045.pdf"
-			(at 0 0 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "LDO regulator, 20 V, 500 mA, 0.8 uVrms noise, 76 dB PSRR at 1 MHz, programmable current limit and power good, single-resistor output set, DFN-10 (DD) 3 x 3 mm with exposed pad"
-			(at 0 0 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Manufacturer" "Analog Devices"
-			(at 0 0 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "MPN" "LT3045EDD#TRPBF"
-			(at 0 0 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "ki_keywords" "LDO linear regulator ultra low noise high PSRR LT3045 DFN DD"
-			(at 0 0 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "ki_fp_filters" "Analog_DD_DFN-10-1EP_3x3mm_P0.5mm_EP1.65x2.38mm*"
-			(at 0 0 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(symbol "LT3045EDD_1_1"
-			(rectangle
-				(start -8.89 19.05)
-				(end 8.89 -19.05)
-				(stroke
-					(width 0.254)
-					(type default)
-				)
-				(fill
-					(type background)
-				)
-			)
-			(pin power_in line
-				(at -12.7 12.7 0)
-				(length 3.81)
-				(name "IN"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "1"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin power_in line
-				(at -12.7 10.16 0)
-				(length 3.81)
-				(name "IN"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "2"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin input line
-				(at -12.7 5.08 0)
-				(length 3.81)
-				(name "EN/UV"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "3"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin input line
-				(at -12.7 2.54 0)
-				(length 3.81)
-				(name "PGFB"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "6"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin passive line
-				(at -12.7 -2.54 0)
-				(length 3.81)
-				(name "ILIM"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "5"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin passive line
-				(at -12.7 -5.08 0)
-				(length 3.81)
-				(name "SET"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "7"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin power_out line
-				(at 12.7 12.7 180)
-				(length 3.81)
-				(name "OUT"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "10"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin input line
-				(at 12.7 10.16 180)
-				(length 3.81)
-				(name "OUTS"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "9"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin open_collector line
-				(at 12.7 5.08 180)
-				(length 3.81)
-				(name "PG"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "4"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin power_in line
-				(at -2.54 -22.86 90)
-				(length 3.81)
-				(name "GND"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "8"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin power_in line
-				(at 2.54 -22.86 90)
-				(length 3.81)
-				(name "GND"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "11"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-		)
-		(embedded_fonts no)
-	)
-(symbol "Analog_Devices:LT3094EDD"
-		(pin_names
-			(offset 1.016)
-		)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(property "Reference" "U"
-			(at -8.89 20.32 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "LT3094EDD"
-			(at -8.89 -25.4 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Analog_Devices:Analog_DD_DFN-12-1EP_3x3mm_P0.45mm_EP1.65x2.38mm"
-			(at 0 0 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" "https://www.analog.com/media/en/technical-documentation/data-sheets/lt3094.pdf"
-			(at 0 0 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Negative LDO regulator, -20 V, -500 mA, 0.8 uVrms noise, 74 dB PSRR at 1 MHz, programmable current limit, power good, VIOC tracking, DFN-12 (DD) 3 x 3 mm with exposed pad (IN)"
-			(at 0 0 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Manufacturer" "Analog Devices"
-			(at 0 0 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "MPN" "LT3094EDD#TRPBF"
-			(at 0 0 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Second_Source" "Analog Devices LT3094EDD#PBF (same part, tube)"
-			(at 0 0 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "ki_keywords" "negative LDO linear regulator ultra low noise high PSRR LT3094 DFN DD"
-			(at 0 0 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "ki_fp_filters" "Analog_DD_DFN-12-1EP_3x3mm_P0.45mm_EP1.65x2.38mm*"
-			(at 0 0 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(symbol "LT3094EDD_1_1"
-			(rectangle
-				(start -8.89 19.05)
-				(end 8.89 -19.05)
-				(stroke
-					(width 0.254)
-					(type default)
-				)
-				(fill
-					(type background)
-				)
-			)
-			(pin power_in line
-				(at -12.7 12.7 0)
-				(length 3.81)
-				(name "IN"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "1"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin power_in line
-				(at -12.7 10.16 0)
-				(length 3.81)
-				(name "IN"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "2"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin power_in line
-				(at -12.7 7.62 0)
-				(length 3.81)
-				(name "IN"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "13"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin input line
-				(at -12.7 2.54 0)
-				(length 3.81)
-				(name "EN/UV"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "3"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin input line
-				(at -12.7 0 0)
-				(length 3.81)
-				(name "PGFB"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "5"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin passive line
-				(at -12.7 -5.08 0)
-				(length 3.81)
-				(name "ILIM"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "6"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin passive line
-				(at -12.7 -7.62 0)
-				(length 3.81)
-				(name "SET"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "8"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin power_out line
-				(at 12.7 12.7 180)
-				(length 3.81)
-				(name "OUT"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "11"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin passive line
-				(at 12.7 10.16 180)
-				(length 3.81)
-				(name "OUT"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "12"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin input line
-				(at 12.7 7.62 180)
-				(length 3.81)
-				(name "OUTS"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "10"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin open_collector line
-				(at 12.7 2.54 180)
-				(length 3.81)
-				(name "PG"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "4"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin output line
-				(at 12.7 0 180)
-				(length 3.81)
-				(name "VIOC"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "7"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin power_in line
-				(at 0 -22.86 90)
-				(length 3.81)
-				(name "GND"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "9"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-		)
-		(embedded_fonts no)
-	)
-(symbol "Device:C"
+(lib_symbols (symbol "Device:C"
 		(pin_numbers
 			(hide yes)
 		)
@@ -1086,6 +439,653 @@
 		)
 		(embedded_fonts no)
 	)
+(symbol "analog-devices:LT3045EDD"
+		(pin_names
+			(offset 1.016)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(property "Reference" "U"
+			(at -8.89 20.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "LT3045EDD"
+			(at -8.89 -25.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "analog-devices:Analog_DD_DFN-10-1EP_3x3mm_P0.5mm_EP1.65x2.38mm"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://www.analog.com/media/en/technical-documentation/data-sheets/lt3045.pdf"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "LDO regulator, 20 V, 500 mA, 0.8 uVrms noise, 76 dB PSRR at 1 MHz, programmable current limit and power good, single-resistor output set, DFN-10 (DD) 3 x 3 mm with exposed pad"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "Analog Devices"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "LT3045EDD#TRPBF"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_keywords" "LDO linear regulator ultra low noise high PSRR LT3045 DFN DD"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_fp_filters" "Analog_DD_DFN-10-1EP_3x3mm_P0.5mm_EP1.65x2.38mm*"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "LT3045EDD_1_1"
+			(rectangle
+				(start -8.89 19.05)
+				(end 8.89 -19.05)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type background)
+				)
+			)
+			(pin power_in line
+				(at -12.7 12.7 0)
+				(length 3.81)
+				(name "IN"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin power_in line
+				(at -12.7 10.16 0)
+				(length 3.81)
+				(name "IN"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin input line
+				(at -12.7 5.08 0)
+				(length 3.81)
+				(name "EN/UV"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "3"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin input line
+				(at -12.7 2.54 0)
+				(length 3.81)
+				(name "PGFB"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "6"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at -12.7 -2.54 0)
+				(length 3.81)
+				(name "ILIM"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "5"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at -12.7 -5.08 0)
+				(length 3.81)
+				(name "SET"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "7"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin power_out line
+				(at 12.7 12.7 180)
+				(length 3.81)
+				(name "OUT"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "10"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin input line
+				(at 12.7 10.16 180)
+				(length 3.81)
+				(name "OUTS"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "9"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin open_collector line
+				(at 12.7 5.08 180)
+				(length 3.81)
+				(name "PG"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "4"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin power_in line
+				(at -2.54 -22.86 90)
+				(length 3.81)
+				(name "GND"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "8"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin power_in line
+				(at 2.54 -22.86 90)
+				(length 3.81)
+				(name "GND"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "11"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
+(symbol "analog-devices:LT3094EDD"
+		(pin_names
+			(offset 1.016)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(property "Reference" "U"
+			(at -8.89 20.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "LT3094EDD"
+			(at -8.89 -25.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "analog-devices:Analog_DD_DFN-12-1EP_3x3mm_P0.45mm_EP1.65x2.38mm"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://www.analog.com/media/en/technical-documentation/data-sheets/lt3094.pdf"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Negative LDO regulator, -20 V, -500 mA, 0.8 uVrms noise, 74 dB PSRR at 1 MHz, programmable current limit, power good, VIOC tracking, DFN-12 (DD) 3 x 3 mm with exposed pad (IN)"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "Analog Devices"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "LT3094EDD#TRPBF"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Second_Source" "Analog Devices LT3094EDD#PBF (same part, tube)"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_keywords" "negative LDO linear regulator ultra low noise high PSRR LT3094 DFN DD"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_fp_filters" "Analog_DD_DFN-12-1EP_3x3mm_P0.45mm_EP1.65x2.38mm*"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "LT3094EDD_1_1"
+			(rectangle
+				(start -8.89 19.05)
+				(end 8.89 -19.05)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type background)
+				)
+			)
+			(pin power_in line
+				(at -12.7 12.7 0)
+				(length 3.81)
+				(name "IN"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin power_in line
+				(at -12.7 10.16 0)
+				(length 3.81)
+				(name "IN"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin power_in line
+				(at -12.7 7.62 0)
+				(length 3.81)
+				(name "IN"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "13"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin input line
+				(at -12.7 2.54 0)
+				(length 3.81)
+				(name "EN/UV"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "3"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin input line
+				(at -12.7 0 0)
+				(length 3.81)
+				(name "PGFB"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "5"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at -12.7 -5.08 0)
+				(length 3.81)
+				(name "ILIM"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "6"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at -12.7 -7.62 0)
+				(length 3.81)
+				(name "SET"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "8"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin power_out line
+				(at 12.7 12.7 180)
+				(length 3.81)
+				(name "OUT"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "11"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 12.7 10.16 180)
+				(length 3.81)
+				(name "OUT"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "12"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin input line
+				(at 12.7 7.62 180)
+				(length 3.81)
+				(name "OUTS"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "10"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin open_collector line
+				(at 12.7 2.54 180)
+				(length 3.81)
+				(name "PG"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "4"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin output line
+				(at 12.7 0 180)
+				(length 3.81)
+				(name "VIOC"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "7"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin power_in line
+				(at 0 -22.86 90)
+				(length 3.81)
+				(name "GND"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "9"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
 (symbol "power:GND"
 		(power global)
 		(pin_numbers
@@ -1455,10 +1455,10 @@
 		)
 		(embedded_fonts no)
 	))
-(symbol (lib_id "Analog_Devices:LT3045EDD") (at 67.31 64.77 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "d37bbc52-ff58-51bb-8b24-751270b9556b")
+(symbol (lib_id "analog-devices:LT3045EDD") (at 67.31 64.77 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "d37bbc52-ff58-51bb-8b24-751270b9556b")
   (property "Reference" "U2901" (at 58.42 43.18 0) (effects (font (size 1.27 1.27)) (justify left)))
   (property "Value" "LT3045EDD" (at 58.42 40.64 0) (effects (font (size 1.27 1.27)) (justify left)))
-  (property "Footprint" "Analog_Devices:Analog_DD_DFN-10-1EP_3x3mm_P0.5mm_EP1.65x2.38mm" (at 67.31 64.77 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Footprint" "analog-devices:Analog_DD_DFN-10-1EP_3x3mm_P0.5mm_EP1.65x2.38mm" (at 67.31 64.77 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Datasheet" "https://www.analog.com/media/en/technical-documentation/data-sheets/lt3045.pdf" (at 67.31 64.77 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Description" "LDO regulator, 20 V, 500 mA, 0.8 uVrms noise, 76 dB PSRR at 1 MHz, programmable current limit and power good, single-resistor output set, DFN-10 (DD) 3 x 3 mm with exposed pad" (at 67.31 64.77 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Manufacturer" "Analog Devices" (at 67.31 64.77 0) (effects (font (size 1.27 1.27))) (hide yes))
@@ -1627,10 +1627,10 @@
   (pin "1" (uuid "6ed69739-917e-50be-910f-497ff1cff933"))
   (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/d6f0155c-678f-5298-bf09-6ea7c0e72438/cbed7f0f-43ec-5b1b-b7a5-569b0b608c26/0c52ca39-f442-51ee-bc92-c47d67c8d1a4" (reference "#PWR0512") (unit 1))))
 )
-(symbol (lib_id "Analog_Devices:LT3045EDD") (at 151.13 64.77 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "a4b71c77-d859-5936-a887-f5d871121a21")
+(symbol (lib_id "analog-devices:LT3045EDD") (at 151.13 64.77 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "a4b71c77-d859-5936-a887-f5d871121a21")
   (property "Reference" "U2902" (at 142.24 43.18 0) (effects (font (size 1.27 1.27)) (justify left)))
   (property "Value" "LT3045EDD" (at 142.24 40.64 0) (effects (font (size 1.27 1.27)) (justify left)))
-  (property "Footprint" "Analog_Devices:Analog_DD_DFN-10-1EP_3x3mm_P0.5mm_EP1.65x2.38mm" (at 151.13 64.77 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Footprint" "analog-devices:Analog_DD_DFN-10-1EP_3x3mm_P0.5mm_EP1.65x2.38mm" (at 151.13 64.77 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Datasheet" "https://www.analog.com/media/en/technical-documentation/data-sheets/lt3045.pdf" (at 151.13 64.77 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Description" "LDO regulator, 20 V, 500 mA, 0.8 uVrms noise, 76 dB PSRR at 1 MHz, programmable current limit and power good, single-resistor output set, DFN-10 (DD) 3 x 3 mm with exposed pad" (at 151.13 64.77 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Manufacturer" "Analog Devices" (at 151.13 64.77 0) (effects (font (size 1.27 1.27))) (hide yes))
@@ -1893,10 +1893,10 @@
 )
 (rectangle (start 22.86 35.56) (end 205.74 166.37) (stroke (width 0) (type dash)) (fill (type none)) (uuid "6e01b968-f291-55b2-b662-ecabb5389779"))
 (text "+6 V: two LT3045 in parallel (ADR 0015 item 3)" (exclude_from_sim no) (at 24.13 34.29 0) (effects (font (size 2.54 2.54)) (justify left bottom)) (uuid "c897471e-3882-5b2f-b5c6-d272e18e0396"))
-(symbol (lib_id "Analog_Devices:LT3094EDD") (at 255.27 64.77 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "757c8096-59ee-536c-8246-2520b8ed4863")
+(symbol (lib_id "analog-devices:LT3094EDD") (at 255.27 64.77 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "757c8096-59ee-536c-8246-2520b8ed4863")
   (property "Reference" "U2903" (at 246.38 43.18 0) (effects (font (size 1.27 1.27)) (justify left)))
   (property "Value" "LT3094EDD" (at 246.38 40.64 0) (effects (font (size 1.27 1.27)) (justify left)))
-  (property "Footprint" "Analog_Devices:Analog_DD_DFN-12-1EP_3x3mm_P0.45mm_EP1.65x2.38mm" (at 255.27 64.77 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Footprint" "analog-devices:Analog_DD_DFN-12-1EP_3x3mm_P0.45mm_EP1.65x2.38mm" (at 255.27 64.77 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Datasheet" "https://www.analog.com/media/en/technical-documentation/data-sheets/lt3094.pdf" (at 255.27 64.77 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Description" "Negative LDO regulator, -20 V, -500 mA, 0.8 uVrms noise, 74 dB PSRR at 1 MHz, programmable current limit, power good, VIOC tracking, DFN-12 (DD) 3 x 3 mm with exposed pad (IN)" (at 255.27 64.77 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Manufacturer" "Analog Devices" (at 255.27 64.77 0) (effects (font (size 1.27 1.27))) (hide yes))
@@ -2068,10 +2068,10 @@
   (pin "1" (uuid "a84dc87d-edda-58ec-9a76-c7e209fd5727"))
   (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/d6f0155c-678f-5298-bf09-6ea7c0e72438/cbed7f0f-43ec-5b1b-b7a5-569b0b608c26/0c52ca39-f442-51ee-bc92-c47d67c8d1a4" (reference "#PWR0532") (unit 1))))
 )
-(symbol (lib_id "Analog_Devices:LT3094EDD") (at 339.09 64.77 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "fc794158-7c86-5301-8c86-932793611fd8")
+(symbol (lib_id "analog-devices:LT3094EDD") (at 339.09 64.77 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "fc794158-7c86-5301-8c86-932793611fd8")
   (property "Reference" "U2904" (at 330.2 43.18 0) (effects (font (size 1.27 1.27)) (justify left)))
   (property "Value" "LT3094EDD" (at 330.2 40.64 0) (effects (font (size 1.27 1.27)) (justify left)))
-  (property "Footprint" "Analog_Devices:Analog_DD_DFN-12-1EP_3x3mm_P0.45mm_EP1.65x2.38mm" (at 339.09 64.77 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Footprint" "analog-devices:Analog_DD_DFN-12-1EP_3x3mm_P0.45mm_EP1.65x2.38mm" (at 339.09 64.77 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Datasheet" "https://www.analog.com/media/en/technical-documentation/data-sheets/lt3094.pdf" (at 339.09 64.77 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Description" "Negative LDO regulator, -20 V, -500 mA, 0.8 uVrms noise, 74 dB PSRR at 1 MHz, programmable current limit, power good, VIOC tracking, DFN-12 (DD) 3 x 3 mm with exposed pad (IN)" (at 339.09 64.77 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Manufacturer" "Analog Devices" (at 339.09 64.77 0) (effects (font (size 1.27 1.27))) (hide yes))

@@ -55,7 +55,7 @@ def channel(s, title, mpn, a0, src, load, key):
     its PWR_FLAG on the shunt's load-side wire, outside the IC's text (CRAFT-85)."""
     def draw():
         g = Group(s, title)
-        u = ic(s, "Texas_Instruments", mpn, 101.6, 101.6,
+        u = ic(s, "texas-instruments", mpn, 101.6, 101.6,
                {"IN+": src, "IN-": load, "VS": "vcc3v3_sys", "GND": "GND", "SCL": "I2C1_SCL",
                 "SDA": "I2C1_SDA", "A0": a0, "ALERT": None})
         g.add(u.bbox)
@@ -111,7 +111,7 @@ def draw_status_led(s, variants):
 
     def driver():
         g = Group(s, "LP5521 at I2C2 0x32 (BOM v1 line 105; SNVS441I Figure 26)")
-        u = ic(s, "Texas_Instruments", "LP5521YQX", 101.6, 101.6, pins)
+        u = ic(s, "texas-instruments", "LP5521YQX", 101.6, 101.6, pins)
         g.add(u.bbox)
         # ADDR_SEL0, ADDR_SEL1 (0x32), TRIG and CLK_32K (internal clock) on one ground collector; its
         # symbol hangs off the top row, clear of the flying-capacitor labels below
@@ -310,7 +310,7 @@ def draw_mic_ambient(s, variants):
     from blocks_should import column
     f = Flow(s)
     grp(f, lambda: ic_group(
-        s, "IM73D122 bottom-port PDM microphone (BOM v1 line 34)", "Infineon", "IM73D122V01XTMA1",
+        s, "IM73D122 bottom-port PDM microphone (BOM v1 line 34)", "infineon", "IM73D122V01XTMA1",
         {"VDD": "MIC_AMB_VDD", "CLOCK": "MIC_AMB_CLK", "DATA": "PDM_DATA1", "LR": "GND", "GND": "GND"},
         rows=[[("C_1u_0402", "MIC_AMB_VDD", "GND"), ("C_100n_0402", "MIC_AMB_VDD", "GND")]], prefix="MK"))
 
@@ -348,26 +348,26 @@ def draw_maskrom(s, variants):
     from draw import part, tp
     f = Flow(s)
     grp(f, lambda: ic_group(
-        s, "Boot window: TPS3808G01, 1.21-3.43 s (BOM v1 line 97)", "Texas_Instruments", "TPS3808G01DBVR",
+        s, "Boot window: TPS3808G01, 1.21-3.43 s (BOM v1 line 97)", "texas-instruments", "TPS3808G01DBVR",
         {"SENSE": "MASKROM_SENSE", "MR": None, "CT": "MASKROM_CT", "RESET": "WINDOW_N", "VDD": "vcca1v8_pmu",
          "GND": "GND"},
         rows=[[("C_100n_0402", "vcca1v8_pmu", "GND"), ("R_100k", "vcca1v8_pmu", "WINDOW_N")],
               [("R_280k", "vcca1v8_pmu", "MASKROM_SENSE"), ("R_100k", "MASKROM_SENSE", "GND"),
                ("C_390n_0603", "MASKROM_CT", "GND")]]))
     grp(f, lambda: ic_group(
-        s, "Both keys: SN74LVC1G57 (BOM v1 line 98)", "Texas_Instruments", "SN74LVC1G57DCKR",
+        s, "Both keys: SN74LVC1G57 (BOM v1 line 98)", "texas-instruments", "SN74LVC1G57DCKR",
         {"In0": "VOLDN_N", "In1": "GND", "In2": "MASKROM_KEY", "Y": "MASKROM_BOTH", "VCC": "vcca1v8_pmu",
          "GND": "GND"},
         rows=[[("C_100n_0402", "vcca1v8_pmu", "GND"), ("R_100k", "vcca1v8_pmu", "MASKROM_KEY")]]))
 
     def isolation():
         g = Group(s, "PWRON isolation: BAT54 (BOM v1 line 78)")
-        u = ic(s, "Nexperia", "BAT54", 101.6, 101.6, {"A": "MASKROM_KEY", "K": "PWRON_N", "NC": None}, prefix="D")
+        u = ic(s, "nexperia", "BAT54", 101.6, 101.6, {"A": "MASKROM_KEY", "K": "PWRON_N", "NC": None}, prefix="D")
         g.add(u.bbox)
         return g.close()
     grp(f, isolation)
     grp(f, lambda: ic_group(
-        s, "Inside the window: SN74LVC1G58 (BOM v1 line 98)", "Texas_Instruments", "SN74LVC1G58DCKR",
+        s, "Inside the window: SN74LVC1G58 (BOM v1 line 98)", "texas-instruments", "SN74LVC1G58DCKR",
         {"In0": "MASKROM_BOTH", "In1": "vcca1v8_pmu", "In2": "WINDOW_N", "Y": "MASKROM_GATE", "VCC": "vcca1v8_pmu",
          "GND": "GND"},
         rows=[[("C_100n_0402", "vcca1v8_pmu", "GND")]]), newline=True)

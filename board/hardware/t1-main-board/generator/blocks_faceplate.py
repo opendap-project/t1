@@ -43,7 +43,7 @@ LOW_SPEED = [CONTACTS[c] for c in range(17, 39) if CONTACTS[c] not in ("GND",)] 
 
 
 def switch_group(s, title, part_name, pins, rows, extra=None):
-    return ic_group(s, title, "Texas_Instruments", part_name, pins, rows=rows, extra=extra)
+    return ic_group(s, title, "texas-instruments", part_name, pins, rows=rows, extra=extra)
 
 
 # ---------------------------------------------------------------------- blk.fp-connector
@@ -55,7 +55,7 @@ def draw_connector(s, variants):
     def connector():
         g = Group(s, "FH35C-51S-0.3SHW, contacts per pinout v1 §8.2 (BOM v1 line 71)")
         gnd = [k for k, v in pins.items() if v == "GND"]
-        u = ic(s, "Hirose", "FH35C-51S-0.3SHW", 101.6, 101.6, {**pins, **{k: "" for k in gnd}}, prefix="J",
+        u = ic(s, "hirose", "FH35C-51S-0.3SHW", 101.6, 101.6, {**pins, **{k: "" for k in gnd}}, prefix="J",
                extra={"Constraints": "PCB-I-04"})
         left = [k for k in gnd if u.out(u.pin(k))[0] < 0]
         right = [k for k in gnd if u.out(u.pin(k))[0] > 0]
@@ -70,7 +70,7 @@ def draw_connector(s, variants):
         lines = LOW_SPEED + [None] * (24 - len(LOW_SPEED))
         for i in range(6):
             a, b, c, d = lines[4 * i:4 * i + 4]
-            u = ic(s, "Texas_Instruments", "TPD4E05U06DQAR", 101.6 + (i % 3) * 60.96, 101.6 + (i // 3) * 48.26,
+            u = ic(s, "texas-instruments", "TPD4E05U06DQAR", 101.6 + (i % 3) * 60.96, 101.6 + (i // 3) * 48.26,
                    {"D1+": a, "D1-": b, "D2+": c, "D2-": d, "NC": None, "GND": "GND"})
             g.add(u.bbox)
         return g.close()
@@ -160,7 +160,7 @@ def draw_display(s, variants):
 def draw_backlight(s, variants):
     f = Flow(s)
     grp(f, lambda: ic_group(
-        s, "TPS61160, RSET 3.32 Ω for 60 mA (BOM v1 line 51)", "Texas_Instruments", "TPS61160DRVR",
+        s, "TPS61160, RSET 3.32 Ω for 60 mA (BOM v1 line 51)", "texas-instruments", "TPS61160DRVR",
         {"VIN": "VSYS_LV_BL", "CTRL": "BL_PWM", "SW": "BL_SW", "FB": "BL_LEDK", "COMP": "BL_COMP", "GND": "GND", "EP": "GND"},
         rows=[[("C_4u7_0603_10V", "VSYS_LV_BL", "GND"), ("C_220n_0402", "BL_COMP", "GND"),
                ("R_3R32", "BL_LEDK", "GND")]],

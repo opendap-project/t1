@@ -583,7 +583,7 @@
 		)
 		(embedded_fonts no)
 	)
-(symbol "KYOCERA_AVX:70-9258-001-120-006"
+(symbol "kyocera-avx:70-9258-001-120-006"
 		(pin_names
 			(offset 1.016)
 		)
@@ -608,7 +608,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "KYOCERA_AVX:KYOCERA_AVX_9258-100_70-9258-001-120-006_SpringFinger_Pad7.0x2.7mm"
+		(property "Footprint" "kyocera-avx:KYOCERA_AVX_9258-100_70-9258-001-120-006_SpringFinger_Pad7.0x2.7mm"
 			(at 0 0 0)
 			(hide yes)
 			(effects
@@ -694,253 +694,6 @@
 					)
 				)
 				(number "1"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-		)
-		(embedded_fonts no)
-	)
-(symbol "Texas_Instruments:CSD17575Q3"
-		(pin_names
-			(offset 1.016)
-		)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(property "Reference" "Q"
-			(at -7.62 11.43 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "CSD17575Q3"
-			(at -7.62 -12.7 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Texas_Instruments:Texas_Q3_SON-8_3.3x3.3mm_P0.65mm"
-			(at 0 0 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" "https://www.ti.com/lit/ds/symlink/csd17575q3.pdf"
-			(at 0 0 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "N-channel NexFET power MOSFET, 30 V, 1.9 / 2.6 mOhm at VGS 10 / 4.5 V, SON 3.3 x 3.3 mm (Q3)"
-			(at 0 0 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Manufacturer" "Texas Instruments"
-			(at 0 0 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "MPN" "CSD17575Q3"
-			(at 0 0 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "ki_keywords" "MOSFET N-channel NexFET 30V ship FET CSD17575Q3 SON Q3"
-			(at 0 0 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "ki_fp_filters" "Texas_Q3_SON-8_3.3x3.3mm_P0.65mm*"
-			(at 0 0 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(symbol "CSD17575Q3_1_1"
-			(rectangle
-				(start -7.62 7.62)
-				(end 7.62 -7.62)
-				(stroke
-					(width 0.254)
-					(type default)
-				)
-				(fill
-					(type background)
-				)
-			)
-			(pin input line
-				(at -10.16 0 0)
-				(length 2.54)
-				(name "G"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "4"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin passive line
-				(at -5.08 10.16 270)
-				(length 2.54)
-				(name "D"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "5"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin passive line
-				(at -2.54 10.16 270)
-				(length 2.54)
-				(name "D"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "6"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin passive line
-				(at 2.54 10.16 270)
-				(length 2.54)
-				(name "D"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "7"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin passive line
-				(at 5.08 10.16 270)
-				(length 2.54)
-				(name "D"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "8"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin passive line
-				(at -2.54 -10.16 90)
-				(length 2.54)
-				(name "S"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "1"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin passive line
-				(at 0 -10.16 90)
-				(length 2.54)
-				(name "S"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "2"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin passive line
-				(at 2.54 -10.16 90)
-				(length 2.54)
-				(name "S"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "3"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -1319,11 +1072,258 @@
 			)
 		)
 		(embedded_fonts no)
+	)
+(symbol "texas-instruments:CSD17575Q3"
+		(pin_names
+			(offset 1.016)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(property "Reference" "Q"
+			(at -7.62 11.43 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "CSD17575Q3"
+			(at -7.62 -12.7 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "texas-instruments:Texas_Q3_SON-8_3.3x3.3mm_P0.65mm"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://www.ti.com/lit/ds/symlink/csd17575q3.pdf"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "N-channel NexFET power MOSFET, 30 V, 1.9 / 2.6 mOhm at VGS 10 / 4.5 V, SON 3.3 x 3.3 mm (Q3)"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "Texas Instruments"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "CSD17575Q3"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_keywords" "MOSFET N-channel NexFET 30V ship FET CSD17575Q3 SON Q3"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_fp_filters" "Texas_Q3_SON-8_3.3x3.3mm_P0.65mm*"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "CSD17575Q3_1_1"
+			(rectangle
+				(start -7.62 7.62)
+				(end 7.62 -7.62)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type background)
+				)
+			)
+			(pin input line
+				(at -10.16 0 0)
+				(length 2.54)
+				(name "G"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "4"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at -5.08 10.16 270)
+				(length 2.54)
+				(name "D"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "5"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at -2.54 10.16 270)
+				(length 2.54)
+				(name "D"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "6"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 2.54 10.16 270)
+				(length 2.54)
+				(name "D"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "7"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 5.08 10.16 270)
+				(length 2.54)
+				(name "D"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "8"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at -2.54 -10.16 90)
+				(length 2.54)
+				(name "S"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 0 -10.16 90)
+				(length 2.54)
+				(name "S"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 2.54 -10.16 90)
+				(length 2.54)
+				(name "S"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "3"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
 	))
-(symbol (lib_id "Texas_Instruments:CSD17575Q3") (at 48.26 58.42 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "391682bb-95e6-50a2-8c8b-19c5cd1939c8")
+(symbol (lib_id "texas-instruments:CSD17575Q3") (at 48.26 58.42 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "391682bb-95e6-50a2-8c8b-19c5cd1939c8")
   (property "Reference" "Q701" (at 57.15 53.34 0) (effects (font (size 1.27 1.27)) (justify left)))
   (property "Value" "CSD17575Q3" (at 57.15 50.8 0) (effects (font (size 1.27 1.27)) (justify left)))
-  (property "Footprint" "Texas_Instruments:Texas_Q3_SON-8_3.3x3.3mm_P0.65mm" (at 48.26 58.42 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Footprint" "texas-instruments:Texas_Q3_SON-8_3.3x3.3mm_P0.65mm" (at 48.26 58.42 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Datasheet" "https://www.ti.com/lit/ds/symlink/csd17575q3.pdf" (at 48.26 58.42 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Description" "N-channel NexFET power MOSFET, 30 V, 1.9 / 2.6 mOhm at VGS 10 / 4.5 V, SON 3.3 x 3.3 mm (Q3)" (at 48.26 58.42 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Manufacturer" "Texas Instruments" (at 48.26 58.42 0) (effects (font (size 1.27 1.27))) (hide yes))
@@ -1419,10 +1419,10 @@
 )
 (rectangle (start 22.86 35.56) (end 215.9 81.28) (stroke (width 0) (type dash)) (fill (type none)) (uuid "03017a94-5e36-5b23-886f-8af71fce6088"))
 (text "Battery path: ship FET, 5 A fuse, BATP (ADR 0014 item 6, ADR 0017, ADR 0020 item 6)" (exclude_from_sim no) (at 24.13 34.29 0) (effects (font (size 2.54 2.54)) (justify left bottom)) (uuid "55ee5f89-9e51-51c6-babe-a275980eb29a"))
-(symbol (lib_id "KYOCERA_AVX:70-9258-001-120-006") (at 46.99 106.68 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "6ae72597-a4e7-549f-8207-56c5590e5af8")
+(symbol (lib_id "kyocera-avx:70-9258-001-120-006") (at 46.99 106.68 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "6ae72597-a4e7-549f-8207-56c5590e5af8")
   (property "Reference" "J701" (at 39.37 99.06 0) (effects (font (size 1.27 1.27)) (justify left)))
   (property "Value" "70-9258-001-120-006" (at 39.37 96.52 0) (effects (font (size 1.27 1.27)) (justify left)))
-  (property "Footprint" "KYOCERA_AVX:KYOCERA_AVX_9258-100_70-9258-001-120-006_SpringFinger_Pad7.0x2.7mm" (at 46.99 106.68 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Footprint" "kyocera-avx:KYOCERA_AVX_9258-100_70-9258-001-120-006_SpringFinger_Pad7.0x2.7mm" (at 46.99 106.68 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Datasheet" "https://datasheets.kyocera-avx.com/9258-100.pdf" (at 46.99 106.68 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Description" "Single-way SMT spring-finger compression contact, 6 A, 0.4 um gold, deflected height 1.6-2.8 mm (9258-100 type 120)" (at 46.99 106.68 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Manufacturer" "KYOCERA AVX" (at 46.99 106.68 0) (effects (font (size 1.27 1.27))) (hide yes))
@@ -1434,10 +1434,10 @@
   (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/4dc73b6d-736f-5398-a907-27e20ed1a3e6/ca568731-87ea-5ff9-adf5-a3b161dd236c" (reference "J701") (unit 1))))
 )
 (wire (pts (xy 36.83 106.68) (xy 34.29 106.68)) (stroke (width 0) (type default)) (uuid "b9d86c9c-5231-54c0-80f2-c63b6c87c3ba"))
-(symbol (lib_id "KYOCERA_AVX:70-9258-001-120-006") (at 92.71 106.68 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "4b90f989-9cb3-5c20-96fc-67ff5b0aacc9")
+(symbol (lib_id "kyocera-avx:70-9258-001-120-006") (at 92.71 106.68 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "4b90f989-9cb3-5c20-96fc-67ff5b0aacc9")
   (property "Reference" "J702" (at 85.09 99.06 0) (effects (font (size 1.27 1.27)) (justify left)))
   (property "Value" "70-9258-001-120-006" (at 85.09 96.52 0) (effects (font (size 1.27 1.27)) (justify left)))
-  (property "Footprint" "KYOCERA_AVX:KYOCERA_AVX_9258-100_70-9258-001-120-006_SpringFinger_Pad7.0x2.7mm" (at 92.71 106.68 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Footprint" "kyocera-avx:KYOCERA_AVX_9258-100_70-9258-001-120-006_SpringFinger_Pad7.0x2.7mm" (at 92.71 106.68 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Datasheet" "https://datasheets.kyocera-avx.com/9258-100.pdf" (at 92.71 106.68 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Description" "Single-way SMT spring-finger compression contact, 6 A, 0.4 um gold, deflected height 1.6-2.8 mm (9258-100 type 120)" (at 92.71 106.68 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Manufacturer" "KYOCERA AVX" (at 92.71 106.68 0) (effects (font (size 1.27 1.27))) (hide yes))
@@ -1449,10 +1449,10 @@
   (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/4dc73b6d-736f-5398-a907-27e20ed1a3e6/ca568731-87ea-5ff9-adf5-a3b161dd236c" (reference "J702") (unit 1))))
 )
 (wire (pts (xy 82.55 106.68) (xy 80.01 106.68)) (stroke (width 0) (type default)) (uuid "a805df8f-132b-5999-ba2e-1861397a34c8"))
-(symbol (lib_id "KYOCERA_AVX:70-9258-001-120-006") (at 138.43 106.68 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "d97ef74d-4e9c-5dad-a44c-21014efd6302")
+(symbol (lib_id "kyocera-avx:70-9258-001-120-006") (at 138.43 106.68 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "d97ef74d-4e9c-5dad-a44c-21014efd6302")
   (property "Reference" "J703" (at 130.81 99.06 0) (effects (font (size 1.27 1.27)) (justify left)))
   (property "Value" "70-9258-001-120-006" (at 130.81 96.52 0) (effects (font (size 1.27 1.27)) (justify left)))
-  (property "Footprint" "KYOCERA_AVX:KYOCERA_AVX_9258-100_70-9258-001-120-006_SpringFinger_Pad7.0x2.7mm" (at 138.43 106.68 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Footprint" "kyocera-avx:KYOCERA_AVX_9258-100_70-9258-001-120-006_SpringFinger_Pad7.0x2.7mm" (at 138.43 106.68 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Datasheet" "https://datasheets.kyocera-avx.com/9258-100.pdf" (at 138.43 106.68 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Description" "Single-way SMT spring-finger compression contact, 6 A, 0.4 um gold, deflected height 1.6-2.8 mm (9258-100 type 120)" (at 138.43 106.68 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Manufacturer" "KYOCERA AVX" (at 138.43 106.68 0) (effects (font (size 1.27 1.27))) (hide yes))
@@ -1464,10 +1464,10 @@
   (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/4dc73b6d-736f-5398-a907-27e20ed1a3e6/ca568731-87ea-5ff9-adf5-a3b161dd236c" (reference "J703") (unit 1))))
 )
 (wire (pts (xy 128.27 106.68) (xy 125.73 106.68)) (stroke (width 0) (type default)) (uuid "f83002ff-283b-5017-85c0-83497c582910"))
-(symbol (lib_id "KYOCERA_AVX:70-9258-001-120-006") (at 46.99 127 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "b270f659-9703-5aa3-8685-b9a889fa6089")
+(symbol (lib_id "kyocera-avx:70-9258-001-120-006") (at 46.99 127 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "b270f659-9703-5aa3-8685-b9a889fa6089")
   (property "Reference" "J704" (at 39.37 119.38 0) (effects (font (size 1.27 1.27)) (justify left)))
   (property "Value" "70-9258-001-120-006" (at 39.37 116.84 0) (effects (font (size 1.27 1.27)) (justify left)))
-  (property "Footprint" "KYOCERA_AVX:KYOCERA_AVX_9258-100_70-9258-001-120-006_SpringFinger_Pad7.0x2.7mm" (at 46.99 127 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Footprint" "kyocera-avx:KYOCERA_AVX_9258-100_70-9258-001-120-006_SpringFinger_Pad7.0x2.7mm" (at 46.99 127 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Datasheet" "https://datasheets.kyocera-avx.com/9258-100.pdf" (at 46.99 127 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Description" "Single-way SMT spring-finger compression contact, 6 A, 0.4 um gold, deflected height 1.6-2.8 mm (9258-100 type 120)" (at 46.99 127 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Manufacturer" "KYOCERA AVX" (at 46.99 127 0) (effects (font (size 1.27 1.27))) (hide yes))
@@ -1479,10 +1479,10 @@
   (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/4dc73b6d-736f-5398-a907-27e20ed1a3e6/ca568731-87ea-5ff9-adf5-a3b161dd236c" (reference "J704") (unit 1))))
 )
 (wire (pts (xy 36.83 127) (xy 34.29 127)) (stroke (width 0) (type default)) (uuid "6618c785-2630-5b74-bbbf-0ca544963e2f"))
-(symbol (lib_id "KYOCERA_AVX:70-9258-001-120-006") (at 92.71 127 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "186a1679-f585-5424-8a51-7e1d958db367")
+(symbol (lib_id "kyocera-avx:70-9258-001-120-006") (at 92.71 127 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "186a1679-f585-5424-8a51-7e1d958db367")
   (property "Reference" "J705" (at 85.09 119.38 0) (effects (font (size 1.27 1.27)) (justify left)))
   (property "Value" "70-9258-001-120-006" (at 85.09 116.84 0) (effects (font (size 1.27 1.27)) (justify left)))
-  (property "Footprint" "KYOCERA_AVX:KYOCERA_AVX_9258-100_70-9258-001-120-006_SpringFinger_Pad7.0x2.7mm" (at 92.71 127 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Footprint" "kyocera-avx:KYOCERA_AVX_9258-100_70-9258-001-120-006_SpringFinger_Pad7.0x2.7mm" (at 92.71 127 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Datasheet" "https://datasheets.kyocera-avx.com/9258-100.pdf" (at 92.71 127 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Description" "Single-way SMT spring-finger compression contact, 6 A, 0.4 um gold, deflected height 1.6-2.8 mm (9258-100 type 120)" (at 92.71 127 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Manufacturer" "KYOCERA AVX" (at 92.71 127 0) (effects (font (size 1.27 1.27))) (hide yes))
@@ -1502,10 +1502,10 @@
   (pin "1" (uuid "53e680f8-24b4-5a21-a85a-cf3ede9334ad"))
   (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/4dc73b6d-736f-5398-a907-27e20ed1a3e6/ca568731-87ea-5ff9-adf5-a3b161dd236c" (reference "#PWR0054") (unit 1))))
 )
-(symbol (lib_id "KYOCERA_AVX:70-9258-001-120-006") (at 138.43 127 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "75c2bb83-e73f-5516-84cd-3cc32e19e7aa")
+(symbol (lib_id "kyocera-avx:70-9258-001-120-006") (at 138.43 127 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "75c2bb83-e73f-5516-84cd-3cc32e19e7aa")
   (property "Reference" "J706" (at 130.81 119.38 0) (effects (font (size 1.27 1.27)) (justify left)))
   (property "Value" "70-9258-001-120-006" (at 130.81 116.84 0) (effects (font (size 1.27 1.27)) (justify left)))
-  (property "Footprint" "KYOCERA_AVX:KYOCERA_AVX_9258-100_70-9258-001-120-006_SpringFinger_Pad7.0x2.7mm" (at 138.43 127 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Footprint" "kyocera-avx:KYOCERA_AVX_9258-100_70-9258-001-120-006_SpringFinger_Pad7.0x2.7mm" (at 138.43 127 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Datasheet" "https://datasheets.kyocera-avx.com/9258-100.pdf" (at 138.43 127 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Description" "Single-way SMT spring-finger compression contact, 6 A, 0.4 um gold, deflected height 1.6-2.8 mm (9258-100 type 120)" (at 138.43 127 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Manufacturer" "KYOCERA AVX" (at 138.43 127 0) (effects (font (size 1.27 1.27))) (hide yes))

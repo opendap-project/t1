@@ -420,7 +420,7 @@
 		)
 		(embedded_fonts no)
 	)
-(symbol "Hirose:DM3AT-SF-PEJM5"
+(symbol "hirose:DM3AT-SF-PEJM5"
 		(pin_names
 			(offset 1.016)
 		)
@@ -445,7 +445,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Hirose:Hirose_DM3AT-SF-PEJM5_microSD_PushPush_Top"
+		(property "Footprint" "hirose:Hirose_DM3AT-SF-PEJM5_microSD_PushPush_Top"
 			(at 0 0 0)
 			(hide yes)
 			(effects
@@ -720,289 +720,6 @@
 					)
 				)
 				(number "S1"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-		)
-		(embedded_fonts no)
-	)
-(symbol "Texas_Instruments:TPD4E05U06DQAR"
-		(pin_names
-			(offset 1.016)
-		)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(property "Reference" "U"
-			(at -6.35 15.24 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "TPD4E05U06DQAR"
-			(at -6.35 -20.32 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Texas_Instruments:Texas_DQA0010A_USON-10_1x2.5mm_P0.5mm"
-			(at 0 0 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" "https://www.ti.com/lit/ds/symlink/tpd4e05u06.pdf"
-			(at 0 0 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "4-channel ESD protection, 0.5 pF, 5.5 V stand-off, IEC 61000-4-2 level 4, flow-through routing, USON-10 (DQA0010A) 1 x 2.5 mm"
-			(at 0 0 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Manufacturer" "Texas Instruments"
-			(at 0 0 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "MPN" "TPD4E05U06DQAR"
-			(at 0 0 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "ki_keywords" "ESD TVS protection USB high-speed low capacitance TPD4E05U06 USON DQA"
-			(at 0 0 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "ki_fp_filters" "Texas_DQA0010A_USON-10_1x2.5mm_P0.5mm*"
-			(at 0 0 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(symbol "TPD4E05U06DQAR_1_1"
-			(rectangle
-				(start -6.35 13.97)
-				(end 6.35 -13.97)
-				(stroke
-					(width 0.254)
-					(type default)
-				)
-				(fill
-					(type background)
-				)
-			)
-			(pin passive line
-				(at -10.16 7.62 0)
-				(length 3.81)
-				(name "D1+"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "1"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin passive line
-				(at -10.16 5.08 0)
-				(length 3.81)
-				(name "D1-"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "2"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin passive line
-				(at -10.16 0 0)
-				(length 3.81)
-				(name "D2+"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "4"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin passive line
-				(at -10.16 -2.54 0)
-				(length 3.81)
-				(name "D2-"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "5"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin passive line
-				(at 10.16 7.62 180)
-				(length 3.81)
-				(name "NC"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "10"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin passive line
-				(at 10.16 5.08 180)
-				(length 3.81)
-				(name "NC"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "9"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin passive line
-				(at 10.16 0 180)
-				(length 3.81)
-				(name "NC"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "7"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin passive line
-				(at 10.16 -2.54 180)
-				(length 3.81)
-				(name "NC"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "6"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin power_in line
-				(at -2.54 -17.78 90)
-				(length 3.81)
-				(name "GND"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "3"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin power_in line
-				(at 2.54 -17.78 90)
-				(length 3.81)
-				(name "GND"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "8"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -1381,11 +1098,294 @@
 			)
 		)
 		(embedded_fonts no)
+	)
+(symbol "texas-instruments:TPD4E05U06DQAR"
+		(pin_names
+			(offset 1.016)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(property "Reference" "U"
+			(at -6.35 15.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "TPD4E05U06DQAR"
+			(at -6.35 -20.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "texas-instruments:Texas_DQA0010A_USON-10_1x2.5mm_P0.5mm"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://www.ti.com/lit/ds/symlink/tpd4e05u06.pdf"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "4-channel ESD protection, 0.5 pF, 5.5 V stand-off, IEC 61000-4-2 level 4, flow-through routing, USON-10 (DQA0010A) 1 x 2.5 mm"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "Texas Instruments"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "TPD4E05U06DQAR"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_keywords" "ESD TVS protection USB high-speed low capacitance TPD4E05U06 USON DQA"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_fp_filters" "Texas_DQA0010A_USON-10_1x2.5mm_P0.5mm*"
+			(at 0 0 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "TPD4E05U06DQAR_1_1"
+			(rectangle
+				(start -6.35 13.97)
+				(end 6.35 -13.97)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type background)
+				)
+			)
+			(pin passive line
+				(at -10.16 7.62 0)
+				(length 3.81)
+				(name "D1+"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at -10.16 5.08 0)
+				(length 3.81)
+				(name "D1-"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at -10.16 0 0)
+				(length 3.81)
+				(name "D2+"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "4"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at -10.16 -2.54 0)
+				(length 3.81)
+				(name "D2-"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "5"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 10.16 7.62 180)
+				(length 3.81)
+				(name "NC"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "10"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 10.16 5.08 180)
+				(length 3.81)
+				(name "NC"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "9"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 10.16 0 180)
+				(length 3.81)
+				(name "NC"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "7"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 10.16 -2.54 180)
+				(length 3.81)
+				(name "NC"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "6"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin power_in line
+				(at -2.54 -17.78 90)
+				(length 3.81)
+				(name "GND"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "3"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin power_in line
+				(at 2.54 -17.78 90)
+				(length 3.81)
+				(name "GND"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "8"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
 	))
-(symbol (lib_id "Hirose:DM3AT-SF-PEJM5") (at 53.34 73.66 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "85db381f-709c-58e6-a0ae-29c0b96378f7")
+(symbol (lib_id "hirose:DM3AT-SF-PEJM5") (at 53.34 73.66 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "85db381f-709c-58e6-a0ae-29c0b96378f7")
   (property "Reference" "J6201" (at 54.61 49.53 0) (effects (font (size 1.27 1.27)) (justify left)))
   (property "Value" "DM3AT-SF-PEJM5" (at 54.61 46.99 0) (effects (font (size 1.27 1.27)) (justify left)))
-  (property "Footprint" "Hirose:Hirose_DM3AT-SF-PEJM5_microSD_PushPush_Top" (at 53.34 73.66 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Footprint" "hirose:Hirose_DM3AT-SF-PEJM5_microSD_PushPush_Top" (at 53.34 73.66 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Datasheet" "https://www.hirose.com/en/product/series/DM3" (at 53.34 73.66 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Description" "microSD card connector, push-push, top board mounting, SMT, normally-open card-detection switch" (at 53.34 73.66 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Manufacturer" "Hirose" (at 53.34 73.66 0) (effects (font (size 1.27 1.27))) (hide yes))
@@ -1593,10 +1593,10 @@
 (wire (pts (xy 143.51 106.68) (xy 146.05 106.68)) (stroke (width 0) (type default)) (uuid "3d153e6c-394f-5941-8bc0-2074f8b82020"))
 (rectangle (start 120.65 35.56) (end 187.96 114.3) (stroke (width 0) (type dash)) (fill (type none)) (uuid "7a85fbc0-1d80-570b-bd96-2041f38c2983"))
 (text "Series resistors (HDG p. 52)" (exclude_from_sim no) (at 121.92 34.29 0) (effects (font (size 2.54 2.54)) (justify left bottom)) (uuid "44deb468-5ed5-5efc-9c4e-eeec4ccd5412"))
-(symbol (lib_id "Texas_Instruments:TPD4E05U06DQAR") (at 218.44 59.69 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "9a06093b-db36-5fb3-bdd4-5dc61980bc12")
+(symbol (lib_id "texas-instruments:TPD4E05U06DQAR") (at 218.44 59.69 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "9a06093b-db36-5fb3-bdd4-5dc61980bc12")
   (property "Reference" "U6201" (at 212.09 43.18 0) (effects (font (size 1.27 1.27)) (justify left)))
   (property "Value" "TPD4E05U06DQAR" (at 212.09 40.64 0) (effects (font (size 1.27 1.27)) (justify left)))
-  (property "Footprint" "Texas_Instruments:Texas_DQA0010A_USON-10_1x2.5mm_P0.5mm" (at 218.44 59.69 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Footprint" "texas-instruments:Texas_DQA0010A_USON-10_1x2.5mm_P0.5mm" (at 218.44 59.69 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Datasheet" "https://www.ti.com/lit/ds/symlink/tpd4e05u06.pdf" (at 218.44 59.69 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Description" "4-channel ESD protection, 0.5 pF, 5.5 V stand-off, IEC 61000-4-2 level 4, flow-through routing, USON-10 (DQA0010A) 1 x 2.5 mm" (at 218.44 59.69 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Manufacturer" "Texas Instruments" (at 218.44 59.69 0) (effects (font (size 1.27 1.27))) (hide yes))
@@ -1635,10 +1635,10 @@
 (no_connect (at 228.6 54.61) (uuid "c2d2edf2-78cb-56f1-8f7e-f126da240915"))
 (no_connect (at 228.6 59.69) (uuid "8c77dbb9-abd9-5d7b-9dcc-4194186d8116"))
 (no_connect (at 228.6 62.23) (uuid "9122fd28-6530-58a5-88f4-4d6527dc8f37"))
-(symbol (lib_id "Texas_Instruments:TPD4E05U06DQAR") (at 260.35 59.69 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "7d69dd7a-38d5-5139-baed-e55b9d317a54")
+(symbol (lib_id "texas-instruments:TPD4E05U06DQAR") (at 260.35 59.69 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "7d69dd7a-38d5-5139-baed-e55b9d317a54")
   (property "Reference" "U6202" (at 254 43.18 0) (effects (font (size 1.27 1.27)) (justify left)))
   (property "Value" "TPD4E05U06DQAR" (at 254 40.64 0) (effects (font (size 1.27 1.27)) (justify left)))
-  (property "Footprint" "Texas_Instruments:Texas_DQA0010A_USON-10_1x2.5mm_P0.5mm" (at 260.35 59.69 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Footprint" "texas-instruments:Texas_DQA0010A_USON-10_1x2.5mm_P0.5mm" (at 260.35 59.69 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Datasheet" "https://www.ti.com/lit/ds/symlink/tpd4e05u06.pdf" (at 260.35 59.69 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Description" "4-channel ESD protection, 0.5 pF, 5.5 V stand-off, IEC 61000-4-2 level 4, flow-through routing, USON-10 (DQA0010A) 1 x 2.5 mm" (at 260.35 59.69 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Manufacturer" "Texas Instruments" (at 260.35 59.69 0) (effects (font (size 1.27 1.27))) (hide yes))

@@ -297,7 +297,7 @@
 		)
 		(embedded_fonts no)
 	)
-(symbol "Hirose:DF40C-50DS-0.4V(51)"
+(symbol "hirose:DF40C-50DS-0.4V(51)"
 		(pin_names
 			(offset 1.016)
 		)
@@ -322,7 +322,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Hirose:Hirose_DF40C-50DS-0.4V_2x25_P0.4mm_Vertical"
+		(property "Footprint" "hirose:Hirose_DF40C-50DS-0.4V_2x25_P0.4mm_Vertical"
 			(at 0 0 0)
 			(hide yes)
 			(effects
@@ -1554,10 +1554,10 @@
 		)
 		(embedded_fonts no)
 	))
-(symbol (lib_id "Hirose:DF40C-50DS-0.4V(51)") (at 77.47 87.63 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "5f5497d4-9e84-590c-b0b0-b08835a3911d")
+(symbol (lib_id "hirose:DF40C-50DS-0.4V(51)") (at 77.47 87.63 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "5f5497d4-9e84-590c-b0b0-b08835a3911d")
   (property "Reference" "J4701" (at 66.04 48.26 0) (effects (font (size 1.27 1.27)) (justify left)))
   (property "Value" "DF40C-50DS-0.4V(51)" (at 66.04 45.72 0) (effects (font (size 1.27 1.27)) (justify left)))
-  (property "Footprint" "Hirose:Hirose_DF40C-50DS-0.4V_2x25_P0.4mm_Vertical" (at 77.47 87.63 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Footprint" "hirose:Hirose_DF40C-50DS-0.4V_2x25_P0.4mm_Vertical" (at 77.47 87.63 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Datasheet" "https://www.hirose.com/en/product/document?clcode=&productname=&series=DF40&documenttype=Catalog&lang=en&documentid=en_DF40_CAT" (at 77.47 87.63 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Description" "DF40 board-to-FPC receptacle, 50 contacts, 0.4 mm pitch, 2 rows, 1.5 mm stack with DF40C-50DP, vertical SMT, no metal fitting" (at 77.47 87.63 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Manufacturer" "Hirose" (at 77.47 87.63 0) (effects (font (size 1.27 1.27))) (hide yes))

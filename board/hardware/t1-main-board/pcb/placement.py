@@ -286,7 +286,7 @@ class Placer:
             self.commit(ref, x, y, rot, side, zone)
         # battery contacts, rotated 90 so the 7.0 mm pad runs along y (PCB-L-04)
         for c in sorted(self.nl.components.values(), key=lambda c: c.ref):
-            if not c.footprint.startswith("KYOCERA_AVX:"):
+            if not c.footprint.startswith("kyocera-avx:"):
                 continue
             net = nlmod.short(c.pins.get("1", ""))
             for key, slots in plan.CONTACT_ORDER.items():

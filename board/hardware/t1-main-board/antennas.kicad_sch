@@ -297,7 +297,7 @@
 		)
 		(embedded_fonts no)
 	)
-(symbol "Hirose:U.FL-R-SMT-1"
+(symbol "hirose:U.FL-R-SMT-1"
 		(pin_names
 			(offset 1.016)
 		)
@@ -322,7 +322,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Hirose:Hirose_U.FL-R-SMT-1_Vertical"
+		(property "Footprint" "hirose:Hirose_U.FL-R-SMT-1_Vertical"
 			(at 0 0 0)
 			(hide yes)
 			(effects
@@ -619,10 +619,10 @@
   (pin "1" (uuid "d35f87ed-14b5-5a3e-bd0e-d91df82fc612"))
   (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/cd42149b-9c25-54cb-87d6-a01fc7fce92f" (reference "#PWR0693") (unit 1))))
 )
-(symbol (lib_id "Hirose:U.FL-R-SMT-1") (at 78.74 53.34 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "f19681f4-7045-51e3-90d7-55d2deced0c6")
+(symbol (lib_id "hirose:U.FL-R-SMT-1") (at 78.74 53.34 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "f19681f4-7045-51e3-90d7-55d2deced0c6")
   (property "Reference" "J5201" (at 73.66 43.18 0) (effects (font (size 1.27 1.27)) (justify left)))
   (property "Value" "U.FL-R-SMT-1" (at 73.66 40.64 0) (effects (font (size 1.27 1.27)) (justify left)))
-  (property "Footprint" "Hirose:Hirose_U.FL-R-SMT-1_Vertical" (at 78.74 53.34 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Footprint" "hirose:Hirose_U.FL-R-SMT-1_Vertical" (at 78.74 53.34 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Datasheet" "https://www.hirose.com/en/product/series/U.FL" (at 78.74 53.34 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Description" "U.FL ultra-small SMT coaxial receptacle, 50 ohm, DC to 6 GHz, 2.6 x 2.6 mm, 1.25 mm high" (at 78.74 53.34 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Manufacturer" "Hirose" (at 78.74 53.34 0) (effects (font (size 1.27 1.27))) (hide yes))
@@ -706,10 +706,10 @@
   (pin "1" (uuid "bc341989-bf05-5d54-b2db-df28ef153048"))
   (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/cd42149b-9c25-54cb-87d6-a01fc7fce92f" (reference "#PWR0696") (unit 1))))
 )
-(symbol (lib_id "Hirose:U.FL-R-SMT-1") (at 214.63 53.34 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "2a2c9486-7e83-5470-bc7a-55e8c1fdbe14")
+(symbol (lib_id "hirose:U.FL-R-SMT-1") (at 214.63 53.34 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "2a2c9486-7e83-5470-bc7a-55e8c1fdbe14")
   (property "Reference" "J5202" (at 209.55 43.18 0) (effects (font (size 1.27 1.27)) (justify left)))
   (property "Value" "U.FL-R-SMT-1" (at 209.55 40.64 0) (effects (font (size 1.27 1.27)) (justify left)))
-  (property "Footprint" "Hirose:Hirose_U.FL-R-SMT-1_Vertical" (at 214.63 53.34 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Footprint" "hirose:Hirose_U.FL-R-SMT-1_Vertical" (at 214.63 53.34 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Datasheet" "https://www.hirose.com/en/product/series/U.FL" (at 214.63 53.34 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Description" "U.FL ultra-small SMT coaxial receptacle, 50 ohm, DC to 6 GHz, 2.6 x 2.6 mm, 1.25 mm high" (at 214.63 53.34 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Manufacturer" "Hirose" (at 214.63 53.34 0) (effects (font (size 1.27 1.27))) (hide yes))

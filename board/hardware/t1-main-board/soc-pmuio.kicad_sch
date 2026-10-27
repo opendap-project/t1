@@ -297,7 +297,7 @@
 		)
 		(embedded_fonts no)
 	)
-(symbol "OpenDAP_Device:Crystal_GND24"
+(symbol "opendap-generic:Crystal_GND24"
 		(pin_names
 			(offset 1.016)
 			(hide yes)
@@ -522,13 +522,267 @@
 		)
 		(embedded_fonts no)
 	)
-(symbol "Rockchip:RK3566"
+(symbol "power:GND"
+		(power global)
+		(pin_numbers
+			(hide yes)
+		)
+		(pin_names
+			(offset 0)
+			(hide yes)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(duplicate_pin_numbers_are_jumpers no)
+		(property "Reference" "#PWR"
+			(at 0 -6.35 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 0 -3.81 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_keywords" "global power"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "GND_0_1"
+			(polyline
+				(pts
+					(xy 0 0) (xy 0 -1.27) (xy 1.27 -1.27) (xy 0 -2.54) (xy -1.27 -1.27) (xy 0 -1.27)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+		)
+		(symbol "GND_1_1"
+			(pin power_in line
+				(at 0 0 270)
+				(length 0)
+				(name ""
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
+(symbol "power:VCC"
+		(power global)
+		(pin_numbers
+			(hide yes)
+		)
+		(pin_names
+			(offset 0)
+			(hide yes)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(duplicate_pin_numbers_are_jumpers no)
+		(property "Reference" "#PWR"
+			(at 0 -3.81 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "VCC"
+			(at 0 3.556 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"VCC\""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_keywords" "global power"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "VCC_0_1"
+			(polyline
+				(pts
+					(xy -0.762 1.27) (xy 0 2.54)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 0 2.54) (xy 0.762 1.27)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 0 0) (xy 0 2.54)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+		)
+		(symbol "VCC_1_1"
+			(pin power_in line
+				(at 0 0 90)
+				(length 0)
+				(name ""
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
+(symbol "rockchip:RK3566"
 		(pin_names (offset 1.016))
 		(exclude_from_sim no) (in_bom yes) (on_board yes) (in_pos_files yes)
 		(duplicate_pin_numbers_are_jumpers no)
 		(property "Reference" "U" (at -72.39 40.64 0) (effects (font (size 1.27 1.27)) (justify left)))
 		(property "Value" "RK3566" (at 72.39 40.64 0) (effects (font (size 1.27 1.27)) (justify right)))
-		(property "Footprint" "Rockchip:Rockchip_FCCSP-565L_15.5x14.4mm_P0.4mm_P0.65mm_Ball0.25mm_Pad0.25mm_NSMD" (at 0 0 0) (hide yes) (effects (font (size 1.27 1.27))))
+		(property "Footprint" "rockchip:Rockchip_FCCSP-565L_15.5x14.4mm_P0.4mm_P0.65mm_Ball0.25mm_Pad0.25mm_NSMD" (at 0 0 0) (hide yes) (effects (font (size 1.27 1.27))))
 		(property "Datasheet" "https://dl.xkwy2018.com/downloads/RK3568/Rockchip-RK3566-Datasheet-V1.1-20210305.pdf" (at 0 0 0) (hide yes) (effects (font (size 1.27 1.27))))
 		(property "Description" "Quad-core Arm Cortex-A55 application processor, LPDDR4X/DDR4 32-bit, eMMC 5.1, FCCSP565L 15.5 x 14.4 mm" (at 0 0 0) (hide yes) (effects (font (size 1.27 1.27))))
 		(property "Manufacturer" "Rockchip" (at 0 0 0) (hide yes) (effects (font (size 1.27 1.27))))
@@ -1201,265 +1455,11 @@
 			(pin power_in line (at 76.2 -20.32 90) (length 6.35) (name "VSS_131" (effects (font (size 1.27 1.27)))) (number "1V4" (effects (font (size 1.27 1.27)))))
 		)
 		(embedded_fonts no)
-	)
-(symbol "power:GND"
-		(power global)
-		(pin_numbers
-			(hide yes)
-		)
-		(pin_names
-			(offset 0)
-			(hide yes)
-		)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(duplicate_pin_numbers_are_jumpers no)
-		(property "Reference" "#PWR"
-			(at 0 -6.35 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "GND"
-			(at 0 -3.81 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 0 0 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 0 0 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 0 0 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "ki_keywords" "global power"
-			(at 0 0 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(symbol "GND_0_1"
-			(polyline
-				(pts
-					(xy 0 0) (xy 0 -1.27) (xy 1.27 -1.27) (xy 0 -2.54) (xy -1.27 -1.27) (xy 0 -1.27)
-				)
-				(stroke
-					(width 0)
-					(type default)
-				)
-				(fill
-					(type none)
-				)
-			)
-		)
-		(symbol "GND_1_1"
-			(pin power_in line
-				(at 0 0 270)
-				(length 0)
-				(name ""
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "1"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-		)
-		(embedded_fonts no)
-	)
-(symbol "power:VCC"
-		(power global)
-		(pin_numbers
-			(hide yes)
-		)
-		(pin_names
-			(offset 0)
-			(hide yes)
-		)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(duplicate_pin_numbers_are_jumpers no)
-		(property "Reference" "#PWR"
-			(at 0 -3.81 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "VCC"
-			(at 0 3.556 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 0 0 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 0 0 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"VCC\""
-			(at 0 0 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "ki_keywords" "global power"
-			(at 0 0 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(symbol "VCC_0_1"
-			(polyline
-				(pts
-					(xy -0.762 1.27) (xy 0 2.54)
-				)
-				(stroke
-					(width 0)
-					(type default)
-				)
-				(fill
-					(type none)
-				)
-			)
-			(polyline
-				(pts
-					(xy 0 2.54) (xy 0.762 1.27)
-				)
-				(stroke
-					(width 0)
-					(type default)
-				)
-				(fill
-					(type none)
-				)
-			)
-			(polyline
-				(pts
-					(xy 0 0) (xy 0 2.54)
-				)
-				(stroke
-					(width 0)
-					(type default)
-				)
-				(fill
-					(type none)
-				)
-			)
-		)
-		(symbol "VCC_1_1"
-			(pin power_in line
-				(at 0 0 90)
-				(length 0)
-				(name ""
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "1"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-		)
-		(embedded_fonts no)
 	))
-(symbol (lib_id "Rockchip:RK3566") (at 92.71 59.69 0) (unit 4) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "7aebe715-e4e3-58df-9870-feaf76ba1fe4")
+(symbol (lib_id "rockchip:RK3566") (at 92.71 59.69 0) (unit 4) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "7aebe715-e4e3-58df-9870-feaf76ba1fe4")
   (property "Reference" "U1301" (at 50.8 35.56 0) (effects (font (size 1.27 1.27)) (justify left)))
   (property "Value" "RK3566" (at 50.8 33.02 0) (effects (font (size 1.27 1.27)) (justify left)))
-  (property "Footprint" "Rockchip:Rockchip_FCCSP-565L_15.5x14.4mm_P0.4mm_P0.65mm_Ball0.25mm_Pad0.25mm_NSMD" (at 92.71 59.69 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Footprint" "rockchip:Rockchip_FCCSP-565L_15.5x14.4mm_P0.4mm_P0.65mm_Ball0.25mm_Pad0.25mm_NSMD" (at 92.71 59.69 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Datasheet" "https://dl.xkwy2018.com/downloads/RK3568/Rockchip-RK3566-Datasheet-V1.1-20210305.pdf" (at 92.71 59.69 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Description" "Quad-core Arm Cortex-A55 application processor, LPDDR4X/DDR4 32-bit, eMMC 5.1, FCCSP565L 15.5 x 14.4 mm" (at 92.71 59.69 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Manufacturer" "Rockchip" (at 92.71 59.69 0) (effects (font (size 1.27 1.27))) (hide yes))
@@ -1498,10 +1498,10 @@
 (wire (pts (xy 44.45 72.39) (xy 41.91 72.39)) (stroke (width 0) (type default)) (uuid "1f439a3f-9a2e-5aad-992f-cd5ed6f52e58"))
 (wire (pts (xy 44.45 74.93) (xy 41.91 74.93)) (stroke (width 0) (type default)) (uuid "23027687-b1b6-59c7-8b59-0e19f67266fa"))
 (wire (pts (xy 140.97 41.91) (xy 143.51 41.91)) (stroke (width 0) (type default)) (uuid "c0cb1f0e-4db9-5963-828f-fb4f901f6784"))
-(symbol (lib_id "Rockchip:RK3566") (at 223.52 64.77 0) (unit 5) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "af54a52f-422c-5041-8f67-dbf52b0c9024")
+(symbol (lib_id "rockchip:RK3566") (at 223.52 64.77 0) (unit 5) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "af54a52f-422c-5041-8f67-dbf52b0c9024")
   (property "Reference" "U1301" (at 184.15 35.56 0) (effects (font (size 1.27 1.27)) (justify left)))
   (property "Value" "RK3566" (at 184.15 33.02 0) (effects (font (size 1.27 1.27)) (justify left)))
-  (property "Footprint" "Rockchip:Rockchip_FCCSP-565L_15.5x14.4mm_P0.4mm_P0.65mm_Ball0.25mm_Pad0.25mm_NSMD" (at 223.52 64.77 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Footprint" "rockchip:Rockchip_FCCSP-565L_15.5x14.4mm_P0.4mm_P0.65mm_Ball0.25mm_Pad0.25mm_NSMD" (at 223.52 64.77 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Datasheet" "https://dl.xkwy2018.com/downloads/RK3568/Rockchip-RK3566-Datasheet-V1.1-20210305.pdf" (at 223.52 64.77 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Description" "Quad-core Arm Cortex-A55 application processor, LPDDR4X/DDR4 32-bit, eMMC 5.1, FCCSP565L 15.5 x 14.4 mm" (at 223.52 64.77 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Manufacturer" "Rockchip" (at 223.52 64.77 0) (effects (font (size 1.27 1.27))) (hide yes))
@@ -1546,10 +1546,10 @@
 (wire (pts (xy 177.8 80.01) (xy 175.26 80.01)) (stroke (width 0) (type default)) (uuid "f2e25a63-29eb-5074-9570-443b320f7bd7"))
 (wire (pts (xy 177.8 82.55) (xy 175.26 82.55)) (stroke (width 0) (type default)) (uuid "e7aa4804-0cb2-595b-b187-69dda03760f9"))
 (wire (pts (xy 177.8 85.09) (xy 175.26 85.09)) (stroke (width 0) (type default)) (uuid "8f5520bd-6f34-519b-a21d-3ab807cd63d8"))
-(symbol (lib_id "Rockchip:RK3566") (at 311.15 46.99 0) (unit 19) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "556f4369-08a6-58fa-9f16-cdf2f9724bf7")
+(symbol (lib_id "rockchip:RK3566") (at 311.15 46.99 0) (unit 19) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "556f4369-08a6-58fa-9f16-cdf2f9724bf7")
   (property "Reference" "U1301" (at 299.72 35.56 0) (effects (font (size 1.27 1.27)) (justify left)))
   (property "Value" "RK3566" (at 299.72 33.02 0) (effects (font (size 1.27 1.27)) (justify left)))
-  (property "Footprint" "Rockchip:Rockchip_FCCSP-565L_15.5x14.4mm_P0.4mm_P0.65mm_Ball0.25mm_Pad0.25mm_NSMD" (at 311.15 46.99 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Footprint" "rockchip:Rockchip_FCCSP-565L_15.5x14.4mm_P0.4mm_P0.65mm_Ball0.25mm_Pad0.25mm_NSMD" (at 311.15 46.99 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Datasheet" "https://dl.xkwy2018.com/downloads/RK3568/Rockchip-RK3566-Datasheet-V1.1-20210305.pdf" (at 311.15 46.99 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Description" "Quad-core Arm Cortex-A55 application processor, LPDDR4X/DDR4 32-bit, eMMC 5.1, FCCSP565L 15.5 x 14.4 mm" (at 311.15 46.99 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Manufacturer" "Rockchip" (at 311.15 46.99 0) (effects (font (size 1.27 1.27))) (hide yes))
@@ -1568,7 +1568,7 @@
 (wire (pts (xy 293.37 49.53) (xy 290.83 49.53)) (stroke (width 0) (type default)) (uuid "da684b7c-4f0e-59c8-a3e9-b50e0a4854bd"))
 (rectangle (start 25.4 125.73) (end 129.54 171.45) (stroke (width 0) (type dash)) (fill (type none)) (uuid "9a33fb57-d803-5b09-a4c3-7e16ee7330b1"))
 (text "24 MHz crystal (HDG 1.1 pp. 16-17)" (exclude_from_sim no) (at 26.67 124.46 0) (effects (font (size 2.54 2.54)) (justify left bottom)) (uuid "87a30814-3966-5288-828a-607f83a59741"))
-(symbol (lib_id "OpenDAP_Device:Crystal_GND24") (at 76.2 148.59 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "eac88e4b-2891-5eaf-9c46-3b21b24e5bfd")
+(symbol (lib_id "opendap-generic:Crystal_GND24") (at 76.2 148.59 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "eac88e4b-2891-5eaf-9c46-3b21b24e5bfd")
   (property "Reference" "Y1301" (at 80.01 143.51 0) (effects (font (size 1.27 1.27)) (justify left)))
   (property "Value" "24 MHz" (at 80.01 154.94 0) (effects (font (size 1.27 1.27)) (justify left)))
   (property "Footprint" "Crystal:Crystal_SMD_3225-4Pin_3.2x2.5mm" (at 76.2 148.59 0) (effects (font (size 1.27 1.27))) (hide yes))

@@ -88,45 +88,45 @@ CORRIDORS = {
 KLIB = None
 PARTS = [
     # ref, library, footprint, x, y, rot, side, fields
-    ("U1", "Rockchip", "Rockchip_FCCSP-565L_15.5x14.4mm_P0.4mm_P0.65mm_Ball0.25mm_Pad0.25mm_NSMD",
+    ("U1", "rockchip", "Rockchip_FCCSP-565L_15.5x14.4mm_P0.4mm_P0.65mm_Ball0.25mm_Pad0.25mm_NSMD",
      0.0, 10.0, 0, "B", {"Rework": "BGA", "Thermal": "hot", "Block": "blk.soc"}),
-    ("U2", "Micron", "LPDDR4_FBGA-200_10.0x15.0mm_Layout12x22_P0.8x0.65mm_Pad0.3mm_NSMD",
+    ("U2", "micron", "LPDDR4_FBGA-200_10.0x15.0mm_Layout12x22_P0.8x0.65mm_Pad0.3mm_NSMD",
      16.75, 11.0, 0, "B", {"Rework": "BGA", "Block": "blk.lpddr4x"}),
-    ("U3", "Samsung", "Samsung_FBGA-153_11.5x13.0mm_Layout14x14_P0.5mm_Ball0.3mm_Pad0.25mm_NSMD",
+    ("U3", "samsung", "Samsung_FBGA-153_11.5x13.0mm_Layout14x14_P0.5mm_Ball0.3mm_Pad0.25mm_NSMD",
      -17.75, 12.0, 0, "B", {"Rework": "BGA", "Block": "blk.emmc"}),
-    ("U4", "Rockchip_PMIC", "QFN-68-1EP_7x7mm_P0.35mm_EP5.49x5.49mm_ThermalVias",
+    ("U4", "rockchip", "QFN-68-1EP_7x7mm_P0.35mm_EP5.49x5.49mm_ThermalVias",
      -6.0, -4.5, 0, "B", {"Thermal": "hot", "Block": "blk.pmic"}),
-    ("U5", "Raspberry_Pi", "QFN-60-1EP_7x7mm_P0.4mm_EP3.4x3.4mm_ThermalVias",
+    ("U5", "raspberry-pi", "QFN-60-1EP_7x7mm_P0.4mm_EP3.4x3.4mm_ThermalVias",
      -16.0, 0.0, 0, "F", {"Block": "blk.rp2354"}),
-    ("U6", "Cirrus_Logic", "QFN-40-1EP_5x5mm_P0.4mm_EP3.5x3.5mm_ThermalVias",
+    ("U6", "cirrus-logic", "QFN-40-1EP_5x5mm_P0.4mm_EP3.5x3.5mm_ThermalVias",
      -20.0, -18.0, 0, "B", {"Block": "blk.dac-l"}),
-    ("U7", "Cirrus_Logic", "QFN-40-1EP_5x5mm_P0.4mm_EP3.5x3.5mm_ThermalVias",
+    ("U7", "cirrus-logic", "QFN-40-1EP_5x5mm_P0.4mm_EP3.5x3.5mm_ThermalVias",
      -11.5, -18.0, 0, "B", {"Block": "blk.dac-r"}),
-    ("Y1", "NDK", "Oscillator_SMD_NDK_NZ2520SDA-4Pin_2.5x2.0mm", -17.0, -11.0, 0, "B", {"Block": "blk.mclk"}),
-    ("Y2", "NDK", "Oscillator_SMD_NDK_NZ2520SDA-4Pin_2.5x2.0mm", -13.0, -11.0, 0, "B", {"Block": "blk.mclk"}),
+    ("Y1", "ndk", "Oscillator_SMD_NDK_NZ2520SDA-4Pin_2.5x2.0mm", -17.0, -11.0, 0, "B", {"Block": "blk.mclk"}),
+    ("Y2", "ndk", "Oscillator_SMD_NDK_NZ2520SDA-4Pin_2.5x2.0mm", -13.0, -11.0, 0, "B", {"Block": "blk.mclk"}),
     # edge parts: "rot" None = the rotation that puts the pad-free nose (the mouth) at the edge;
     # y is then the edge the courtyard is set against (PCB-M-05 order: 3.5, 4.4, USB-C centred)
-    ("J1", "Same_Sky", "Same_Sky_SJ2-35954D-SMT-TR_Jack_3.5mm_TRRS_Horizontal",
+    ("J1", "same-sky", "Same_Sky_SJ2-35954D-SMT-TR_Jack_3.5mm_TRRS_Horizontal",
      -22.3, "bottom", None, "B", {"Block": "blk.jack-se"}),
-    ("J2", "G_Switch", "G_Switch_GT-3321667P-01_Jack_4.4mm_5Pole_Horizontal",
+    ("J2", "g-switch", "G_Switch_GT-3321667P-01_Jack_4.4mm_5Pole_Horizontal",
      -11.55, "bottom", None, "B", {"Block": "blk.jack-bal"}),
-    ("J3", "GCT", "GCT_USB4105-GF-A_USB-C_Receptacle_USB2.0_Horizontal",
+    ("J3", "gct", "GCT_USB4105-GF-A_USB-C_Receptacle_USB2.0_Horizontal",
      0.0, "bottom", None, "B", {"Block": "blk.usb-c"}),
-    ("J4", "Hirose", "Hirose_DM3AT-SF-PEJM5_microSD_PushPush_Top",
+    ("J4", "hirose", "Hirose_DM3AT-SF-PEJM5_microSD_PushPush_Top",
      13.0, "top", None, "B", {"Block": "blk.microsd"}),
-    ("J5", "Hirose", "Hirose_U.FL-R-SMT-1_Vertical", -18.5, 41.5, 0, "B", {"Block": "blk.antennas"}),
-    ("J6", "Hirose", "Hirose_U.FL-R-SMT-1_Vertical", -9.0, 41.5, 0, "B", {"Block": "blk.antennas"}),
+    ("J5", "hirose", "Hirose_U.FL-R-SMT-1_Vertical", -18.5, 41.5, 0, "B", {"Block": "blk.antennas"}),
+    ("J6", "hirose", "Hirose_U.FL-R-SMT-1_Vertical", -9.0, 41.5, 0, "B", {"Block": "blk.antennas"}),
     # FH35C: in the faceplate connection area, clear of the USB-C and jack through-hole pins
-    ("J8", "Hirose", "Hirose_FH35C-51S-0.3SHW_1x51-1MP_P0.3mm_Horizontal",
+    ("J8", "hirose", "Hirose_FH35C-51S-0.3SHW_1x51-1MP_P0.3mm_Horizontal",
      2.5, -32.9, 0, "F", {"Block": "blk.fp-connector"}),
-    ("U8", "Texas_Instruments", "Texas_RPJ0009A_VQFN-HR-9_1.5x2mm_P0.5mm", 16.0, -18.0, 0, "B",
+    ("U8", "texas-instruments", "Texas_RPJ0009A_VQFN-HR-9_1.5x2mm_P0.5mm", 16.0, -18.0, 0, "B",
      {"Thermal": "hot", "Block": "blk.pwr-5v1"}),
 ]
 # Battery contacts (ADR 0020): six KYOCERA AVX 70-9258-001-120-006 on a row at 3.5 mm pitch at the
 # pocket's bottom end, order P+, P+, empty, mid-cell tap, NTC, P-, P-; placed on the power side.
 CONTACT_PITCH = 3.5
 CONTACT_X0, CONTACT_Y = -2.0, -23.5
-CONTACT_FP = ("KYOCERA_AVX", "KYOCERA_AVX_9258-100_70-9258-001-120-006_SpringFinger_Pad7.0x2.7mm")
+CONTACT_FP = ("kyocera-avx", "KYOCERA_AVX_9258-100_70-9258-001-120-006_SpringFinger_Pad7.0x2.7mm")
 # Mounting holes (PCB-M-08, PCB-H): positions UNVERIFIED until the case; 2.2 mm (M2 class).
 HOLES = [(-24.15, 41.55), (24.15, 41.55), (-24.9, -27.0), (24.9, -27.0)]
 

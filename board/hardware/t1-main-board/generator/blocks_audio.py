@@ -137,17 +137,17 @@ def parts_group(s, title, rows, x_max=None):
 def draw_supply(s, variants):
     blk = s.block
     f = Flow(s)
-    grp(f, lambda: ic_group(s, "DAC_VP switch", "Texas_Instruments", "TPS22919DCKR",
+    grp(f, lambda: ic_group(s, "DAC_VP switch", "texas-instruments", "TPS22919DCKR",
                             {"IN": "VSYS_LV_AUDIO", "ON": "DAC_VP_EN", "NC": None, "VOUT": "DAC_VP", "QOD": "DAC_VP",
                              "GND": "GND"}, rows=[[("C_1u_0402", "VSYS_LV_AUDIO", "GND")]]))
-    grp(f, lambda: ic_group(s, "DAC_DIG_1V8 switch", "Texas_Instruments", "TPS22919DCKR",
+    grp(f, lambda: ic_group(s, "DAC_DIG_1V8 switch", "texas-instruments", "TPS22919DCKR",
                             {"IN": "vcc_1v8", "ON": "DAC_DIG_EN", "NC": None, "VOUT": "DAC_DIG_1V8_SRC",
                              "QOD": "DAC_DIG_1V8_SRC", "GND": "GND"}, rows=[[("C_1u_0402", "vcc_1v8", "GND")]]))
     grp(f, lambda: link_group(s, "LINK_L1", "DAC_DIG_1V8_SRC", "DAC_DIG_1V8", variants, "Link #25"))
 
     def buck():
         g = Group(s, "AUDIO_2V2 pre-buck (TPS62840)")
-        u = ic(s, "Texas_Instruments", "TPS62840DLCR", 101.6, 101.6,
+        u = ic(s, "texas-instruments", "TPS62840DLCR", 101.6, 101.6,
                {"VIN": "VSYS_LV_AUDIO", "EN": "AUDIO_LN_EN", "MODE": "GND", "STOP": "GND", "VSET": "AUDIO_VSET",
                 "SW": "AUDIO_SW", "VOS": "AUDIO_2V2_SRC", "GND": "GND"})
         g.add(u.bbox)
@@ -185,15 +185,15 @@ def draw_supply(s, variants):
 def draw_mclk(s, variants):
     blk = s.block
     f = Flow(s)
-    grp(f, lambda: ic_group(s, "Interlock (G3)", "Texas_Instruments", "SN74LVC1G57DCKR",
+    grp(f, lambda: ic_group(s, "Interlock (G3)", "texas-instruments", "SN74LVC1G57DCKR",
                             {"In0": "vcca1v8_pmu", "In1": "AUDIO_LN_EN", "In2": "DAC_DIG_1V8", "Y": "MCLK_3V1_EN",
                              "VCC": "vcca1v8_pmu", "GND": "GND"}, rows=[[("C_100n_0402", "vcca1v8_pmu", "GND")]]))
     grp(f, lambda: link_group(s, "LINK_L1", "VSYS_LV_AUDIO", "MCLK3V1_IN", variants, "Link #27"))
-    grp(f, lambda: ic_group(s, "MCLK_3V1 LDO", "Texas_Instruments", "TPS7A2031PDBVR",
+    grp(f, lambda: ic_group(s, "MCLK_3V1 LDO", "texas-instruments", "TPS7A2031PDBVR",
                             {"IN": "MCLK3V1_IN", "EN": "MCLK_3V1_EN", "N/C": None, "OUT": "MCLK_3V1", "GND": "GND"},
                             rows=[[("C_1u_0402", "MCLK3V1_IN", "GND"), ("C_1u_0402", "MCLK_3V1", "GND")]]))
     grp(f, lambda: link_group(s, "LINK_L1", "AUDIO_2V2", "MCLK1V8_IN", variants, "Link #36"))
-    grp(f, lambda: ic_group(s, "MCLK_1V8 LDO (ADR 0019 item 3)", "Texas_Instruments", "TPS7A2018PDBVR",
+    grp(f, lambda: ic_group(s, "MCLK_1V8 LDO (ADR 0019 item 3)", "texas-instruments", "TPS7A2018PDBVR",
                             {"IN": "MCLK1V8_IN", "EN": "DAC_DIG_1V8", "N/C": None, "OUT": "MCLK_1V8", "GND": "GND"},
                             rows=[[("C_1u_0402", "MCLK1V8_IN", "GND"), ("C_1u_0402", "MCLK_1V8", "GND")]]))
 
@@ -202,7 +202,7 @@ def draw_mclk(s, variants):
         for i, (mpn, fam, en, val) in enumerate((("NSC5083D-45.158M", "441", "MCLK441_EN", "45.1584 MHz"),
                                                  ("NSC5083D-49.152M", "48", "MCLK48_EN", "49.152 MHz"))):
             x, y = 101.6 + i * 106.68, 101.6
-            sym = library.load("NDK", mpn)
+            sym = library.load("ndk", mpn)
             pl = s.place(sym, s.next_ref("Y"), x + 38.1, y, fields={"Block": blk}, value=val)
             s.connect_all(pl, {"4": "MCLK_3V1", "2": "GND"})
             st, out = pl.pos(pl.pin("1")), pl.pos(pl.pin("3"))
@@ -225,7 +225,7 @@ def draw_mclk(s, variants):
         g = Group(s, "Dividers by two (ADR 0019 item 2)")
         x = 101.6
         for i, side in enumerate(("L", "R")):
-            u = ic(s, "Texas_Instruments", "SN74AUC1G74DCUR", x, 101.6,
+            u = ic(s, "texas-instruments", "SN74AUC1G74DCUR", x, 101.6,
                    {"D": f"DIV{side}_QN", "CLK": "MCLK_OSC", "~{PRE}": "MCLK_1V8", "~{CLR}": "MCLK_DIV_RUN",
                     "Q": "", "~{Q}": f"DIV{side}_QN", "VCC": "MCLK_1V8", "GND": "GND"})
             q = u.pos(u.pin("Q"))
@@ -301,13 +301,13 @@ def draw_dac(s, variants, side):
             "FLYP_VCP": f"{n}_FLYP_VCP", "FLYC_VCP": f"{n}_FLYC_VCP", "FLYN_VCP": f"{n}_FLYN_VCP",
             "VA": va, "VCP": "DAC_DIG_1V8", "VP": "DAC_VP", "VD": "DAC_DIG_1V8", "VL": "DAC_DIG_1V8",
             "GNDA": "GND", "GNDCP": "GND", "GNDD": "GND", "EP": "GND"}
-    grp(f, lambda: ic_group(s, "CS43198 in mono mode (DS1156F2 Fig. 2-2)", "Cirrus_Logic", "CS43198-CNZR", pins,
+    grp(f, lambda: ic_group(s, "CS43198 in mono mode (DS1156F2 Fig. 2-2)", "cirrus-logic", "CS43198-CNZR", pins,
                             extra={"Constraints": "PCB-A-01 PCB-A-02 PCB-A-04 PCB-A-05"}))
     # the VA supply (link, LDO) as a column beside the converter; the wide capacitor group below
     from blocks_should import column
     col = column(s, f)
     grp(col, lambda: link_group(s, "LINK_L1", "AUDIO_2V2", f"{n}_VA_IN", variants, f"Link #{28 if master else 29}"))
-    grp(col, lambda: ic_group(s, "VA LDO (TPS7A2018)", "Texas_Instruments", "TPS7A2018PDBVR",
+    grp(col, lambda: ic_group(s, "VA LDO (TPS7A2018)", "texas-instruments", "TPS7A2018PDBVR",
                             {"IN": f"{n}_VA_IN", "EN": "AUDIO_LN_EN", "N/C": None, "OUT": va, "GND": "GND"},
                             rows=[[("C_1u_0402", f"{n}_VA_IN", "GND"), ("C_1u_0402", va, "GND")]]))
     grp(f, lambda: parts_group(s, "Supplies and charge pumps (Fig. 2-1)", [
@@ -369,7 +369,7 @@ def draw_rails(s, variants):
 
     def boost():
         g = Group(s, "+7 V pre-rail: TPS65131 boost (ADR 0015 item 2)")
-        u = ic(s, "Texas_Instruments", "TPS65131RGER", 101.6, 101.6,
+        u = ic(s, "texas-instruments", "TPS65131RGER", 101.6, 101.6,
                {"VIN": "HPA_BOOST_VIN", "INP": "HPA_BOOST_SW", "INN": "VSYS_LV_AUDIO", "ENP": "HPA_RAIL_EN",
                 "PSP": "HPA_BOOST_VIN", "ENN": "GND", "PSN": "GND", "NC": None,
                 "VPOS": "AUDIO_P7V0", "FBP": "HPA_BOOST_FB", "CP": "HPA_BOOST_CP", "OUTN": None, "VNEG": "GND",
@@ -405,7 +405,7 @@ def draw_rails(s, variants):
 
     def inverter():
         g = Group(s, "-7 V pre-rail: LMR33630C inverting buck-boost (ADR 0015 item 1)")
-        u = ic(s, "Texas_Instruments", "LMR33630CRNXR", 101.6, 101.6,
+        u = ic(s, "texas-instruments", "LMR33630CRNXR", 101.6, 101.6,
                {"VIN": "VSYS_AUDIO", "EN": "HPA_N7_EN", "NC": None, "SW": "HPA_N7_SW", "BOOT": "HPA_N7_BOOT",
                 "VCC": "HPA_N7_VCC", "FB": "HPA_N7_FB", "PG": None, "PGND": "AUDIO_N7V0", "AGND": "AUDIO_N7V0"})
         g.add(u.bbox)
@@ -476,7 +476,7 @@ def draw_ldos(s, variants):
                     "OUT": tag, "OUTS": tag, "PG": None, "GND": "GND"}
             if name == "LT3094EDD":
                 pins["VIOC"] = None
-            u = ic(s, "Analog_Devices", name, x, 101.6, pins)
+            u = ic(s, "analog-devices", name, x, 101.6, pins)
             g.add(u.bbox)
             nt = two_pin_box(s, "NT_BALLAST", u.bbox[2] + 7.62, u.bbox[1] + 7.62, tag, vout, stub=5.08, above=True)
             g.add(nt)
@@ -562,7 +562,7 @@ def opa_cell(s, title, tag, inp, inn, ref, en, vpos, vneg, leg):
     x, y = 101.6, 101.6
     ba = g.add(diff_half(s, x, y, inp, inn, ref, tag, "A"))
     bb = g.add(diff_half(s, snap(ba[2] + 2.54 + len(inp) * 1.16 + 2.54), y, inp, inn, ref, tag, "B"))
-    u = ic(s, "Texas_Instruments", "OPA1622IDRCR", snap(bb[2] + 22.86), y + 15.24,
+    u = ic(s, "texas-instruments", "OPA1622IDRCR", snap(bb[2] + 22.86), y + 15.24,
            {"+INA": f"{tag}_PA", "-INA": f"{tag}_NA", "+INB": f"{tag}_PB", "-INB": f"{tag}_NB", "EN": en,
             "OUTA": "", "OUTB": "", "V+": vpos, "V-": "", "GND": "GND", "EP": ""},
            extra={"Constraints": "PCB-A-08 PCB-A-09 PCB-A-14 PCB-A-15"})
@@ -702,7 +702,7 @@ def draw_jack_se(s, variants):
 
     def jack():
         g = Group(s, "3.5 mm jack (SJ2-35954D)")
-        u = ic(s, "Same_Sky", "SJ2-35954D-SMT-TR", 101.6, 101.6, prefix="J", pins=
+        u = ic(s, "same-sky", "SJ2-35954D-SMT-TR", 101.6, 101.6, prefix="J", pins=
                {"2": "HPSE_L", "3": "HPSE_R", "4": "GND", "1": "GND", "10": "HP_DET_SE", "11": None},
                extra={"Constraints": "PCB-A-11 PCB-A-17"})
         g.add(u.bbox)
@@ -738,7 +738,7 @@ def draw_jack_bal(s, variants):
 
     def jack():
         g = Group(s, "4.4 mm jack (GT-3321667P-01)")
-        u = ic(s, "G_Switch", "GT-3321667P-01", 101.6, 101.6, prefix="J", pins=
+        u = ic(s, "g-switch", "GT-3321667P-01", 101.6, 101.6, prefix="J", pins=
                {"7": "HPBAL_L_P", "8": "HPBAL_L_P", "6": "HPBAL_L_N", "4": "HPBAL_R_P", "5": "HPBAL_R_P",
                 "2": "HPBAL_R_N", "3": "HPBAL_R_N", "10": "HP_DET_BAL", "9": "GND", "1": "GND"},
                extra={"Constraints": "PCB-A-10 PCB-A-11"})
@@ -769,7 +769,7 @@ def draw_host(s, y0, variants, y_right=None):
     blk = s.block
     s.group_box("DAC I2C isolation (BOM v1 line 133, G2)", 25.4, y0, 132.08, 63.5)
     cap(s, "C_100n_0402", 33.02, y0 + 25.4, "vcca1v8_pmu")
-    ic(s, "Texas_Instruments", "SN74LVC2G66DCUR", 83.82, y0 + 33.02,
+    ic(s, "texas-instruments", "SN74LVC2G66DCUR", 83.82, y0 + 33.02,
        {"1A": "I2C2_SCL", "1B": "DAC_I2C_SCL", "1C": "DAC_DIG_1V8", "2A": "I2C2_SDA", "2B": "DAC_I2C_SDA",
         "2C": "DAC_DIG_1V8", "VCC": "vcca1v8_pmu", "GND": "GND"})
     for i, (net, alt) in enumerate((("SCL", "I2C2_SCL"), ("SDA", "I2C2_SDA"))):

@@ -42,7 +42,7 @@ def efuse_group(s, title, vin, vout, en, rilm, flt, imon):
     pins = {"IN": vin, "OUT": vout, "EN/UVLO": en, "OVLO": "GND", "AUXOFF": None, "FLT": flt,
             "DVDT": None, "ITIMER": None, "ILM": f"{imon}_ILM", "GND": "GND"}
     g = Group(s, title)
-    u = ic(s, "Texas_Instruments", "TPS259470ARPWR", 101.6, 101.6, pins, extra={"Constraints": "PCB-P-11"})
+    u = ic(s, "texas-instruments", "TPS259470ARPWR", 101.6, 101.6, pins, extra={"Constraints": "PCB-P-11"})
     g.add(u.bbox)
     rx, ry = u.bbox[2] + 5.08, u.bbox[1] + 12.7
     b = g.add(prow(s, rx, ry, rows[0]))
@@ -61,15 +61,15 @@ def efuse_group(s, title, vin, vout, en, rilm, flt, imon):
 def draw_usbc(s, variants):
     f = Flow(s)
     grp(f, lambda: ic_group(
-        s, "Receptacle: GCT USB4105-GF-A (BOM v1 line 61)", "GCT", "USB4105-GF-A",
+        s, "Receptacle: GCT USB4105-GF-A (BOM v1 line 61)", "gct", "USB4105-GF-A",
         {"VBUS": "USBC_VBUS", "GND": "GND", "CC1": "USBC_C_CC1", "CC2": "USBC_C_CC2", "Dp1": "USBC_DP_C",
          "Dn1": "USBC_DM_C", "Dp2": "USBC_DP_C", "Dn2": "USBC_DM_C", "SBU1": "USBC_C_SBU1", "SBU2": "USBC_C_SBU2"},
         extra={"Constraints": "PCB-I-01"}, prefix="J"))
     grp(f, lambda: ic_group(
-        s, "VBUS TVS, 22 V flat clamp (line 64)", "Texas_Instruments", "TVS2200DRVR",
+        s, "VBUS TVS, 22 V flat clamp (line 64)", "texas-instruments", "TVS2200DRVR",
         {"IN": "USBC_VBUS", "GND": "GND"}))
     grp(f, lambda: ic_group(
-        s, "CC and SBU protection: TPD8S300A (line 63)", "Texas_Instruments", "TPD8S300ARUKR",
+        s, "CC and SBU protection: TPD8S300A (line 63)", "texas-instruments", "TPD8S300ARUKR",
         {"C_CC1": "USBC_C_CC1", "C_CC2": "USBC_C_CC2", "RPD_G1": "USBC_C_CC1", "RPD_G2": "USBC_C_CC2",
          "CC1": "USBC_CC1", "CC2": "USBC_CC2", "C_SBU1": "USBC_C_SBU1", "C_SBU2": "USBC_C_SBU2",
          "SBU1": "USBC_SBU1", "SBU2": "USBC_SBU2", "VBIAS": "USBC_VBIAS", "VPWR": "vcc3v3_pmu",
@@ -77,7 +77,7 @@ def draw_usbc(s, variants):
         rows=[[("C_100n_0603_50V", "USBC_VBIAS", "GND"), ("C_1u_0402", "vcc3v3_pmu", "GND"),
                ("R_10k", "vcc3v3_pmu", "USBC_PROT_FLT_N")]]))
     grp(f, lambda: ic_group(
-        s, "D± ESD, 0.5 pF (line 62)", "Texas_Instruments", "TPD4E05U06DQAR",
+        s, "D± ESD, 0.5 pF (line 62)", "texas-instruments", "TPD4E05U06DQAR",
         {"D1+": "USBC_DP_C", "D1-": "USBC_DM_C", "D2+": None, "D2-": None, "NC": None, "GND": "GND"}))
 
     def probes():
@@ -132,7 +132,7 @@ def draw_usbc(s, variants):
 def draw_pwr_5v1(s, variants):
     f = Flow(s)
     grp(f, lambda: ic_group(
-        s, "TPS62903, 5.1 V, 2.5 MHz (BOM v1 lines 91, 92, 121)", "Texas_Instruments", "TPS62903RPJR",
+        s, "TPS62903, 5.1 V, 2.5 MHz (BOM v1 lines 91, 92, 121)", "texas-instruments", "TPS62903RPJR",
         {"VIN": "VSYS_P5V1", "EN": "P5V1_EN", "MODE/S-CONF": "P5V1_MODE", "SS/TR": "P5V1_SS", "SW": "P5V1_SW",
          "VOS": "P5V1_SRC", "FB/VSET": "P5V1_VSET", "PG": "P5V1_PG", "GND": "GND"},
         rows=[[("R_95k3", "P5V1_VSET", "GND"), ("R_26k1", "P5V1_MODE", "GND"), ("C_10n_0402", "P5V1_SS", "GND"),
@@ -260,7 +260,7 @@ def draw_hat_signals(s, variants):
         # collector each, clear of the signal labels, with one symbol at its end (CRAFT-171)
         g = Group(s, "Flat-cable receptacle: DF40C-50DS (BOM v1 line 66; interface v2 §9.2)")
         hand = {k: "" for k, v in pins.items() if v == "HAT_5V" or (v == "GND" and int(k) % 2 == 0)}
-        u = ic(s, "Hirose", "DF40C-50DS-0.4V(51)", 101.6, 101.6, {**pins, **hand}, prefix="J",
+        u = ic(s, "hirose", "DF40C-50DS-0.4V(51)", 101.6, 101.6, {**pins, **hand}, prefix="J",
                extra={"Constraints": "PCB-P-20"})
         side_collector(s, u, [k for k in hand if pins[k] == "HAT_5V"], "HAT_5V", 7.62)
         side_collector(s, u, [k for k in hand if pins[k] == "GND"], "GND", 17.78)

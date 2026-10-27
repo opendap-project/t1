@@ -191,7 +191,7 @@ def main():
         print(run([KICAD_PY, os.path.join(HERE, "kicad_write.py"), spec_path, PCB]).strip().splitlines()[-1])
 
     # checks and reports
-    window = {r for r, c in nl.components.items() if c.footprint.startswith("KYOCERA_AVX:")}
+    window = {r for r, c in nl.components.items() if c.footprint.startswith("kyocera-avx:")}
     fixed = set(plan.FIXED) | window
     pl = {r: {"side": p.side, "zone": p.zone, "rect": p.rect, "zones": p.zones,
               "holes": placer.holes_at(r, p.x, p.y, p.side, p.rot)} for r, p in placed.items()}

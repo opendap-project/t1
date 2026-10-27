@@ -157,7 +157,7 @@
 		)
 		(embedded_fonts no)
 	)
-(symbol "Microchip:AT24C02D-STUM-T"
+(symbol "microchip:AT24C02D-STUM-T"
 		(pin_names
 			(offset 1.016)
 		)
@@ -182,7 +182,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Microchip:Microchip_5TS1_SOT-23-5_1.6x2.9mm_P0.95mm"
+		(property "Footprint" "microchip:Microchip_5TS1_SOT-23-5_1.6x2.9mm_P0.95mm"
 			(at 0 0 0)
 			(hide yes)
 			(effects
@@ -604,10 +604,10 @@
 		)
 		(embedded_fonts no)
 	))
-(symbol (lib_id "Microchip:AT24C02D-STUM-T") (at 45.72 63.5 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "74745f53-5435-51bb-8287-0d96c4b4c1dc")
+(symbol (lib_id "microchip:AT24C02D-STUM-T") (at 45.72 63.5 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "74745f53-5435-51bb-8287-0d96c4b4c1dc")
   (property "Reference" "U5601" (at 52.07 50.8 0) (effects (font (size 1.27 1.27)) (justify left)))
   (property "Value" "AT24C02D-STUM-T" (at 52.07 48.26 0) (effects (font (size 1.27 1.27)) (justify left)))
-  (property "Footprint" "Microchip:Microchip_5TS1_SOT-23-5_1.6x2.9mm_P0.95mm" (at 45.72 63.5 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Footprint" "microchip:Microchip_5TS1_SOT-23-5_1.6x2.9mm_P0.95mm" (at 45.72 63.5 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Datasheet" "https://ww1.microchip.com/downloads/aemDocuments/documents/MPD/ProductDocuments/DataSheets/AT24C01D-AT24C02D-I2C-Compatible-Two-Wire-Serial-EEPROM-1-Kbit-2-Kbit-DS20006064.pdf" (at 45.72 63.5 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Description" "Serial EEPROM, 2 kbit (256 x 8), I2C 1 MHz at 2.5-3.6 V / 400 kHz at 1.7-3.6 V, 8-byte page, write protect, fixed address 0x50, 5-lead SOT23 (5TS1)" (at 45.72 63.5 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Manufacturer" "Microchip" (at 45.72 63.5 0) (effects (font (size 1.27 1.27))) (hide yes))

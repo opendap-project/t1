@@ -297,7 +297,122 @@
 		)
 		(embedded_fonts no)
 	)
-(symbol "Texas_Instruments:OPA1622IDRCR"
+(symbol "power:GND"
+		(power global)
+		(pin_numbers
+			(hide yes)
+		)
+		(pin_names
+			(offset 0)
+			(hide yes)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(duplicate_pin_numbers_are_jumpers no)
+		(property "Reference" "#PWR"
+			(at 0 -6.35 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 0 -3.81 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_keywords" "global power"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "GND_0_1"
+			(polyline
+				(pts
+					(xy 0 0) (xy 0 -1.27) (xy 1.27 -1.27) (xy 0 -2.54) (xy -1.27 -1.27) (xy 0 -1.27)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+		)
+		(symbol "GND_1_1"
+			(pin power_in line
+				(at 0 0 270)
+				(length 0)
+				(name ""
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
+(symbol "texas-instruments:OPA1622IDRCR"
 		(pin_names
 			(offset 1.016)
 		)
@@ -322,7 +437,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Texas_Instruments:VSON-10-1EP_3x3mm_P0.5mm_EP1.65x2.4mm_ThermalVias"
+		(property "Footprint" "texas-instruments:VSON-10-1EP_3x3mm_P0.5mm_EP1.65x2.4mm_ThermalVias"
 			(at 0 0 0)
 			(hide yes)
 			(effects
@@ -597,121 +712,6 @@
 			)
 		)
 		(embedded_fonts no)
-	)
-(symbol "power:GND"
-		(power global)
-		(pin_numbers
-			(hide yes)
-		)
-		(pin_names
-			(offset 0)
-			(hide yes)
-		)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(duplicate_pin_numbers_are_jumpers no)
-		(property "Reference" "#PWR"
-			(at 0 -6.35 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "GND"
-			(at 0 -3.81 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 0 0 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 0 0 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 0 0 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "ki_keywords" "global power"
-			(at 0 0 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(symbol "GND_0_1"
-			(polyline
-				(pts
-					(xy 0 0) (xy 0 -1.27) (xy 1.27 -1.27) (xy 0 -2.54) (xy -1.27 -1.27) (xy 0 -1.27)
-				)
-				(stroke
-					(width 0)
-					(type default)
-				)
-				(fill
-					(type none)
-				)
-			)
-		)
-		(symbol "GND_1_1"
-			(pin power_in line
-				(at 0 0 270)
-				(length 0)
-				(name ""
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "1"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-		)
-		(embedded_fonts no)
 	))
 (symbol (lib_id "Device:R") (at 48.26 63.5 90) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "1799e29d-bcde-5265-b275-669d49c6502b")
   (property "Reference" "R3301" (at 48.26 55.88 90) (effects (font (size 1.27 1.27))))
@@ -967,10 +967,10 @@
 (junction (at 132.08 106.68) (diameter 0) (color 0 0 0 0) (uuid "fb9cf5ff-9f02-5d79-a8a9-6425b3823aa2"))
 (wire (pts (xy 132.08 109.22) (xy 132.08 111.76)) (stroke (width 0) (type default)) (uuid "fe8d3ed7-282e-5b94-b8c1-bd24a10755c3"))
 (wire (pts (xy 132.08 111.76) (xy 127 111.76)) (stroke (width 0) (type default)) (uuid "e927a1e0-43ff-59ce-9c29-e6864c2ac377"))
-(symbol (lib_id "Texas_Instruments:OPA1622IDRCR") (at 193.04 78.74 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "4a93438e-b76c-5964-a244-34e97950b50a")
+(symbol (lib_id "texas-instruments:OPA1622IDRCR") (at 193.04 78.74 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "4a93438e-b76c-5964-a244-34e97950b50a")
   (property "Reference" "U3301" (at 194.31 57.15 0) (effects (font (size 1.27 1.27)) (justify left)))
   (property "Value" "OPA1622IDRCR" (at 194.31 54.61 0) (effects (font (size 1.27 1.27)) (justify left)))
-  (property "Footprint" "Texas_Instruments:VSON-10-1EP_3x3mm_P0.5mm_EP1.65x2.4mm_ThermalVias" (at 193.04 78.74 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Footprint" "texas-instruments:VSON-10-1EP_3x3mm_P0.5mm_EP1.65x2.4mm_ThermalVias" (at 193.04 78.74 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Datasheet" "https://www.ti.com/lit/ds/symlink/opa1622.pdf" (at 193.04 78.74 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Description" "Dual bipolar-input audio operational amplifier, high-current output, enable pin, VSON-10 (DRC) 3 x 3 mm with thermal pad" (at 193.04 78.74 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Manufacturer" "Texas Instruments" (at 193.04 78.74 0) (effects (font (size 1.27 1.27))) (hide yes))
@@ -1350,10 +1350,10 @@
 (junction (at 132.08 200.66) (diameter 0) (color 0 0 0 0) (uuid "fb9cf5ff-9f02-5d79-a8a9-6425b3823aa2"))
 (wire (pts (xy 132.08 203.2) (xy 132.08 205.74)) (stroke (width 0) (type default)) (uuid "fe8d3ed7-282e-5b94-b8c1-bd24a10755c3"))
 (wire (pts (xy 132.08 205.74) (xy 127 205.74)) (stroke (width 0) (type default)) (uuid "e927a1e0-43ff-59ce-9c29-e6864c2ac377"))
-(symbol (lib_id "Texas_Instruments:OPA1622IDRCR") (at 193.04 172.72 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "e7685d93-8dca-5b88-8281-3eeb26cd412c")
+(symbol (lib_id "texas-instruments:OPA1622IDRCR") (at 193.04 172.72 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "e7685d93-8dca-5b88-8281-3eeb26cd412c")
   (property "Reference" "U3302" (at 194.31 151.13 0) (effects (font (size 1.27 1.27)) (justify left)))
   (property "Value" "OPA1622IDRCR" (at 194.31 148.59 0) (effects (font (size 1.27 1.27)) (justify left)))
-  (property "Footprint" "Texas_Instruments:VSON-10-1EP_3x3mm_P0.5mm_EP1.65x2.4mm_ThermalVias" (at 193.04 172.72 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Footprint" "texas-instruments:VSON-10-1EP_3x3mm_P0.5mm_EP1.65x2.4mm_ThermalVias" (at 193.04 172.72 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Datasheet" "https://www.ti.com/lit/ds/symlink/opa1622.pdf" (at 193.04 172.72 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Description" "Dual bipolar-input audio operational amplifier, high-current output, enable pin, VSON-10 (DRC) 3 x 3 mm with thermal pad" (at 193.04 172.72 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Manufacturer" "Texas Instruments" (at 193.04 172.72 0) (effects (font (size 1.27 1.27))) (hide yes))

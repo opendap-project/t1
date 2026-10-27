@@ -420,7 +420,7 @@
 		)
 		(embedded_fonts no)
 	)
-(symbol "NXP:NT3H2111W0FHKH"
+(symbol "nxp:NT3H2111W0FHKH"
 		(pin_names
 			(offset 1.016)
 		)
@@ -445,7 +445,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "NXP:NXP_SOT902-3_XQFN-8_1.6x1.6mm_P0.5mm"
+		(property "Footprint" "nxp:NXP_SOT902-3_XQFN-8_1.6x1.6mm_P0.5mm"
 			(at 0 0 0)
 			(hide yes)
 			(effects
@@ -1045,10 +1045,10 @@
 		)
 		(embedded_fonts no)
 	))
-(symbol (lib_id "NXP:NT3H2111W0FHKH") (at 50.8 72.39 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "1c5d22a2-4141-5880-ab6c-54f63a181894")
+(symbol (lib_id "nxp:NT3H2111W0FHKH") (at 50.8 72.39 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "1c5d22a2-4141-5880-ab6c-54f63a181894")
   (property "Reference" "U6401" (at 52.07 54.61 0) (effects (font (size 1.27 1.27)) (justify left)))
   (property "Value" "NT3H2111W0FHKH" (at 52.07 52.07 0) (effects (font (size 1.27 1.27)) (justify left)))
-  (property "Footprint" "NXP:NXP_SOT902-3_XQFN-8_1.6x1.6mm_P0.5mm" (at 50.8 72.39 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Footprint" "nxp:NXP_SOT902-3_XQFN-8_1.6x1.6mm_P0.5mm" (at 50.8 72.39 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Datasheet" "https://www.nxp.com/docs/en/data-sheet/NT3H2111_2211.pdf" (at 50.8 72.39 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Description" "NTAG I2C plus 1k: NFC Forum Type 2 Tag with I2C interface, field detection, energy harvesting, 1.67-3.6 V, XQFN8 (SOT902-3) 1.6 x 1.6 mm" (at 50.8 72.39 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Manufacturer" "NXP" (at 50.8 72.39 0) (effects (font (size 1.27 1.27))) (hide yes))

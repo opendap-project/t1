@@ -50,7 +50,7 @@ def dram_net(name):
 
 def draw_lpddr4x(s, variants):
     blk = s.block
-    sym = library.load("Micron", "MT53E1G32D2FW-046")
+    sym = library.load("micron", "MT53E1G32D2FW-046")
     ref = s.next_ref("U")
     nets = {p.number: dram_net(p.name) for p in sym.pins}
     f = {"Block": blk, "Constraints": "PCB-I-05",
@@ -142,7 +142,7 @@ EMMC_NETS = {"CLK": "EMMC_CLK_DEV", "CMD": "EMMC_CMD", "DAT0": "EMMC_D0", "DAT1"
 
 def draw_emmc(s, variants):
     blk = s.block
-    sym = library.load("Samsung", "KLMBG2JETD-B041")
+    sym = library.load("samsung", "KLMBG2JETD-B041")
     ref = s.next_ref("U")
     nets = {}
     for p in sym.pins:

@@ -9,7 +9,7 @@ The SoC must meet the requirements without raising the price significantly (BRD-
 
 - The display is only a few inches (credit-card footprint), and the T1 is not meant to be a video player. HD video is enough.
 - The most demanding workloads are monitoring spectrograms or radiograms, and recording SDR samples or video at high data rates.
-- The most advanced on-board AI is not needed for now.
+- The requirements do not call for the most advanced on-board AI.
 
 ## Decision
 

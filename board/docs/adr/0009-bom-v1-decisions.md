@@ -6,7 +6,7 @@
 
 ## Context
 
-The complete BOM v1 and power tree ([`../specs/bom-v1-draft.md`](../specs/bom-v1-draft.md), [`../specs/power-tree-v0.md`](../specs/power-tree-v0.md)) found errors in v0 and left choices open. The audiophile experience is never sacrificed (T1-040).
+The complete BOM v1 draft (since superseded by [`../specs/bom-v1.md`](../specs/bom-v1.md)) and power tree ([`../specs/power-tree-v0.md`](../specs/power-tree-v0.md)) found errors in v0 and left choices open. The audiophile experience is never sacrificed (T1-040).
 
 ## Decision
 

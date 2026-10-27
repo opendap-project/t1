@@ -248,9 +248,9 @@ C2 and C3 also go into the end-to-end channel of hat-standard ADR 0004 (pogo fie
 
 Applied in [BOM v1.14](bom-v1.md#changes-in-v114) (RFC 0015): line 66 DF40C-50DS receptacles on the board and the device-side piece; line 102 this cable with DF40C-50DP headers; lines 65, 68, 69 ESD on the device-side piece. PCB-Z-05 takes the DF40C-50DS height (1.45 ± 0.15 mm). The board's own net classes do not change: the cable is its own KiCad project with `pcbway-flex` and the D90 product rule of §13.
 
-## 18. Next step: the KiCad project
+## 18. KiCad project
 
-Only the stack-up file exists (`hardware/hat-flat-cable/stackup-v0.toml`). Next, in `hardware/hat-flat-cable/`: the KiCad project with the stack-up of §4, the D90 and `VBUS` classes, the DF40C-50DP footprint at both ends, the conductor map of §3 as the netlist, the stiffener and bend-zone areas on user layers, and the coupon members C1–C4 as separate boards on the same panel.
+`hardware/hat-flat-cable/` holds the stack-up file (`stackup-v0.toml`) and no KiCad project yet. The KiCad project there carries the stack-up of §4, the D90 and `VBUS` classes, the DF40C-50DP footprint at both ends, the conductor map of §3 as the netlist, the stiffener and bend-zone areas on user layers, and the coupon members C1–C4 as separate boards on the same panel.
 
 ## 19. Sources
 

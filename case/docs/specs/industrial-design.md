@@ -45,7 +45,7 @@ A rounded rectangular enclosure with comfortable corner radii; controlled transi
 
 ### 2.2 Geometry families
 
-Shared with the interface (design system §6):
+Shared with the interface ([design system](https://github.com/opendap-project/blackbird-ui/blob/main/docs/specs/design-system.md)):
 
 1. **Primary:** rounded rectangles and broad radii, for the enclosure and major surfaces.
 2. **Control:** circles, capsules, segmented capsules and soft concave forms, for tactile input.

@@ -104,9 +104,9 @@ Each changes floorplan v1 where the real footprints did not fit it; the tool's `
 
 | Part | Height | Area | Status |
 |---|---|---|---|
-| J4001 (4.4 mm jack) | 6.5 mm | reaches 5.5 mm into PCB-Z-01 | Needs the pocket relief of floorplan v1 §6 item 2 (case) |
-| J6201 (microSD) | 1.68 mm | reaches 11.8 mm into PCB-Z-01 | Needs the local relief or a ≤ 1.5 mm socket of floorplan v1 §6 item 1 (case, BOM) |
-| SW6901–SW6904 (side buttons) | 1.9–2.5 mm | 2 mm side strips plus about 1.8 mm of PCB-Z-01 | Needs a side-strip relief or a low side switch (case, BOM); PTS815 height **UNVERIFIED** |
+| J4001 (4.4 mm jack) | 6.5 mm | reaches 5.55 mm into PCB-Z-01 | Pocket relief, PCB-Z-06 (case input); no catalog jack fits |
+| J6201 (microSD) | 1.68 mm | reaches 11.8 mm into PCB-Z-01 | Pocket relief, PCB-Z-07 (case input), or the BOM alternate Molex 104031-0811 (1.42 mm, push-pull: a product choice) |
+| SW6901–SW6904 (side buttons) | 1.9–2.5 mm | 2 mm side strips plus about 1.8 mm of PCB-Z-01 | Side-strip relief, PCB-Z-08 (case input); no lower side switch with a verified height; PTS815 height **UNVERIFIED** |
 | C904 | 1.25 mm | front outside the display | Decision 4; PCB-Z-04 **UNVERIFIED** |
 
 **3D envelope:** the case publishes no export yet (`case/export/` is empty), so no STEP check against ADR 0016 was made; part heights come from the footprints' 3D models (`pcb/heights.py`) and are checked against PCB-Z-01 to Z-04 above.

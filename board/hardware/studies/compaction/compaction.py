@@ -189,9 +189,24 @@ def netlist_rows(net_path, data, fp_dirs, zone_of_block, rails):
 
 # ------------------------------------------------------------------ report
 
+def height_rows(data):
+    """Parts over PCB-Z-01: each candidate's gates (height, land, function, sourcing)."""
+    rows = []
+    for p in data.get("height", []):
+        gates = {
+            "height": "pass" if p["h_mm"] <= data["rules"]["h_back"] else "fail",
+            "land": {"stock": "pass", "libs": "pass", "none": "conditional"}[p["land"]],
+            "function": "pass" if p["same_function"] else "conditional",
+            "sourcing": p["sourcing"],
+        }
+        rows.append({"refs": p["refs"], "mpn": p["mpn"], "function": p["function"], "h_mm": p["h_mm"],
+                     "current": p.get("current", False), "gates": gates, "verdict": worst(*gates.values())})
+    return rows
+
+
 def evaluate(data):
     ind_parts = {p["mpn"]: p for p in data["inductor"]["part"]}
-    out = {"inductors": [], "mlcc": []}
+    out = {"inductors": [], "mlcc": [], "heights": height_rows(data)}
     for pos in data["inductor"]["position"]:
         rows = inductor_rows(pos, ind_parts, data["rules"])
         out["inductors"].append({"refs": pos["refs"], "converter": pos["converter"], "current": pos["current"],
@@ -220,6 +235,11 @@ def markdown(res):
             g = r["gates"]
             lines.append(f"| {p['current']} {p['value']} ({p['count']}) | {r['mpn']} | {r['h_mm']} | {g['lifecycle']} | "
                          f"{g['sourcing']} | {g['dc_bias']} | {r['verdict']} |")
+    lines += ["", "| Position | Part | Function | h (mm) | Land | Same function | Sourcing | Verdict |", "|---|---|---|---|---|---|---|---|"]
+    for r in res.get("heights", []):
+        g = r["gates"]
+        lines.append(f"| {', '.join(r['refs'])} | {r['mpn']}{' (current)' if r['current'] else ''} | {r['function']} | {r['h_mm']} | "
+                     f"{g['land']} | {g['function']} | {g['sourcing']} | {r['verdict']} |")
     return "\n".join(lines)
 
 

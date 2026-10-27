@@ -50,3 +50,16 @@ python3 hardware/studies/compaction/compaction.py --netlist /tmp/t1.net
 Capacitors over 1.0 mm: none passes. The thinner 0805 parts of the same value, rating and dielectric are obsolete (GRM219R61E106KA12D), not for new designs (C2012X5R1E106K085AC, C2012X5R1C226M085AC) or not listed at an authorized channel (C2012X7R1C106K085AC, C2012X7R1E475K085AC); a smaller case needs DC-bias figures first (DRV-107).
 
 With the schematic of 2026-10-27: 166 test pads, 51 of 0.8 mm (signal nets) and 115 of 1.0 mm (rails, ground, measurement links, contact pads), none under its net's minimum; 58 capacitors of 100 nF on eligible rails, all 0201. The board need with the floorplan's method falls from 113 % to 111 % of both sides (placement v1 §3.1).
+
+## Parts over PCB-Z-01 (2026-10-27)
+
+| Position | Part | Function | h (mm) | Land | Same function | Sourcing | Verdict |
+|---|---|---|---|---|---|---|---|
+| J6201 | DM3AT-SF-PEJM5 (current) | microSD, push-push | 1.68 | pass | pass | conditional | fail |
+| J6201 | 104031-0811 | microSD, push-pull | 1.42 | pass | conditional | pass | conditional |
+| J6201 | 503182-1852 | microSD, push-push | 1.45 | conditional | pass | fail | fail |
+| J4001 | GT-3321667P-01 (current) | 4.4 mm balanced jack | 6.5 | pass | pass | conditional | fail |
+| SW6901, SW6902, SW6903 | PTS815SJM250SMTRLFS (current) | side button | 2.5 | conditional | pass | conditional | fail |
+| SW6904 | KMR221GLFS (current) | side button (Action, part open) | 1.9 | pass | pass | conditional | fail |
+
+The only lower part that passes is the BOM's own microSD alternate, Molex 104031-0811, and it changes the card's mechanism from push-push to push-pull, a product choice. The 4.4 mm jack and the side buttons have no lower catalog part with a verified height. Each part's relief is a case-interface row of the PCB design constraints (PCB-Z-06 to Z-08).

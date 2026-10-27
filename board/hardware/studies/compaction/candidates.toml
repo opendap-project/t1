@@ -307,3 +307,70 @@ rated_v = 10.0
 zones = ["CORE", "IO", "RADIO"]
 sourcing = "pass"
 source = "Murata GRM033 (0201, 10 V X5R), the part under the BGA (ADR 0016 item 3); audio kept (T1-040), power zone rails above 3.3 V"
+
+# ---- parts over PCB-Z-01 at the pocket's edges: lower catalog parts (placement v1 §5) -------------
+# h_mm: maximum height above the board; land: "stock" (KiCad's), "libs" or "none" (to be drawn);
+# same_function: false where the part changes what the user handles (a product call).
+[[height]]
+refs = ["J6201"]
+mpn = "DM3AT-SF-PEJM5"
+function = "microSD, push-push"
+h_mm = 1.68
+land = "stock"
+same_function = true
+sourcing = "conditional"
+current = true
+source = "PCB-Z-05 (Hirose sheet); KiCad microSD_HC_Hirose_DM3AT-SF-PEJM5"
+
+[[height]]
+refs = ["J6201"]
+mpn = "104031-0811"
+function = "microSD, push-pull"
+h_mm = 1.42
+land = "stock"
+same_function = false
+sourcing = "pass"
+source = "KiCad microSD_HC_Molex_104031-0811 description (Molex: 1.42 mm height); BOM v1 line 11 alternate"
+
+[[height]]
+refs = ["J6201"]
+mpn = "503182-1852"
+function = "microSD, push-push"
+h_mm = 1.45
+land = "none"
+same_function = true
+sourcing = "fail"
+source = "Molex 503182 series: push-push, 1.45 mm height; lifecycle obsolete (sourcing check, 2026-10-27)"
+
+[[height]]
+refs = ["J4001"]
+mpn = "GT-3321667P-01"
+function = "4.4 mm balanced jack"
+h_mm = 6.5
+land = "libs"
+same_function = true
+sourcing = "conditional"
+current = true
+source = "PCB-Z-05 (G-Switch sheet). A 4.4 mm plug bore alone exceeds 1.5 mm: no catalog jack fits PCB-Z-01, so the jack keeps its depth into the pocket and the case gives the relief"
+
+[[height]]
+refs = ["SW6901", "SW6902", "SW6903"]
+mpn = "PTS815SJM250SMTRLFS"
+function = "side button"
+h_mm = 2.5
+land = "none"
+same_function = true
+sourcing = "conditional"
+current = true
+source = "BOM v1 line 77; height UNVERIFIED (C&K drawing not retrieved)"
+
+[[height]]
+refs = ["SW6904"]
+mpn = "KMR221GLFS"
+function = "side button (Action, part open)"
+h_mm = 1.9
+land = "stock"
+same_function = true
+sourcing = "conditional"
+current = true
+source = "BOM v1 line 76 placeholder; KiCad SW_Push_1P1T_NO_CK_KMR2 model"

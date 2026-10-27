@@ -65,6 +65,18 @@ class Capacitors(unittest.TestCase):
         self.assertEqual(rows["B"]["verdict"], "pass")
 
 
+class Heights(unittest.TestCase):
+    def test_gates(self):
+        data = {"rules": RULES, "height": [
+            {"refs": ["J1"], "mpn": "TALL", "function": "f", "h_mm": 1.68, "land": "stock", "same_function": True,
+             "sourcing": "pass", "current": True},
+            {"refs": ["J1"], "mpn": "LOWNEW", "function": "g", "h_mm": 1.42, "land": "none", "same_function": False,
+             "sourcing": "pass"}]}
+        rows = {r["mpn"]: r for r in c.height_rows(data)}
+        self.assertEqual(rows["TALL"]["verdict"], "fail")
+        self.assertEqual(rows["LOWNEW"]["verdict"], "conditional")
+
+
 class Courtyard(unittest.TestCase):
     def test_circle(self):
         with tempfile.NamedTemporaryFile("w", suffix=".kicad_mod", delete=False) as fh:

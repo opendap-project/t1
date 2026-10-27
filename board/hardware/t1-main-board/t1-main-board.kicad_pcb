@@ -4246,7 +4246,7 @@
 			(uuid "60a924f0-efac-4774-b557-876eb118ff1b")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/../lib/opendap/3dmodels/Texas_Instruments.3dshapes/Texas_DMQ0006A_VSON-HR-6_1.5x1.5mm_P0.5mm.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/Texas_Instruments.3dshapes/Texas_DMQ0006A_VSON-HR-6_1.5x1.5mm_P0.5mm.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -5412,7 +5412,7 @@
 			(uuid "8c3b8ba9-713b-42b1-8067-31dfb54c8143")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/../lib/opendap/3dmodels/Microchip.3dshapes/Microchip_5TS1_SOT-23-5_1.6x2.9mm_P0.95mm.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/Microchip.3dshapes/Microchip_5TS1_SOT-23-5_1.6x2.9mm_P0.95mm.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -7840,7 +7840,7 @@
 			(uuid "a6988d49-e0b3-40d4-8f0f-7c9514382ea4")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/../lib/opendap/3dmodels/Infineon.3dshapes/Infineon_PG-UQFN-32-1_5x5mm_P0.5mm_EP3.6x3.6mm.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/Infineon.3dshapes/Infineon_PG-UQFN-32-1_5x5mm_P0.5mm_EP3.6x3.6mm.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -9966,7 +9966,7 @@
 			(uuid "54bd4045-3acf-490c-bb15-38edfb456817")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/../lib/opendap/3dmodels/Texas_Instruments.3dshapes/Texas_RTW0024B_WQFN-24-1EP_4x4mm_P0.5mm_EP2.45x2.45mm_ThermalVias.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/Texas_Instruments.3dshapes/Texas_RTW0024B_WQFN-24-1EP_4x4mm_P0.5mm_EP2.45x2.45mm_ThermalVias.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -10277,7 +10277,7 @@
 			(uuid "2b016539-980e-40c9-b79f-d826ada1f45f")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/../lib/opendap/3dmodels/Texas_Instruments.3dshapes/Texas_DMQ0006A_VSON-HR-6_1.5x1.5mm_P0.5mm.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/Texas_Instruments.3dshapes/Texas_DMQ0006A_VSON-HR-6_1.5x1.5mm_P0.5mm.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -11401,7 +11401,7 @@
 			(uuid "f4e8db67-1e8a-41bd-88b6-5db56a48ac7e")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/../lib/opendap/3dmodels/ECS.3dshapes/Oscillator_SMD_ECS_ECS-2016MV-4Pin_2.0x1.6mm.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/ECS.3dshapes/Oscillator_SMD_ECS_ECS-2016MV-4Pin_2.0x1.6mm.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -17460,7 +17460,7 @@
 			(uuid "6f1fb7c0-a327-439f-bc77-cb06d685921c")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/../lib/opendap/3dmodels/Texas_Instruments.3dshapes/Texas_DLC0008B_VSON-HR-8_1.5x2mm_P0.5mm.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/Texas_Instruments.3dshapes/Texas_DLC0008B_VSON-HR-8_1.5x2mm_P0.5mm.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -24294,7 +24294,7 @@
 			(uuid "21b4e5f7-9b4a-4b43-96c8-1cc1363e4d29")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/../lib/opendap/3dmodels/Raspberry_Pi.3dshapes/QFN-60-1EP_7x7mm_P0.4mm_EP3.4x3.4mm_ThermalVias.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/Raspberry_Pi.3dshapes/QFN-60-1EP_7x7mm_P0.4mm_EP3.4x3.4mm_ThermalVias.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -27391,7 +27391,7 @@
 			(uuid "3e69d1b5-a8f4-4f5c-8155-8b2fc3d8087a")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/../lib/opendap/3dmodels/Texas_Instruments.3dshapes/Texas_DQA0010A_USON-10_1x2.5mm_P0.5mm.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/Texas_Instruments.3dshapes/Texas_DQA0010A_USON-10_1x2.5mm_P0.5mm.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -30938,7 +30938,7 @@
 			(uuid "e3d780fc-22de-48b2-a512-2afcf079021c")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/../lib/opendap/3dmodels/Texas_Instruments.3dshapes/Texas_RPW0010A_VQFN-HR-10_2x2mm_P0.45mm.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/Texas_Instruments.3dshapes/Texas_RPW0010A_VQFN-HR-10_2x2mm_P0.45mm.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -31637,7 +31637,7 @@
 			(uuid "2157f403-b28f-4c76-9b6c-7314ca6e7dbb")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/../lib/opendap/3dmodels/Texas_Instruments.3dshapes/Texas_DQA0010A_USON-10_1x2.5mm_P0.5mm.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/Texas_Instruments.3dshapes/Texas_DQA0010A_USON-10_1x2.5mm_P0.5mm.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -35548,7 +35548,7 @@
 			(uuid "9e5e10b9-a922-4935-82e5-8f323f1860ed")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/../lib/opendap/3dmodels/Texas_Instruments.3dshapes/Texas_DQA0010A_USON-10_1x2.5mm_P0.5mm.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/Texas_Instruments.3dshapes/Texas_DQA0010A_USON-10_1x2.5mm_P0.5mm.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -36980,7 +36980,7 @@
 			(uuid "0d704406-a3ff-49c9-8990-b8f51f6df30b")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/../lib/opendap/3dmodels/onsemi.3dshapes/onsemi_510BR_WQFN-14-1EP_2.5x2.5mm_P0.5mm_EP1.45x1.45mm.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/onsemi.3dshapes/onsemi_510BR_WQFN-14-1EP_2.5x2.5mm_P0.5mm_EP1.45x1.45mm.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -39882,7 +39882,7 @@
 			(uuid "bc26a3d7-25c6-4bb2-8d0d-a60daa014a4b")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/../lib/opendap/3dmodels/Analog_Devices.3dshapes/Analog_DD_DFN-10-1EP_3x3mm_P0.5mm_EP1.65x2.38mm.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/Analog_Devices.3dshapes/Analog_DD_DFN-10-1EP_3x3mm_P0.5mm_EP1.65x2.38mm.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -41403,7 +41403,7 @@
 			(uuid "7b805133-38d4-4943-a603-57ddd03b4582")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/../lib/opendap/3dmodels/Texas_Instruments.3dshapes/VQFN-HR-29_4x4mm_P0.4mm.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/Texas_Instruments.3dshapes/VQFN-HR-29_4x4mm_P0.4mm.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -43006,7 +43006,7 @@
 			(uuid "6d9aef09-da36-40ae-a24f-a524ea0bdb7a")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/../lib/opendap/3dmodels/Texas_Instruments.3dshapes/Texas_DCU0008A_VSSOP-8_2.3x2mm_P0.5mm.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/Texas_Instruments.3dshapes/Texas_DCU0008A_VSSOP-8_2.3x2mm_P0.5mm.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -45209,7 +45209,7 @@
 			(uuid "8b05cb05-c670-400c-9dca-aa1e1d55ecf8")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/../lib/opendap/3dmodels/Texas_Instruments.3dshapes/Texas_RUX0012A_VQFN-HR-12_2x2.5mm_P0.5mm.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/Texas_Instruments.3dshapes/Texas_RUX0012A_VQFN-HR-12_2x2.5mm_P0.5mm.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -45506,7 +45506,7 @@
 			(uuid "1f51153a-dc66-425b-9702-fc1eed9de1fb")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/../lib/opendap/3dmodels/Texas_Instruments.3dshapes/Texas_YBH0006_DSBGA-6_0.706x1.106mm_Layout2x3_P0.4mm.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/Texas_Instruments.3dshapes/Texas_YBH0006_DSBGA-6_0.706x1.106mm_Layout2x3_P0.4mm.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -48131,7 +48131,7 @@
 			(uuid "5cfe4908-132d-49f5-89b6-632e560d682e")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/../lib/opendap/3dmodels/NXP.3dshapes/NXP_SOT902-3_XQFN-8_1.6x1.6mm_P0.5mm.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/NXP.3dshapes/NXP_SOT902-3_XQFN-8_1.6x1.6mm_P0.5mm.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -49353,7 +49353,7 @@
 			(uuid "65050537-d3ae-4b63-91b9-6766e8250b6d")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/../lib/opendap/3dmodels/Texas_Instruments.3dshapes/Texas_RPW0010A_VQFN-HR-10_2x2mm_P0.45mm.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/Texas_Instruments.3dshapes/Texas_RPW0010A_VQFN-HR-10_2x2mm_P0.45mm.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -50871,7 +50871,7 @@
 			(uuid "98df8c12-1dde-4d55-b384-d0cd255748a1")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/../lib/opendap/3dmodels/Texas_Instruments.3dshapes/Texas_RPJ0009A_VQFN-HR-9_1.5x2mm_P0.5mm.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/Texas_Instruments.3dshapes/Texas_RPJ0009A_VQFN-HR-9_1.5x2mm_P0.5mm.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -63807,7 +63807,7 @@
 			(uuid "58150e24-1c9e-4fc6-93ae-b6463335ecda")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/../lib/opendap/3dmodels/Texas_Instruments.3dshapes/Texas_RNX0012B_VQFN-HR-12_2x3mm_P0.5mm.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/Texas_Instruments.3dshapes/Texas_RNX0012B_VQFN-HR-12_2x3mm_P0.5mm.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -70049,7 +70049,7 @@
 			(uuid "15b1c60d-0402-4ab9-afb2-84e362d5f019")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/../lib/opendap/3dmodels/Texas_Instruments.3dshapes/Texas_DQA0010A_USON-10_1x2.5mm_P0.5mm.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/Texas_Instruments.3dshapes/Texas_DQA0010A_USON-10_1x2.5mm_P0.5mm.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -78583,7 +78583,7 @@
 			(uuid "c64b7400-0cc8-4cbf-9211-c004093cd334")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/../lib/opendap/3dmodels/Texas_Instruments.3dshapes/Texas_DRV0006A_WSON-6-1EP_2x2mm_P0.65mm_EP1x1.6mm.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/Texas_Instruments.3dshapes/Texas_DRV0006A_WSON-6-1EP_2x2mm_P0.65mm_EP1x1.6mm.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -83113,7 +83113,7 @@
 			(uuid "ac49d1e3-0e07-48f8-a28a-7d661c7235ab")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/../lib/opendap/3dmodels/Analog_Devices.3dshapes/Maxim_T1633-4_TQFN-16-1EP_3x3mm_P0.5mm_EP1.1x1.1mm.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/Analog_Devices.3dshapes/Maxim_T1633-4_TQFN-16-1EP_3x3mm_P0.5mm_EP1.1x1.1mm.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -89998,7 +89998,7 @@
 			(uuid "d1a4b7c2-dc51-46a6-b9a5-2f3d4cf1812a")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/../lib/opendap/3dmodels/Texas_Instruments.3dshapes/VSON-10-1EP_3x3mm_P0.5mm_EP1.65x2.4mm_ThermalVias.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/Texas_Instruments.3dshapes/VSON-10-1EP_3x3mm_P0.5mm_EP1.65x2.4mm_ThermalVias.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -90463,7 +90463,7 @@
 			(uuid "055975d3-d75f-436b-8265-9cca30964c5b")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/../lib/opendap/3dmodels/Texas_Instruments.3dshapes/VSON-10-1EP_3x3mm_P0.5mm_EP1.65x2.4mm_ThermalVias.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/Texas_Instruments.3dshapes/VSON-10-1EP_3x3mm_P0.5mm_EP1.65x2.4mm_ThermalVias.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -91763,7 +91763,7 @@
 			(uuid "66c0c917-d3bf-4ef2-9d64-1db94120c459")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/../lib/opendap/3dmodels/Analog_Devices.3dshapes/Analog_DD_DFN-12-1EP_3x3mm_P0.45mm_EP1.65x2.38mm.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/Analog_Devices.3dshapes/Analog_DD_DFN-12-1EP_3x3mm_P0.45mm_EP1.65x2.38mm.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -93510,7 +93510,7 @@
 			(uuid "002ebf3b-bb8d-4308-b1ec-5aa2ca393e2f")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/../lib/opendap/3dmodels/Texas_Instruments.3dshapes/Texas_DQA0010A_USON-10_1x2.5mm_P0.5mm.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/Texas_Instruments.3dshapes/Texas_DQA0010A_USON-10_1x2.5mm_P0.5mm.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -97155,7 +97155,7 @@
 			(uuid "7b310985-cb66-4ca7-a76f-0f7223a49184")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/../lib/opendap/3dmodels/Texas_Instruments.3dshapes/Texas_DQA0010A_USON-10_1x2.5mm_P0.5mm.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/Texas_Instruments.3dshapes/Texas_DQA0010A_USON-10_1x2.5mm_P0.5mm.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -100106,7 +100106,7 @@
 			(uuid "583e6759-69f8-4f3b-a039-c6a01ac3fbd9")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/../lib/opendap/3dmodels/Texas_Instruments.3dshapes/Texas_RPW0010A_VQFN-HR-10_2x2mm_P0.45mm.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/Texas_Instruments.3dshapes/Texas_RPW0010A_VQFN-HR-10_2x2mm_P0.45mm.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -102572,7 +102572,7 @@
 			(uuid "920bfd97-f043-4f5c-a0b9-ffb3331fa007")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/../lib/opendap/3dmodels/Hirose.3dshapes/Hirose_FH35C-51S-0.3SHW_1x51-1MP_P0.3mm_Horizontal.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/Hirose.3dshapes/Hirose_FH35C-51S-0.3SHW_1x51-1MP_P0.3mm_Horizontal.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -105075,7 +105075,7 @@
 			(uuid "79e3c96c-b65c-4ad4-8538-20a87a7b417f")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/../lib/opendap/3dmodels/Texas_Instruments.3dshapes/VSON-10-1EP_3x3mm_P0.5mm_EP1.65x2.4mm_ThermalVias.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/Texas_Instruments.3dshapes/VSON-10-1EP_3x3mm_P0.5mm_EP1.65x2.4mm_ThermalVias.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -109739,7 +109739,7 @@
 			(uuid "511ed32e-abe5-415b-a26c-10c6e52051c1")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/../lib/opendap/3dmodels/STMicroelectronics.3dshapes/ST_LGA-14L_2.5x3mm_P0.5mm.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/STMicroelectronics.3dshapes/ST_LGA-14L_2.5x3mm_P0.5mm.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -115174,7 +115174,7 @@
 			(uuid "76ffae7c-a765-4aed-a4a6-0bf2e751aeb1")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/../lib/opendap/3dmodels/Texas_Instruments.3dshapes/Texas_DCU0008A_VSSOP-8_2.3x2mm_P0.5mm.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/Texas_Instruments.3dshapes/Texas_DCU0008A_VSSOP-8_2.3x2mm_P0.5mm.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -122370,7 +122370,7 @@
 			(uuid "54a6d029-13e2-4eca-ba3c-e9097e79e97d")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/../lib/opendap/3dmodels/Texas_Instruments.3dshapes/Texas_RGE0024B_VQFN-24-1EP_4x4mm_P0.5mm_EP2.45x2.45mm_ThermalVias.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/Texas_Instruments.3dshapes/Texas_RGE0024B_VQFN-24-1EP_4x4mm_P0.5mm_EP2.45x2.45mm_ThermalVias.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -127518,7 +127518,7 @@
 			(uuid "7d0dfd90-bb75-4c0e-b4a3-61b1ff6c3098")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/../lib/opendap/3dmodels/Analog_Devices.3dshapes/Analog_DD_DFN-10-1EP_3x3mm_P0.5mm_EP1.65x2.38mm.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/Analog_Devices.3dshapes/Analog_DD_DFN-10-1EP_3x3mm_P0.5mm_EP1.65x2.38mm.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -128365,7 +128365,7 @@
 			(uuid "5ac26fc2-a1f5-46b9-95ff-0ec6341d9213")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/../lib/opendap/3dmodels/onsemi.3dshapes/onsemi_510BR_WQFN-14-1EP_2.5x2.5mm_P0.5mm_EP1.45x1.45mm.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/onsemi.3dshapes/onsemi_510BR_WQFN-14-1EP_2.5x2.5mm_P0.5mm_EP1.45x1.45mm.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -135525,7 +135525,7 @@
 			(uuid "ffae61f9-9535-4b4c-9c41-5375f3775c25")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/../lib/opendap/3dmodels/Analog_Devices.3dshapes/Analog_DD_DFN-12-1EP_3x3mm_P0.45mm_EP1.65x2.38mm.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/Analog_Devices.3dshapes/Analog_DD_DFN-12-1EP_3x3mm_P0.45mm_EP1.65x2.38mm.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -135936,7 +135936,7 @@
 			(uuid "b9c4653a-4ad1-42f3-9914-9890179947d6")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/../lib/opendap/3dmodels/Texas_Instruments.3dshapes/Texas_RGX0011A_VQFN-HR-11_2x3mm_P0.5mm.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/Texas_Instruments.3dshapes/Texas_RGX0011A_VQFN-HR-11_2x3mm_P0.5mm.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -139973,7 +139973,7 @@
 			(uuid "d89eafb5-74b1-4a2e-b2d0-1121303ef6a2")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/../lib/opendap/3dmodels/Texas_Instruments.3dshapes/Texas_DCU0008A_VSSOP-8_2.3x2mm_P0.5mm.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/Texas_Instruments.3dshapes/Texas_DCU0008A_VSSOP-8_2.3x2mm_P0.5mm.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -142816,7 +142816,7 @@
 			(uuid "d84a5dbd-7e4e-4c74-a9e7-cc19a609c1c9")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/../lib/opendap/3dmodels/Texas_Instruments.3dshapes/Texas_RUK0020B_WQFN-20-1EP_3x3mm_P0.4mm_EP1.7x1.7mm.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/Texas_Instruments.3dshapes/Texas_RUK0020B_WQFN-20-1EP_3x3mm_P0.4mm_EP1.7x1.7mm.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -143638,7 +143638,7 @@
 			(uuid "4fa2d1fb-f7e8-427f-a6e6-93908e8311b3")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/../lib/opendap/3dmodels/Texas_Instruments.3dshapes/Texas_DQA0010A_USON-10_1x2.5mm_P0.5mm.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/Texas_Instruments.3dshapes/Texas_DQA0010A_USON-10_1x2.5mm_P0.5mm.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -149044,7 +149044,7 @@
 			(uuid "2aca70f8-9eeb-43c5-ae1c-e5a5447bbfaf")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/../lib/opendap/3dmodels/Texas_Instruments.3dshapes/VSON-10-1EP_3x3mm_P0.5mm_EP1.65x2.4mm_ThermalVias.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/Texas_Instruments.3dshapes/VSON-10-1EP_3x3mm_P0.5mm_EP1.65x2.4mm_ThermalVias.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -154465,7 +154465,7 @@
 			(uuid "fc140f90-404b-4dbf-842c-647e9fd3e38a")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/../lib/opendap/3dmodels/NXP.3dshapes/NXP_SOT618-1_HVQFN-40-1EP_6x6mm_P0.5mm_EP4.1x4.1mm.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/NXP.3dshapes/NXP_SOT618-1_HVQFN-40-1EP_6x6mm_P0.5mm_EP4.1x4.1mm.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -155640,7 +155640,7 @@
 			(uuid "c418b0f5-6eb1-4728-8cf3-c5148cdc70ee")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/../lib/opendap/3dmodels/Texas_Instruments.3dshapes/Texas_DQA0010A_USON-10_1x2.5mm_P0.5mm.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/Texas_Instruments.3dshapes/Texas_DQA0010A_USON-10_1x2.5mm_P0.5mm.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -157661,7 +157661,7 @@
 			(uuid "57d1286a-4599-4345-b2ce-f77fc36a9ed1")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/../lib/opendap/3dmodels/Texas_Instruments.3dshapes/Texas_DRV0006A_WSON-6-1EP_2x2mm_P0.65mm_EP1x1.6mm.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/Texas_Instruments.3dshapes/Texas_DRV0006A_WSON-6-1EP_2x2mm_P0.65mm_EP1x1.6mm.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -158251,7 +158251,7 @@
 			(uuid "01c8b75f-32d9-48ad-8d33-18940dd09268")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/../lib/opendap/3dmodels/Texas_Instruments.3dshapes/Texas_RQY0009A_VQFN-HR-9_1.5x2.5mm_P0.5mm.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/Texas_Instruments.3dshapes/Texas_RQY0009A_VQFN-HR-9_1.5x2.5mm_P0.5mm.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -168819,7 +168819,7 @@
 			(uuid "7039a456-54dd-4330-add6-1aa0217c432b")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/../lib/opendap/3dmodels/Texas_Instruments.3dshapes/Texas_NJA0024A_WQFN-24-1EP_4x5mm_P0.5mm_EP2.4x3.4mm_ThermalVias.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/Texas_Instruments.3dshapes/Texas_NJA0024A_WQFN-24-1EP_4x5mm_P0.5mm_EP2.4x3.4mm_ThermalVias.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -172795,7 +172795,7 @@
 			(uuid "c9dfc8cd-86cc-47bf-a589-5d690c458b35")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/../lib/opendap/3dmodels/Texas_Instruments.3dshapes/Texas_DQA0010A_USON-10_1x2.5mm_P0.5mm.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/Texas_Instruments.3dshapes/Texas_DQA0010A_USON-10_1x2.5mm_P0.5mm.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -174291,7 +174291,7 @@
 			(uuid "584bfe2c-8393-4556-b2c2-e7c33431f78d")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/../lib/opendap/3dmodels/Texas_Instruments.3dshapes/Texas_DDF0008A_SOT-23-8_1.6x2.9mm_P0.65mm.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/Texas_Instruments.3dshapes/Texas_DDF0008A_SOT-23-8_1.6x2.9mm_P0.65mm.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -175028,7 +175028,7 @@
 			(uuid "e0ebd7f5-eee4-44d4-9d20-0fa4032096de")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/../lib/opendap/3dmodels/Texas_Instruments.3dshapes/Texas_DDF0008A_SOT-23-8_1.6x2.9mm_P0.65mm.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/Texas_Instruments.3dshapes/Texas_DDF0008A_SOT-23-8_1.6x2.9mm_P0.65mm.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -175276,7 +175276,7 @@
 			(uuid "936f0c19-bbc3-4f59-816a-67410d49513b")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/../lib/opendap/3dmodels/Texas_Instruments.3dshapes/Texas_DCK0005A_SC-70-5_1.25x2mm_P0.65mm.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/Texas_Instruments.3dshapes/Texas_DCK0005A_SC-70-5_1.25x2mm_P0.65mm.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -175932,7 +175932,7 @@
 			(uuid "649e38ba-8b50-450f-86d5-773b3019213b")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/../lib/opendap/3dmodels/Texas_Instruments.3dshapes/Texas_DCK0005A_SC-70-5_1.25x2mm_P0.65mm.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/Texas_Instruments.3dshapes/Texas_DCK0005A_SC-70-5_1.25x2mm_P0.65mm.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -177228,7 +177228,7 @@
 			(uuid "703c3277-a4a2-499b-af40-afab2f4f8755")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/../lib/opendap/3dmodels/Texas_Instruments.3dshapes/Texas_DDF0008A_SOT-23-8_1.6x2.9mm_P0.65mm.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/Texas_Instruments.3dshapes/Texas_DDF0008A_SOT-23-8_1.6x2.9mm_P0.65mm.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -177841,7 +177841,7 @@
 			(uuid "9915d636-b794-4d14-b18e-d02cf13f34ce")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/../lib/opendap/3dmodels/G_Switch.3dshapes/G_Switch_GT-3321667P-01_Jack_4.4mm_5Pole_Horizontal.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/G_Switch.3dshapes/G_Switch_GT-3321667P-01_Jack_4.4mm_5Pole_Horizontal.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -178586,7 +178586,7 @@
 			(uuid "d17e64e4-d894-4fd6-9708-cc9259a56394")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/../lib/opendap/3dmodels/Texas_Instruments.3dshapes/Texas_DCK0006A_SC-70-6_1.25x2mm_P0.65mm.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/Texas_Instruments.3dshapes/Texas_DCK0006A_SC-70-6_1.25x2mm_P0.65mm.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -180100,7 +180100,7 @@
 			(uuid "acea5082-6f0f-49ca-b615-51237d287e15")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/../lib/opendap/3dmodels/Texas_Instruments.3dshapes/Texas_Q3_SON-8_3.3x3.3mm_P0.65mm.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/Texas_Instruments.3dshapes/Texas_Q3_SON-8_3.3x3.3mm_P0.65mm.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -181843,7 +181843,7 @@
 			(uuid "2a97c9d4-59ea-425d-82b6-518eb7922d09")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/../lib/opendap/3dmodels/KYOCERA_AVX.3dshapes/KYOCERA_AVX_9258-100_70-9258-001-120-006_SpringFinger_Pad7.0x2.7mm.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/KYOCERA_AVX.3dshapes/KYOCERA_AVX_9258-100_70-9258-001-120-006_SpringFinger_Pad7.0x2.7mm.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -182100,7 +182100,7 @@
 			(uuid "012c764d-a46f-474e-b697-dae48d1f5aba")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/../lib/opendap/3dmodels/Texas_Instruments.3dshapes/Texas_DCK0006A_SC-70-6_1.25x2mm_P0.65mm.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/Texas_Instruments.3dshapes/Texas_DCK0006A_SC-70-6_1.25x2mm_P0.65mm.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -182572,7 +182572,7 @@
 			(uuid "e78f5f90-a8ca-42bc-af50-496deb436738")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/../lib/opendap/3dmodels/Texas_Instruments.3dshapes/VSON-12-1EP_4x2.5mm_P0.4mm_EP2.45x1.95mm_ThermalVias.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/Texas_Instruments.3dshapes/VSON-12-1EP_4x2.5mm_P0.4mm_EP2.45x1.95mm_ThermalVias.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -184685,7 +184685,7 @@
 			(uuid "d27a8710-ab5f-493a-a84f-2bbb5bd9fcb2")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/../lib/opendap/3dmodels/Micron.3dshapes/LPDDR4_FBGA-200_10.0x15.0mm_Layout12x22_P0.8x0.65mm_Pad0.3mm_NSMD.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/Micron.3dshapes/LPDDR4_FBGA-200_10.0x15.0mm_Layout12x22_P0.8x0.65mm_Pad0.3mm_NSMD.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -185535,7 +185535,7 @@
 			(uuid "0c9dd0d9-4e02-4874-a899-4f06e5255c12")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/../lib/opendap/3dmodels/Texas_Instruments.3dshapes/Texas_DCK0006A_SC-70-6_1.25x2mm_P0.65mm.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/Texas_Instruments.3dshapes/Texas_DCK0006A_SC-70-6_1.25x2mm_P0.65mm.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -186004,7 +186004,7 @@
 			(uuid "52bfbbad-8e73-4bb7-8fe7-e71d436c83ea")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/../lib/opendap/3dmodels/Texas_Instruments.3dshapes/Texas_DCK0006A_SC-70-6_1.25x2mm_P0.65mm.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/Texas_Instruments.3dshapes/Texas_DCK0006A_SC-70-6_1.25x2mm_P0.65mm.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -188820,7 +188820,7 @@
 			(uuid "e3c25ae0-61cf-437e-b2b7-389e49c2fe7a")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/../lib/opendap/3dmodels/Texas_Instruments.3dshapes/Texas_DCK0005A_SC-70-5_1.25x2mm_P0.65mm.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/Texas_Instruments.3dshapes/Texas_DCK0005A_SC-70-5_1.25x2mm_P0.65mm.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -189057,7 +189057,7 @@
 			(uuid "56f42c8f-01ec-48d1-8d2a-4e35f4012bf1")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/../lib/opendap/3dmodels/KYOCERA_AVX.3dshapes/KYOCERA_AVX_9258-100_70-9258-001-120-006_SpringFinger_Pad7.0x2.7mm.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/KYOCERA_AVX.3dshapes/KYOCERA_AVX_9258-100_70-9258-001-120-006_SpringFinger_Pad7.0x2.7mm.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -189798,7 +189798,7 @@
 			(uuid "9a788dde-196d-431e-8eb8-e3fdd0bfdba4")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/../lib/opendap/3dmodels/KYOCERA_AVX.3dshapes/KYOCERA_AVX_9258-100_70-9258-001-120-006_SpringFinger_Pad7.0x2.7mm.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/KYOCERA_AVX.3dshapes/KYOCERA_AVX_9258-100_70-9258-001-120-006_SpringFinger_Pad7.0x2.7mm.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -192596,7 +192596,7 @@
 			(uuid "c6233613-7615-4ec4-9200-c2420ce40a7a")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/../lib/opendap/3dmodels/Cirrus_Logic.3dshapes/QFN-40-1EP_5x5mm_P0.4mm_EP3.5x3.5mm_ThermalVias.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/Cirrus_Logic.3dshapes/QFN-40-1EP_5x5mm_P0.4mm_EP3.5x3.5mm_ThermalVias.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -194004,7 +194004,7 @@
 			(uuid "c5783f44-0a35-49a9-81c4-7e89bb5ac332")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/../lib/opendap/3dmodels/Texas_Instruments.3dshapes/Texas_DCK0006A_SC-70-6_1.25x2mm_P0.65mm.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/Texas_Instruments.3dshapes/Texas_DCK0006A_SC-70-6_1.25x2mm_P0.65mm.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -194522,7 +194522,7 @@
 			(uuid "b901d205-898b-4982-9b5a-24a156cdd1b2")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/../lib/opendap/3dmodels/Texas_Instruments.3dshapes/Texas_DBV0005A_SOT-23-5_1.6x2.9mm_P0.95mm.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/Texas_Instruments.3dshapes/Texas_DBV0005A_SOT-23-5_1.6x2.9mm_P0.95mm.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -194768,7 +194768,7 @@
 			(uuid "52b2ee37-ee1a-407f-8e87-e380b6d44a26")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/../lib/opendap/3dmodels/Texas_Instruments.3dshapes/Texas_DBV0006A_SOT-23-6_1.6x2.9mm_P0.95mm.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/Texas_Instruments.3dshapes/Texas_DBV0006A_SOT-23-6_1.6x2.9mm_P0.95mm.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -195248,7 +195248,7 @@
 			(uuid "12636748-3393-41f0-969d-1d2774ec99f2")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/../lib/opendap/3dmodels/Texas_Instruments.3dshapes/Texas_DCK0006A_SC-70-6_1.25x2mm_P0.65mm.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/Texas_Instruments.3dshapes/Texas_DCK0006A_SC-70-6_1.25x2mm_P0.65mm.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -196289,7 +196289,7 @@
 			(uuid "1cc4dd48-029b-4de5-a93c-571d8a67f616")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/../lib/opendap/3dmodels/Texas_Instruments.3dshapes/Texas_DDF0008A_SOT-23-8_1.6x2.9mm_P0.65mm.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/Texas_Instruments.3dshapes/Texas_DDF0008A_SOT-23-8_1.6x2.9mm_P0.65mm.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -196895,7 +196895,7 @@
 			(uuid "aef0f559-7984-4445-b4a9-83dc24fcc550")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/../lib/opendap/3dmodels/Hirose.3dshapes/Hirose_DM3AT-SF-PEJM5_microSD_PushPush_Top.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/Hirose.3dshapes/Hirose_DM3AT-SF-PEJM5_microSD_PushPush_Top.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -197224,7 +197224,7 @@
 			(uuid "eb8d25b9-4575-4691-bc16-8bbe00e6d6a9")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/../lib/opendap/3dmodels/Texas_Instruments.3dshapes/Texas_DGS0010A_VSSOP-10_3x3mm_P0.5mm.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/Texas_Instruments.3dshapes/Texas_DGS0010A_VSSOP-10_3x3mm_P0.5mm.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -197472,7 +197472,7 @@
 			(uuid "82f9e3b3-0ebc-49e5-8865-52e0413df049")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/../lib/opendap/3dmodels/Texas_Instruments.3dshapes/Texas_DBV0005A_SOT-23-5_1.6x2.9mm_P0.95mm.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/Texas_Instruments.3dshapes/Texas_DBV0005A_SOT-23-5_1.6x2.9mm_P0.95mm.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -198254,7 +198254,7 @@
 			(uuid "230013e3-aba7-48e7-818b-2d4f8b073309")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/../lib/opendap/3dmodels/Nexperia.3dshapes/Nexperia_SOT23_TO-236AB_2.9x1.3mm_P1.9mm.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/Nexperia.3dshapes/Nexperia_SOT23_TO-236AB_2.9x1.3mm_P1.9mm.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -199247,7 +199247,7 @@
 			(uuid "e1e82597-6352-4213-8b44-718864d52149")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/../lib/opendap/3dmodels/Texas_Instruments.3dshapes/Texas_DBV0005A_SOT-23-5_1.6x2.9mm_P0.95mm.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/Texas_Instruments.3dshapes/Texas_DBV0005A_SOT-23-5_1.6x2.9mm_P0.95mm.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -200087,7 +200087,7 @@
 			(uuid "517583e3-6b9e-4c75-8e3a-82cd08b0c71d")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/../lib/opendap/3dmodels/Texas_Instruments.3dshapes/VSON-10-1EP_3x3mm_P0.5mm_EP1.65x2.4mm_ThermalVias.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/Texas_Instruments.3dshapes/VSON-10-1EP_3x3mm_P0.5mm_EP1.65x2.4mm_ThermalVias.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -200761,7 +200761,7 @@
 			(uuid "6a3660f5-edb0-4a58-b99d-1cba606b956d")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/../lib/opendap/3dmodels/Cirrus_Logic.3dshapes/QFN-40-1EP_5x5mm_P0.4mm_EP3.5x3.5mm_ThermalVias.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/Cirrus_Logic.3dshapes/QFN-40-1EP_5x5mm_P0.4mm_EP3.5x3.5mm_ThermalVias.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -202641,7 +202641,7 @@
 			(uuid "8b6237a8-9c57-4ac1-a23b-870dfdb620ca")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/../lib/opendap/3dmodels/Samsung.3dshapes/Samsung_FBGA-153_11.5x13.0mm_Layout14x14_P0.5mm_Ball0.3mm_Pad0.25mm_NSMD.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/Samsung.3dshapes/Samsung_FBGA-153_11.5x13.0mm_Layout14x14_P0.5mm_Ball0.3mm_Pad0.25mm_NSMD.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -203571,7 +203571,7 @@
 			(uuid "df705cd7-6457-4f7d-9a46-22aaba9c3f45")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/../lib/opendap/3dmodels/Texas_Instruments.3dshapes/VSON-10-1EP_3x3mm_P0.5mm_EP1.65x2.4mm_ThermalVias.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/Texas_Instruments.3dshapes/VSON-10-1EP_3x3mm_P0.5mm_EP1.65x2.4mm_ThermalVias.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -204475,7 +204475,7 @@
 			(uuid "d68155d2-8cd7-41df-8eb1-1f61ac1b668c")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/../lib/opendap/3dmodels/Texas_Instruments.3dshapes/Texas_DCK0006A_SC-70-6_1.25x2mm_P0.65mm.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/Texas_Instruments.3dshapes/Texas_DCK0006A_SC-70-6_1.25x2mm_P0.65mm.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -206606,7 +206606,7 @@
 			(uuid "321f74e1-1931-4208-948a-8fe53a00bd3c")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/../lib/opendap/3dmodels/Hirose.3dshapes/Hirose_U.FL-R-SMT-1_Vertical.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/Hirose.3dshapes/Hirose_U.FL-R-SMT-1_Vertical.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -209198,7 +209198,7 @@
 			(uuid "0799c27c-9f58-41bc-9307-2e3a48b35b48")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/../lib/opendap/3dmodels/Texas_Instruments.3dshapes/Texas_DCK0006A_SC-70-6_1.25x2mm_P0.65mm.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/Texas_Instruments.3dshapes/Texas_DCK0006A_SC-70-6_1.25x2mm_P0.65mm.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -210266,7 +210266,7 @@
 			(uuid "8b205179-196f-4378-b7ab-58ea22c11b17")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/../lib/opendap/3dmodels/Hirose.3dshapes/Hirose_DF40C-50DS-0.4V_2x25_P0.4mm_Vertical.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/Hirose.3dshapes/Hirose_DF40C-50DS-0.4V_2x25_P0.4mm_Vertical.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -210503,7 +210503,7 @@
 			(uuid "2ced6ace-c79c-4781-b7da-543215db2247")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/../lib/opendap/3dmodels/KYOCERA_AVX.3dshapes/KYOCERA_AVX_9258-100_70-9258-001-120-006_SpringFinger_Pad7.0x2.7mm.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/KYOCERA_AVX.3dshapes/KYOCERA_AVX_9258-100_70-9258-001-120-006_SpringFinger_Pad7.0x2.7mm.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -210805,7 +210805,7 @@
 			(uuid "7158a621-e2c4-4670-bb36-e48424daaa7e")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/../lib/opendap/3dmodels/Texas_Instruments.3dshapes/Texas_DDF0008A_SOT-23-8_1.6x2.9mm_P0.65mm.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/Texas_Instruments.3dshapes/Texas_DDF0008A_SOT-23-8_1.6x2.9mm_P0.65mm.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -211237,7 +211237,7 @@
 			(uuid "88dac749-bcfd-4692-ae3e-dbeb7d8114c1")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/../lib/opendap/3dmodels/Infineon.3dshapes/Infineon_PG-LLGA-5-3_3x4mm_P0.7mm_BottomPort.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/Infineon.3dshapes/Infineon_PG-LLGA-5-3_3x4mm_P0.7mm_BottomPort.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -211629,7 +211629,7 @@
 			(uuid "a6ab0edc-efe1-4673-9ec0-9da5376ec1d8")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/../lib/opendap/3dmodels/Hirose.3dshapes/Hirose_U.FL-R-SMT-1_Vertical.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/Hirose.3dshapes/Hirose_U.FL-R-SMT-1_Vertical.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -213146,7 +213146,7 @@
 			(uuid "669a7ac4-73bc-409b-b8e4-f81406472118")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/../lib/opendap/3dmodels/NDK.3dshapes/Oscillator_SMD_NDK_NZ2520SDA-4Pin_2.5x2.0mm.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/NDK.3dshapes/Oscillator_SMD_NDK_NZ2520SDA-4Pin_2.5x2.0mm.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -213403,7 +213403,7 @@
 			(uuid "0d8ac807-6521-4791-9787-fe64c1cf7b57")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/../lib/opendap/3dmodels/Texas_Instruments.3dshapes/Texas_DCK0006A_SC-70-6_1.25x2mm_P0.65mm.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/Texas_Instruments.3dshapes/Texas_DCK0006A_SC-70-6_1.25x2mm_P0.65mm.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -214893,7 +214893,7 @@
 			(uuid "ce0939b6-0668-4a3e-9513-f07a1c86b190")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/../lib/opendap/3dmodels/Rockchip_PMIC.3dshapes/QFN-68-1EP_7x7mm_P0.35mm_EP5.49x5.49mm_ThermalVias.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/Rockchip_PMIC.3dshapes/QFN-68-1EP_7x7mm_P0.35mm_EP5.49x5.49mm_ThermalVias.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -216136,7 +216136,7 @@
 			(uuid "8121b06b-a09d-41b3-9c44-940bf03dcdf6")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/../lib/opendap/3dmodels/Same_Sky.3dshapes/Same_Sky_SJ2-35954D-SMT-TR_Jack_3.5mm_TRRS_Horizontal.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/Same_Sky.3dshapes/Same_Sky_SJ2-35954D-SMT-TR_Jack_3.5mm_TRRS_Horizontal.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -216393,7 +216393,7 @@
 			(uuid "08ad725c-b93a-4ad8-a54e-12d29d30a59f")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/../lib/opendap/3dmodels/Texas_Instruments.3dshapes/Texas_DCK0006A_SC-70-6_1.25x2mm_P0.65mm.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/Texas_Instruments.3dshapes/Texas_DCK0006A_SC-70-6_1.25x2mm_P0.65mm.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -216599,7 +216599,7 @@
 			(uuid "68b5b80a-1d4c-4f10-bc15-95d17bbf4586")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/../lib/opendap/3dmodels/NDK.3dshapes/Oscillator_SMD_NDK_NZ2520SDA-4Pin_2.5x2.0mm.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/NDK.3dshapes/Oscillator_SMD_NDK_NZ2520SDA-4Pin_2.5x2.0mm.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -217059,7 +217059,7 @@
 			(uuid "388f373e-d80e-4e18-92be-adf52bde445e")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/../lib/opendap/3dmodels/Texas_Instruments.3dshapes/Texas_DBV0005A_SOT-23-5_1.6x2.9mm_P0.95mm.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/Texas_Instruments.3dshapes/Texas_DBV0005A_SOT-23-5_1.6x2.9mm_P0.95mm.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -217519,7 +217519,7 @@
 			(uuid "49048c8b-c444-451e-b6da-2f5a30fff5b6")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/../lib/opendap/3dmodels/KYOCERA_AVX.3dshapes/KYOCERA_AVX_9258-100_70-9258-001-120-006_SpringFinger_Pad7.0x2.7mm.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/KYOCERA_AVX.3dshapes/KYOCERA_AVX_9258-100_70-9258-001-120-006_SpringFinger_Pad7.0x2.7mm.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -218856,7 +218856,7 @@
 			(uuid "d0b6a2b0-c502-43ac-93fd-7f5487f58d5e")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/../lib/opendap/3dmodels/GCT.3dshapes/GCT_USB4105-GF-A_USB-C_Receptacle_USB2.0_Horizontal.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/GCT.3dshapes/GCT_USB4105-GF-A_USB-C_Receptacle_USB2.0_Horizontal.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -224373,7 +224373,7 @@
 			(uuid "c17346bb-739d-45da-85b1-54c900c50d7b")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/../lib/opendap/3dmodels/Rockchip.3dshapes/Rockchip_FCCSP-565L_15.5x14.4mm_P0.4mm_P0.65mm_Ball0.25mm_Pad0.25mm_NSMD.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/Rockchip.3dshapes/Rockchip_FCCSP-565L_15.5x14.4mm_P0.4mm_P0.65mm_Ball0.25mm_Pad0.25mm_NSMD.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -226390,7 +226390,7 @@
 			(uuid "b7965437-469f-4087-8a38-bd9c5b65a1a8")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/../lib/opendap/3dmodels/Murata.3dshapes/Murata_Type2EL_LGA-107_8.8x7.7mm.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/Murata.3dshapes/Murata_Type2EL_LGA-107_8.8x7.7mm.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -228051,7 +228051,7 @@
 			(uuid "bf3719c6-1ba6-48ea-b286-008f9e835cb7")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/../lib/opendap/3dmodels/KYOCERA_AVX.3dshapes/KYOCERA_AVX_9258-100_70-9258-001-120-006_SpringFinger_Pad7.0x2.7mm.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/KYOCERA_AVX.3dshapes/KYOCERA_AVX_9258-100_70-9258-001-120-006_SpringFinger_Pad7.0x2.7mm.step"
 			(offset
 				(xyz 0 0 0)
 			)

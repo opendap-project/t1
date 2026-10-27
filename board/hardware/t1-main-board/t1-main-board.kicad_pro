@@ -1019,7 +1019,8 @@
     "OPENDAP_BOARD": "main board",
     "OPENDAP_LICENCE": "CERN-OHL-S-2.0",
     "OPENDAP_SOURCE": "github.com/opendap-project/board",
-    "OPENDAP_BASE_VARIANT": "full"
+    "OPENDAP_BASE_VARIANT": "full",
+    "OPENDAP_KICAD_3DMODELS": "${KIPRJMOD}/../lib/opendap/kicad/3dmodels"
   },
   "sheets": [],
   "libraries": {

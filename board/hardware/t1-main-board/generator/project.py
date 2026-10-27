@@ -464,7 +464,9 @@ def project_file(classes, patterns, wks, aliases=None, base_variant="full"):
                          "netclass_patterns": patterns},
         "text_variables": {"OPENDAP_PROJECT": "OpenDAP T1", "OPENDAP_BOARD": "main board",
                            "OPENDAP_LICENCE": "CERN-OHL-S-2.0", "OPENDAP_SOURCE": "github.com/opendap-project/board",
-                           "OPENDAP_BASE_VARIANT": base_variant},
+                           "OPENDAP_BASE_VARIANT": base_variant,
+                           # libs' footprints name their 3D models through this variable (libs kicad README).
+                           "OPENDAP_KICAD_3DMODELS": "${KIPRJMOD}/../lib/opendap/kicad/3dmodels"},
         "sheets": [],
         "libraries": {"pinned_footprint_libs": [], "pinned_symbol_libs": []},
     }

@@ -11,7 +11,7 @@ from sexpr import balanced, kid, kids, parse, val
 HERE = os.path.dirname(os.path.abspath(__file__))
 PROJECT = os.path.dirname(HERE)                      # hardware/t1-main-board
 HW = os.path.dirname(PROJECT)                        # hardware
-KICAD_LIB = os.path.join(HW, "lib", "opendap")       # kicad-lib submodule
+KICAD_LIB = os.path.join(HW, "lib", "opendap", "kicad")  # libs submodule, kicad/ folder
 LOCAL_LIB = os.path.join(HW, "lib", "symbols")
 KICAD_APP = os.environ.get("KICAD_APP", "/Applications/KiCad/KiCad.app")
 STOCK = os.environ.get("KICAD10_SYMBOL_DIR", os.path.join(KICAD_APP, "Contents", "SharedSupport", "symbols"))

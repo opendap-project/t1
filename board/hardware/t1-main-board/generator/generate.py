@@ -135,6 +135,7 @@ def bus_aliases():
             "NFC": ["NFC_FD_N", "NFC_VEN", "NFC_DWL_REQ", "NFC_IRQ"],
             "TPM": ["TPM_RST_N", "TPM_PIRQ_N"],
             "LED": ["LED_R", "LED_G", "LED_B"],
+            "DEBUG": ["DBG_UART_TX", "DBG_UART_RX"] + blocks_instr.spare_pads(),
             "RP": ["RP_UART_TX", "RP_UART_RX", "RP_IRQ", "RP_RUN", "RP_SWCLK", "RP_SWDIO", "RP_BOOTSEL_DRV",
                    "RP_PWR_EN", "RP_USB_DP", "RP_USB_DM"]}
 
@@ -188,14 +189,14 @@ def main():
     exp, bid, imu, spk, sd = blocks_io.sheets(proj)
     hap, tpm, tag, rdr, rp = blocks_should.sheets(proj)
     btn = blocks_io.sheets_buttons(proj)
-    cmon, led = blocks_instr.sheets(proj)
+    cmon, led, dbg = blocks_instr.sheets(proj)
 
     # the root in reading rows (CRAFT-111): overviews in the top row; then power blocks as power
     # flows; then the SoC and its memories. A list stacks its sheets in one column.
     rows = [("Overviews, then the power blocks in the order power flows",
              [power, inter, charger, gauge, vsys_lv, v3v3, pmic, vcpu]),
             ("SoC, memory and the coprocessor; audio, from the DACs to the jacks; instrumentation",
-             [soc, [ddr, emmc], audio, [jse, jbal], rp, [None, cmon]]),
+             [soc, [ddr, emmc], audio, [jse, jbal], rp, [None, cmon], [None, dbg]]),
             ("USB ports (the 5.1 V source, USB-C, the HAT port) and the radio",
              [p5v1, vout, usbc, hats, hat5v, radio, ant]),
             ("Faceplate interface; control, storage and sensors", [[fpc, fpd, mic], [fpb, fpk, led], [spk, sd, exp], [bid, imu, hap], [tpm, tag, btn], [rdr]])]
@@ -266,6 +267,7 @@ def main():
     blocks_should.draw_rp2354(rp, variants)
     blocks_instr.draw_current_monitors(cmon, variants)
     blocks_instr.draw_status_led(led, variants)
+    blocks_instr.draw_debug(dbg, variants)      # last: its rail pads cover what no other sheet probes
     for s in proj.sheets:
         if s.role.startswith("blk."):
             finalize_tables(s)
@@ -274,7 +276,7 @@ def main():
     overview.draw_interconnect(inter)
 
     for s in [power, inter, charger, gauge, vsys_lv, v3v3, pmic, vcpu, soc, ddr, emmc, audio, jse, jbal,
-              p5v1, usbc, vout, hat5v, hats, radio, ant, fpc, fpd, fpb, fpk, mic, exp, bid, sd, imu, spk, hap, tpm, tag, rdr, btn, rp, cmon, led]:
+              p5v1, usbc, vout, hat5v, hats, radio, ant, fpc, fpd, fpb, fpk, mic, exp, bid, sd, imu, spk, hap, tpm, tag, rdr, btn, rp, cmon, led, dbg]:
         root.child(s, 0, 0, w=25.4)
     for name, *_ in blocks_soc.SUBS:
         soc.child(subs[name], 0, 0, w=76.2)
@@ -331,7 +333,8 @@ def main():
 
 def auto_sides(proj, root, soc, memories):
     """On the root, a bidirectional or passive sheet pin faces the block it connects to. The SoC
-    keeps its right edge for the memory buses, wired pin for pin; its other links go left."""
+    keeps its right edge for the memory buses, wired pin for pin, and the debug bus (its pads sit
+    right of the SoC; the left edge is the tallest); its other links go left."""
     xs = {cs.sheet: cs.x for cs in root.children}
     mem_nets = {p[0] for cs in root.children if cs.sheet in memories for p in cs.pins}
     for cs in root.children:
@@ -339,7 +342,7 @@ def auto_sides(proj, root, soc, memories):
             net, shape = pin[0], pin[1]
             if shape in ("bidirectional", "passive") and pin[2] != "top":
                 if cs.sheet is soc:
-                    pin[2] = "right" if net in mem_nets else "left"
+                    pin[2] = "right" if net in mem_nets or net == "{DEBUG}" else "left"
                     continue
                 partners = [o for o in root.children if o is not cs and any(p[0] == net for p in o.pins)]
                 if partners:

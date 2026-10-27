@@ -20,7 +20,9 @@ def sheets(proj):
                       "A3")
     led = proj.sheet("status-led.kicad_sch", "blk.status-led", "Status LED driver",
                      "LP5521 RGB LED driver on I2C2 at 0x32: charge pump, LED_R/G/B to the faceplate, link #22", "A4")
-    return cmon, led
+    dbg = proj.sheet("debug.kicad_sch", "blk.debug", "Test and debug access",
+                     "Debug UART, I2S/DSD and bring-up pads, spare GPIO pads and rail test pads", "A3")
+    return cmon, led, dbg
 
 
 # ---------------------------------------------------------------------- blk.current-monitors
@@ -147,4 +149,95 @@ def draw_status_led(s, variants):
         "4. Internal clock: CLK_32K to GND; TRIG to GND (SNVS441I §7.3.5.3, §7.3.5.5); INT and GPO",
         "   open (no SoC line in pinout v1). The R channel runs from VDD (R_TO_BATT, BOM line 105).",
         "5. Each channel is capped at 20 mA in the devicetree (80 % of the LED's 25 mA IF, line 79).",
+    ])
+
+
+# ---------------------------------------------------------------------- blk.debug
+
+def spare_pads():
+    """The spare SoC GPIOs pinout v1 puts on a test pad (blk.debug rows whose notes name one)."""
+    import pinout
+    out = []
+    for ball, r in sorted(pinout.load().items(), key=lambda kv: (kv[1]["net"] or "")):
+        if r["block"] == "blk.debug" and r["net"] and r["net"].startswith("SPARE_") and "test pad" in r["notes"]:
+            out.append(r["net"])
+    return out
+
+
+def gnd_pad(s, x, y):
+    """A ground test pad (BOM v1 lines 87, 88: GND beside the signal pads)."""
+    from draw import tp
+    tp(s, x, y, "GND", text="left")
+    s.wire((x, y), (x, y + 2.54))
+    s.power("GND", x, y + 2.54)
+    return (x - 7.62, y - 7.62, x + 2.54, y + 7.62)
+
+
+def pad_row(s, title, nets, gnd=False):
+    """Signal pads, each with its net hanging below it (blocks_should.pads), and an optional ground pad."""
+    from draw import tp
+
+    def draw():
+        g = Group(s, title)
+        x = 116.84
+        for net in nets:
+            tp(s, x, 101.6, net, text="left")
+            s.point(net, x, 101.6, "down", "pas")
+            g.add((x - 2.54 - len(net) * 1.16, 93.98, x + 2.54, 101.6 + 2.54 + len(net) * 1.16))
+            x += 17.78
+        if gnd:
+            g.add(gnd_pad(s, x, 101.6))
+        return g.close()
+    return draw
+
+
+def probed(proj, skip):
+    """Nets that already carry a test pad on another sheet (its value names the net)."""
+    return {val for sh, pl, f, val, *_ in proj.parts if sh is not skip and pl.sym.lib_id == "Connector:TestPoint"}
+
+
+def draw_debug(s, variants):
+    """blk.debug (#49): access for bring-up and measurement (BRD-040, BRD-047; T1-026; PCB-T-01,
+    -02, -09). Drawn after every other block: the rail pads cover the rails no sheet probes yet."""
+    from blocks_charger import rail_probe
+    from sch import RAILS
+    f = Flow(s)
+    grp(f, pad_row(s, "Debug UART2 M0, 1.8 V (BOM v1 line 87; PCB-T-01)", ["DBG_UART_TX", "DBG_UART_RX"], gnd=True))
+    grp(f, pad_row(s, "I2S and DSD (BOM v1 line 88; BRD-040)",
+                   ["I2S_BCLK", "I2S_LRCK", "I2S_SDO0", "DSD_L", "DSD_R"], gnd=True))
+    grp(f, pad_row(s, "Reset, PMIC and power key (PCB-T-09)", ["SOC_RESET_N", "PMIC_INT_N", "PMIC_SLEEP", "PWRON_N"]))
+    spares = spare_pads()
+    half = (len(spares) + 1) // 2
+    grp(f, pad_row(s, "Spare SoC GPIOs (pinout v1; PCB-T-09)", spares[:half]), newline=True)
+    grp(f, pad_row(s, "Spare SoC GPIOs, continued", spares[half:]))
+    used = sorted(r for r in s.project.rails_used if r != "GND")
+    have = probed(s.project, s)
+    rails = [r for r in RAILS if r in used and r not in have]
+
+    def rail_pads():
+        g = Group(s, "Rail test pads (PCB-T-02, BOM v1 line 86): the rails no other sheet probes")
+        per = 8
+        for i, net in enumerate(rails):
+            x, y = 116.84 + (i % per) * 43.18, 101.6 + (i // per) * 22.86
+            g.add(rail_probe(s, net, x, y))
+        return g.close()
+    if rails:
+        grp(f, rail_pads, newline=True)
+    s.iface_rows = [
+        ["DBG_UART_TX, DBG_UART_RX", "Bidirectional", "Pads only (1.8 V, PMUIO2); the SoC pull-ups hold the idle level"],
+        ["I2S_BCLK, I2S_LRCK, I2S_SDO0, DSD_L, DSD_R", "Input", "Pads only on the DAC path (BRD-040); no load"],
+        ["SOC_RESET_N, PMIC_INT_N, PMIC_SLEEP, PWRON_N", "Input", "Pads only"],
+        ["SPARE_*", "Bidirectional", "Pads only; each ball keeps its reset pull (pinout v1)"],
+    ]
+    s.rail_rows = [["(none)", "-", "Pads only: no decoupling on this sheet"]]
+    corner_notes(s, [
+        "1. Function: test and debug access (BRD-040, BRD-047 must; T1-026): the BootROM, TPL and U-Boot",
+        "   console on UART2 M0 at 1.8 V (a 1.8 V USB-UART adapter), the I2S/DSD lines at the DAC path,",
+        "   reset and PMIC pads, the spare SoC GPIOs, and a pad on every rail no other sheet probes.",
+        "2. Absent state: pads only, nothing fitted. The block's measurement links sit on their blocks'",
+        "   sheets (power tree §4.12); the RP2354A SWD pads on blk.rp2354-core; one MCLK pad on each DAC sheet.",
+        "3. Spares pinout v1 leaves without a pad (the audio-bank balls next to I2S1, FSPI_D3) carry",
+        "   no-connect flags on the SoC sheets.",
+        "4. I2S/DSD pads: BCLK is also the DSD clock (DSDCLK from I2S_BCLK, blk.dac-l/-r); stubs from",
+        "   the DAC path at most 1 mm, as the coprocessor taps (PCB-A-12).",
     ])

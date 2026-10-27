@@ -222,7 +222,7 @@ class Project:
                 self._render_bus(s, net, lst)
                 continue
             direct = (len(lst) == 2 and net not in own and lst[0][1] == lst[1][1] and lst[0][2] != lst[1][2]
-                      and not any(cs.outer.get(net) for _, _, _, cs in lst))
+                      and not any(cs.outer.get(net) for _, _, _, cs in lst) and self._clear(s, lst))
             if direct:
                 (x1, y1, _, _), (x2, y2, _, _) = lst
                 s.wire((x1, y1), (x2, y2))
@@ -236,12 +236,31 @@ class Project:
                 else:
                     s.label_at(net, ex, ey, dname)
 
+    @staticmethod
+    def _clear(s, lst):
+        """Two facing sheet pins may be joined directly only if the route (a straight wire, or the
+        bus's orthogonal dog-leg at the midpoint) meets no other sheet symbol with its outside
+        labels, sheet name and file name."""
+        (x1, y1, _, a), (x2, y2, _, b) = sorted(lst, key=lambda e: e[0])
+        xm = snap((x1 + x2) / 2)
+        segs = [((x1, y1), (x2, y2))] if y1 == y2 else [((x1, y1), (xm, y1)), ((xm, y1), (xm, y2)), ((xm, y2), (x2, y2))]
+        for cs in s.children:
+            if cs is a or cs is b:
+                continue
+            ext = getattr(cs, "ext", {"left": 0.0, "right": 0.0, "top": 0.0})
+            rx0, ry0 = cs.x - ext["left"], cs.y - 3.81 - ext["top"]
+            rx1, ry1 = cs.x + cs.w + ext["right"], cs.y + cs.h + 5.08
+            for (ax, ay), (bx, by) in segs:
+                if min(ax, bx) < rx1 and max(ax, bx) > rx0 and min(ay, by) <= ry1 and max(ay, by) >= ry0:
+                    return False
+        return True
+
     def _render_bus(self, s, net, lst):
         """A bus sheet pin: two ends on this sheet that face each other are joined by an
         orthogonal bus; otherwise each end takes a bus stub and a label (hierarchical where the
         bus leaves this sheet), and same-named bus labels join on the sheet."""
         if len(lst) == 2 and not any(cs.outer.get(net) for *_, cs in lst) and lst[0][2][0] != lst[1][2][0] \
-                and lst[0][2][1] == 0 and lst[1][2][1] == 0:
+                and lst[0][2][1] == 0 and lst[1][2][1] == 0 and self._clear(s, lst):
             (x1, y1, d1, _), (x2, y2, d2, _) = sorted(lst, key=lambda e: e[0])
             if d1 == (1, 0) and d2 == (-1, 0):
                 xm = snap((x1 + x2) / 2)

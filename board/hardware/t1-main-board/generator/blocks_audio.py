@@ -318,6 +318,8 @@ def draw_dac(s, variants, side):
         [("C_2u2_0402", f"{n}_FLYP_VA", f"{n}_FLYN_VA"), ("C_2u2_0402", f"{n}_VCPF_P", "GND"),
          ("C_2u2_0402", f"{n}_VCPF_N", "GND")],
         [("C_2u2_0402", f"{n}_FLYP_VCP", f"{n}_FLYC_VCP"), ("C_2u2_0402", f"{n}_FLYC_VCP", f"{n}_FLYN_VCP")]]))
+    from blocks_should import pads           # the I2S/DSD pads are on blk.debug (BOM v1 line 88)
+    grp(col, pads(s, "MCLK test pad (BOM v1 line 88)", (f"MCLK_{side}",)))
     s.iface_rows = [
         ["I2S_SDO0, I2S_BCLK, I2S_LRCK, DSD_x", "Bidirectional", "Series parts here; the SoC parks the lines low (G2, G21)"],
         ["DAC_I2C_SCL, DAC_I2C_SDA", "Bidirectional", "Isolated on the host side while DAC_DIG_1V8 is off (G2)"],

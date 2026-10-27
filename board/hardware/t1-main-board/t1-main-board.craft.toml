@@ -90,11 +90,11 @@ interface = ["{I2C0}"]
 
 [[schematic.block]]
 id = "blk.soc"
-interface = ["{DDR_CHA}", "{DDR_CHB}", "{EMMC}", "{KEYS}", "{AUDIO_CTL}", "{FP}", "{WL}", "{IO_IRQ}", "{PMIC_CTL}", "{AUDIO_I2S}", "{IMON}", "{USB}", "{I2C0}", "{I2C1}", "{I2C2}", "{NFC}", "{RP}", "{SDMMC0}", "{SPK_I2S}", "{TPM}", "VDD_LOGIC_SRC"]
+interface = ["{DDR_CHA}", "{DDR_CHB}", "{EMMC}", "{KEYS}", "{AUDIO_CTL}", "{FP}", "{WL}", "{IO_IRQ}", "{PMIC_CTL}", "{DEBUG}", "{AUDIO_I2S}", "{IMON}", "{USB}", "{I2C0}", "{I2C1}", "{I2C2}", "{NFC}", "{RP}", "{SDMMC0}", "{SPK_I2S}", "{TPM}", "VDD_LOGIC_SRC"]
 
 [[schematic.block]]
 id = "blk.soc-pmuio"
-interface = ["{KEYS}", "{WL}", "{IO_IRQ}", "{PMIC_CTL}", "{IMON}", "{FP}", "{I2C0}", "{I2C1}", "{I2C2}", "{NFC}", "{RP}", "{SDMMC0}", "{TPM}"]
+interface = ["{KEYS}", "{WL}", "{IO_IRQ}", "{PMIC_CTL}", "{DEBUG}", "{IMON}", "{FP}", "{I2C0}", "{I2C1}", "{I2C2}", "{NFC}", "{RP}", "{SDMMC0}", "{TPM}"]
 
 [[schematic.block]]
 id = "blk.soc-ddr"
@@ -102,11 +102,11 @@ interface = ["{DDR_CHA}", "{DDR_CHB}"]
 
 [[schematic.block]]
 id = "blk.soc-vccio-a"
-interface = ["{EMMC}", "{WL}", "{NFC}", "{RP}", "{SDMMC0}", "{TPM}"]
+interface = ["{EMMC}", "{WL}", "{NFC}", "{RP}", "{SDMMC0}", "{DEBUG}", "{TPM}"]
 
 [[schematic.block]]
 id = "blk.soc-vccio-b"
-interface = ["{AUDIO_CTL}", "{FP}", "{AUDIO_I2S}", "{I2C2}", "{RP}", "{SPK_I2S}"]
+interface = ["{AUDIO_CTL}", "{FP}", "{AUDIO_I2S}", "{I2C2}", "{RP}", "{DEBUG}", "{SPK_I2S}"]
 
 [[schematic.block]]
 id = "blk.soc-phy"
@@ -299,3 +299,7 @@ interface = ["{I2C1}"]
 [[schematic.block]]
 id = "blk.status-led"
 interface = ["{I2C2}", "{LED}"]
+
+[[schematic.block]]
+id = "blk.debug"
+interface = ["{DEBUG}", "{AUDIO_I2S}", "{PMIC_CTL}", "{KEYS}"]

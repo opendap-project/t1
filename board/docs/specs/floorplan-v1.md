@@ -97,7 +97,7 @@ The DRC side (rules and test rows in [`hardware/rules/`](../../hardware/rules/))
 
 [Placement v1](placement-v1.md) (2026-10-27) places every part of the schematic on this floorplan, with the board file `hardware/t1-main-board/t1-main-board.kicad_pcb`. Facts it adds here:
 
-- **Real courtyards.** §2.1's method on the real footprints gives a board need of 113 % of both sides (77 % above): core band 227 %, power band 258 %, power back and front 165 %, audio front 254 %, faceplate area 109 % (placement v1 §3.1). The courtyards alone cover 68 % of both sides.
+- **Real courtyards.** §2.1's method on the real footprints gives a board need of 113 % of both sides (77 % above; 111 % after the part swaps of placement v1 §4 decision 12): core band 227 %, power band 258 %, power back and front 165 %, audio front 254 %, faceplate area 109 % (placement v1 §3.1). The courtyards alone cover 68 % of both sides.
 - **Zone changes** (placement v1 §4): the audio zone grows to y 2.4 (every layer) and y 14 (front); the power zone to y 0, to x 4.0 above the contact window, over the HAT strip's front and over part of the I/O column's back; the core takes the top band from x −5.5 to 3; the faceplate area's front is the faceplate zone's alone; the core–audio and core–power corridors move with their boundaries; `blk.audio-supply` (a buck) belongs to the power zone.
 - **Fixed parts moved:** the RK809-5 above the SoC at (−6.0, 25.7), the RP2354A at (−16.0, 24.5), the microSD at x 13.5, the LPDDR4X at x 16.9, the U.FLs at x −14.0 and −8.3.
 - §6 items 1 (band capacity), 2 (4.4 mm jack), 3 (PCB-L-01), 4 (faceplate area), and 5 (mounting holes) stay open, 6 (zone net classes) is closed; placement v1 §5 and §6 give their state.

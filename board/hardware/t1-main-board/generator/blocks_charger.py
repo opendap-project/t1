@@ -36,7 +36,7 @@ def rail_probe(s, net, x, y, flag=False):
     """A test pad on a rail (PCB-T-02): the pad, a short wire and the rail's power symbol; with
     flag, the rail's PWR_FLAG hangs from that wire (a rail no output pin on the sheet drives).
     Returns the bbox."""
-    tp(s, x, y, net, text="left")
+    tp(s, x, y, net, text="left", key="TP")
     s.wire((x, y), (x + 10.16, y))
     s.attach(net, x + 10.16, y, "up")
     if flag:
@@ -136,7 +136,7 @@ def draw_core(s, variants):
 
     def power_stage():
         g = Group(s, "Inductor, input and output capacitors (SLUSDV2C §8.2.2)")
-        g.add(two_pin_box(s, "L_XAL4020_102", 109.22, 101.6, "CHG1_SW", "CHG2_SW", prefix="L"))
+        g.add(two_pin_box(s, "L_XGL4015_102", 109.22, 101.6, "CHG1_SW", "CHG2_SW", prefix="L"))
         y = 127.0
         for row in ([("C_10u_0805_25V", "VBUS_CHG", "GND")] * 2 + [("C_100n_0402_50V", "VBUS_CHG", "GND")],
                     [("C_10u_0805_25V", "CHG_PMID", "GND")] * 3 + [("C_100n_0402_50V", "CHG_PMID", "GND")]):

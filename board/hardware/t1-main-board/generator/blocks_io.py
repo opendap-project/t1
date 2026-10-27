@@ -141,7 +141,7 @@ def draw_speaker(s, variants):
         g = Group(s, "Speaker spring-contact pads (BOM v1 line 33)")
         for i, net in enumerate(("SPK_P", "SPK_N")):
             x = 116.84 + i * 17.78
-            tp(s, x, 101.6, net, text="left")
+            tp(s, x, 101.6, net, text="left", key="TP")   # spring-contact pad
             s.point(net, x, 101.6, "down", "pas")
             g.add((x - 2.54 - len(net) * 1.16, 93.98, x + 2.54, 101.6 + 2.54 + len(net) * 1.16))
         return g.close()

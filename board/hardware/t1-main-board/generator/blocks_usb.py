@@ -142,7 +142,7 @@ def draw_pwr_5v1(s, variants):
 
     def stage():
         g = Group(s, "Inductor and enable OR (BOM v1 line 91)")
-        g.add(two_pin_box(s, "L_XGL4020_102", 109.22, 101.6, "P5V1_SW", "P5V1_SRC", prefix="L"))
+        g.add(two_pin_box(s, "L_XGL4015_102", 109.22, 101.6, "P5V1_SW", "P5V1_SRC", prefix="L"))
         for i, src in enumerate(("HAT5V_EN", "USB_SRC_ON")):
             y = 121.92 + i * 15.24
             from blocks_charger import or_diode      # text above the body, labels on stubs clear of it

@@ -40,6 +40,9 @@ def _r(value, code, size="0402", tol="1 %", spec=None, src="capture choice", pow
 PARTS = {
     # capacitors -------------------------------------------------------------------------------
     "C_100n_0201": _c("100 nF", "GRM033R61A104KE15D", "0201", 10, "X5R"),
+    "C_100n_0201_DEC": _c("100 nF", "GRM033R61A104KE15D", "0201", 10, "X5R", spec="",
+                          src="compaction (2026-10-27): 0402 decoupling in 0201 on rails <= 3.3 V; the sheet's "
+                              "unless-noted rating (at least twice the rail) covers it"),
     "C_100n_0402": _c("100 nF", "GRM155R71C104KA88D", "0402", 16, "X7R", spec=""),
     "C_1u_0402": _c("1 µF", "GRM155R61A105KE15D", "0402", 10, "X5R", spec=""),
     "C_2u2_0402": _c("2.2 µF", "GRM155R61A225KE95D", "0402", 10, "X5R", spec=""),
@@ -214,6 +217,22 @@ PARTS = {
                           Manufacturer="Coilcraft", MPN="XGL4020-222MEC", spec="Isat 4.4 A",
                           Second_Source="Coilcraft XAL4020-222MEC (same land, BOM v1 line 117)",
                           Manufacturer_2="Coilcraft", MPN_2="XAL4020-222MEC", src="LMR33630C inductor (BOM v1 line 117)"),
+    # low-profile power inductors (compaction study, hardware/studies/compaction; 2026-10-27): the
+    # XGL4015 is 4.0 x 4.0 x 1.5 mm max on the XxL4020 land (Coilcraft Document 1660 and its drawing:
+    # pads 0.98 x 3.4 mm, 2.37 mm apart), so it stands under the battery pocket (PCB-Z-01, 1.5 mm)
+    "L_XGL4015_102": dict(kind="L", value="1 µH", Footprint="Inductor_SMD:L_Coilcraft_XxL4020",
+                          Datasheet="https://coilcraft.com/getmedia/c5d04454-742d-473e-8b80-06c97338c587/xgl4015.pdf",
+                          Description="Power inductor, 1.0 uH 20 %, Isat 7.3 A (30 % drop), Irms 6.5 A, 4.0 x 4.0 x 1.5 mm",
+                          Manufacturer="Coilcraft", MPN="XGL4015-102MEC", spec="Isat 7.3 A",
+                          Second_Source="Coilcraft XGL4012-102MEC (same land, 1.2 mm, Isat 6.6 A at 30 % drop)",
+                          Manufacturer_2="Coilcraft", MPN_2="XGL4012-102MEC",
+                          src="compaction study (2026-10-27): BQ25798 and TPS62903 inductor at 1.5 mm; Document 1660-1"),
+    "L_XGL4015_471": dict(kind="L", value="470 nH", Footprint="Inductor_SMD:L_Coilcraft_XxL4020",
+                          Datasheet="https://coilcraft.com/getmedia/c5d04454-742d-473e-8b80-06c97338c587/xgl4015.pdf",
+                          Description="Power inductor, 0.47 uH 20 %, Isat 10.5 A (30 % drop), Irms 9.6 A, 4.0 x 4.0 x 1.5 mm",
+                          Manufacturer="Coilcraft", MPN="XGL4015-471MEC", spec="Isat 10.5 A",
+                          Second_Source="Wurth 744373240047 (other land, 1.8 mm: bands only; BOM v1 line 106)",
+                          src="compaction study (2026-10-27): TPS62827 and TPS62826 inductor at 1.5 mm; Document 1660-1"),
     "D_PMEG2010AEH": dict(kind="D", value="PMEG2010AEH", Footprint="Diode_SMD:D_SOD-123F",
                           Datasheet="https://assets.nexperia.com/documents/data-sheet/PMEG2010AEH_PMEG2010AET.pdf",
                           Description="Schottky rectifier, 20 V, 1 A, SOD-123F", Manufacturer="Nexperia",
@@ -355,8 +374,10 @@ PARTS = {
                   Description="Crystal, 24 MHz, 3225 4-pin (load capacitance UNVERIFIED)", Manufacturer="YXC",
                   MPN="X322524MOB4SI", spec="", Second_Source="YXC XL2EL89COI-111YLC-24M (BOM v1 line 15)",
                   src="BOM v1 line 15"),
+    "TP_SIG": dict(kind="TP", value="TP", Footprint="T1_Main_Board:TestPoint_Pad_D0.8mm", Datasheet="~",
+                   Description="Test pad, 0.8 mm, signal net", src="PCB-D-06 (signal nets 0.8 mm minimum)"),
     "TP": dict(kind="TP", value="TP", Footprint="TestPoint:TestPoint_Pad_D1.0mm", Datasheet="~",
-               Description="Test pad, 1.0 mm", src="PCB-T-02 test access"),
+               Description="Test pad, 1.0 mm", src="PCB-T-02 test access; PCB-D-06 (power and ground nets 1.0 mm)"),
     "PAD_COVER": dict(kind="TP", value="TP", Footprint="TestPoint:TestPoint_Pad_2.0x2.0mm", Datasheet="~",
                       Description="Board-edge contact pad, ENIG, for the back cover's actuator (size set with the case, UNVERIFIED)",
                       src="BOM v1 line 143; PCB-L-10"),
@@ -373,3 +394,29 @@ def fields(key, block, **extra):
     f["Block"] = block
     f.update(extra)
     return f
+
+
+# ---- compaction (hardware/studies/compaction, 2026-10-27) ------------------------------------------
+# 100 nF decoupling in 0201 (GRM033R61A104KE15D, 10 V X5R, the part already under the BGA, ADR 0016)
+# instead of 0402, where the rail is at most 3.3 V (at most half the 10 V rating) and the block is in
+# the core, I/O or radio zone. The audio zone keeps its captured parts (audiophile first, T1-040),
+# the power zone its higher rails. Rail voltages: power tree v0 §3.
+RAILS_0201 = {
+    "vcc3v3_sys": 3.3, "vcc3v3_pmu": 3.3, "vcca1v8_pmu": 1.8, "vcc_1v8": 1.8, "vcc_ddr": 1.14,
+    "vcc1v8_ddr": 1.8, "vccio_sd": 3.3, "vccio6_1v8": 1.8, "vdda_0v9": 0.9, "vcca_1v8": 1.8,
+    "vcc1v8_wl": 1.8, "RP_3V3": 3.3, "RP_IOVDD_1V8": 1.8, "RP_DVDD": 1.1, "TPM_VDD": 1.8,
+    "IMU_VDD": 1.8, "NFC_TAG_VCC": 1.8, "SD_VDD": 3.3,
+}
+BLOCKS_0201 = ("blk.soc", "blk.lpddr4x", "blk.emmc", "blk.microsd", "blk.pmic", "blk.rp2354", "blk.tpm",
+               "blk.gpio-expander", "blk.board-id", "blk.imu", "blk.haptics", "blk.nfc-tag", "blk.status-led",
+               "blk.maskrom", "blk.buttons", "blk.debug", "blk.usb-c", "blk.hat-signals", "blk.fp-",
+               "blk.mic-main", "blk.radio", "blk.antennas")
+
+
+def compact(key, block, top, bottom):
+    """The part to place for KEY between nets TOP and BOTTOM in BLOCK: the 0201 100 nF where the
+    compaction rule above allows it, else KEY."""
+    if key == "C_100n_0402" and bottom == "GND" and top in RAILS_0201 and 2 * RAILS_0201[top] <= 10 \
+            and block and block.startswith(BLOCKS_0201):
+        return "C_100n_0201_DEC"
+    return key

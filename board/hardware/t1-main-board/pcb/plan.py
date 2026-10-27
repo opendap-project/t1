@@ -60,28 +60,20 @@ FIXED = {
 }
 # Parts taller than 1.5 mm stand only in the bands (PCB-Z-02); the bands are small, so each band part
 # has its place here, next to the converter or contact it serves:
-# - core top band (x -5.5 to 5.6 left of the microSD): the vdd_cpu and vcc3v3_sys inductors;
-# - radio top band: the radio's AVDD18 inductor left of the U.FLs;
-# - power band above the USB-C (y -36 to -28.55): the battery fuse under the P+ contacts, the charger
-#   inductor, the 5.1 V converter's 1210 and one pre-rail 1206;
-# - power band at the right edge (x 21 to 27.3, under the bottom-right hole): three converter inductors.
-# Two pre-rail 1206 capacitors (1.6 mm) fit no band: they stand on the front's bottom strip outside the
-# display (PCB-Z-04, 6.8 mm, UNVERIFIED until the faceplate mechanics).
+# - power band above the USB-C (y -36 to -28.55): the battery fuse under the P+ contacts, the 5.1 V
+#   converter's 1210 and one pre-rail 1206;
+# - power band at the right edge (x 21 to 27.3, under the bottom-right hole): the VSYS_LV and pre-rail
+#   inductors (XGL4020, 2.1 mm).
+# The vdd_cpu, vcc3v3_sys, radio AVDD18, charger and 5.1 V inductors are 1.2-1.5 mm since the compaction
+# study (placement v1 decision 12) and are placed by the search; one 0805 (C904) finds no back room and
+# stands on the front's bottom strip outside the display (PCB-Z-04, 6.8 mm, UNVERIFIED).
 FIXED.update({
-    "L1201": (-3.0, 41.7, 0, "B", "vdd_cpu inductor (XGL4020, 2.1 mm) in the core top band"),
-    "L1001": (1.9, 41.7, 0, "B", "vcc3v3_sys inductor (WE-LHMI 4020, 2.0 mm) in the core top band"),
-    "L5101": (-19.2, 41.7, 0, "B", "radio AVDD18 inductor (WE-LHMI 4020, 2.0 mm) in the radio top band"),
     "F701": (-2.4, -30.45, 0, "B", "battery fuse (NANO2, 2.69 mm) in the band under the P+ contacts (PCB-P-01)"),
-    "L601": (3.75, -30.9, 0, "B", "charger inductor (XAL4020, 2.1 mm) in the band above the USB-C"),
     "C4403": (-3.75, -34.2, 0, "B", "5.1 V converter output 1210 (2.5 mm) in the band above the USB-C"),
     "C2817": (1.05, -34.4, 0, "B", "pre-rail 22 uF 1206 (1.6 mm) in the band above the USB-C"),
     "L901": (24.2, -42.4, 0, "B", "VSYS_LV inductor (XAL4020, 2.1 mm) in the right band"),
     "L2802": (24.2, -37.7, 0, "B", "pre-rail inductor (XAL4020, 2.1 mm) in the right band"),
-    "L4401": (24.2, -33.0, 0, "B", "5.1 V inductor (XAL4020, 2.1 mm) in the right band"),
-    "C2818": (12.5, -43.35, 0, "F", "pre-rail 22 uF 1206 (1.6 mm) on the front bottom strip outside the display (PCB-Z-04, UNVERIFIED)"),
-    "C2819": (17.5, -43.35, 0, "F", "pre-rail 22 uF 1206 (1.6 mm) on the front bottom strip outside the display (PCB-Z-04, UNVERIFIED)"),
-    "C903": (21.75, -43.35, 0, "F", "VSYS_LV converter 10 uF 0805 (1.25 mm) on the front bottom strip outside the display, at the converter (PCB-Z-04, UNVERIFIED)"),
-    "C904": (25.35, -43.35, 0, "F", "VSYS_LV converter 10 uF 0805 (1.25 mm) on the front bottom strip outside the display, at the converter (PCB-Z-04, UNVERIFIED)"),
+    "C904": (25.35, -43.35, 0, "F", "VSYS_LV converter 22 uF 0805 (1.25 mm) on the front bottom strip outside the display, at the converter: the power zone's back has no room left for it (PCB-Z-04, UNVERIFIED)"),
 })
 
 # Battery-contact ESD (PCB-L-08, ADR 0020 item 6): one TPD1E10B06 per signal contact, within 3 mm of
@@ -165,7 +157,7 @@ TARGET = {
     "blk.soc-pmuio": (-5.0, 14.0), "blk.soc-vccio-a": (-4.0, 6.0), "blk.soc-vccio-b": (-8.0, -2.0),
     "blk.soc-power": SOC, "blk.soc-ddr": SOC, "blk.soc-phy": SOC,
     "blk.lpddr4x": (16.9, 11.0), "blk.emmc": (-17.75, 12.0), "blk.microsd": (13.5, 36.0),
-    "blk.pmic": (-6.0, 25.7), "blk.vdd-cpu": (-3.0, 40.5), "blk.pwr-3v3-sys": (1.5, 40.5),
+    "blk.pmic": (-6.0, 25.7), "blk.vdd-cpu": (6.0, 22.5), "blk.pwr-3v3-sys": (1.5, 40.5),
     "blk.rp2354-core": (-16.0, 0.0), "blk.rp2354-power": (-20.0, -3.0), "blk.tpm": (20.0, -3.0),
     "blk.gpio-expander": (10.0, -2.0), "blk.board-id": (6.0, 26.0), "blk.imu": (0.0, 26.0),
     "blk.haptics": (-8.0, 26.0), "blk.nfc-reader": (20.0, 26.0), "blk.nfc-tag": (13.0, 28.0),

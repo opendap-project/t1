@@ -40,12 +40,14 @@ def column(s, f, w=100.0):
     return col
 
 
-def pads(s, title, nets):
+def pads(s, title, nets, key="TP"):
+    """Pads in a row: contact pads of parts in the case (KEY "TP", 1.0 mm) or, with KEY None, test
+    pads sized by their net (PCB-D-06)."""
     def draw():
         g = Group(s, title)
         for i, net in enumerate(nets):
             x = 116.84 + i * 17.78
-            tp(s, x, 101.6, net, text="left")
+            tp(s, x, 101.6, net, text="left", key=key)
             s.point(net, x, 101.6, "down", "pas")
             g.add((x - 2.54 - len(net) * 1.16, 93.98, x + 2.54, 101.6 + 2.54 + len(net) * 1.16))
         return g.close()
@@ -336,7 +338,7 @@ def draw_rp2354(parent, variants):
         return g.close()
     grp(col, osc)
     grp(col, pads(s, "Test pads (BOM v1 line 89; PCB-T-09)",
-                  ("RP_SWCLK", "RP_SWDIO", "RP_RUN", "RP_QSPI_SS", "RP_SPARE")))
+                  ("RP_SWCLK", "RP_SWDIO", "RP_RUN", "RP_QSPI_SS", "RP_SPARE"), key=None))
     row2 = Flow(s, y0=snap(max(f.bottom(), col.bottom()) + 5.08))
     grp(row2, taps)
     grp(row2, bootsel)

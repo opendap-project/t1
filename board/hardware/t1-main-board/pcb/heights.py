@@ -22,6 +22,7 @@ _UNIT = re.compile(r"SI_UNIT\s*\(\s*\.MILLI\.\s*,\s*\.METRE\.\s*\)|CONVERSION_BA
 OVERRIDES = {
     "NetTie:NetTie-2_SMD_Pad0.5mm": (0.04, "copper only"),
     "TestPoint:TestPoint_Pad_D1.0mm": (0.04, "copper only"),
+    "T1_Main_Board:TestPoint_Pad_D0.8mm": (0.04, "copper only"),
     "TestPoint:TestPoint_Pad_2.0x2.0mm": (0.04, "copper only"),
     "T1_Main_Board:L_Murata_DFE252012F": (1.2, "Murata DFE252012F: 2.5 x 2.0 x 1.2 mm max (part number code F = 1.2 mm)"),
     "T1_Main_Board:L_Murata_DFE201610E": (1.0, "Murata DFE201610E: 2.0 x 1.6 x 1.0 mm max (code E = 1.0 mm)"),
@@ -35,6 +36,15 @@ OVERRIDES = {
     "Package_SON:Texas_DPY0002A_0.6x1mm_P0.65mm": (0.4, "TI DPY0002A (X1SON) 0.4 mm maximum package height, no KiCad model"),
     "Package_TO_SOT_SMD:SOT-523": (0.8, "SOT-523 (SC-89) outline 0.8 mm maximum, no KiCad model; UNVERIFIED against each part's sheet"),
     "Hirose:Hirose_FH35C-51S-0.3SHW_1x51-1MP_P0.3mm_Horizontal": (1.0, "FH35C: 0.9 +- 0.1 mm (PCB-Z-03, ADR 0016)"),
+}
+
+
+# Heights (mm) by part number, where one footprint carries parts of several heights (the XxL4020
+# land takes the 2.1, 1.5 and 1.2 mm Coilcraft lines). Source in each row.
+BY_MPN = {
+    "XGL4012-221MEC": (1.2, "Coilcraft XGL4012: 1.2 mm max (Document 1718 drawing)"),
+    "XGL4015-102MEC": (1.5, "Coilcraft XGL4015: 1.5 mm max (Document 1660 drawing)"),
+    "XGL4015-471MEC": (1.5, "Coilcraft XGL4015: 1.5 mm max (Document 1660 drawing)"),
 }
 
 
@@ -65,8 +75,10 @@ def step_extent(path: str):
     return res
 
 
-def height(fpid: str, geom: dict):
-    """(height mm, source) of a footprint's part."""
+def height(fpid: str, geom: dict, mpn: str = ""):
+    """(height mm, source) of a footprint's part (its part number first, where BY_MPN has it)."""
+    if mpn in BY_MPN:
+        return BY_MPN[mpn]
     if fpid in OVERRIDES:
         return OVERRIDES[fpid]
     best = None

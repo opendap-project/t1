@@ -1,0 +1,310 @@
+# Compaction study of the T1 main board (2026-10-27): the candidates and the design stresses the
+# matrix tool (compaction.py) checks. Every value cites its source. Availability and cost are read
+# by `odapkit parts matrix` and kept privately; the outcome per candidate is recorded here as
+# `sourcing` (T1-029) without stock or price.
+
+[rules]
+# BRD-049 margins as the power tree v0 §4.10 applies them to every inductor: the design peak at
+# most 70 % of Isat (30 % drop), the converter's maximum current limit at most 100 % of it.
+inductor_peak_max = 0.70
+inductor_limit_max = 1.00
+# Ceramic capacitors: rated at least twice the rail (the sheets' "unless noted" rule, CRAFT-115).
+mlcc_rating_min = 2.0
+# Heights: PCB-Z-03 front under the display, PCB-Z-01 back under the pocket (ADR 0016).
+h_front = 1.0
+h_back = 1.5
+# Test pads (PCB-D-06): JLCPCB DFT guide, absolute minimum 0.8 mm on signal nets, 1.0 mm on power
+# and ground nets.
+tp_signal_min = 0.8
+tp_power_min = 1.0
+
+# ---- inductors: one position per converter, its stresses from the power tree v0 §4.10 table ------
+[[inductor.position]]
+refs = ["L601"]
+converter = "BQ25798 charger"
+l_uh = 1.0
+peak_a = 3.5
+limit_a = 6.3
+continuous_a = 2.25
+current = "XAL4020-102MEC"
+source = "power tree v0 §4.10: 3.5 A peak (est.), 6.3 A at the 5 A ISW rating; 2.25 A SYS output"
+
+[[inductor.position]]
+refs = ["L901"]
+converter = "TPS62136 VSYS_LV"
+l_uh = 1.5
+peak_a = 3.91
+limit_a = 6.5
+continuous_a = 2.1
+current = "XGL4020-152MEC"
+source = "power tree v0 §4.10: 3.03 A peak, 3.91 A coincident peak; 6.5 A maximum limit"
+
+[[inductor.position]]
+refs = ["L2802"]
+converter = "LMR33630C -7 V"
+l_uh = 2.2
+peak_a = 2.13
+limit_a = 5.05
+continuous_a = 1.8
+current = "XGL4020-222MEC"
+source = "power tree v0 §4.10: 2.13 A peak (LDO-limit case); 5.05 A maximum high-side limit"
+
+[[inductor.position]]
+refs = ["L4401"]
+converter = "TPS62903 5.1 V"
+l_uh = 1.0
+peak_a = 2.14
+limit_a = 5.7
+continuous_a = 1.6
+current = "XGL4020-102MEC"
+source = "power tree v0 §4.10: 2.14 A peak at 1.6 A; about 5.7 A maximum dynamic limit"
+
+[[inductor.position]]
+refs = ["L1001"]
+converter = "TPS62827 vcc3v3_sys"
+l_uh = 0.47
+peak_a = 2.66
+limit_a = 6.4
+continuous_a = 2.45
+current = "744373240047"
+source = "power tree v0 §4.10: 2.66 A inductor peak; 6.4 A maximum high-side limit"
+
+[[inductor.position]]
+refs = ["L5101"]
+converter = "TPS62826 vcc1v8_wl"
+l_uh = 0.47
+peak_a = 1.51
+limit_a = 5.0
+continuous_a = 0.39
+current = "744373240047"
+source = "power tree v0 §4.10: 1.51 A peak; ILIM 5.0 A maximum"
+
+[[inductor.position]]
+refs = ["L1201"]
+converter = "TPS62869 vdd_cpu"
+l_uh = 0.22
+peak_a = 3.76
+limit_a = 8.5
+continuous_a = 3.0
+current = "XGL4012-221MEC"
+source = "power tree v0 §4.10: 3.76 A peak at 3 A; 8.5 A maximum limiter trip (ADR 0021)"
+
+# Inductor parts. isat30_a: current for a 30 % inductance drop; irms_a: 20 °C rise; h_mm: maximum
+# height; land4020: the 0.98 x 3.4 mm pads 2.37 mm apart of KiCad's L_Coilcraft_XxL4020.
+[[inductor.part]]
+mpn = "XAL4020-102MEC"
+l_uh = 1.0
+dcr_mohm = 13.25
+isat30_a = 8.7
+irms_a = 6.7
+h_mm = 2.1
+land4020 = true
+sourcing = "conditional"
+source = "Coilcraft Document 806, revised 02/25/26"
+
+[[inductor.part]]
+mpn = "XGL4020-152MEC"
+l_uh = 1.5
+dcr_mohm = 13.0
+isat30_a = 7.5
+irms_a = 8.0
+h_mm = 2.1
+land4020 = true
+sourcing = "conditional"
+source = "Coilcraft Document 1529-1 (parts-lib sheet)"
+
+[[inductor.part]]
+mpn = "XGL4020-222MEC"
+l_uh = 2.2
+dcr_mohm = 19.5
+isat30_a = 6.2
+irms_a = 6.7
+h_mm = 2.1
+land4020 = true
+sourcing = "conditional"
+source = "Coilcraft Document 1529-1, revised 02/19/26"
+
+[[inductor.part]]
+mpn = "XGL4020-102MEC"
+l_uh = 1.0
+dcr_mohm = 8.2
+isat30_a = 8.8
+irms_a = 8.8
+h_mm = 2.1
+land4020 = true
+sourcing = "conditional"
+source = "Coilcraft Document 1529-1, revised 02/19/26"
+
+[[inductor.part]]
+mpn = "744373240047"
+l_uh = 0.47
+isat30_a = 6.8
+irms_a = 8.7
+h_mm = 1.8
+land4020 = false
+sourcing = "pass"
+source = "power tree v0 §4.10 (TI Table 8-5 rating 6.8 A, IR 8.7 A); height: BOM v1 line 106 (4.45 x 4.06 x 1.8 mm); DCR not read (data sheet not retrieved)"
+
+[[inductor.part]]
+mpn = "XGL4012-221MEC"
+l_uh = 0.22
+dcr_mohm = 5.0
+isat30_a = 14.4
+irms_a = 10.9
+h_mm = 1.2
+land4020 = true
+sourcing = "conditional"
+source = "Coilcraft Document 1718-1, revised 08/27/26, and its drawing (1.2 mm max, 4020 land)"
+
+[[inductor.part]]
+mpn = "XGL4012-102MEC"
+l_uh = 1.0
+dcr_mohm = 25.0
+isat30_a = 6.6
+irms_a = 5.2
+h_mm = 1.2
+land4020 = true
+sourcing = "fail"
+source = "Coilcraft Document 1718-1, revised 08/27/26, and its drawing"
+
+[[inductor.part]]
+mpn = "XGL4015-102MEC"
+l_uh = 1.0
+dcr_mohm = 15.0
+isat30_a = 7.3
+irms_a = 6.5
+h_mm = 1.5
+land4020 = true
+sourcing = "conditional"
+source = "Coilcraft Document 1660-1, revised 02/19/26, and its drawing (1.5 mm max, pads 0.98 x 3.4 mm, 2.37 mm)"
+
+[[inductor.part]]
+mpn = "XGL4015-152MEC"
+l_uh = 1.5
+dcr_mohm = 19.6
+isat30_a = 6.3
+irms_a = 5.4
+h_mm = 1.5
+land4020 = true
+sourcing = "fail"
+source = "Coilcraft Document 1660-1"
+
+[[inductor.part]]
+mpn = "XGL4015-222MEC"
+l_uh = 2.2
+dcr_mohm = 30.0
+isat30_a = 4.9
+irms_a = 4.5
+h_mm = 1.5
+land4020 = true
+sourcing = "fail"
+source = "Coilcraft Document 1660-1"
+
+[[inductor.part]]
+mpn = "XGL4015-471MEC"
+l_uh = 0.47
+dcr_mohm = 6.2
+isat30_a = 10.5
+irms_a = 9.6
+h_mm = 1.5
+land4020 = true
+sourcing = "conditional"
+source = "Coilcraft Document 1660-1"
+
+[[inductor.part]]
+mpn = "XFL4015-471MEC"
+l_uh = 0.47
+dcr_mohm = 7.6
+isat30_a = 6.6
+irms_a = 9.1
+h_mm = 1.6
+land4020 = false
+sourcing = "conditional"
+source = "Coilcraft Document 769-1, revised 03/10/26 (parts-lib sheet: 1.60 mm maximum); TI's TPS6282x list (BOM v1 line 106); land against the 4020 land UNVERIFIED"
+
+# ---- capacitors over 1.0 mm: thinner parts of the same value, rating and dielectric -------------
+[[mlcc.position]]
+mpn = "GRM21BR61E106KA73L"
+value = "10 µF 25 V X5R 0805"
+h_mm = 1.25
+count = 16
+rail_v = 9.9
+source = "Murata GRM21B: 1.25 mm (dimension code B); rail VSYS up to 9.9 V (VSYS OVP, power tree v0 §4.10)"
+
+[[mlcc.position]]
+mpn = "GRM21BR71C106KE51L"
+value = "10 µF 16 V X7R 0805"
+h_mm = 1.25
+count = 6
+rail_v = 7.0
+source = "Murata GRM21B: 1.25 mm; the ±7 V and ±6 V amplifier rails (BOM v1 line 110)"
+
+[[mlcc.position]]
+mpn = "GRM21BR71E475KA73L"
+value = "4.7 µF 25 V X7R 0805"
+h_mm = 1.25
+count = 5
+rail_v = 7.0
+source = "Murata GRM21B: 1.25 mm; TPS65131 output (BOM v1 line 111)"
+
+[[mlcc.position]]
+mpn = "GRM21BR61C226ME44L"
+value = "22 µF 16 V X5R 0805"
+h_mm = 1.25
+count = 2
+rail_v = 3.8
+source = "Murata GRM21B: 1.25 mm; VSYS_LV output"
+
+[[mlcc.part]]
+mpn = "GRM219R61E106KA12D"
+replaces = "GRM21BR61E106KA73L"
+h_mm = 0.85
+lifecycle = "obsolete"
+sourcing = "fail"
+dc_bias = "UNVERIFIED"
+source = "Murata GRM219: 0.85 mm (dimension code 9); lifecycle from the sourcing matrix (Digi-Key: obsolete), 2026-10-27"
+
+[[mlcc.part]]
+mpn = "C2012X5R1E106K085AC"
+replaces = "GRM21BR61E106KA73L"
+h_mm = 0.85
+lifecycle = "not recommended for new designs"
+sourcing = "conditional"
+dc_bias = "UNVERIFIED"
+source = "TDK C2012 ... 085: 0.85 mm; lifecycle from the sourcing matrix (Digi-Key: NRND), 2026-10-27"
+
+[[mlcc.part]]
+mpn = "C2012X7R1C106K085AC"
+replaces = "GRM21BR71C106KE51L"
+h_mm = 0.85
+lifecycle = "not stated"
+sourcing = "fail"
+dc_bias = "UNVERIFIED"
+source = "TDK thickness code 085; no authorized listing in the sourcing matrix, 2026-10-27"
+
+[[mlcc.part]]
+mpn = "C2012X7R1E475K085AC"
+replaces = "GRM21BR71E475KA73L"
+h_mm = 0.85
+lifecycle = "not stated"
+sourcing = "fail"
+dc_bias = "UNVERIFIED"
+source = "TDK thickness code 085; no authorized listing in the sourcing matrix, 2026-10-27"
+
+[[mlcc.part]]
+mpn = "C2012X5R1C226M085AC"
+replaces = "GRM21BR61C226ME44L"
+h_mm = 0.85
+lifecycle = "not recommended for new designs"
+sourcing = "conditional"
+dc_bias = "UNVERIFIED"
+source = "TDK thickness code 085; lifecycle from the sourcing matrix (Digi-Key: NRND), 2026-10-27"
+
+# ---- 0402 to 0201: 100 nF decoupling -------------------------------------------------------------
+[[c0201]]
+from_mpn = "GRM155R71C104KA88D"
+to_mpn = "GRM033R61A104KE15D"
+rated_v = 10.0
+zones = ["CORE", "IO", "RADIO"]
+sourcing = "pass"
+source = "Murata GRM033 (0201, 10 V X5R), the part under the BGA (ADR 0016 item 3); audio kept (T1-040), power zone rails above 3.3 V"

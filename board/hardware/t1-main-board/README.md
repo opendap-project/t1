@@ -18,7 +18,7 @@ The schematic is generated: `generator/` writes every sheet, the project file, t
 | `t1-main-board.craft.toml` | The craft check configuration: target level and mirrored blocks (CRAFT-34) by hand; its `[schematic]` table (rails and each block's interface, CRAFT-85, -112) generated below the marker line |
 | `generator/` | The generator (Python 3.11 or later, no other dependency) |
 | `pcb/` | The placement tool (Python 3.11 or later and KiCad 10's Python): `build.py` writes the board from the schematic; `plan.py` holds the placement plan and its decisions; `placement-result.json` is its report (area budget, occupancy, checks, DRC summary). Tests: `python3 -m unittest discover hardware/t1-main-board/pcb/tests`; `tests/kicad_transform_check.py` (KiCad's Python) checks the footprint transform against pcbnew |
-| `../lib/symbols/T1_Main_Board.kicad_sym`, `../lib/footprints/T1_Main_Board.pretty/` | Project-only parts kicad-lib does not carry yet: the TPS7A1006PDSER symbol and the Murata DFE252012F, DFE201610E and Abracon AOTA-B201610 lands. Generated |
+| `../lib/symbols/T1_Main_Board.kicad_sym`, `../lib/footprints/T1_Main_Board.pretty/` | Project-only parts kicad-lib does not carry yet: the TPS7A1006PDSER symbol, the Murata DFE252012F, DFE201610E and Abracon AOTA-B201610 lands and the 0.8 mm test pad (PCB-D-06). Generated |
 
 ## Blocks captured
 
@@ -116,11 +116,11 @@ The PDF plot uses kicad-lib's OpenDAP colour theme (CRAFT-103): copy `../lib/ope
 
 ## Status (2026-10-27)
 
-Board (placement v1): all 1,012 parts placed (828 front, 184 back), six on courtyard-only placeholders for the lands not drawn; DRC with the composed rules 0 errors, 499 unconnected items (not routed; a warning at this stage, project setting), schematic parity 0. The placement's facts, decisions and open items are in [placement v1](../../docs/specs/placement-v1.md).
+Board (placement v1): all 1,012 parts placed (833 front, 179 back), four on courtyard-only placeholders for the lands not drawn; DRC with the composed rules 0 errors, 499 unconnected items (not routed; a warning at this stage, project setting), schematic parity 0. The placement's facts, decisions and open items are in [placement v1](../../docs/specs/placement-v1.md).
 
 Schematic (2026-10-26):
 
-ERC: no errors (warnings: four `isolated_pin_label`, each a net with one pin by design: `WL_1V8_EN_GPIO` (the DNP enable option on `blk.radio-power`), `MCLK441_ST` and `MCLK48_ST` (the oscillator ST nets between their 0 Ω and pull-down on `blk.mclk`), `SPARE_2B7` (pinout v1 D38, its pull-down holding the module PDn path idle); six `footprint_link_issues` for the undrawn Würth, Murata LQH3NP and C&K PTS815 lands, one `lib_symbol_mismatch` for KiCad's stock DMP3099L, five `pin_to_pin` for inputs tied to ground next to a `PWR_FLAG`). `odapkit craft check`: Q1 met, Q2 reached (Q3 debt: CRAFT-114, -127). `generator/overlaps.py`: no text collides with text or lines on any sheet, and the clearances above hold (2026-10-26: 386 pin numbers met no-connect crosses before kicad-lib's pin lengths grew with their numbers, CRAFT-121; none after). Every new sheet was reviewed on its plot, region by region (the six blocks of 2026-10-26 on PDF crops at 200 dpi). The generator's output does not depend on Python's hash seed (checked with two seeds on 2026-10-26).
+ERC: no errors (warnings: four `isolated_pin_label`, each a net with one pin by design: `WL_1V8_EN_GPIO` (the DNP enable option on `blk.radio-power`), `MCLK441_ST` and `MCLK48_ST` (the oscillator ST nets between their 0 Ω and pull-down on `blk.mclk`), `SPARE_2B7` (pinout v1 D38, its pull-down holding the module PDn path idle); four `footprint_link_issues` for the undrawn Murata LQH3NP and C&K PTS815 lands, one `lib_symbol_mismatch` for KiCad's stock DMP3099L, five `pin_to_pin` for inputs tied to ground next to a `PWR_FLAG`). `odapkit craft check`: Q1 met, Q2 reached (Q3 debt: CRAFT-114, -127). `generator/overlaps.py`: no text collides with text or lines on any sheet, and the clearances above hold (2026-10-26: 386 pin numbers met no-connect crosses before kicad-lib's pin lengths grew with their numbers, CRAFT-121; none after). Every new sheet was reviewed on its plot, region by region (the six blocks of 2026-10-26 on PDF crops at 200 dpi). The generator's output does not depend on Python's hash seed (checked with two seeds on 2026-10-26).
 
 On the root, the notes sit at the right end of the second row, so the bottom row keeps the space above the title block for blocks (the `blk.nfc-tag` symbol met the notes box on 2026-10-26).
 
@@ -157,8 +157,6 @@ Listed per sheet in each sheet's notes. In short:
 - `blk.cover-detect`: the actuator and the pad size (case inputs, BOM §7 item 42); the RK3566 input leakage on GPIO0_A6 (**UNVERIFIED**, 13 µA keeps VIH with 100 kΩ).
 - `blk.charger-*`: the pack NTC type behind the TS divider (**UNVERIFIED**); the Mill-Max 0965 pogo fallback land (BOM v1 line 47); the P+ TVS part (DNP, line 142).
 - `blk.gauge`: CHG and DSG left open (no FETs, SLUSE07B §8.3.14); golden image and CC Gain calibration per board (ADR 0017 items 4-5).
-- `blk.pwr-3v3-sys`: the Würth 744373240047 inductor land (`T1_Main_Board:L_Wuerth_WE-LHMI_4020`) is not drawn; the data sheet was not retrieved.
-- `blk.vdd-cpu`: the XGL4012-221MEC land is taken as the 4020 family's (**UNVERIFIED**).
 - `blk.pmic`: BATDIV and SNSP/SNSN wiring (test pads until the reference is read), the 32.768 kHz load capacitors, the RK809-5 OTP defaults (**UNVERIFIED**), PDMCLK left open against BOM line 2's "tied to ground" (it is an output).
 - `blk.soc-*`: decoupling of the PHY analog supplies; unused-pin handling (pinout v1 O2); the 24 MHz crystal's load capacitance.
 - `blk.lpddr4x`, `blk.emmc`: supply decoupling at the memories (data sheets silent); the DNP TPS7A2018 `vcc1v8_ddr` option (BOM line 132).

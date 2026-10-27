@@ -172,7 +172,8 @@ def main():
         missing = sorted({c.footprint for c in nl.components.values() if geom.get(c.footprint) is None})
         if missing:
             raise SystemExit("footprints not found: " + ", ".join(missing))
-        hts = {r: hmod.height(c.footprint, geom[c.footprint])[0] for r, c in nl.components.items()}
+        hts = {r: hmod.height(c.footprint, geom[c.footprint], c.fields.get("MPN", ""))[0]
+               for r, c in nl.components.items()}
         placer = placement.Placer(nl, geom, hts)
         placed, failed = placer.run(placement.edge_rotations(nl, geom))
 

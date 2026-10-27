@@ -125,6 +125,27 @@ def aota_b201610():
     ]) + "\n"
 
 
+def testpoint_d08():
+    """Round SMD test pad 0.8 mm for signal nets (PCB-D-06: the JLCPCB DFT guide's minimum for signal
+    nets; power and ground nets keep KiCad's 1.0 mm pad). Drawn as KiCad's TestPoint_Pad_D1.0mm:
+    courtyard 0.5 mm around the pad, silk ring 0.2 mm outside it, no pad fabrication property (as KiCad's)."""
+    return "\n".join([
+        '(footprint "TestPoint_Pad_D0.8mm" (version 20241229) (generator "t1-main-board-generator")',
+        '\t(layer "F.Cu")',
+        '\t(descr "SMD pad as test point, diameter 0.8 mm (signal nets, PCB-D-06)")',
+        '\t(tags "test point SMD pad")',
+        '\t(attr exclude_from_pos_files exclude_from_bom)',
+        '\t(property "Reference" "REF**" (at 0 -1.35 0) (layer "F.SilkS") (effects (font (size 0.8 0.8) (thickness 0.12))))',
+        '\t(property "Value" "TestPoint_Pad_D0.8mm" (at 0 1.35 0) (layer "F.Fab") (effects (font (size 0.8 0.8) (thickness 0.12))))',
+        '\t(fp_circle (center 0 0) (end 0 0.6) (stroke (width 0.12) (type solid)) (fill no) (layer "F.SilkS"))',
+        '\t(fp_circle (center 0 0) (end 0.9 0) (stroke (width 0.05) (type solid)) (fill no) (layer "F.CrtYd"))',
+        '\t(fp_text user "${REFERENCE}" (at 0 -1.35 0) (layer "F.Fab") (effects (font (size 0.8 0.8) (thickness 0.12))))',
+        '\t(pad "1" smd circle (at 0 0) (size 0.8 0.8) (layers "F.Cu" "F.Mask"))',
+        '\t(embedded_fonts no)',
+        ')',
+    ]) + "\n"
+
+
 def write():
     os.makedirs(os.path.dirname(SYM_PATH), exist_ok=True)
     with open(SYM_PATH, "w", encoding="utf-8") as fh:
@@ -137,4 +158,6 @@ def write():
         fh.write(dfe201610e())
     with open(os.path.join(FP_DIR, "L_Abracon_AOTA-B201610.kicad_mod"), "w", encoding="utf-8") as fh:
         fh.write(aota_b201610())
+    with open(os.path.join(FP_DIR, "TestPoint_Pad_D0.8mm.kicad_mod"), "w", encoding="utf-8") as fh:
+        fh.write(testpoint_d08())
     library.reset_local()

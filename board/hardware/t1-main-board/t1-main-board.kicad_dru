@@ -323,7 +323,7 @@
 )
 
 # Source: hardware/rules/t1-main-board.kicad_dru
-# sha256: fd290056a00c9b36a3655e9d23d79ae79b666ecd7ba47193cd641db8c76e9900
+# sha256: dfa9a62772b3076b8569858c030edff35582ca749c252bcb9bed5464ca01afae
 
 # OpenDAP T1 main board: product rules
 #
@@ -981,11 +981,13 @@
 # (secondary): pad 1.0-1.27 mm, 2.54 mm pitch for fixtures, 1.0 mm from
 # component bodies, 3.8 mm from the edge. Production-test items: Q2.
 
-# PCB-D-06: test pad at least 1.0 mm.
+# PCB-D-06: test pad at least 0.8 mm (signal nets; JLCPCB DFT guide's
+# absolute minimum). Power and ground pads keep 1.0 mm, a CHK item: the
+# rule cannot tell a rail from a signal net.
 (rule "T1 PCB-D-06 [Q2]: Test point size"
 	(severity warning)
 	(condition "A.Type == 'Pad' && A.Fabrication_Property == 'Test point pad'")
-	(constraint assertion "A.Size_X >= 1.0mm && A.Size_Y >= 1.0mm")
+	(constraint assertion "A.Size_X >= 0.8mm && A.Size_Y >= 0.8mm")
 )
 
 # PCB-D-07: 2.54 mm pitch between 1.0 mm pads: 1.54 mm edge to edge

@@ -137,7 +137,7 @@ def _soc_pmuio(s, y0, variants):
         "4. Pull-ups: I2C 2.2 kΩ (BOM v1 §5); interrupts 4.7 kΩ (pinout v1 B9); PMIC_INT_N 10 kΩ",
         "   (RK809 DS Fig. 1-1); SOC_RESET_N and FLASH_VOL_SEL 10 kΩ: capture choice, HDG gives none.",
         "5. A net with one pin by design ends in a local label (ERC warning isolated_pin_label).",
-        "6. Unless noted: resistors 1 % 0402; capacitors 0402 X7R, C0G where marked.",
+        "6. Unless noted: resistors 1 % 0402; capacitors 0402 X7R (100 nF on rails 0201 X5R 10 V), C0G where marked.",
     ])
     s.rail_rows = [["vcca_1v8", "4 x 1 nF on VIN0-VIN3", "1 nF per input; 10 kΩ on VIN0 (HDG 1.1 p. 60)"]]
 

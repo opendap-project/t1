@@ -117,7 +117,7 @@ def draw_power(s, variants):
 
     def stage():
         g = Group(s, "Inductor, EN option and discharge positions (lines 130, 131)")
-        g.add(two_pin_box(s, "L_744373240047", 109.22, 101.6, "WL_1V8_SW", "WL_1V8_SRC", prefix="L"))
+        g.add(two_pin_box(s, "L_XGL4015_471", 109.22, 101.6, "WL_1V8_SW", "WL_1V8_SRC", prefix="L"))
         g.add(two_pin_box(s, "R_0_0402", 109.22, 114.3, "WL_1V8_EN_GPIO", "WL_1V8_EN", dnp=True,
                           extra={"Alternate": "wl-1v8-en-gpio"}))
         g.add(prow(s, 101.6, 134.62, [("R_1k_0603", "vcc3v3_wl", "GND")], dnp=True,

@@ -1614,7 +1614,7 @@
 		(duplicate_pad_numbers_are_jumpers no)
 		(pad "1" smd rect
 			(at 0 0)
-			(size 1.01 1.01)
+			(size 0.81 0.81)
 			(property pad_prop_testpoint)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "N46")
@@ -4141,7 +4141,7 @@
 		(duplicate_pad_numbers_are_jumpers no)
 		(pad "1" smd rect
 			(at 0 0)
-			(size 0.99 0.99)
+			(size 0.79 0.79)
 			(property pad_prop_testpoint)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "N45")

@@ -167,7 +167,7 @@ def draw_3v3(s, variants):
     s.group_box("Output and feedback", 121.92, 35.56, 83.82, 76.2)   # the PG pull-up text inside
     yo = P["5"][1]
     xl = 233.68
-    ll, lr = hpart(s, "L_744373240047", 129.54, yo, prefix="L")   # its rating inside the group
+    ll, lr = hpart(s, "L_XGL4015_471", 129.54, yo, prefix="L")   # its rating inside the group
     s.wire(P["5"], ll)
     s.point("VCC3V3_SYS_SW", round((P["5"][0] + ll[0]) / 2 / 1.27) * 1.27, yo, "up")   # switch node (SW_NODE)
     s.wire(lr, (xl - 11.43, yo))
@@ -213,8 +213,8 @@ def draw_3v3(s, variants):
         "2. Absent state: not applicable. EN tied to VSYS_LV (RK809 EXT_EN unused).",
         "3. Feedback: 453 kΩ / 100 kΩ with VFB 0.6 V: 3.318 V (SLVSEF9I Eq. 4; the 450 kΩ",
         "   of Eq. 4 is not an E96 value). C3 120 pF = 12 µs / R2 (Eq. 5).",
-        "4. L: Würth 744373240047 0.47 µH (BOM v1 line 106). Open: its footprint",
-        "   T1_Main_Board:L_Wuerth_WE-LHMI_4020 is not drawn (data sheet not retrieved).",
+        "4. L: Coilcraft XGL4015-471MEC 0.47 µH, 1.5 mm (compaction study, 2026-10-27; was",
+        "   Würth 744373240047 of BOM v1 line 106, 1.8 mm, kept as the other-land alternate).",
         "5. Link H5 5 mΩ in every variant (power tree §4.12 #4); feedback on its source side.",
         "6. Unless noted: resistors 1 % 0402; capacitors X5R/X7R, at least twice the rail.",
     ])

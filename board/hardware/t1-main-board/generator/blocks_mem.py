@@ -122,7 +122,7 @@ def draw_lpddr4x(s, variants):
         "6. Links: shunt in full, 0 Ω in production except H5 (BOM v1 line 137). FB3 senses vcc_ddr.",
         "7. Open: VDD1 and VDDQ decoupling at the DRAM (data sheet silent, UNVERIFIED); the DNP",
         "   TPS7A2018 vcc1v8_ddr option of BOM v1 line 132 is not drawn yet.",
-        "8. Unless noted: capacitors 0402 X5R/X7R rated at least twice the rail; resistors 1 %.",
+        "8. Unless noted: capacitors 0402 (100 nF 0201) X5R/X7R rated at least twice the rail; resistors 1 %.",
     ])
 
 

@@ -6,7 +6,7 @@ from __future__ import annotations
 import os
 
 import library
-from parts import PARTS, fields
+from parts import PARTS, compact, fields
 from sch import G, RAILS, snap, snap_down, snap_up
 
 CHAR = 1.16          # mm per character of 1.27 mm stroke text (upper case, measured on plots)
@@ -115,6 +115,7 @@ def decouple(sheet, rail, keys, x, y, block, refs_out=None, pitch=10.16):
     it in placement order (smallest first, nearest the pins), each to its own ground symbol.
     (x, y) is the rail symbol's pin. Returns the x after the group."""
     csym = library.load("Device", "C")
+    keys = [compact(k, block, rail, "GND") for k in keys]
     x, y = snap(x), snap(y)
     # wide enough for the reference, value and spec to the right of each capacitor
     longest = max(max(len(PARTS[k]["value"]), len(PARTS[k].get("spec") or ""), 5) for k in keys)
@@ -184,6 +185,7 @@ def two_pin_h(sheet, key, x, y, net_l, net_r, block, extra=None, dnp=False, vari
 
 def two_pin_v(sheet, key, x, y, net_top, net_bottom, block, extra=None, dnp=False, variants=None, stub=2.54):
     """A vertical two-pin part with pin 1 at the top."""
+    key = compact(key, sheet.block, net_top, net_bottom)
     p = PARTS[key]
     sym = kind_symbol(p["kind"])
     ref = sheet.next_ref(p["kind"])
@@ -403,12 +405,20 @@ def gnd(sheet, x, y):
     sheet.power("GND", x, y)
 
 
-def tp(sheet, x, y, net_label=None, text="right"):
-    """A test pad whose pin is at (x, y) (BOM v1 line 86); value = the net it probes."""
+# Power-path nets probed with a power pad besides the rails (PCB-L-09: the pack side of the fuse and BAT)
+POWER_PADS = {"BAT_P", "BAT_F", "VBAT", "BAT_N"}
+
+
+def tp(sheet, x, y, net_label=None, text="right", key=None):
+    """A test pad whose pin is at (x, y) (BOM v1 line 86); value = the net it probes. A signal net's
+    pad is 0.8 mm, a rail's or ground's 1.0 mm (PCB-D-06); KEY overrides (contact pads)."""
     tsym = library.load("Connector", "TestPoint")
     ref = sheet.next_ref("TP")
     tx = x + 1.27 if text == "right" else x - 1.27
-    sheet.place(tsym, ref, x, y, fields=fields("TP", sheet.block), value=net_label or "TP", in_bom=False,
+    if key is None:
+        key = "TP" if net_label is None or net_label == "GND" or net_label in RAILS or net_label in POWER_PADS \
+            else "TP_SIG"
+    sheet.place(tsym, ref, x, y, fields=fields(key, sheet.block), value=net_label or "TP", in_bom=False,
                 ref_at=(tx, y - 5.08), val_at=(tx, y - 2.54))
     if text == "left":
         _justify_right(sheet)
@@ -564,6 +574,7 @@ def prow(sheet, x, y, specs, gap=2.54, dnp=False, extra=None):
     Neighbours with the same top net share one wire and one symbol or label (CRAFT-171); the pitch
     follows each part's text and the next symbol's value. Returns the row's bbox."""
     runs = []
+    specs = [(compact(sp[0], sheet.block, sp[1], sp[2]),) + tuple(sp[1:]) for sp in specs]
     for spec in specs:
         if runs and spec[1] is not None and runs[-1][-1][1] == spec[1]:
             runs[-1].append(spec)

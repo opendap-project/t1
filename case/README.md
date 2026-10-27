@@ -4,7 +4,7 @@ The physical case of the OpenDAP T1: the core with its basic back cover, the dev
 
 ## Layout
 
-- `core/` — main enclosure, including the basic back cover. A HAT replaces the back cover with a HAT case, following the HAT Case Standard.
+- `core/` — main enclosure, including the basic back cover. A HAT replaces the back cover with a HAT case, following the OpenDAP HAT Standard.
 - `hat-mount/` — the HAT's device-side piece, fixed to the core.
 - `renders/`
 - `export/`

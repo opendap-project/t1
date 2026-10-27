@@ -9,7 +9,7 @@ Requirements for the physical case of the OpenDAP T1: core with the basic back c
 | CASE-003 | The right edge shall carry the **Main / Power** button. | must | Moved |
 | CASE-004 | The bottom edge shall carry, from left to right: a 3.5 mm jack, a 4.4 mm jack, a USB-C port (centered) and the integrated mono speaker (right side). | must | Moved |
 | CASE-005 | The Commercial and DIY editions shall use exactly the same design, differing only in manufacturing precision. | must | Moved |
-| CASE-006 | The basic back cover shall be swappable for a HAT case, following the HAT Case Standard. | must | Confirmed |
+| CASE-006 | The basic back cover shall be swappable for a HAT case, following the OpenDAP HAT Standard. | must | Confirmed |
 | CASE-007 | The Commercial edition should reach at least IP65, or the ingress protection standard of its product category. | should | Moved |
 | CASE-008 | The front shall accept interchangeable faceplates. The default faceplate is the touch faceplate. | must | Moved |
 | CASE-009 | The case shall define the faceplate interface: flat-cable connector pinout, dimensions and anchoring with screws. | must | Moved |

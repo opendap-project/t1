@@ -456,6 +456,10 @@ def project_file(classes, patterns, wks, aliases=None, base_variant="full"):
             "meta": {"version": 1},
             "bus_aliases": {k: list(v) for k, v in (aliases or {}).items()},
         },
+        # The board is at its placement stage (pcb/, docs/specs/placement-v1.md): nothing is routed, so
+        # KiCad's unconnected-items check reports every connection. It is a warning until routing
+        # starts, so DRC errors stay the placement's own; the routing stage sets it back to error.
+        "board": {"design_settings": {"rule_severities": {"unconnected_items": "warning"}}},
         "net_settings": {"classes": [default] + classes, "meta": {"version": 4}, "netclass_assignments": None,
                          "netclass_patterns": patterns},
         "text_variables": {"OPENDAP_PROJECT": "OpenDAP T1", "OPENDAP_BOARD": "main board",
@@ -485,7 +489,8 @@ def _sym_table():
 FP_OPENDAP = sorted(n[:-len(".pretty")] for n in os.listdir(os.path.join(library.KICAD_LIB, "footprints"))
                     if n.endswith(".pretty"))
 FP_STOCK = ["Capacitor_SMD", "Resistor_SMD", "Inductor_SMD", "Crystal", "TestPoint", "NetTie", "Package_SON",
-            "Package_TO_SOT_SMD", "Diode_SMD", "Fuse", "Button_Switch_SMD"]
+            "Package_TO_SOT_SMD", "Diode_SMD", "Fuse", "Button_Switch_SMD",
+            "Fiducial"]   # board-only fiducials of the layout (pcb/plan.py, PCB-M-09)
 
 
 def _fp_table():

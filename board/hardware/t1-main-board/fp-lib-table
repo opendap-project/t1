@@ -35,4 +35,5 @@
   (lib (name "Diode_SMD")(type "KiCad")(uri "${KICAD10_FOOTPRINT_DIR}/Diode_SMD.pretty")(options "")(descr "KiCad stock library"))
   (lib (name "Fuse")(type "KiCad")(uri "${KICAD10_FOOTPRINT_DIR}/Fuse.pretty")(options "")(descr "KiCad stock library"))
   (lib (name "Button_Switch_SMD")(type "KiCad")(uri "${KICAD10_FOOTPRINT_DIR}/Button_Switch_SMD.pretty")(options "")(descr "KiCad stock library"))
+  (lib (name "Fiducial")(type "KiCad")(uri "${KICAD10_FOOTPRINT_DIR}/Fiducial.pretty")(options "")(descr "KiCad stock library"))
 )

@@ -103,8 +103,8 @@ def draw_power(s, variants):
                ("R_100k", "WL_PD_N", "GND"), ("R_100k", "WL_PD_HOLD_N", "GND")]], pad_left=15.24), newline=True)
 
     grp(f, lambda: ic_group(
-        s, "AVDD33 switch: TPS22919 (line 50)", "texas-instruments", "TPS22919DCKR",
-        {"IN": "vcc3v3_sys", "ON": "WL_PWR_EN", "NC": None, "VOUT": "WL_3V3_SRC", "QOD": "WL_3V3_SRC", "GND": "GND"},
+        s, "AVDD33 switch: TPS22916C (line 50)", "texas-instruments", "TPS22916CYFPR",
+        {"VIN": "vcc3v3_sys", "ON": "WL_PWR_EN", "VOUT": "WL_3V3_SRC", "GND": "GND"},
         rows=[[("C_1u_0402", "vcc3v3_sys", "GND"), ("R_100k", "WL_PWR_EN", "GND")]]))
     grp(f, lambda: link_group(s, "LINK_H20", "WL_3V3_SRC", "vcc3v3_wl", variants, "Link #11"))
     grp(f, lambda: ic_group(
@@ -137,7 +137,7 @@ def draw_power(s, variants):
         ["VSYS_LV", "10 µF 10 V X7R", "BOM v1 line 131"],
     ]
     corner_notes(s, [
-        "1. Function: the module rails: vcc3v3_wl through a TPS22919 on WL_PWR_EN, vcc1v8_wl from a",
+        "1. Function: the module rails: vcc3v3_wl through a TPS22916C on WL_PWR_EN, vcc1v8_wl from a",
         "   TPS62826 enabled by vcc3v3_wl, links #11 and #12 (power tree §4.12), and the PDn hold.",
         "2. Absent state: WL_PWR_EN low: vcc3v3_wl off and the AVDD18 buck with it (EN from vcc3v3_wl);",
         "   PDn low through the SN74AXC1T45 (its B port unpowered, Ioff).",

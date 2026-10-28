@@ -137,12 +137,11 @@ def parts_group(s, title, rows, x_max=None):
 def draw_supply(s, variants):
     blk = s.block
     f = Flow(s)
-    grp(f, lambda: ic_group(s, "DAC_VP switch", "texas-instruments", "TPS22919DCKR",
-                            {"IN": "VSYS_LV_AUDIO", "ON": "DAC_VP_EN", "NC": None, "VOUT": "DAC_VP", "QOD": "DAC_VP",
+    grp(f, lambda: ic_group(s, "DAC_VP switch", "texas-instruments", "TPS22916CYFPR",
+                            {"VIN": "VSYS_LV_AUDIO", "ON": "DAC_VP_EN", "VOUT": "DAC_VP",
                              "GND": "GND"}, rows=[[("C_1u_0402", "VSYS_LV_AUDIO", "GND")]]))
-    grp(f, lambda: ic_group(s, "DAC_DIG_1V8 switch", "texas-instruments", "TPS22919DCKR",
-                            {"IN": "vcc_1v8", "ON": "DAC_DIG_EN", "NC": None, "VOUT": "DAC_DIG_1V8_SRC",
-                             "QOD": "DAC_DIG_1V8_SRC", "GND": "GND"}, rows=[[("C_1u_0402", "vcc_1v8", "GND")]]))
+    grp(f, lambda: ic_group(s, "DAC_DIG_1V8 switch", "texas-instruments", "TPS22916CYFPR",
+                            {"VIN": "vcc_1v8", "ON": "DAC_DIG_EN", "VOUT": "DAC_DIG_1V8_SRC", "GND": "GND"}, rows=[[("C_1u_0402", "vcc_1v8", "GND")]]))
     grp(f, lambda: link_group(s, "LINK_L1", "DAC_DIG_1V8_SRC", "DAC_DIG_1V8", variants, "Link #25"))
 
     def buck():
@@ -162,12 +161,12 @@ def draw_supply(s, variants):
         ["AUDIO_LN_EN", "Input", "Pulled down on the host side: TPS62840 off, output discharged"],
     ]
     s.rail_rows = [
-        ["VSYS_LV_AUDIO", "1 µF; 4.7 µF 10 V (TPS62840 VIN)", "TPS22919 CIN 1 µF (SLVSEN5B §10); TPS62840 CI 4.7 µF (SLVSEC6D Table 2)"],
-        ["vcc_1v8", "1 µF", "TPS22919 CIN 1 µF (SLVSEN5B §10)"],
+        ["VSYS_LV_AUDIO", "1 µF; 4.7 µF 10 V (TPS62840 VIN)", "TPS22916C CIN 1 µF (BOM v1 line 50); TPS62840 CI 4.7 µF (SLVSEC6D Table 2)"],
+        ["vcc_1v8", "1 µF", "TPS22916C CIN 1 µF (BOM v1 line 50)"],
         ["AUDIO_2V2", "10 µF 4 V", "TPS62840 CO 10 µF (SLVSEC6D Table 2); each LDO adds 1 µF"],
     ]
     corner_notes(s, [
-        "1. Function: DAC_VP (TPS22919 from VSYS_LV: VP of both CS43198), DAC_DIG_1V8 (TPS22919 from",
+        "1. Function: DAC_VP (TPS22916C from VSYS_LV: VP of both CS43198), DAC_DIG_1V8 (TPS22916C from",
         "   vcc_1v8: VD, VL, VCP, the I2C2 switch controls, the MCLK interlock) and AUDIO_2V2 (TPS62840",
         "   at 2.2 V, VSET 4.32 kΩ, SLVSEC6D Table 1) for the VA and MCLK_1V8 LDOs (power tree §2, §3).",
         "2. Absent state: enables pulled down on the host side; QOD tied to VOUT empties DAC_VP and",

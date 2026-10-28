@@ -72,14 +72,14 @@ Priority is the requirement's own (must / should) as recorded in its requirement
 | 36 | `blk.jack-bal` | 4.4 mm jack, ESD, detect | BRD-011, BRD-024, BRD-052 (must) | — (passive) | — | fit | fit |
 | 37 | `blk.speaker` | MAX98357A, speaker contacts | BRD-012 (must) | SD_MODE | none (G12) | fit | fit |
 | 38 | `blk.mic-ambient` | Body PDM microphone | BRD-031 (should) | `MIC_EN` (shared) | none (G10) | fit | fit |
-| 39 | `blk.radio` | Murata Type 2EL (IW612) | BRD-025, BRD-029 (must), BRD-030 (should) | TPS22919 on expander `WL_PWR_EN` (v1.9; RK809 SWOUT1 before), PDn | none (G12) | fit | fit |
+| 39 | `blk.radio` | Murata Type 2EL (IW612) | BRD-025, BRD-029 (must), BRD-030 (should) | TPS22916C on expander `WL_PWR_EN` (v1.9; RK809 SWOUT1 before), PDn | none (G12) | fit | fit |
 | 40 | `blk.antennas` | 2 × U.FL, matching, 2 × antenna | BRD-025, BRD-029 (must) | — (passive) | — | fit | fit |
 | 41 | `blk.nfc-tag` | NTAG I2C plus, loop antenna | BRD-057 (should) | none (G6) | none (G12) | fit | fit |
 | 42 | `blk.nfc-reader` | PN7160, matching, clock | BRD-057 (should) | VEN | none (G12) | fit | open (BOM: DNP option) |
 | 43 | `blk.imu` | LSM6DSV16X | BRD-032 (should) | none (G1) | none (G12) | fit | fit |
 | 44 | `blk.haptics` | DRV2605L, LRA | BRD-058 (should) | EN (GPIO not assigned, G20) | none (G12) | fit | fit |
 | 45 | `blk.tpm` | SLB9673 TPM 2.0 | BRD-059 (should) | none (G5) | none (G12) | fit | fit |
-| 46 | `blk.rp2354` | RP2354A, inductor, oscillator, SWD | BRD-014 (should), BRD-015, BRD-019, BRD-041 | `RP_PWR_EN` (2 × TPS22919) | none (G12) | fit | fit |
+| 46 | `blk.rp2354` | RP2354A, inductor, oscillator, SWD | BRD-014 (should), BRD-015, BRD-019, BRD-041 | `RP_PWR_EN` (2 × TPS22916C) | none (G12) | fit | fit |
 | 47 | `blk.buttons` | Power, Action, Vol+, Vol−, ESD | BRD-016, BRD-017, BRD-035, BRD-036 (must), T1-022 (must) | — | — | fit | fit |
 | 48 | `blk.maskrom` | MaskROM combo (TPS3808, gates, BAT54, FET) | BRD-035, BRD-043 (must) | — (vcca1v8_pmu) | — | fit | fit |
 | 49 | `blk.debug` | UART pads, I2S/DSD pads, rail test points, RP SWD pads, measurement links | BRD-040, BRD-047 (must), T1-026 | — | — | fit | fit (links 0 Ω) |
@@ -471,7 +471,7 @@ The faceplate interface is the t1 [faceplate interface v1](https://github.com/op
 | Field | Content |
 |---|---|
 | Bound by | As `blk.audio`; CS43198 sequencing (VP first on, last off) |
-| Interface | VSYS_LV, vcc_1v8 in; DAC_VP (TPS22919), DAC_DIG_1V8 (TPS22919), AUDIO_2V2 (TPS62840) out; `DAC_VP_EN`, `DAC_DIG_EN`, `AUDIO_LN_EN` |
+| Interface | VSYS_LV, vcc_1v8 in; DAC_VP (TPS22916C), DAC_DIG_1V8 (TPS22916C), AUDIO_2V2 (TPS62840) out; `DAC_VP_EN`, `DAC_DIG_EN`, `AUDIO_LN_EN` |
 | Power domain | Three switches, QOD and active discharge |
 | Measure | Proposed: shunt footprints on DAC_DIG_1V8 and AUDIO_2V2 (G12) |
 | Absent state | Every enable pulled low |
@@ -586,7 +586,7 @@ The faceplate interface is the t1 [faceplate interface v1](https://github.com/op
 |---|---|
 | Bound by | BRD-025, BRD-029 (must), BRD-030 (should: item tracking, T1-069 protections); T1-077 (certified variants carry granted parts only; 802.15.4 disabled while not wired) |
 | Interface | SDIO 3.0 (SDMMC1), UART1 with RTS/CTS (Bluetooth), `WL_PD_N` (module PDn through the `WL_PD_HOLD_N` translator; names with the `_N` suffix from 2026-10-25), `WL_WAKE_OUT` and `BT_WAKE_OUT` (PMUIO2 wake balls), `BT_WAKE_IN`, vcc3v3_wl (AVDD33), vcc1v8_wl (AVDD18, BOM line 129), VIO and SD_VIO 1.8 V (vcc_1v8, VCCIO4), RF ports ANT0, ANT1. PCM and the 32.768 kHz input are dropped (pinout v1 C7, C18). The 802.15.4 SPI (module pins 4–8) is not connected; the four SPI2 M0 balls stay unassigned spares reserved for a variant (decision 2026-10-24, T1-077) |
-| Power domain | vcc3v3_wl from a TPS22919 (BOM v1.9 line 50; RK809 SWOUT1 before), vcc1v8_wl following it; both from expander P06 `WL_PWR_EN`, which holds through suspend. Decision 2026-10-24: off in suspend by default; on in suspend only while the listener enables item tracking, and then vcc_1v8 (VIO, SD_VIO, VCCIO4) stays on too. Suspend draw **UNVERIFIED** until measured on M-RF; `WL_PDN` hold through standby open (BOM §7 item 40) |
+| Power domain | vcc3v3_wl from a TPS22916C (BOM v1.9 line 50; RK809 SWOUT1 before), vcc1v8_wl following it; both from expander P06 `WL_PWR_EN`, which holds through suspend. Decision 2026-10-24: off in suspend by default; on in suspend only while the listener enables item tracking, and then vcc_1v8 (VIO, SD_VIO, VCCIO4) stays on too. Suspend draw **UNVERIFIED** until measured on M-RF; `WL_PDN` hold through standby open (BOM §7 item 40) |
 | Measure | Links 11 (vcc3v3_wl) and 12 (vcc1v8_wl), power tree §4.12 |
 | Absent state | Module unfitted or off: PDn pulled low; host-wake lines pulled to "no wake"; SDIO and UART lines with SoC pulls and parked low before VBAT is removed (module sequencing **UNVERIFIED**: datasheet not retrieved) |
 | Holds / revision | Holds: u-blox MAYA-W271-00B (same chip, line 55; land **UNVERIFIED**) and any module behind SDIO, UART, PCM, the same supplies and two RF ports. Revision: PCIe or USB radios, a module that needs another supply. A PCIe + USB 2×2 module is a swap that needs a block revision; for it the PCIe sideband balls (`RSVD_PCIE_PERST_N`, `RSVD_PCIE_CLKREQ_N`, `RSVD_PCIE_WAKE_N`) and USB 2.0 HOST3 stay reserved and unconnected (pinout v1, 2026-10-25) |
@@ -684,7 +684,7 @@ The faceplate interface is the t1 [faceplate interface v1](https://github.com/op
 |---|---|
 | Bound by | BRD-014 (should), BRD-005, BRD-015, BRD-019 (must), BRD-041 (should, Draft). BRD-014 stays should only while no must function depends on it: the pin plan relays wake lines through it (requirements context) |
 | Interface | UART0, IRQ/wake (0_C7), RUN, BOOTSEL (open-drain), SWD, USB (EHCI host 2), passive taps on I2S1 SCLK, LRCK, SDO0–SDO2 (BRD-041), optional I2C2 |
-| Power domain | RP_3V3 and RP_IOVDD_1V8 (2 × TPS22919, `RP_PWR_EN`; default an open question, power tree §8) |
+| Power domain | RP_3V3 and RP_IOVDD_1V8 (2 × TPS22916C, `RP_PWR_EN`; default an open question, power tree §8) |
 | Measure | Proposed shunt footprints on RP_3V3 and RP_IOVDD_1V8 (G12) |
 | Absent state | Unfitted or off: the I2S taps reach FT pins only (G4); UART0 TX from the SoC parked; IRQ pulled down ("no wake"); RUN open drain with 4.7 kΩ to RP_IOVDD_1V8; BOOTSEL (QSPI_SS, on RP_3V3) pulled low only through an N-FET whose gate is a 1.8 V ball with a pull-down (pinout v1 C6, BOM v1.9 line 35) |
 | Holds / revision | Holds: RP2350A with external QSPI flash (other BOM, line 12). Revision: RP2354B (QFN-80) |

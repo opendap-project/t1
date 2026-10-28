@@ -2206,7 +2206,7 @@
 		)
 		(embedded_fonts no)
 	)
-(symbol "texas-instruments:TPS22919DCKR"
+(symbol "texas-instruments:TPS22916CYFPR"
 		(pin_names
 			(offset 1.016)
 		)
@@ -2214,7 +2214,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(property "Reference" "U"
-			(at -7.62 13.97 0)
+			(at -8.89 16.51 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2222,8 +2222,8 @@
 				(justify left)
 			)
 		)
-		(property "Value" "TPS22919DCKR"
-			(at -7.62 -17.78 0)
+		(property "Value" "TPS22916CYFPR"
+			(at -8.89 -17.78 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2231,7 +2231,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "texas-instruments:Texas_DCK0006A_SC-70-6_1.25x2mm_P0.65mm"
+		(property "Footprint" "texas-instruments:Texas_YFP0004_DSBGA-4_0.78x0.78mm_Layout2x2_P0.4mm"
 			(at 0 0 0)
 			(hide yes)
 			(effects
@@ -2240,7 +2240,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.ti.com/lit/ds/symlink/tps22919.pdf"
+		(property "Datasheet" "https://www.ti.com/lit/ds/symlink/tps22916.pdf"
 			(at 0 0 0)
 			(hide yes)
 			(effects
@@ -2249,7 +2249,7 @@
 				)
 			)
 		)
-		(property "Description" "Load switch, 1.6-5.5 V, 1.5 A, 90 mOhm, controlled rise time, short-circuit protection, adjustable quick output discharge, SOT/SC-70-6 (DCK0006A)"
+		(property "Description" "Load switch, 1-5.5 V, 2 A, 60 mOhm at 5 V, slow controlled turn-on (C version), reverse-current blocking, quick output discharge (150 Ohm), active-high ON, WCSP-4 0.78 x 0.78 mm (YFP0004)"
 			(at 0 0 0)
 			(hide yes)
 			(effects
@@ -2267,7 +2267,7 @@
 				)
 			)
 		)
-		(property "MPN" "TPS22919DCKR"
+		(property "MPN" "TPS22916CYFPR"
 			(at 0 0 0)
 			(hide yes)
 			(effects
@@ -2276,7 +2276,7 @@
 				)
 			)
 		)
-		(property "Second_Source" "Texas Instruments TPS22916CYFPR (WCSP, other land; BOM v1 line 50)"
+		(property "ki_keywords" "load switch power switch QOD reverse current blocking TPS22916 WCSP DSBGA YFP"
 			(at 0 0 0)
 			(hide yes)
 			(effects
@@ -2285,7 +2285,7 @@
 				)
 			)
 		)
-		(property "ki_keywords" "load switch power switch QOD TPS22919 SC-70 DCK"
+		(property "ki_fp_filters" "Texas_YFP0004_DSBGA-4_0.78x0.78mm_Layout2x2_P0.4mm*"
 			(at 0 0 0)
 			(hide yes)
 			(effects
@@ -2294,19 +2294,10 @@
 				)
 			)
 		)
-		(property "ki_fp_filters" "Texas_DCK0006A_SC-70-6_1.25x2mm_P0.65mm*"
-			(at 0 0 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(symbol "TPS22919DCKR_1_1"
+		(symbol "TPS22916CYFPR_1_1"
 			(rectangle
-				(start -7.62 12.7)
-				(end 7.62 -12.7)
+				(start -8.89 11.43)
+				(end 8.89 -11.43)
 				(stroke
 					(width 0.254)
 					(type default)
@@ -2315,27 +2306,9 @@
 					(type background)
 				)
 			)
-			(pin power_in line
-				(at -10.16 5.08 0)
-				(length 2.54)
-				(name "IN"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "1"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
 			(pin input line
-				(at -10.16 2.54 0)
-				(length 2.54)
+				(at -12.7 0 0)
+				(length 3.81)
 				(name "ON"
 					(effects
 						(font
@@ -2343,25 +2316,7 @@
 						)
 					)
 				)
-				(number "3"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin no_connect line
-				(at -10.16 -2.54 0)
-				(length 2.54)
-				(name "NC"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "4"
+				(number "B2"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -2370,8 +2325,8 @@
 				)
 			)
 			(pin power_out line
-				(at 10.16 5.08 180)
-				(length 2.54)
+				(at 12.7 0 180)
+				(length 3.81)
 				(name "VOUT"
 					(effects
 						(font
@@ -2379,7 +2334,7 @@
 						)
 					)
 				)
-				(number "6"
+				(number "A1"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -2387,17 +2342,17 @@
 					)
 				)
 			)
-			(pin passive line
-				(at 10.16 2.54 180)
-				(length 2.54)
-				(name "QOD"
+			(pin power_in line
+				(at 0 15.24 270)
+				(length 3.81)
+				(name "VIN"
 					(effects
 						(font
 							(size 1.27 1.27)
 						)
 					)
 				)
-				(number "5"
+				(number "A2"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -2407,7 +2362,7 @@
 			)
 			(pin power_in line
 				(at 0 -15.24 90)
-				(length 2.54)
+				(length 3.81)
 				(name "GND"
 					(effects
 						(font
@@ -2415,7 +2370,7 @@
 						)
 					)
 				)
-				(number "2"
+				(number "B1"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -2915,152 +2870,142 @@
 (wire (pts (xy 115.57 152.4) (xy 115.57 149.86)) (stroke (width 0) (type default)) (uuid "96117236-3250-5104-a784-2b178201f09c"))
 (rectangle (start 22.86 35.56) (end 201.93 176.53) (stroke (width 0) (type dash)) (fill (type none)) (uuid "6e34c0da-c51a-5817-9168-375e169d3615"))
 (text "RP2354A supplies, core regulator (DS §6.1, §6.3.8; HDG §2.2.1)" (exclude_from_sim no) (at 24.13 34.29 0) (effects (font (size 2.54 2.54)) (justify left bottom)) (uuid "bcba35a7-1eef-557f-91d3-eba0989ed33d"))
-(symbol (lib_id "texas-instruments:TPS22919DCKR") (at 236.22 58.42 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "b311b0e1-dbfa-5ccf-a9b9-7e1dfcb578d6")
-  (property "Reference" "U3502" (at 228.6 43.18 0) (effects (font (size 1.27 1.27)) (justify left)))
-  (property "Value" "TPS22919DCKR" (at 228.6 40.64 0) (effects (font (size 1.27 1.27)) (justify left)))
-  (property "Footprint" "texas-instruments:Texas_DCK0006A_SC-70-6_1.25x2mm_P0.65mm" (at 236.22 58.42 0) (effects (font (size 1.27 1.27))) (hide yes))
-  (property "Datasheet" "https://www.ti.com/lit/ds/symlink/tps22919.pdf" (at 236.22 58.42 0) (effects (font (size 1.27 1.27))) (hide yes))
-  (property "Description" "Load switch, 1.6-5.5 V, 1.5 A, 90 mOhm, controlled rise time, short-circuit protection, adjustable quick output discharge, SOT/SC-70-6 (DCK0006A)" (at 236.22 58.42 0) (effects (font (size 1.27 1.27))) (hide yes))
-  (property "Manufacturer" "Texas Instruments" (at 236.22 58.42 0) (effects (font (size 1.27 1.27))) (hide yes))
-  (property "MPN" "TPS22919DCKR" (at 236.22 58.42 0) (effects (font (size 1.27 1.27))) (hide yes))
-  (property "Second_Source" "Texas Instruments TPS22916CYFPR (WCSP, other land; BOM v1 line 50)" (at 236.22 58.42 0) (effects (font (size 1.27 1.27))) (hide yes))
-  (property "Block" "blk.rp2354-power" (at 236.22 58.42 0) (effects (font (size 1.27 1.27))) (hide yes))
-  (pin "1" (uuid "2d316465-7a58-5d89-98e2-49eb711799d7"))
-  (pin "3" (uuid "8ee97754-b1a0-5ed6-9bd1-fa64e7a256d0"))
-  (pin "4" (uuid "a8b35375-e6d9-5d3a-b526-9868e70b6e7f"))
-  (pin "6" (uuid "c1253614-b475-5000-afc2-2ca3f2e90ecd"))
-  (pin "5" (uuid "719e69ec-43b3-5e2d-be6b-3bf0d92433af"))
-  (pin "2" (uuid "ba431c0b-ab0e-52e7-a772-1c4d53f5c8d4"))
+(symbol (lib_id "texas-instruments:TPS22916CYFPR") (at 236.22 60.96 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "b311b0e1-dbfa-5ccf-a9b9-7e1dfcb578d6")
+  (property "Reference" "U3502" (at 237.49 46.99 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Value" "TPS22916CYFPR" (at 237.49 44.45 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Footprint" "texas-instruments:Texas_YFP0004_DSBGA-4_0.78x0.78mm_Layout2x2_P0.4mm" (at 236.22 60.96 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "https://www.ti.com/lit/ds/symlink/tps22916.pdf" (at 236.22 60.96 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Description" "Load switch, 1-5.5 V, 2 A, 60 mOhm at 5 V, slow controlled turn-on (C version), reverse-current blocking, quick output discharge (150 Ohm), active-high ON, WCSP-4 0.78 x 0.78 mm (YFP0004)" (at 236.22 60.96 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Manufacturer" "Texas Instruments" (at 236.22 60.96 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "MPN" "TPS22916CYFPR" (at 236.22 60.96 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Block" "blk.rp2354-power" (at 236.22 60.96 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "B2" (uuid "9bd8ef38-adf6-5066-9789-7503250f670c"))
+  (pin "A1" (uuid "e4b03b70-e034-5177-b4ed-0ef337e93f3e"))
+  (pin "A2" (uuid "84258544-9bc1-57c2-9a5e-feb3d6cd6bce"))
+  (pin "B1" (uuid "aae40151-94c3-5a33-8d12-90d2c869fdf4"))
   (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/232a2e20-67ea-55e8-b37d-3f3d6ca076d7/f643a674-c7ca-5811-81b6-2626f3b0b763" (reference "U3502") (unit 1))))
 )
-(wire (pts (xy 226.06 53.34) (xy 218.44 53.34)) (stroke (width 0) (type default)) (uuid "6f60a25d-c0cb-55fb-bee6-fda41bb83d6d"))
-(symbol (lib_id "power:VCC") (at 218.44 53.34 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "2ae02004-4f2a-5070-ba83-a4bc1aa71f71")
-  (property "Reference" "#PWR0872" (at 218.44 53.34 0) (effects (font (size 1.27 1.27))) (hide yes))
-  (property "Value" "vcc3v3_sys" (at 218.44 49.53 0) (effects (font (size 1.27 1.27))))
-  (property "Footprint" "" (at 218.44 53.34 0) (effects (font (size 1.27 1.27))) (hide yes))
-  (property "Datasheet" "" (at 218.44 53.34 0) (effects (font (size 1.27 1.27))) (hide yes))
+(wire (pts (xy 223.52 60.96) (xy 220.98 60.96)) (stroke (width 0) (type default)) (uuid "e102ce6e-171a-596f-b702-11467ffabf97"))
+(wire (pts (xy 248.92 60.96) (xy 251.46 60.96)) (stroke (width 0) (type default)) (uuid "ecc9aa57-2f69-529a-a966-c58ffff8df4a"))
+(wire (pts (xy 236.22 45.72) (xy 236.22 43.18)) (stroke (width 0) (type default)) (uuid "049aa712-ef66-5a4b-834f-265ccea73292"))
+(symbol (lib_id "power:VCC") (at 236.22 43.18 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "2ae02004-4f2a-5070-ba83-a4bc1aa71f71")
+  (property "Reference" "#PWR0872" (at 236.22 43.18 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Value" "vcc3v3_sys" (at 236.22 39.37 0) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "" (at 236.22 43.18 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "" (at 236.22 43.18 0) (effects (font (size 1.27 1.27))) (hide yes))
   (pin "1" (uuid "f76ff48c-ec50-5270-9459-7ef2d34145f0"))
   (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/232a2e20-67ea-55e8-b37d-3f3d6ca076d7/f643a674-c7ca-5811-81b6-2626f3b0b763" (reference "#PWR0872") (unit 1))))
 )
-(wire (pts (xy 226.06 55.88) (xy 223.52 55.88)) (stroke (width 0) (type default)) (uuid "1f5f148b-034c-50bf-acf5-e2eabdaf7d5a"))
-(no_connect (at 226.06 60.96) (uuid "fb488faa-16c8-51c3-ab29-0b297faeb1a7"))
-(wire (pts (xy 246.38 53.34) (xy 248.92 53.34)) (stroke (width 0) (type default)) (uuid "a32a4c51-d04c-5e5f-a68a-d132133d28af"))
-(wire (pts (xy 246.38 55.88) (xy 248.92 55.88)) (stroke (width 0) (type default)) (uuid "c44cf18c-d778-5d65-b78b-fb1a0c0ec77a"))
-(wire (pts (xy 236.22 73.66) (xy 236.22 76.2)) (stroke (width 0) (type default)) (uuid "71b83f70-3538-5578-b0c0-0b9304ebc658"))
-(symbol (lib_id "power:GND") (at 236.22 76.2 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "4a0e4c6d-eae5-5708-8e9f-af8b2113f295")
-  (property "Reference" "#PWR0873" (at 236.22 76.2 0) (effects (font (size 1.27 1.27))) (hide yes))
-  (property "Value" "GND" (at 236.22 80.01 0) (effects (font (size 1.27 1.27))))
-  (property "Footprint" "" (at 236.22 76.2 0) (effects (font (size 1.27 1.27))) (hide yes))
-  (property "Datasheet" "" (at 236.22 76.2 0) (effects (font (size 1.27 1.27))) (hide yes))
+(wire (pts (xy 236.22 76.2) (xy 236.22 78.74)) (stroke (width 0) (type default)) (uuid "71b83f70-3538-5578-b0c0-0b9304ebc658"))
+(symbol (lib_id "power:GND") (at 236.22 78.74 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "4a0e4c6d-eae5-5708-8e9f-af8b2113f295")
+  (property "Reference" "#PWR0873" (at 236.22 78.74 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Value" "GND" (at 236.22 82.55 0) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "" (at 236.22 78.74 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "" (at 236.22 78.74 0) (effects (font (size 1.27 1.27))) (hide yes))
   (pin "1" (uuid "d51d1559-86a7-5be2-a798-bad5f67c1c1a"))
   (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/232a2e20-67ea-55e8-b37d-3f3d6ca076d7/f643a674-c7ca-5811-81b6-2626f3b0b763" (reference "#PWR0873") (unit 1))))
 )
-(symbol (lib_id "Device:C") (at 266.7 48.26 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "6502a4e9-3c0e-5730-adcc-4b6d92d59af3")
-  (property "Reference" "C3516" (at 269.24 46.99 0) (effects (font (size 1.27 1.27)) (justify left)))
-  (property "Value" "1 µF" (at 269.24 49.53 0) (effects (font (size 1.27 1.27)) (justify left)))
-  (property "Footprint" "Capacitor_SMD:C_0402_1005Metric" (at 266.7 48.26 0) (effects (font (size 1.27 1.27))) (hide yes))
-  (property "Datasheet" "https://www.murata.com/en-us/products/productdetail?partno=GRM155R61A105KE15D" (at 266.7 48.26 0) (effects (font (size 1.27 1.27))) (hide yes))
-  (property "Description" "Capacitor, 1 µF, 10 V, X5R, 0402" (at 266.7 48.26 0) (effects (font (size 1.27 1.27))) (hide yes))
-  (property "Manufacturer" "Murata" (at 266.7 48.26 0) (effects (font (size 1.27 1.27))) (hide yes))
-  (property "MPN" "GRM155R61A105KE15D" (at 266.7 48.26 0) (effects (font (size 1.27 1.27))) (hide yes))
-  (property "Block" "blk.rp2354-power" (at 266.7 48.26 0) (effects (font (size 1.27 1.27))) (hide yes))
+(symbol (lib_id "Device:C") (at 269.24 48.26 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "6502a4e9-3c0e-5730-adcc-4b6d92d59af3")
+  (property "Reference" "C3516" (at 271.78 46.99 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Value" "1 µF" (at 271.78 49.53 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Footprint" "Capacitor_SMD:C_0402_1005Metric" (at 269.24 48.26 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "https://www.murata.com/en-us/products/productdetail?partno=GRM155R61A105KE15D" (at 269.24 48.26 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Description" "Capacitor, 1 µF, 10 V, X5R, 0402" (at 269.24 48.26 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Manufacturer" "Murata" (at 269.24 48.26 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "MPN" "GRM155R61A105KE15D" (at 269.24 48.26 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Block" "blk.rp2354-power" (at 269.24 48.26 0) (effects (font (size 1.27 1.27))) (hide yes))
   (pin "1" (uuid "0014ba92-54a8-5db5-95d0-a7d1194898bc"))
   (pin "2" (uuid "ae126a19-6195-54c6-addc-40e24a48f095"))
   (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/232a2e20-67ea-55e8-b37d-3f3d6ca076d7/f643a674-c7ca-5811-81b6-2626f3b0b763" (reference "C3516") (unit 1))))
 )
-(wire (pts (xy 266.7 44.45) (xy 266.7 41.91)) (stroke (width 0) (type default)) (uuid "89254587-398e-505d-b69f-23bfc0652f07"))
-(wire (pts (xy 266.7 52.07) (xy 266.7 54.61)) (stroke (width 0) (type default)) (uuid "a509e307-c407-5b3b-b160-13af84888610"))
-(symbol (lib_id "power:GND") (at 266.7 54.61 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "d3077e05-0777-5b51-b4e3-736c8cd4d6b9")
-  (property "Reference" "#PWR0874" (at 266.7 54.61 0) (effects (font (size 1.27 1.27))) (hide yes))
-  (property "Value" "GND" (at 266.7 58.42 0) (effects (font (size 1.27 1.27))))
-  (property "Footprint" "" (at 266.7 54.61 0) (effects (font (size 1.27 1.27))) (hide yes))
-  (property "Datasheet" "" (at 266.7 54.61 0) (effects (font (size 1.27 1.27))) (hide yes))
+(wire (pts (xy 269.24 44.45) (xy 269.24 41.91)) (stroke (width 0) (type default)) (uuid "a4cf004e-83dd-50b3-bade-5d7636f8beef"))
+(wire (pts (xy 269.24 52.07) (xy 269.24 54.61)) (stroke (width 0) (type default)) (uuid "ddb23aa7-11c2-5585-8c0e-604951becc39"))
+(symbol (lib_id "power:GND") (at 269.24 54.61 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "d3077e05-0777-5b51-b4e3-736c8cd4d6b9")
+  (property "Reference" "#PWR0874" (at 269.24 54.61 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Value" "GND" (at 269.24 58.42 0) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "" (at 269.24 54.61 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "" (at 269.24 54.61 0) (effects (font (size 1.27 1.27))) (hide yes))
   (pin "1" (uuid "5dd203ad-29e0-5888-87c5-66590c3730e6"))
   (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/232a2e20-67ea-55e8-b37d-3f3d6ca076d7/f643a674-c7ca-5811-81b6-2626f3b0b763" (reference "#PWR0874") (unit 1))))
 )
-(symbol (lib_id "power:VCC") (at 266.7 41.91 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "b75c3569-31f4-5466-aaa8-9f76cb0d9b5a")
-  (property "Reference" "#PWR0875" (at 266.7 41.91 0) (effects (font (size 1.27 1.27))) (hide yes))
-  (property "Value" "vcc3v3_sys" (at 266.7 38.1 0) (effects (font (size 1.27 1.27))))
-  (property "Footprint" "" (at 266.7 41.91 0) (effects (font (size 1.27 1.27))) (hide yes))
-  (property "Datasheet" "" (at 266.7 41.91 0) (effects (font (size 1.27 1.27))) (hide yes))
+(symbol (lib_id "power:VCC") (at 269.24 41.91 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "b75c3569-31f4-5466-aaa8-9f76cb0d9b5a")
+  (property "Reference" "#PWR0875" (at 269.24 41.91 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Value" "vcc3v3_sys" (at 269.24 38.1 0) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "" (at 269.24 41.91 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "" (at 269.24 41.91 0) (effects (font (size 1.27 1.27))) (hide yes))
   (pin "1" (uuid "861286e7-1cf3-5cab-b9c9-f7ce3a24c612"))
   (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/232a2e20-67ea-55e8-b37d-3f3d6ca076d7/f643a674-c7ca-5811-81b6-2626f3b0b763" (reference "#PWR0875") (unit 1))))
 )
-(rectangle (start 207.01 35.56) (end 279.4 85.09) (stroke (width 0) (type dash)) (fill (type none)) (uuid "1a698788-637e-54ba-9f98-3610a1525aa1"))
-(text "RP_3V3 switch (BOM v1 line 50)" (exclude_from_sim no) (at 208.28 34.29 0) (effects (font (size 2.54 2.54)) (justify left bottom)) (uuid "69c517ba-fbea-5e1b-a880-d9f99a15d453"))
-(symbol (lib_id "texas-instruments:TPS22919DCKR") (at 233.68 118.11 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "5702d451-f18e-579c-a524-c38ac2803168")
-  (property "Reference" "U3503" (at 226.06 102.87 0) (effects (font (size 1.27 1.27)) (justify left)))
-  (property "Value" "TPS22919DCKR" (at 226.06 100.33 0) (effects (font (size 1.27 1.27)) (justify left)))
-  (property "Footprint" "texas-instruments:Texas_DCK0006A_SC-70-6_1.25x2mm_P0.65mm" (at 233.68 118.11 0) (effects (font (size 1.27 1.27))) (hide yes))
-  (property "Datasheet" "https://www.ti.com/lit/ds/symlink/tps22919.pdf" (at 233.68 118.11 0) (effects (font (size 1.27 1.27))) (hide yes))
-  (property "Description" "Load switch, 1.6-5.5 V, 1.5 A, 90 mOhm, controlled rise time, short-circuit protection, adjustable quick output discharge, SOT/SC-70-6 (DCK0006A)" (at 233.68 118.11 0) (effects (font (size 1.27 1.27))) (hide yes))
-  (property "Manufacturer" "Texas Instruments" (at 233.68 118.11 0) (effects (font (size 1.27 1.27))) (hide yes))
-  (property "MPN" "TPS22919DCKR" (at 233.68 118.11 0) (effects (font (size 1.27 1.27))) (hide yes))
-  (property "Second_Source" "Texas Instruments TPS22916CYFPR (WCSP, other land; BOM v1 line 50)" (at 233.68 118.11 0) (effects (font (size 1.27 1.27))) (hide yes))
-  (property "Block" "blk.rp2354-power" (at 233.68 118.11 0) (effects (font (size 1.27 1.27))) (hide yes))
-  (pin "1" (uuid "52ae4bf7-6a0c-5f59-8eb7-5384d3c936c3"))
-  (pin "3" (uuid "f972d74e-d856-58d2-abd7-c0cd484c9803"))
-  (pin "4" (uuid "427777b4-d52b-508d-9b63-9dfbc68bdbda"))
-  (pin "6" (uuid "0a8ee485-48f6-56de-a416-88a83667aad0"))
-  (pin "5" (uuid "e19d282d-c261-5f41-ad81-86399b7f488a"))
-  (pin "2" (uuid "9343a4f3-f306-5645-ab59-a4c231d1f5a0"))
+(rectangle (start 207.01 35.56) (end 281.94 87.63) (stroke (width 0) (type dash)) (fill (type none)) (uuid "2cb5d5ea-c62b-5bd7-9748-4c3d39c98d2c"))
+(text "RP_3V3 switch (BOM v1 line 50)" (exclude_from_sim no) (at 208.28 34.29 0) (effects (font (size 2.54 2.54)) (justify left bottom)) (uuid "647a3da0-3923-5955-82bc-fb0771f73030"))
+(symbol (lib_id "texas-instruments:TPS22916CYFPR") (at 236.22 123.19 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "5702d451-f18e-579c-a524-c38ac2803168")
+  (property "Reference" "U3503" (at 237.49 109.22 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Value" "TPS22916CYFPR" (at 237.49 106.68 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Footprint" "texas-instruments:Texas_YFP0004_DSBGA-4_0.78x0.78mm_Layout2x2_P0.4mm" (at 236.22 123.19 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "https://www.ti.com/lit/ds/symlink/tps22916.pdf" (at 236.22 123.19 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Description" "Load switch, 1-5.5 V, 2 A, 60 mOhm at 5 V, slow controlled turn-on (C version), reverse-current blocking, quick output discharge (150 Ohm), active-high ON, WCSP-4 0.78 x 0.78 mm (YFP0004)" (at 236.22 123.19 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Manufacturer" "Texas Instruments" (at 236.22 123.19 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "MPN" "TPS22916CYFPR" (at 236.22 123.19 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Block" "blk.rp2354-power" (at 236.22 123.19 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (pin "B2" (uuid "82ca87c3-ba29-5712-9a89-f998df59c621"))
+  (pin "A1" (uuid "066a43ae-c03d-539e-9a79-cc7c7d4f1849"))
+  (pin "A2" (uuid "2e5f36f1-304e-54dc-ba9f-273f84c55319"))
+  (pin "B1" (uuid "4f059892-4dc5-5b63-8ab9-64450488c619"))
   (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/232a2e20-67ea-55e8-b37d-3f3d6ca076d7/f643a674-c7ca-5811-81b6-2626f3b0b763" (reference "U3503") (unit 1))))
 )
-(wire (pts (xy 223.52 113.03) (xy 218.44 113.03)) (stroke (width 0) (type default)) (uuid "6c9c6d1b-5cc0-55ef-9096-9024086f6576"))
-(symbol (lib_id "power:VCC") (at 218.44 113.03 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "bca73a5c-19cd-5c6b-a950-975de6245974")
-  (property "Reference" "#PWR0876" (at 218.44 113.03 0) (effects (font (size 1.27 1.27))) (hide yes))
-  (property "Value" "vcc_1v8" (at 218.44 109.22 0) (effects (font (size 1.27 1.27))))
-  (property "Footprint" "" (at 218.44 113.03 0) (effects (font (size 1.27 1.27))) (hide yes))
-  (property "Datasheet" "" (at 218.44 113.03 0) (effects (font (size 1.27 1.27))) (hide yes))
+(wire (pts (xy 223.52 123.19) (xy 220.98 123.19)) (stroke (width 0) (type default)) (uuid "e102ce6e-171a-596f-b702-11467ffabf97"))
+(wire (pts (xy 248.92 123.19) (xy 251.46 123.19)) (stroke (width 0) (type default)) (uuid "ecc9aa57-2f69-529a-a966-c58ffff8df4a"))
+(wire (pts (xy 236.22 107.95) (xy 236.22 105.41)) (stroke (width 0) (type default)) (uuid "049aa712-ef66-5a4b-834f-265ccea73292"))
+(symbol (lib_id "power:VCC") (at 236.22 105.41 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "bca73a5c-19cd-5c6b-a950-975de6245974")
+  (property "Reference" "#PWR0876" (at 236.22 105.41 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Value" "vcc_1v8" (at 236.22 101.6 0) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "" (at 236.22 105.41 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "" (at 236.22 105.41 0) (effects (font (size 1.27 1.27))) (hide yes))
   (pin "1" (uuid "0195f930-9d8f-5116-ae03-5929a4290da4"))
   (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/232a2e20-67ea-55e8-b37d-3f3d6ca076d7/f643a674-c7ca-5811-81b6-2626f3b0b763" (reference "#PWR0876") (unit 1))))
 )
-(wire (pts (xy 223.52 115.57) (xy 220.98 115.57)) (stroke (width 0) (type default)) (uuid "1f5f148b-034c-50bf-acf5-e2eabdaf7d5a"))
-(no_connect (at 223.52 120.65) (uuid "fb488faa-16c8-51c3-ab29-0b297faeb1a7"))
-(wire (pts (xy 243.84 113.03) (xy 246.38 113.03)) (stroke (width 0) (type default)) (uuid "a32a4c51-d04c-5e5f-a68a-d132133d28af"))
-(wire (pts (xy 243.84 115.57) (xy 246.38 115.57)) (stroke (width 0) (type default)) (uuid "c44cf18c-d778-5d65-b78b-fb1a0c0ec77a"))
-(wire (pts (xy 233.68 133.35) (xy 233.68 135.89)) (stroke (width 0) (type default)) (uuid "71b83f70-3538-5578-b0c0-0b9304ebc658"))
-(symbol (lib_id "power:GND") (at 233.68 135.89 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "c5269c7f-3506-58c1-8483-bde97eaea590")
-  (property "Reference" "#PWR0877" (at 233.68 135.89 0) (effects (font (size 1.27 1.27))) (hide yes))
-  (property "Value" "GND" (at 233.68 139.7 0) (effects (font (size 1.27 1.27))))
-  (property "Footprint" "" (at 233.68 135.89 0) (effects (font (size 1.27 1.27))) (hide yes))
-  (property "Datasheet" "" (at 233.68 135.89 0) (effects (font (size 1.27 1.27))) (hide yes))
+(wire (pts (xy 236.22 138.43) (xy 236.22 140.97)) (stroke (width 0) (type default)) (uuid "71b83f70-3538-5578-b0c0-0b9304ebc658"))
+(symbol (lib_id "power:GND") (at 236.22 140.97 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "c5269c7f-3506-58c1-8483-bde97eaea590")
+  (property "Reference" "#PWR0877" (at 236.22 140.97 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Value" "GND" (at 236.22 144.78 0) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "" (at 236.22 140.97 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "" (at 236.22 140.97 0) (effects (font (size 1.27 1.27))) (hide yes))
   (pin "1" (uuid "9f3b542f-5c27-53c1-9182-b5a2d16e79ef"))
   (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/232a2e20-67ea-55e8-b37d-3f3d6ca076d7/f643a674-c7ca-5811-81b6-2626f3b0b763" (reference "#PWR0877") (unit 1))))
 )
-(symbol (lib_id "Device:C") (at 271.78 107.95 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "89d860e1-b7b2-5dba-9c3e-677c4ace0453")
-  (property "Reference" "C3517" (at 274.32 106.68 0) (effects (font (size 1.27 1.27)) (justify left)))
-  (property "Value" "1 µF" (at 274.32 109.22 0) (effects (font (size 1.27 1.27)) (justify left)))
-  (property "Footprint" "Capacitor_SMD:C_0402_1005Metric" (at 271.78 107.95 0) (effects (font (size 1.27 1.27))) (hide yes))
-  (property "Datasheet" "https://www.murata.com/en-us/products/productdetail?partno=GRM155R61A105KE15D" (at 271.78 107.95 0) (effects (font (size 1.27 1.27))) (hide yes))
-  (property "Description" "Capacitor, 1 µF, 10 V, X5R, 0402" (at 271.78 107.95 0) (effects (font (size 1.27 1.27))) (hide yes))
-  (property "Manufacturer" "Murata" (at 271.78 107.95 0) (effects (font (size 1.27 1.27))) (hide yes))
-  (property "MPN" "GRM155R61A105KE15D" (at 271.78 107.95 0) (effects (font (size 1.27 1.27))) (hide yes))
-  (property "Block" "blk.rp2354-power" (at 271.78 107.95 0) (effects (font (size 1.27 1.27))) (hide yes))
+(symbol (lib_id "Device:C") (at 276.86 110.49 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "89d860e1-b7b2-5dba-9c3e-677c4ace0453")
+  (property "Reference" "C3517" (at 279.4 109.22 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Value" "1 µF" (at 279.4 111.76 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Footprint" "Capacitor_SMD:C_0402_1005Metric" (at 276.86 110.49 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "https://www.murata.com/en-us/products/productdetail?partno=GRM155R61A105KE15D" (at 276.86 110.49 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Description" "Capacitor, 1 µF, 10 V, X5R, 0402" (at 276.86 110.49 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Manufacturer" "Murata" (at 276.86 110.49 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "MPN" "GRM155R61A105KE15D" (at 276.86 110.49 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Block" "blk.rp2354-power" (at 276.86 110.49 0) (effects (font (size 1.27 1.27))) (hide yes))
   (pin "1" (uuid "bc309c2d-4728-5216-a3ef-25c365066835"))
   (pin "2" (uuid "3437905b-53ee-5b80-9031-e1f75ee10a4f"))
   (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/232a2e20-67ea-55e8-b37d-3f3d6ca076d7/f643a674-c7ca-5811-81b6-2626f3b0b763" (reference "C3517") (unit 1))))
 )
-(wire (pts (xy 271.78 104.14) (xy 271.78 101.6)) (stroke (width 0) (type default)) (uuid "d85f9c84-ac8f-5729-ae3a-f790fb260d40"))
-(wire (pts (xy 271.78 111.76) (xy 271.78 114.3)) (stroke (width 0) (type default)) (uuid "401f4937-432e-5a37-9c3b-92114334cf23"))
-(symbol (lib_id "power:GND") (at 271.78 114.3 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "41d8e1b9-9bd2-51bd-9682-ddb75567b5f2")
-  (property "Reference" "#PWR0878" (at 271.78 114.3 0) (effects (font (size 1.27 1.27))) (hide yes))
-  (property "Value" "GND" (at 271.78 118.11 0) (effects (font (size 1.27 1.27))))
-  (property "Footprint" "" (at 271.78 114.3 0) (effects (font (size 1.27 1.27))) (hide yes))
-  (property "Datasheet" "" (at 271.78 114.3 0) (effects (font (size 1.27 1.27))) (hide yes))
+(wire (pts (xy 276.86 106.68) (xy 276.86 104.14)) (stroke (width 0) (type default)) (uuid "4a57fa11-3b1c-5beb-b6d2-217d9dd9f422"))
+(wire (pts (xy 276.86 114.3) (xy 276.86 116.84)) (stroke (width 0) (type default)) (uuid "efa6c1f3-0efb-5ac7-bcc8-9e57bf430d9a"))
+(symbol (lib_id "power:GND") (at 276.86 116.84 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "41d8e1b9-9bd2-51bd-9682-ddb75567b5f2")
+  (property "Reference" "#PWR0878" (at 276.86 116.84 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Value" "GND" (at 276.86 120.65 0) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "" (at 276.86 116.84 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "" (at 276.86 116.84 0) (effects (font (size 1.27 1.27))) (hide yes))
   (pin "1" (uuid "d7ca0879-b003-5365-9c0d-a27cf18f0edc"))
   (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/232a2e20-67ea-55e8-b37d-3f3d6ca076d7/f643a674-c7ca-5811-81b6-2626f3b0b763" (reference "#PWR0878") (unit 1))))
 )
-(symbol (lib_id "power:VCC") (at 271.78 101.6 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "99b4f7c5-4d15-5d03-ab4d-9c85c2dbad88")
-  (property "Reference" "#PWR0879" (at 271.78 101.6 0) (effects (font (size 1.27 1.27))) (hide yes))
-  (property "Value" "vcc_1v8" (at 271.78 97.79 0) (effects (font (size 1.27 1.27))))
-  (property "Footprint" "" (at 271.78 101.6 0) (effects (font (size 1.27 1.27))) (hide yes))
-  (property "Datasheet" "" (at 271.78 101.6 0) (effects (font (size 1.27 1.27))) (hide yes))
+(symbol (lib_id "power:VCC") (at 276.86 104.14 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "99b4f7c5-4d15-5d03-ab4d-9c85c2dbad88")
+  (property "Reference" "#PWR0879" (at 276.86 104.14 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Value" "vcc_1v8" (at 276.86 100.33 0) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "" (at 276.86 104.14 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Datasheet" "" (at 276.86 104.14 0) (effects (font (size 1.27 1.27))) (hide yes))
   (pin "1" (uuid "d0090d22-cb94-5fba-a9ec-330eb8220c1c"))
   (instances (project "t1-main-board" (path "/7746052e-d7f9-59ad-ba73-bd2b74439529/232a2e20-67ea-55e8-b37d-3f3d6ca076d7/f643a674-c7ca-5811-81b6-2626f3b0b763" (reference "#PWR0879") (unit 1))))
 )
-(rectangle (start 207.01 95.25) (end 292.1 144.78) (stroke (width 0) (type dash)) (fill (type none)) (uuid "624da3a7-5f94-5216-bb64-8a4c1e6cd21a"))
-(text "RP_IOVDD_1V8 switch (BOM v1 line 50)" (exclude_from_sim no) (at 208.28 93.98 0) (effects (font (size 2.54 2.54)) (justify left bottom)) (uuid "32e3b1ac-c2a1-5b71-a58b-6360f6d58cf6"))
+(rectangle (start 207.01 97.79) (end 292.1 149.86) (stroke (width 0) (type dash)) (fill (type none)) (uuid "20e0fb23-758d-5214-8e50-868b9f5684d8"))
+(text "RP_IOVDD_1V8 switch (BOM v1 line 50)" (exclude_from_sim no) (at 208.28 96.52 0) (effects (font (size 2.54 2.54)) (justify left bottom)) (uuid "49f210df-8333-5f27-be87-5b5041f789d1"))
 (symbol (lib_id "Device:R") (at 334.01 50.8 90) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "7d36ff9d-44ba-53e6-89be-baf52da13748")
   (property "Reference" "R3513" (at 331.47 46.99 90) (effects (font (size 1.27 1.27))))
   (property "Value" "100 mΩ" (at 331.47 53.34 90) (effects (font (size 1.27 1.27))))
@@ -3185,7 +3130,7 @@
 )
 (text_box "Notes\n1. Function: the RP2354A supply unit with its core regulator (3.3 µH, DS §6.3.8) and the two\n   switched rails RP_3V3 (VREG, QSPI, USB, ADC) and RP_IOVDD_1V8 (IOVDD at 1.8 V, BOM v1 line 12).\n2. Absent state: RP_PWR_EN low: both switches off (QOD discharges), the part unpowered.\n3. VREG_VIN and VREG_AVDD ramp together from RP_3V3 (DS §6.1.8); VREG_AVDD through 33 Ω + 4.7 µF.\n4. Links #21 (RP_3V3, 0.1 Ω) and #30 (RP_IOVDD_1V8, 1 Ω), power tree §4.12. The inductor's\n   polarity dot faces VREG_LX as in DS Figure 28: UNVERIFIED until checked on the Pico 2 layout." (exclude_from_sim no) (at 275.59 229.87 0) (size 129.54 19.05) (margins 1.905 1.905 1.905 1.905) (stroke (width 0) (type default)) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "58a57eac-bc6b-523e-b471-bc0ac68e94e1"))
 (text "Interface" (exclude_from_sim no) (at 22.86 246.38 0) (effects (font (size 2.54 2.54)) (justify left bottom)) (uuid "1bb118bb-084f-52b5-a2e4-f290182bef30"))
-(table (column_count 3) (border (external yes) (header yes) (stroke (width 0) (type solid))) (separators (rows yes) (cols yes) (stroke (width 0) (type solid))) (column_widths 38.1 22.86 57.15) (row_heights 5.08 7.62 7.62) (cells (table_cell "Net" (exclude_from_sim no) (at 22.86 247.65 0) (size 38.1 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27) (bold yes)) (justify left top)) (uuid "ca689186-cace-584d-b235-5e4dc0514bb0")) (table_cell "Direction" (exclude_from_sim no) (at 60.96 247.65 0) (size 22.86 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27) (bold yes)) (justify left top)) (uuid "b9ad8ab1-abe4-5dc5-8c90-5d15132bd884")) (table_cell "Absent state (block not fitted)" (exclude_from_sim no) (at 83.82 247.65 0) (size 57.15 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27) (bold yes)) (justify left top)) (uuid "7acd6f90-53cc-5356-8c67-40c1ecd799e3")) (table_cell "RP_PWR_EN" (exclude_from_sim no) (at 22.86 252.73 0) (size 38.1 7.62) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "d0be2855-f0e5-51fd-b209-0124069455ee")) (table_cell "Input" (exclude_from_sim no) (at 60.96 252.73 0) (size 22.86 7.62) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "8141e63b-c09b-587d-8c41-05b60ca7bf4f")) (table_cell "Both switches; SoC pull-down and the TPS22919 ON pull-down: off (BRD-019)" (exclude_from_sim no) (at 83.82 252.73 0) (size 57.15 7.62) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "bfe59494-6869-56d7-8a40-fc9559c90388")) (table_cell "RP_IOVDD_1V8, RP_3V3" (exclude_from_sim no) (at 22.86 260.35 0) (size 38.1 7.62) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "5db350e4-de92-51a5-b60c-286f33cf8b7a")) (table_cell "Supply out" (exclude_from_sim no) (at 60.96 260.35 0) (size 22.86 7.62) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "79c11a29-6e69-52d0-8b0a-b33bac76a713")) (table_cell "To blk.rp2354-core (pull-ups, oscillator); off with RP_PWR_EN low" (exclude_from_sim no) (at 83.82 260.35 0) (size 57.15 7.62) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "37b70664-630d-581a-be36-9b2968b0f180"))))
+(table (column_count 3) (border (external yes) (header yes) (stroke (width 0) (type solid))) (separators (rows yes) (cols yes) (stroke (width 0) (type solid))) (column_widths 38.1 22.86 57.15) (row_heights 5.08 7.62 7.62) (cells (table_cell "Net" (exclude_from_sim no) (at 22.86 247.65 0) (size 38.1 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27) (bold yes)) (justify left top)) (uuid "ca689186-cace-584d-b235-5e4dc0514bb0")) (table_cell "Direction" (exclude_from_sim no) (at 60.96 247.65 0) (size 22.86 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27) (bold yes)) (justify left top)) (uuid "b9ad8ab1-abe4-5dc5-8c90-5d15132bd884")) (table_cell "Absent state (block not fitted)" (exclude_from_sim no) (at 83.82 247.65 0) (size 57.15 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27) (bold yes)) (justify left top)) (uuid "7acd6f90-53cc-5356-8c67-40c1ecd799e3")) (table_cell "RP_PWR_EN" (exclude_from_sim no) (at 22.86 252.73 0) (size 38.1 7.62) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "d0be2855-f0e5-51fd-b209-0124069455ee")) (table_cell "Input" (exclude_from_sim no) (at 60.96 252.73 0) (size 22.86 7.62) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "8141e63b-c09b-587d-8c41-05b60ca7bf4f")) (table_cell "Both switches; SoC pull-down and the TPS22916C ON pull-down: off (BRD-019)" (exclude_from_sim no) (at 83.82 252.73 0) (size 57.15 7.62) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "bfe59494-6869-56d7-8a40-fc9559c90388")) (table_cell "RP_IOVDD_1V8, RP_3V3" (exclude_from_sim no) (at 22.86 260.35 0) (size 38.1 7.62) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "5db350e4-de92-51a5-b60c-286f33cf8b7a")) (table_cell "Supply out" (exclude_from_sim no) (at 60.96 260.35 0) (size 22.86 7.62) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "79c11a29-6e69-52d0-8b0a-b33bac76a713")) (table_cell "To blk.rp2354-core (pull-ups, oscillator); off with RP_PWR_EN low" (exclude_from_sim no) (at 83.82 260.35 0) (size 57.15 7.62) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "37b70664-630d-581a-be36-9b2968b0f180"))))
 (text "Rails" (exclude_from_sim no) (at 148.59 246.38 0) (effects (font (size 2.54 2.54)) (justify left bottom)) (uuid "413603b2-f9bd-5ad4-a692-3e720fb1c285"))
 (table (column_count 3) (border (external yes) (header yes) (stroke (width 0) (type solid))) (separators (rows yes) (cols yes) (stroke (width 0) (type solid))) (column_widths 27.94 35.56 55.88) (row_heights 5.08 5.08 7.62 5.08 5.08 5.08) (cells (table_cell "Rail" (exclude_from_sim no) (at 148.59 247.65 0) (size 27.94 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27) (bold yes)) (justify left top)) (uuid "ae2949e1-f90e-5dfe-b97c-16ff09211b26")) (table_cell "Capacitors" (exclude_from_sim no) (at 176.53 247.65 0) (size 35.56 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27) (bold yes)) (justify left top)) (uuid "01075f86-d602-5c9a-9b9f-47fb274d7a30")) (table_cell "Requirement and source" (exclude_from_sim no) (at 212.09 247.65 0) (size 55.88 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27) (bold yes)) (justify left top)) (uuid "ee4c0f72-f73e-5c7f-aaa6-d3cd2653bd49")) (table_cell "RP_IOVDD_1V8" (exclude_from_sim no) (at 148.59 252.73 0) (size 27.94 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "58a8a302-c0f1-593d-8aed-9d33f112d926")) (table_cell "6 x 100 nF" (exclude_from_sim no) (at 176.53 252.73 0) (size 35.56 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "5e5b8216-3bd0-5431-b197-37326f24ee28")) (table_cell "DS §6.1: 100 nF per power pin" (exclude_from_sim no) (at 212.09 252.73 0) (size 55.88 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "97a04416-9760-5896-952a-0e45f1b30bd1")) (table_cell "RP_3V3" (exclude_from_sim no) (at 148.59 257.81 0) (size 27.94 7.62) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "81dfeab5-82fc-56fb-bae9-953e0e8c036c")) (table_cell "4.7 µF (VREG_VIN) + 3 x 100 nF" (exclude_from_sim no) (at 176.53 257.81 0) (size 35.56 7.62) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "6b067ebf-f5d4-50eb-9ac6-1841fe2edd70")) (table_cell "DS §6.1, §6.3.8 (CIN 4.7 µF); QSPI_IOVDD, USB_OTP_VDD, ADC_AVDD" (exclude_from_sim no) (at 212.09 257.81 0) (size 55.88 7.62) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "bf8bc2e1-acd0-5c86-a03b-297bb49aa23b")) (table_cell "RP_DVDD" (exclude_from_sim no) (at 148.59 265.43 0) (size 27.94 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "41ff8605-b934-5039-9903-cd697936a409")) (table_cell "4.7 µF at pin 23 + 2 x 100 nF" (exclude_from_sim no) (at 176.53 265.43 0) (size 35.56 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "ae92cd98-9677-529e-ad5d-8ebde9827015")) (table_cell "HDG §2.2.1: 4.7 µF on the furthest DVDD pin" (exclude_from_sim no) (at 212.09 265.43 0) (size 55.88 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "01b8c619-5404-5022-bf07-343f02a3e1b3")) (table_cell "RP_VREG_AVDD" (exclude_from_sim no) (at 148.59 270.51 0) (size 27.94 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "3e5129e3-380e-5cfe-b9c3-a316f031ad5a")) (table_cell "33 Ω + 4.7 µF" (exclude_from_sim no) (at 176.53 270.51 0) (size 35.56 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "f24c63d4-55af-514f-a82b-f8589d4274d9")) (table_cell "HDG p. 7 (RC filter)" (exclude_from_sim no) (at 212.09 270.51 0) (size 55.88 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "15323589-4a66-5750-bc8b-67e4c8b51342")) (table_cell "vcc3v3_sys, vcc_1v8" (exclude_from_sim no) (at 148.59 275.59 0) (size 27.94 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "0a355fd3-4cd5-5752-8e7b-a41d9e94dab9")) (table_cell "1 µF at each switch input" (exclude_from_sim no) (at 176.53 275.59 0) (size 35.56 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "cb5566dc-1b92-5586-ac14-33b4701337a8")) (table_cell "Capture choice (SLVSEN5B)" (exclude_from_sim no) (at 212.09 275.59 0) (size 55.88 5.08) (margins 0.9525 0.9525 0.9525 0.9525) (span 1 1) (fill (type none)) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "5564b921-2767-5830-86ef-a17d1c637e57"))))
 (junction (at 115.57 160.02) (diameter 0) (color 0 0 0 0) (uuid "ea15d18c-f3a3-514f-9796-915e5d8bb91a"))
@@ -3217,12 +3162,10 @@
 (label "RP_VREG_AVDD" (at 175.26 106.68 90) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "33ac0a9f-0ae2-5494-a6c9-41631689daf1"))
 (label "RP_DVDD" (at 115.57 160.02 270) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "57773345-308f-50d7-83d2-7cabd6ed6dda"))
 (label "RP_VREG_SW" (at 115.57 149.86 90) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "6a5570db-81a0-594a-9af6-22cc6bdaa3eb"))
-(label "RP_PWR_EN" (at 223.52 55.88 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "165abd3b-bc79-5c25-8cd4-545949421918"))
-(label "RP_3V3_SRC" (at 248.92 53.34 0) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "b8a1b12a-74d8-57cf-a068-4373f7d97bf7"))
-(label "RP_3V3_SRC" (at 248.92 55.88 0) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "6827a910-033b-5fe2-8c49-ee75cf92e1bd"))
-(label "RP_PWR_EN" (at 220.98 115.57 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "837b8615-35f2-5143-95a8-b4a88dc09dd3"))
-(label "RP_IOVDD_1V8_SRC" (at 246.38 113.03 0) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "60e20256-7529-5bc0-81c2-9101497e3e4b"))
-(label "RP_IOVDD_1V8_SRC" (at 246.38 115.57 0) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "0b5d8dc0-11be-5ee6-b84f-7370bec892c6"))
+(label "RP_PWR_EN" (at 220.98 60.96 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "916edb1f-50ae-59cb-8556-953e7e429167"))
+(label "RP_3V3_SRC" (at 251.46 60.96 0) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "918b31ad-ac3c-52ae-a6d2-b5396f255ef0"))
+(label "RP_PWR_EN" (at 220.98 123.19 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "67e878b2-a1db-5801-b3d8-be2db2baabd2"))
+(label "RP_IOVDD_1V8_SRC" (at 251.46 123.19 0) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "b0c28a29-3aa2-525e-9da5-3023745fc9e0"))
 (label "RP_3V3_SRC" (at 309.88 50.8 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "f612664e-f367-56bc-bda6-cc970ce17eb8"))
 (label "RP_IOVDD_1V8_SRC" (at 317.5 86.36 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "e198341c-c5ca-58e5-9151-b99f82749b9b"))
 (bus (pts (xy 45.72 237.49) (xy 50.8 237.49)) (stroke (width 0) (type default)) (uuid "26dd1c61-5aae-5d8f-9813-75c5302e6601"))

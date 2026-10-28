@@ -43,7 +43,7 @@ RAIL_ROWS = [
     ["vcca1v8_pmu", "1.8 V", "RK809 LDO8", "always on", "SoC PMUIO0/2, vcc1v8_ddr, pull-ups", "-", "-"],
     ["vcca1v8_image", "1.8 V", "RK809 LDO9", "unused (RFC 0014)", "none: CSI RX has no consumer", "-", "-"],
     ["vcc3v3_sd", "3.3 V", "RK809 SWOUT2", "RK809 I2C", "microSD VDD", "-", "M link"],
-    ["vcc3v3_wl", "3.3 V", "TPS22919 from vcc3v3_sys (blk.radio-power)", "WL_PWR_EN", "Type 2EL AVDD33, AVDD18 buck EN", "-", "H20 link #11"],
+    ["vcc3v3_wl", "3.3 V", "TPS22916C from vcc3v3_sys (blk.radio-power)", "WL_PWR_EN", "Type 2EL AVDD33, AVDD18 buck EN", "-", "H20 link #11"],
     ["vcc1v8_wl", "1.80 V", "TPS62826 from VSYS_LV (blk.radio-power)", "EN from vcc3v3_wl", "Type 2EL AVDD18", "-", "H20 link #12"],
     ["FP_3V3", "3.3 V", "TPS22950 from vcc3v3_sys (blk.fp-connector)", "FP_IO_EN", "faceplate logic, pull-ups", "-", "-"],
     ["FP_1V8", "1.80 V", "TPS22945 from vcc_1v8 (blk.fp-connector)", "FP_IO_EN", "faceplate IOVCC", "-", "-"],

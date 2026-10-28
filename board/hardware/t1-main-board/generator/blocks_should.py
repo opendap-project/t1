@@ -197,8 +197,8 @@ def draw_reader(s, variants):
     grp(col, xtal)
 
     grp(col, lambda: ic_group(
-        s, "NFC_VBAT switch (BOM v1 line 50)", "texas-instruments", "TPS22919DCKR",
-        {"IN": "VSYS_LV", "ON": "NFC_PWR_EN", "NC": None, "VOUT": "NFC_VBAT_SRC", "QOD": "NFC_VBAT_SRC",
+        s, "NFC_VBAT switch (BOM v1 line 50)", "texas-instruments", "TPS22916CYFPR",
+        {"VIN": "VSYS_LV", "ON": "NFC_PWR_EN", "VOUT": "NFC_VBAT_SRC",
          "GND": "GND"}, rows=[[("C_1u_0402", "VSYS_LV", "GND")]]))
     f.x_right = col.x_right
     col2 = column(s, f, w=90.0)
@@ -244,7 +244,7 @@ def draw_reader(s, variants):
         "   over I2C2. Fitted on prototypes, DNP option in production (BOM v1 line 127).",
         "2. Absent state: unfitted or NFC_PWR_EN low: VEN and DWL_REQ held low by the SoC, IRQ pulled",
         "   down, 0x28 free. VEN must not go high before NFC_VBAT (DS §11.5.2; driver rule).",
-        "3. NFC_VBAT = VSYS_LV 3.8 V through a TPS22919 and link #18 (power tree §4.12): VBAT, VBAT2",
+        "3. NFC_VBAT = VSYS_LV 3.8 V through a TPS22916C and link #18 (power tree §4.12): VBAT, VBAT2",
         "   and VDD(UP) (DS Table 30: 2.8-5.5 V reader). VDD(PAD) on the always-on vcca1v8_pmu.",
         "4. Front end: L0 160 nH and C0 330 pF (EMC cut-off about 22 MHz, asymmetrical), C1 68 pF,",
         "   C2 100 pF, Rs 2.7 Ω: the first-iteration values of AN13219 §4.1.3.7 for its example",
@@ -290,7 +290,7 @@ def rp_unit(s, ref, unit, mapping, title, rows=(), rows_dx=5.08):
 def draw_rp2354(parent, variants):
     """blk.rp2354 (#46): RP2354A (BOM v1 line 12) with IOVDD at 1.8 V, its core regulator (line 13),
     12 MHz oscillator (line 14), BOOTSEL FET (line 35), SWD pads (line 89), tap positions (line 134),
-    rails through two TPS22919 (line 50) and links #21 and #30 (power tree §4.12). One reference,
+    rails through two TPS22916C (line 50) and links #21 and #30 (power tree §4.12). One reference,
     its three units on two sub-sheets (as blk.soc)."""
     from draw import part, prow
     ref = parent.next_ref("U")
@@ -368,12 +368,12 @@ def draw_rp2354(parent, variants):
 
     col = column(s, f, w=110.0)
     grp(col, lambda: ic_group(
-        s, "RP_3V3 switch (BOM v1 line 50)", "texas-instruments", "TPS22919DCKR",
-        {"IN": "vcc3v3_sys", "ON": "RP_PWR_EN", "NC": None, "VOUT": "RP_3V3_SRC", "QOD": "RP_3V3_SRC",
+        s, "RP_3V3 switch (BOM v1 line 50)", "texas-instruments", "TPS22916CYFPR",
+        {"VIN": "vcc3v3_sys", "ON": "RP_PWR_EN", "VOUT": "RP_3V3_SRC",
          "GND": "GND"}, rows=[[("C_1u_0402", "vcc3v3_sys", "GND")]]))
     grp(col, lambda: ic_group(
-        s, "RP_IOVDD_1V8 switch (BOM v1 line 50)", "texas-instruments", "TPS22919DCKR",
-        {"IN": "vcc_1v8", "ON": "RP_PWR_EN", "NC": None, "VOUT": "RP_IOVDD_1V8_SRC", "QOD": "RP_IOVDD_1V8_SRC",
+        s, "RP_IOVDD_1V8 switch (BOM v1 line 50)", "texas-instruments", "TPS22916CYFPR",
+        {"VIN": "vcc_1v8", "ON": "RP_PWR_EN", "VOUT": "RP_IOVDD_1V8_SRC",
          "GND": "GND"}, rows=[[("C_1u_0402", "vcc_1v8", "GND")]]))
     f.x_right = col.x_right
     col2 = column(s, f, w=100.0)
@@ -381,7 +381,7 @@ def draw_rp2354(parent, variants):
     grp(col2, lambda: link_group(s, "LINK_L1", "RP_IOVDD_1V8_SRC", "RP_IOVDD_1V8", variants, "Link #30"))
 
     s.iface_rows = [
-        ["RP_PWR_EN", "Input", "Both switches; SoC pull-down and the TPS22919 ON pull-down: off (BRD-019)"],
+        ["RP_PWR_EN", "Input", "Both switches; SoC pull-down and the TPS22916C ON pull-down: off (BRD-019)"],
         ["RP_IOVDD_1V8, RP_3V3", "Supply out", "To blk.rp2354-core (pull-ups, oscillator); off with RP_PWR_EN low"],
     ]
     s.rail_rows = RP_RAILS

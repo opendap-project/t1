@@ -1,12 +1,16 @@
 # Power tree v0
 
-- **Version:** v0.8 (2026-10-25), with BOM v1.14: [Changes in v0.8](#changes-in-v08). v0.7 is the state of BOM v1.13, v0.6 is the state of BOM v1.12, v0.5 is the state of BOM v1.11, v0.4 of BOM v1.10, v0.3 of BOM v1.9, v0.2 the state of BOM v1.8, v0.1 of BOM v1.7.
+- **Version:** v0.9 (2026-10-27), with BOM v1.17: [Changes in v0.9](#changes-in-v09). v0.8 is the state of BOM v1.14. v0.7 is the state of BOM v1.13, v0.6 is the state of BOM v1.12, v0.5 is the state of BOM v1.11, v0.4 of BOM v1.10, v0.3 of BOM v1.9, v0.2 the state of BOM v1.8, v0.1 of BOM v1.7.
 - **Status:** Draft. Desk design only: nothing here has been built or measured. Simulated (updated 2026-10-24): the amplifier rails ([output-stage simulation](../../sim/output-stage/README.md)), the VSYS bucks and the MaskROM entry ([VSYS buck and MaskROM simulations](../../sim/README.md)); netlists in `sim/`. Every part is *Proposed* unless [BOM v1](bom-v1.md) says *Decided*. Updated 2026-10-22 by the BOM v1 cross-validation (battery, HAT/USB 5 V source, TPS2121 isolation, faceplate rails, IO voltages, vdd_cpu part), then by BOM v1.1 (RK809-5 feeds and ratings, TPS61089 boost, 3.1 V MCLK supply, RP2354A supplies, battery derating, TPS2121 OV1, HP-amp soft-start), then by BOM v1.2 (power margin check of every rail, converter, connector and cable, BRD-049, §4.10; vcc3v3_sys on a 3 A TPS62826; battery path sized for the full output budget, BRD-050 and proposed ADR 0011; battery fuse; 50-contact HAT power connector; RGB status LED driver; TPS61089 and TPS2121 current limits), then by BOM v1.3 ([ADR 0012](../adr/0012-headphone-output-stage.md): six OPA1622 with paralleled halves, ±6 V amplifier rails on LT3045/LT3094 from ±7 V TPS65131 pre-rails, gain 1.62 with the CS43198 at `+1dB_EN` = 0, §4.1, §4.2, §4.10.1; interim-pack output ceiling, §4.11; vcc3v3_sys inductor, §4.10), then by BOM v1.4 (HAT pogo power contacts fixed by the hat-standard HAT interface v1, §4.10; no power part changes), then updated by BOM v1.5 / [ADR 0014](../adr/0014-two-cell-battery.md) (two-cell battery: BQ25798 charger, VSYS 6.0–8.8 V, TPS62136 pre-regulator to a 3.8 V VSYS_LV rail feeding the former 1S tree, TPS62903 bucks for HAT_5V/USB-C and HAT_3V3, BQ28Z610-R1 gauge, 5 A fuse, Micro-Fit 3.0 connector; full output budget ≈ 2.4 A at VSYS 6.6 V, battery path sized for the ≈ 3.2 A worst case; interim ceiling removed; finding 14, §2, §3, §4.6, §4.7, §4.9–§4.11). Then updated by BOM v1.6 / [ADR 0015](../adr/0015-amplifier-rails-from-vsys.md) (−7 V pre-rail from an LMR33630C inverting buck-boost on VSYS, TPS65131 boost only, paired LT3045/LT3094; ship FET; MaskROM supervisor; TPS62136 inductor correction; §2, §3, §4.7, §4.10, §4.10.1, §5, §6).
 - **Date:** 2026-10-22 (v0.2 to v0.5: 2026-10-24; v0.6 to v0.8: 2026-10-25)
 - **Companion:** [BOM v1](bom-v1.md) (parts, datasheet links and hashes).
 - **Inputs:** [BOM v0](bom-v0.md), ADR 0012, [board requirements](../requirements/README.md) (BRD-001 to BRD-050), board ADRs 0001–0015 (from v0.4 also [ADR 0020](../adr/0020-battery-connected-through-contacts.md); from v0.6 [ADR 0021](../adr/0021-vdd-cpu-buck-ti-tps62869.md) and [ADR 0022](../adr/0022-lpddr4x-micron-mt53e1g32d2fw-with-cxmt-second-source.md)), [output-stage simulation](../../sim/output-stage/README.md) and [VSYS buck and MaskROM simulations](../../sim/README.md) (v1.6), ADR 0014 (v1.5), touch-faceplate ADR 0001 (Focus E35GH), T1 and HAT Case Standard requirements, blackbird-os ADRs 0006–0008. Pin multiplexing v0 gave the balls until v0.2; from v0.3 [pinout v1](pinout-v1.md) does (§3.1). GPIO names below are net names.
 - **Method:** datasheets were downloaded and read (revision and sha256 in the BOM's Datasheets table); the RK809 rail mapping follows the Radxa ROCK 3C v1.4 schematic (PMIC marked RK809-5) and the mainline device trees of RK3566 + RK809 boards (Orange Pi 3B, ROCK 3C, ODROID-M1S), with Anbernic RG353 (RK817) and the Radxa ZERO 3W schematic v1.12 for the rest. Calculations are shown inline.
 - **Conventions:** **UNVERIFIED** = no primary source found in this session. "Est." = engineering estimate, to be replaced by measurement (T1-026).
+
+## Changes in v0.9
+
+1. **Load switches (BOM v1.17 item 3, line 50):** the six TPS22919 (DAC_VP, DAC_DIG_1V8, RP_3V3, RP_IOVDD_1V8, NFC_VBAT, vcc3v3_wl) become the TPS22916C (WCSP-4), the BOM's named second source. Rating 2 A (was 1.5 A); RON 70 mΩ typical at 3.6 V, 100 mΩ at 1.8 V (SLVSDO5F §6.5); turn-on 1700 µs at 3.6 V and 3000 µs at 1.8 V, rise 900 µs and 1400 µs (§6.6; the TPS22919 took 1750 µs and 1500 µs, SLVSEN5B §6.6); quick output discharge 150 Ω, fixed (the TPS22919's QOD pin tied to VOUT gave 24 Ω): fall time about 2.2 × 150 Ω × CL, 3150 µs at 10 µF (§6.6). Reverse-current blocking is always on; the TPS22919's output current limit is not in this part. Sequencing kept: CS43198 VP first on and last off (VP and the digital supply both discharge through 150 Ω; the driver orders them); RP2354A VREG_VIN and VREG_AVDD still ramp together on RP_3V3; the Type 2EL supply rise (900 µs at 3.6 V) is inside the carrier's 40 µs to 100 ms window. Driver delays (`startup-delay-us`, off time before a power cycle) follow these figures.
 
 ## Changes in v0.8
 
@@ -169,8 +173,8 @@ VBUS_CHG --> BQ25798 (2S buck-boost charger 1.5 MHz, NVDC; OTG NOT used; VAC1/VA
           |     |
           |     +--> TPS62827 vcc3v3_sys 3.3 V 4 A, ALWAYS ON (EN = VSYS_LV; EXT_EN unused)   play ~0.15 A, peak ~2.45 A (est., v0.3; TPS62826 until v0.2)
           |     |         +--> RK809 VCC5-VCC9 (LDO1-9, BUCK5, SWOUT1, SWOUT2)
-          |     |         +--> eMMC VCC, TPS22919 RP_3V3 (RP2354A), TCA6416A VCCP, DRV2605L VDD, INA236 x5, USB PHY 3.3 V (UNVERIFIED)
-          |     |         +--> TPS22919 vcc3v3_wl (Type 2EL AVDD33), ON = expander P06 WL_PWR_EN (v0.3; was RK809 SWOUT1)  0.24 A typ TX, 1.05 A peak
+          |     |         +--> eMMC VCC, TPS22916C RP_3V3 (RP2354A), TCA6416A VCCP, DRV2605L VDD, INA236 x5, USB PHY 3.3 V (UNVERIFIED)
+          |     |         +--> TPS22916C vcc3v3_wl (Type 2EL AVDD33), ON = expander P06 WL_PWR_EN (v0.3; was RK809 SWOUT1)  0.24 A typ TX, 1.05 A peak
           |     |         +--> TPS22950 FP_3V3, 0.22-0.38 A limit (CTP VDD, ALS, HID identity controller, faceplate logic, privacy LED) ~80 mA (v0.5; TPS22919 before)
           |     +--> RK809-5 PMIC (VCC1-VCC4 = BUCK1-4 from VSYS_LV; VCC5-VCC9 from vcc3v3_sys)
           |     |      BUCK1 vdd_logic   0.90 V  2.5 A max   play ~0.30 A (est.)          [VCC1, VSYS_LV]
@@ -179,10 +183,10 @@ VBUS_CHG --> BQ25798 (2S buck-boost charger 1.5 MHz, NVDC; OTG NOT used; VAC1/VA
           |     |         +--> TPS7A1006 vcc0v6_ddr 0.60 V 0.3 A max (LPDDR4X VDDQ), play ~0.03 A; BIAS = vcc1v8_ddr (v0.2)
           |     |      BUCK4 vdd_npu     0.90 V  1.5 A max   OFF unless NPU used          [VCC4, VSYS_LV]
           |     |      BUCK5 vcc_1v8     1.80 V  2.5 A max   play ~0.10 A (est.)          [VCC9, vcc3v3_sys]
-          |     |         +--> TPS22919 DAC_DIG_1V8  (2x VD+VL+VCP)       13 mA
+          |     |         +--> TPS22916C DAC_DIG_1V8  (2x VD+VL+VCP)       13 mA
           |     |         +--> TPS22945 FP_1V8, 100-200 mA limit (panel IOVCC, faceplate translator low side) ~5 mA (v0.5; TPS22919 before)
           |     |         +--> TPS22945 MIC_1V8, 100-200 mA limit (2x IM73D122 + privacy LED gate) ~2 mA (v0.5; TPS22919 before)
-          |     |         +--> TPS22919 RP_IOVDD_1V8 (RP2354A IOVDD, 12 MHz XO)
+          |     |         +--> TPS22916C RP_IOVDD_1V8 (RP2354A IOVDD, 12 MHz XO)
           |     |         +--> eMMC VCCQ, Type 2EL VIO + SD_VIO, SoC VCCIO2 and VCCIO4 (v0.2: IMU and LPDDR4X VDD1 moved to vcca1v8_pmu)
           |     |         +--> 0 ohm link (ferrite-bead option) --> vccio6_1v8: SoC VCCIO6 (audio IO bank, v0.3, pinout v1 B1)
           |     |         +--> SN74LVC2G66 controls = DAC_DIG_1V8: I2C2 to the CS43198 pair only while powered (v0.2, G2)
@@ -202,8 +206,8 @@ VBUS_CHG --> BQ25798 (2S buck-boost charger 1.5 MHz, NVDC; OTG NOT used; VAC1/VA
           |     |      RTC + 32.768 kHz crystal
           |     +--> TPS62869 vdd_cpu 0.85-1.15 V (I2C DVS, 0x42), 6 A   max 3 A (est.), play ~0.15 A (est.) (v0.6, ADR 0021; RK860-0 before)
           |     +--> TPS62826 vcc1v8_wl 1.8 V 3 A (EN = vcc3v3_wl, so WL_PWR_EN)  Type 2EL AVDD18: 0.39 A typ TX, 1.05 A peak (v0.2)
-          |     +--> TPS22919 NFC_VBAT (PN7160 VBAT + VDD(UP))  0.29 A max, `NFC_PWR_EN` (v0.2)
-          |     +--> TPS22919 DAC_VP (CS43198 VP x2)           0.1 mA play, VP first/last
+          |     +--> TPS22916C NFC_VBAT (PN7160 VBAT + VDD(UP))  0.29 A max, `NFC_PWR_EN` (v0.2)
+          |     +--> TPS22916C DAC_VP (CS43198 VP x2)           0.1 mA play, VP first/last
           |     +--> TPS62840 AUDIO_2V2 2.2 V 750 mA max        play 16 mA
           |     |         +--> TPS7A2018 DAC1_VA 1.8 V    7.8 mA
           |     |         +--> TPS7A2018 DAC2_VA 1.8 V    7.8 mA
@@ -241,7 +245,7 @@ VBUS_CHG --> BQ25798 (2S buck-boost charger 1.5 MHz, NVDC; OTG NOT used; VAC1/VA
 | vcc0v6_ddr | TPS7A1006 (VIN vcc_ddr; BIAS vcc1v8_ddr from v0.2) | 0.60 V | 0.3 A | 0.03 A (est.) | follows vcc_ddr (EN on vcc_ddr) | LPDDR4X VDDQ, SoC DDR_VDDQL |
 | vcc1v8_ddr (v0.2) | vcca1v8_pmu through a measurement link (BOM line 132; DNP TPS7A2018 option) | 1.80 V | 100 mA allowance (est., **UNVERIFIED**) | — | always on (also in suspend) | LPDDR4X VDD1, TPS7A1006 BIAS |
 | vcc3v3_sys | TPS62827 (v0.3; TPS62826 v1.2–v0.2, TLV62569 before; EN = VSYS_LV, v1.5) | 3.30 V | 4 A (v0.3; 3 A before) | 0.15 A (est.) | always on (EXT_EN unused, as on the ROCK 3C) | RK809 VCC5–VCC9 (LDO1–9, BUCK5, SWOUT1, SWOUT2), eMMC VCC, RP2354A, FP_3V3, expander and translators. Peak ≈ 1.85 A (est.: BUCK5 input 0.4, LDOs 0.25, SWOUT1 0.6, SWOUT2 0.2, eMMC 0.25, rest 0.15 A) = 62 % of 3 A; in regulation down to ≈ 3.39 V input at that peak (100 % mode, BOM line 6), so always in regulation on the 3.8 V VSYS_LV (v1.5). TPS62827 (4 A) is the drop-in v0.2: the radio AVDD33 peak (1.05 A instead of 0.6 A) and the LDO8 loads raise the peak to ≈ 2.35 A = 78 % (est.); the radio's AVDD18 is no longer on this rail. **v0.3:** with the haptic driver (DRV2605L VDD ≈ 0.1 A, est.) the peak is ≈ 2.45 A (BUCK5 input 0.40, LDOs 0.30, AVDD33 switch 1.05, SWOUT2 0.20, eMMC 0.25, haptics 0.10, rest 0.15) = 82 % of 3 A, so the rail moves to the TPS62827: **61 %** of 4 A (§4.10). Also: the vcc3v3_wl switch, the INA236 ×5, the USB PHY 3.3 V supplies (B16) |
-| vcc3v3_wl | TPS22919 from vcc3v3_sys (v0.3; RK809 SWOUT1 until v0.2) | 3.30 V less 95 mV at the 1.05 A peak (90 mΩ) | 1.5 A switch | 0 (radio off) | expander P06 `WL_PWR_EN` (holds through suspend; pull-down: off) | Type 2EL AVDD33 (pins 12–13): 240 mA typical transmit, 1.05 A peak (v0.2); also the EN of the vcc1v8_wl buck. Off in suspend by default; on in suspend only while item tracking is enabled (decision 2026-10-24). Supply range **UNVERIFIED** |
+| vcc3v3_wl | TPS22916C from vcc3v3_sys (v0.9; TPS22919 v0.3–v0.8; RK809 SWOUT1 until v0.2) | 3.30 V less ≤ 158 mV at the 1.05 A peak (150 mΩ, the 1.8 V row's −40 to 85 °C maximum; 74 mV at the 3.6 V row's 70 mΩ typical, SLVSDO5F §6.5) | 2 A switch | 0 (radio off) | expander P06 `WL_PWR_EN` (holds through suspend; pull-down: off) | Type 2EL AVDD33 (pins 12–13): 240 mA typical transmit, 1.05 A peak (v0.2); also the EN of the vcc1v8_wl buck. Off in suspend by default; on in suspend only while item tracking is enabled (decision 2026-10-24). Supply range **UNVERIFIED** |
 | vcc1v8_wl (v0.2) | TPS62826 (VSYS_LV; BOM line 129) | 1.80 V (200 kΩ / 100 kΩ) | 3 A rating; 0.39 A typical, 1.05 A design peak | 0 (radio off) | EN = vcc3v3_wl (so `WL_PWR_EN`, v0.3) | Type 2EL AVDD18 (pins 30–31) |
 | vcc3v3_sd | RK809 SWOUT2 (VCC8 ← vcc3v3_sys) | 3.30 V | 3 A switch (DC table; the ROCK 3C labels both switches 2.1 A, so design to 1.5 A) | 0–0.1 A | RK809 I2C | microSD VDD |
 | FP_VCI | RK809 LDO4 (VCC6 ← vcc3v3_sys) → TPS22945 (v0.5) | 2.80 V (DT-adjustable; panel absolute maximum 3.3 V) less ≤ 0.08 V across the switch at 100 mA (est.) | 100 mA design (400 mA in the DC table, 100 mA in Table 4-1); switch limit 100–200 mA (≤ 0.2 A ceiling, faceplate interface v1) | 0 (screen off) | RK809 I2C, and the switch on `FP_IO_EN` (v0.5) | panel VCI |
@@ -249,15 +253,15 @@ VBUS_CHG --> BQ25798 (2S buck-boost charger 1.5 MHz, NVDC; OTG NOT used; VAC1/VA
 | vdda0v9_pmu, vcca1v8_pmu | RK809 LDO3 (VCC5), LDO8 (VCC7) | 0.9 V, 1.8 V | 100 mA, 400 mA (LDO8: 400 mA at VIN 3.6 V, 200 mA at VIN 2 V, RK809 p. 18) | — | always on (also in suspend) | SoC PMU domain, MaskROM gates; v0.2: vcc1v8_ddr (LPDDR4X VDD1, TPS7A1006 BIAS), IMU, TPM, NFC tag, PN7160 VDD(PAD), EEPROM, expander VCCI, I2C2 pull-ups, the G2/G3 switch and gate: ≈ 160 mA (est., §4.13) |
 | FP_3V3 | TPS22950 (vcc3v3_sys; v0.5, TPS22919 before) | 3.30 V | 200 mA faceplate budget; limit 0.22–0.38 A (≤ 0.4 A ceiling, faceplate interface v1) | 0 (screen off) | `FP_IO_EN` (expander P00) | CTP VDD, ALS, faceplate logic, privacy LED (the status LED runs from the LP5521, v1.2). v0.3 (decision 2026-10-24): off in suspend by default; the expander can hold it on for a faceplate that wakes the T1 |
 | FP_1V8 | TPS22945 (vcc_1v8; v0.5, TPS22919 before) | 1.80 V less ≤ 0.11 V at 100 mA | 100 mA faceplate budget; limit 100–200 mA (≤ 0.2 A ceiling) | 0 (screen off) | `FP_IO_EN` | panel IOVCC, faceplate translators |
-| DAC_VP | TPS22919 (VSYS_LV, v1.5) | 3.8 V | 1.5 A switch | 0.06 mA | `DAC_VP_EN` | 2× CS43198 VP |
-| NFC_VBAT (v0.2) | TPS22919 (VSYS_LV; BOM line 50) | 3.8 V | 1.5 A switch; 0.29 A max load | 0 | `NFC_PWR_EN` (expander) | PN7160 VBAT, VBAT2, VDD(UP) |
-| DAC_DIG_1V8 | TPS22919 (vcc_1v8) | 1.80 V | 1.5 A switch | 13.2 mA | `DAC_DIG_EN` | 2× CS43198 VD, VL, VCP v0.2: also the controls of the I2C2 isolation switch and one input of the MCLK gate |
+| DAC_VP | TPS22916C (VSYS_LV, v1.5) | 3.8 V | 2 A switch | 0.06 mA | `DAC_VP_EN` | 2× CS43198 VP |
+| NFC_VBAT (v0.2) | TPS22916C (VSYS_LV; BOM line 50) | 3.8 V | 2 A switch; 0.29 A max load | 0 | `NFC_PWR_EN` (expander) | PN7160 VBAT, VBAT2, VDD(UP) |
+| DAC_DIG_1V8 | TPS22916C (vcc_1v8) | 1.80 V | 2 A switch | 13.2 mA | `DAC_DIG_EN` | 2× CS43198 VD, VL, VCP v0.2: also the controls of the I2C2 isolation switch and one input of the MCLK gate |
 | AUDIO_2V2 | TPS62840 | 2.20 V | 0.75 A | 25 mA (v0.3; 16 mA before) | `AUDIO_LN_EN` | three TPS7A2018 (two VA, MCLK_1V8 from v0.3) |
 | DACx_VA | TPS7A2018 ×2 | 1.80 V | 0.3 A | 7.8 mA each | `AUDIO_LN_EN` | CS43198 VA |
 | MCLK_3V1 | TPS7A2031 (from VSYS_LV, v1.5) | 3.10 V | 0.3 A | 15 mA | `AUDIO_LN_EN` | 2× NSC5083D (one in standby, ST pulled down) v0.2: EN = `AUDIO_LN_EN` AND DAC_DIG_1V8 (SN74LVC1G57). v0.3 (ADR 0019): 45.1584 / 49.152 MHz parts into the dividers; the attenuator is removed |
 | MCLK_1V8 (v0.3) | TPS7A2018 (AUDIO_2V2; BOM line 29) | 1.80 V | 0.3 A | 8.9 mA (typ, est.) | EN = DAC_DIG_1V8 ([ADR 0019](../adr/0019-master-clock-divided-from-twice-the-frequency.md)) | 2× SN74AUC1G74 MCLK dividers (one per CS43198); the dividers run only while the DACs' VL is up |
-| RP_3V3 | TPS22919 (vcc3v3_sys) | 3.30 V | 1.5 A switch | RP2354A dependent | `RP_PWR_EN` | RP2354A VREG_VIN + VREG_AVDD, QSPI_IOVDD, USB_OTP_VDD, ADC_AVDD |
-| RP_IOVDD_1V8 | TPS22919 (vcc_1v8) | 1.80 V | 1.5 A switch | RP2354A dependent | `RP_PWR_EN` | RP2354A IOVDD, 12 MHz XO (≤ 2.5 mA at 1.8 V) |
+| RP_3V3 | TPS22916C (vcc3v3_sys) | 3.30 V | 2 A switch | RP2354A dependent | `RP_PWR_EN` | RP2354A VREG_VIN + VREG_AVDD, QSPI_IOVDD, USB_OTP_VDD, ADC_AVDD |
+| RP_IOVDD_1V8 | TPS22916C (vcc_1v8) | 1.80 V | 2 A switch | RP2354A dependent | `RP_PWR_EN` | RP2354A IOVDD, 12 MHz XO (≤ 2.5 mA at 1.8 V) |
 | AUDIO_P7V0 | TPS65131 boost (from VSYS_LV; v1.6: boost half only, [ADR 0015](../adr/0015-amplifier-rails-from-vsys.md)) | +6.975 V | 433 mA peak, ≈ 288 mA average at the full-scale sine; boost 56–78 % of its minimum switch limit, ≈ 99 % at the positive LDOs' maximum trip (§4.10.1) | 12.7 mA (SE idle), 23 mA (balanced idle) | `HPA_RAIL_EN` (ENP) | 2 × LT3045 |
 | AUDIO_N7V0 | LMR33630C inverting buck-boost (from VSYS; v1.6, [ADR 0015](../adr/0015-amplifier-rails-from-vsys.md)) | −7.06 V (100 kΩ / 16.5 kΩ) | 433 mA peak, ≈ 288 mA average; switch 47 % (sine) / 55 % (LDO limit case) of its minimum high-side limit (§4.10.1) | 12.9 mA (SE idle), 23 mA (balanced idle) | `HPA_RAIL_EN` through a level shifter to EN | 2 × LT3094 |
 | HPA_P6V0 | 2 × LT3045 in parallel (v1.6; one LT3045 in v1.3–v1.5) | +6.04 V | 2 × 0.5 A; pair limit 516–631 mA (RILIM 523 Ω each) | 10.4 mA (SE idle) / 20.8 mA (balanced idle) at the amplifiers | `HPA_LDO_EN` (≥ 10 ms after `HPA_RAIL_EN`) | OPA1622 V+ |
@@ -561,14 +565,14 @@ BRD-049 check of every rail, converter, connector and cable. Rule: continuous lo
 | RK809 BUCK1–5 | 2.5 / 2.5 / 1.5 / 1.5 / 2.5 A (RK809 DC table) | play 0.1–0.3 A; peaks **UNVERIFIED** | — | — | Open: measure on a reference board |
 | RK809 LDO4 FP_VCI | 100 mA design (tables disagree, 100/400 mA) | panel VCI (spec gives no current) | — | v0.5: no LDO4 trip value in the datasheet; the TPS22945 behind it limits at 100–200 mA (≤ 0.2 A ceiling) | Open with the panel current |
 | RK809 SWOUT1 / SWOUT2 | 1.5 A / 3 A (designed to 1.5 A) | 0.6 A / 0.2 A (est.) | 40 % / 13 % | — | OK v0.2: SWOUT1 carries only AVDD33: 0.24 A typical = 16 %, 1.05 A peak = 70 % of the 1.5 A design figure. v0.3: SWOUT1 unused (AVDD33 on a TPS22919, next row) |
-| TPS22919 vcc3v3_wl (v0.3) | 1.5 A (SLVSEN5B) | 0.24 A typical, 1.05 A peak | 16 % / 70 % | 95 mV drop at the peak (90 mΩ) | OK |
+| TPS22916C vcc3v3_wl (v0.9; TPS22919 from v0.3) | 2 A (SLVSDO5F §6.1) | 0.24 A typical, 1.05 A peak | 12 % / 53 % | ≤ 158 mV drop at the peak (150 mΩ maximum) | OK |
 | TPS7A1006 vcc0v6_ddr | 0.3 A | 0.2 A (est., **UNVERIFIED**) | 67 % | — | OK pending the RK3566 guide |
 | TPS62826 vcc1v8_wl (v0.2) | 3 A; ILIM ≥ 3.7 A (SLVSEF9I) | 0.39 A typical, 1.05 A peak | 13 % / 35 % | inductor peak 1.51 A = 41 % of ILIM min | OK |
 | vcc1v8_wl inductor Würth 744373240047 (v0.2) | 6.8 A (TI Table 8-5) | 1.51 A peak | 22 % | ILIM max 5.0 A = 74 % | OK |
-| TPS22919 NFC_VBAT (v0.2) | 1.5 A | 0.29 A max (PN7160 Table 1) | 19 % | PN7160 transmitter limiter 330 mA max | OK |
+| TPS22916C NFC_VBAT (v0.9; TPS22919 from v0.2) | 2 A | 0.29 A max (PN7160 Table 1) | 15 % | PN7160 transmitter limiter 330 mA max | OK |
 | RK809 LDO8 vcca1v8_pmu (v0.2) | 400 mA (VIN 3.6 V) / 200 mA (VIN 2 V) (RK809 p. 18) | ≈ 157 mA (est., §4.13) | 39 % / 79 % | — | OK on either figure; measure (BOM §7 item 35) |
 | Block measurement links (v0.2, §4.12) | WSL1206 0.25 W; 0603 thick film 0.1 W (Yageo RC/RL, **UNVERIFIED**, data sheet not read) | per §4.12 | ≤ 18 % | — | OK |
-| TPS22919 load switches | 1.5 A | ≤ 0.08 A | ≤ 6 % | — | OK (v0.5: the faceplate rails leave them) |
+| TPS22916C load switches (v0.9) | 2 A | ≤ 0.08 A | ≤ 4 % | — | OK (v0.5: the faceplate rails leave them) |
 | Faceplate rail switches (v0.5): TPS22950 FP_3V3; TPS22945 FP_1V8, MIC_1V8, FP_VCI | limits 0.22–0.38 A; 100–200 mA | 200 / 100 / 20 / 100 mA budgets | at or below each minimum limit | maxima 0.38 A = 96 % of 0.4 A; 0.2 A = 100 % of 0.2 A (faceplate interface v1 ceilings, per FH35C contact 0.2 A) | OK; TPS22945 limit at 1.8 V and 2.8 V **UNVERIFIED** |
 | TPS62840 AUDIO_2V2 | 0.75 A | 25 mA (v0.3; 16 mA before) | 3 % | — | OK |
 | TPS7A2018 ×3 (v0.3: + MCLK_1V8), TPS7A2031 | 0.3 A | 7.8 / 8.9 / 15 mA | ≤ 5 % | — | OK |
@@ -663,7 +667,7 @@ Rule (feature blocks G12, RFC 0011 rule 3): one link per block supply, on the bl
 | 6 | `blk.lpddr4x` | vcc0v6_ddr | H20 | 0.2 A (est.) | 4 mV (0.7 %) | 0.8 mW |
 | 7–8 | `blk.hpa-se` | HPA_P6V0 and HPA_N6V0, SE branch, before the group's local capacitors | H20 | ≤ 0.46 A peak | ≤ 9 mV (0.15 %) | ≤ 4 mW |
 | 9–10 | `blk.hpa-bal` | HPA_P6V0 and HPA_N6V0, balanced branch | H20 | 0.457 A peak, 0.275 A average | 9 mV peak | 1.5 mW average |
-| 11 | `blk.radio` | vcc3v3_wl (AVDD33), at the TPS22919 output (v0.3) | H20 | 1.05 A peak, 0.24 A typical | 21 mV peak (0.6 %) | 22 mW peak |
+| 11 | `blk.radio` | vcc3v3_wl (AVDD33), at the TPS22916C output (v0.3) | H20 | 1.05 A peak, 0.24 A typical | 21 mV peak (0.6 %) | 22 mW peak |
 | 12 | `blk.radio` | vcc1v8_wl (AVDD18), inside the TPS62826 feedback | H20 | 1.05 A peak, 0.39 A typical | regulated out | 22 mW peak |
 | 13 | `blk.lpddr4x` | vcc1v8_ddr (VDD1, BIAS) | M | 0.1 A (est.) | 10 mV (0.6 %) | 1 mW |
 | 14 | `blk.emmc` | VCC branch of vcc3v3_sys | M | 0.25 A (est.) | 25 mV (0.8 %) | 6 mW |
@@ -727,8 +731,8 @@ Default state is the state with no software running (pull resistors). "SoC GPIO"
 
 | Block | Rail(s) | Switch / enable | Control | Default | Discharge | Notes |
 |---|---|---|---|---|---|---|
-| DAC digital (both) | DAC_DIG_1V8 | TPS22919 | SoC GPIO `DAC_DIG_EN` | off (pull-down) | QOD in TPS22919 | Park I2S lines low before removal (back-powering) v0.2 (G2): the I2C2 branch to both DACs passes an SN74LVC2G66 whose controls are DAC_DIG_1V8 itself; `DAC_INT` pull-up on DAC_DIG_1V8 |
-| DAC VP (both) | DAC_VP | TPS22919 | SoC GPIO `DAC_VP_EN` | off | QOD | VP first on, last off |
+| DAC digital (both) | DAC_DIG_1V8 | TPS22916C | SoC GPIO `DAC_DIG_EN` | off (pull-down) | QOD in TPS22916C (150 Ω) | Park I2S lines low before removal (back-powering) v0.2 (G2): the I2C2 branch to both DACs passes an SN74LVC2G66 whose controls are DAC_DIG_1V8 itself; `DAC_INT` pull-up on DAC_DIG_1V8 |
+| DAC VP (both) | DAC_VP | TPS22916C | SoC GPIO `DAC_VP_EN` | off | QOD | VP first on, last off |
 | DAC analog + clocks | AUDIO_2V2, DACx_VA, MCLK_3V1 | TPS62840 EN, TPS7A2018 EN, TPS7A2031 EN | SoC GPIO `AUDIO_LN_EN` | off | TPS7A20 smart pulldown, TPS62840 active discharge | — v0.2 (G3): the TPS7A2031 EN is `AUDIO_LN_EN` AND DAC_DIG_1V8 (SN74LVC1G57 on vcca1v8_pmu), so MCLK cannot drive an unpowered XTI. v0.3 (ADR 0019): MCLK_1V8 (dividers) EN = DAC_DIG_1V8 directly |
 | MCLK family select | NZ2520SDA ×2 (45.1584 / 49.152 MHz, v0.3) | ST pin (tri-state) | `MCLK441_EN`, `MCLK48_EN` on native 3.3 V balls GPIO4_C2, GPIO4_C3 (VCCIO7, pinout v1), 0 Ω series footprints | both standby (pull-down on each ST pin; an open ST enables the output) | — | Never both enabled. ST rating at 3.3 V drive into a 3.1 V or unpowered oscillator **UNVERIFIED** (pinout O11) |
 | MCLK dividers (v0.3) | MCLK_1V8, 2× SN74AUC1G74 | CLR̅ | `MCLK_DIV_RUN` (ball not in pinout v1; proposal GPIO4_C4, BOM §7 item 39) | held (100 kΩ pull-down) | — | ADR 0019 decision 6: CLR̅ low before the rails rise, released while the oscillator net is low, before ST rises |
@@ -739,12 +743,12 @@ Default state is the state with no software running (pull resistors). "SoC GPIO"
 | Faceplate logic | FP_VCI, FP_3V3, FP_1V8 | RK809 LDO4 → TPS22945; TPS22950 (FP_3V3); TPS22945 (FP_1V8) (v0.5; TPS22919 ×2 before) | RK809 I2C, expander `FP_IO_EN` (P00), which also switches FP_VCI at the connector (v0.5) | off | QOD | Panel and touch reset low first. v0.3 (decision 2026-10-24): off in suspend by default; the expander holds `FP_IO_EN`, so FP_3V3 can stay on for a faceplate wake (`FP_HID_INT_N`, PMUIO1); FP_1V8 follows vcc_1v8 |
 | Backlight | BL_LEDA | TPS61160 CTRL (v0.5) | SoC PWM `BL_PWM` | off (1 µA) | — | ALS-driven |
 | Status LED (RGB) | LED_R/G/B | LP5521 CHIP_EN bit, charge pump in power-save | I2C2 (`leds-lp5521`) | standby (1 µA, EN high, CHIP_EN = 0) | — | v1.2. EN tied to vcca1v8_pmu; works with the screen off and in suspend if the driver keeps it on |
-| Wi-Fi/BT | vcc3v3_wl, vcc1v8_wl (v0.2) | TPS22919 (v0.3; RK809 SWOUT1 before); TPS62826 EN on vcc3v3_wl | expander P06 `WL_PWR_EN` (v0.3; holds through suspend) | off | TPS22919 QOD, TPS62826 output discharge (the 1 kΩ DNP footprint of G13 stays a spare) | Plus module PDn. VIO and SD_VIO on vcc_1v8 (VCCIO4, pinout v1 confirms it); sequencing between AVDD33, AVDD18 and VIO **UNVERIFIED** (datasheet), GPIO-EN option DNP. v0.3 (decision 2026-10-24): off in suspend by default; on in suspend only while item tracking is enabled, with vcc_1v8 kept on; `WL_PDN` hold through suspend open (BOM §7 item 40) |
-| NFC reader (v0.2) | NFC_VBAT | TPS22919 | expander `NFC_PWR_EN` | off (pull-down) | QOD | VEN (native 1.8 V GPIO, pull-down) rises only after NFC_VBAT and falls before it (PN7160 §10.5.2.1); VDD(PAD) always on |
+| Wi-Fi/BT | vcc3v3_wl, vcc1v8_wl (v0.2) | TPS22916C (v0.9; TPS22919 v0.3–v0.8; RK809 SWOUT1 before); TPS62826 EN on vcc3v3_wl | expander P06 `WL_PWR_EN` (v0.3; holds through suspend) | off | TPS22916C QOD, TPS62826 output discharge (the 1 kΩ DNP footprint of G13 stays a spare) | Plus module PDn. VIO and SD_VIO on vcc_1v8 (VCCIO4, pinout v1 confirms it); sequencing between AVDD33, AVDD18 and VIO **UNVERIFIED** (datasheet), GPIO-EN option DNP. v0.3 (decision 2026-10-24): off in suspend by default; on in suspend only while item tracking is enabled, with vcc_1v8 kept on; `WL_PDN` hold through suspend open (BOM §7 item 40) |
+| NFC reader (v0.2) | NFC_VBAT | TPS22916C | expander `NFC_PWR_EN` | off (pull-down) | QOD | VEN (native 1.8 V GPIO, pull-down) rises only after NFC_VBAT and falls before it (PN7160 §10.5.2.1); VDD(PAD) always on |
 | IMU, TPM, NFC tag (v0.2) | vcca1v8_pmu | none (always on) | — | on | — | Low-power modes by software; measured by their links (§4.12) |
 | Haptics (v0.2) | vcc3v3_sys | DRV2605L EN | expander `HAPTIC_EN` | off (pull-down) | — | G20 |
 | microSD | vcc3v3_sd, vccio_sd | RK809 SWOUT2, LDO5 | RK809 I2C | per DT | **UNVERIFIED** | UHS-I voltage switch |
-| RP2354A | RP_3V3, RP_IOVDD_1V8 | TPS22919 ×2 | SoC GPIO `RP_PWR_EN` | **open question** (§8) | QOD | SoC boots without it (BRD-019). VREG_VIN and VREG_AVDD share RP_3V3, so they ramp together (DS §6.1.8); IOVDD may come up in any order |
+| RP2354A | RP_3V3, RP_IOVDD_1V8 | TPS22916C ×2 | SoC GPIO `RP_PWR_EN` | **open question** (§8) | QOD | SoC boots without it (BRD-019). VREG_VIN and VREG_AVDD share RP_3V3, so they ramp together (DS §6.1.8); IOVDD may come up in any order |
 | NPU | vdd_npu | RK809 BUCK4 | DT | off | — | Enabled only by an AI overlay |
 | GPU | vdd_gpu | RK809 BUCK2 | DT + devfreq | on with display | — | — |
 | Camera PHY | LDO1, LDO9 | RK809 I2C | — | off | — | v0.7: the CSI-2 receiver has no consumer (RFC 0014); the LDOs stay off |

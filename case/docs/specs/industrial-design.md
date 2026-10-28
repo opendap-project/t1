@@ -3,7 +3,7 @@
 - **Status:** Draft. The maintainers' design direction (2026-10-22) for the physical case; materials, finishes and radii are to be confirmed on prototypes. Dimensions are not set here.
 - **Date:** 2026-10-22
 - **Scope:** materials and surface language, geometry, edges, finishes, physical controls as the case shapes them, and rendering rules for the physical product.
-- **Related:** the [design system spec](https://github.com/opendap-project/blackbird-ui/blob/main/docs/specs/design-system.md) (the shared visual language, colour and tokens) and the [controls and status LED spec](https://github.com/opendap-project/t1/blob/main/docs/specs/controls-and-status-led.md) (button behaviour and physical control design).
+- **Related:** the [design system spec](https://github.com/opendap-project/blackbird/blob/main/ui/docs/specs/design-system.md) (the shared visual language, colour and tokens) and the [controls and status LED spec](https://github.com/opendap-project/t1/blob/main/docs/specs/controls-and-status-led.md) (button behaviour and physical control design).
 - **Requirements:** CASE-020, CASE-021, CASE-022, CASE-024, CASE-025, CASE-028 here; T1-014, T1-015, T1-022, T1-059 in [`t1`](https://github.com/opendap-project/t1/blob/main/docs/requirements/README.md).
 
 The T1 should feel like a carefully engineered instrument made for people: compact, durable and comfortable to hold, with the corner treatment of contemporary consumer electronics and a distinct identity as a dedicated audio player. It must stay credible as a manufacturable object.
@@ -45,7 +45,7 @@ A rounded rectangular enclosure with comfortable corner radii; controlled transi
 
 ### 2.2 Geometry families
 
-Shared with the interface ([design system](https://github.com/opendap-project/blackbird-ui/blob/main/docs/specs/design-system.md)):
+Shared with the interface ([design system](https://github.com/opendap-project/blackbird/blob/main/ui/docs/specs/design-system.md)):
 
 1. **Primary:** rounded rectangles and broad radii, for the enclosure and major surfaces.
 2. **Control:** circles, capsules, segmented capsules and soft concave forms, for tactile input.

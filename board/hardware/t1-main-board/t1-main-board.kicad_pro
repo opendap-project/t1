@@ -9934,6 +9934,22 @@
       },
       {
         "netclass": "ZONE_AUDIO",
+        "pattern": "Net-(C2913-*"
+      },
+      {
+        "netclass": "ZONE_AUDIO",
+        "pattern": "unconnected-(C2913-*"
+      },
+      {
+        "netclass": "ZONE_AUDIO",
+        "pattern": "Net-(C2914-*"
+      },
+      {
+        "netclass": "ZONE_AUDIO",
+        "pattern": "unconnected-(C2914-*"
+      },
+      {
+        "netclass": "ZONE_AUDIO",
         "pattern": "Net-(NT2901-*"
       },
       {

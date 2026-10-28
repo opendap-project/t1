@@ -99,8 +99,10 @@ PARTS = {
                          src="TPS65131 output 4 x 4.7 µF 25 V X7R (BOM v1 line 111)"),
     "C_4u7_0805_X7R": _c("4.7 µF", "GRM21BR71C475KA73L", "0805", 16, "X7R",
                          src="LT3045 CIN 4.7 µF X7R (BOM v1 line 110)"),
-    "C_10u_0805_X7R": _c("10 µF", "GRM21BR71C106KE51L", "0805", 16, "X7R",
-                         src="LT3045/LT3094 COUT and LT3094 CIN 10 µF X7R (BOM v1 line 110)"),
+    "C_22u_1210_X7R": _c("22 µF", "GRM32ER71C226KEA8L", "1210", 16, "X7R",
+                         src="LT3045/LT3094 COUT and LT3094 CIN: 10 µF minimum (LT3045 Rev. D p. 16, LT3094 Rev. B "
+                             "pp. 15, 20), X7R (BOM v1 line 110); 11.1 µF effective at 6.04 V, 10.4 µF at 7.06 V "
+                             "(two at each LT3094 input), -20 to 85 °C (BOM v1.18 item 3)"),
     "C_22u_1206_16V": _c("22 µF", "GRM31CR71C226ME15L", "1206", 16, "X7R",
                          src="LMR33630C COUT 3 x 22 µF 16 V X7R (BOM v1 line 118)"),
     "C_1u_0603_25V": _c("1 µF", "GRM188R71E105KA12D", "0603", 25, "X7R"),

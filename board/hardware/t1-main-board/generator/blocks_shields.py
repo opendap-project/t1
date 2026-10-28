@@ -18,8 +18,8 @@ DRAWING = "https://github.com/opendap-project/board/blob/main/hardware/t1-main-b
 
 def sheet(proj):
     return proj.sheet("shields.kicad_sch", "blk.shields", "Shield-can frames",
-                      "Etched two-piece shield-can frames on the back: SoC and LPDDR4X, radio, DACs and "
-                      "headphone stage (not fitted)", "A4")
+                      "Etched two-piece shield-can frames on the back: SoC and LPDDR4X, radio module "
+                      "(not fitted)", "A4")
 
 
 def _frames(s, frames, variants):

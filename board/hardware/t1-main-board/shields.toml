@@ -36,11 +36,5 @@ basis = "PCB-T-06, PCB-EMC-03, BOM v1 line 90"
 # (J5201, J5202) and the top wall stay outside (PCB-R-13); the RK809 stays to the right
 inside = [-22.9, 27.9, -11.0, 37.6]
 
-[[frame]]
-id = "AUDIO"
-title = "DACs and headphone stage"
-basis = "PCB-EMC-03, BOM v1 line 90"
-# the two CS43198 (U2501, U2601), the master-clock crystals and the back-side amplifiers; the 4.4 mm
-# jack's pocket relief (J4001, PCB-Z-06) stays below, the IO zone (x > -6.2) to the right; the strip
-# left of it (x < -25.0) takes the audio parts taller than the lid allows (1.45 mm SOT-23-5)
-inside = [-23.5, -21.6, -7.7, -3.6]
+# No frame over the DACs and the headphone stage (placement v1 decision 16, 2026-10-28): most of the
+# stage stands on the front, where PCB-Z-03 allows no can, so a back frame covered little of it.

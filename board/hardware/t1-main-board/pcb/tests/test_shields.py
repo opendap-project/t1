@@ -64,6 +64,11 @@ class BoardFrames(unittest.TestCase):
             c = f["court_out"]
             self.assertTrue(-g.HX <= c[0] and c[2] <= g.HX and -g.HY <= c[1] and c[3] <= g.HY, f["id"])
 
+    def test_required_frames(self):
+        # PCB-T-06 asks for frames around the SoC and DDR and around the radio; the audio frame was
+        # dropped (placement v1 decision 16)
+        self.assertEqual({f["id"] for f in shields.frames()}, {"SOC", "RADIO"})
+
     def test_frames_apart(self):
         fr = shields.frames()
         for i, a in enumerate(fr):

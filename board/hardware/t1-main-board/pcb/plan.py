@@ -148,8 +148,8 @@ CORRIDOR_DELTAS = {
 BLOCK_ZONE = {
     "blk.audio-supply": ("POWER", "its TPS62840 buck has a switch node, and switch nodes stay in the power zone "
                          "(floorplan v1 §4 item 6, PCB-A-06)"),
-    "blk.mic-ambient": ("CORE", "placement v1.6: the ambient microphone is not on the playback path, and the audio "
-                        "zone's back gives its room to the audio shield frame (decision 15)"),
+    "blk.mic-ambient": ("CORE", "placement v1.6: the ambient microphone is not on the playback path, so the audio "
+                        "zone's back keeps its room for the DACs and the headphone stage (decisions 15, 16)"),
 }
 FLOORPLAN_ZONE_OF_BLOCK = dict(ZONE_OF_BLOCK)
 ZONE_OF_BLOCK.update({b: z for b, (z, _) in BLOCK_ZONE.items()})
@@ -187,21 +187,21 @@ TARGET = {
 PART_TARGET = {
     "TP5801": ((g.HX - 1.25, -14.0), "B", "cover-detect pad at the board edge (ADR 0020 item 7, PCB-L-10)"),
     "TP5802": ((g.HX - 1.25, -17.5), "B", "cover-detect ground pad at the board edge (ADR 0020 item 7)"),
-    # placement v1.6: the audio parts taller than the audio shield lid allows (1.45 mm SOT-23-5, 1.3 mm
-    # inside) take their room first, outside the frame next to their DACs and clocks (decision 15)
-    "U2502": ((-26.65, -20.8), "B", "DAC L supply regulator, 1.45 mm, left of the audio shield frame"),
-    "U2602": ((-26.65, -16.6), "B", "DAC R supply regulator, 1.45 mm, left of the audio shield frame"),
-    "U2402": ((-18.8, -24.75), "B", "master-clock oscillator, 1.45 mm, below the audio shield frame"),
-    "U2403": ((-18.8, -28.25), "B", "master-clock oscillator, 1.45 mm, below the audio shield frame"),
+    # placement v1.6: the 1.45 mm SOT-23-5 audio parts take their room first, next to their DACs and
+    # clocks (decision 15; kept when decision 16 dropped the audio frame they stood outside of)
+    "U2502": ((-26.65, -20.8), "B", "DAC L supply regulator, 1.45 mm, left of the DACs"),
+    "U2602": ((-26.65, -16.6), "B", "DAC R supply regulator, 1.45 mm, left of the DACs"),
+    "U2402": ((-18.8, -24.75), "B", "master-clock oscillator, 1.45 mm, below the DACs"),
+    "U2403": ((-18.8, -28.25), "B", "master-clock oscillator, 1.45 mm, below the DACs"),
     "U2902": ((-20.35, -4.45), "F", "amplifier-rail LDO at its v1.5 position, over its output capacitors on the back (placement v1.6)"),
     # placement v1.6: the six OPA1622 of the headphone stage take their room before the passives, at
-    # their v1.5 positions; the two on the back that crossed the audio frame move inside it
-    "U3001": ((-14.6, 0.4), "B", "OPA1622, SE stage, v1.5 position, above the audio shield frame"),
+    # their v1.5 positions; U3201 and U3202 keep the v1.6 positions decision 15 gave them
+    "U3001": ((-14.6, 0.4), "B", "OPA1622, SE stage, v1.5 position"),
     "U3002": ((-15.55, -3.1), "F", "OPA1622, SE stage, v1.5 position"),
-    "U3201": ((-9.7, -5.6), "B", "OPA1622, balanced L, inside the audio shield frame (was -8.2, -4.6)"),
-    "U3202": ((-13.7, -5.6), "B", "OPA1622, balanced L, inside the audio shield frame (was -12.2, -4.75)"),
+    "U3201": ((-9.7, -5.6), "B", "OPA1622, balanced L, placement v1.6 (was -8.2, -4.6)"),
+    "U3202": ((-13.7, -5.6), "B", "OPA1622, balanced L, placement v1.6 (was -12.2, -4.75)"),
     "U3301": ((-10.6, -8.1), "F", "OPA1622, balanced R, v1.5 position"),
-    "U3302": ((-10.75, -11.4), "B", "OPA1622, balanced R, v1.5 position, inside the audio shield frame"),
+    "U3302": ((-10.75, -11.4), "B", "OPA1622, balanced R, v1.5 position"),
     "TP6803": ((-20.0, 22.0), "B", "LRA contact (actuator in the case, feature block 44)"),
     "TP6804": ((-17.5, 22.0), "B", "LRA contact (actuator in the case, feature block 44)"),
     "TP6403": ((2.0, 23.5), "B", "NFC tag loop antenna contact (BOM line 126)"),

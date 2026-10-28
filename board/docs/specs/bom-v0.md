@@ -3,7 +3,7 @@
 - **Status:** Superseded by [BOM v1](bom-v1.md). Kept as history.
 - **Date:** 2026-10-22
 - **Sources:** the part datasheets listed in [BOM v1](bom-v1.md#datasheets).
-- **Driver path:** *mainline + Debian* (enabled in Debian's kernel), *DKMS* (mainline driver Debian does not enable, or not in 7.2 yet; [blackbird-os ADR 0007](https://github.com/opendap-project/blackbird-os/blob/main/docs/adr/0007-kernel-modules-through-dkms.md)), *none* (no driver needed).
+- **Driver path:** *mainline + Debian* (enabled in Debian's kernel), *DKMS* (mainline driver Debian does not enable, or not in 7.2 yet; [blackbird-os ADR 0007](https://github.com/opendap-project/blackbird/blob/main/os/docs/adr/0007-kernel-modules-through-dkms.md)), *none* (no driver needed).
 
 ## Core
 

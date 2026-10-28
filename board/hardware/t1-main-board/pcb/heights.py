@@ -83,6 +83,11 @@ def height(fpid: str, geom: dict, mpn: str = ""):
     """(height mm, source) of a footprint's part (its part number first, where BY_MPN has it)."""
     if mpn in BY_MPN:
         return BY_MPN[mpn]
+    if ":Shield_Frame_" in fpid:          # a shield frame: its height with the lid (../shields.toml)
+        import shields
+        for f in shields.frames():
+            if fpid.endswith(":" + f["footprint"]):
+                return f["height"], "shields.toml: frame with lid"
     if fpid in OVERRIDES:
         return OVERRIDES[fpid]
     best = None

@@ -449,7 +449,7 @@ def compact(key, block, top, bottom):
 #   positions keep their part (a minimum missed, no minimum below the present value, or audio).
 AREA_C_DCBIAS = {("blk.charger-core", r): "C_10u_0603_25V" for r in ("C605", "C606", "C612", "C613", "C614",
                                                                      "C615", "C616")}
-AREA_C_DCBIAS.update({("blk.fp-connector", "C5304"): "C_1u_0201", ("blk.mic-main", "C6402"): "C_1u_0201"})
+AREA_C_DCBIAS.update({("blk.fp-connector", "C5304"): "C_1u_0201", ("blk.mic-main", "C6502"): "C_1u_0201"})
 AREA_R_EXCLUDE = ("blk.dac", "blk.mclk", "blk.hpa", "blk.audio", "blk.jack", "blk.charger-input", "blk.usb-c",
                   "blk.hat-5v", "blk.usb-vbus-out")
 AREA_C_SIGNAL = {("blk.pmic", "C1114"), ("blk.pmic", "C1115"), ("blk.soc-pmuio", "C1303")}

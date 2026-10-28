@@ -30,6 +30,7 @@ import blocks_faceplate  # noqa: E402
 import blocks_instr  # noqa: E402
 import blocks_io  # noqa: E402
 import blocks_should  # noqa: E402
+import blocks_shields  # noqa: E402
 import blocks_mem  # noqa: E402
 import blocks_power  # noqa: E402
 import blocks_radio  # noqa: E402
@@ -190,6 +191,7 @@ def main():
     hap, tpm, tag, rp = blocks_should.sheets(proj)
     btn = blocks_io.sheets_buttons(proj)
     cmon, led, dbg, cov, amb, rom = blocks_instr.sheets(proj)
+    shd = blocks_shields.sheet(proj)
 
     # the root in reading rows (CRAFT-111): overviews in the top row; then power blocks as power
     # flows; then the SoC and its memories. A list stacks its sheets in one column.
@@ -199,7 +201,7 @@ def main():
              [soc, [ddr, emmc], [audio, amb], [jse, jbal], [rp, rom], [None, cmon], [None, dbg]]),
             ("USB ports (the 5.1 V source, USB-C, the HAT port) and the radio",
              [p5v1, vout, usbc, hats, hat5v, radio, ant]),
-            ("Faceplate interface; control, storage and sensors", [[fpc, fpd, mic], [fpb, fpk, led], [spk, sd, exp], [bid, imu, hap], [tpm, tag, btn], [cov]])]
+            ("Faceplate interface; control, storage and sensors; the shield frames", [[fpc, fpd, mic], [fpb, fpk, led], [spk, sd, exp], [bid, imu, hap], [tpm, tag, btn], [cov], [shd]])]
 
     kids = {charger: [ckids[k] for k in blocks_charger.KIDS], soc: [subs[n] for n, *_ in blocks_soc.SUBS],
             audio: [akids[k] for k in blocks_audio.reading_order()],
@@ -269,6 +271,7 @@ def main():
     blocks_instr.draw_cover_detect(cov, variants)
     blocks_instr.draw_mic_ambient(amb, variants)
     blocks_instr.draw_maskrom(rom, variants)
+    blocks_shields.draw(shd, variants)
     blocks_instr.draw_debug(dbg, variants)      # last: its rail pads cover what no other sheet probes
     for s in proj.sheets:
         if s.role.startswith("blk."):
@@ -278,7 +281,7 @@ def main():
     overview.draw_interconnect(inter)
 
     for s in [power, inter, charger, gauge, vsys_lv, v3v3, pmic, vcpu, soc, ddr, emmc, audio, jse, jbal,
-              p5v1, usbc, vout, hat5v, hats, radio, ant, fpc, fpd, fpb, fpk, mic, exp, bid, sd, imu, spk, hap, tpm, tag, btn, rp, cmon, led, dbg, cov, amb, rom]:
+              p5v1, usbc, vout, hat5v, hats, radio, ant, fpc, fpd, fpb, fpk, mic, exp, bid, sd, imu, spk, hap, tpm, tag, btn, rp, cmon, led, dbg, cov, amb, rom, shd]:
         root.child(s, 0, 0, w=25.4)
     for name, *_ in blocks_soc.SUBS:
         soc.child(subs[name], 0, 0, w=76.2)

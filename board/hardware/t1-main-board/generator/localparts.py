@@ -7,10 +7,14 @@ right, ground at the bottom."""
 from __future__ import annotations
 
 import os
+import sys
 
 import library
 from library import HW
 from sexpr import n, q
+
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "pcb"))
+import shields  # noqa: E402  (pcb/shields.py: the frames of ../shields.toml)
 
 SYM_PATH = os.path.join(HW, "lib", "symbols", "T1_Main_Board.kicad_sym")
 FP_DIR = os.path.join(HW, "lib", "footprints", "T1_Main_Board.pretty")
@@ -146,11 +150,69 @@ def testpoint_d08():
     ]) + "\n"
 
 
+def shield_frame():
+    """Shield-can frame (blk.shields): one pin, the frame land, to ground. Footprint, part number
+    and description are per frame (blocks_shields.py), from ../shields.toml."""
+    props = [
+        ("Reference", "A", (-5.08, 5.08), False, "left"),
+        ("Value", "Shield_Frame", (5.08, 5.08), False, "right"),
+        ("Footprint", "", (0, -10.16), True, None),
+        ("Datasheet", "", (0, -12.7), True, None),
+        ("Description", "Shield-can frame, two-piece (frame soldered to the board, lid clipped over it)", (0, -15.24), True, None),
+        ("Manufacturer", "", (0, -17.78), True, None),
+        ("MPN", "", (0, -20.32), True, None),
+        ("ki_keywords", "shield can frame EMC", (0, 0), True, None),
+    ]
+    out = ['\t(symbol "Shield_Frame" (pin_names (offset 0.508)) (exclude_from_sim yes) (in_bom yes) (on_board yes)']
+    for k, v, (x, y), hide, just in props:
+        out.append(f"\t\t(property {q(k)} {q(v)} (at {n(x)} {n(y)} 0) {_eff(hide, just)})")
+    out.append('\t\t(symbol "Shield_Frame_0_1" (rectangle (start -5.08 2.54) (end 5.08 -5.08) '
+               "(stroke (width 0.254) (type default)) (fill (type background))))")
+    out.append('\t\t(symbol "Shield_Frame_1_1"\n' + _pin("passive", 0, -7.62, 90, "GND", "1") + ")")
+    out.append("\t\t(embedded_fonts no))")
+    return "\n".join(out)
+
+
+def shield_frame_fp(f):
+    """The land of one shield frame (../shields.toml through pcb/shields.py): a closed rectangular
+    ring of copper, as four SMD pads numbered 1 (the frame's ground), `land` wide; the courtyard is
+    the ring from the inside area (`keepout_in` inside the land) to `keepout` beyond the land (two nested rectangles); the
+    fabrication layer shows the land outline. Origin at the centre of the inside area (+y down)."""
+    li, lo, co, ins = f["land_in"], f["land_out"], f["court_out"], f["inside"]
+    cx, cy = f["centre"]
+
+    def r(b):                       # device frame (+y up) to footprint frame (+y down), centred
+        return (round(b[0] - cx, 4), round(cy - b[3], 4), round(b[2] - cx, 4), round(cy - b[1], 4))
+    li, lo, co, ins = r(li), r(lo), r(co), r(ins)
+    pads = [(lo[0], lo[1], lo[2], li[1]), (lo[0], li[3], lo[2], lo[3]),      # top and bottom strips
+            (lo[0], li[1], li[0], li[3]), (li[2], li[1], lo[2], li[3])]      # left and right strips
+    w, h = f["size"]
+    lines = [
+        f'(footprint {q(f["footprint"])} (version 20241229) (generator "t1-main-board-generator")',
+        '\t(layer "F.Cu")',
+        f'\t(descr {q("Shield-can frame land %s (%s): %s x %s mm outside, land %s mm, keep-out %s mm outside and %s mm "
+                         "inside, parts inside up to %s mm (../shields.toml)" % (f["id"], f["title"], n(w), n(h), n(f["land"]),
+                                                                              n(f["keepout"]), n(f["keepout_in"]), n(f["max_h"])))})',
+        '\t(tags "shield can frame EMC")',
+        '\t(attr smd)',
+        f'\t(property "Reference" "REF**" (at {n(lo[0] + 2.0)} {n(lo[1] - 1.0)} 0) (layer "F.Fab") (effects (font (size 0.8 0.8) (thickness 0.12)) (justify left)))',
+        f'\t(property "Value" {q(f["footprint"])} (at {n(lo[0] + 2.0)} {n(lo[3] + 1.0)} 0) (layer "F.Fab") (effects (font (size 0.8 0.8) (thickness 0.12)) (justify left)))',
+    ]
+    for b, layer, wd in ((lo, "F.Fab", 0.1), (li, "F.Fab", 0.1), (co, "F.CrtYd", 0.05), (ins, "F.CrtYd", 0.05)):
+        lines.append(f'\t(fp_rect (start {n(b[0])} {n(b[1])}) (end {n(b[2])} {n(b[3])}) (stroke (width {n(wd)}) (type solid)) (fill no) (layer "{layer}"))')
+    for b in pads:
+        x, y = round((b[0] + b[2]) / 2, 4), round((b[1] + b[3]) / 2, 4)
+        lines.append(f'\t(pad "1" smd rect (at {n(x)} {n(y)}) (size {n(round(b[2] - b[0], 4))} {n(round(b[3] - b[1], 4))}) '
+                     '(layers "F.Cu" "F.Paste" "F.Mask"))')
+    lines += ['\t(embedded_fonts no)', ')']
+    return "\n".join(lines) + "\n"
+
+
 def write():
     os.makedirs(os.path.dirname(SYM_PATH), exist_ok=True)
     with open(SYM_PATH, "w", encoding="utf-8") as fh:
         fh.write('(kicad_symbol_lib (version 20251024) (generator "t1-main-board-generator") (generator_version "10.0")\n'
-                 + tps7a1006() + "\n)\n")
+                 + tps7a1006() + "\n" + shield_frame() + "\n)\n")
     os.makedirs(FP_DIR, exist_ok=True)
     with open(os.path.join(FP_DIR, "L_Murata_DFE252012F.kicad_mod"), "w", encoding="utf-8") as fh:
         fh.write(dfe252012f())
@@ -160,4 +222,10 @@ def write():
         fh.write(aota_b201610())
     with open(os.path.join(FP_DIR, "TestPoint_Pad_D0.8mm.kicad_mod"), "w", encoding="utf-8") as fh:
         fh.write(testpoint_d08())
+    for old in os.listdir(FP_DIR):             # a frame whose size changed leaves no stale land
+        if old.startswith("Shield_Frame_"):
+            os.remove(os.path.join(FP_DIR, old))
+    for f in shields.frames():
+        with open(os.path.join(FP_DIR, f["footprint"] + ".kicad_mod"), "w", encoding="utf-8") as fh:
+            fh.write(shield_frame_fp(f))
     library.reset_local()

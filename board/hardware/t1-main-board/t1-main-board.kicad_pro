@@ -1782,6 +1782,14 @@
       },
       {
         "netclass": "ZONE_CORE",
+        "pattern": "*/MIC_AMB_CLK"
+      },
+      {
+        "netclass": "ZONE_CORE",
+        "pattern": "*/MIC_AMB_VDD"
+      },
+      {
+        "netclass": "ZONE_CORE",
         "pattern": "*/MIC_EN"
       },
       {
@@ -2386,75 +2394,75 @@
       },
       {
         "netclass": "ZONE_CORE",
-        "pattern": "Net-(D6801-*"
+        "pattern": "Net-(D6901-*"
       },
       {
         "netclass": "ZONE_CORE",
-        "pattern": "unconnected-(D6801-*"
+        "pattern": "unconnected-(D6901-*"
       },
       {
         "netclass": "ZONE_CORE",
-        "pattern": "Net-(D6802-*"
+        "pattern": "Net-(D6902-*"
       },
       {
         "netclass": "ZONE_CORE",
-        "pattern": "unconnected-(D6802-*"
+        "pattern": "unconnected-(D6902-*"
       },
       {
         "netclass": "ZONE_CORE",
-        "pattern": "Net-(D6803-*"
+        "pattern": "Net-(D6903-*"
       },
       {
         "netclass": "ZONE_CORE",
-        "pattern": "unconnected-(D6803-*"
+        "pattern": "unconnected-(D6903-*"
       },
       {
         "netclass": "ZONE_CORE",
-        "pattern": "Net-(D6804-*"
+        "pattern": "Net-(D6904-*"
       },
       {
         "netclass": "ZONE_CORE",
-        "pattern": "unconnected-(D6804-*"
+        "pattern": "unconnected-(D6904-*"
       },
       {
         "netclass": "ZONE_CORE",
-        "pattern": "Net-(R6801-*"
+        "pattern": "Net-(R6901-*"
       },
       {
         "netclass": "ZONE_CORE",
-        "pattern": "unconnected-(R6801-*"
+        "pattern": "unconnected-(R6901-*"
       },
       {
         "netclass": "ZONE_CORE",
-        "pattern": "Net-(SW6801-*"
+        "pattern": "Net-(SW6901-*"
       },
       {
         "netclass": "ZONE_CORE",
-        "pattern": "unconnected-(SW6801-*"
+        "pattern": "unconnected-(SW6901-*"
       },
       {
         "netclass": "ZONE_CORE",
-        "pattern": "Net-(SW6802-*"
+        "pattern": "Net-(SW6902-*"
       },
       {
         "netclass": "ZONE_CORE",
-        "pattern": "unconnected-(SW6802-*"
+        "pattern": "unconnected-(SW6902-*"
       },
       {
         "netclass": "ZONE_CORE",
-        "pattern": "Net-(SW6803-*"
+        "pattern": "Net-(SW6903-*"
       },
       {
         "netclass": "ZONE_CORE",
-        "pattern": "unconnected-(SW6803-*"
+        "pattern": "unconnected-(SW6903-*"
       },
       {
         "netclass": "ZONE_CORE",
-        "pattern": "Net-(SW6804-*"
+        "pattern": "Net-(SW6904-*"
       },
       {
         "netclass": "ZONE_CORE",
-        "pattern": "unconnected-(SW6804-*"
+        "pattern": "unconnected-(SW6904-*"
       },
       {
         "netclass": "ZONE_CORE",
@@ -3010,102 +3018,6 @@
       },
       {
         "netclass": "ZONE_CORE",
-        "pattern": "Net-(C6601-*"
-      },
-      {
-        "netclass": "ZONE_CORE",
-        "pattern": "unconnected-(C6601-*"
-      },
-      {
-        "netclass": "ZONE_CORE",
-        "pattern": "Net-(C6602-*"
-      },
-      {
-        "netclass": "ZONE_CORE",
-        "pattern": "unconnected-(C6602-*"
-      },
-      {
-        "netclass": "ZONE_CORE",
-        "pattern": "Net-(R6601-*"
-      },
-      {
-        "netclass": "ZONE_CORE",
-        "pattern": "unconnected-(R6601-*"
-      },
-      {
-        "netclass": "ZONE_CORE",
-        "pattern": "Net-(R6602-*"
-      },
-      {
-        "netclass": "ZONE_CORE",
-        "pattern": "unconnected-(R6602-*"
-      },
-      {
-        "netclass": "ZONE_CORE",
-        "pattern": "Net-(R6603-*"
-      },
-      {
-        "netclass": "ZONE_CORE",
-        "pattern": "unconnected-(R6603-*"
-      },
-      {
-        "netclass": "ZONE_CORE",
-        "pattern": "Net-(R6604-*"
-      },
-      {
-        "netclass": "ZONE_CORE",
-        "pattern": "unconnected-(R6604-*"
-      },
-      {
-        "netclass": "ZONE_CORE",
-        "pattern": "Net-(R6605-*"
-      },
-      {
-        "netclass": "ZONE_CORE",
-        "pattern": "unconnected-(R6605-*"
-      },
-      {
-        "netclass": "ZONE_CORE",
-        "pattern": "Net-(R6606-*"
-      },
-      {
-        "netclass": "ZONE_CORE",
-        "pattern": "unconnected-(R6606-*"
-      },
-      {
-        "netclass": "ZONE_CORE",
-        "pattern": "Net-(R6607-*"
-      },
-      {
-        "netclass": "ZONE_CORE",
-        "pattern": "unconnected-(R6607-*"
-      },
-      {
-        "netclass": "ZONE_CORE",
-        "pattern": "Net-(R6608-*"
-      },
-      {
-        "netclass": "ZONE_CORE",
-        "pattern": "unconnected-(R6608-*"
-      },
-      {
-        "netclass": "ZONE_CORE",
-        "pattern": "Net-(R6609-*"
-      },
-      {
-        "netclass": "ZONE_CORE",
-        "pattern": "unconnected-(R6609-*"
-      },
-      {
-        "netclass": "ZONE_CORE",
-        "pattern": "Net-(U6601-*"
-      },
-      {
-        "netclass": "ZONE_CORE",
-        "pattern": "unconnected-(U6601-*"
-      },
-      {
-        "netclass": "ZONE_CORE",
         "pattern": "Net-(C6701-*"
       },
       {
@@ -3130,35 +3042,67 @@
       },
       {
         "netclass": "ZONE_CORE",
-        "pattern": "Net-(TP6701-*"
+        "pattern": "Net-(R6702-*"
       },
       {
         "netclass": "ZONE_CORE",
-        "pattern": "unconnected-(TP6701-*"
+        "pattern": "unconnected-(R6702-*"
       },
       {
         "netclass": "ZONE_CORE",
-        "pattern": "Net-(TP6702-*"
+        "pattern": "Net-(R6703-*"
       },
       {
         "netclass": "ZONE_CORE",
-        "pattern": "unconnected-(TP6702-*"
+        "pattern": "unconnected-(R6703-*"
       },
       {
         "netclass": "ZONE_CORE",
-        "pattern": "Net-(TP6703-*"
+        "pattern": "Net-(R6704-*"
       },
       {
         "netclass": "ZONE_CORE",
-        "pattern": "unconnected-(TP6703-*"
+        "pattern": "unconnected-(R6704-*"
       },
       {
         "netclass": "ZONE_CORE",
-        "pattern": "Net-(TP6704-*"
+        "pattern": "Net-(R6705-*"
       },
       {
         "netclass": "ZONE_CORE",
-        "pattern": "unconnected-(TP6704-*"
+        "pattern": "unconnected-(R6705-*"
+      },
+      {
+        "netclass": "ZONE_CORE",
+        "pattern": "Net-(R6706-*"
+      },
+      {
+        "netclass": "ZONE_CORE",
+        "pattern": "unconnected-(R6706-*"
+      },
+      {
+        "netclass": "ZONE_CORE",
+        "pattern": "Net-(R6707-*"
+      },
+      {
+        "netclass": "ZONE_CORE",
+        "pattern": "unconnected-(R6707-*"
+      },
+      {
+        "netclass": "ZONE_CORE",
+        "pattern": "Net-(R6708-*"
+      },
+      {
+        "netclass": "ZONE_CORE",
+        "pattern": "unconnected-(R6708-*"
+      },
+      {
+        "netclass": "ZONE_CORE",
+        "pattern": "Net-(R6709-*"
+      },
+      {
+        "netclass": "ZONE_CORE",
+        "pattern": "unconnected-(R6709-*"
       },
       {
         "netclass": "ZONE_CORE",
@@ -3170,51 +3114,115 @@
       },
       {
         "netclass": "ZONE_CORE",
-        "pattern": "Net-(C6201-*"
+        "pattern": "Net-(C6801-*"
       },
       {
         "netclass": "ZONE_CORE",
-        "pattern": "unconnected-(C6201-*"
+        "pattern": "unconnected-(C6801-*"
       },
       {
         "netclass": "ZONE_CORE",
-        "pattern": "Net-(C6202-*"
+        "pattern": "Net-(C6802-*"
       },
       {
         "netclass": "ZONE_CORE",
-        "pattern": "unconnected-(C6202-*"
+        "pattern": "unconnected-(C6802-*"
       },
       {
         "netclass": "ZONE_CORE",
-        "pattern": "Net-(R6201-*"
+        "pattern": "Net-(R6801-*"
       },
       {
         "netclass": "ZONE_CORE",
-        "pattern": "unconnected-(R6201-*"
+        "pattern": "unconnected-(R6801-*"
       },
       {
         "netclass": "ZONE_CORE",
-        "pattern": "Net-(TP6201-*"
+        "pattern": "Net-(TP6801-*"
       },
       {
         "netclass": "ZONE_CORE",
-        "pattern": "unconnected-(TP6201-*"
+        "pattern": "unconnected-(TP6801-*"
       },
       {
         "netclass": "ZONE_CORE",
-        "pattern": "Net-(TP6202-*"
+        "pattern": "Net-(TP6802-*"
       },
       {
         "netclass": "ZONE_CORE",
-        "pattern": "unconnected-(TP6202-*"
+        "pattern": "unconnected-(TP6802-*"
       },
       {
         "netclass": "ZONE_CORE",
-        "pattern": "Net-(U6201-*"
+        "pattern": "Net-(TP6803-*"
       },
       {
         "netclass": "ZONE_CORE",
-        "pattern": "unconnected-(U6201-*"
+        "pattern": "unconnected-(TP6803-*"
+      },
+      {
+        "netclass": "ZONE_CORE",
+        "pattern": "Net-(TP6804-*"
+      },
+      {
+        "netclass": "ZONE_CORE",
+        "pattern": "unconnected-(TP6804-*"
+      },
+      {
+        "netclass": "ZONE_CORE",
+        "pattern": "Net-(U6801-*"
+      },
+      {
+        "netclass": "ZONE_CORE",
+        "pattern": "unconnected-(U6801-*"
+      },
+      {
+        "netclass": "ZONE_CORE",
+        "pattern": "Net-(C6301-*"
+      },
+      {
+        "netclass": "ZONE_CORE",
+        "pattern": "unconnected-(C6301-*"
+      },
+      {
+        "netclass": "ZONE_CORE",
+        "pattern": "Net-(C6302-*"
+      },
+      {
+        "netclass": "ZONE_CORE",
+        "pattern": "unconnected-(C6302-*"
+      },
+      {
+        "netclass": "ZONE_CORE",
+        "pattern": "Net-(R6301-*"
+      },
+      {
+        "netclass": "ZONE_CORE",
+        "pattern": "unconnected-(R6301-*"
+      },
+      {
+        "netclass": "ZONE_CORE",
+        "pattern": "Net-(TP6301-*"
+      },
+      {
+        "netclass": "ZONE_CORE",
+        "pattern": "unconnected-(TP6301-*"
+      },
+      {
+        "netclass": "ZONE_CORE",
+        "pattern": "Net-(TP6302-*"
+      },
+      {
+        "netclass": "ZONE_CORE",
+        "pattern": "unconnected-(TP6302-*"
+      },
+      {
+        "netclass": "ZONE_CORE",
+        "pattern": "Net-(U6301-*"
+      },
+      {
+        "netclass": "ZONE_CORE",
+        "pattern": "unconnected-(U6301-*"
       },
       {
         "netclass": "ZONE_CORE",
@@ -3578,179 +3586,235 @@
       },
       {
         "netclass": "ZONE_CORE",
-        "pattern": "Net-(C6101-*"
+        "pattern": "Net-(C3901-*"
       },
       {
         "netclass": "ZONE_CORE",
-        "pattern": "unconnected-(C6101-*"
+        "pattern": "unconnected-(C3901-*"
       },
       {
         "netclass": "ZONE_CORE",
-        "pattern": "Net-(C6102-*"
+        "pattern": "Net-(C3902-*"
       },
       {
         "netclass": "ZONE_CORE",
-        "pattern": "unconnected-(C6102-*"
+        "pattern": "unconnected-(C3902-*"
       },
       {
         "netclass": "ZONE_CORE",
-        "pattern": "Net-(J6101-*"
+        "pattern": "Net-(MK3901-*"
       },
       {
         "netclass": "ZONE_CORE",
-        "pattern": "unconnected-(J6101-*"
+        "pattern": "unconnected-(MK3901-*"
       },
       {
         "netclass": "ZONE_CORE",
-        "pattern": "Net-(R6101-*"
+        "pattern": "Net-(R3901-*"
       },
       {
         "netclass": "ZONE_CORE",
-        "pattern": "unconnected-(R6101-*"
+        "pattern": "unconnected-(R3901-*"
       },
       {
         "netclass": "ZONE_CORE",
-        "pattern": "Net-(R6102-*"
+        "pattern": "Net-(R3902-*"
       },
       {
         "netclass": "ZONE_CORE",
-        "pattern": "unconnected-(R6102-*"
+        "pattern": "unconnected-(R3902-*"
       },
       {
         "netclass": "ZONE_CORE",
-        "pattern": "Net-(R6103-*"
+        "pattern": "Net-(TP3901-*"
       },
       {
         "netclass": "ZONE_CORE",
-        "pattern": "unconnected-(R6103-*"
+        "pattern": "unconnected-(TP3901-*"
       },
       {
         "netclass": "ZONE_CORE",
-        "pattern": "Net-(R6104-*"
+        "pattern": "Net-(TP3902-*"
       },
       {
         "netclass": "ZONE_CORE",
-        "pattern": "unconnected-(R6104-*"
+        "pattern": "unconnected-(TP3902-*"
       },
       {
         "netclass": "ZONE_CORE",
-        "pattern": "Net-(R6105-*"
+        "pattern": "Net-(C6201-*"
       },
       {
         "netclass": "ZONE_CORE",
-        "pattern": "unconnected-(R6105-*"
+        "pattern": "unconnected-(C6201-*"
       },
       {
         "netclass": "ZONE_CORE",
-        "pattern": "Net-(R6106-*"
+        "pattern": "Net-(C6202-*"
       },
       {
         "netclass": "ZONE_CORE",
-        "pattern": "unconnected-(R6106-*"
+        "pattern": "unconnected-(C6202-*"
       },
       {
         "netclass": "ZONE_CORE",
-        "pattern": "Net-(R6107-*"
+        "pattern": "Net-(J6201-*"
       },
       {
         "netclass": "ZONE_CORE",
-        "pattern": "unconnected-(R6107-*"
+        "pattern": "unconnected-(J6201-*"
       },
       {
         "netclass": "ZONE_CORE",
-        "pattern": "Net-(R6108-*"
+        "pattern": "Net-(R6201-*"
       },
       {
         "netclass": "ZONE_CORE",
-        "pattern": "unconnected-(R6108-*"
+        "pattern": "unconnected-(R6201-*"
       },
       {
         "netclass": "ZONE_CORE",
-        "pattern": "Net-(TP6101-*"
+        "pattern": "Net-(R6202-*"
       },
       {
         "netclass": "ZONE_CORE",
-        "pattern": "unconnected-(TP6101-*"
+        "pattern": "unconnected-(R6202-*"
       },
       {
         "netclass": "ZONE_CORE",
-        "pattern": "Net-(TP6102-*"
+        "pattern": "Net-(R6203-*"
       },
       {
         "netclass": "ZONE_CORE",
-        "pattern": "unconnected-(TP6102-*"
+        "pattern": "unconnected-(R6203-*"
       },
       {
         "netclass": "ZONE_CORE",
-        "pattern": "Net-(U6101-*"
+        "pattern": "Net-(R6204-*"
       },
       {
         "netclass": "ZONE_CORE",
-        "pattern": "unconnected-(U6101-*"
+        "pattern": "unconnected-(R6204-*"
       },
       {
         "netclass": "ZONE_CORE",
-        "pattern": "Net-(U6102-*"
+        "pattern": "Net-(R6205-*"
       },
       {
         "netclass": "ZONE_CORE",
-        "pattern": "unconnected-(U6102-*"
+        "pattern": "unconnected-(R6205-*"
       },
       {
         "netclass": "ZONE_CORE",
-        "pattern": "Net-(C6301-*"
+        "pattern": "Net-(R6206-*"
       },
       {
         "netclass": "ZONE_CORE",
-        "pattern": "unconnected-(C6301-*"
+        "pattern": "unconnected-(R6206-*"
       },
       {
         "netclass": "ZONE_CORE",
-        "pattern": "Net-(R6301-*"
+        "pattern": "Net-(R6207-*"
       },
       {
         "netclass": "ZONE_CORE",
-        "pattern": "unconnected-(R6301-*"
+        "pattern": "unconnected-(R6207-*"
       },
       {
         "netclass": "ZONE_CORE",
-        "pattern": "Net-(TP6301-*"
+        "pattern": "Net-(R6208-*"
       },
       {
         "netclass": "ZONE_CORE",
-        "pattern": "unconnected-(TP6301-*"
+        "pattern": "unconnected-(R6208-*"
       },
       {
         "netclass": "ZONE_CORE",
-        "pattern": "Net-(TP6302-*"
+        "pattern": "Net-(TP6201-*"
       },
       {
         "netclass": "ZONE_CORE",
-        "pattern": "unconnected-(TP6302-*"
+        "pattern": "unconnected-(TP6201-*"
       },
       {
         "netclass": "ZONE_CORE",
-        "pattern": "Net-(TP6303-*"
+        "pattern": "Net-(TP6202-*"
       },
       {
         "netclass": "ZONE_CORE",
-        "pattern": "unconnected-(TP6303-*"
+        "pattern": "unconnected-(TP6202-*"
       },
       {
         "netclass": "ZONE_CORE",
-        "pattern": "Net-(TP6304-*"
+        "pattern": "Net-(U6201-*"
       },
       {
         "netclass": "ZONE_CORE",
-        "pattern": "unconnected-(TP6304-*"
+        "pattern": "unconnected-(U6201-*"
       },
       {
         "netclass": "ZONE_CORE",
-        "pattern": "Net-(U6301-*"
+        "pattern": "Net-(U6202-*"
       },
       {
         "netclass": "ZONE_CORE",
-        "pattern": "unconnected-(U6301-*"
+        "pattern": "unconnected-(U6202-*"
+      },
+      {
+        "netclass": "ZONE_CORE",
+        "pattern": "Net-(C6401-*"
+      },
+      {
+        "netclass": "ZONE_CORE",
+        "pattern": "unconnected-(C6401-*"
+      },
+      {
+        "netclass": "ZONE_CORE",
+        "pattern": "Net-(R6401-*"
+      },
+      {
+        "netclass": "ZONE_CORE",
+        "pattern": "unconnected-(R6401-*"
+      },
+      {
+        "netclass": "ZONE_CORE",
+        "pattern": "Net-(TP6401-*"
+      },
+      {
+        "netclass": "ZONE_CORE",
+        "pattern": "unconnected-(TP6401-*"
+      },
+      {
+        "netclass": "ZONE_CORE",
+        "pattern": "Net-(TP6402-*"
+      },
+      {
+        "netclass": "ZONE_CORE",
+        "pattern": "unconnected-(TP6402-*"
+      },
+      {
+        "netclass": "ZONE_CORE",
+        "pattern": "Net-(TP6403-*"
+      },
+      {
+        "netclass": "ZONE_CORE",
+        "pattern": "unconnected-(TP6403-*"
+      },
+      {
+        "netclass": "ZONE_CORE",
+        "pattern": "Net-(TP6404-*"
+      },
+      {
+        "netclass": "ZONE_CORE",
+        "pattern": "unconnected-(TP6404-*"
+      },
+      {
+        "netclass": "ZONE_CORE",
+        "pattern": "Net-(U6401-*"
+      },
+      {
+        "netclass": "ZONE_CORE",
+        "pattern": "unconnected-(U6401-*"
       },
       {
         "netclass": "ZONE_CORE",
@@ -5474,67 +5538,67 @@
       },
       {
         "netclass": "ZONE_CORE",
-        "pattern": "Net-(C6501-*"
+        "pattern": "Net-(C6601-*"
       },
       {
         "netclass": "ZONE_CORE",
-        "pattern": "unconnected-(C6501-*"
+        "pattern": "unconnected-(C6601-*"
       },
       {
         "netclass": "ZONE_CORE",
-        "pattern": "Net-(C6502-*"
+        "pattern": "Net-(C6602-*"
       },
       {
         "netclass": "ZONE_CORE",
-        "pattern": "unconnected-(C6502-*"
+        "pattern": "unconnected-(C6602-*"
       },
       {
         "netclass": "ZONE_CORE",
-        "pattern": "Net-(C6503-*"
+        "pattern": "Net-(C6603-*"
       },
       {
         "netclass": "ZONE_CORE",
-        "pattern": "unconnected-(C6503-*"
+        "pattern": "unconnected-(C6603-*"
       },
       {
         "netclass": "ZONE_CORE",
-        "pattern": "Net-(C6504-*"
+        "pattern": "Net-(C6604-*"
       },
       {
         "netclass": "ZONE_CORE",
-        "pattern": "unconnected-(C6504-*"
+        "pattern": "unconnected-(C6604-*"
       },
       {
         "netclass": "ZONE_CORE",
-        "pattern": "Net-(R6501-*"
+        "pattern": "Net-(R6601-*"
       },
       {
         "netclass": "ZONE_CORE",
-        "pattern": "unconnected-(R6501-*"
+        "pattern": "unconnected-(R6601-*"
       },
       {
         "netclass": "ZONE_CORE",
-        "pattern": "Net-(TP6501-*"
+        "pattern": "Net-(TP6601-*"
       },
       {
         "netclass": "ZONE_CORE",
-        "pattern": "unconnected-(TP6501-*"
+        "pattern": "unconnected-(TP6601-*"
       },
       {
         "netclass": "ZONE_CORE",
-        "pattern": "Net-(TP6502-*"
+        "pattern": "Net-(TP6602-*"
       },
       {
         "netclass": "ZONE_CORE",
-        "pattern": "unconnected-(TP6502-*"
+        "pattern": "unconnected-(TP6602-*"
       },
       {
         "netclass": "ZONE_CORE",
-        "pattern": "Net-(U6501-*"
+        "pattern": "Net-(U6601-*"
       },
       {
         "netclass": "ZONE_CORE",
-        "pattern": "unconnected-(U6501-*"
+        "pattern": "unconnected-(U6601-*"
       },
       {
         "netclass": "ZONE_CORE",
@@ -8454,22 +8518,6 @@
       },
       {
         "netclass": "ZONE_AUDIO",
-        "pattern": "*/MIC_AMB_CLK"
-      },
-      {
-        "netclass": "ZONE_AUDIO",
-        "pattern": "*/MIC_AMB_VDD"
-      },
-      {
-        "netclass": "ZONE_AUDIO",
-        "pattern": "*/PDM_CLK1"
-      },
-      {
-        "netclass": "ZONE_AUDIO",
-        "pattern": "*/PDM_DATA1"
-      },
-      {
-        "netclass": "ZONE_AUDIO",
         "pattern": "Net-(C2501-*"
       },
       {
@@ -10493,62 +10541,6 @@
         "pattern": "unconnected-(Y2402-*"
       },
       {
-        "netclass": "ZONE_AUDIO",
-        "pattern": "Net-(C3901-*"
-      },
-      {
-        "netclass": "ZONE_AUDIO",
-        "pattern": "unconnected-(C3901-*"
-      },
-      {
-        "netclass": "ZONE_AUDIO",
-        "pattern": "Net-(C3902-*"
-      },
-      {
-        "netclass": "ZONE_AUDIO",
-        "pattern": "unconnected-(C3902-*"
-      },
-      {
-        "netclass": "ZONE_AUDIO",
-        "pattern": "Net-(MK3901-*"
-      },
-      {
-        "netclass": "ZONE_AUDIO",
-        "pattern": "unconnected-(MK3901-*"
-      },
-      {
-        "netclass": "ZONE_AUDIO",
-        "pattern": "Net-(R3901-*"
-      },
-      {
-        "netclass": "ZONE_AUDIO",
-        "pattern": "unconnected-(R3901-*"
-      },
-      {
-        "netclass": "ZONE_AUDIO",
-        "pattern": "Net-(R3902-*"
-      },
-      {
-        "netclass": "ZONE_AUDIO",
-        "pattern": "unconnected-(R3902-*"
-      },
-      {
-        "netclass": "ZONE_AUDIO",
-        "pattern": "Net-(TP3901-*"
-      },
-      {
-        "netclass": "ZONE_AUDIO",
-        "pattern": "unconnected-(TP3901-*"
-      },
-      {
-        "netclass": "ZONE_AUDIO",
-        "pattern": "Net-(TP3902-*"
-      },
-      {
-        "netclass": "ZONE_AUDIO",
-        "pattern": "unconnected-(TP3902-*"
-      },
-      {
         "netclass": "ZONE_FACEPLATE",
         "pattern": "*/BL_LEDA"
       },
@@ -11374,6 +11366,70 @@
       },
       {
         "netclass": "ZONE_IO",
+        "pattern": "Net-(R6101-*"
+      },
+      {
+        "netclass": "ZONE_IO",
+        "pattern": "unconnected-(R6101-*"
+      },
+      {
+        "netclass": "ZONE_IO",
+        "pattern": "Net-(R6102-*"
+      },
+      {
+        "netclass": "ZONE_IO",
+        "pattern": "unconnected-(R6102-*"
+      },
+      {
+        "netclass": "ZONE_IO",
+        "pattern": "Net-(R6103-*"
+      },
+      {
+        "netclass": "ZONE_IO",
+        "pattern": "unconnected-(R6103-*"
+      },
+      {
+        "netclass": "ZONE_IO",
+        "pattern": "Net-(R6104-*"
+      },
+      {
+        "netclass": "ZONE_IO",
+        "pattern": "unconnected-(R6104-*"
+      },
+      {
+        "netclass": "ZONE_IO",
+        "pattern": "Net-(R6105-*"
+      },
+      {
+        "netclass": "ZONE_IO",
+        "pattern": "unconnected-(R6105-*"
+      },
+      {
+        "netclass": "ZONE_IO",
+        "pattern": "Net-(R6106-*"
+      },
+      {
+        "netclass": "ZONE_IO",
+        "pattern": "unconnected-(R6106-*"
+      },
+      {
+        "netclass": "ZONE_IO",
+        "pattern": "Net-(C6001-*"
+      },
+      {
+        "netclass": "ZONE_IO",
+        "pattern": "unconnected-(C6001-*"
+      },
+      {
+        "netclass": "ZONE_IO",
+        "pattern": "Net-(C6002-*"
+      },
+      {
+        "netclass": "ZONE_IO",
+        "pattern": "unconnected-(C6002-*"
+      },
+      {
+        "netclass": "ZONE_IO",
         "pattern": "Net-(R6001-*"
       },
       {
@@ -11390,91 +11446,27 @@
       },
       {
         "netclass": "ZONE_IO",
-        "pattern": "Net-(R6003-*"
+        "pattern": "Net-(TP6001-*"
       },
       {
         "netclass": "ZONE_IO",
-        "pattern": "unconnected-(R6003-*"
+        "pattern": "unconnected-(TP6001-*"
       },
       {
         "netclass": "ZONE_IO",
-        "pattern": "Net-(R6004-*"
+        "pattern": "Net-(TP6002-*"
       },
       {
         "netclass": "ZONE_IO",
-        "pattern": "unconnected-(R6004-*"
+        "pattern": "unconnected-(TP6002-*"
       },
       {
         "netclass": "ZONE_IO",
-        "pattern": "Net-(R6005-*"
+        "pattern": "Net-(U6001-*"
       },
       {
         "netclass": "ZONE_IO",
-        "pattern": "unconnected-(R6005-*"
-      },
-      {
-        "netclass": "ZONE_IO",
-        "pattern": "Net-(R6006-*"
-      },
-      {
-        "netclass": "ZONE_IO",
-        "pattern": "unconnected-(R6006-*"
-      },
-      {
-        "netclass": "ZONE_IO",
-        "pattern": "Net-(C5901-*"
-      },
-      {
-        "netclass": "ZONE_IO",
-        "pattern": "unconnected-(C5901-*"
-      },
-      {
-        "netclass": "ZONE_IO",
-        "pattern": "Net-(C5902-*"
-      },
-      {
-        "netclass": "ZONE_IO",
-        "pattern": "unconnected-(C5902-*"
-      },
-      {
-        "netclass": "ZONE_IO",
-        "pattern": "Net-(R5901-*"
-      },
-      {
-        "netclass": "ZONE_IO",
-        "pattern": "unconnected-(R5901-*"
-      },
-      {
-        "netclass": "ZONE_IO",
-        "pattern": "Net-(R5902-*"
-      },
-      {
-        "netclass": "ZONE_IO",
-        "pattern": "unconnected-(R5902-*"
-      },
-      {
-        "netclass": "ZONE_IO",
-        "pattern": "Net-(TP5901-*"
-      },
-      {
-        "netclass": "ZONE_IO",
-        "pattern": "unconnected-(TP5901-*"
-      },
-      {
-        "netclass": "ZONE_IO",
-        "pattern": "Net-(TP5902-*"
-      },
-      {
-        "netclass": "ZONE_IO",
-        "pattern": "unconnected-(TP5902-*"
-      },
-      {
-        "netclass": "ZONE_IO",
-        "pattern": "Net-(U5901-*"
-      },
-      {
-        "netclass": "ZONE_IO",
-        "pattern": "unconnected-(U5901-*"
+        "pattern": "unconnected-(U6001-*"
       },
       {
         "netclass": "ZONE_IO",
@@ -11518,75 +11510,75 @@
       },
       {
         "netclass": "ZONE_IO",
-        "pattern": "Net-(C6401-*"
+        "pattern": "Net-(C6501-*"
       },
       {
         "netclass": "ZONE_IO",
-        "pattern": "unconnected-(C6401-*"
+        "pattern": "unconnected-(C6501-*"
       },
       {
         "netclass": "ZONE_IO",
-        "pattern": "Net-(C6402-*"
+        "pattern": "Net-(C6502-*"
       },
       {
         "netclass": "ZONE_IO",
-        "pattern": "unconnected-(C6402-*"
+        "pattern": "unconnected-(C6502-*"
       },
       {
         "netclass": "ZONE_IO",
-        "pattern": "Net-(R6401-*"
+        "pattern": "Net-(R6501-*"
       },
       {
         "netclass": "ZONE_IO",
-        "pattern": "unconnected-(R6401-*"
+        "pattern": "unconnected-(R6501-*"
       },
       {
         "netclass": "ZONE_IO",
-        "pattern": "Net-(R6402-*"
+        "pattern": "Net-(R6502-*"
       },
       {
         "netclass": "ZONE_IO",
-        "pattern": "unconnected-(R6402-*"
+        "pattern": "unconnected-(R6502-*"
       },
       {
         "netclass": "ZONE_IO",
-        "pattern": "Net-(R6403-*"
+        "pattern": "Net-(R6503-*"
       },
       {
         "netclass": "ZONE_IO",
-        "pattern": "unconnected-(R6403-*"
+        "pattern": "unconnected-(R6503-*"
       },
       {
         "netclass": "ZONE_IO",
-        "pattern": "Net-(TP6401-*"
+        "pattern": "Net-(TP6501-*"
       },
       {
         "netclass": "ZONE_IO",
-        "pattern": "unconnected-(TP6401-*"
+        "pattern": "unconnected-(TP6501-*"
       },
       {
         "netclass": "ZONE_IO",
-        "pattern": "Net-(TP6402-*"
+        "pattern": "Net-(TP6502-*"
       },
       {
         "netclass": "ZONE_IO",
-        "pattern": "unconnected-(TP6402-*"
+        "pattern": "unconnected-(TP6502-*"
       },
       {
         "netclass": "ZONE_IO",
-        "pattern": "Net-(TP6403-*"
+        "pattern": "Net-(TP6503-*"
       },
       {
         "netclass": "ZONE_IO",
-        "pattern": "unconnected-(TP6403-*"
+        "pattern": "unconnected-(TP6503-*"
       },
       {
         "netclass": "ZONE_IO",
-        "pattern": "Net-(U6401-*"
+        "pattern": "Net-(U6501-*"
       },
       {
         "netclass": "ZONE_IO",
-        "pattern": "unconnected-(U6401-*"
+        "pattern": "unconnected-(U6501-*"
       },
       {
         "netclass": "ZONE_IO",

@@ -42,7 +42,7 @@ FIXED = {
     "U1301": (SOC[0], SOC[1], 0, "B", "RK3566 on the back at the floorplan's and escape study's position (ADR 0016 item 3)"),
     "U2101": (16.9, 11.0, 0, "B", "LPDDR4X right of the SoC (its DDR balls face right after the flip); 2.05 mm courtyard gap to the SoC (PCB-D-01)"),
     "U3801": (-17.75, 12.0, 0, "B", "eMMC left of the SoC (eMMC balls face left after the flip); floorplan v1"),
-    "U1101": (-4.8, 24.6, 0, "B", "RK809-5 above the SoC on the back, next to the vdd_cpu buck, with room for its five 1.2 mm inductors (back only); 2 mm from the SoC and eMMC courtyards (PCB-D-01). Floorplan v1 had it below the SoC, where the grown audio and power zones leave 10 x 8 mm. Placement v1.3: 1.1 mm lower and 1.2 mm right (was -6.0, 25.7), at the SoC's and eMMC's 2 mm, so its top row of pins stands 1.3 mm from the radio zone and all 27 of its capacitors find room within their bound (capacitor proximity)"),
+    "U1101": (-4.8, 25.0, 0, "B", "RK809-5 above the SoC on the back, next to the vdd_cpu buck, with room for its five 1.2 mm inductors (back only); 2 mm from the SoC and eMMC courtyards (PCB-D-01). Floorplan v1 had it below the SoC, where the grown audio and power zones leave 10 x 8 mm. Placement v1.3: 1.1 mm lower and 1.2 mm right (was -6.0, 25.7), at the SoC's and eMMC's 2 mm, so its top row of pins stands 1.3 mm from the radio zone and all 27 of its capacitors find room within their bound (capacitor proximity). Placement v1.6: 0.4 mm higher (was -4.8, 24.6), clear of the SoC shield frame's land and keep-out (decision 15)"),
     "U3501": (-16.0, 24.5, 0, "F", "RP2354A on the front (floorplan v1), above the eMMC: its exposed pad's thermal vias must not land under the eMMC's balls, and the audio zone grew up to y 6"),
     "U2501": (-20.0, -18.0, 0, "B", "CS43198 left channel on the back under the pocket (floorplan v1)"),
     "U2601": (-11.5, -18.0, 0, "B", "CS43198 right channel, mirror of the left about x = -15.75 (CRAFT-34)"),
@@ -51,7 +51,7 @@ FIXED = {
     "J3401": (-22.3, "edge:bottom", None, "B", "3.5 mm jack, bottom edge, left (PCB-M-05)"),
     "J4001": (-11.55, "edge:bottom", None, "B", "4.4 mm jack, bottom edge (PCB-M-05)"),
     "J4601": (0.0, "edge:bottom", None, "B", "USB-C centred on the bottom edge (PCB-M-05)"),
-    "J6101": (13.5, "edge:top", None, "B", "microSD at the top edge, right (floorplan v1), 0.5 mm right of the study so the core top band holds the two band inductors"),
+    "J6201": (13.5, "edge:top", None, "B", "microSD at the top edge, right (floorplan v1), 0.5 mm right of the study so the core top band holds the two band inductors"),
     "J5201": (-14.0, 41.5, 0, "B", "U.FL ANT0 in the top band near the top wall (ADR 0018 item 4, PCB-R-02)"),
     "J5202": (-8.3, 41.5, 0, "B", "U.FL ANT1 in the top band near the top wall (ADR 0018 item 4, PCB-R-02)"),
     "J5301": (2.5, -32.9, 0, "F", "FH35C in the faceplate connection area, clear of the USB-C and jack through-holes (floorplan v1 §5)"),
@@ -91,17 +91,17 @@ FIXED.update({
 # Main on the right). Long side along the edge, courtyard against the edge, above the eMMC's rework
 # clearance. Positions UNVERIFIED (case); their 1.9-2.5 mm bodies stand 2 mm into PCB-Z-01 (open item).
 FIXED.update({
-    "SW6804": (-g.HX + 1.9, 35.0, 90, "B", "Action, left edge, top"),
-    "SW6802": (-g.HX + 1.9, 29.5, 90, "B", "Vol+, left edge below Action"),
-    "SW6803": (-g.HX + 1.9, 24.0, 90, "B", "Vol-, left edge below Vol+, 2 mm above the eMMC (PCB-D-01)"),
-    "SW6801": (g.HX - 1.9, 29.5, 90, "B", "Main (power), right edge"),
+    "SW6904": (-g.HX + 1.9, 35.0, 90, "B", "Action, left edge, top"),
+    "SW6902": (-g.HX + 1.9, 29.5, 90, "B", "Vol+, left edge below Action"),
+    "SW6903": (-g.HX + 1.9, 24.0, 90, "B", "Vol-, left edge below Vol+, 2 mm above the eMMC (PCB-D-01)"),
+    "SW6901": (g.HX - 1.9, 29.5, 90, "B", "Main (power), right edge"),
 })
 # Pocket reliefs (case interface, ADR 0025; PCB-Z-06 to Z-08): parts that stand over PCB-Z-01's 1.5 mm
 # where the pocket floor and the pack keep out of their volume. build.py reports each relief's
 # courtyard and height (placement-result.json "pocket_reliefs") instead of a PCB-Z-01 finding.
 POCKET_RELIEFS = {
-    "J4001": "PCB-Z-06", "J6101": "PCB-Z-07",
-    "SW6801": "PCB-Z-08", "SW6802": "PCB-Z-08", "SW6803": "PCB-Z-08", "SW6804": "PCB-Z-08",
+    "J4001": "PCB-Z-06", "J6201": "PCB-Z-07",
+    "SW6901": "PCB-Z-08", "SW6902": "PCB-Z-08", "SW6903": "PCB-Z-08", "SW6904": "PCB-Z-08",
 }
 # Battery contacts (ADR 0020 item 2, PCB-L-04): P+, P+, empty, mid-cell tap, NTC, P-, P-
 CONTACT_ORDER = {"BAT_P": [0, 1], "BAT_MID": [3], "BAT_NTC": [4], "BAT_N": [5, 6]}
@@ -148,6 +148,8 @@ CORRIDOR_DELTAS = {
 BLOCK_ZONE = {
     "blk.audio-supply": ("POWER", "its TPS62840 buck has a switch node, and switch nodes stay in the power zone "
                          "(floorplan v1 §4 item 6, PCB-A-06)"),
+    "blk.mic-ambient": ("CORE", "placement v1.6: the ambient microphone is not on the playback path, and the audio "
+                        "zone's back gives its room to the audio shield frame (decision 15)"),
 }
 FLOORPLAN_ZONE_OF_BLOCK = dict(ZONE_OF_BLOCK)
 ZONE_OF_BLOCK.update({b: z for b, (z, _) in BLOCK_ZONE.items()})
@@ -185,10 +187,25 @@ TARGET = {
 PART_TARGET = {
     "TP5801": ((g.HX - 1.25, -14.0), "B", "cover-detect pad at the board edge (ADR 0020 item 7, PCB-L-10)"),
     "TP5802": ((g.HX - 1.25, -17.5), "B", "cover-detect ground pad at the board edge (ADR 0020 item 7)"),
-    "TP6703": ((-20.0, 22.0), "B", "LRA contact (actuator in the case, feature block 44)"),
-    "TP6704": ((-17.5, 22.0), "B", "LRA contact (actuator in the case, feature block 44)"),
-    "TP6303": ((2.0, 23.5), "B", "NFC tag loop antenna contact (BOM line 126)"),
-    "TP6304": ((4.5, 23.5), "B", "NFC tag loop antenna contact (BOM line 126)"),
+    # placement v1.6: the audio parts taller than the audio shield lid allows (1.45 mm SOT-23-5, 1.3 mm
+    # inside) take their room first, outside the frame next to their DACs and clocks (decision 15)
+    "U2502": ((-26.65, -20.8), "B", "DAC L supply regulator, 1.45 mm, left of the audio shield frame"),
+    "U2602": ((-26.65, -16.6), "B", "DAC R supply regulator, 1.45 mm, left of the audio shield frame"),
+    "U2402": ((-18.8, -24.75), "B", "master-clock oscillator, 1.45 mm, below the audio shield frame"),
+    "U2403": ((-18.8, -28.25), "B", "master-clock oscillator, 1.45 mm, below the audio shield frame"),
+    "U2902": ((-20.35, -4.45), "F", "amplifier-rail LDO at its v1.5 position, over its output capacitors on the back (placement v1.6)"),
+    # placement v1.6: the six OPA1622 of the headphone stage take their room before the passives, at
+    # their v1.5 positions; the two on the back that crossed the audio frame move inside it
+    "U3001": ((-14.6, 0.4), "B", "OPA1622, SE stage, v1.5 position, above the audio shield frame"),
+    "U3002": ((-15.55, -3.1), "F", "OPA1622, SE stage, v1.5 position"),
+    "U3201": ((-9.7, -5.6), "B", "OPA1622, balanced L, inside the audio shield frame (was -8.2, -4.6)"),
+    "U3202": ((-13.7, -5.6), "B", "OPA1622, balanced L, inside the audio shield frame (was -12.2, -4.75)"),
+    "U3301": ((-10.6, -8.1), "F", "OPA1622, balanced R, v1.5 position"),
+    "U3302": ((-10.75, -11.4), "B", "OPA1622, balanced R, v1.5 position, inside the audio shield frame"),
+    "TP6803": ((-20.0, 22.0), "B", "LRA contact (actuator in the case, feature block 44)"),
+    "TP6804": ((-17.5, 22.0), "B", "LRA contact (actuator in the case, feature block 44)"),
+    "TP6403": ((2.0, 23.5), "B", "NFC tag loop antenna contact (BOM line 126)"),
+    "TP6404": ((4.5, 23.5), "B", "NFC tag loop antenna contact (BOM line 126)"),
     # the two LT3094 first, so their back-only 0805 output capacitors (BOM v1.18 items 3 and 5) find
     # room within their bound (capacitor proximity, placement v1.3)
     "U2903": ((-22.4, 0.35), "B", "LT3094 A with its capacitors (PCB-P-10, placement v1.3)"),
@@ -220,13 +237,16 @@ REWORK_BGA = {"U1301", "U2101", "U3801"}
 FIDUCIAL_FP = "Fiducial:Fiducial_1mm_Mask2mm"
 FIDUCIALS = [
     ("FID1", -23.0, 36.0, "F", "global"), ("FID2", 23.0, 35.0, "F", "global"), ("FID3", -23.0, -22.0, "F", "global"),
-    ("FID4", -10.0, 31.4, "B", "global"), ("FID5", 23.0, -1.5, "B", "global"), ("FID6", 22.5, 24.0, "B", "global"),
-    ("FID7", -11.0, -1.0, "B", "local"), ("FID8", 8.0, 21.7, "B", "local"),
+    ("FID4", -7.8, 31.4, "B", "global"), ("FID5", 23.0, -1.5, "B", "global"), ("FID6", 22.5, 24.0, "B", "global"),
+    ("FID7", -13.0, 0.8, "B", "local"), ("FID8", 8.0, 22.8, "B", "local"),
 ]
+# Placement v1.6: FID4, FID7 and FID8 moved clear of the shield frames' lands and keep-outs
+# (decision 15); the two local fiducials stay at opposite corners of the RK3566, outside its frame.
 FIDUCIAL_KEEP = 3.2
 
 # Board identity (CRAFT-20, Q1): title and revision on the back silk, in an area kept free of parts
-IDENTITY = {"rect": (-11.5, 33.5, 5.0, 37.3), "side": "B", "size": 0.8,
+IDENTITY = {"rect": (-9.0, 33.5, 5.0, 37.3),   # v1.6: right of the radio frame (was x -11.5)
+            "side": "B", "size": 0.8,
             "lines": ["${TITLE}", "rev ${REVISION} ${ISSUE_DATE}"]}
 
 # Nets that do not pull a part towards them (ground and wide rails reach every part through planes)

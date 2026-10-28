@@ -51,6 +51,8 @@ PARTS = {
     "C_10u_0603_X7R": _c("10 µF", "C1608X7R1A106K080AC", "0603", 10, "X7R", maker="TDK",
                          src="value, rating, dielectric and size: board ADR 0021 item 3"),
     "C_10u_0805_25V": _c("10 µF", "GRM21BR61E106KA73L", "0805", 25, "X5R"),
+    "C_10u_0603_25V": _c("10 µF", "GRM188R61E106MA73D", "0603", 25, "X5R"),
+    "C_1u_0201": _c("1 µF", "GRM033R60J105MEA2D", "0201", 6.3, "X5R"),
     "C_22u_0603": _c("22 µF", "GRM188R60J226MEA0D", "0603", 6.3, "X5R"),
     "C_22u_0603_10V": _c("22 µF", "GRM188R61A226ME15D", "0603", 10, "X5R"),
     "C_22u_0805_16V": _c("22 µF", "GRM21BR61C226ME44L", "0805", 16, "X5R"),
@@ -430,8 +432,15 @@ def compact(key, block, top, bottom):
 #   most VSYS (8.8 V), within half the 0201's 25 V; sourcing (T1-029), 2026-10-27: pass.
 # - 100 nF capacitors on low-voltage signal nodes (PMIC power-on and VDC, vdd_cpu EN and VOS, SoC
 #   reset) to the 0201 already used for decoupling (GRM033R61A104KE15D, 10 V X5R; at most 1.8 V on
-#   each node, power tree v0 §3). The 1 µF positions of the same study wait for DC-bias figures
-#   (DRV-107); the 0201 1 nF positions wait for a sourced part.
+#   each node, power tree v0 §3). The 0201 1 nF positions wait for a sourced part.
+# - DC-bias gate (DRV-107, BOM v1.17): the maker's DC-bias data at each node's highest voltage,
+#   -20 to 85 °C, tolerance included, against what each circuit needs. Passed: the BQ25798 VBUS
+#   and SYS capacitors (2 µF and 6 µF effective minimum, SLUSDV2C §6.3) in 10 µF 25 V X5R 0603, and
+#   the two TPS22945 output capacitors (0.1 µF, SLVS832D §9.1.5) in 1 µF 6.3 V X5R 0201. The other
+#   positions keep their part (a minimum missed, no minimum below the present value, or audio).
+AREA_C_DCBIAS = {("blk.charger-core", r): "C_10u_0603_25V" for r in ("C605", "C606", "C612", "C613", "C614",
+                                                                     "C615", "C616")}
+AREA_C_DCBIAS.update({("blk.fp-connector", "C5304"): "C_1u_0201", ("blk.mic-main", "C6502"): "C_1u_0201"})
 AREA_R_EXCLUDE = ("blk.dac", "blk.mclk", "blk.hpa", "blk.audio", "blk.jack", "blk.charger-input", "blk.usb-c",
                   "blk.hat-5v", "blk.usb-vbus-out")
 AREA_C_SIGNAL = {("blk.pmic", "C1114"), ("blk.pmic", "C1115"), ("blk.vdd-cpu", "C1204"),
@@ -458,6 +467,10 @@ def area_swap(block, ref, f, value):
         g["MPN"] = "RC0201" + f["MPN"][6:]
         g["Datasheet"] = YAGEO + g["MPN"]
         g["Description"] = f["Description"].replace("1/16 W, 0402", "1/20 W, 0201")
+        return g
+    if (block, ref) in AREA_C_DCBIAS and f.get("MPN") in ("GRM21BR61E106KA73L", "GRM155R61A105KE15D"):
+        g = dict(f)
+        g.update({k: PARTS[AREA_C_DCBIAS[(block, ref)]][k] for k in ("Footprint", "Datasheet", "Description", "MPN")})
         return g
     if (block, ref) in AREA_C_SIGNAL and f.get("MPN") == "GRM155R71C104KA88D":
         g = dict(f)

@@ -52,6 +52,10 @@ PARTS = {
                          src="value, rating, dielectric and size: board ADR 0021 item 3"),
     "C_10u_0805_25V": _c("10 µF", "GRM21BR61E106KA73L", "0805", 25, "X5R"),
     "C_10u_0603_25V": _c("10 µF", "GRM188R61E106MA73D", "0603", 25, "X5R"),
+    "C_22u_0805_25V": _c("22 µF", "GRM21BR61E226ME44L", "0805", 25, "X5R",
+                         src="TPS62136 and TPS62903 inputs: 3 µF effective minimum at 8.8 V (SLVSDV2 §7.3, SLVSES3A "
+                             "§6.3); 3.9 µF effective at 8.8 V, -20 to 85 °C, tolerance included (Murata DC-bias data, "
+                             "BOM v1.18 item 1)"),
     "C_1u_0201": _c("1 µF", "GRM033R60J105MEA2D", "0201", 6.3, "X5R"),
     "C_22u_0603": _c("22 µF", "GRM188R60J226MEA0D", "0603", 6.3, "X5R"),
     "C_22u_0603_10V": _c("22 µF", "GRM188R61A226ME15D", "0603", 10, "X5R"),

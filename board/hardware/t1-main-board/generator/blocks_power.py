@@ -43,7 +43,7 @@ def draw_vsys_lv(s, variants):
     s.power("VSYS", 30.48, yr)
     s.wire((30.48, yr), (P["1"][0], yr))
     s.wire(P["1"], (P["1"][0], yr))
-    ct, cb = vpart(s, "C_10u_0805_25V", 53.34, 63.5)
+    ct, cb = vpart(s, "C_22u_0805_25V", 53.34, 63.5)
     s.wire((53.34, yr), ct)
     s.junction(53.34, yr)
     s.wire(cb, (53.34, yg))
@@ -107,7 +107,7 @@ def draw_vsys_lv(s, variants):
         ["VSYS", "Supply in", "Not applicable: the block is never omitted (BRD-049)"],
         ["VSYS_LV", "Supply out", "Not applicable: always on; feeds the PMIC, vdd_cpu and vcc3v3_sys"],
     ]
-    s.rail_rows = [["VSYS", "10 µF 25 V 0805", "CIN 10 µF nominal (SLVSDV2 §10.1.4.2; BOM v1 line 113)"],
+    s.rail_rows = [["VSYS", "22 µF 25 V 0805", "CIN 10 µF nominal (SLVSDV2 §10.1.4.2); 3 µF effective minimum (§7.3): 3.9 µF at 8.8 V (BOM v1.18 item 1)"],
                    ["VSYS_LV", "2 x 22 µF 16 V 0805", "COUT 47 µF nominal with 1.5 µH (SLVSDV2 Table 2)"]]
     corner_notes(s, [
         "1. Function: TI TPS62136RGXR, VSYS (6.0-8.8 V, 2S) to VSYS_LV 3.8 V, 4 A. Every part",

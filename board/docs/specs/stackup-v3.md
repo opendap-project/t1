@@ -1,7 +1,7 @@
 # Stackup v3 of the T1 main board
 
 - **Status:** Draft v3 (2026-10-25). **Approved by the maintainers on 2026-10-25**, with the nine trades of §0.1. Replaces [stackup v2](stackup-v2.md) (eight layers). The maintainers' rule for the layer count: *fewer layers is better; the layers that are needed in the end are fine* (PCB-S-03). **The stack is to be confirmed by the fab's DFM review**; nothing here is laid out or measured.
-- **Machine-readable copy:** [`../../hardware/stackup/stackup-v3.toml`](../../hardware/stackup/stackup-v3.toml), computed and checked with `odapkit stackup design`, `check` and `coupling` ([toolkit-hardware](https://github.com/opendap-project/toolkit-hardware), [stackup method](https://github.com/opendap-project/toolkit-hardware/blob/main/docs/specs/stackup-method.md)); a change edits the TOML, reruns the check and then this page.
+- **Machine-readable copy:** [`../../hardware/stackup/stackup-v3.toml`](../../hardware/stackup/stackup-v3.toml), computed and checked with `odapkit stackup design`, `check` and `coupling` ([tools/hardware](https://github.com/opendap-project/tools/tree/main/hardware), [stackup method](https://github.com/opendap-project/tools/blob/main/hardware/docs/specs/stackup-method.md)); a change edits the TOML, reruns the check and then this page.
 - **Inputs:** [floorplan v1](floorplan-v1.md) (zones; its layer references follow this page); [PCB design constraints](pcb-design-constraints.md) v0.15; the [BGA escape study](../../hardware/studies/bga-escape/README.md) (escape, decoupling and core planes on this stack); the sources of stackups v1 and v2 ([PW-ST], [PW-PP], [P1]–[P3], [P12]), which this page does not repeat.
 
 ## 0. Summary

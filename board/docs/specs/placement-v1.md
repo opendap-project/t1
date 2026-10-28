@@ -1,8 +1,8 @@
 # Placement v1 of the T1 main board
 
-- **Status:** Draft v1.3 (2026-10-27: every converter's and IC's capacitors within a bound of the pins they serve, checked by the tool, §4 decision 14, with the capacitor changes of [BOM v1.18](bom-v1.md#changes-in-v118); v1.2 the same day: the swaps of [BOM v1.17](bom-v1.md#changes-in-v117) whose gates closed without hardware; v1.1 the same day: the 62.5 × 95.0 mm body of [ADR 0025](../adr/0025-height-zones-in-the-wider-body.md), §4 decision 13; compaction of §4 decision 12 applied the same day). The board setup and the placement stage of the T1 main board: every part of the schematic placed, nothing routed. It applies [floorplan v1](floorplan-v1.md) with the changes of §4, each recorded as a decision.
+- **Status:** Draft v1.4 (2026-10-28: the NFC reader withdrawn from the board in every model, maintainer decision 2026-10-27 for board area ([feature blocks](feature-blocks.md) #42, BOM v1.18 item 7), the reserve of §6 item 1 applied; the sheets after it moved up one page, so their references carry the page before, for example the microSD socket J6201 is now J6101; v1.3 2026-10-27: every converter's and IC's capacitors within a bound of the pins they serve, checked by the tool, §4 decision 14, with the capacitor changes of [BOM v1.18](bom-v1.md#changes-in-v118); v1.2 the same day: the swaps of [BOM v1.17](bom-v1.md#changes-in-v117) whose gates closed without hardware; v1.1 the same day: the 62.5 × 95.0 mm body of [ADR 0025](../adr/0025-height-zones-in-the-wider-body.md), §4 decision 13; compaction of §4 decision 12 applied the same day). The board setup and the placement stage of the T1 main board: every part of the schematic placed, nothing routed. It applies [floorplan v1](floorplan-v1.md) with the changes of §4, each recorded as a decision.
 - **Board:** [`hardware/t1-main-board/t1-main-board.kicad_pcb`](../../hardware/t1-main-board/t1-main-board.kicad_pcb), written by the placement tool [`hardware/t1-main-board/pcb/`](../../hardware/t1-main-board/pcb/) (`build.py`) from the schematic; the tool's report is [`pcb/placement-result.json`](../../hardware/t1-main-board/pcb/placement-result.json). The same inputs give a byte-identical board.
-- **Inputs:** the schematic (hardware/t1-main-board, 1,012 parts, 1,081 nets), [floorplan v1](floorplan-v1.md), [stackup v3](stackup-v3.md) and `hardware/stackup/stackup-v3.toml`, the [PCB design constraints](pcb-design-constraints.md) v0.17, [ADR 0025](../adr/0025-height-zones-in-the-wider-body.md), [ADR 0018](../adr/0018-antennas-and-certification-route.md), [ADR 0020](../adr/0020-battery-connected-through-contacts.md), the composed design rules (`t1-main-board.kicad_dru`), the [BGA escape study](../../hardware/studies/bga-escape/README.md). Footprints: kicad-lib as pinned in `hardware/lib/opendap` and KiCad 10.0.7's stock libraries.
+- **Inputs:** the schematic (hardware/t1-main-board, 990 parts, 1,042 nets), [floorplan v1](floorplan-v1.md), [stackup v3](stackup-v3.md) and `hardware/stackup/stackup-v3.toml`, the [PCB design constraints](pcb-design-constraints.md) v0.17, [ADR 0025](../adr/0025-height-zones-in-the-wider-body.md), [ADR 0018](../adr/0018-antennas-and-certification-route.md), [ADR 0020](../adr/0020-battery-connected-through-contacts.md), the composed design rules (`t1-main-board.kicad_dru`), the [BGA escape study](../../hardware/studies/bga-escape/README.md). Footprints: kicad-lib as pinned in `hardware/lib/opendap` and KiCad 10.0.7's stock libraries.
 
 ## 1. Board setup
 
@@ -20,7 +20,7 @@
 
 ## 2. What is placed
 
-All 1,012 parts: 852 on the front, 160 on the back, plus the eight fiducials and four holes. The schematic parity check finds no difference. Four parts stand on courtyard-only placeholders, because their lands are not drawn yet (hardware/t1-main-board/README.md, open items): L5401 (Murata LQH3NP), SW6901–SW6903 (C&K PTS815).
+All 990 parts: 704 on the front, 286 on the back, plus the eight fiducials and four holes. The schematic parity check finds no difference. Four parts stand on courtyard-only placeholders, because their lands are not drawn yet (hardware/t1-main-board/README.md, open items): L5401 (Murata LQH3NP), SW6801–SW6803 (C&K PTS815).
 
 | Part | Where (device frame, mm) | Side | Basis |
 |---|---|---|---|
@@ -34,16 +34,16 @@ All 1,012 parts: 852 on the front, 160 on the back, plus the eight fiducials and
 | CS43198 U2501, U2601 | (−20, −18), (−11.5, −18), mirrored about x = −15.75 | back | floorplan v1 |
 | NZ2520 oscillators Y2401, Y2402 | (−17.3, −11), (−14.2, −11), mirrored about x = −15.75 | back | floorplan v1 (moved to clear each other) |
 | 3.5 mm jack J3401, 4.4 mm jack J4001, USB-C J4601 | bottom edge at x −22.3, −11.55, 0 | back | PCB-M-05, floorplan v1 |
-| microSD J6201 | top edge, x 13.5 | back | floorplan v1 (13.0); §4 decision 3 |
+| microSD J6101 | top edge, x 13.5 | back | floorplan v1 (13.0); §4 decision 3 |
 | U.FL J5201 (ANT0), J5202 (ANT1) | (−14.0, 41.5), (−8.3, 41.5), top band | back | ADR 0018 item 4, PCB-R-02 |
 | Type 2EL U5001 | (−17, 32.5) | back | floorplan v1 |
 | FH35C J5301 | (2.5, −32.9), faceplate connection area | front | floorplan v1 §5 |
 | DF40C-50DS J4701 | (13.1, −31.0), bottom band | back | floorplan v1 §5 |
 | Battery contacts J701–J706 | row at y −23.5, x −2.0 to 19.0, 3.5 mm pitch, third position empty | back | ADR 0020 item 2, PCB-L-04 |
 | Battery-contact ESD D702, D703 | at the mid-cell and NTC contacts, inside `BATTERY_ESD` | back | PCB-L-08 |
-| Side buttons | Action SW6904, Vol+ SW6902, Vol− SW6903 on the left edge from y 35 down; Main SW6901 on the right edge; 1.9 mm from the edge, courtyards 0.05 mm outside the pocket footprint | back | controls spec §1.4 (positions **UNVERIFIED**), PCB-Z-08 |
+| Side buttons | Action SW6804, Vol+ SW6802, Vol− SW6803 on the left edge from y 35 down; Main SW6801 on the right edge; 1.9 mm from the edge, courtyards 0.05 mm outside the pocket footprint | back | controls spec §1.4 (positions **UNVERIFIED**), PCB-Z-08 |
 | Speaker pads TP5503, TP5504 | under the speaker shelf, (10.5, −39.5) and (16.5, −39.5) | back | BOM v1 line 33 (pad spacing **UNVERIFIED**), PCB-Z-09 |
-| Cover-detect pads TP5901, TP5902 | 1.25 mm from the right edge, y −14.0 and −17.5 | back | ADR 0020 item 7, PCB-L-10 |
+| Cover-detect pads TP5801, TP5802 | 1.25 mm from the right edge, y −14.0 and −17.5 | back | ADR 0020 item 7, PCB-L-10 |
 
 Every other part is placed by the tool: tall parts in the bands, then parts with through holes (their thermal vias need the other side free), then the converters' inductors, then the parts over 1.0 mm (back only), then the rest, each at the nearest free spot to the pads it connects to (pads of its own block first; a converter next to its inductor's switch-node pad), and test pads on the front.
 
@@ -55,15 +55,15 @@ Floorplan v1 §2.1 estimated the over-budget bands with a placement and routing 
 
 | Zone | Courtyard (mm²) | Need ×1.7 (mm²) | Band use | Back use | Front use | 55.3 × 90.1 mm outline (band / back / front) |
 |---|---|---|---|---|---|---|
-| CORE | 2,700 | 4,590 | **124 %** of 497 mm² | 100 % | 74 % | 203 % / 100 % / 94 % |
+| CORE | 2,554 | 4,343 | **124 %** of 497 mm² | 100 % | 65 % | 203 % / 100 % / 94 % |
 | AUDIO | 1,735 | 2,760 | 99 % of 458 mm² | 100 % | **231 %** | 123 % / 100 % / 254 % |
 | POWER | 1,258 | 2,139 | **211 %** of 220 mm² | **116 %** | **149 %** | 233 % / 165 % / 164 % |
 | IO | 365 | 571 | 80 % | 100 % | 23 % | 82 % / 100 % / 29 % |
 | RADIO | 275 | 467 | 0 % | 96 % | 0 % | 0 % / 100 % / 11 % |
 | FACEPLATE | 121 | 206 | — | — | **109 %** of 190 mm² | — / — / 109 % |
-| **Board** | **6,454** | **10,734** | | | **99.1 % of 10,827 mm²** | 111 % of 9,965 mm² |
+| **Board** | **6,308** | **10,487** | | | **96.9 % of 10,827 mm²** | 111 % of 9,965 mm² |
 
-The wider body (ADR 0025) and the 0201 swaps of [BOM v1.16](bom-v1.md#changes-in-v116) take the board from 111 % to 98.8 % of both sides; the swaps of [BOM v1.17](bom-v1.md#changes-in-v117) (seven 10 µF in 0603, two 1 µF in 0201, six load switches in WCSP) to 97.8 %; the capacitors [BOM v1.18](bom-v1.md#changes-in-v118) adds so that every position meets its data sheet (the amplifier-rail LDOs take 18 capacitors of 22 µF where 6 of 10 µF missed their minimum) to **99.1 %**; the courtyards alone cover 59.6 % (58.8 % at v1.2, 59.4 % at v1.1, 67.3 % before ADR 0025). The study's target of 95 % with routing room is not reached: the X2SON LDOs and most of the 1 µF and 10 µF positions failed their gates (BOM v1.17), and what remains gated needs hardware (the audio output stage in 0402 after V2-A08, 0.8 mm power test pads after a probe check), or the reserve of §6 item 1.
+The wider body (ADR 0025) and the 0201 swaps of [BOM v1.16](bom-v1.md#changes-in-v116) take the board from 111 % to 98.8 % of both sides; the swaps of [BOM v1.17](bom-v1.md#changes-in-v117) (seven 10 µF in 0603, two 1 µF in 0201, six load switches in WCSP) to 97.8 %; the capacitors [BOM v1.18](bom-v1.md#changes-in-v118) adds so that every position meets its data sheet (the amplifier-rail LDOs take 18 capacitors of 22 µF where 6 of 10 µF missed their minimum) to 99.1 %; withdrawing the NFC reader (§6 item 1, 35 parts) to **96.9 %**; the courtyards alone cover 58.3 % (59.6 % at v1.3, 58.8 % at v1.2, 59.4 % at v1.1, 67.3 % before ADR 0025). The study's target of 95 % with routing room is not reached (1.9 points short): the X2SON LDOs and most of the 1 µF and 10 µF positions failed their gates (BOM v1.17), and what remains gated needs hardware (the audio output stage in 0402 after V2-A08, 0.8 mm power test pads after a probe check), or the reserve of §6 item 1.
 
 ### 3.2 The placed board
 
@@ -71,14 +71,14 @@ Courtyard area over zone area, per side, without a factor (zones with the change
 
 | Zone | Front | Back | Band (back) |
 |---|---|---|---|
-| CORE | 1,154 of 2,009 mm² (57 %) | 1,421 of 2,280 mm² (62 %) | 200 of 512 mm² (39 %) |
-| AUDIO | 833 of 1,363 mm² (61 %) | 895 of 1,126 mm² (80 %) | 416 of 524 mm² (79 %) |
-| POWER | 550 of 1,087 mm² (51 %) | 781 of 1,311 mm² (60 %) | 168 of 368 mm² (46 %) |
-| IO | 175 of 312 mm² (56 %) | 206 of 265 mm² (78 %) | 167 of 195 mm² (86 %) |
-| RADIO | 116 of 453 mm² (26 %) | 148 of 453 mm² (33 %) | 86 of 208 mm² (41 %) |
-| FACEPLATE | 97 of 190 mm² (51 %) | — | — |
+| CORE | 1,046 of 2,009 mm² (52 %) | 1,399 of 2,280 mm² (61 %) | 198 of 512 mm² (39 %) |
+| AUDIO | 819 of 1,363 mm² (60 %) | 902 of 1,126 mm² (80 %) | 424 of 524 mm² (81 %) |
+| POWER | 545 of 1,087 mm² (50 %) | 781 of 1,311 mm² (60 %) | 168 of 368 mm² (46 %) |
+| IO | 171 of 312 mm² (55 %) | 206 of 265 mm² (78 %) | 167 of 195 mm² (86 %) |
+| RADIO | 116 of 453 mm² (26 %) | 148 of 453 mm² (33 %) | 86 of 208 mm² (42 %) |
+| FACEPLATE | 96 of 190 mm² (51 %) | — | — |
 
-Every part found a place with its courtyard inside its zone, its height inside its height area (the two pocket reliefs of §5 aside) and no courtyard overlap. The placement and routing factor left is **1.68** over the board (10,827 / 6,454 mm²; 1.70 at v1.2, 1.68 at v1.1, 1.49 before ADR 0025), about 1.5–1.6 in the core's and the audio zone's front; the floorplan assumed 1.7 (1.5–1.9). The tool reports these figures in `placement-result.json` (`routing_room`). Whether the board routes at this density is the next stage's question; a shortfall goes back to the maintainers as a stackup question (PCB-S-22) or as the reserve of §6 item 1.
+Every part found a place with its courtyard inside its zone, its height inside its height area (the two pocket reliefs of §5 aside) and no courtyard overlap. The placement and routing factor left is **1.72** over the board (10,827 / 6,308 mm²; 1.68 at v1.3, 1.70 at v1.2, 1.68 at v1.1, 1.49 before ADR 0025), about 1.5–1.6 in the core's and the audio zone's front; the floorplan assumed 1.7 (1.5–1.9). The tool reports these figures in `placement-result.json` (`routing_room`). Whether the board routes at this density is the next stage's question; a shortfall goes back to the maintainers as a stackup question (PCB-S-22) or as the reserve of §6 item 1.
 
 ## 4. Decisions
 
@@ -102,18 +102,20 @@ Each changes floorplan v1 where the real footprints did not fit it; the tool's `
 
 ## 5. Checks
 
-**DRC** with the composed rules (KiCad 10.0.7, `pcb/build.py --drc`): **0 errors**, 499 unconnected items (expected: not routed), schematic parity 0. Warnings (604): 584 silk items of the library footprints against the craft rules (CRAFT-05, CRAFT-07, Q2) and 13 silk overlaps, 2 PCB-L-01 (the SoC and the PMIC over the pocket, floorplan v1 §6 item 3), 4 library issues (the placeholders), 1 PCB-D-05 (a side button's silk at the edge, Q2). ERC 0 errors. Craft check: the schematic meets Q1; the board reaches no level, as before this decision, because a placement-stage board fails three items at Q0 and Q1: the unconnected items, PCB-L-01 (the SoC and the PMIC over the pocket by ADR 0016 item 3, a warning) and CRAFT-13 (U901's library footprint has no pin-1 silk mark). PCB-I-09 leaves a footprint's own pads out since 2026-10-27, as PCB-V-01 does (it fired six times between the DAC's MCLK pin and its neighbours and between the dividers' pins).
+**DRC** with the composed rules (KiCad 10.0.7, `pcb/build.py --drc`): **0 errors**, 499 unconnected items (expected: not routed), schematic parity 0. Warnings (604): 588 silk items of the library footprints against the craft rules (CRAFT-05, CRAFT-07, Q2) and 9 silk overlaps, 2 PCB-L-01 (the SoC and the PMIC over the pocket, floorplan v1 §6 item 3), 4 library issues (the placeholders), 1 PCB-D-05 (a side button's silk at the edge, Q2). ERC 0 errors. Craft check: the schematic meets Q1; the board reaches no level, as before this decision, because a placement-stage board fails three items at Q0 and Q1: the unconnected items, PCB-L-01 (the SoC and the PMIC over the pocket by ADR 0016 item 3, a warning) and CRAFT-13 (U901's library footprint has no pin-1 silk mark). PCB-I-09 leaves a footprint's own pads out since 2026-10-27, as PCB-V-01 does (it fired six times between the DAC's MCLK pin and its neighbours and between the dividers' pins).
 
-**Capacitor proximity** (`pcb/proximity.py`, decision 14): 248 capacitors (29 converter inputs, 22 outputs, 162 decoupling, 35 bulk), none beyond its bound; the build exits non-zero when one is.
+**Capacitor proximity** (`pcb/proximity.py`, decision 14): 243 capacitors (29 converter inputs, 22 outputs, 157 decoupling, 35 bulk; 248 before the NFC reader was withdrawn), none beyond its bound; the build exits non-zero when one is.
 
 **Placement checks** (`pcb/checks.py`): no courtyard overlap, no part outside its zone, no part in a hole ring or within 0.3 mm of the edge (J*, SW* exempt), no through hole under another part, no height finding. Two parts stand over PCB-Z-01 inside the pocket reliefs the case provides (ADR 0025 item 4); the tool reports them in `placement-result.json` (`pocket_reliefs`), not as findings:
 
 | Part | Height | In the pocket footprint | Relief |
 |---|---|---|---|
 | J4001 (4.4 mm jack) | 6.5 mm | x −16.64 to −6.46, y −28.55 to −23.75 (4.79 mm deep) | PCB-Z-06; no catalog jack fits |
-| J6201 (microSD, DM3AT push-push) | 1.68 mm | x 5.62 to 21.38, y 27.53 to 38.55 (11.02 mm deep) | PCB-Z-07 |
+| J6101 (microSD, DM3AT push-push) | 1.68 mm | x 5.62 to 21.38, y 27.53 to 38.55 (11.02 mm deep) | PCB-Z-07 |
 
-The side buttons (SW6901–SW6904) no longer reach the pocket footprint (0.05 mm outside it); their strip (PCB-Z-08) stays as the case's tolerance margin. C904 left the front strip (decision 4).
+The side buttons (SW6801–SW6804) no longer reach the pocket footprint (0.05 mm outside it); their strip (PCB-Z-08) stays as the case's tolerance margin. C904 left the front strip (decision 4).
+
+**Visual review of v1.4** (2026-10-28): front and back courtyard and fabrication plots, the whole board at 300 dpi and the top of the back (microSD J6101 in its pocket relief, the NFC tag contacts TP6303 and TP6304, the vdd_cpu inductor L1201) at 600 dpi, where the reader stood: no courtyard overlap or part outside its zone; the reference texts of TP6303 and TP6304 overlap on the fabrication layer only. ERC 0 errors (12 warnings, as listed in the project README); craft check: the schematic meets Q1 (Q2 reached); `generator/overlaps.py` 0 collisions; pcb tests pass (26) and the KiCad transform check passes. STEP export: 4.7 MB, the same 27 parts without a model.
 
 **Visual review of v1.3** (2026-10-27): fabrication and courtyard plots at 600 dpi of the right power band (L901, L2802 and their seven band and pocket capacitors), the RK809 on the back and its capacitors on the front, and the four amplifier-rail LDOs with their eighteen 22 µF capacitors: no courtyard overlap, every capacitor beside the pin or pad it serves. ERC 0 errors; craft check: the schematic meets Q1 (Q2 reached); the board's craft items are those of v1.2 (unrouted items and PCB-L-01 at Q0, U901's pin-1 mark at Q1); CRAFT-34 (Q2) reports the DAC pair's references of `t1-main-board.craft.toml` (21xx/22xx), which no longer match the DAC sheets (25xx/26xx), a configuration item of §6 item 7. STEP export: 5.1 MB, the same 27 parts without a model in KiCad 10's library.
 
@@ -125,11 +127,11 @@ The side buttons (SW6901–SW6904) no longer reach the pocket footprint (0.05 mm
 
 ## 6. Open items
 
-1. **Routing density and the reserve.** The real parts need 99.1 % of the board with the floorplan's factor 1.7 (§3.1; 97.8 % at v1.2, 98.8 % before BOM v1.17, 111 % before decision 13); the placement leaves a factor of 1.68. BOM v1.17 closed the gates that needed no hardware: the TPS22916C load switches, seven 10 µF in 0603 and two 1 µF in 0201 are applied; the X2SON LDOs, 15 of the 10 µF and 16 of the 1 µF positions failed and keep their parts. Still gated, in the order they free area (area study, by the factor): the audio output stage's 0603 parts in 0402 of the same series (3.9 points; ADR 0025 item 6, t1 V2-A08); 0.8 mm test pads on power and ground (1.5 points; a probe check against PCB-D-06's 1.0 mm); the 1 nF positions in 0201 (no part sourced). **Reserve, not applied** (ADR 0025 item 7): if the routing stage or the shield-can frames need more, remove the NFC reader (BRD-057, about 2.6 points), then the TPM (BRD-059, about 1 point), for every model; a maintainers' decision.
+1. **Routing density and the reserve.** The real parts need 96.9 % of the board with the floorplan's factor 1.7 (§3.1; 99.1 % at v1.3, 97.8 % at v1.2, 98.8 % before BOM v1.17, 111 % before decision 13); the placement leaves a factor of 1.72. BOM v1.17 closed the gates that needed no hardware: the TPS22916C load switches, seven 10 µF in 0603 and two 1 µF in 0201 are applied; the X2SON LDOs, 15 of the 10 µF and 16 of the 1 µF positions failed and keep their parts. Still gated, in the order they free area (area study, by the factor): the audio output stage's 0603 parts in 0402 of the same series (3.9 points; ADR 0025 item 6, t1 V2-A08); 0.8 mm test pads on power and ground (1.5 points; a probe check against PCB-D-06's 1.0 mm); the 1 nF positions in 0201 (no part sourced). **Reserve** (ADR 0025 item 7): the NFC reader is removed for every model (maintainer decision 2026-10-27; 2.2 points: 99.1 % to 96.9 %); the TPM (BRD-059, about 1 point) stays, and its removal remains a maintainers' decision.
 2. **Zone net classes:** closed (2026-10-27). Every net but GND carries the `ZONE_<NAME>` class of each zone whose blocks it touches (the zones of `pcb/plan.py`; the faceplate connector's sheet also the faceplate zone), a rail used in more than one zone `ZONE_SHARED`; the generator writes them as net-class patterns (`zone_patterns` in `generator/generate.py`). Of 1,080 nets: 911 in one zone, 104 in two, 36 in three, 28 shared rails, GND none.
 3. **Switch-node class:** closed (2026-10-27). The generator names every switch node `*_SW` (`VSYS_LV_SW`, `VCC3V3_SYS_SW`, `VDD_CPU_SW`, `RP_VREG_SW`, was `RP_VREG_LX`), and the faceplate display switch's output is `FP_VCI_OUT` (was `FP_VCI_SW`), so `SW_NODE` holds the 18 switch nodes and nothing else.
 4. **Lands not drawn:** LQH3NP, PTS815 (placeholders, §2); the WE-LHMI 4020 is no longer fitted (decision 12).
-5. **Case inputs:** mounting holes, corner radii, the speaker shelf's clearance and the speaker's contacts, antenna and NFC contact positions; the walls and the pocket reliefs are decided (ADR 0025; [t1 case and main board interface](https://github.com/opendap-project/t1/blob/main/docs/specs/case-board-interface.md)).
+5. **Case inputs:** mounting holes, corner radii, the speaker shelf's clearance and the speaker's contacts, antenna and NFC tag contact positions; the walls and the pocket reliefs are decided (ADR 0025; [t1 case and main board interface](https://github.com/opendap-project/t1/blob/main/docs/specs/case-board-interface.md)).
 6. **Legend:** reference designators are on the fabrication layers only; the silk legend (CRAFT-10, CRAFT-12) is placed at a later stage.
 7. **Mirrored channels** (CRAFT-34, Q2): only the DACs and oscillators are mirrored; the output stages are not yet.
 8. **Assembly variants:** the base design's DNP state is on the board; KiCad 10's design variants come with the next update from the schematic.

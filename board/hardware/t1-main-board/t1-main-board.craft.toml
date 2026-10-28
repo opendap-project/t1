@@ -49,7 +49,7 @@ axis = "vertical"
 
 # ---- [schematic]: written by generator/generate.py from the drawn sheets; edit the generator, not below.
 [schematic]
-rails = ["GND", "VSYS", "VSYS_LV", "vcc3v3_sys", "vdd_cpu", "vdd_logic", "vdd_gpu", "vdd_npu", "vcc_ddr", "vcc0v6_ddr", "vcc1v8_ddr", "vcc_1v8", "vccio6_1v8", "vdda0v9_image", "vdda_0v9", "vdda0v9_pmu", "FP_VCI", "vccio_sd", "vcc3v3_pmu", "vcca_1v8", "vcca1v8_pmu", "vcca1v8_image", "vcc3v3_sd", "DAC_VP", "DAC_DIG_1V8", "AUDIO_2V2", "DAC1_VA", "DAC2_VA", "MCLK_3V1", "MCLK_1V8", "AUDIO_P7V0", "AUDIO_N7V0", "HPA_P6V0", "HPA_N6V0", "USBC_VBUS", "HAT_5V", "VBUS_CHG", "VBAT", "BAT_N", "FP_3V3", "FP_1V8", "MIC_1V8", "FP_VCI_SRC", "vcc3v3_wl", "vcc1v8_wl", "NFC_VBAT", "RP_3V3", "RP_IOVDD_1V8", "VSYS_SRC", "VSYS_LV_AUDIO", "VSYS_AUDIO", "VSYS_LV_BL", "VSYS_P5V1", "MIC_1V8_FP"]
+rails = ["GND", "VSYS", "VSYS_LV", "vcc3v3_sys", "vdd_cpu", "vdd_logic", "vdd_gpu", "vdd_npu", "vcc_ddr", "vcc0v6_ddr", "vcc1v8_ddr", "vcc_1v8", "vccio6_1v8", "vdda0v9_image", "vdda_0v9", "vdda0v9_pmu", "FP_VCI", "vccio_sd", "vcc3v3_pmu", "vcca_1v8", "vcca1v8_pmu", "vcca1v8_image", "vcc3v3_sd", "DAC_VP", "DAC_DIG_1V8", "AUDIO_2V2", "DAC1_VA", "DAC2_VA", "MCLK_3V1", "MCLK_1V8", "AUDIO_P7V0", "AUDIO_N7V0", "HPA_P6V0", "HPA_N6V0", "USBC_VBUS", "HAT_5V", "VBUS_CHG", "VBAT", "BAT_N", "FP_3V3", "FP_1V8", "MIC_1V8", "FP_VCI_SRC", "vcc3v3_wl", "vcc1v8_wl", "RP_3V3", "RP_IOVDD_1V8", "VSYS_SRC", "VSYS_LV_AUDIO", "VSYS_AUDIO", "VSYS_LV_BL", "VSYS_P5V1", "MIC_1V8_FP"]
 netclasses = "../rules/netclasses.toml"
 
 [[schematic.block]]
@@ -102,7 +102,7 @@ interface = ["{DDR_CHA}", "{DDR_CHB}"]
 
 [[schematic.block]]
 id = "blk.soc-vccio-a"
-interface = ["{EMMC}", "{WL}", "{NFC}", "{RP}", "{SDMMC0}", "{DEBUG}", "{TPM}"]
+interface = ["{EMMC}", "{WL}", "{RP}", "{SDMMC0}", "{DEBUG}", "{TPM}"]
 
 [[schematic.block]]
 id = "blk.soc-vccio-b"
@@ -271,10 +271,6 @@ interface = ["{I2C2}", "{TPM}"]
 [[schematic.block]]
 id = "blk.nfc-tag"
 interface = ["{I2C2}", "{NFC}"]
-
-[[schematic.block]]
-id = "blk.nfc-reader"
-interface = ["{I2C2}", "{NFC}", "{EXP_IO}"]
 
 [[schematic.block]]
 id = "blk.rp2354"

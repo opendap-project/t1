@@ -35,7 +35,7 @@ def sheets(proj):
 # ---------------------------------------------------------------------- blk.gpio-expander
 
 PORTS = {"P00": "FP_IO_EN", "P01": "HAT_VBUS_DISCH", "P02": "HAT5V_EN", "P03": "USB_SRC_ON", "P04": "HAPTIC_EN",
-         "P05": "NFC_PWR_EN", "P06": "WL_PWR_EN", "P07": "WL_PD_HOLD_N", "P10": "HP_DET_SE", "P11": "HP_DET_BAL",
+         "P05": None, "P06": "WL_PWR_EN", "P07": "WL_PD_HOLD_N", "P10": "HP_DET_SE", "P11": "HP_DET_BAL",
          "P12": "FP_DET_N", "P13": "FP_GPIO0", "P14": "FP_GPIO1", "P15": "EFUSE_HAT5V_FLT_N",
          "P16": "EFUSE_5V_FLT_N", "P17": "EFUSE_VBUS_FLT_N"}
 
@@ -53,7 +53,7 @@ def draw_expander(s, variants):
     def pulls():
         g = Group(s, "Off-state pull-downs and input pull-ups (PCB-P-18)")
         b = g.add(prow(s, 101.6, 109.22, [("R_100k", "HAT5V_EN", "GND"), ("R_100k", "USB_SRC_ON", "GND"),
-                                          ("R_100k", "HAPTIC_EN", "GND"), ("R_100k", "NFC_PWR_EN", "GND")]))
+                                          ("R_100k", "HAPTIC_EN", "GND")]))
         g.add(prow(s, 101.6, b[3] + 22.86, [("R_10k", "vcc3v3_sys", "HP_DET_SE"), ("R_10k", "vcc3v3_sys", "HP_DET_BAL"),
                                             ("R_10k", "vcc3v3_sys", "EFUSE_HAT5V_FLT_N"),
                                             ("R_10k", "vcc3v3_sys", "EFUSE_5V_FLT_N"),
@@ -70,11 +70,13 @@ def draw_expander(s, variants):
     corner_notes(s, [
         "1. Function: TCA6416A, the slow enables and detects (pinout v1 expander table); VCCI on",
         "   vcca1v8_pmu, VCCP on vcc3v3_sys; outputs hold through suspend.",
-        "2. Absent state: never omitted. At power-up every port is an input: P02-P05 pulled down here;",
+        "2. Absent state: never omitted. At power-up every port is an input: P02-P04 pulled down here;",
         "   P00 on blk.fp-connector, P01 on blk.hat-5v, P06, P07 on blk.radio.",
         "3. ADDR to VCCP: address 0x21 (SCPS194F). RESET 10 kΩ to VCCI (not driven by the SoC).",
         "4. Input pull-ups to VCCP: jack detects (HP_DET_*, the jack switch pulls low) and the eFuse",
         "   faults (open drain), 10 kΩ: capture choices.",
+        "5. P05 spare, no-connect (was NFC_PWR_EN: the NFC reader removed, maintainer decision 2026-10-27);",
+        "   the driver sets it as an output, low.",
     ])
 
 

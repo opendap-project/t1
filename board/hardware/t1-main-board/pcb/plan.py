@@ -16,7 +16,7 @@ import geometry as g
 ZONE_OF_BLOCK = {}
 for _b in ("soc", "soc-ddr", "soc-pmuio", "soc-ground", "soc-phy", "soc-power", "soc-vccio-a", "soc-vccio-b",
            "lpddr4x", "emmc", "microsd", "pmic", "vdd-cpu", "pwr-3v3-sys", "rp2354", "rp2354-core",
-           "rp2354-power", "tpm", "gpio-expander", "board-id", "imu", "haptics", "nfc-reader", "nfc-tag",
+           "rp2354-power", "tpm", "gpio-expander", "board-id", "imu", "haptics", "nfc-tag",
            "status-led", "maskrom", "buttons", "debug"):
     ZONE_OF_BLOCK["blk." + _b] = "CORE"
 for _b in ("audio", "audio-supply", "mclk", "dac-l", "dac-r", "hpa-se", "hpa-bal", "hpa-bal-l", "hpa-bal-r",
@@ -51,7 +51,7 @@ FIXED = {
     "J3401": (-22.3, "edge:bottom", None, "B", "3.5 mm jack, bottom edge, left (PCB-M-05)"),
     "J4001": (-11.55, "edge:bottom", None, "B", "4.4 mm jack, bottom edge (PCB-M-05)"),
     "J4601": (0.0, "edge:bottom", None, "B", "USB-C centred on the bottom edge (PCB-M-05)"),
-    "J6201": (13.5, "edge:top", None, "B", "microSD at the top edge, right (floorplan v1), 0.5 mm right of the study so the core top band holds the two band inductors"),
+    "J6101": (13.5, "edge:top", None, "B", "microSD at the top edge, right (floorplan v1), 0.5 mm right of the study so the core top band holds the two band inductors"),
     "J5201": (-14.0, 41.5, 0, "B", "U.FL ANT0 in the top band near the top wall (ADR 0018 item 4, PCB-R-02)"),
     "J5202": (-8.3, 41.5, 0, "B", "U.FL ANT1 in the top band near the top wall (ADR 0018 item 4, PCB-R-02)"),
     "J5301": (2.5, -32.9, 0, "F", "FH35C in the faceplate connection area, clear of the USB-C and jack through-holes (floorplan v1 §5)"),
@@ -91,17 +91,17 @@ FIXED.update({
 # Main on the right). Long side along the edge, courtyard against the edge, above the eMMC's rework
 # clearance. Positions UNVERIFIED (case); their 1.9-2.5 mm bodies stand 2 mm into PCB-Z-01 (open item).
 FIXED.update({
-    "SW6904": (-g.HX + 1.9, 35.0, 90, "B", "Action, left edge, top"),
-    "SW6902": (-g.HX + 1.9, 29.5, 90, "B", "Vol+, left edge below Action"),
-    "SW6903": (-g.HX + 1.9, 24.0, 90, "B", "Vol-, left edge below Vol+, 2 mm above the eMMC (PCB-D-01)"),
-    "SW6901": (g.HX - 1.9, 29.5, 90, "B", "Main (power), right edge"),
+    "SW6804": (-g.HX + 1.9, 35.0, 90, "B", "Action, left edge, top"),
+    "SW6802": (-g.HX + 1.9, 29.5, 90, "B", "Vol+, left edge below Action"),
+    "SW6803": (-g.HX + 1.9, 24.0, 90, "B", "Vol-, left edge below Vol+, 2 mm above the eMMC (PCB-D-01)"),
+    "SW6801": (g.HX - 1.9, 29.5, 90, "B", "Main (power), right edge"),
 })
 # Pocket reliefs (case interface, ADR 0025; PCB-Z-06 to Z-08): parts that stand over PCB-Z-01's 1.5 mm
 # where the pocket floor and the pack keep out of their volume. build.py reports each relief's
 # courtyard and height (placement-result.json "pocket_reliefs") instead of a PCB-Z-01 finding.
 POCKET_RELIEFS = {
-    "J4001": "PCB-Z-06", "J6201": "PCB-Z-07",
-    "SW6901": "PCB-Z-08", "SW6902": "PCB-Z-08", "SW6903": "PCB-Z-08", "SW6904": "PCB-Z-08",
+    "J4001": "PCB-Z-06", "J6101": "PCB-Z-07",
+    "SW6801": "PCB-Z-08", "SW6802": "PCB-Z-08", "SW6803": "PCB-Z-08", "SW6804": "PCB-Z-08",
 }
 # Battery contacts (ADR 0020 item 2, PCB-L-04): P+, P+, empty, mid-cell tap, NTC, P-, P-
 CONTACT_ORDER = {"BAT_P": [0, 1], "BAT_MID": [3], "BAT_NTC": [4], "BAT_N": [5, 6]}
@@ -164,7 +164,7 @@ TARGET = {
     "blk.pmic": (-6.0, 25.7), "blk.vdd-cpu": (6.0, 22.5), "blk.pwr-3v3-sys": (1.5, 40.5),
     "blk.rp2354-core": (-16.0, 0.0), "blk.rp2354-power": (-20.0, -3.0), "blk.tpm": (20.0, -3.0),
     "blk.gpio-expander": (10.0, -2.0), "blk.board-id": (6.0, 26.0), "blk.imu": (0.0, 26.0),
-    "blk.haptics": (-8.0, 26.0), "blk.nfc-reader": (20.0, 26.0), "blk.nfc-tag": (13.0, 28.0),
+    "blk.haptics": (-8.0, 26.0), "blk.nfc-tag": (13.0, 28.0),
     "blk.status-led": (2.0, -5.0), "blk.maskrom": (8.0, 2.0), "blk.buttons": (-26.0, 20.0),
     "blk.debug": (0.0, -4.0),
     "blk.audio-supply": (-9.0, -12.0), "blk.mclk": (-15.75, -11.0), "blk.dac-l": (-20.0, -18.0),
@@ -183,14 +183,12 @@ TARGET = {
 
 # Parts placed at their own target (contact pads for parts mounted in the case, edge pads)
 PART_TARGET = {
-    "TP5901": ((g.HX - 1.25, -14.0), "B", "cover-detect pad at the board edge (ADR 0020 item 7, PCB-L-10)"),
-    "TP5902": ((g.HX - 1.25, -17.5), "B", "cover-detect ground pad at the board edge (ADR 0020 item 7)"),
-    "TP6803": ((-20.0, 22.0), "B", "LRA contact (actuator in the case, feature block 44)"),
-    "TP6804": ((-17.5, 22.0), "B", "LRA contact (actuator in the case, feature block 44)"),
-    "TP5803": ((-3.0, 23.5), "B", "NFC antenna contact (BOM line 126; antenna position UNVERIFIED)"),
-    "TP5804": ((-0.5, 23.5), "B", "NFC antenna contact (BOM line 126)"),
-    "TP6403": ((2.0, 23.5), "B", "NFC tag loop antenna contact (BOM line 126)"),
-    "TP6404": ((4.5, 23.5), "B", "NFC tag loop antenna contact (BOM line 126)"),
+    "TP5801": ((g.HX - 1.25, -14.0), "B", "cover-detect pad at the board edge (ADR 0020 item 7, PCB-L-10)"),
+    "TP5802": ((g.HX - 1.25, -17.5), "B", "cover-detect ground pad at the board edge (ADR 0020 item 7)"),
+    "TP6703": ((-20.0, 22.0), "B", "LRA contact (actuator in the case, feature block 44)"),
+    "TP6704": ((-17.5, 22.0), "B", "LRA contact (actuator in the case, feature block 44)"),
+    "TP6303": ((2.0, 23.5), "B", "NFC tag loop antenna contact (BOM line 126)"),
+    "TP6304": ((4.5, 23.5), "B", "NFC tag loop antenna contact (BOM line 126)"),
     # the two LT3094 first, so their back-only 0805 output capacitors (BOM v1.18 items 3 and 5) find
     # room within their bound (capacitor proximity, placement v1.3)
     "U2903": ((-22.4, 0.35), "B", "LT3094 A with its capacitors (PCB-P-10, placement v1.3)"),

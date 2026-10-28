@@ -353,20 +353,6 @@ PARTS = {
                          Description="Power inductor, 22 uH, 3.0 x 3.0 mm, LQH3NP series (rating UNVERIFIED)",
                          Manufacturer="Murata", MPN="LQH3NPN220MMEL", spec="", Second_Source="Murata LQH3NPN220MJRL (BOM v1 line 52)",
                          Manufacturer_2="Murata", MPN_2="LQH3NPN220MJRL", src="Backlight inductor (BOM v1 line 52, v1.11)"),
-    # NFC controller front end (BOM v1 line 128; NXP AN13219 Rev. 1.6 §4.1.3.7, Table 5; AN12988 Rev. 1.6
-    # Table 9; AN14518 Rev. 6.0 Table 9) -------------------------------------------------------------
-    "L_LQW18CN_R16": dict(kind="L", value="160 nH", Footprint="Inductor_SMD:L_0603_1608Metric",
-                          Datasheet="https://www.murata.com/en-us/products/productdetail?partno=LQW18CNR16J00D",
-                          Description="Inductor, wire wound, 160 nH, 5 %, 1 A, 0603: NFC EMC filter L0", Manufacturer="Murata",
-                          MPN="LQW18CNR16J00D", spec="", src="AN13219 Table 5 (LQW18CN family, L0 160 nH)"),
-    "C_330p_0402_2": _c("330 pF", "GRM1555C1H331GA01D", "0402", 50, "C0G", spec="", src="AN13219 §4.1.3.7 (C0)"),
-    "C_68p_0402_2": _c("68 pF", "GRM1555C1H680GA01D", "0402", 50, "C0G", spec="", src="AN13219 §4.1.3.7 (C1)"),
-    "C_100p_0402_2": _c("100 pF", "GRM1555C1H101GA01D", "0402", 50, "C0G", spec="", src="AN13219 §4.1.3.7 (C2)"),
-    "R_2R7": _r("2.7 Ω", "2R7", tol="1 %", src="AN13219 §4.1.3.7 (Rs)"),
-    "Y_27M12": dict(kind="Y", value="27.12 MHz", Footprint="Crystal:Crystal_SMD_2016-4Pin_2.0x1.6mm",
-                    Datasheet="https://www.ndk.com/en/products/search/crystal/1191706_1494.html",
-                    Description="Crystal, 27.12 MHz, CL 10 pF, 2016 4-pin (pad assignment UNVERIFIED)", Manufacturer="NDK",
-                    MPN="NX2016SA 27.12MHz EXS00A-CS06346", spec="CL 10 pF", src="AN14518 Rev. 6.0 Table 9"),
     "L_AOTA_3R3": dict(kind="L", value="3.3 µH", Footprint="T1_Main_Board:L_Abracon_AOTA-B201610",
                        Datasheet="https://abracon.com/datasheets/AOTA-B201610S3R3-101-T.pdf",
                        Description="Inductor, shielded molded, 3.3 uH, 20 %, Isat 2.4 A, 2.0 x 1.6 mm, polarity dot",
@@ -450,7 +436,7 @@ def compact(key, block, top, bottom):
 #   positions keep their part (a minimum missed, no minimum below the present value, or audio).
 AREA_C_DCBIAS = {("blk.charger-core", r): "C_10u_0603_25V" for r in ("C605", "C606", "C612", "C613", "C614",
                                                                      "C615", "C616")}
-AREA_C_DCBIAS.update({("blk.fp-connector", "C5304"): "C_1u_0201", ("blk.mic-main", "C6502"): "C_1u_0201"})
+AREA_C_DCBIAS.update({("blk.fp-connector", "C5304"): "C_1u_0201", ("blk.mic-main", "C6402"): "C_1u_0201"})
 AREA_R_EXCLUDE = ("blk.dac", "blk.mclk", "blk.hpa", "blk.audio", "blk.jack", "blk.charger-input", "blk.usb-c",
                   "blk.hat-5v", "blk.usb-vbus-out")
 AREA_C_SIGNAL = {("blk.pmic", "C1114"), ("blk.pmic", "C1115"), ("blk.vdd-cpu", "C1204"),

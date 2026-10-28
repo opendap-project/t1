@@ -58,18 +58,17 @@ Drawn from 2026-10-25. Every sheet carries the block's notes (function, absent s
 | 55 | `speaker.kicad_sch` | `blk.speaker` | MAX98357A, gain 3 dB, SD_MODE position, speaker pads, link #17 |
 | 56 | `board-id.kicad_sch` | `blk.board-id` | AT24C02D at 0x50 |
 | 57 | `tpm.kicad_sch` | `blk.tpm` | SLB9673 TPM 2.0 at 0x2E, always on, link #20 |
-| 58 | `nfc-reader.kicad_sch` | `blk.nfc-reader` | PN7160 at 0x28, NFC_VBAT switch and link #18, EMC filter, matching and RX path (AN13219 first-iteration values), 27.12 MHz crystal, antenna contacts |
-| 59 | `cover-detect.kicad_sch` | `blk.cover-detect` | COVER_DET_N on GPIO0_A6 (in the `KEYS` bus): board-edge input and ground pads, 100 kΩ to vcc3v3_pmu, TPD1E10B06 |
-| 60 | `fp-display.kicad_sch` | `blk.fp-display` | TPS22945 FP_VCI after RK809 LDO4, link #24 |
-| 61 | `fp-controls.kicad_sch` | `blk.fp-controls` | I2C3, interrupt and SPI CS pulls on FP_3V3, the GT911 strap footprint |
-| 62 | `microsd.kicad_sch` | `blk.microsd` | DM3AT socket, 22 Ω series, detect, 2 × TPD4E05U06, link #16 |
-| 63 | `imu.kicad_sch` | `blk.imu` | LSM6DSV16X at 0x6A, INT1 wake, link #32 |
-| 64 | `nfc-tag.kicad_sch` | `blk.nfc-tag` | NT3H2111 NTAG I2C plus at 0x55, field detect, loop antenna contacts, link #33 |
-| 65 | `mic-main.kicad_sch` | `blk.mic-main` | TPS22945 MIC_1V8, link #34 to the faceplate branch MIC_1V8_FP, PDM clock series resistor |
-| 66 | `status-led.kicad_sch` | `blk.status-led` | LP5521 at 0x32 on I2C2, charge pump, LED_R/G/B to the faceplate as the `LED` bus, link #22 |
-| 67 | `gpio-expander.kicad_sch` | `blk.gpio-expander` | TCA6416A at 0x21 with the off-state pull-downs and the input pull-ups |
-| 68 | `haptics.kicad_sch` | `blk.haptics` | DRV2605L at 0x5A, LRA contacts, link #19 |
-| 69 | `buttons.kicad_sch` | `blk.buttons` | Power, Vol+, Vol− (PTS815) and Action (part open) to ground, 4 × TPD1E10B06, the Vol− pull-up |
+| 58 | `cover-detect.kicad_sch` | `blk.cover-detect` | COVER_DET_N on GPIO0_A6 (in the `KEYS` bus): board-edge input and ground pads, 100 kΩ to vcc3v3_pmu, TPD1E10B06 |
+| 59 | `fp-display.kicad_sch` | `blk.fp-display` | TPS22945 FP_VCI after RK809 LDO4, link #24 |
+| 60 | `fp-controls.kicad_sch` | `blk.fp-controls` | I2C3, interrupt and SPI CS pulls on FP_3V3, the GT911 strap footprint |
+| 61 | `microsd.kicad_sch` | `blk.microsd` | DM3AT socket, 22 Ω series, detect, 2 × TPD4E05U06, link #16 |
+| 62 | `imu.kicad_sch` | `blk.imu` | LSM6DSV16X at 0x6A, INT1 wake, link #32 |
+| 63 | `nfc-tag.kicad_sch` | `blk.nfc-tag` | NT3H2111 NTAG I2C plus at 0x55, field detect, loop antenna contacts, link #33 |
+| 64 | `mic-main.kicad_sch` | `blk.mic-main` | TPS22945 MIC_1V8, link #34 to the faceplate branch MIC_1V8_FP, PDM clock series resistor |
+| 65 | `status-led.kicad_sch` | `blk.status-led` | LP5521 at 0x32 on I2C2, charge pump, LED_R/G/B to the faceplate as the `LED` bus, link #22 |
+| 66 | `gpio-expander.kicad_sch` | `blk.gpio-expander` | TCA6416A at 0x21 with the off-state pull-downs and the input pull-ups |
+| 67 | `haptics.kicad_sch` | `blk.haptics` | DRV2605L at 0x5A, LRA contacts, link #19 |
+| 68 | `buttons.kicad_sch` | `blk.buttons` | Power, Vol+, Vol− (PTS815) and Action (part open) to ground, 4 × TPD1E10B06, the Vol− pull-up |
 
 Every block in use in the feature-block catalog has its sheet; the shield-can footprints of the variant files (`blk.shields`, BOM v1 line 90, not fitted) have none yet. The RK3566 USB, multi-PHY and CSI RX units are on `blk.soc-phy`; the reserved balls (`RSVD_*` in pinout v1), the spares pinout v1 leaves without a pad and the unused PHY balls carry no-connect flags.
 
@@ -114,11 +113,11 @@ The generator's inputs are the pinout (`../pinout/pinout-v1.csv`), the net class
 
 The PDF plot uses kicad-lib's OpenDAP colour theme (CRAFT-103): copy `../lib/opendap/kicad/colour-themes/opendap.json` into KiCad's `colors` folder first (on macOS `~/Library/Preferences/kicad/10.0/colors/`). Plots are generated outputs and are not committed.
 
-## Status (2026-10-27)
+## Status (2026-10-28)
 
-Board (placement v1.2, the 62.5 × 95.0 mm body of [ADR 0025](../../docs/adr/0025-height-zones-in-the-wider-body.md) and the swaps of BOM v1.17): outline 59.1 × 91.6 mm, all 1,012 parts placed (852 front, 160 back), four on courtyard-only placeholders for the lands not drawn; 97.8 % of both sides by the floorplan's method, placement and routing factor 1.70 left; DRC with the composed rules 0 errors, 499 unconnected items (not routed; a warning at this stage, project setting), schematic parity 0. The placement's facts, decisions and open items are in [placement v1](../../docs/specs/placement-v1.md).
+Board (placement v1.4, the 62.5 × 95.0 mm body of [ADR 0025](../../docs/adr/0025-height-zones-in-the-wider-body.md), BOM v1.18 with the NFC reader withdrawn): outline 59.1 × 91.6 mm, all 990 parts placed (704 front, 286 back), four on courtyard-only placeholders for the lands not drawn; 96.9 % of both sides by the floorplan's method, placement and routing factor 1.72 left; 243 capacitors within their proximity bound; DRC with the composed rules 0 errors, 499 unconnected items (not routed; a warning at this stage, project setting), schematic parity 0. The placement's facts, decisions and open items are in [placement v1](../../docs/specs/placement-v1.md).
 
-Schematic (2026-10-26):
+Schematic (2026-10-28, 68 sheets; the checks rerun after the NFC reader was withdrawn):
 
 ERC: no errors (warnings: four `isolated_pin_label`, each a net with one pin by design: `WL_1V8_EN_GPIO` (the DNP enable option on `blk.radio-power`), `MCLK441_ST` and `MCLK48_ST` (the oscillator ST nets between their 0 Ω and pull-down on `blk.mclk`), `SPARE_2B7` (pinout v1 D38, its pull-down holding the module PDn path idle); four `footprint_link_issues` for the undrawn Murata LQH3NP and C&K PTS815 lands, one `lib_symbol_mismatch` for KiCad's stock DMP3099L, five `pin_to_pin` for inputs tied to ground next to a `PWR_FLAG`). `odapkit craft check`: Q1 met, Q2 reached (Q3 debt: CRAFT-114, -127). `generator/overlaps.py`: no text collides with text or lines on any sheet, and the clearances above hold (2026-10-26: 386 pin numbers met no-connect crosses before kicad-lib's pin lengths grew with their numbers, CRAFT-121; none after). Every new sheet was reviewed on its plot, region by region (the six blocks of 2026-10-26 on PDF crops at 200 dpi). The generator's output does not depend on Python's hash seed (checked with two seeds on 2026-10-26).
 
@@ -148,7 +147,7 @@ Listed per sheet in each sheet's notes. In short:
 - `blk.radio-*`: module land mask and stencil, supply sequencing and the AVDD33 range (module datasheet not obtained).
 - `blk.fp-*`, `blk.mic-main`: the TPS22945 limit at 1.8 V and 2.8 V and the TPS22950 limit at 3.57 kΩ (**UNVERIFIED**); the TPS22950 FLT output left open; the DSI common-mode filter positions; the privacy-LED gate (no faceplate contact in pinout v1 §8.2); the LQH3NPN220 land (Murata sheet not retrieved).
 - `blk.nfc-tag`: the loop antenna and its tuning (line 126); the tag's behaviour with VCC at 0 V on a live I2C2 (G6). `blk.tpm`, `blk.haptics`: kernel modules through DKMS (BOM v1.7 item 4).
-- `blk.nfc-reader`: the matching values are AN13219 Rev. 1.6's first iteration for its example antenna and are retuned with a VNA on the T1's antenna (BOM line 126: shared loop or its own); the 15 pF crystal load capacitors (from CL 10 pF, DS Table 46 and AN14518's EVK parasitics) and the NDK NX2016SA pad assignment on KiCad's 2016 land are **UNVERIFIED**.
+- `blk.nfc-reader`: withdrawn on 2026-10-27 (maintainer decision, board area; feature blocks #42); its sheet is removed and the pages after it move up by one, so the references of the sheets from `cover-detect` on carry the page before (for example the microSD socket J6201 is now J6101).
 - `blk.rp2354-*`: the GPIO allocation is recorded in pinout v1 §3 (2026-10-26); the AOTA inductor's polarity against the Pico 2 layout and the RP2354A IOVDD pin list (RP2350 DS Figure 152 against Table 1679) are **UNVERIFIED**; the SoC-side 2.2 Ω USB series of pinout v1 V1/V2 sits with `blk.soc-phy` and is reconciled with the 27 Ω at the RP2354A at layout.
 - `blk.buttons`: the Action part is open (BOM line 76; KMR221GLFS placeholder on KiCad's KMR2 land); the PTS815 land `T1_Main_Board:SW_CK_PTS815` is not drawn until the C&K drawing shows which terminals are common (the circuit diagram on p. B–44 of the C&K PTS 815 datasheet is not legible in the copy read, **UNVERIFIED**). The switches use KiCad's two-pin `Switch:SW_Push`.
 - `blk.microsd`: detect switch wiring against the Hirose drawing.

@@ -1,12 +1,16 @@
 # Power tree v0
 
-- **Version:** v0.9 (2026-10-27), with BOM v1.17: [Changes in v0.9](#changes-in-v09). v0.8 is the state of BOM v1.14. v0.7 is the state of BOM v1.13, v0.6 is the state of BOM v1.12, v0.5 is the state of BOM v1.11, v0.4 of BOM v1.10, v0.3 of BOM v1.9, v0.2 the state of BOM v1.8, v0.1 of BOM v1.7.
+- **Version:** v0.10 (2026-10-28), with BOM v1.18: [Changes in v0.10](#changes-in-v010). v0.9 (2026-10-27) is the state of BOM v1.17. v0.8 is the state of BOM v1.14. v0.7 is the state of BOM v1.13, v0.6 is the state of BOM v1.12, v0.5 is the state of BOM v1.11, v0.4 of BOM v1.10, v0.3 of BOM v1.9, v0.2 the state of BOM v1.8, v0.1 of BOM v1.7.
 - **Status:** Draft. Desk design only: nothing here has been built or measured. Simulated (updated 2026-10-24): the amplifier rails ([output-stage simulation](../../sim/output-stage/README.md)), the VSYS bucks and the MaskROM entry ([VSYS buck and MaskROM simulations](../../sim/README.md)); netlists in `sim/`. Every part is *Proposed* unless [BOM v1](bom-v1.md) says *Decided*. Updated 2026-10-22 by the BOM v1 cross-validation (battery, HAT/USB 5 V source, TPS2121 isolation, faceplate rails, IO voltages, vdd_cpu part), then by BOM v1.1 (RK809-5 feeds and ratings, TPS61089 boost, 3.1 V MCLK supply, RP2354A supplies, battery derating, TPS2121 OV1, HP-amp soft-start), then by BOM v1.2 (power margin check of every rail, converter, connector and cable, BRD-049, §4.10; vcc3v3_sys on a 3 A TPS62826; battery path sized for the full output budget, BRD-050 and proposed ADR 0011; battery fuse; 50-contact HAT power connector; RGB status LED driver; TPS61089 and TPS2121 current limits), then by BOM v1.3 ([ADR 0012](../adr/0012-headphone-output-stage.md): six OPA1622 with paralleled halves, ±6 V amplifier rails on LT3045/LT3094 from ±7 V TPS65131 pre-rails, gain 1.62 with the CS43198 at `+1dB_EN` = 0, §4.1, §4.2, §4.10.1; interim-pack output ceiling, §4.11; vcc3v3_sys inductor, §4.10), then by BOM v1.4 (HAT pogo power contacts fixed by the hat-standard HAT interface v1, §4.10; no power part changes), then updated by BOM v1.5 / [ADR 0014](../adr/0014-two-cell-battery.md) (two-cell battery: BQ25798 charger, VSYS 6.0–8.8 V, TPS62136 pre-regulator to a 3.8 V VSYS_LV rail feeding the former 1S tree, TPS62903 bucks for HAT_5V/USB-C and HAT_3V3, BQ28Z610-R1 gauge, 5 A fuse, Micro-Fit 3.0 connector; full output budget ≈ 2.4 A at VSYS 6.6 V, battery path sized for the ≈ 3.2 A worst case; interim ceiling removed; finding 14, §2, §3, §4.6, §4.7, §4.9–§4.11). Then updated by BOM v1.6 / [ADR 0015](../adr/0015-amplifier-rails-from-vsys.md) (−7 V pre-rail from an LMR33630C inverting buck-boost on VSYS, TPS65131 boost only, paired LT3045/LT3094; ship FET; MaskROM supervisor; TPS62136 inductor correction; §2, §3, §4.7, §4.10, §4.10.1, §5, §6).
 - **Date:** 2026-10-22 (v0.2 to v0.5: 2026-10-24; v0.6 to v0.8: 2026-10-25)
 - **Companion:** [BOM v1](bom-v1.md) (parts, datasheet links and hashes).
 - **Inputs:** [BOM v0](bom-v0.md), ADR 0012, [board requirements](../requirements/README.md) (BRD-001 to BRD-050), board ADRs 0001–0015 (from v0.4 also [ADR 0020](../adr/0020-battery-connected-through-contacts.md); from v0.6 [ADR 0021](../adr/0021-vdd-cpu-buck-ti-tps62869.md) and [ADR 0022](../adr/0022-lpddr4x-micron-mt53e1g32d2fw-with-cxmt-second-source.md)), [output-stage simulation](../../sim/output-stage/README.md) and [VSYS buck and MaskROM simulations](../../sim/README.md) (v1.6), ADR 0014 (v1.5), touch-faceplate ADR 0001 (Focus E35GH), T1 and HAT Case Standard requirements, blackbird-os ADRs 0006–0008. Pin multiplexing v0 gave the balls until v0.2; from v0.3 [pinout v1](pinout-v1.md) does (§3.1). GPIO names below are net names.
 - **Method:** datasheets were downloaded and read (revision and sha256 in the BOM's Datasheets table); the RK809 rail mapping follows the Radxa ROCK 3C v1.4 schematic (PMIC marked RK809-5) and the mainline device trees of RK3566 + RK809 boards (Orange Pi 3B, ROCK 3C, ODROID-M1S), with Anbernic RG353 (RK817) and the Radxa ZERO 3W schematic v1.12 for the rest. Calculations are shown inline.
 - **Conventions:** **UNVERIFIED** = no primary source found in this session. "Est." = engineering estimate, to be replaced by measurement (T1-026).
+
+## Changes in v0.10
+
+1. **NFC_VBAT withdrawn (maintainer decision 2026-10-27, reason: board area; BOM v1.18 item 7, [feature blocks](feature-blocks.md) #42):** the NFC reader (PN7160) leaves the board in every model, with its rail: the TPS22916C on VSYS_LV, measurement link #18 and the `NFC_PWR_EN` gate (expander P05, now a spare). Five TPS22916C remain (DAC_VP, DAC_DIG_1V8, RP_3V3, RP_IOVDD_1V8, vcc3v3_wl). VSYS_LV loses its 0.29 A maximum NFC load, so the coincident-peak risk of §8 item 16 keeps only the system and radio peaks; vcca1v8_pmu loses the PN7160 VDD(PAD) (≤ 2 mA, est.). The NFC tag stays on vcca1v8_pmu. The rows below that name the reader, NFC_VBAT or link #18 are kept as the record of v0.2 to v0.9 and marked withdrawn.
 
 ## Changes in v0.9
 
@@ -206,7 +210,7 @@ VBUS_CHG --> BQ25798 (2S buck-boost charger 1.5 MHz, NVDC; OTG NOT used; VAC1/VA
           |     |      RTC + 32.768 kHz crystal
           |     +--> TPS62869 vdd_cpu 0.85-1.15 V (I2C DVS, 0x42), 6 A   max 3 A (est.), play ~0.15 A (est.) (v0.6, ADR 0021; RK860-0 before)
           |     +--> TPS62826 vcc1v8_wl 1.8 V 3 A (EN = vcc3v3_wl, so WL_PWR_EN)  Type 2EL AVDD18: 0.39 A typ TX, 1.05 A peak (v0.2)
-          |     +--> TPS22916C NFC_VBAT (PN7160 VBAT + VDD(UP))  0.29 A max, `NFC_PWR_EN` (v0.2)
+          |     +--> (withdrawn v0.10: TPS22916C NFC_VBAT, PN7160 VBAT + VDD(UP), 0.29 A max, `NFC_PWR_EN`)
           |     +--> TPS22916C DAC_VP (CS43198 VP x2)           0.1 mA play, VP first/last
           |     +--> TPS62840 AUDIO_2V2 2.2 V 750 mA max        play 16 mA
           |     |         +--> TPS7A2018 DAC1_VA 1.8 V    7.8 mA
@@ -254,7 +258,7 @@ VBUS_CHG --> BQ25798 (2S buck-boost charger 1.5 MHz, NVDC; OTG NOT used; VAC1/VA
 | FP_3V3 | TPS22950 (vcc3v3_sys; v0.5, TPS22919 before) | 3.30 V | 200 mA faceplate budget; limit 0.22–0.38 A (≤ 0.4 A ceiling, faceplate interface v1) | 0 (screen off) | `FP_IO_EN` (expander P00) | CTP VDD, ALS, faceplate logic, privacy LED (the status LED runs from the LP5521, v1.2). v0.3 (decision 2026-10-24): off in suspend by default; the expander can hold it on for a faceplate that wakes the T1 |
 | FP_1V8 | TPS22945 (vcc_1v8; v0.5, TPS22919 before) | 1.80 V less ≤ 0.11 V at 100 mA | 100 mA faceplate budget; limit 100–200 mA (≤ 0.2 A ceiling) | 0 (screen off) | `FP_IO_EN` | panel IOVCC, faceplate translators |
 | DAC_VP | TPS22916C (VSYS_LV, v1.5) | 3.8 V | 2 A switch | 0.06 mA | `DAC_VP_EN` | 2× CS43198 VP |
-| NFC_VBAT (v0.2) | TPS22916C (VSYS_LV; BOM line 50) | 3.8 V | 2 A switch; 0.29 A max load | 0 | `NFC_PWR_EN` (expander) | PN7160 VBAT, VBAT2, VDD(UP) |
+| NFC_VBAT (v0.2; withdrawn v0.10) | TPS22916C (VSYS_LV; BOM line 50) | 3.8 V | 2 A switch; 0.29 A max load | 0 | `NFC_PWR_EN` (expander) | PN7160 VBAT, VBAT2, VDD(UP) |
 | DAC_DIG_1V8 | TPS22916C (vcc_1v8) | 1.80 V | 2 A switch | 13.2 mA | `DAC_DIG_EN` | 2× CS43198 VD, VL, VCP v0.2: also the controls of the I2C2 isolation switch and one input of the MCLK gate |
 | AUDIO_2V2 | TPS62840 | 2.20 V | 0.75 A | 25 mA (v0.3; 16 mA before) | `AUDIO_LN_EN` | three TPS7A2018 (two VA, MCLK_1V8 from v0.3) |
 | DACx_VA | TPS7A2018 ×2 | 1.80 V | 0.3 A | 7.8 mA each | `AUDIO_LN_EN` | CS43198 VA |
@@ -569,7 +573,7 @@ BRD-049 check of every rail, converter, connector and cable. Rule: continuous lo
 | TPS7A1006 vcc0v6_ddr | 0.3 A | 0.2 A (est., **UNVERIFIED**) | 67 % | — | OK pending the RK3566 guide |
 | TPS62826 vcc1v8_wl (v0.2) | 3 A; ILIM ≥ 3.7 A (SLVSEF9I) | 0.39 A typical, 1.05 A peak | 13 % / 35 % | inductor peak 1.51 A = 41 % of ILIM min | OK |
 | vcc1v8_wl inductor Würth 744373240047 (v0.2) | 6.8 A (TI Table 8-5) | 1.51 A peak | 22 % | ILIM max 5.0 A = 74 % | OK |
-| TPS22916C NFC_VBAT (v0.9; TPS22919 from v0.2) | 2 A | 0.29 A max (PN7160 Table 1) | 15 % | PN7160 transmitter limiter 330 mA max | OK |
+| TPS22916C NFC_VBAT (v0.9; TPS22919 from v0.2; withdrawn v0.10) | 2 A | 0.29 A max (PN7160 Table 1) | 15 % | PN7160 transmitter limiter 330 mA max | OK |
 | RK809 LDO8 vcca1v8_pmu (v0.2) | 400 mA (VIN 3.6 V) / 200 mA (VIN 2 V) (RK809 p. 18) | ≈ 157 mA (est., §4.13) | 39 % / 79 % | — | OK on either figure; measure (BOM §7 item 35) |
 | Block measurement links (v0.2, §4.12) | WSL1206 0.25 W; 0603 thick film 0.1 W (Yageo RC/RL, **UNVERIFIED**, data sheet not read) | per §4.12 | ≤ 18 % | — | OK |
 | TPS22916C load switches (v0.9) | 2 A | ≤ 0.08 A | ≤ 4 % | — | OK (v0.5: the faceplate rails leave them) |
@@ -674,7 +678,7 @@ Rule (feature blocks G12, RFC 0011 rule 3): one link per block supply, on the bl
 | 15 | `blk.emmc` | VCCQ branch of vcc_1v8 | M | 0.1 A (est.) | 10 mV (0.6 %) | 1 mW |
 | 16 | `blk.microsd` | vcc3v3_sd | M | 0.2 A | 20 mV (0.6 %) | 4 mW |
 | 17 | `blk.speaker` | MAX98357A VDD (VSYS_LV branch) | M | 0.3 A peak (est.) | 30 mV (0.8 %) | 9 mW |
-| 18 | `blk.nfc-reader` | NFC_VBAT | M | 0.29 A max | 29 mV (0.8 %) | 8 mW |
+| 18 | `blk.nfc-reader` (withdrawn v0.10; the number is not reused) | NFC_VBAT | M | 0.29 A max | 29 mV (0.8 %) | 8 mW |
 | 19 | `blk.haptics` | DRV2605L VDD | M | 0.1 A (est.) | 10 mV | 1 mW |
 | 20 | `blk.tpm` | VDD (vcca1v8_pmu branch) | M | 30 mA (est.) | 3 mV | — |
 | 21 | `blk.rp2354` | RP_3V3 | M | 50 mA (est.) | 5 mV | — |
@@ -744,7 +748,7 @@ Default state is the state with no software running (pull resistors). "SoC GPIO"
 | Backlight | BL_LEDA | TPS61160 CTRL (v0.5) | SoC PWM `BL_PWM` | off (1 µA) | — | ALS-driven |
 | Status LED (RGB) | LED_R/G/B | LP5521 CHIP_EN bit, charge pump in power-save | I2C2 (`leds-lp5521`) | standby (1 µA, EN high, CHIP_EN = 0) | — | v1.2. EN tied to vcca1v8_pmu; works with the screen off and in suspend if the driver keeps it on |
 | Wi-Fi/BT | vcc3v3_wl, vcc1v8_wl (v0.2) | TPS22916C (v0.9; TPS22919 v0.3–v0.8; RK809 SWOUT1 before); TPS62826 EN on vcc3v3_wl | expander P06 `WL_PWR_EN` (v0.3; holds through suspend) | off | TPS22916C QOD, TPS62826 output discharge (the 1 kΩ DNP footprint of G13 stays a spare) | Plus module PDn. VIO and SD_VIO on vcc_1v8 (VCCIO4, pinout v1 confirms it); sequencing between AVDD33, AVDD18 and VIO **UNVERIFIED** (datasheet), GPIO-EN option DNP. v0.3 (decision 2026-10-24): off in suspend by default; on in suspend only while item tracking is enabled, with vcc_1v8 kept on; `WL_PDN` hold through suspend open (BOM §7 item 40) |
-| NFC reader (v0.2) | NFC_VBAT | TPS22916C | expander `NFC_PWR_EN` | off (pull-down) | QOD | VEN (native 1.8 V GPIO, pull-down) rises only after NFC_VBAT and falls before it (PN7160 §10.5.2.1); VDD(PAD) always on |
+| NFC reader (v0.2; withdrawn v0.10) | NFC_VBAT | TPS22916C | expander `NFC_PWR_EN` | off (pull-down) | QOD | VEN (native 1.8 V GPIO, pull-down) rises only after NFC_VBAT and falls before it (PN7160 §10.5.2.1); VDD(PAD) always on |
 | IMU, TPM, NFC tag (v0.2) | vcca1v8_pmu | none (always on) | — | on | — | Low-power modes by software; measured by their links (§4.12) |
 | Haptics (v0.2) | vcc3v3_sys | DRV2605L EN | expander `HAPTIC_EN` | off (pull-down) | — | G20 |
 | microSD | vcc3v3_sd, vccio_sd | RK809 SWOUT2, LDO5 | RK809 I2C | per DT | **UNVERIFIED** | UHS-I voltage switch |

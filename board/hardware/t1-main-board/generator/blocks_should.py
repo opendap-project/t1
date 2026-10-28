@@ -20,8 +20,6 @@ def sheets(proj):
                      "SLB9673 TPM 2.0 on I2C2 at 0x2E, always on", "A4")
     tag = proj.sheet("nfc-tag.kicad_sch", "blk.nfc-tag", "NFC tag",
                      "NTAG I2C plus on I2C2 at 0x55, field detect and the loop antenna contacts", "A4")
-    rdr = proj.sheet("nfc-reader.kicad_sch", "blk.nfc-reader", "NFC controller",
-                     "PN7160 on I2C2 at 0x28: NFC_VBAT switch, EMC filter, matching, RX path and 27.12 MHz crystal", "A3")
     rp = proj.sheet("rp2354.kicad_sch", "blk.rp2354", "Coprocessor",
                     "RP2354A orchestration coprocessor, drawn on two sub-sheets", "A4")
     rp.kids = {
@@ -30,7 +28,7 @@ def sheets(proj):
         "rp2354-power": proj.sheet("rp2354-power.kicad_sch", "blk.rp2354-power", "Coprocessor: supplies",
                                    "RP2354A supply unit, core regulator, RP_3V3 and RP_IOVDD_1V8 switches and links", "A3"),
     }
-    return hap, tpm, tag, rdr, rp
+    return hap, tpm, tag, rp
 
 
 def column(s, f, w=100.0):
@@ -127,135 +125,6 @@ def draw_tag(s, variants):
         "   its tuning against the 50 pF input are open items; the tag with VCC at 0 V and a live I2C2",
         "   is UNVERIFIED (G6).",
         "4. VCC from vcca1v8_pmu through link #33, 10 Ω (power tree §4.12: 1 mA est., UNVERIFIED).",
-    ])
-
-
-# ---------------------------------------------------------------------- blk.nfc-reader
-
-def draw_reader(s, variants):
-    """blk.nfc-reader (#42): PN7160 (BOM v1 line 127) with the front end of line 128: EMC filter,
-    matching and RX path per NXP AN13219 Rev. 1.6, supplies per AN12988 Rev. 1.6 Table 9, the
-    27.12 MHz crystal per the PN7160 DS Rev. 4.2 Table 17 and AN14518 Rev. 6.0 Table 9."""
-    from draw import ic, prow
-    from parts import PARTS, fields
-    import library
-    f = Flow(s)
-    pins = {"I2C_SCL/SPI_SCK": "I2C2_SCL", "I2C_SDA/SPI_MISO": "I2C2_SDA", "I2C_ADR0/SPI_NSS": "",
-            "I2C_ADR1/SPI_MOSI": "", "VEN": "NFC_VEN", "DWL_REQ": "NFC_DWL_REQ", "WKUP_REQ": "",
-            "NFC_CLK_XTAL1": "NFC_XTAL1", "XTAL2": "NFC_XTAL2", "i.c.": None, "n.c.": None, "IRQ": "NFC_IRQ",
-            "CLK_REQ": None, "DCDC_EN": None, "TX1": "NFC_TX1", "TX2": "NFC_TX2", "RXP": "NFC_RXP", "RXN": "NFC_RXN",
-            "VDD(VMID)": "NFC_VMID", "ANT1": None, "ANT2": None, "VDD(HF)": None,
-            "VBAT": "NFC_VBAT", "VBAT2": "NFC_VBAT", "VDD(UP)": "NFC_VBAT", "VDD(PAD)": "",
-            "VDD(TX)": "NFC_TVDD", "TVDD_IN": "NFC_TVDD", "TVDD_IN2": "NFC_TVDD",
-            "VDD": "NFC_VDD", "VDD(A)": "NFC_VDD", "VDD(D)": "NFC_VDD",
-            "VSS(PAD)": "GND", "VSS(A)": "GND", "VSS(TX)": "GND", "VSS": "GND"}
-    def controller():
-        from draw import row_need
-        g = Group(s, "PN7160 at I2C2 0x28 (BOM v1 line 127; AN12988 Table 9)")
-        u = ic(s, "nxp", "PN7160A1HN-C100E", 101.6, 101.6, pins)
-        # VDD(PAD) sits next to VDD(TX): its rail symbol stands above the NFC_TVDD label's text
-        px, py = u.pos(u.pin("6"))
-        s.wire((px, py), (px, py - 15.24))
-        s.power("vcca1v8_pmu", px, py - 15.24)
-        # ADR0, ADR1 (0x28) and WKUP_REQ to ground on one collector left of the VEN and DWL_REQ labels
-        ends = [u.pos(u.pin(k)) for k in ("1", "3", "39")]
-        xc = snap(ends[0][0] - 22.86)
-        for (ex, ey) in ends:
-            s.wire((ex, ey), (xc, ey))
-        s.wire((xc, ends[0][1]), (xc, ends[-1][1] + 2.54))
-        for (_, ey) in ends[1:]:
-            s.junction(xc, ey)
-        s.power("GND", xc, ends[-1][1] + 2.54)
-        g.add((xc - 2.54, ends[0][1], xc, ends[-1][1] + 5.08))
-        g.add(u.bbox)
-        g.add((u.bbox[0], py - 15.24 - 12.7, u.bbox[2], u.bbox[1]))
-        rx, ry = u.bbox[2] + 12.7, u.bbox[1]          # clear of the long value above the IC
-        for r in [[("C_4u7_0402_10V", "NFC_VBAT", "GND"), ("C_100n_0402", "NFC_VBAT", "GND"),
-                   ("C_4u7_0402_10V", "NFC_VBAT", "GND"), ("C_2u2_0402", "NFC_TVDD", "GND"),
-                   ("C_2u2_0402", "NFC_TVDD", "GND")],
-                  [("C_2u2_0402", "NFC_VDD", "GND"), ("C_2u2_0402", "NFC_VDD", "GND"),
-                   ("C_1u_0402", "vcca1v8_pmu", "GND"), ("C_100n_0402", "NFC_VMID", "GND")]]:
-            b_ = g.add(prow(s, rx, snap(ry + row_need(r) + 3.81), r))
-            ry = b_[3] + 2.54
-        return g.close()
-    grp(f, controller)
-
-    def xtal():
-        g = Group(s, "27.12 MHz crystal (DS Table 17; AN14518 Table 9)")
-        ysym = library.load("opendap-generic", "Crystal_GND24")
-        p = PARTS["Y_27M12"]
-        pl = s.place(ysym, s.next_ref("Y"), 127.0, 101.6, fields=fields("Y_27M12", s.block), value=p["value"],
-                     ref_at=(130.81, 96.52), val_at=(130.81, 107.95))
-        s.connect(pl, "1", "NFC_XTAL1")
-        s.connect(pl, "3", "NFC_XTAL2")
-        s.connect(pl, "2", "GND")
-        s.connect(pl, "4", "GND")
-        g.add((127.0 - 7.62 - 13.97, 93.98, 127.0 + 7.62 + 13.97, 111.76))   # with the XTAL labels
-        g.add(prow(s, 154.94, 109.22, [("C_15p_0402", "NFC_XTAL1", "GND"), ("C_15p_0402", "NFC_XTAL2", "GND")]))
-        return g.close()
-    col = column(s, f, w=120.0)
-    grp(col, xtal)
-
-    grp(col, lambda: ic_group(
-        s, "NFC_VBAT switch (BOM v1 line 50)", "texas-instruments", "TPS22916CYFPR",
-        {"VIN": "VSYS_LV", "ON": "NFC_PWR_EN", "VOUT": "NFC_VBAT_SRC",
-         "GND": "GND"}, rows=[[("C_1u_0402", "VSYS_LV", "GND")]]))
-    f.x_right = col.x_right
-    col2 = column(s, f, w=90.0)
-    grp(col2, lambda: link_group(s, "LINK_M", "NFC_VBAT_SRC", "NFC_VBAT", variants, "Link #18"))
-
-    def side(title, tx, emc, match, ant):
-        def draw():
-            g = Group(s, title)
-            g.add(prow(s, 101.6, 109.22, [("L_LQW18CN_R16", tx, emc), ("C_330p_0402_2", emc, "GND"),
-                                           ("C_68p_0402_2", emc, match), ("C_100p_0402_2", match, "GND"),
-                                           ("R_2R7", match, ant)]))
-            return g.close()
-        return draw
-    row2 = Flow(s, y0=snap(max(f.bottom(), col.bottom()) + 5.08))
-    grp(row2, side("TX1: L0, C0, C1, C2, Rs (AN13219 §4.1.3.7)",
-                   "NFC_TX1", "NFC_EMC_P", "NFC_MATCH_P", "NFC_ANT_P"))
-    grp(row2, side("TX2: as TX1", "NFC_TX2", "NFC_EMC_N", "NFC_MATCH_N", "NFC_ANT_N"))
-
-    def rx():
-        g = Group(s, "RX: Rrx, Crx (AN13219 §6.1)")
-        g.add(prow(s, 101.6, 109.22, [("R_2k2", "NFC_EMC_P", "NFC_RXP_R"), ("C_1n_0402", "NFC_RXP_R", "NFC_RXP"),
-                                       ("R_2k2", "NFC_EMC_N", "NFC_RXN_R"), ("C_1n_0402", "NFC_RXN_R", "NFC_RXN")]))
-        return g.close()
-    grp(col2, rx)
-    # the contacts close the TX row, whose paths end at them (the column keeps to the frame)
-    grp(row2, pads(s, "Antenna contacts (BOM v1 lines 126, 127)", ("NFC_ANT_P", "NFC_ANT_N")))
-
-    s.iface_rows = [
-        ["I2C2_SCL, I2C2_SDA", "Bidirectional", "0x28 (ADR0, ADR1 low); pull-ups on blk.soc-pmuio. Unfitted: 0x28 free"],
-        ["NFC_VEN, NFC_DWL_REQ", "Input", "GPIO2_C0, GPIO2_C6 at 1.8 V; SoC pull-downs: hard power-down, normal boot"],
-        ["NFC_IRQ", "Output", "GPIO0_D5; SoC pull-down: no interrupt unfitted"],
-        ["NFC_PWR_EN", "Input", "Expander P05, 100 kΩ pull-down on blk.gpio-expander: NFC_VBAT off"],
-    ]
-    s.rail_rows = [
-        ["NFC_VBAT", "4.7 µF + 100 nF (VBAT), 4.7 µF (VDD(UP))", "AN12988 Table 9: Cvbat, Cvbat1, Cvdd(up)"],
-        ["NFC_TVDD", "2 x 2.2 µF", "AN12988 Table 9: Ctvdd1, Ctvdd2 (2 against derating)"],
-        ["NFC_VDD", "2 x 2.2 µF", "AN12988 Table 9: Cvdd1, Cvdd2, one at VDD(D), one at VDD(A)"],
-        ["vcca1v8_pmu, NFC_VMID", "1 µF (VDD(PAD)), 100 nF (VDD(VMID))", "AN12988 Table 9: Cvdd(pad), Cvdd(mid)"],
-        ["VSYS_LV", "1 µF at the switch input", "Capture choice (SLVSEN5B)"],
-    ]
-    corner_notes(s, [
-        "1. Function: PN7160 NFC controller, reader and T1-to-T1 hand-off (BRD-057, should); nxp-nci",
-        "   over I2C2. Fitted on prototypes, DNP option in production (BOM v1 line 127).",
-        "2. Absent state: unfitted or NFC_PWR_EN low: VEN and DWL_REQ held low by the SoC, IRQ pulled",
-        "   down, 0x28 free. VEN must not go high before NFC_VBAT (DS §11.5.2; driver rule).",
-        "3. NFC_VBAT = VSYS_LV 3.8 V through a TPS22916C and link #18 (power tree §4.12): VBAT, VBAT2",
-        "   and VDD(UP) (DS Table 30: 2.8-5.5 V reader). VDD(PAD) on the always-on vcca1v8_pmu.",
-        "4. Front end: L0 160 nH and C0 330 pF (EMC cut-off about 22 MHz, asymmetrical), C1 68 pF,",
-        "   C2 100 pF, Rs 2.7 Ω: the first-iteration values of AN13219 §4.1.3.7 for its example",
-        "   antenna. They are retuned with a VNA on the T1's antenna (BOM line 126, open: shared",
-        "   loop or own) before any measurement. Tolerances (AN13219 Table 5): L0 5 %; C0, C1, C2",
-        "   C0G 2 %, 50 V; Rs 1 %.",
-        "5. Crystal NX2016SA (CL 10 pF); 15 pF each side from CL = 10 pF with Ci 2 pF (DS Table 46)",
-        "   and the EVK's PCB parasitics (AN14518 Table 2): UNVERIFIED until the offset is measured",
-        "   (-5 to 0 ppm, AN14518 §7.2); the NDK pad assignment on the 2016 land is UNVERIFIED.",
-        "6. Open: WKUP_REQ tied low (host wakes the PN7160 over I2C); CLK_REQ, DCDC_EN, i.c., n.c.,",
-        "   VDD(HF), ANT1 and ANT2 open (AN12988 §6.2.2; the optional field detector is not used).",
     ])
 
 

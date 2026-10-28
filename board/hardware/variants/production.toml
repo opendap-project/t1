@@ -68,7 +68,6 @@ test_points = "fit"
 "blk.radio" = { state = "fit" }
 "blk.antennas" = { state = "fit" }
 "blk.nfc-tag" = { state = "fit" }
-"blk.nfc-reader" = { state = "dnp", open = "BOM line 127 lists the PN7160 as a DNP option in production; the ADR 0013 rule (keep should parts) has not been applied to it" }
 "blk.imu" = { state = "fit", note = "ADR 0013" }
 "blk.haptics" = { state = "fit" }
 "blk.tpm" = { state = "fit" }

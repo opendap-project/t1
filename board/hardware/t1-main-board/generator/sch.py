@@ -35,8 +35,8 @@ RAILS = [
     "FP_3V3", "FP_1V8", "MIC_1V8", "FP_VCI_SRC",
     # radio (power tree §2, v0.2)
     "vcc3v3_wl", "vcc1v8_wl",
-    # NFC controller and coprocessor (power tree v0.2 §3)
-    "NFC_VBAT", "RP_3V3", "RP_IOVDD_1V8",
+    # coprocessor (power tree v0.2 §3)
+    "RP_3V3", "RP_IOVDD_1V8",
     # the branches the INA236 shunts measure (power tree §4.12, G11): supply side of the VSYS shunt
     # (BQ25798 SYS), then the load side of each branch shunt
     "VSYS_SRC", "VSYS_LV_AUDIO", "VSYS_AUDIO", "VSYS_LV_BL", "VSYS_P5V1",

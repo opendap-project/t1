@@ -125,14 +125,14 @@ def bus_aliases():
             + ["FP_I2C_SCL", "FP_I2C_SDA", "FP_SPI_SCLK", "FP_SPI_MOSI", "FP_SPI_MISO", "FP_SPI_CS_N", "FP_DBI_DC",
                "FP_TP_INT", "FP_TP_RST_N", "FP_LCD_RST_N", "FP_LCD_TE", "FP_HID_INT_N", "FP_ALS_INT_N", "BL_PWM",
                "MIC_EN", "PDM_CLK0", "PDM_DATA0"],
-            "EXP_IO": ["FP_IO_EN", "HAT_VBUS_DISCH", "HAT5V_EN", "USB_SRC_ON", "HAPTIC_EN", "NFC_PWR_EN", "WL_PWR_EN",
+            "EXP_IO": ["FP_IO_EN", "HAT_VBUS_DISCH", "HAT5V_EN", "USB_SRC_ON", "HAPTIC_EN", "WL_PWR_EN",
                        "WL_PD_HOLD_N", "HP_DET_SE", "HP_DET_BAL", "FP_DET_N", "FP_GPIO0", "FP_GPIO1",
                        "EFUSE_HAT5V_FLT_N", "EFUSE_5V_FLT_N", "EFUSE_VBUS_FLT_N"],
             "SDMMC0": ["SD_CLK", "SD_CMD", "SD_D0", "SD_D1", "SD_D2", "SD_D3", "SD_DET_N"],
             "SPK_I2S": ["SPK_BCLK", "SPK_LRCK", "SPK_SDIN", "SPK_SD_MODE"],
             # the root's SoC symbol stays within its row: control lines of the I2C2 and button blocks
             "KEYS": ["PWRON_N", "SARADC_VOLUP", "VOLDN_N", "ACTION_BTN_N", "COVER_DET_N"],
-            "NFC": ["NFC_FD_N", "NFC_VEN", "NFC_DWL_REQ", "NFC_IRQ"],
+            "NFC": ["NFC_FD_N"],
             "TPM": ["TPM_RST_N", "TPM_PIRQ_N"],
             "LED": ["LED_R", "LED_G", "LED_B"],
             "DEBUG": ["DBG_UART_TX", "DBG_UART_RX"] + blocks_instr.spare_pads(),
@@ -187,7 +187,7 @@ def main():
     radio, rkids, ant = blocks_radio.sheets(proj)
     fpc, fpd, fpb, fpk, mic = blocks_faceplate.sheets(proj)
     exp, bid, imu, spk, sd = blocks_io.sheets(proj)
-    hap, tpm, tag, rdr, rp = blocks_should.sheets(proj)
+    hap, tpm, tag, rp = blocks_should.sheets(proj)
     btn = blocks_io.sheets_buttons(proj)
     cmon, led, dbg, cov, amb, rom = blocks_instr.sheets(proj)
 
@@ -199,7 +199,7 @@ def main():
              [soc, [ddr, emmc], [audio, amb], [jse, jbal], [rp, rom], [None, cmon], [None, dbg]]),
             ("USB ports (the 5.1 V source, USB-C, the HAT port) and the radio",
              [p5v1, vout, usbc, hats, hat5v, radio, ant]),
-            ("Faceplate interface; control, storage and sensors", [[fpc, fpd, mic], [fpb, fpk, led], [spk, sd, exp], [bid, imu, hap], [tpm, tag, btn], [rdr], [cov]])]
+            ("Faceplate interface; control, storage and sensors", [[fpc, fpd, mic], [fpb, fpk, led], [spk, sd, exp], [bid, imu, hap], [tpm, tag, btn], [cov]])]
 
     kids = {charger: [ckids[k] for k in blocks_charger.KIDS], soc: [subs[n] for n, *_ in blocks_soc.SUBS],
             audio: [akids[k] for k in blocks_audio.reading_order()],
@@ -263,7 +263,6 @@ def main():
     blocks_should.draw_tpm(tpm, variants)
     blocks_should.draw_tag(tag, variants)
     blocks_io.draw_buttons(btn, variants)
-    blocks_should.draw_reader(rdr, variants)
     blocks_should.draw_rp2354(rp, variants)
     blocks_instr.draw_current_monitors(cmon, variants)
     blocks_instr.draw_status_led(led, variants)
@@ -279,7 +278,7 @@ def main():
     overview.draw_interconnect(inter)
 
     for s in [power, inter, charger, gauge, vsys_lv, v3v3, pmic, vcpu, soc, ddr, emmc, audio, jse, jbal,
-              p5v1, usbc, vout, hat5v, hats, radio, ant, fpc, fpd, fpb, fpk, mic, exp, bid, sd, imu, spk, hap, tpm, tag, rdr, btn, rp, cmon, led, dbg, cov, amb, rom]:
+              p5v1, usbc, vout, hat5v, hats, radio, ant, fpc, fpd, fpb, fpk, mic, exp, bid, sd, imu, spk, hap, tpm, tag, btn, rp, cmon, led, dbg, cov, amb, rom]:
         root.child(s, 0, 0, w=25.4)
     for name, *_ in blocks_soc.SUBS:
         soc.child(subs[name], 0, 0, w=76.2)

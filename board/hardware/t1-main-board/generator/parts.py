@@ -44,7 +44,11 @@ PARTS = {
                           src="compaction (2026-10-27): 0402 decoupling in 0201 on rails <= 3.3 V; the sheet's "
                               "unless-noted rating (at least twice the rail) covers it"),
     "C_100n_0402": _c("100 nF", "GRM155R71C104KA88D", "0402", 16, "X7R", spec=""),
-    "C_1u_0402": _c("1 µF", "GRM155R61A105KE15D", "0402", 10, "X5R", spec=""),
+    "C_1u_0402": _c("1 µF", "GRM155C71A105KE11D", "0402", 10, "X7S", spec="",
+                     src="successor of GRM155R61A105KE15D (to be discontinued): BOM v1.18 item 2"),
+    "C_2u2_0402_LDO": _c("2.2 µF", "GRM155R61C225KE11D", "0402", 16, "X5R", spec="",
+                         src="TPS7A20 CIN and COUT: 0.47 µF effective minimum (SBVS338H §5.3), 1.03 µF effective "
+                             "at 3.8 V, -20 to 85 °C (BOM v1.18 item 2)"),
     "C_2u2_0402": _c("2.2 µF", "GRM155R61A225KE95D", "0402", 10, "X5R", spec=""),
     "C_4u7_0402": _c("4.7 µF", "GRM155R60J475ME47D", "0402", 6.3, "X5R"),
     "C_10u_0603": _c("10 µF", "GRM188R61A106KE69D", "0603", 10, "X5R"),
@@ -66,7 +70,8 @@ PARTS = {
     "C_120p_0402": _c("120 pF", "GRM1555C1H121JA01D", "0402", 50, "C0G"),
     "C_3n3_0402": _c("3.3 nF", "GRM155R71H332KA01D", "0402", 50, "X7R"),
     "C_1n_0402": _c("1 nF", "GRM155R71H102KA01D", "0402", 50, "X7R"),
-    "C_1u_0402_10V": _c("1 µF", "GRM155R61A105KE15D", "0402", 10, "X5R"),
+    "C_1u_0402_10V": _c("1 µF", "GRM155C71A105KE11D", "0402", 10, "X7S",
+                        src="LP5521 VOUT 10 V (SNVS441I p. 37); successor of GRM155R61A105KE15D: BOM v1.18 item 2"),
     "C_390n_0603": _c("390 nF", "GRM188R71C394KA01D", "0603", 16, "X7R",
                       src="TPS3808 CT 390 nF X7R ±10 % (BOM v1 line 97); part capture choice"),
     "C_470n_0402": _c("470 nF", "GRM155R61A474KE15D", "0402", 10, "X5R",
@@ -472,7 +477,7 @@ def area_swap(block, ref, f, value):
         g["Datasheet"] = YAGEO + g["MPN"]
         g["Description"] = f["Description"].replace("1/16 W, 0402", "1/20 W, 0201")
         return g
-    if (block, ref) in AREA_C_DCBIAS and f.get("MPN") in ("GRM21BR61E106KA73L", "GRM155R61A105KE15D"):
+    if (block, ref) in AREA_C_DCBIAS and f.get("MPN") in ("GRM21BR61E106KA73L", "GRM155C71A105KE11D"):
         g = dict(f)
         g.update({k: PARTS[AREA_C_DCBIAS[(block, ref)]][k] for k in ("Footprint", "Datasheet", "Description", "MPN")})
         return g

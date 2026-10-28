@@ -163,7 +163,7 @@ def draw_supply(s, variants):
     s.rail_rows = [
         ["VSYS_LV_AUDIO", "1 µF; 4.7 µF 10 V (TPS62840 VIN)", "TPS22916C CIN 1 µF (BOM v1 line 50); TPS62840 CI 4.7 µF (SLVSEC6D Table 2)"],
         ["vcc_1v8", "1 µF", "TPS22916C CIN 1 µF (BOM v1 line 50)"],
-        ["AUDIO_2V2", "10 µF 4 V", "TPS62840 CO 10 µF (SLVSEC6D Table 2); each LDO adds 1 µF"],
+        ["AUDIO_2V2", "10 µF 4 V", "TPS62840 CO 10 µF (SLVSEC6D Table 2); each LDO adds 2.2 µF"],
     ]
     corner_notes(s, [
         "1. Function: DAC_VP (TPS22916C from VSYS_LV: VP of both CS43198), DAC_DIG_1V8 (TPS22916C from",
@@ -190,11 +190,11 @@ def draw_mclk(s, variants):
     grp(f, lambda: link_group(s, "LINK_L1", "VSYS_LV_AUDIO", "MCLK3V1_IN", variants, "Link #27"))
     grp(f, lambda: ic_group(s, "MCLK_3V1 LDO", "texas-instruments", "TPS7A2031PDBVR",
                             {"IN": "MCLK3V1_IN", "EN": "MCLK_3V1_EN", "N/C": None, "OUT": "MCLK_3V1", "GND": "GND"},
-                            rows=[[("C_1u_0402", "MCLK3V1_IN", "GND"), ("C_1u_0402", "MCLK_3V1", "GND")]]))
+                            rows=[[("C_2u2_0402_LDO", "MCLK3V1_IN", "GND"), ("C_2u2_0402_LDO", "MCLK_3V1", "GND")]]))
     grp(f, lambda: link_group(s, "LINK_L1", "AUDIO_2V2", "MCLK1V8_IN", variants, "Link #36"))
     grp(f, lambda: ic_group(s, "MCLK_1V8 LDO (ADR 0019 item 3)", "texas-instruments", "TPS7A2018PDBVR",
                             {"IN": "MCLK1V8_IN", "EN": "DAC_DIG_1V8", "N/C": None, "OUT": "MCLK_1V8", "GND": "GND"},
-                            rows=[[("C_1u_0402", "MCLK1V8_IN", "GND"), ("C_1u_0402", "MCLK_1V8", "GND")]]))
+                            rows=[[("C_2u2_0402_LDO", "MCLK1V8_IN", "GND"), ("C_2u2_0402_LDO", "MCLK_1V8", "GND")]]))
 
     def oscillators():
         g = Group(s, "Oscillators (ADR 0019 item 1)")
@@ -246,9 +246,9 @@ def draw_mclk(s, variants):
     ]
     s.rail_rows = [
         ["vcca1v8_pmu", "100 nF", "Gate VCC bypass (capture choice; SCES414P gives none)"],
-        ["MCLK_3V1", "1 µF + 2 x 10 nF", "TPS7A20 COUT 1 µF (SBVS338H Fig. 7-4); 0.01 µF per oscillator (NZ2520SDA p. 1)"],
-        ["MCLK_1V8", "1 µF + 2 x 100 nF", "TPS7A20 COUT 1 µF; 100 nF per divider (BOM v1 line 140)"],
-        ["LDO inputs", "1 µF each", "TPS7A20 CIN 1 µF (SBVS338H Fig. 7-4)"],
+        ["MCLK_3V1", "2.2 µF + 2 x 10 nF", "TPS7A20 COUT 0.47 µF effective minimum (SBVS338H §5.3; BOM v1.18 item 2); 0.01 µF per oscillator (NZ2520SDA p. 1)"],
+        ["MCLK_1V8", "2.2 µF + 2 x 100 nF", "TPS7A20 COUT 0.47 µF effective minimum; 100 nF per divider (BOM v1 line 140)"],
+        ["LDO inputs", "2.2 µF each", "TPS7A20 CIN 0.47 µF effective minimum (SBVS338H §5.3; BOM v1.18 item 2)"],
     ]
     corner_notes(s, [
         "1. Function: NDK NSC5083D at 45.1584 / 49.152 MHz on MCLK_3V1 (TPS7A2031), one at a time,",
@@ -308,7 +308,7 @@ def draw_dac(s, variants, side):
     grp(col, lambda: link_group(s, "LINK_L1", "AUDIO_2V2", f"{n}_VA_IN", variants, f"Link #{28 if master else 29}"))
     grp(col, lambda: ic_group(s, "VA LDO (TPS7A2018)", "texas-instruments", "TPS7A2018PDBVR",
                             {"IN": f"{n}_VA_IN", "EN": "AUDIO_LN_EN", "N/C": None, "OUT": va, "GND": "GND"},
-                            rows=[[("C_1u_0402", f"{n}_VA_IN", "GND"), ("C_1u_0402", va, "GND")]]))
+                            rows=[[("C_2u2_0402_LDO", f"{n}_VA_IN", "GND"), ("C_2u2_0402_LDO", va, "GND")]]))
     grp(f, lambda: parts_group(s, "Supplies and charge pumps (Fig. 2-1)", [
         [("C_100n_0402", "DAC_DIG_1V8", "GND"), ("C_100n_0402", "DAC_DIG_1V8", "GND"),
          ("C_2u2_0402", "DAC_DIG_1V8", "GND"), ("C_100n_0402", "DAC_VP", "GND"), ("C_4u7_0603_10V", "DAC_VP", "GND")],
@@ -331,7 +331,7 @@ def draw_dac(s, variants, side):
     s.rail_rows = [
         ["DAC_DIG_1V8", "VL, VD 100 nF each; VCP 2.2 µF", "DS1156F2 Fig. 2-1"],
         ["DAC_VP", "100 nF + 4.7 µF 10 V", "DS1156F2 Fig. 2-1"],
-        [va, "2.2 µF; FILT+ 15 µF to VA; LDO 1 µF", "DS1156F2 Fig. 2-1; SBVS338H Fig. 7-4"],
+        [va, "2.2 µF; FILT+ 15 µF to VA; LDO 2.2 µF", "DS1156F2 Fig. 2-1; SBVS338H Fig. 7-4"],
         ["-VA, VCP_FILT±", "2.2 µF each; flying 2.2 µF x 3", "DS1156F2 Fig. 2-1, internal VCP_FILT (EXT_VCPFILT = 0)"],
     ]
     corner_notes(s, [

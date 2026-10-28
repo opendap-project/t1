@@ -6,6 +6,7 @@
 - **Updated 2026-10-24 (BOM v1.11, power tree v0.5):** hat-standard interface v1.1 and its [ADR 0005](https://github.com/opendap-project/hat-standard/blob/main/docs/adr/0005-interface-v1-1-shared-extension-and-contact-reduction.md): `blk.hat-signals` (one DF40C-100, the two extension switches, `EXT_SB0`–`EXT_SB2`, SWD as a GPIO alternate), `blk.hat-5v` and `blk.hat-3v3` (single connector, fault ceilings 3.0 A and 1.5 A). The t1 faceplate interface v1 (t1 ADRs 0004, 0005): `blk.fp-connector`, `blk.fp-display`, `blk.fp-backlight`, `blk.fp-controls` (identity node in the devicetree, I2C3 pull-ups) and `blk.mic-main` (current-limited rail switches, TPS61160). No block is added or removed and no variant state changes, so the variant files are unchanged.
 - **Updated 2026-10-25 (BOM v1.12, power tree v0.6):** [ADR 0021](../adr/0021-vdd-cpu-buck-ti-tps62869.md): the `blk.vdd-cpu` record takes the TI TPS62869 at I2C0 0x42 (decision item 8). [ADR 0022](../adr/0022-lpddr4x-micron-mt53e1g32d2fw-with-cxmt-second-source.md): `blk.lpddr4x` holds single-rank parts on the shared land, its 4 GB alternate becomes the CXMT CXDB5CBAM-MA-B, and gap G18 is closed for 4 GB. The [HAT flat cable](hat-flat-cable.md) spec (§17 B8): `blk.hat-signals`, `blk.hat-5v` and `blk.hat-3v3` name the DF40C-100DS receptacle on the board and the cable per that spec. No block is added or removed and no variant changes.
 - **Updated 2026-10-25 (BOM v1.13, power tree v0.7, [RFC 0014](https://github.com/opendap-project/rfcs/blob/main/text/0014-hat-interface-v2-usb-only.md)):** HATs are USB only (hat-standard [interface v2](https://github.com/opendap-project/hat-standard/blob/main/docs/specs/interface-v2.md), [ADR 0006](https://github.com/opendap-project/hat-standard/blob/main/docs/adr/0006-hats-are-usb-only.md)). `blk.hat-5v` becomes the HAT `VBUS` source and sink with the HAT port's Type-C port controller (USB PD); `blk.hat-signals` carries USB 3, `D±` and `CC` with two ESD parts, no switches and no ID translator; `blk.hat-3v3` and `blk.hat-audio` are removed (records kept as removed; the variant files drop them); gap G14 closes by removal. The HAT connector parts (BOM lines 66, 67, 102) follow the open connector decision.
+- **Updated 2026-10-28 (variant tool):** every record whose block has a devicetree node names it in its Software row (`` `<label>` node ``): the mainline RK3566 labels (`sdhci`, `sdmmc0`, `sdmmc1`, `uart0`, `i2c3`, `dsi0`, `pdm`, `usb_host1_xhci`) and the board devicetree's labels, which that devicetree takes when it is written; `odapkit variant apply` disables these nodes for an unfitted block. The absent-state pulls of `blk.rp2354` and `blk.hpa-rails` sit on the host side (`blk.soc-vccio-b`), so they stay when the block is not fitted; `blk.cover-detect` relies on the SoC ball's own reset pull-down.
 - **Updated 2026-10-28 (BOM v1.19):** `blk.shields` has its sheet: three etched two-piece frames (SoC and LPDDR4X, radio module, DACs and headphone stage), not fitted in either variant, as the variant files had it. No block is added or removed.
 - **Updated 2026-10-28 (BOM v1.18 item 8, power tree v0.10, [ADR 0026](../adr/0026-vdd-cpu-buck-ti-tps62870z4.md)):** the `blk.vdd-cpu` record (#13) takes the TPS62870Z4 with differential sense; the 1100 mV cap stays. No block is added or removed.
 - **Updated 2026-10-27 (BOM v1.18 item 7, power tree v0.10, maintainer decision):** `blk.nfc-reader` (#42) withdrawn for board area, in every model; BRD-057 reworded: NFC as the tag only; `blk.nfc-tag` (#41) does not depend on the reader and stays. Both variant files drop the block; expander P05 becomes a spare (`blk.gpio-expander` record).
@@ -109,6 +110,7 @@ Field order follows RFC 0011 §1. "Holds" lists the swap classes the interface t
 | Holds / revision | Holds: speed grades of the RK3566. Revision: any other SoC (RK3576, i.MX 8M Plus are named as upgrades, line 1): new board, reusing every other block it can |
 | Alternates | None same-land |
 | Software | Mainline `rk3566.dtsi` (H0); board devicetree (H1) |
+| Sub-blocks | `blk.soc-ddr`, `blk.soc-pmuio`, `blk.soc-vccio-a`, `blk.soc-vccio-b`, `blk.soc-phy`, `blk.soc-power`, `blk.soc-ground` (sheets of this record, each part's `Block` field) |
 | Level | — / Q1 |
 
 #### 2. `blk.lpddr4x`: memory
@@ -164,7 +166,7 @@ Field order follows RFC 0011 §1. "Holds" lists the swap classes the interface t
 | Absent state | 0x50 free on I2C2; nothing else |
 | Holds / revision | Holds: any 24C02-class EEPROM at 0x50 in SOT23-5. Revision: SO-8 second source (M24C02, other land) |
 | Alternates | AT24C02D-STUM-T (line 17) |
-| Software | `atmel,24c02` at 0x50; board description `identity` reads it |
+| Software | `board_id` node (the AT24C02D on I2C2); `atmel,24c02` at 0x50; board description `identity` reads it |
 | Level | — / Q1 |
 
 #### 6. `blk.gpio-expander`: slow enables and detects
@@ -178,7 +180,7 @@ Field order follows RFC 0011 §1. "Holds" lists the swap classes the interface t
 | Absent state | Not applicable (never omitted). Every output it drives has a board pull-down to its off state, since the TCA6416A ports power up as inputs |
 | Holds / revision | Holds: PCAL6416A (same driver, line 93). Revision: an expander of another pin count |
 | Alternates | `pcal6416a` |
-| Software | `ti,tca6416` (`gpio-pca953x`) |
+| Software | `gpio_exp` node (the TCA6416A); `ti,tca6416` (`gpio-pca953x`) |
 | Level | — / Q1 |
 
 ### 3.2 Power
@@ -194,7 +196,8 @@ Field order follows RFC 0011 §1. "Holds" lists the swap classes the interface t
 | Absent state | Not applicable (never omitted). Battery absent (pack out, contacts open): with no adapter the BQ25798 is unpowered and the ship FET off, so a pack inserted later meets a soft start (ADR 0020 item 6); with an adapter, the BQ25798 keeps SYS regulated, sees the missing NTC, stops charging and reports no battery. Bring-up: a bench terminal board with the pack's pad layout, wired to a bench supply or a protected 2S pack, presses on the same contacts (ADR 0020 item 9); TS window follows the pack NTC |
 | Holds / revision | Holds: BQ25792 (same family, mainline-supported, line 39) on the same land; any pack built to the published pack specification (T1-079). Revision: 1S or 3S+ packs (ADR 0014), another charger family, another contact row (pitch, order or arrangement) |
 | Alternates | `bq25792` (line 39); fuse 0451004.MRL only under ADR 0014's condition (line 104); battery contacts: none on the same land; `pogo-contacts`, Mill-Max 0965 or 0990 pogo pins, four per pole on their own land, as the fallback to qualify (line 47; rule 1: a DNP footprint set in this block's sheet, never a land outside it) |
-| Software | `ti,bq25798`, `ti,bq25792` (DKMS); board description `power` section |
+| Software | `charger` node (the BQ25798); `ti,bq25798`, `ti,bq25792` (DKMS); board description `power` section |
+| Sub-blocks | `blk.charger-input`, `blk.charger-core`, `blk.charger-battery` (sheets of this record, each part's `Block` field) |
 | Level | — / Q1 (Q0 for the battery path: contacts, fuse, ship FET, margins; PCB-L-04 to L-09) |
 
 #### 8. `blk.gauge`: fuel gauge
@@ -208,7 +211,7 @@ Field order follows RFC 0011 §1. "Holds" lists the swap classes the interface t
 | Absent state | Not applicable (never omitted) |
 | Holds / revision | Holds: BQ28Z610 data-flash variants. Revision: BQ40Z50-R2 (other package, line 42) |
 | Alternates | None same-land |
-| Software | `ti,bq28z610` (DKMS); `org.opendap.hw.Battery` |
+| Software | `fuel_gauge` node (the BQ28Z610); `ti,bq28z610` (DKMS); `org.opendap.hw.Battery` |
 | Level | — / Q1 |
 
 #### 9. `blk.usb-c`: main USB-C port
@@ -222,7 +225,7 @@ Field order follows RFC 0011 §1. "Holds" lists the swap classes the interface t
 | Absent state | Not applicable (never omitted) |
 | Holds / revision | Holds: USB4105-GF-A land equivalents. Revision: the IP67 USB4730-GF-A (other land, line 61) |
 | Alternates | Amphenol 12402012E212A (land **UNVERIFIED**); FUSB302B → RT1715 (other land) is a revision |
-| Software | `fcs,fusb302` with `usb-c-connector` node; OTG0 `dr_mode = "otg"` |
+| Software | `usbc_tcpc` node (the FUSB302B); `fcs,fusb302` with `usb-c-connector` node; OTG0 `dr_mode = "otg"` |
 | Level | — / Q1 |
 
 #### 10. `blk.pwr-vsys-lv`: 3.8 V pre-regulator
@@ -236,7 +239,7 @@ Field order follows RFC 0011 §1. "Holds" lists the swap classes the interface t
 | Absent state | Not applicable |
 | Holds / revision | Holds: TPS62136RGXT (same part). Revision: TPS62903 (other land, line 113) |
 | Alternates | `tps62136rgxt` |
-| Software | Fixed regulator node (`regulator-fixed`, always-on) |
+| Software | `vsys_lv` node (the fixed regulator); Fixed regulator node (`regulator-fixed`, always-on) |
 | Level | — / Q1 |
 
 #### 11. `blk.pwr-3v3-sys`: 3.3 V system rail
@@ -250,7 +253,7 @@ Field order follows RFC 0011 §1. "Holds" lists the swap classes the interface t
 | Absent state | Not applicable |
 | Holds / revision | Holds: TPS62827DMQR (4 A, pin- and BOM-compatible, line 6) |
 | Alternates | `tps62827` |
-| Software | `regulator-fixed`, always-on |
+| Software | `vcc3v3_sys` node (the fixed regulator); `regulator-fixed`, always-on |
 | Level | — / Q1 |
 
 #### 12. `blk.pmic`: RK809-5
@@ -264,7 +267,7 @@ Field order follows RFC 0011 §1. "Holds" lists the swap classes the interface t
 | Absent state | Not applicable |
 | Holds / revision | Holds: RK809-5A (line 2). Revision: RK817-5 (codec PMIC, other pin map) |
 | Alternates | `rk809-5a` |
-| Software | `rockchip,rk809` with `rk805-pwrkey`, regulators, RTC, `clk-rk808` |
+| Software | `rk809` node (the PMIC); `rockchip,rk809` with `rk805-pwrkey`, regulators, RTC, `clk-rk808` |
 | Level | — / Q1 |
 
 #### 13. `blk.vdd-cpu`: CPU core buck
@@ -278,7 +281,7 @@ Field order follows RFC 0011 §1. "Holds" lists the swap classes the interface t
 | Absent state | Not applicable |
 | Holds / revision | Holds: none recorded on the same land (the TPS62871Z4, 9 A, shares the package). Revision: the 1800 MHz capacitor field of ADR 0026 item 7 |
 | Alternates | none |
-| Software | `ti,tps62870` (`tps6287x`, mainline since Linux 6.5; not built by Debian: DKMS, OS-023). BRD-049 safety limit (2026-10-25, kept by ADR 0026): `regulator-max-microvolt = <1100000>` on `vdd_cpu`, so the OPP core drops the 1800 MHz / 1150 mV point and the top CPU clock is 1608 MHz; documented where the user sees the CPU frequencies, never silent. At this cap a 4.8 A release peaks at 1.149 V with the fitted 45.7 µF effective. Lifted to `<1150000>` at bring-up only if DC top + the measured load-step peak at the SoC stays ≤ 1.170 V (30 mV under the RK3566's 1.2 V absolute maximum, DS 1.1 p. 51) with the capacitors then fitted (ADR 0026 item 7). Forced PWM through the FPWMEN bit (`REGULATOR_MODE_FAST`). The converter's widest range reaches 3.35 V over I2C (SLVSGC5E p. 1), so the kernel and U-Boot constraints are the only ceiling (BOM §8 item 26) |
+| Software | `vdd_cpu` node (the regulator of ADR 0026 item 6); `ti,tps62870` (`tps6287x`, mainline since Linux 6.5; not built by Debian: DKMS, OS-023). BRD-049 safety limit (2026-10-25, kept by ADR 0026): `regulator-max-microvolt = <1100000>` on `vdd_cpu`, so the OPP core drops the 1800 MHz / 1150 mV point and the top CPU clock is 1608 MHz; documented where the user sees the CPU frequencies, never silent. At this cap a 4.8 A release peaks at 1.149 V with the fitted 45.7 µF effective. Lifted to `<1150000>` at bring-up only if DC top + the measured load-step peak at the SoC stays ≤ 1.170 V (30 mV under the RK3566's 1.2 V absolute maximum, DS 1.1 p. 51) with the capacitors then fitted (ADR 0026 item 7). Forced PWM through the FPWMEN bit (`REGULATOR_MODE_FAST`). The converter's widest range reaches 3.35 V over I2C (SLVSGC5E p. 1), so the kernel and U-Boot constraints are the only ceiling (BOM §8 item 26) |
 | Level | — / Q1 |
 
 #### 14. `blk.pwr-5v1`: 5.1 V source for HAT_5V and USB-C VBUS out
@@ -292,7 +295,7 @@ Field order follows RFC 0011 §1. "Holds" lists the swap classes the interface t
 | Absent state | EN pulled low; output discharge on (line 91) |
 | Holds / revision | Holds: TPS62903 pin-compatible family members at ≤ 80 % load (TPS62902 fails: 80 %, line 91) |
 | Alternates | None checked |
-| Software | `regulator-gpio` or fixed regulator with `enable-gpios` |
+| Software | `vcc5v1` node (the 5.1 V regulator); `regulator-gpio` or fixed regulator with `enable-gpios` |
 | Level | — / Q1 |
 
 #### 15. `blk.hat-5v`: HAT port `VBUS` and USB PD
@@ -306,7 +309,7 @@ Field order follows RFC 0011 §1. "Holds" lists the swap classes the interface t
 | Absent state | HAT detached: the port controller presents its sink pull-down on `CC` (also unpowered: dead-battery support), `HAT5V_EN` pulled low, `VBUS` discharged and held by the TVS0500; `HAT_SRC_ON` low releases TPS2121 OV2, so a source HAT can feed the T1 |
 | Holds / revision | Holds: TPS259472A / TPS259474L (line 44); FUSB302B10MPX or FUSB302B11MPX (0x24, 0x25; FUSB302B/D Rev. 5 p. 18) on the same land if 0x23 is taken. Revision: PD voltages above 5 V from a HAT (OV2, TVS, `CC` protection); v1.14 accepts 5 V only (OV2 at 5.60–6.31 V) |
 | Alternates | `tps259472a`, `tps259474l`; port controller address variants |
-| Software | Mainline `fusb302` + `tcpm`: a `usb-c-connector` node with power-role dual, data-role host, `vbus-supply` = a fixed regulator on `HAT5V_EN`; the source offer 5 V 1.5 A, the sink offer 5 V; Blackbird OS PD policy for the HAT port |
+| Software | `hat_tcpc` node (the HAT port's FUSB302B01); Mainline `fusb302` + `tcpm`: a `usb-c-connector` node with power-role dual, data-role host, `vbus-supply` = a fixed regulator on `HAT5V_EN`; the source offer 5 V 1.5 A, the sink offer 5 V; Blackbird OS PD policy for the HAT port |
 | Level | — / Q1 |
 
 #### 16. `blk.usb-vbus-out`: USB-C source path
@@ -320,7 +323,7 @@ Field order follows RFC 0011 §1. "Holds" lists the swap classes the interface t
 | Absent state | `USB_SRC_ON` pulled low; OV1 released |
 | Holds / revision | As `blk.hat-5v` |
 | Alternates | As `blk.hat-5v` |
-| Software | `vbus-supply` of the `usb-c-connector` (TCPM source role) |
+| Software | `usbc_vbus` node (the source regulator); `vbus-supply` of the `usb-c-connector` (TCPM source role) |
 | Level | — / Q1 |
 
 #### 17. `blk.hat-3v3`: removed
@@ -356,7 +359,7 @@ Shunt positions of the audio and display channels are not defined in the BOM, an
 | Absent state | HAT detached: the USB host sees no attach; `CC` held by the port controller's pull-down. A dangling flat cable without a HAT must not load the USB 3 pairs (AC caps on the board side) |
 | Holds / revision | Holds: any HAT that meets interface v2 (H4). Revision: none planned |
 | Alternates | ESD: TPD1E04U04DPYR per line (line 68) |
-| Software | USB host on HOST1; Blackbird OS reads the HAT's identity capability from its USB descriptors and binds class drivers (interface v2); no devicetree overlay per HAT |
+| Software | `usb_host1_xhci` node (mainline); USB host on HOST1; Blackbird OS reads the HAT's identity capability from its USB descriptors and binds class drivers (interface v2); no devicetree overlay per HAT |
 | Level | — / Q1 |
 
 #### 20. `blk.hat-audio`: removed
@@ -392,7 +395,7 @@ The faceplate interface is the t1 [faceplate interface v1](https://github.com/op
 | Absent state | LDO4 off and its switch open (contact 44 dead whatever the RK809-5 OTP does); DSI PHY powered down (vdda_0v9 is shared with USB and PCIe PHYs, so it stays up); panel RST low; TE input pulled down |
 | Holds / revision | Holds: any panel on DSI 1–4 lanes or LVDS within the faceplate interface. Revision: parallel RGB (not on the RK3566, pin plan §3.1), a second DSI |
 | Alternates | Display part belongs to the faceplate |
-| Software | Faceplate overlay: `focuslcds,e35gh-i-mw800cb` (`panel-ilitek-ili9488`) on the touch faceplate |
+| Software | `dsi0` node (mainline); Faceplate overlay: `focuslcds,e35gh-i-mw800cb` (`panel-ilitek-ili9488`) on the touch faceplate |
 | Level | — / Q1 |
 
 #### 23. `blk.fp-backlight`: backlight driver
@@ -406,7 +409,7 @@ The faceplate interface is the t1 [faceplate interface v1](https://github.com/op
 | Absent state | Faceplate detached: CTRL low; with an open string the open-LED protection (25–27 V at SW, SLVS791E §6.5) bounds the output below the FH35C's 30 V |
 | Holds / revision | Holds: strings ≤ 18 V at 60 mA with ≥ 20 % margin from VSYS_LV, ≤ 22 V at lower currents (power tree §4.5). Revision: a driver on VSYS for longer strings, or a backlight on the faceplate |
 | Alternates | None qualified with an open-LED threshold ≤ 30 V (the TPS61169 no longer qualifies) |
-| Software | `pwm-backlight` |
+| Software | `backlight` node (the backlight); `pwm-backlight` |
 | Level | — / Q1 |
 
 #### 24. `blk.fp-controls`: faceplate control bus and interrupts
@@ -420,7 +423,7 @@ The faceplate interface is the t1 [faceplate interface v1](https://github.com/op
 | Absent state | Faceplate detached or FP_3V3 off: I2C3 pull-ups (2.2 kΩ, sized for 400 kHz with the faceplate's ≤ 100 pF, BOM v1.11) must sit on FP_3V3, not on an always-on rail, so no faceplate part is back-powered (G8); touch INT is the GT911 address strap: a board pull fixes the default address (G9); HID_INT and ALS_INT pulled up on FP_3V3, so they read low while it is off: masked by software then (pinout v1); SPI lines with SoC pulls |
 | Holds / revision | Holds: any controller on I2C/SPI with these interrupts. Revision: a faceplate that needs USB |
 | Alternates | — |
-| Software | Board devicetree (t1 faceplate interface v1 §4.1, t1 ADR 0004): the identity node on I2C3, `compatible = "hid-over-i2c"`, `reg = <0x2c>`, `hid-descr-addr = <0x0001>`, interrupt `FP_HID_INT_N` level-low (`IRQ_TYPE_LEVEL_LOW`), `vdd-supply` = FP_3V3, `post-power-on-delay-ms = <20>`, wakeup disabled by default (`power/wakeup` off, so `i2c-hid` releases FP_3V3 in suspend). The identity device itself is on the faceplate (faceplate-touch, BC7). Faceplate overlay, selected from the identity: `goodix,gt911`, `vishay,veml6030` |
+| Software | `i2c3` node (mainline: the faceplate control bus); Board devicetree (t1 faceplate interface v1 §4.1, t1 ADR 0004): the identity node on I2C3, `compatible = "hid-over-i2c"`, `reg = <0x2c>`, `hid-descr-addr = <0x0001>`, interrupt `FP_HID_INT_N` level-low (`IRQ_TYPE_LEVEL_LOW`), `vdd-supply` = FP_3V3, `post-power-on-delay-ms = <20>`, wakeup disabled by default (`power/wakeup` off, so `i2c-hid` releases FP_3V3 in suspend). The identity device itself is on the faceplate (faceplate-touch, BC7). Faceplate overlay, selected from the identity: `goodix,gt911`, `vishay,veml6030` |
 | Level | — / Q1 |
 
 #### 25. `blk.status-led`: RGB status LED driver
@@ -434,7 +437,7 @@ The faceplate interface is the t1 [faceplate interface v1](https://github.com/op
 | Absent state | Faceplate detached: current-source outputs open, no back-powering. LP5521 unfitted: 0x32 free; LED lines open |
 | Holds / revision | Holds: LP5521 packaging and binning on the WQFN-24 land. Revision: LP5521TMX/NOPB (DSBGA, same die, other land), or a single-colour LED on a PWM (FPT-025 fallback) |
 | Alternates | — same-land |
-| Software | `national,lp5521` (DKMS); `org.opendap.hw.Led`; description `indicators` |
+| Software | `status_led` node (the LP5521); `national,lp5521` (DKMS); `org.opendap.hw.Led`; description `indicators` |
 | Level | — / Q1 |
 
 #### 26. `blk.mic-main`: microphone supply, privacy LED gate and faceplate PDM
@@ -448,7 +451,7 @@ The faceplate interface is the t1 [faceplate interface v1](https://github.com/op
 | Absent state | MIC_1V8 off: PDM CLK0 must be parked low (pinctrl sleep state), otherwise it drives an unpowered microphone (G10); privacy LED off by construction |
 | Holds / revision | Holds: any PDM microphone at 1.8 V. Revision: an I2S or analog microphone |
 | Alternates | Infineon IM72D128 (line 34) |
-| Software | Rockchip PDM node with `dmic-codec`; the privacy LED is never described (hardware support spec §3) |
+| Software | `pdm` node (mainline); Rockchip PDM node with `dmic-codec`; the privacy LED is never described (hardware support spec §3) |
 | Level | — / Q1 |
 
 ### 3.5 Audio
@@ -466,7 +469,7 @@ The faceplate interface is the t1 [faceplate interface v1](https://github.com/op
 | Absent state | Not omitted in any product variant (T1-040). Unpowered: every enable pulled to off (PCB-A-13 [Q1]); I2S SDO lines parked low before power-down (power tree §5) and isolated from the unpowered DACs by hardware (G2) |
 | Holds / revision | Holds: another DAC family or output stage behind I2S/TDM/DSD with the converter as clock master or consumer, 1.8 V or 3.3 V control (with translation inside the block), its own supplies from VSYS and VSYS_LV, and up to four analog legs per jack pair. Revision: a converter that needs a SoC MCLK output, SPDIF, or USB audio |
 | Alternates | Child alternates below |
-| Software | `simple-audio-card` or audio-graph card (board devicetree); `org.opendap.hw.audio.Dac`, `.Output`; description `audio` and `outputs` sections |
+| Software | `sound` node (the card); `simple-audio-card` or audio-graph card (board devicetree); `org.opendap.hw.audio.Dac`, `.Output`; description `audio` and `outputs` sections |
 | Level | — / Q1 |
 
 #### 28. `blk.audio-supply`: DAC supplies
@@ -519,10 +522,11 @@ The faceplate interface is the t1 [faceplate interface v1](https://github.com/op
 | Interface | VSYS_LV (TPS65131 boost), VSYS (LMR33630C inverting buck-boost), HPA_P6V0 and HPA_N6V0 out, `HPA_RAIL_EN`, `HPA_LDO_EN` (≥ 10 ms later, 3.3 V logic) |
 | Power domain | TPS65131 ENP; LMR33630C EN through its level shifter; LDO EN/UV |
 | Measure | Proposed: shunt footprints on AUDIO_P7V0 and AUDIO_N7V0 inputs (G11): the LMR33630C draws from VSYS, outside any INA236 channel today |
-| Absent state | Both enables pulled low (PCB-A-13); LDO EN/UV low; OPA1622 EN low first |
+| Absent state | Both enables pulled low on the host side (`blk.soc-vccio-b`, PCB-A-13); LDO EN/UV low; OPA1622 EN low first |
 | Holds / revision | Holds: LMR33620CRNXR (line 116), XAL4020-222MEC (line 117). Revision: another rail topology or voltage |
 | Alternates | `lmr33620`, `xal4020-222` |
 | Software | Regulators with `enable-gpios` and fixed delays, consumed by the output nodes |
+| Sub-blocks | `blk.hpa-rails-pre`, `blk.hpa-rails-ldo` (sheets of this record, each part's `Block` field) |
 | Level | — / Q1 |
 
 #### 33–34. `blk.hpa-se`, `blk.hpa-bal`: headphone amplifier groups
@@ -537,6 +541,7 @@ The faceplate interface is the t1 [faceplate interface v1](https://github.com/op
 | Holds / revision | Holds: OPA1622 replacements on the DRC0010J land. Revision: another topology (parent swap) |
 | Alternates | Mute shunt (line 100) as `fit` option |
 | Software | Part of the card's DAPM widgets; output selection follows jack detection (BRD-052) |
+| Sub-blocks | `blk.hpa-bal-l`, `blk.hpa-bal-r` (sheets of this record, each part's `Block` field) |
 | Level | — / Q1 |
 
 #### 35–36. `blk.jack-se`, `blk.jack-bal`: headphone jacks
@@ -564,7 +569,7 @@ The faceplate interface is the t1 [faceplate interface v1](https://github.com/op
 | Absent state | SD_MODE pulled low (shutdown); with the part unfitted, I2S3 lines need SoC pull-downs |
 | Holds / revision | Holds: MAX98360A (same driver, line 32) |
 | Alternates | `max98360a` |
-| Software | `maxim,max98357a` |
+| Software | `speaker_amp` node (the MAX98357A); `maxim,max98357a` |
 | Level | — / Q1 |
 
 #### 38. `blk.mic-ambient`: ambient-noise microphone
@@ -594,7 +599,8 @@ The faceplate interface is the t1 [faceplate interface v1](https://github.com/op
 | Absent state | Module unfitted or off: PDn pulled low; host-wake lines pulled to "no wake"; SDIO and UART lines with SoC pulls and parked low before VBAT is removed (module sequencing **UNVERIFIED**: datasheet not retrieved) |
 | Holds / revision | Holds: u-blox MAYA-W271-00B (same chip, line 55; land **UNVERIFIED**) and any module behind SDIO, UART, PCM, the same supplies and two RF ports. Revision: PCIe or USB radios, a module that needs another supply. A PCIe + USB 2×2 module is a swap that needs a block revision; for it the PCIe sideband balls (`RSVD_PCIE_PERST_N`, `RSVD_PCIE_CLKREQ_N`, `RSVD_PCIE_WAKE_N`) and USB 2.0 HOST3 stay reserved and unconnected (pinout v1, 2026-10-25) |
 | Alternates | `maya-w271` |
-| Software | `nxpwifi` on SDMMC1 (DKMS until 7.3), `btnxpuart` serdev node (DKMS); iwd and BlueZ |
+| Software | `sdmmc1` node (mainline: Wi-Fi on SDIO); `nxpwifi` on SDMMC1 (DKMS until 7.3), `btnxpuart` serdev node (DKMS); iwd and BlueZ |
+| Sub-blocks | `blk.radio-module`, `blk.radio-power` (sheets of this record, each part's `Block` field) |
 | Level | — / Q1 (Q2 items PCB-R-04, PCB-R-05) |
 
 #### 40. `blk.antennas`: antenna feeds
@@ -640,7 +646,7 @@ Removed on 2026-10-27 (maintainer decision, reason: board area; BOM v1.18 item 7
 | Absent state | Unfitted: INT1 pulled down so the wake line does not float; 0x6A free |
 | Holds / revision | Holds: LSM6DSOXTR (same driver and footprint, line 59) |
 | Alternates | `lsm6dsox` |
-| Software | `st,lsm6dsv16x` (`st_lsm6dsx`); description `sensors` |
+| Software | `imu` node (the LSM6DSV16X); `st,lsm6dsv16x` (`st_lsm6dsx`); description `sensors` |
 | Level | — / Q1 |
 
 #### 44. `blk.haptics`: haptic driver and actuator
@@ -654,7 +660,7 @@ Removed on 2026-10-27 (maintainer decision, reason: board area; BOM v1.18 item 7
 | Absent state | EN pulled low; unfitted: 0x5A free, LRA contacts open |
 | Holds / revision | Holds: other LRAs within the driver's range. Revision: DA7280 (not pin-compatible) |
 | Alternates | `c10-100` actuator (Precision Microdrives) |
-| Software | `ti,drv2605l` (DKMS); `org.opendap.hw.Haptics` |
+| Software | `haptics` node (the DRV2605L); `ti,drv2605l` (DKMS); `org.opendap.hw.Haptics` |
 | Level | — / Q1 |
 
 #### 45. `blk.tpm`: hardware key holder
@@ -668,7 +674,7 @@ Removed on 2026-10-27 (maintainer decision, reason: board area; BOM v1.18 item 7
 | Absent state | Unfitted: 0x2E free; reset pulled to its inactive level; PIRQ pulled up |
 | Holds / revision | Holds: SLB9673 firmware versions. Revision: ST33KTPM2 (not pin-compatible: dual footprint or revision, line 122) |
 | Alternates | `st33ktpm2` as an alternate footprint (DNP) if the land fits under PCB-Z-03 |
-| Software | `infineon,slb9673`, `tcg,tpm-tis-i2c` (DKMS); `org.opendap.hw.KeyHolder` |
+| Software | `tpm` node (the SLB9673); `infineon,slb9673`, `tcg,tpm-tis-i2c` (DKMS); `org.opendap.hw.KeyHolder` |
 | Level | — / Q1 |
 
 #### 46. `blk.rp2354`: coprocessor
@@ -679,10 +685,11 @@ Removed on 2026-10-27 (maintainer decision, reason: board area; BOM v1.18 item 7
 | Interface | UART0, IRQ/wake (0_C7), RUN, BOOTSEL (open-drain), SWD, USB (EHCI host 2), passive taps on I2S1 SCLK, LRCK, SDO0–SDO2 (BRD-041), optional I2C2 |
 | Power domain | RP_3V3 and RP_IOVDD_1V8 (2 × TPS22916C, `RP_PWR_EN`; default an open question, power tree §8) |
 | Measure | Proposed shunt footprints on RP_3V3 and RP_IOVDD_1V8 (G12) |
-| Absent state | Unfitted or off: the I2S taps reach FT pins only (G4); UART0 TX from the SoC parked; IRQ pulled down ("no wake"); RUN open drain with 4.7 kΩ to RP_IOVDD_1V8; BOOTSEL (QSPI_SS, on RP_3V3) pulled low only through an N-FET whose gate is a 1.8 V ball with a pull-down (pinout v1 C6, BOM v1.9 line 35) |
+| Absent state | Unfitted or off: the I2S taps reach FT pins only (G4); UART0 TX from the SoC parked; IRQ pulled down on the host side (`blk.soc-vccio-b`, "no wake"); RUN open drain with 4.7 kΩ to RP_IOVDD_1V8; BOOTSEL (QSPI_SS, on RP_3V3) pulled low only through an N-FET whose gate is a 1.8 V ball with a pull-down on the host side (pinout v1 C6, BOM v1.9 line 35) |
 | Holds / revision | Holds: RP2350A with external QSPI flash (other BOM, line 12). Revision: RP2354B (QFN-80) |
 | Alternates | `rp2350a-qspi` |
-| Software | Flashed from Blackbird OS (BRD-015); serial node on UART0; description component |
+| Software | `uart0` node (mainline: the coprocessor link); Flashed from Blackbird OS (BRD-015); serial node on UART0; description component |
+| Sub-blocks | `blk.rp2354-core`, `blk.rp2354-power` (sheets of this record, each part's `Block` field) |
 | Level | — / Q1 |
 
 ### 3.7 Controls and debug
@@ -698,7 +705,7 @@ Removed on 2026-10-27 (maintainer decision, reason: board area; BOM v1.18 item 7
 | Absent state | Released state through the pulls |
 | Holds / revision | Holds: same-actuation switches on the land. Revision: the Action part (line 76 Open) |
 | Alternates | Action: Open |
-| Software | `rk805-pwrkey`, `adc-keys`, `gpio-keys`; description `controls` with roles |
+| Software | `adc_keys` node (the volume keys); `rk805-pwrkey`, `adc-keys`, `gpio-keys`; description `controls` with roles |
 | Level | — / Q1 |
 
 #### 48. `blk.maskrom`: MaskROM entry
@@ -740,7 +747,7 @@ Removed on 2026-10-27 (maintainer decision, reason: board area; BOM v1.18 item 7
 | Absent state | If `dnp`: the GPIO's internal pull holds the "cover closed" level and the device description omits the input, so Blackbird OS never acts on it; no other block depends on it |
 | Holds / revision | Holds: any switch or contact the case actuator uses, on the same pad. Revision: a detect that needs a supply (Hall or optical) |
 | Alternates | None |
-| Software | `gpio-keys` (a switch event); Blackbird OS powers down in order (ADR 0017 item 3 sequence with no adapter) when the cover lifts |
+| Software | `cover_detect` node (the `gpio-keys` switch); `gpio-keys` (a switch event); Blackbird OS powers down in order (ADR 0017 item 3 sequence with no adapter) when the cover lifts |
 | Level | — / Q2 (PCB-L-10) |
 
 ## 4. Variant files

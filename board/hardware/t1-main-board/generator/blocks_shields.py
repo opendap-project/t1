@@ -22,7 +22,7 @@ def sheet(proj):
                       "headphone stage (not fitted)", "A4")
 
 
-def _frame(s, f):
+def _frame(s, f, variants):
     """One frame part in its own group: placed like draw.ic, not fitted (dnp)."""
     g = Group(s, "%s (%s)" % (f["title"], f["basis"]))
     sym = library.load("T1_Main_Board", "Shield_Frame")
@@ -40,7 +40,10 @@ def _frame(s, f):
         "MPN": "T1-SHIELD-%s" % f["id"],
         "Alternate": "shield-fit",          # a not-fitted footprint, fitted on measurement (CRAFT-147)
     }
-    pl = s.place(sym, ref, x, y, fields=fields, value="Shield_Frame_" + f["id"], dnp=True)
+    # KiCad variant data: not fitted in every variant whose file says so (the base design is `full`)
+    kv = {name: {"dnp": True} for name, v in variants.items()
+          if v.get("kind") != "full" and v.get("blocks", {}).get(s.block, {}).get("state") == "dnp"}
+    pl = s.place(sym, ref, x, y, fields=fields, value="Shield_Frame_" + f["id"], dnp=True, variants=kv)
     mapping = {"1": "GND"}
     s.connect_all(pl, mapping)
     bx0, by0, bx1, by1 = unit_box(sym, 1)
@@ -61,7 +64,7 @@ def draw(s, variants):
     frames = shields.frames()
     f = Flow(s)
     for fr in frames:
-        grp(f, lambda fr=fr: _frame(s, fr))
+        grp(f, lambda fr=fr: _frame(s, fr, variants))
     d = frames[0]
     s.iface_rows = [["GND", "Ground", "Each frame land is one ground pad ring (pad 1)"]]
     s.rail_rows = [["(none)", "-", "No supply on this sheet"]]

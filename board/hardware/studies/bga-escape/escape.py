@@ -52,7 +52,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 BOARD_REPO = os.path.abspath(os.path.join(HERE, "..", "..", ".."))
 PINOUT = os.path.join(BOARD_REPO, "hardware", "pinout", "pinout-v1.csv")
 DRU = os.path.join(BOARD_REPO, "hardware", "t1-main-board", "t1-main-board.kicad_dru")
-FP_LIB = "Rockchip.pretty"
+FP_LIB = "rockchip.pretty"
 FP_NAME = "Rockchip_FCCSP-565L_15.5x14.4mm_P0.4mm_P0.65mm_Ball0.25mm_Pad0.25mm_NSMD"
 
 # ---- geometry and rules (mm). Sources: the RK3566 datasheet and the composed rules (README.md).
@@ -184,12 +184,26 @@ def V(x, y):
     return pcbnew.VECTOR2I(mm(x), mm(y))
 
 
+
+def workspace_root(start):
+    """The nearest folder above start that holds the workspace's repos.tsv (None outside a workspace):
+    the board may sit at any depth (its own repository or a merged root)."""
+    d = os.path.abspath(start)
+    while True:
+        if os.path.isfile(os.path.join(d, "repos.tsv")):
+            return d
+        up = os.path.dirname(d)
+        if up == d:
+            return None
+        d = up
+
+
 def kicad_lib_dir():
     env = os.environ.get("ODAP_KICAD_LIB_DIR")
     cands = [env] if env else []
-    ws = os.path.abspath(os.path.join(BOARD_REPO, "..", "..", "..", ".."))
-    tsv = os.path.join(ws, "repos.tsv")
-    if os.path.exists(tsv):
+    ws = workspace_root(BOARD_REPO)
+    tsv = os.path.join(ws, "repos.tsv") if ws else ""
+    if tsv and os.path.exists(tsv):
         with open(tsv) as fh:
             for line in fh:
                 f = line.rstrip("\n").split("\t")
@@ -629,7 +643,7 @@ class Study:
         fp = pcbnew.FootprintLoad(os.path.join(lib_dir, "footprints", FP_LIB), FP_NAME)
         fp.SetReference("U1")
         fp.SetPosition(V(CX, CY))
-        fp.SetFPIDAsString("Rockchip:" + FP_NAME)
+        fp.SetFPIDAsString("rockchip:" + FP_NAME)
         self.board.Add(fp)
         self.fp = fp
         fp.Flip(V(CX, CY), pcbnew.FLIP_DIRECTION_LEFT_RIGHT)   # the SoC is on the back

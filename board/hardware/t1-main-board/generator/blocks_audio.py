@@ -425,10 +425,9 @@ def draw_rails(s, variants):
 
     def shifter():
         g = Group(s, "-7 V enable level shifter (SNVA856B Fig. 7-1)")
-        g.add(prow(s, 101.6, 109.22, [("R_100k", "HPA_RAIL_EN", "GND")]))
         q1 = part(s, "Transistor_FET", "DMG1012T", 127.0, 116.84, {"1": "HPA_RAIL_EN", "3": "HPA_N7_LS_G", "2": "GND"},
                   key="Q_DMG1012T", prefix="Q")
-        g.add((114.3, 101.6, 139.7, 129.54))
+        g.add((101.6, 101.6, 139.7, 129.54))     # the gate's HPA_RAIL_EN label inside the group
         g.add(prow(s, 147.32, 109.22, [("R_100k", "VSYS_AUDIO", "HPA_N7_LS_G")]))
         part(s, "Transistor_FET", "DMP3099L", 175.26, 116.84, {"1": "HPA_N7_LS_G", "3": "VSYS_AUDIO", "2": "HPA_N7_LS_D"},
              key="Q_DMP3099L", prefix="Q")
@@ -438,7 +437,7 @@ def draw_rails(s, variants):
     grp(f, shifter)
 
     s.iface_rows = [
-        ["HPA_RAIL_EN", "Input", "100 kΩ pull-down here: both pre-rails off"],
+        ["HPA_RAIL_EN", "Input", "100 kΩ pull-down on the host side (blk.soc-vccio-b): both pre-rails off"],
         ["AUDIO_P7V0, AUDIO_N7V0", "Supply out", "Off; the LDOs behind them off first (power tree §6.3)"],
     ]
     s.rail_rows = [
@@ -451,7 +450,8 @@ def draw_rails(s, variants):
         "1. Function: AUDIO_P7V0 (TPS65131 boost from VSYS_LV_AUDIO, 475 kΩ / 100 kΩ: 6.97 V), AUDIO_N7V0",
         "   (LMR33630C inverting buck-boost from VSYS_AUDIO, IC ground = -7 V, 100 kΩ / 16.5 kΩ: -7.06 V), then",
         "   HPA_P6V0 / HPA_N6V0 from two LT3045 and two LT3094 in parallel (ADR 0015; BOM lines 22-26, 116-119).",
-        "2. Absent state: HPA_RAIL_EN and HPA_LDO_EN pulled down: both pre-rails and the LDOs off.",
+        "2. Absent state: HPA_RAIL_EN and HPA_LDO_EN pulled down on the host side: both pre-rails and",
+        "   the LDOs off.",
         "3. TPS65131 inverter half unused: ENN, PSN, VNEG, FBN to ground, OUTN and CN open, INN on",
         "   VSYS_LV_AUDIO with 4.7 µF (BOM line 22; no single-output case in SLVS493E, UNVERIFIED).",
         "4. LMR33630C: EN through the two-FET shifter of SNVA856B Fig. 7-1; PG and NC unused.",
@@ -780,12 +780,12 @@ def draw_host(s, y0, variants, y_right=None):
         two_pin_h(s, "R_0_0402", 129.54, y0 + 45.72 + i * 10.16, alt, f"DAC_I2C_{net}", blk,
                   extra={"Alternate": "dac-i2c-bypass"}, dnp=True)
     y0 = y0 if y_right is None else y_right
-    s.group_box("Audio pulls and RX clock option (B9; pinout v1)", 170.18, y0, 226.06, 63.5)
+    s.group_box("Host-side pulls of the audio and coprocessor blocks, RX clock option (B9; pinout v1)", 170.18, y0, 226.06, 63.5)
     pulls = [("R_4k7", "DAC_DIG_1V8", "DAC_INT_N")] + [
         ("R_100k", net, "GND") for net in ("DAC_RST_N", "DAC_VP_EN", "DAC_DIG_EN", "AUDIO_LN_EN", "HPA_SE_EN",
-                                           "HPA_BAL_EN", "HPA_LDO_EN")]
+                                           "HPA_BAL_EN", "HPA_LDO_EN", "HPA_RAIL_EN", "RP_IRQ", "RP_BOOTSEL_DRV")]
     for i, (key, a, b) in enumerate(pulls):
-        two_pin_v(s, key, 180.34 + i * 17.78, y0 + 20.32, a, b, blk)
+        two_pin_v(s, key, 180.34 + i * 19.05, y0 + 25.4, a, b, blk)     # room above for RP_BOOTSEL_DRV
     for i, (a, b) in enumerate((("I2S_BCLK_RX", "I2S_BCLK"), ("I2S_LRCK_RX", "I2S_LRCK"))):
         two_pin_h(s, "R_0_0402", 205.74 + i * 66.04, y0 + 48.26, a, b, blk,
                   extra={"Alternate": "i2s-rx-clocks"}, dnp=True)

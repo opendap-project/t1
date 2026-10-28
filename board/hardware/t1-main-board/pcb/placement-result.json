@@ -1610,7 +1610,7 @@
    "warning | assertion_failure | OpenDAP CRAFT-05 [Q2]: Silk line width 0.15 mm": 199,
    "warning | courtyards_overlap | T1 PCB-D-01 [Q1]: BGA rework clearance": 3,
    "warning | items_not_allowed | T1 PCB-L-01 [Q0]: Hot part at the battery pocket": 3,
-   "warning | lib_footprint_issues | ": 4,
+   "warning | lib_footprint_issues | ": 1,
    "warning | silk_edge_clearance | T1 PCB-D-05 [Q2]: Silkscreen to board edge": 1,
    "warning | silk_over_copper | OpenDAP CRAFT-07 [Q2]: Silk clearance to pads": 199,
    "warning | silk_overlap | ": 7,
@@ -1619,7 +1619,7 @@
   "errors": 0,
   "schematic_parity": 0,
   "unconnected": 499,
-  "warnings": 608
+  "warnings": 605
  },
  "failed": {},
  "floorplan_budget_real_courtyards": {
@@ -1642,16 +1642,16 @@
    "back_area_mm2": 2640.3,
    "back_use_pct": 100.0,
    "band_area_mm2": 497.2,
-   "band_use_pct": 124.2,
+   "band_use_pct": 129.1,
    "courtyard_mm2": {
     "B": 335.8,
     "E": 0.0,
-    "F": 2026.0,
-    "T": 363.2
+    "F": 2027.2,
+    "T": 377.7
    },
    "front_area_mm2": 2640.3,
-   "front_use_pct": 75.5,
-   "need_mm2": 4632.5
+   "front_use_pct": 76.5,
+   "need_mm2": 4659.2
   },
   "FACEPLATE": {
    "back_area_mm2": 0,
@@ -1691,12 +1691,12 @@
    "courtyard_mm2": {
     "B": 329.8,
     "E": 0.0,
-    "F": 655.9,
+    "F": 653.9,
     "T": 272.7
    },
    "front_area_mm2": 750.2,
-   "front_use_pct": 148.6,
-   "need_mm2": 2139.3
+   "front_use_pct": 148.2,
+   "need_mm2": 2135.9
   },
   "RADIO": {
    "back_area_mm2": 489.3,
@@ -1720,8 +1720,8 @@
  ],
  "parts": 994,
  "per_side": {
-  "B": 257,
-  "F": 737
+  "B": 256,
+  "F": 738
  },
  "placed": 994,
  "placed_occupancy": {
@@ -1745,18 +1745,18 @@
   "CORE": {
    "B": {
     "area_mm2": 2279.7,
-    "courtyard_mm2": 1583.0,
-    "use_pct": 69.4
+    "courtyard_mm2": 1589.4,
+    "use_pct": 69.7
    },
    "F": {
     "area_mm2": 2008.8,
-    "courtyard_mm2": 1049.0,
-    "use_pct": 52.2
+    "courtyard_mm2": 1051.4,
+    "use_pct": 52.3
    },
    "band": {
     "area_mm2": 512.1,
-    "courtyard_mm2": 229.4,
-    "use_pct": 44.8
+    "courtyard_mm2": 236.2,
+    "use_pct": 46.1
    }
   },
   "FACEPLATE": {
@@ -1801,8 +1801,8 @@
    },
    "F": {
     "area_mm2": 1087.0,
-    "courtyard_mm2": 544.8,
-    "use_pct": 50.1
+    "courtyard_mm2": 542.9,
+    "use_pct": 49.9
    },
    "band": {
     "area_mm2": 368.1,
@@ -1823,16 +1823,13 @@
    },
    "band": {
     "area_mm2": 207.7,
-    "courtyard_mm2": 98.2,
-    "use_pct": 47.3
+    "courtyard_mm2": 105.2,
+    "use_pct": 50.7
    }
   }
  },
  "placeholders": [
-  "L5401",
-  "SW6901",
-  "SW6902",
-  "SW6903"
+  "L5401"
  ],
  "placement_variant": {
   "index": 0,
@@ -2216,9 +2213,9 @@
    "CORE"
   ],
   "C1207": [
-   19.25,
-   26.5,
-   90,
+   22.45,
+   24.9,
+   0,
    "F",
    "CORE"
   ],
@@ -3000,10 +2997,10 @@
    "AUDIO"
   ],
   "C2801": [
-   10.65,
-   -6.25,
-   90,
-   "F",
+   7.75,
+   -6.5,
+   0,
+   "B",
    "POWER"
   ],
   "C2802": [
@@ -4554,28 +4551,28 @@
    "POWER"
   ],
   "D6901": [
-   27.65,
-   29.5,
-   0,
+   28.7,
+   27.25,
+   90,
    "F",
    "CORE"
   ],
   "D6902": [
-   -27.65,
-   29.5,
+   -26.6,
+   28.45,
    0,
    "F",
    "CORE"
   ],
   "D6903": [
-   -27.65,
-   24.0,
+   -26.6,
+   22.35,
    0,
    "F",
    "CORE"
   ],
   "D6904": [
-   -26.25,
+   -26.85,
    29.5,
    0,
    "F",
@@ -4988,8 +4985,8 @@
    "CORE"
   ],
   "R1202": [
-   19.7,
-   25.1,
+   22.2,
+   23.95,
    0,
    "F",
    "CORE"
@@ -5002,10 +4999,10 @@
    "CORE"
   ],
   "R1204": [
-   25.85,
-   26.7,
+   25.3,
+   26.45,
    0,
-   "B",
+   "F",
    "CORE"
   ],
   "R1301": [
@@ -5240,27 +5237,48 @@
    "CORE"
   ],
   "R1334": [
+   3.4,
+   -6.1,
+   90,
+   "B",
+   "CORE"
+  ],
+  "R1335": [
+   -4.75,
+   17.75,
+   90,
+   "F",
+   "CORE"
+  ],
+  "R1336": [
+   -18.8,
+   17.6,
+   0,
+   "F",
+   "CORE"
+  ],
+  "R1337": [
    -1.15,
    20.65,
    90,
    "F",
    "CORE"
   ],
-  "R1335": [
+  "R1338": [
    -14.05,
    19.0,
    90,
    "F",
    "CORE"
   ],
-  "R1336": [
+  "R1339": [
    -1.75,
    16.35,
    0,
    "F",
    "CORE"
   ],
-  "R1337": [
+  "R1340": [
    0.9,
    21.6,
    0,
@@ -5527,27 +5545,20 @@
    "POWER"
   ],
   "R2806": [
-   7.75,
-   -6.2,
-   0,
-   "B",
-   "POWER"
-  ],
-  "R2807": [
    14.7,
    -25.65,
    90,
    "F",
    "POWER"
   ],
-  "R2808": [
+  "R2807": [
    14.1,
    -23.65,
    90,
    "F",
    "POWER"
   ],
-  "R2809": [
+  "R2808": [
    22.3,
    -35.15,
    0,
@@ -6115,41 +6126,27 @@
    "CORE"
   ],
   "R3509": [
-   -20.6,
-   28.8,
-   90,
-   "F",
-   "CORE"
-  ],
-  "R3510": [
-   -18.8,
-   18.0,
+   -19.6,
+   29.1,
    0,
    "F",
    "CORE"
   ],
-  "R3511": [
-   -4.75,
-   17.25,
-   90,
-   "F",
-   "CORE"
-  ],
-  "R3512": [
+  "R3510": [
    -24.15,
    23.8,
    90,
    "B",
    "CORE"
   ],
-  "R3513": [
+  "R3511": [
    -22.3,
    15.55,
    90,
    "F",
    "CORE"
   ],
-  "R3514": [
+  "R3512": [
    -5.4,
    -5.4,
    90,
@@ -6206,10 +6203,10 @@
    "CORE"
   ],
   "R3902": [
-   2.9,
-   -6.45,
+   12.9,
+   4.45,
    0,
-   "B",
+   "F",
    "CORE"
   ],
   "R4101": [
@@ -6955,8 +6952,8 @@
    "CORE"
   ],
   "R6901": [
-   -27.5,
-   23.1,
+   -26.4,
+   21.45,
    0,
    "F",
    "CORE"
@@ -7068,21 +7065,21 @@
   ],
   "SW6902": [
    -27.650000000000002,
-   29.5,
+   30.7,
    90,
    "B",
    "CORE"
   ],
   "SW6903": [
    -27.650000000000002,
-   24.0,
+   24.6,
    90,
    "B",
    "CORE"
   ],
   "SW6904": [
    -27.650000000000002,
-   35.0,
+   36.6,
    90,
    "B",
    "CORE"
@@ -7557,8 +7554,8 @@
    "CORE"
   ],
   "TP4313": [
-   19.4,
-   28.55,
+   18.85,
+   27.1,
    0,
    "F",
    "CORE"
@@ -8839,9 +8836,9 @@
   ]
  },
  "routing_room": {
-  "board_need_pct": 99.5,
+  "board_need_pct": 99.7,
   "factor_left": 1.64,
-  "placed_courtyard_pct": 60.9
+  "placed_courtyard_pct": 61.0
  },
  "shield_frames": {
   "A5901": {

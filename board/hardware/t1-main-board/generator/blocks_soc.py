@@ -190,6 +190,8 @@ def _soc_vccio_b(s, y0, variants):
         "   DAC_DIG_1V8 is off (BOM v1 line 133, G2; 0 Ω bypasses DNP), DAC_INT_N pulled up on",
         "   DAC_DIG_1V8, every audio enable and DAC_RST_N pulled down (B9, PCB-A-13; 100 kΩ capture",
         "   choice); DNP 0 Ω RX-clock fallbacks (pinout v1). I2S series parts sit at the DACs.",
+        "   The RP2354A's RP_IRQ and BOOTSEL gate pull-downs sit here too, so an unfitted",
+        "   coprocessor leaves both low (feature blocks #46).",
         "4. A net with one pin by design ends in a local label (ERC warning isolated_pin_label).",
     ])
 

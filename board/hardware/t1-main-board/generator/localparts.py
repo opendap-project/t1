@@ -150,6 +150,33 @@ def testpoint_d08():
     ]) + "\n"
 
 
+def sw_ck_pts815():
+    """C&K PTS815 tactile switch land (PTS 815 Series data sheet, 8 Apr 21, p. B-44, "P.C.B LAND
+    DIMENSION"): four pads 1.0 x 0.7 mm ((5.5 - 3.5) / 2 wide, 0.7 high), inner edges 3.5 mm and outer
+    edges 5.5 mm apart across, pad centres 2.15 mm apart along. Body 4.2 x 3.2 mm, 4.6 mm over the
+    J terminals, 2.5 +-0.2 mm high (same page). The circuit diagram (same page) joins terminals 1-2
+    and 3-4 and switches between the pairs: terminals 1 and 2 are pad 1, terminals 3 and 4 pad 2, the
+    two pins of KiCad's SW_Push. Courtyard 0.25 mm around the pads and terminals; no silk (the land
+    stands 0.1 mm from the board edge, PCB-D-05), the reference on the fabrication layer."""
+    pads = [("1", -2.25, -1.075), ("1", 2.25, -1.075), ("2", -2.25, 1.075), ("2", 2.25, 1.075)]
+    out = [
+        '(footprint "SW_CK_PTS815" (version 20241229) (generator "t1-main-board-generator")',
+        '\t(layer "F.Cu")',
+        '\t(descr "C&K PTS815 SMT tactile switch, 4.2 x 3.2 x 2.5 mm; land per the PTS 815 data sheet (8 Apr 21) p. B-44; terminals 1-2 pad 1, 3-4 pad 2")',
+        '\t(tags "switch tactile push C&K PTS815")',
+        '\t(attr smd)',
+        '\t(property "Reference" "REF**" (at 0 -2.4 0) (layer "F.Fab") (effects (font (size 0.8 0.8) (thickness 0.12))))',
+        '\t(property "Value" "SW_CK_PTS815" (at 0 2.4 0) (layer "F.Fab") (effects (font (size 0.8 0.8) (thickness 0.12))))',
+        '\t(fp_rect (start -2.1 -1.6) (end 2.1 1.6) (stroke (width 0.1) (type solid)) (fill no) (layer "F.Fab"))',
+        '\t(fp_rect (start -3.0 -1.85) (end 3.0 1.85) (stroke (width 0.05) (type solid)) (fill no) (layer "F.CrtYd"))',
+        '\t(fp_text user "${REFERENCE}" (at 0 0 0) (layer "F.Fab") (effects (font (size 0.8 0.8) (thickness 0.12))))',
+    ]
+    out += ['\t(pad "%s" smd rect (at %s %s) (size 1.0 0.7) (layers "F.Cu" "F.Paste" "F.Mask"))' % (n_, n(x), n(y))
+            for n_, x, y in pads]
+    out += ['\t(embedded_fonts no)', ')']
+    return "\n".join(out) + "\n"
+
+
 def shield_frame():
     """Shield-can frame (blk.shields): one pin, the frame land, to ground. Footprint, part number
     and description are per frame (blocks_shields.py), from ../shields.toml."""
@@ -222,6 +249,8 @@ def write():
         fh.write(aota_b201610())
     with open(os.path.join(FP_DIR, "TestPoint_Pad_D0.8mm.kicad_mod"), "w", encoding="utf-8") as fh:
         fh.write(testpoint_d08())
+    with open(os.path.join(FP_DIR, "SW_CK_PTS815.kicad_mod"), "w", encoding="utf-8") as fh:
+        fh.write(sw_ck_pts815())
     for old in os.listdir(FP_DIR):             # a frame whose size changed leaves no stale land
         if old.startswith("Shield_Frame_"):
             os.remove(os.path.join(FP_DIR, old))

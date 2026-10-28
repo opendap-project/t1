@@ -19,6 +19,7 @@ Environment: KICAD_CLI and KICAD_PY override the KiCad 10 paths (macOS defaults 
 from __future__ import annotations
 
 import datetime
+import glob
 import json
 import os
 import subprocess
@@ -37,6 +38,7 @@ import occupancy  # noqa: E402
 import placement  # noqa: E402
 import plan  # noqa: E402
 import proximity  # noqa: E402
+import variants as pcb_variants  # noqa: E402
 import zones  # noqa: E402
 
 PROJECT = os.path.abspath(os.path.join(HERE, ".."))
@@ -204,6 +206,14 @@ def main():
         with open(spec_path, "w") as fh:
             json.dump(spec, fh)
         print(run([KICAD_PY, os.path.join(HERE, "kicad_write.py"), spec_path, PCB]).strip().splitlines()[-1])
+        # KiCad 10 design variants: the schematic's per-variant data onto the footprints (variants.py)
+        descs = {}
+        for vf in sorted(glob.glob(os.path.join(HERE, "..", "..", "variants", "*.toml"))):
+            with open(vf, "rb") as fh:
+                vd = tomllib.load(fh)
+            descs[vd.get("name", "")] = vd.get("description", "")
+        vinfo = pcb_variants.apply(PCB, os.path.dirname(PCB), descs)
+        print("variant data on the board: %d parts, variants %s" % (vinfo["parts"], ", ".join(vinfo["variants"]) or "none"))
 
     # checks and reports
     window = {r for r, c in nl.components.items() if c.footprint.startswith("kyocera-avx:")}

@@ -4402,22 +4402,6 @@
       },
       {
         "netclass": "ZONE_CORE",
-        "pattern": "Net-(R3510-*"
-      },
-      {
-        "netclass": "ZONE_CORE",
-        "pattern": "unconnected-(R3510-*"
-      },
-      {
-        "netclass": "ZONE_CORE",
-        "pattern": "Net-(R3511-*"
-      },
-      {
-        "netclass": "ZONE_CORE",
-        "pattern": "unconnected-(R3511-*"
-      },
-      {
-        "netclass": "ZONE_CORE",
         "pattern": "Net-(TP3501-*"
       },
       {
@@ -4618,27 +4602,27 @@
       },
       {
         "netclass": "ZONE_CORE",
+        "pattern": "Net-(R3510-*"
+      },
+      {
+        "netclass": "ZONE_CORE",
+        "pattern": "unconnected-(R3510-*"
+      },
+      {
+        "netclass": "ZONE_CORE",
+        "pattern": "Net-(R3511-*"
+      },
+      {
+        "netclass": "ZONE_CORE",
+        "pattern": "unconnected-(R3511-*"
+      },
+      {
+        "netclass": "ZONE_CORE",
         "pattern": "Net-(R3512-*"
       },
       {
         "netclass": "ZONE_CORE",
         "pattern": "unconnected-(R3512-*"
-      },
-      {
-        "netclass": "ZONE_CORE",
-        "pattern": "Net-(R3513-*"
-      },
-      {
-        "netclass": "ZONE_CORE",
-        "pattern": "unconnected-(R3513-*"
-      },
-      {
-        "netclass": "ZONE_CORE",
-        "pattern": "Net-(R3514-*"
-      },
-      {
-        "netclass": "ZONE_CORE",
-        "pattern": "unconnected-(R3514-*"
       },
       {
         "netclass": "ZONE_CORE",
@@ -5322,19 +5306,19 @@
       },
       {
         "netclass": "ZONE_CORE",
-        "pattern": "Net-(R1336-*"
+        "pattern": "Net-(R1339-*"
       },
       {
         "netclass": "ZONE_CORE",
-        "pattern": "unconnected-(R1336-*"
+        "pattern": "unconnected-(R1339-*"
       },
       {
         "netclass": "ZONE_CORE",
-        "pattern": "Net-(R1337-*"
+        "pattern": "Net-(R1340-*"
       },
       {
         "netclass": "ZONE_CORE",
-        "pattern": "unconnected-(R1337-*"
+        "pattern": "unconnected-(R1340-*"
       },
       {
         "netclass": "ZONE_CORE",
@@ -5511,6 +5495,30 @@
       {
         "netclass": "ZONE_CORE",
         "pattern": "unconnected-(R1335-*"
+      },
+      {
+        "netclass": "ZONE_CORE",
+        "pattern": "Net-(R1336-*"
+      },
+      {
+        "netclass": "ZONE_CORE",
+        "pattern": "unconnected-(R1336-*"
+      },
+      {
+        "netclass": "ZONE_CORE",
+        "pattern": "Net-(R1337-*"
+      },
+      {
+        "netclass": "ZONE_CORE",
+        "pattern": "unconnected-(R1337-*"
+      },
+      {
+        "netclass": "ZONE_CORE",
+        "pattern": "Net-(R1338-*"
+      },
+      {
+        "netclass": "ZONE_CORE",
+        "pattern": "unconnected-(R1338-*"
       },
       {
         "netclass": "ZONE_CORE",
@@ -7615,14 +7623,6 @@
       {
         "netclass": "ZONE_POWER",
         "pattern": "unconnected-(R2808-*"
-      },
-      {
-        "netclass": "ZONE_POWER",
-        "pattern": "Net-(R2809-*"
-      },
-      {
-        "netclass": "ZONE_POWER",
-        "pattern": "unconnected-(R2809-*"
       },
       {
         "netclass": "ZONE_POWER",

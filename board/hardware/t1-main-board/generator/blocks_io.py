@@ -255,6 +255,6 @@ def draw_buttons(s, variants):
         "3. Vol- is pulled to the always-on vcca1v8_pmu, which also feeds the MaskROM gate: a pull to",
         "   vcca_1v8 would read pressed while that rail is still off (pinout v1 §4, Vol- row).",
         "4. Open: the Action part (BOM v1 line 76; T1-022 deeper travel); KMR221GLFS is the BOM's",
-        "   placeholder on the KMR2 land. The PTS815 land (T1_Main_Board:SW_CK_PTS815) is not drawn:",
-        "   which terminals are common is not legible in the C&K copy (PTS 815 p. B-44), UNVERIFIED.",
+        "   placeholder on the KMR2 land. PTS815 land per its data sheet p. B-44: terminals 1-2 are",
+        "   pad 1, 3-4 pad 2 (the circuit diagram on the same page).",
     ])

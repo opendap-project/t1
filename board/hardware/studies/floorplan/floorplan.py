@@ -190,19 +190,33 @@ def P(x, y):
     return pcbnew.VECTOR2I(mm(OX + x), mm(OY - y))
 
 
+
+def workspace_root(start):
+    """The nearest folder above start that holds the workspace's repos.tsv (None outside a workspace):
+    the board may sit at any depth (its own repository or a merged root)."""
+    d = os.path.abspath(start)
+    while True:
+        if os.path.isfile(os.path.join(d, "repos.tsv")):
+            return d
+        up = os.path.dirname(d)
+        if up == d:
+            return None
+        d = up
+
+
 def kicad_lib_dir():
-    ws = os.path.abspath(os.path.join(BOARD_REPO, "..", "..", "..", ".."))
+    ws = workspace_root(BOARD_REPO)
     env = os.environ.get("ODAP_KICAD_LIB_DIR")
     cands = [env] if env else []
-    tsv = os.path.join(ws, "repos.tsv")
-    if os.path.exists(tsv):
+    tsv = os.path.join(ws, "repos.tsv") if ws else ""
+    if tsv and os.path.exists(tsv):
         for line in open(tsv):
             f = line.rstrip("\n").split("\t")
             if len(f) == 2 and f[1] == "opendap-project/libs":
                 cands.append(os.path.join(ws, f[0], "kicad"))
     cands.append(os.path.join(BOARD_REPO, "hardware", "lib", "opendap", "kicad"))
     for c in cands:
-        if c and os.path.exists(os.path.join(c, "footprints", "Rockchip.pretty")):
+        if c and os.path.exists(os.path.join(c, "footprints", "rockchip.pretty")):
             return c
     sys.exit("kicad-lib not found (set ODAP_KICAD_LIB_DIR)")
 

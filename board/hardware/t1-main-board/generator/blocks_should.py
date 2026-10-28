@@ -185,13 +185,13 @@ def draw_rp2354(parent, variants):
     col = column(s, f, w=130.0)
 
     def taps():
-        g = Group(s, "Tap 0 Ω positions (BOM v1 line 134; PCB-A-12), RP_IRQ pull-down")
-        g.add(prow(s, 101.6, 109.22, [("R_0_0402", a, b) for a, b in TAPS] + [("R_100k", "RP_IRQ", "GND")]))
+        g = Group(s, "Tap 0 Ω positions (BOM v1 line 134; PCB-A-12)")
+        g.add(prow(s, 101.6, 109.22, [("R_0_0402", a, b) for a, b in TAPS]))
         return g.close()
 
     def bootsel():
         g = Group(s, "BOOTSEL: N-FET on QSPI_SS (BOM v1 line 35; pinout v1 C6)")
-        g.add(prow(s, 101.6, 109.22, [("R_1k", "RP_QSPI_SS", "RP_BOOTSEL_D"), ("R_100k", "RP_BOOTSEL_DRV", "GND")]))
+        g.add(prow(s, 101.6, 109.22, [("R_1k", "RP_QSPI_SS", "RP_BOOTSEL_D")]))
         part(s, "Transistor_FET", "DMG1012T", 139.7, 116.84, {"1": "RP_BOOTSEL_DRV", "3": "RP_BOOTSEL_D", "2": "GND"},
              key="Q_DMG1012T", prefix="Q")
         g.add((127.0, 101.6, 152.4, 129.54))
@@ -267,9 +267,9 @@ def draw_rp2354(parent, variants):
 def core_tables(s):
     s.iface_rows = [
         ["RP_UART_TX, RP_UART_RX", "Bidirectional", "UART0 to the SoC's UART0 (PMUIO2); SoC pull-downs park both"],
-        ["RP_IRQ", "Output", "GPIO2 to 1V20 (wake): 100 kΩ pull-down here, no wake when off or unfitted"],
+        ["RP_IRQ", "Output", "GPIO2 to 1V20 (wake): 100 kΩ pull-down on the host side (blk.soc-vccio-b), no wake when off or unfitted"],
         ["RP_RUN, RP_SWCLK, RP_SWDIO", "Input", "SoC open drain / SWD (VCCIO6); parked low while the rails are off (G4)"],
-        ["RP_BOOTSEL_DRV", "Input", "N-FET gate, 100 kΩ pull-down: normal boot"],
+        ["RP_BOOTSEL_DRV", "Input", "N-FET gate, 100 kΩ pull-down on the host side (blk.soc-vccio-b): normal boot"],
         ["RP_USB_DP, RP_USB_DM", "Bidirectional", "USB_HOST2 (EHCI/OHCI) of the SoC"],
         ["I2S_BCLK, I2S_LRCK, I2S_SDO0, DSD_L, DSD_R", "Input", "Taps on FT GPIO4-8 through 0 Ω (G4); no load on the DAC path"],
     ]
@@ -277,8 +277,9 @@ def core_tables(s):
     corner_notes(s, [
         "1. Function: RP2354A system and GPIO units (BRD-014, should; BRD-015, BRD-041): UART0 and",
         "   RP_IRQ to the SoC, SWD and RUN from it, BOOTSEL, USB to USB_HOST2, passive I2S/DSD taps.",
-        "2. Absent state: unfitted or unpowered: RP_IRQ held low here; UART, SWD, RUN parked low by the",
-        "   SoC; taps on FT pads (G4), 0 Ω positions keep a series value possible at bring-up.",
+        "2. Absent state: unfitted or unpowered: RP_IRQ and RP_BOOTSEL_DRV held low on the host",
+        "   side (blk.soc-vccio-b); UART, SWD, RUN parked low by the SoC; taps on FT pads (G4),",
+        "   0 Ω positions keep a series value possible at bring-up.",
         "3. IOVDD at 1.8 V: firmware sets VOLTAGE_SELECT = 1 for bank 0 at boot (DS §6.1.1).",
         "4. QSPI pads go to the in-package flash only: open here (HDG §3.1); BOOTSEL pulls QSPI_SS low",
         "   through 1 kΩ and the N-FET. USB: 27 Ω series at the RP2354A (DS Table 1678).",

@@ -284,7 +284,7 @@ def draw_cover_detect(s, variants):
     grp(f, pull)
     grp(f, lambda: tvs_group(s, "ESD at the pad (TPD1E10B06)", ["COVER_DET_N"]))
     s.iface_rows = [
-        ["COVER_DET_N", "Output", "GPIO0_A6 reset pull-down reads cover closed; the description omits the input (dnp)"],
+        ["COVER_DET_N", "Output", "The SoC ball's own reset pull-down (GPIO0_A6) reads cover closed; the description omits the input (dnp)"],
     ]
     s.rail_rows = [["(none)", "-", "No supply on this sheet: the pull-up hangs from vcc3v3_pmu"]]
     corner_notes(s, [

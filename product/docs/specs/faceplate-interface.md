@@ -440,7 +440,7 @@ Values are given in the T1 coordinate system (T1-021: origin at the device centr
 
 | Parameter | Value | Status | Source |
 |---|---|---|---|
-| Body outline | 59.5 × 94.3 × 25.0 mm (tentative) | Defined (tentative) | t1 ADR 0003, board ADR 0016 |
+| Body outline | 62.5 × 95.0 × 25.0 mm (T1-031 maximum); every faceplate outline follows it | Defined | [ADR 0006](../adr/0006-body-at-the-maximum-width.md), board ADR 0025 |
 | Faceplate outline and front-face z | — | Input from the case | case scope (case ADR 0003) |
 | Connector | FH35C-51S-0.3SHW on the board's front side | Defined | Board BOM line 71 |
 | Connector location | In the faceplate connection area, about 10 × 54 mm at the display's bottom edge (front zone PCB-Z-03); x, y and orientation of contact 1 | Area defined, size to confirm; position input from board placement and the case | Board ADR 0016 item 1 |

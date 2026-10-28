@@ -1,6 +1,6 @@
 # ADR 0003: Tentative body size
 
-- **Status:** Accepted
+- **Status:** Superseded by [ADR 0006](0006-body-at-the-maximum-width.md) (2026-10-27; the body grows to the T1-031 maximum, 62.5 × 95.0 × 25.0 mm; the measurement gate is carried over). Previously: Accepted.
 - **Date:** 2026-10-22
 - **Basis:** the product rules
 

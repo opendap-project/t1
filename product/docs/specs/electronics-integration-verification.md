@@ -112,6 +112,7 @@ Row IDs: `V0-nn` (I0), `V1-nn` (I1), `V2-<module letter><nn>` (I2), `V3-nn` (I3,
 | V2-A05 | M-AUD | Pops at power, play, pause, seek, rate change, PCM/DSD change, output change, gain change, plug and unplug | None audible (T1-049); measured peak at the jack recorded |
 | V2-A06 | M-AUD | Both clock families, every sample rate, PCM and DSD | Bit-perfect (OS-020); DAC locked; no resampling (BRD-023) |
 | V2-A07 | M-AUD | Boost, inverter and LDO bench items | Closes BOM §7.29–§7.31 |
+| V2-A08 | M-AUD | The output stage's 0603 resistors (RT0603 thin film) and 100 pF C0G capacitors against the same values in 0402 (RT0402, GRM155 C0G), on two M-AUD boards or one board reworked: THD+N and noise at full output into 16 Ω and 32 Ω, both outputs, after an audio review of the 0402 parts' ratings | No difference above the measurement's repeatability; gates the 0402 swap of board ADR 0025 item 6 (T1-040), which stays unapplied until it passes |
 | V2-R01 | M-RF | Throughput, range and Bluetooth audio stability per band, shared and dedicated antenna configurations | The Radio targets of the [experience budgets](experience-budgets.md#radio); the measured configuration decides board ADR 0018's production choice |
 | V2-R02 | M-RF | Layout against Murata's reference design | No deviation (BRD-025) |
 | V2-U01 | M-UI | Display at full frame rate, touch report rate and latency | T1-056 and the experience budgets |

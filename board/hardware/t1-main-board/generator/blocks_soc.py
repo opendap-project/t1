@@ -56,7 +56,7 @@ def draw(proj, parent, subs, soc_sym, nets, variants):
         "3. Sub-sheet IDs (blk.soc-*) are sheets of blk.soc: their parts carry Block = blk.soc-* so the",
         "   craft check can resolve them; the catalog block is blk.soc (feature-blocks spec #1).",
         "4. Constraints: PCB-I-05 (LPDDR4X), PCB-I-06 (eMMC); decoupling per RK3566 HDG 1.1 pp. 35-41.",
-        "5. Decisions: ADR 0003 (RK3566), ADR 0021 (vdd_cpu), ADR 0022 (single-rank LPDDR4X).",
+        "5. Decisions: ADR 0003 (RK3566), ADR 0026 (vdd_cpu), ADR 0022 (single-rank LPDDR4X).",
     ])
     for name, role, title, purpose, units in SUBS:
         s = subs[name]
@@ -209,9 +209,9 @@ def _soc_phy(s, y0, variants):
 
 # HDG 1.1 pp. 35-41 (Figs. 2-17 to 2-26), RK3566 DS 1.1: near-SoC decoupling.
 SOC_DECOUPLING = [
-    ("vdd_cpu", ["C_4u7_0402", "C_4u7_0402", "C_22u_0603", "C_22u_0603"],
-     "2 x 4.7 µF 0402 + 22 µF 0603 (HDG Fig. 2-17; ADR 0021 item 3), plus one 22 µF 0603 for the load-release "
-     "overshoot under the BRD-049 limit (blk.vdd-cpu note 6); VOS senses at one 22 µF capacitor"),
+    ("vdd_cpu", ["C_4u7_0402", "C_4u7_0402", "C_22u_0603", "C_22u_0603", "C_22u_0603"],
+     "2 x 4.7 µF 0402 + 3 x 22 µF 0603 (HDG Fig. 2-17; ADR 0026 item 4: 35.5 µF effective at 1.1 V, at least "
+     "twice the converter's, SLVSGC5E p. 54); VOSNS and GOSNS sense at one 22 µF capacitor"),
     ("vdd_logic", ["C_100n_0201", "C_4u7_0402", "C_4u7_0402", "C_4u7_0402", "C_22u_0603"],
      "100 nF 0201, 3 x 4.7 µF 0402, 22 µF 0603 (HDG Fig. 2-18)"),
     ("vdd_gpu", ["C_100n_0201", "C_4u7_0402", "C_22u_0603"], "100 nF 0201, 4.7 µF 0402, 22 µF 0603 (HDG Fig. 2-19)"),

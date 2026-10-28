@@ -43,6 +43,8 @@ OVERRIDES = {
 # land takes the 2.1, 1.5 and 1.2 mm Coilcraft lines). Source in each row.
 BY_MPN = {
     "XGL4012-221MEC": (1.2, "Coilcraft XGL4012: 1.2 mm max (Document 1718 drawing)"),
+    "XEL4012-920NEC": (1.2, "Coilcraft XEL4012-920NE: 4 x 4 x 1.2 mm (SLVSGC5E Table 9-2)"),
+    "GRM188R60J476ME15D": (1.0, "Murata SimSurfing product list: 1.0 mm max (2026-10-28)"),
     "XGL4015-102MEC": (1.5, "Coilcraft XGL4015: 1.5 mm max (Document 1660 drawing)"),
     "XGL4015-471MEC": (1.5, "Coilcraft XGL4015: 1.5 mm max (Document 1660 drawing)"),
     "GRM21BR61E226ME44L": (1.45, "Murata SimSurfing product list: 1.45 mm max (2026-10-27)"),

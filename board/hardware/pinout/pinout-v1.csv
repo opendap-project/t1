@@ -144,7 +144,7 @@ AH2,ISP_FLASHTRIGOUT/EBC_SDCE0/GMAC1_TXEN_M1/SPI3_CS0_M0/I2S1_SCLK_RX_M1/GPIO4_A
 AH37,VSS_26,ground,supply,0 V,GND,blk.soc,-,
 AJ1,CIF_D15/EBC_SDDO15/GMAC1_TXD1_M1/UART9_RX_M2/I2S2_LRCK_RX_M1/GPIO4_A5_d,GPIO in/out,VCCIO6,1.8 V (vccio6_1v8),RP_SWDIO,blk.rp2354,"input, pull-down (_d); pull-down: parked low while the RP2354A is off",Moved off the FSPI balls (C5); ring outer (L1)
 AJ2,CIF_D13/EBC_SDDO13/GMAC1_RXCLK_M1/UART7_RX_M2/PDM_SDI3_M1/GPIO4_A3_d,GPIO in,VCCIO6,1.8 V (vccio6_1v8),DAC_INT_N,blk.audio,"input, pull-down (_d); pull-down until pinctrl; pull-up on DAC_DIG_1V8 (G2)","Wired-OR CS43198 INT; I2C2 reaches the DACs through the SN74LVC2G66 controlled by DAC_DIG_1V8 (BOM v1.8 line 133), no SoC enable needed; ring inner, behind AJ1 (microvia)"
-AJ37,I2C0_SCL/GPIO0_B1_u,I2C0_SCL,PMUIO2,1.8 V (vcca1v8_pmu),I2C0_SCL,blk.pmic,"input, pull-up (_u); pull-up","RK809 0x20, TPS62869 0x42 (ADR 0021; RK860-0 0x40 until BOM v1.11). Pull-ups to vcca1v8_pmu; ring inner, behind AJ38 (microvia)"
+AJ37,I2C0_SCL/GPIO0_B1_u,I2C0_SCL,PMUIO2,1.8 V (vcca1v8_pmu),I2C0_SCL,blk.pmic,"input, pull-up (_u); pull-up","RK809 0x20, TPS62870Z4 0x42 (ADR 0026; TPS62869 0x42 BOM v1.12–v1.17, ADR 0021; RK860-0 0x40 until BOM v1.11). Pull-ups to vcca1v8_pmu; ring inner, behind AJ38 (microvia)"
 AJ38,GPU_PWREN/SATA_CP_POD/GPIO0_A6_d,GPIO in,PMUIO1,3.3 V fixed (vcc3v3_pmu),COVER_DET_N,blk.cover-detect,"input, pull-down (_d); pull-down: reads cover closed until pinctrl (and with the block unfitted)","Cover detect (BOM line 143, ADR 0020 item 7; G22, 2026-10-26): low with the back cover closed, 100 kΩ pull-up to vcc3v3_pmu on blk.cover-detect; pinctrl turns the internal pull-down off; wake-capable (PMUIO1). RFC 0014: was HAT_INT_N; ring outer (L1)"
 AK2,CIF_D10/EBC_SDDO10/GMAC1_TXCLK_M1/PDM_CLK1_M1/GPIO4_A0_d,PDM_CLK1_M1,VCCIO6,1.8 V (vccio6_1v8),PDM_CLK1,blk.mic-ambient,"input, pull-down (_d); pull-down: parked low while MIC_1V8 is off","Ambient microphone; 22 Ω series; ring inner, gap (L1)"
 AK37,I2C1_SCL/MCU_JTAG_TDO/GPIO0_B3_u,I2C1_SCL,PMUIO2,1.8 V (vcca1v8_pmu),I2C1_SCL,blk.charger,"input, pull-up (_u); pull-up","FUSB302B 0x22 (main USB-C), FUSB302B01MPX 0x23 (HAT port), BQ28Z610-R1 0x55, BQ25798 0x6B, INA236 0x40-0x43. FUSB302B VIH 1.32 V (FUSB302B/D Rev. 5 p. 16); ring inner, behind AK38 (microvia)"
@@ -267,7 +267,7 @@ AR38,VSS_29,ground,supply,0 V,GND,blk.soc,-,
 1C8,VSS_37,ground,supply,0 V,GND,blk.soc,-,
 1C9,VSS_38,ground,supply,0 V,GND,blk.soc,-,
 1C10,DDR_DQ14_B/DDR4_DQL1_B/LPDDR4_DQ14_B/DDR3_DQ30/LPDDR3_DQ20,LPDDR4_DQ14_B,DDR PHY,"0.6 V I/O (DDRPHY_VDDQL, vcc0v6_ddr)",DDR_DQ14_B,blk.lpddr4x,-,"LPDDR4X, to the same-named DRAM ball per the Rockchip template; DQ and CA order not swapped (HDG p. 22); core 0.65 mm"
-1C12,VDD_CPU_1,power,supply,0.85-1.15 V,vdd_cpu,blk.vdd-cpu,-,Remote sense from under the SoC to the TPS62869 VOS (HDG p. 38; ADR 0021)
+1C12,VDD_CPU_1,power,supply,0.85-1.15 V,vdd_cpu,blk.vdd-cpu,-,Differential remote sense (VOSNS, GOSNS) from under the SoC to the TPS62870Z4 (HDG p. 38; ADR 0026)
 1C13,VCCIO2,power,supply,1.8 V,vcc_1v8,blk.soc,-,"Set by FLASH_VOL_SEL high, no software setting (HDG p. 31); 100 nF"
 1C14,VSS_39,ground,supply,0 V,GND,blk.soc,-,
 1C15,FSPI_D3/FLASH_CS1n/GPIO1_D4_u,GPIO (spare),VCCIO2,1.8 V (vcc_1v8),SPARE_1D4,blk.debug,"input, pull-up (_u); pull-up","Spare 1.8 V GPIO on an FSPI ball the BootROM probes (C5), left unconnected. RFC 0014: was HAT_AUD_OE_N; core 0.65 mm"
@@ -286,8 +286,8 @@ AR38,VSS_29,ground,supply,0 V,GND,blk.soc,-,
 1D8,DDRPHY_VDDQ_4,power,supply,1.1 V,vcc_ddr,blk.lpddr4x,-,≥ 8 vias on the CPU-side balls (HSPCB p. 30)
 1D9,DDRPHY_VDDQ_5,power,supply,1.1 V,vcc_ddr,blk.lpddr4x,-,≥ 8 vias on the CPU-side balls (HSPCB p. 30)
 1D10,VSS_44,ground,supply,0 V,GND,blk.soc,-,
-1D11,VDD_CPU_2,power,supply,0.85-1.15 V,vdd_cpu,blk.vdd-cpu,-,Remote sense from under the SoC to the TPS62869 VOS (HDG p. 38; ADR 0021)
-1D12,VDD_CPU_3,power,supply,0.85-1.15 V,vdd_cpu,blk.vdd-cpu,-,Remote sense from under the SoC to the TPS62869 VOS (HDG p. 38; ADR 0021)
+1D11,VDD_CPU_2,power,supply,0.85-1.15 V,vdd_cpu,blk.vdd-cpu,-,Differential remote sense (VOSNS, GOSNS) from under the SoC to the TPS62870Z4 (HDG p. 38; ADR 0026)
+1D12,VDD_CPU_3,power,supply,0.85-1.15 V,vdd_cpu,blk.vdd-cpu,-,Differential remote sense (VOSNS, GOSNS) from under the SoC to the TPS62870Z4 (HDG p. 38; ADR 0026)
 1D13,VCCIO1,power,supply,3.3 V,vcc3v3_sys,blk.soc,-,io-domain 3.3 V; 100 nF
 1D14,VSS_45,ground,supply,0 V,GND,blk.soc,-,
 1D15,OTP_VCC18,power,supply,1.8 V,vcca_1v8,blk.soc,-,Powered in every OTP mode (HDG p. 60)
@@ -305,9 +305,9 @@ AR38,VSS_29,ground,supply,0 V,GND,blk.soc,-,
 1E8,VSS_47,ground,supply,0 V,GND,blk.soc,-,
 1E9,DDRPHY_VDDQL_3,power,supply,0.6 V,vcc0v6_ddr,blk.lpddr4x,-,≥ 6 vias (HSPCB p. 30)
 1E10,VSS_48,ground,supply,0 V,GND,blk.soc,-,
-1E11,VDD_CPU_4,power,supply,0.85-1.15 V,vdd_cpu,blk.vdd-cpu,-,Remote sense from under the SoC to the TPS62869 VOS (HDG p. 38; ADR 0021)
-1E12,VDD_CPU_5,power,supply,0.85-1.15 V,vdd_cpu,blk.vdd-cpu,-,Remote sense from under the SoC to the TPS62869 VOS (HDG p. 38; ADR 0021)
-1E13,VDD_CPU_6,power,supply,0.85-1.15 V,vdd_cpu,blk.vdd-cpu,-,Remote sense from under the SoC to the TPS62869 VOS (HDG p. 38; ADR 0021)
+1E11,VDD_CPU_4,power,supply,0.85-1.15 V,vdd_cpu,blk.vdd-cpu,-,Differential remote sense (VOSNS, GOSNS) from under the SoC to the TPS62870Z4 (HDG p. 38; ADR 0026)
+1E12,VDD_CPU_5,power,supply,0.85-1.15 V,vdd_cpu,blk.vdd-cpu,-,Differential remote sense (VOSNS, GOSNS) from under the SoC to the TPS62870Z4 (HDG p. 38; ADR 0026)
+1E13,VDD_CPU_6,power,supply,0.85-1.15 V,vdd_cpu,blk.vdd-cpu,-,Differential remote sense (VOSNS, GOSNS) from under the SoC to the TPS62870Z4 (HDG p. 38; ADR 0026)
 1E14,VSS_49,ground,supply,0 V,GND,blk.soc,-,
 1E15,VSS_50,ground,supply,0 V,GND,blk.soc,-,
 1E16,VCCIO4,power,supply,1.8 V,vcc_1v8,blk.radio,-,io-domain 1.8 V; must equal the module VIO/SD_VIO; 100 nF
@@ -325,10 +325,10 @@ AR38,VSS_29,ground,supply,0 V,GND,blk.soc,-,
 1F8,VSS_54,ground,supply,0 V,GND,blk.soc,-,
 1F9,VSS_55,ground,supply,0 V,GND,blk.soc,-,
 1F10,VSS_56,ground,supply,0 V,GND,blk.soc,-,
-1F11,VDD_CPU_7,power,supply,0.85-1.15 V,vdd_cpu,blk.vdd-cpu,-,Remote sense from under the SoC to the TPS62869 VOS (HDG p. 38; ADR 0021)
-1F12,VDD_CPU_8,power,supply,0.85-1.15 V,vdd_cpu,blk.vdd-cpu,-,Remote sense from under the SoC to the TPS62869 VOS (HDG p. 38; ADR 0021)
-1F13,VDD_CPU_9,power,supply,0.85-1.15 V,vdd_cpu,blk.vdd-cpu,-,Remote sense from under the SoC to the TPS62869 VOS (HDG p. 38; ADR 0021)
-1F14,VDD_CPU_10,power,supply,0.85-1.15 V,vdd_cpu,blk.vdd-cpu,-,Remote sense from under the SoC to the TPS62869 VOS (HDG p. 38; ADR 0021)
+1F11,VDD_CPU_7,power,supply,0.85-1.15 V,vdd_cpu,blk.vdd-cpu,-,Differential remote sense (VOSNS, GOSNS) from under the SoC to the TPS62870Z4 (HDG p. 38; ADR 0026)
+1F12,VDD_CPU_8,power,supply,0.85-1.15 V,vdd_cpu,blk.vdd-cpu,-,Differential remote sense (VOSNS, GOSNS) from under the SoC to the TPS62870Z4 (HDG p. 38; ADR 0026)
+1F13,VDD_CPU_9,power,supply,0.85-1.15 V,vdd_cpu,blk.vdd-cpu,-,Differential remote sense (VOSNS, GOSNS) from under the SoC to the TPS62870Z4 (HDG p. 38; ADR 0026)
+1F14,VDD_CPU_10,power,supply,0.85-1.15 V,vdd_cpu,blk.vdd-cpu,-,Differential remote sense (VOSNS, GOSNS) from under the SoC to the TPS62870Z4 (HDG p. 38; ADR 0026)
 1F15,VSS_57,ground,supply,0 V,GND,blk.soc,-,
 1F16,VSS_58,ground,supply,0 V,GND,blk.soc,-,
 1F17,VCCIO3,power,supply,1.8/3.3 V,vccio_sd,blk.microsd,-,"RK809 LDO5, switched by the SD driver; 100 nF"
@@ -347,7 +347,7 @@ AR38,VSS_29,ground,supply,0 V,GND,blk.soc,-,
 1G10,VSS_64,ground,supply,0 V,GND,blk.soc,-,
 1G11,VSS_65,ground,supply,0 V,GND,blk.soc,-,
 1G12,VSS_66,ground,supply,0 V,GND,blk.soc,-,
-1G13,VDD_CPU_11,power,supply,0.85-1.15 V,vdd_cpu,blk.vdd-cpu,-,Remote sense from under the SoC to the TPS62869 VOS (HDG p. 38; ADR 0021)
+1G13,VDD_CPU_11,power,supply,0.85-1.15 V,vdd_cpu,blk.vdd-cpu,-,Differential remote sense (VOSNS, GOSNS) from under the SoC to the TPS62870Z4 (HDG p. 38; ADR 0026)
 1G14,VSS_67,ground,supply,0 V,GND,blk.soc,-,
 1G15,VDD_NPU_1,power,supply,0.9 V,vdd_npu,blk.pmic,-,
 1G16,AVSS1_7,ground,supply,0 V,GND,blk.soc,-,

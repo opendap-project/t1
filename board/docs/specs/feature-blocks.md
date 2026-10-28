@@ -6,6 +6,7 @@
 - **Updated 2026-10-24 (BOM v1.11, power tree v0.5):** hat-standard interface v1.1 and its [ADR 0005](https://github.com/opendap-project/hat-standard/blob/main/docs/adr/0005-interface-v1-1-shared-extension-and-contact-reduction.md): `blk.hat-signals` (one DF40C-100, the two extension switches, `EXT_SB0`–`EXT_SB2`, SWD as a GPIO alternate), `blk.hat-5v` and `blk.hat-3v3` (single connector, fault ceilings 3.0 A and 1.5 A). The t1 faceplate interface v1 (t1 ADRs 0004, 0005): `blk.fp-connector`, `blk.fp-display`, `blk.fp-backlight`, `blk.fp-controls` (identity node in the devicetree, I2C3 pull-ups) and `blk.mic-main` (current-limited rail switches, TPS61160). No block is added or removed and no variant state changes, so the variant files are unchanged.
 - **Updated 2026-10-25 (BOM v1.12, power tree v0.6):** [ADR 0021](../adr/0021-vdd-cpu-buck-ti-tps62869.md): the `blk.vdd-cpu` record takes the TI TPS62869 at I2C0 0x42 (decision item 8). [ADR 0022](../adr/0022-lpddr4x-micron-mt53e1g32d2fw-with-cxmt-second-source.md): `blk.lpddr4x` holds single-rank parts on the shared land, its 4 GB alternate becomes the CXMT CXDB5CBAM-MA-B, and gap G18 is closed for 4 GB. The [HAT flat cable](hat-flat-cable.md) spec (§17 B8): `blk.hat-signals`, `blk.hat-5v` and `blk.hat-3v3` name the DF40C-100DS receptacle on the board and the cable per that spec. No block is added or removed and no variant changes.
 - **Updated 2026-10-25 (BOM v1.13, power tree v0.7, [RFC 0014](https://github.com/opendap-project/rfcs/blob/main/text/0014-hat-interface-v2-usb-only.md)):** HATs are USB only (hat-standard [interface v2](https://github.com/opendap-project/hat-standard/blob/main/docs/specs/interface-v2.md), [ADR 0006](https://github.com/opendap-project/hat-standard/blob/main/docs/adr/0006-hats-are-usb-only.md)). `blk.hat-5v` becomes the HAT `VBUS` source and sink with the HAT port's Type-C port controller (USB PD); `blk.hat-signals` carries USB 3, `D±` and `CC` with two ESD parts, no switches and no ID translator; `blk.hat-3v3` and `blk.hat-audio` are removed (records kept as removed; the variant files drop them); gap G14 closes by removal. The HAT connector parts (BOM lines 66, 67, 102) follow the open connector decision.
+- **Updated 2026-10-28 (BOM v1.18 item 8, power tree v0.10, [ADR 0026](../adr/0026-vdd-cpu-buck-ti-tps62870z4.md)):** the `blk.vdd-cpu` record (#13) takes the TPS62870Z4 with differential sense; the 1100 mV cap stays. No block is added or removed.
 - **Updated 2026-10-27 (BOM v1.18 item 7, power tree v0.10, maintainer decision):** `blk.nfc-reader` (#42) withdrawn for board area, in every model; BRD-057 reworded: NFC as the tag only; `blk.nfc-tag` (#41) does not depend on the reader and stays. Both variant files drop the block; expander P05 becomes a spare (`blk.gpio-expander` record).
 - **Updated 2026-10-25 (`blk.vdd-cpu`):** the software field records the BRD-049 safety limit `regulator-max-microvolt = <1100000>` and the bring-up condition that lifts it; one 22 µF more at the vdd_cpu balls.
 - **Purpose:** the T1 main board's block catalog: one record per function of [BOM v1.7](bom-v1.md), with what it is bound by, its interface, power domain and switch, measurement point, absent state, swap classes, alternates and software. Then the variant file format and the three T1 variant files, what KiCad 10 offers for variants, the absent-state check, and the gaps the schematic must close.
@@ -47,7 +48,7 @@ Priority is the requirement's own (must / should) as recorded in its requirement
 | 10 | `blk.pwr-vsys-lv` | TPS62136 3.8 V pre-regulator | BRD-049 (must), ADR 0014 | none (EN = VSYS) | none (G11) | fit | fit |
 | 11 | `blk.pwr-3v3-sys` | TPS62826 3.3 V | BRD-049 (must) | none (always on) | none (G12) | fit | fit |
 | 12 | `blk.pmic` | RK809-5 and its inductors, RTC crystal | BRD-020 (must, Draft) | PWRON / OTP sequence | none | fit | fit |
-| 13 | `blk.vdd-cpu` | TPS62869 (v1.12, ADR 0021) | BRD-010, BRD-049 (must) | EN from vcc3v3_pmu (RC); on in suspend | H5 link (line 137), inside the VOS sense loop | fit | fit |
+| 13 | `blk.vdd-cpu` | TPS62870Z4 (v1.18, ADR 0026; TPS62869 v1.12–v1.17) | BRD-010, BRD-049 (must) | EN from vcc3v3_pmu (RC); on in suspend | H5 link (line 137), inside the differential sense loop | fit | fit |
 | 14 | `blk.pwr-5v1` | TPS62903 5.1 V buck | BRD-026, BRD-034, BRD-050 (must) | EN = `HAT5V_EN` OR `USB_SRC_ON` | HAT channel (input) | fit | fit |
 | 15 | `blk.hat-5v` | HAT port `VBUS` source (eFuse #A) and sink (TPS2121 IN2), FUSB302B01MPX port controller (USB PD), `VBUS` TVS, discharge FET | BRD-026 (must, Draft), BRD-049, HCS-027 to HCS-030 | eFuse EN (`HAT5V_EN`, TCPM) | eFuse IMON | fit | fit |
 | 16 | `blk.usb-vbus-out` | eFuse #C | BRD-034 (must) | eFuse EN | eFuse IMON | fit | fit |
@@ -76,7 +77,7 @@ Priority is the requirement's own (must / should) as recorded in its requirement
 | 39 | `blk.radio` | Murata Type 2EL (IW612) | BRD-025, BRD-029 (must), BRD-030 (should) | TPS22916C on expander `WL_PWR_EN` (v1.9; RK809 SWOUT1 before), PDn | none (G12) | fit | fit |
 | 40 | `blk.antennas` | 2 × U.FL, matching, 2 × antenna | BRD-025, BRD-029 (must) | — (passive) | — | fit | fit |
 | 41 | `blk.nfc-tag` | NTAG I2C plus, loop antenna | BRD-057 (should) | none (G6) | none (G12) | fit | fit |
-| 42 | `blk.nfc-reader` | Withdrawn (2026-10-27, maintainer decision: board area; BRD-057 reworded: NFC as the tag only) | — | — | — | — | — |
+| 42 | `blk.nfc-reader` | Removed (2026-10-27, maintainer decision: board area; BRD-057 reworded: NFC as the tag only) | — | — | — | — | — |
 | 43 | `blk.imu` | LSM6DSV16X | BRD-032 (should) | none (G1) | none (G12) | fit | fit |
 | 44 | `blk.haptics` | DRV2605L, LRA | BRD-058 (should) | EN (GPIO not assigned, G20) | none (G12) | fit | fit |
 | 45 | `blk.tpm` | SLB9673 TPM 2.0 | BRD-059 (should) | none (G5) | none (G12) | fit | fit |
@@ -270,13 +271,13 @@ Field order follows RFC 0011 §1. "Holds" lists the swap classes the interface t
 | Field | Content |
 |---|---|
 | Bound by | BRD-010, BRD-049 (must) |
-| Interface | I2C0 at 0x42, VSYS_LV in, vdd_cpu out, EN from vcc3v3_pmu, PG to a test pad (monitor only), VOS sense from the SoC ([ADR 0021](../adr/0021-vdd-cpu-buck-ti-tps62869.md), BOM v1.12 lines 3, 4, 147) |
+| Interface | I2C0 at 0x42, VSYS_LV in, vdd_cpu out, EN from vcc3v3_pmu, PG to a test pad (monitor only), VOSNS and GOSNS differential sense from the 22 µF at the SoC ([ADR 0026](../adr/0026-vdd-cpu-buck-ti-tps62870z4.md), BOM v1.18 lines 3, 4, 147) |
 | Power domain | EN from vcc3v3_pmu through 51 kΩ + 100 nF; on in suspend |
-| Measure | The H5 link (line 137), inside the VOS sense loop |
+| Measure | The H5 link (line 137), inside the sense loop |
 | Absent state | Not applicable |
-| Holds / revision | Holds: TPS628691ARQYR on the same land (pin 9 resistor, 0x41). Revision: onsemi FAN53555BUC18X (another land, `fan53555`) |
-| Alternates | `tps628691a` |
-| Software | `ti,tps62869` (`tps6286x`, `CONFIG_REGULATOR_TPS6286X=m`). BRD-049 safety limit (2026-10-25): `regulator-max-microvolt = <1100000>` on `vdd_cpu`, so the OPP core drops the 1800 MHz / 1150 mV point and the top CPU clock is 1608 MHz; documented where the user sees the CPU frequencies, never silent. Lifted to `<1150000>` at bring-up only if DC top + the measured load-step peak at the SoC stays ≤ 1.170 V (30 mV under the RK3566's 1.2 V absolute maximum, DS 1.1 p. 51). The converter accepts up to 1.675 V over I2C (SLVSFS3B pp. 19–20), so the kernel and U-Boot constraints are the only ceiling. The board adds one 22 µF at the vdd_cpu balls (97.4 µF nominal with the Rockchip set) |
+| Holds / revision | Holds: none recorded on the same land (the TPS62871Z4, 9 A, shares the package). Revision: the 1800 MHz capacitor field of ADR 0026 item 7 |
+| Alternates | none |
+| Software | `ti,tps62870` (`tps6287x`, mainline since Linux 6.5; not built by Debian: DKMS, OS-023). BRD-049 safety limit (2026-10-25, kept by ADR 0026): `regulator-max-microvolt = <1100000>` on `vdd_cpu`, so the OPP core drops the 1800 MHz / 1150 mV point and the top CPU clock is 1608 MHz; documented where the user sees the CPU frequencies, never silent. At this cap a 4.8 A release peaks at 1.149 V with the fitted 45.7 µF effective. Lifted to `<1150000>` at bring-up only if DC top + the measured load-step peak at the SoC stays ≤ 1.170 V (30 mV under the RK3566's 1.2 V absolute maximum, DS 1.1 p. 51) with the capacitors then fitted (ADR 0026 item 7). Forced PWM through the FPWMEN bit (`REGULATOR_MODE_FAST`). The converter's widest range reaches 3.35 V over I2C (SLVSGC5E p. 1), so the kernel and U-Boot constraints are the only ceiling (BOM §8 item 26) |
 | Level | — / Q1 |
 
 #### 14. `blk.pwr-5v1`: 5.1 V source for HAT_5V and USB-C VBUS out
@@ -623,9 +624,9 @@ The faceplate interface is the t1 [faceplate interface v1](https://github.com/op
 | Software | No kernel driver (i2c-dev); `org.opendap.hw.Nfc` |
 | Level | — / Q1 |
 
-#### 42. `blk.nfc-reader`: withdrawn
+#### 42. `blk.nfc-reader`: removed
 
-Withdrawn on 2026-10-27 (maintainer decision, reason: board area; BOM v1.18 item 7, BRD-057 reworded: NFC as the tag only): the T1 has no NFC reader in any model. The PN7160 and its front end (EMC filter, matching, RX path, 27.12 MHz crystal), the antenna contacts, the `NFC_VBAT` switch and link #18 go; the SoC balls of `NFC_VEN`, `NFC_DWL_REQ` and `NFC_IRQ` become spares without a pad (pinout v1), expander P05 (`NFC_PWR_EN`) a spare. `blk.nfc-tag` (#41) does not depend on the reader and stays. The number is not reused.
+Removed on 2026-10-27 (maintainer decision, reason: board area; BOM v1.18 item 7, BRD-057 reworded: NFC as the tag only): the T1 has no NFC reader in any model. The PN7160 and its front end (EMC filter, matching, RX path, 27.12 MHz crystal), the antenna contacts, the `NFC_VBAT` switch and link #18 go; the SoC balls of `NFC_VEN`, `NFC_DWL_REQ` and `NFC_IRQ` become spares without a pad (pinout v1), expander P05 (`NFC_PWR_EN`) a spare. `blk.nfc-tag` (#41) does not depend on the reader and stays. The number is not reused.
 
 #### 43. `blk.imu`: motion sensor
 

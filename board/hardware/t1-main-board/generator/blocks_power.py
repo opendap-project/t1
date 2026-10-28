@@ -1,4 +1,4 @@
-"""Power blocks: blk.pwr-vsys-lv (TPS62136), blk.pwr-3v3-sys (TPS62827), blk.vdd-cpu (TPS62869)
+"""Power blocks: blk.pwr-vsys-lv (TPS62136), blk.pwr-3v3-sys (TPS62827), blk.vdd-cpu (TPS62870Z4)
 and blk.pmic (RK809-5)."""
 
 from __future__ import annotations
@@ -224,134 +224,70 @@ def draw_3v3(s, variants):
 
 def sheet_vdd_cpu(proj):
     return proj.sheet("vdd-cpu.kicad_sch", "blk.vdd-cpu", "CPU core supply",
-                      "vdd_cpu 0.85-1.15 V for the RK3566 CPU cluster, I2C DVS on I2C0 at 0x42, 6 A", "A3")
+                      "vdd_cpu 0.85-1.10 V (cap) for the RK3566 CPU cluster, I2C DVS on I2C0 at 0x42, 6 A", "A3")
 
 
 def draw_vdd_cpu(s, variants):
-    """Hand-wired: VSYS_LV across the top; the VOS sense network below the output (ADR 0021)."""
-    blk = s.block
-    m0 = s.mark()
-    yr, yg = 45.72, 101.6
-    X, Y = 116.84, 73.66
-    pl = _ic(s, "texas-instruments", "TPS6286910CRQYR", X, Y,
-             {"Manufacturer_2": "Texas Instruments", "MPN_2": "TPS628691ARQYR", "Constraints": "PCB-P-07"})
-    P = {k: pl.pos(pl.pin(k)) for k in ("4", "5", "6", "7", "8", "9", "3", "1", "2")}
-    # input
-    s.group_box("Input", 20.32, 35.56, 48.26, 72.39)
-    s.power("VSYS_LV", 25.4, yr)
-    s.wire((25.4, yr), (P["3"][0], yr))
-    s.wire(P["3"], (P["3"][0], yr))
-    for cx, key in ((30.48, "C_100n_0402"), (43.18, "C_10u_0603_X7R"), (55.88, "C_10u_0603_X7R")):
-        c1, c2 = vpart(s, key, cx, 63.5)
-        s.wire((cx, yr), c1)
-        s.junction(cx, yr)
-        s.wire(c2, (cx, yg))
-        gnd(s, cx, yg)
-    # enable: 51 kΩ from vcc3v3_pmu, 100 nF to ground (item 5); I2C0
-    s.group_box("Enable, control", 71.12, 35.56, 66.04, 72.39)    # the IC value inside
-    et, eb = vpart(s, "R_51k", 78.74, 60.96, text="left")
-    s.power("vcc3v3_pmu", 78.74, 53.34)
-    s.wire((78.74, 53.34), et)
-    s.wire(eb, (78.74, P["4"][1]), P["4"])
-    ct, cb = vpart(s, "C_100n_0402", 86.36, 83.82)
-    s.wire((86.36, P["4"][1]), ct)
-    s.junction(86.36, P["4"][1])
-    s.wire(cb, (86.36, yg))
-    gnd(s, 86.36, yg)
-    for k, net in (("5", "I2C0_SDA"), ("6", "I2C0_SCL")):
-        s.wire(P[k], (P[k][0] - 2.54, P[k][1]))
-        s.point(net, P[k][0] - 2.54, P[k][1], "left", "bi" if k == "5" else "in")
-    ya = 96.52                                     # AGND joins PGND at the pins (one ground, CRAFT-85)
-    s.wire(P["1"], (P["1"][0], ya), (P["2"][0], ya))
-    s.wire(P["2"], (P["2"][0], yg))
-    s.junction(P["2"][0], ya)
-    gnd(s, P["2"][0], yg)
-    xp = P["9"][0] + 2.54                          # PG leaves downward, clear of the VOS route
-    s.wire(P["9"], (xp, P["9"][1]), (xp, 88.9))
-    s.point("VDD_CPU_PG", xp, 88.9, "down", "bi")
-    # output, VOS sense network, link
-    s.group_box("Output and sense", 139.7, 35.56, 88.9, 72.39)
-    yo = P["7"][1]
-    xl = 254.0
-    ll, lr = hpart(s, "L_XGL4012_221", 147.32, yo, prefix="L")   # its text inside the group
-    s.wire(P["7"], ll)
-    s.point("VDD_CPU_SW", round((P["7"][0] + ll[0]) / 2 / 1.27) * 1.27, yo, "up")   # switch node (SW_NODE)
-    s.wire(lr, (xl - 11.43, yo))
-    for cx in (152.4, 167.64):                    # pitch: the rating clears the next capacitor and ground
-        c1, c2 = vpart(s, "C_22u_0603", cx, 76.2)
-        s.wire((cx, yo), c1)
-        s.junction(cx, yo)
-        gnd(s, *c2)
-    yv = 91.44                                     # VOS node: inside the output group, apart from ya
-    xv = 140.97
-    s.wire(P["8"], (xv, P["8"][1]), (xv, yv), (212.09 - 2.54, yv))
-    for cx, key, extra, dnp in ((182.88, "R_100", None, False),
-                                (193.04, "R_0_0402", {"Alternate": "vos-local-sense"}, True)):
-        rt, rb = vpart(s, key, cx, 80.01, extra=extra, dnp=dnp)
-        s.wire((cx, yo), rt)
-        s.junction(cx, yo)
-        s.wire(rb, (cx, yv))
-        s.junction(cx, yv)
-    vt, vb = vpart(s, "C_100n_0402", 200.66, 97.79)
-    s.wire((200.66, yv), vt)
-    s.junction(200.66, yv)
-    s.wire(vb, (200.66, yg))
-    gnd(s, 200.66, yg)
-    s.junction(205.74, yv)
-    s.wire((205.74, yv), (205.74, 86.36))
-    tp(s, 205.74, 86.36, "VDD_CPU_VOS")
-    nsym = library.load("Device", "NetTie_2")
-    nref = s.next_ref("NT")
-    f = fields("NT", blk)
-    f["Constraints"] = "PCB-P-07"
-    npl = s.place(nsym, nref, 212.09, yv, fields=f, value="NetTie", in_bom=False,
-                  ref_at=(212.09, yv + 3.81), val_at=(212.09, yv + 6.35))
-    s.wire(npl.pos(npl.pin("2")), (222.25, yv), (222.25, 76.2))
-    s.power("vdd_cpu", 222.25, 76.2)
-    link(s, "LINK_H5", xl, yo, None, "vdd_cpu", link_variants("LINK_H5", variants),
-         tp_names=("VDD_CPU_SRC", "vdd_cpu"), title="Link #1")
-    s.shift(m0, 0, 5.08)
+    """blk.vdd-cpu (feature blocks #13), board ADR 0026: TPS62870Z4 with differential remote sense."""
+    from blocks_audio import grp, ic_group, link_group, parts_group, two_pin_box
+    from blocks_should import pads
+    from draw import Flow, Group, prow
+    f = Flow(s)
+    pins = {"1": "VDD_CPU_COMP", "2": "VDD_CPU_GOS", "3": "VDD_CPU_VOS", "4": "VDD_CPU_EN",
+            "5": "VSYS_LV", "9": "VSYS_LV", "6": "GND", "8": "GND", "17": "GND", "7": "VDD_CPU_SW",
+            "10": "VDD_CPU_PG", "11": "GND", "12": "I2C0_SDA", "13": "I2C0_SCL", "14": None,
+            "15": "VSYS_LV", "16": "VSYS_LV"}
+    grp(f, lambda: ic_group(
+        s, "TPS62870Z4 at I2C0 0x42 (ADR 0026 item 1)", "texas-instruments", "TPS62870Z4WRXSR", pins,
+        extra={"Constraints": "PCB-P-07"}, pad_left=5.08,
+        rows=[[("C_47u_0603", "VSYS_LV", "GND"), ("C_100n_0201", "VSYS_LV", "GND")],
+              [("C_47u_0603", "VSYS_LV", "GND"), ("C_100n_0201", "VSYS_LV", "GND")]]))
+    grp(f, lambda: parts_group(s, "Enable and compensation (items 1, 4)", [
+        [("R_51k", "vcc3v3_pmu", "VDD_CPU_EN"), ("C_100n_0201", "VDD_CPU_EN", "GND")],
+        [("R_82R5", "VDD_CPU_COMP", "VDD_CPU_CC"), ("C_5n6_C0G", "VDD_CPU_CC", "VDD_CPU_GOS"),
+         ("C_22p_0402", "VDD_CPU_COMP", "VDD_CPU_GOS")]]))
+
+    def output():
+        g = Group(s, "Output (items 2, 4)")
+        g.add(two_pin_box(s, "L_XEL4012_920", 101.6, 101.6, "VDD_CPU_SW", "VDD_CPU_SRC", prefix="L"))
+        g.add(prow(s, 101.6, 127.0, [("C_22u_0603", "VDD_CPU_SRC", "GND")]))
+        return g.close()
+    grp(f, output)
+    grp(f, lambda: link_group(s, "LINK_H5", "VDD_CPU_SRC", "vdd_cpu", variants, "Link #1"))
+
+    def sense():
+        g = Group(s, "Remote sense at the SoC capacitor (item 5)")
+        g.add(two_pin_box(s, "NT", 101.6, 101.6, "VDD_CPU_VOS", "vdd_cpu", extra={"Constraints": "PCB-P-07"}))
+        g.add(two_pin_box(s, "NT", 101.6, 114.3, "VDD_CPU_GOS", "GND", extra={"Constraints": "PCB-P-07"}))
+        return g.close()
+    grp(f, sense)
+
+    grp(f, lambda: parts_group(s, "Power good pull-up (item 1)", [[("R_100k", "vcca1v8_pmu", "VDD_CPU_PG")]]))
+    grp(f, pads(s, "Test pads", ("VDD_CPU_PG", "VDD_CPU_VOS"), key=None))
     s.iface_rows = [
         ["I2C0_SDA, I2C0_SCL", "Bidirectional", "Not applicable (never omitted); pull-ups on blk.soc-pmuio"],
         ["VSYS_LV", "Supply in", "Not applicable"],
         ["vdd_cpu", "Supply out", "Not applicable"],
     ]
-    s.rail_rows = [["VSYS_LV", "2 x 10 µF X7R 0603 + 100 nF", "ADR 0021 item 3; >= 8 µF effective (SLVSFS3B p. 23)"],
-                   ["VDD_CPU_SRC", "2 x 22 µF 0603", "ADR 0021 item 3; with the SoC set 97.4 µF nominal (one 22 µF added, note 6)"]]
-    _vdd_cpu_pg(s)
+    s.rail_rows = [["VSYS_LV", "47 µF X5R 0603 + 100 nF at each VIN pin", "ADR 0026 item 3; >= 5 µF effective per pin (SLVSGC5E p. 9): 8.65 µF"],
+                   ["VDD_CPU_SRC", "22 µF 0603", "ADR 0026 item 4; 3 x 22 µF + 2 x 4.7 µF at the SoC (load >= 2 x device)"]]
     corner_notes(s, [
-        "1. Function: TI TPS6286910CRQYR, 6 A, I2C0 0x42, 0.9 V start-up, from VSYS_LV (ADR 0021).",
-        "2. Absent state: not applicable (never omitted). EN from vcc3v3_pmu through 51 kΩ",
-        "   and 100 nF (item 5): vdd_cpu follows VCC3V3_PMU (HDG p. 34); on in suspend.",
-        "3. Sense (item 4): VOS takes its own trace (net tie) from the 22 µF at the SoC, load side",
-        "   of the link; 100 Ω to the converter-side output, 100 nF to AGND. The DNP 0 Ω",
-        "   (Alternate vos-local-sense) returns to local sense if the load-step check fails.",
-        "4. PG (item 6): monitor only, never a reset. DNP 86.6 kΩ 1 %: the TPS628691ARQYR",
-        "   same-land alternate (0x41, VSET; Alternate tps628691a).",
-        "5. L XGL4012-221MEC 0.22 µH (item 2), land of the 4020 family (UNVERIFIED). At the SoC",
-        "   2 x 22 µF + 2 x 4.7 µF (blk.soc-power): 97.4 µF nominal with the 2 x 22 µF here.",
+        "1. Function: TI TPS62870Z4WRXSR, 6 A, I2C0 0x42, +-1 % over TJ -40..125 C, differential",
+        "   remote sense, from VSYS_LV (ADR 0026). VSEL, FSEL to VIN: 0.875 V start-up, 3 MHz.",
+        "2. Absent state: not applicable (never omitted). EN from vcc3v3_pmu through 51 kΩ (>= 15 kΩ,",
+        "   SLVSGC5E p. 6) and 100 nF: vdd_cpu follows VCC3V3_PMU (HDG p. 34); on in suspend.",
+        "3. MODE/SYNC to GND: power save by pin; forced PWM through FPWMEN (driver mode FAST).",
+        "   SYNC_OUT open (single device). PG open drain: monitor only, never a reset.",
+        "4. Compensation COMP to GOSNS (never PGND): RZ 82.5 Ω, CC 5.6 nF C0G, CC2 22 pF (item 4).",
+        "   Output 45.7 µF effective at 1.1 V with the SoC set: 4.8 A release peaks at 1.149 V.",
+        "5. Sense (item 5): VOSNS and GOSNS as a differential pair from the 22 µF at the SoC, load",
+        "   side of link #1 (net ties), away from VDD_CPU_SW (SLVSGC5E pp. 53-54).",
         "6. BRD-049 safety limit: devicetree regulator-max-microvolt = <1100000> (no 1800 MHz /",
         "   1150 mV point) until bring-up shows DC top + load-step peak <= 1.170 V at the SoC.",
-        "   The converter accepts up to 1.675 V over I2C: the kernel and U-Boot limits are the ceiling.",
-        "7. Link H5 5 mΩ in every variant, inside the VOS loop (power tree §4.12 #1). Groups:",
-        "   ADR 0021 items 1-6. Constraints: PCB-P-07, -08. Unless noted: resistors 1 % 0402.",
+        "   The converter accepts up to 3.35 V over I2C: the kernel and U-Boot limits are the ceiling.",
+        "7. L XEL4012-920NEC 92 nH on the 4020-family land (UNVERIFIED). Link #1 H5 inside the sense",
+        "   loop. Constraints: PCB-P-07, -08. Unless noted: resistors 1 % 0402.",
     ])
-
-
-def _vdd_cpu_pg(s):
-    """PG pull-up, test pad and the A-option resistor, below the input group."""
-    y = 134.62
-    s.group_box("Power good (item 6)", 25.4, 119.38, 76.2, 30.48)
-    s.wire((40.64, y), (91.44, y))
-    s.point("VDD_CPU_PG", 40.64, y, "left", "pas")      # its text inside the group
-    rt, rb = vpart(s, "R_100k", 55.88, 130.81)
-    s.power("vcca1v8_pmu", *rt)
-    s.junction(55.88, y)
-    s.wire((71.12, y), (71.12, 132.08))
-    s.junction(71.12, y)
-    tp(s, 71.12, 132.08, "VDD_CPU_PG")
-    dt, db = vpart(s, "R_86k6", 91.44, 138.43, extra={"Alternate": "tps628691a"}, dnp=True)
-    gnd(s, *db)
 
 
 # ---------------------------------------------------------------------- RK809-5 PMIC

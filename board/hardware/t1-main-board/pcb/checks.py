@@ -33,7 +33,7 @@ def height_limit(side, rect):
     return g.H_SHELF if zmod.intersect(rect, g.SPEAKER) else g.H_BACK_BAND
 
 
-def run(placed, heights, zone_rects, exempt_zone=(), window_parts=()):
+def run(placed, heights, zone_rects, exempt_zone=(), window_parts=(), lids=()):
     """placed: ref -> dict(side, zone, rect). Returns a list of (rule, ref, detail)."""
     out = []
     by_side = {"F": [], "B": []}
@@ -61,6 +61,9 @@ def run(placed, heights, zone_rects, exempt_zone=(), window_parts=()):
         lim = height_limit(s, r)
         if ref in window_parts and s == "B":
             lim = g.H_CONTACT_WINDOW
+        lid = [mh for ls, inside, mh in lids if ls == s and "#" not in ref and zmod.intersect(r, inside)]
+        if lid and h is not None and h > min(lid) + 1e-9:
+            out.append(("PCB-Z-01 (shield lid)", ref, "%.2f mm under a shield lid that allows %.2f mm" % (h, min(lid))))
         if h is not None and h > lim + 1e-9:
             if s == "F":
                 rule = "PCB-Z-03" if lim == g.H_FRONT_DISPLAY else "PCB-Z-04"

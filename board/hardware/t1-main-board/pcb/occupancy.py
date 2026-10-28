@@ -70,11 +70,17 @@ def part_class(ref, h):
     return "F"
 
 
-def floorplan_budget(nl, geom, heights, zone_of_block, faceplate_refs):
-    """Floorplan v1's §2.1 table recomputed with real courtyards on the floorplan's zones."""
+def floorplan_budget(nl, geom, heights, zone_of_block, faceplate_refs, rings=None):
+    """Floorplan v1's §2.1 table recomputed with real courtyards on the floorplan's zones. A shield
+    frame (rings: ref -> its courtyard ring) counts its ring once, without the routing factor: the
+    land and keep-out take board area, and tracks pass under them on the inner layers."""
     need = {z: {"F": 0.0, "B": 0.0, "T": 0.0, "E": 0.0} for z in g.ZONES}
+    rings = rings or {}
     for ref, c in nl.components.items():
         z = "FACEPLATE" if ref in faceplate_refs else zone_of_block.get(c.block, "CORE")
+        if ref in rings:
+            need[z]["B"] += sum(rect_area(q) for q in rings[ref]) / FACTOR
+            continue
         cy = geom[c.footprint]["courtyard"]
         need[z][part_class(ref, heights[ref])] += rect_area(cy)
     res = {}

@@ -93,6 +93,13 @@ PARTS = {
                          src="TPS65131 CP 10 nF C0G (BOM v1 line 111)"),
     "C_15p_0402": _c("15 pF", "GRM1555C1H150JA01D", "0402", 50, "C0G"),
     "C_22p_0402": _c("22 pF", "GRM1555C1H220JA01D", "0402", 50, "C0G"),
+    # vdd_cpu TPS62870Z4 (board ADR 0026): input per VIN pin, compensation (SLVSGC5E pp. 9, 45-48)
+    "C_47u_0603": _c("47 µF", "GRM188R60J476ME15D", "0603", 6.3, "X5R",
+                     src="board ADR 0026 item 3: 8.65 µF effective at 3.8 V (SimSurfing, -20..85 C, -20 %) "
+                         "against 5 µF per VIN pin (SLVSGC5E p. 9)"),
+    "C_5n6_C0G": _c("5.6 nF", "GRM1555C1H562JE01D", "0402", 50, "C0G",
+                    src="board ADR 0026 item 4: CC from SLVSGC5E Eq. 24 (5.16 nF)"),
+    "R_82R5": _r("82.5 Ω", "82R5", src="board ADR 0026 item 4: RZ from SLVSGC5E Eq. 15 at 45.7 µF effective"),
     "C_100p_0603": _c("100 pF", "GRM1885C1H101JA01D", "0603", 50, "C0G",
                       src="HP-amp network C1 = C2 100 pF C0G 0603 50 V (BOM v1 line 108)"),
     "C_220n_0402": _c("220 nF", "GRM155R61A224KE19D", "0402", 10, "X5R",
@@ -185,6 +192,12 @@ PARTS = {
                           Description="Power inductor, 0.22 uH 20 %, Isat 9.9 A (20 % drop), Irms 10.9 A, 4.0 x 4.0 x 1.2 mm",
                           Manufacturer="Coilcraft", MPN="XGL4012-221MEC", spec="Isat 9.9 A",
                           src="board ADR 0021 item 2; land of the 4020 family assumed (UNVERIFIED against Document 1718)"),
+    "L_XEL4012_920": dict(kind="L", value="92 nH", Footprint="Inductor_SMD:L_Coilcraft_XxL4020",
+                          Datasheet="https://www.coilcraft.com/en-us/products/power/shielded-inductors/molded-inductor/xel/xel4012/",
+                          Description="Power inductor, 92 nH, Isat 24 A (25 C), 5.2 mOhm typ, 4 x 4 x 1.2 mm",
+                          Manufacturer="Coilcraft", MPN="XEL4012-920NEC", spec="Isat 24 A",
+                          src="board ADR 0026 item 2 (SLVSGC5E Table 9-2: XEL4012-920NE); 4020-family land, "
+                              "UNVERIFIED against the XEL4012 drawing"),
     "L_XGL4020_152": dict(kind="L", value="1.5 µH", Footprint="Inductor_SMD:L_Coilcraft_XxL4020",
                           Datasheet="https://www.coilcraft.com/getmedia/76c9c081-4945-4c85-9129-9356e1ad6734/xgl4020.pdf",
                           Description="Power inductor, 1.5 uH 20 %, Isat 5.3 A (20 % drop), Irms 8.0 A, 4.0 x 4.0 x 2.1 mm",
@@ -380,7 +393,7 @@ PARTS = {
                       Description="Board-edge contact pad, ENIG, for the back cover's actuator (size set with the case, UNVERIFIED)",
                       src="BOM v1 line 143; PCB-L-10"),
     "NT": dict(kind="NT", value="NetTie", Footprint="NetTie:NetTie-2_SMD_Pad0.5mm", Datasheet="~",
-               Description="Net tie: a separate trace leaves the net here (remote sense)", src="board ADR 0021 item 4"),
+               Description="Net tie: a separate trace leaves the net here (remote sense)", src="board ADR 0026 item 5"),
 }
 
 
@@ -426,7 +439,7 @@ def compact(key, block, top, bottom):
 #   and the VBUS and charger-input paths; 0 Ω links and values under 10 Ω (current paths) keep 0402.
 #   Every 0402 resistor outside those blocks is a pull-up, divider, bias or series part on rails of at
 #   most VSYS (8.8 V), within half the 0201's 25 V; sourcing (T1-029), 2026-10-27: pass.
-# - 100 nF capacitors on low-voltage signal nodes (PMIC power-on and VDC, vdd_cpu EN and VOS, SoC
+# - 100 nF capacitors on low-voltage signal nodes (PMIC power-on and VDC, vdd_cpu EN, SoC
 #   reset) to the 0201 already used for decoupling (GRM033R61A104KE15D, 10 V X5R; at most 1.8 V on
 #   each node, power tree v0 §3). The 0201 1 nF positions wait for a sourced part.
 # - DC-bias gate (DRV-107, BOM v1.17): the maker's DC-bias data at each node's highest voltage,
@@ -439,8 +452,7 @@ AREA_C_DCBIAS = {("blk.charger-core", r): "C_10u_0603_25V" for r in ("C605", "C6
 AREA_C_DCBIAS.update({("blk.fp-connector", "C5304"): "C_1u_0201", ("blk.mic-main", "C6402"): "C_1u_0201"})
 AREA_R_EXCLUDE = ("blk.dac", "blk.mclk", "blk.hpa", "blk.audio", "blk.jack", "blk.charger-input", "blk.usb-c",
                   "blk.hat-5v", "blk.usb-vbus-out")
-AREA_C_SIGNAL = {("blk.pmic", "C1114"), ("blk.pmic", "C1115"), ("blk.vdd-cpu", "C1204"),
-                 ("blk.vdd-cpu", "C1207"), ("blk.soc-pmuio", "C1303")}
+AREA_C_SIGNAL = {("blk.pmic", "C1114"), ("blk.pmic", "C1115"), ("blk.soc-pmuio", "C1303")}
 _OHM = {"Ω": 1.0, "kΩ": 1e3, "MΩ": 1e6, "mΩ": 1e-3}
 
 

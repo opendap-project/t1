@@ -2218,11 +2218,35 @@
       },
       {
         "netclass": "ZONE_CORE",
+        "pattern": "*/VDD_CPU_CC"
+      },
+      {
+        "netclass": "ZONE_CORE",
+        "pattern": "*/VDD_CPU_COMP"
+      },
+      {
+        "netclass": "ZONE_CORE",
+        "pattern": "*/VDD_CPU_EN"
+      },
+      {
+        "netclass": "ZONE_CORE",
+        "pattern": "*/VDD_CPU_GOS"
+      },
+      {
+        "netclass": "ZONE_CORE",
         "pattern": "*/VDD_CPU_PG"
       },
       {
         "netclass": "ZONE_CORE",
+        "pattern": "*/VDD_CPU_SRC"
+      },
+      {
+        "netclass": "ZONE_CORE",
         "pattern": "*/VDD_CPU_SW"
+      },
+      {
+        "netclass": "ZONE_CORE",
+        "pattern": "*/VDD_CPU_VOS"
       },
       {
         "netclass": "ZONE_CORE",
@@ -5226,6 +5250,14 @@
       },
       {
         "netclass": "ZONE_CORE",
+        "pattern": "Net-(C1349-*"
+      },
+      {
+        "netclass": "ZONE_CORE",
+        "pattern": "unconnected-(C1349-*"
+      },
+      {
+        "netclass": "ZONE_CORE",
         "pattern": "Net-(R1336-*"
       },
       {
@@ -5634,6 +5666,14 @@
       },
       {
         "netclass": "ZONE_CORE",
+        "pattern": "Net-(C1208-*"
+      },
+      {
+        "netclass": "ZONE_CORE",
+        "pattern": "unconnected-(C1208-*"
+      },
+      {
+        "netclass": "ZONE_CORE",
         "pattern": "Net-(L1201-*"
       },
       {
@@ -5647,6 +5687,14 @@
       {
         "netclass": "ZONE_CORE",
         "pattern": "unconnected-(NT1201-*"
+      },
+      {
+        "netclass": "ZONE_CORE",
+        "pattern": "Net-(NT1202-*"
+      },
+      {
+        "netclass": "ZONE_CORE",
+        "pattern": "unconnected-(NT1202-*"
       },
       {
         "netclass": "ZONE_CORE",
@@ -5679,22 +5727,6 @@
       {
         "netclass": "ZONE_CORE",
         "pattern": "unconnected-(R1204-*"
-      },
-      {
-        "netclass": "ZONE_CORE",
-        "pattern": "Net-(R1205-*"
-      },
-      {
-        "netclass": "ZONE_CORE",
-        "pattern": "unconnected-(R1205-*"
-      },
-      {
-        "netclass": "ZONE_CORE",
-        "pattern": "Net-(R1206-*"
-      },
-      {
-        "netclass": "ZONE_CORE",
-        "pattern": "unconnected-(R1206-*"
       },
       {
         "netclass": "ZONE_CORE",

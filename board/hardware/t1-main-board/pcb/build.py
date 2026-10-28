@@ -210,7 +210,15 @@ def main():
     fixed = set(plan.FIXED) | window
     pl = {r: {"side": p.side, "zone": p.zone, "rect": p.rect, "zones": p.zones,
               "holes": placer.holes_at(r, p.x, p.y, p.side, p.rot)} for r, p in placed.items()}
-    allf = checks.run(pl, hts, placer.zone_rects, exempt_zone=fixed, window_parts=window)
+    # a shield frame is checked as the four rectangles of its courtyard ring (placement v1 decision 15)
+    for r, f in placer.frames.items():
+        p = pl.pop(r)
+        for k, q in enumerate(placement.frame_ring(f)):
+            pl["%s#%d" % (r, k)] = dict(p, rect=q)
+            hts["%s#%d" % (r, k)] = hts[r]
+            fixed.add("%s#%d" % (r, k))
+    allf = checks.run(pl, hts, placer.zone_rects, exempt_zone=fixed, window_parts=window,
+                      lids=[(f["side"], f["inside"], f["max_h"]) for f in placer.frames.values()])
     relief = [f for f in allf if f[0] == "PCB-Z-01" and f[1] in plan.POCKET_RELIEFS]
     findings = [f for f in allf if f not in relief]
     reliefs = {}
@@ -220,8 +228,12 @@ def main():
         reliefs[ref] = {"row": plan.POCKET_RELIEFS[ref], "height_mm": round(hts[ref], 2),
                         "courtyard": [round(v, 2) for v in r], "in_pocket": [round(v, 2) for v in cut],
                         "depth_into_pocket_mm": round(min(cut[2] - cut[0], cut[3] - cut[1]), 2)}
-    budget = occupancy.floorplan_budget(nl, geom, hts, plan.FLOORPLAN_ZONE_OF_BLOCK, plan.FACEPLATE_REFS)
-    occ = occupancy.placed_occupancy({r: (p.zone, p.side, p.rect) for r, p in placed.items()}, placer.zone_rects)
+    rings = {r: placement.frame_ring(f) for r, f in placer.frames.items()}
+    budget = occupancy.floorplan_budget(nl, geom, hts, plan.FLOORPLAN_ZONE_OF_BLOCK, plan.FACEPLATE_REFS,
+                                        rings=rings)
+    occ = occupancy.placed_occupancy({k: v for r, p in placed.items() for k, v in (
+        [("%s#%d" % (r, i), (p.zone, p.side, q)) for i, q in enumerate(rings[r])] if r in rings
+        else [(r, (p.zone, p.side, p.rect))])}, placer.zone_rects)
     sides = {"F": 0, "B": 0}
     for p in placed.values():
         sides[p.side] += 1
@@ -234,7 +246,13 @@ def main():
         "outline_mm": [round(g.BW, 2), round(g.BH, 2)],
         "checks": [list(f) for f in findings],
         "pocket_reliefs": reliefs,
-        "routing_room": routing_room(placed, budget),
+        "routing_room": routing_room(placed, budget, rings),
+        "shield_frames": {r: {"id": f["id"], "side": f["side"], "inside": list(f["inside"]),
+                              "land_outer": list(f["land_out"]), "courtyard_outer": list(f["court_out"]),
+                              "max_part_height_mm": f["max_h"],
+                              "parts_inside": sorted(q for q, pq in placed.items() if q != r and pq.side == f["side"]
+                                                     and zones.intersect(pq.rect, f["inside"]))}
+                          for r, f in sorted(placer.frames.items())},
         "floorplan_budget_real_courtyards": budget,
         "placed_occupancy": occ,
         "zone_deltas": [{"zone": z, "rect": list(r), "layers": spec_ or "all", "reason": why}
@@ -275,11 +293,14 @@ def main():
     return 1 if (failed or prox_bad) else 0
 
 
-def routing_room(placed, budget):
+def routing_room(placed, budget, rings=None):
     """Board need by the floorplan method, placed courtyard and the placement and routing factor
-    left (both sides' area over the placed courtyard), whole board and per zone and side."""
+    left (both sides' area over the placed courtyard), whole board and per zone and side. A shield
+    frame counts its courtyard ring."""
     area = 2 * g.BW * g.BH
-    cy = sum(occupancy.rect_area(p.rect) for p in placed.values())
+    rings = rings or {}
+    cy = sum(sum(occupancy.rect_area(q) for q in rings[r]) if r in rings else occupancy.rect_area(p.rect)
+             for r, p in placed.items())
     need = sum(z["need_mm2"] for z in budget.values())
     return {"board_need_pct": round(100 * need / area, 1), "placed_courtyard_pct": round(100 * cy / area, 1),
             "factor_left": round(area / cy, 2)}

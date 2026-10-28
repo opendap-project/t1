@@ -67,6 +67,9 @@ class Placer:
         # capacitors that serve converter and IC pins (proximity.py), placed with their IC
         self.prox = proximity.assignments(nl, is_switch_node)
         self.prox_pin = self._prox_pins()
+        # shield-can frames (blk.shields, ../shields.toml): fixed; their land and keep-out are an
+        # obstacle, their inside takes parts no taller than the lid allows (placement v1 decision 15)
+        self.frames = frames_of(nl)
 
     # ---------------------------------------------------------------- zones and masks
     def _zones(self):
@@ -93,6 +96,13 @@ class Placer:
 
     def height_rects(self, side: str, h: float):
         """Rectangles where a part of height h may stand on a side."""
+        rects = self._height_rects(side, h)
+        for f in self.frames.values():          # under a shield lid: parts up to the frame's max_h
+            if f["side"] == side and h > f["max_h"] + 1e-9:
+                rects = [p for r in rects for p in _subtract(r, f["inside"])]
+        return rects
+
+    def _height_rects(self, side: str, h: float):
         if side == "F":
             # PCB-Z-04 (6.8 mm outside the display) is UNVERIFIED: the search keeps the front at
             # PCB-Z-03's 1.0 mm everywhere; a part uses Z-04 only as a fixed part of the plan
@@ -107,7 +117,8 @@ class Placer:
         return []
 
     def mask(self, zones, side: str, h: float, edge_ok: bool, cap: bool):
-        key = (tuple(sorted(zones)), side, h > g.H_FRONT_DISPLAY, h > g.H_BACK_POCKET, h > g.H_SHELF, edge_ok, cap)
+        key = (tuple(sorted(zones)), side, h > g.H_FRONT_DISPLAY, h > g.H_BACK_POCKET, h > g.H_SHELF, edge_ok, cap,
+               tuple(sorted(r for r, f in self.frames.items() if f["side"] == side and h > f["max_h"] + 1e-9)))
         if key in self._masks:
             return self._masks[key]
         inc = []
@@ -155,6 +166,12 @@ class Placer:
     # ---------------------------------------------------------------- commit
     def commit(self, ref, x, y, rot, side, zone, zones_=()):
         r = self.rect_at(ref, x, y, side, rot)
+        if ref in self.frames:                   # a frame occupies its land and keep-out ring only
+            f = self.frames[ref]
+            for q in frame_ring(f):
+                self.occ[side].set_rect(q, grow=0.0)
+            self.placed[ref] = Placed(ref, x, y, rot, side, zone, f["court_out"], (zone,))
+            return
         self.occ[side].set_rect(r)
         other = "B" if side == "F" else "F"
         for hr in self.holes_at(ref, x, y, side, rot):
@@ -480,7 +497,7 @@ class Placer:
             me = self.placed[ref]
             fp = self.nl.components[ref].footprint
             cands = [q for q in self.placed.values() if q.ref != ref and self.nl.components[q.ref].footprint == fp
-                     and abs(self.h[q.ref] - self.h[ref]) < 1e-6 and q.ref not in plan.FIXED
+                     and abs(self.h[q.ref] - self.h[ref]) < 1e-6 and q.ref not in plan.FIXED and q.ref not in self.frames
                      and q.ref not in plan.PART_TARGET and math.hypot(q.x - tgt[0], q.y - tgt[1]) <= reach
                      and q.side in self.allowed_sides(ref) and me.side in self.allowed_sides(q.ref)
                      and self.zone_of(self.nl.components[q.ref]) == self.zone_of(self.nl.components[ref])]
@@ -540,7 +557,7 @@ class Placer:
             # movable: searched small passives and test pads (no holes, <= 0805), including capacitors that serve
             # other pins, which must stay within their own bound after the move
             cands = [q for q in self.placed.values() if q.side in sides and q.ref.startswith(("C", "R", "TP", "NT", "FB"))
-                     and q.ref not in plan.FIXED and q.ref not in plan.PART_TARGET and q.ref not in plan.REWORK_BGA
+                     and q.ref not in plan.FIXED and q.ref not in self.frames and q.ref not in plan.PART_TARGET and q.ref not in plan.REWORK_BGA
                      and not self.local(q.ref).get("holes") and _area(q.rect) <= 7.0
                      and math.hypot(q.x - tgt[0], q.y - tgt[1]) <= reach]
             cands.sort(key=lambda q: (math.hypot(q.x - tgt[0], q.y - tgt[1]), q.ref))
@@ -576,6 +593,8 @@ class Placer:
     # ---------------------------------------------------------------- stages
     def place_fixed(self, edge_rot):
         """edge_rot: ref -> (rotation, courtyard-centre x offset) for edge parts, from build.py."""
+        for ref, f in sorted(self.frames.items()):
+            self.commit(ref, f["centre"][0], f["centre"][1], 0, f["side"], self.zone_of(self.nl.components[ref]))
         for ref, (x, y, rot, side, _) in plan.FIXED.items():
             if ref not in self.nl.components:
                 continue
@@ -748,6 +767,9 @@ class Placer:
         other = "B" if p.side == "F" else "F"
         for hr in self.holes_at(ref, p.x, p.y, p.side, p.rot):
             self.occ[other].set_rect(hr, False)
+        for f in self.frames.values():          # a cleared neighbour never opens a frame's ring
+            for q in frame_ring(f):
+                self.occ[f["side"]].set_rect(q, grow=0.0)
         return p
 
     def repair(self, max_victims=8, max_h=None):
@@ -763,7 +785,7 @@ class Placer:
             sides = self.allowed_sides(ref)
             tgt = self.target_of(ref)
             cands = [p for p in self.placed.values() if p.side in sides and zone in p.zones
-                     and p.ref not in plan.FIXED and p.ref not in plan.PART_TARGET and p.ref not in plan.REWORK_BGA
+                     and p.ref not in plan.FIXED and p.ref not in self.frames and p.ref not in plan.PART_TARGET and p.ref not in plan.REWORK_BGA
                      and self.h[p.ref] <= max_h and not self.local(p.ref).get("holes")]
             cands.sort(key=lambda p: ((p.x - tgt[0]) ** 2 + (p.y - tgt[1]) ** 2, p.ref))
             msg = self.failed.pop(ref)
@@ -836,3 +858,18 @@ def edge_rotations(nl, geom):
         if isinstance(y, str) and ref in nl.components:
             res[ref] = edge_rotation(geom[nl.components[ref].footprint], side, y.split(":")[1])
     return res
+
+
+def frames_of(nl):
+    """ref -> frame (shields.frames()) for every shield-frame part of the netlist."""
+    fps = {c.footprint.split(":", 1)[-1]: r for r, c in nl.components.items() if ":Shield_Frame_" in c.footprint}
+    if not fps:
+        return {}
+    import shields
+    return {fps[f["footprint"]]: f for f in shields.frames() if f["footprint"] in fps}
+
+
+def frame_ring(f):
+    """The courtyard ring of a frame: outer courtyard less its inside (the land and both keep-outs)."""
+    import shields
+    return shields.ring(f["court_out"], f["inside"])

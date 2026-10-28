@@ -11,4 +11,4 @@ Contributor rules (English, confirmed information only, REUSE licensing, the `do
 ## Working here
 
 - Product requirements are in `docs/requirements/`. Update them with the `/opendap:requirement` skill; write an ADR (`/opendap:adr`) only for decisions taken.
-- Build the assembly and simulations only from components' `export/` folders, pinned in `components.yaml`, following the [component export contract](https://github.com/opendap-project/toolkit-hardware/blob/main/docs/specs/component-export.md). Never copy component sources here.
+- Build the assembly and simulations only from components' `export/` folders, pinned in `components.yaml`, following the [component export contract](https://github.com/opendap-project/tools/blob/main/hardware/docs/specs/component-export.md). Never copy component sources here.

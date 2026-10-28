@@ -112,7 +112,8 @@ def flow_units(sheet, sym, ref, units, nets, flds, x0, y0, x_max, value=None, ga
 
 def decouple(sheet, rail, keys, x, y, block, refs_out=None, pitch=10.16):
     """A decoupling group: the rail as a power symbol on a horizontal wire, capacitors hanging from
-    it in placement order (smallest first, nearest the pins), each to its own ground symbol.
+    it in placement order (smallest first, nearest the pins), each to its own ground symbol. Each
+    capacitor carries the hidden field `Decoupling` (the rail), which the placement checks.
     (x, y) is the rail symbol's pin. Returns the x after the group."""
     csym = library.load("Device", "C")
     keys = [compact(k, block, rail, "GND") for k in keys]
@@ -133,7 +134,9 @@ def decouple(sheet, rail, keys, x, y, block, refs_out=None, pitch=10.16):
         if i < len(xs) - 1:
             sheet.junction(cx, y)
         shown = {"Spec": p["spec"]} if p.get("spec") else None
-        sheet.place(csym, ref, cx, cy, fields=fields(key, block), shown=shown, value=p["value"],
+        # Decoupling: the rail this capacitor decouples; pcb/proximity.py holds it within its bound of
+        # the nearest supply pin of the rail (PCB-P-10)
+        sheet.place(csym, ref, cx, cy, fields=fields(key, block, Decoupling=rail), shown=shown, value=p["value"],
                     ref_at=(cx + text_dx("C"), cy - 1.27), val_at=(cx + text_dx("C"), cy + 1.27))
         sheet.wire((cx, cy + 3.81), (cx, cy + 6.35))
         sheet.power("GND", cx, cy + 6.35)

@@ -7946,6 +7946,14 @@
       },
       {
         "netclass": "ZONE_POWER",
+        "pattern": "Net-(C4404-*"
+      },
+      {
+        "netclass": "ZONE_POWER",
+        "pattern": "unconnected-(C4404-*"
+      },
+      {
+        "netclass": "ZONE_POWER",
         "pattern": "Net-(D4401-*"
       },
       {
@@ -9947,6 +9955,86 @@
       {
         "netclass": "ZONE_AUDIO",
         "pattern": "unconnected-(C2914-*"
+      },
+      {
+        "netclass": "ZONE_AUDIO",
+        "pattern": "Net-(C2915-*"
+      },
+      {
+        "netclass": "ZONE_AUDIO",
+        "pattern": "unconnected-(C2915-*"
+      },
+      {
+        "netclass": "ZONE_AUDIO",
+        "pattern": "Net-(C2916-*"
+      },
+      {
+        "netclass": "ZONE_AUDIO",
+        "pattern": "unconnected-(C2916-*"
+      },
+      {
+        "netclass": "ZONE_AUDIO",
+        "pattern": "Net-(C2917-*"
+      },
+      {
+        "netclass": "ZONE_AUDIO",
+        "pattern": "unconnected-(C2917-*"
+      },
+      {
+        "netclass": "ZONE_AUDIO",
+        "pattern": "Net-(C2918-*"
+      },
+      {
+        "netclass": "ZONE_AUDIO",
+        "pattern": "unconnected-(C2918-*"
+      },
+      {
+        "netclass": "ZONE_AUDIO",
+        "pattern": "Net-(C2919-*"
+      },
+      {
+        "netclass": "ZONE_AUDIO",
+        "pattern": "unconnected-(C2919-*"
+      },
+      {
+        "netclass": "ZONE_AUDIO",
+        "pattern": "Net-(C2920-*"
+      },
+      {
+        "netclass": "ZONE_AUDIO",
+        "pattern": "unconnected-(C2920-*"
+      },
+      {
+        "netclass": "ZONE_AUDIO",
+        "pattern": "Net-(C2921-*"
+      },
+      {
+        "netclass": "ZONE_AUDIO",
+        "pattern": "unconnected-(C2921-*"
+      },
+      {
+        "netclass": "ZONE_AUDIO",
+        "pattern": "Net-(C2922-*"
+      },
+      {
+        "netclass": "ZONE_AUDIO",
+        "pattern": "unconnected-(C2922-*"
+      },
+      {
+        "netclass": "ZONE_AUDIO",
+        "pattern": "Net-(C2923-*"
+      },
+      {
+        "netclass": "ZONE_AUDIO",
+        "pattern": "unconnected-(C2923-*"
+      },
+      {
+        "netclass": "ZONE_AUDIO",
+        "pattern": "Net-(C2924-*"
+      },
+      {
+        "netclass": "ZONE_AUDIO",
+        "pattern": "unconnected-(C2924-*"
       },
       {
         "netclass": "ZONE_AUDIO",

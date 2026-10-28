@@ -27,6 +27,7 @@ class Component:
     sheet_file: str = ""
     dnp: bool = False
     pins: dict = field(default_factory=dict)   # pad number -> net name
+    pin_info: dict = field(default_factory=dict)   # pad number -> (pin function, pin type), from the symbol
 
     @property
     def block(self) -> str:
@@ -90,6 +91,7 @@ def parse(text: str) -> Netlist:
             nodes.append((ref, pin))
             if ref in comps:
                 comps[ref].pins[pin] = name
+                comps[ref].pin_info[pin] = (sexpr.val(nd, "pinfunction", ""), sexpr.val(nd, "pintype", ""))
         nets[name] = nodes
     return Netlist(comps, nets)
 

@@ -481,8 +481,12 @@ def draw_ldos(s, variants):
             g.add(nt)
             if i == 0:
                 s.flag_at(u.bbox[2] + 7.62 + 2.54 + 2.54, u.bbox[1] + 7.62, "down", 2.54)
-            g.add(prow(s, u.bbox[0] + 2.54, u.bbox[3] + 20.32, [(rlim, f"{tag}_ILIM", "GND")] +
-                       [(k, vin, "GND") for k in cin] + [("C_22u_1210_X7R", tag, "GND")]))
+            b1 = prow(s, u.bbox[0] + 2.54, u.bbox[3] + 20.32, [(rlim, f"{tag}_ILIM", "GND")] +
+                      [(k, vin, "GND") for k in cin])
+            g.add(b1)
+            # the three output capacitors (BOM v1.18 item 5) on a row of their own below
+            out = [("C_22u_0805_16V_LP", tag, "GND")] * 3
+            g.add(prow(s, u.bbox[0] + 2.54, snap(b1[3] + 2.54 + row_need(out) + 3.81), out))
             # pitch: the first ballast's rail text clears the second device's upright IN rail
             x = snap(x + 83.82)
         row = [("R_60k4_TF", setn, "GND"), ("R_60k4_TF", setn, "GND"), ("C_470n_0603", setn, "GND"),
@@ -493,7 +497,7 @@ def draw_ldos(s, variants):
     grp(f, lambda: ldo_pair("+6 V: two LT3045 in parallel (ADR 0015 item 3)", "LT3045EDD", "AUDIO_P7V0", "HPA_P6V0",
                             "HPA_P6_SET", "R_523", ("C_4u7_0805_X7R",), "P"))
     grp(f, lambda: ldo_pair("-6 V: two LT3094 in parallel (ADR 0015 item 3)", "LT3094EDD", "AUDIO_N7V0", "HPA_N6V0",
-                            "HPA_N6_SET", "R_13k", ("C_22u_1210_X7R", "C_22u_1210_X7R"), "N"))
+                            "HPA_N6_SET", "R_13k", ("C_22u_0805_16V_LP",) * 3, "N"))
     s.iface_rows = [
         ["HPA_LDO_EN", "Input", "Pulled down on the host side: the four LDOs off"],
         ["AUDIO_P7V0, AUDIO_N7V0", "Supply in", "From blk.hpa-rails-pre"],
@@ -501,8 +505,8 @@ def draw_ldos(s, variants):
     ]
     s.rail_rows = [
         ["AUDIO_P7V0", "4.7 µF per LT3045", "BOM v1 line 110 (LT3045 Rev. D pp. 16-21)"],
-        ["AUDIO_N7V0", "2 x 22 µF 1210 per LT3094", "10 µF minimum at IN (LT3094 Rev. B p. 20): 20.9 µF effective at 7.06 V (BOM v1.18 item 3)"],
-        ["HPA_P6V0, HPA_N6V0", "22 µF 1210 per device at OUT, before the ballast", "10 µF minimum (LT3045 Rev. D p. 16): 11.1 µF effective at 6.04 V (BOM v1.18 item 3); ESR < 20 / 30 mΩ"],
+        ["AUDIO_N7V0", "3 x 22 µF 16 V 0805 (1.0 mm) per LT3094", "10 µF minimum at IN (LT3094 Rev. B p. 20): 11.3 µF effective at 7.06 V (BOM v1.18 item 5)"],
+        ["HPA_P6V0, HPA_N6V0", "3 x 22 µF 16 V 0805 (1.0 mm) per device at OUT, before the ballast", "10 µF minimum (LT3045 Rev. D p. 16): 13.4 µF effective at 6.04 V (BOM v1.18 item 5); ESR < 20 / 30 mΩ"],
     ]
     corner_notes(s, [
         "1. Function: HPA_P6V0 from two LT3045 and HPA_N6V0 from two LT3094 in parallel, as both ADI",

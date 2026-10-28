@@ -42,7 +42,7 @@ FIXED = {
     "U1301": (SOC[0], SOC[1], 0, "B", "RK3566 on the back at the floorplan's and escape study's position (ADR 0016 item 3)"),
     "U2101": (16.9, 11.0, 0, "B", "LPDDR4X right of the SoC (its DDR balls face right after the flip); 2.05 mm courtyard gap to the SoC (PCB-D-01)"),
     "U3801": (-17.75, 12.0, 0, "B", "eMMC left of the SoC (eMMC balls face left after the flip); floorplan v1"),
-    "U1101": (-6.0, 25.7, 0, "B", "RK809-5 above the SoC on the back, next to the vdd_cpu buck, with room for its five 1.2 mm inductors (back only); 2 mm from the SoC and eMMC courtyards (PCB-D-01). Floorplan v1 had it below the SoC, where the grown audio and power zones leave 10 x 8 mm"),
+    "U1101": (-4.8, 24.6, 0, "B", "RK809-5 above the SoC on the back, next to the vdd_cpu buck, with room for its five 1.2 mm inductors (back only); 2 mm from the SoC and eMMC courtyards (PCB-D-01). Floorplan v1 had it below the SoC, where the grown audio and power zones leave 10 x 8 mm. Placement v1.3: 1.1 mm lower and 1.2 mm right (was -6.0, 25.7), at the SoC's and eMMC's 2 mm, so its top row of pins stands 1.3 mm from the radio zone and all 27 of its capacitors find room within their bound (capacitor proximity)"),
     "U3501": (-16.0, 24.5, 0, "F", "RP2354A on the front (floorplan v1), above the eMMC: its exposed pad's thermal vias must not land under the eMMC's balls, and the audio zone grew up to y 6"),
     "U2501": (-20.0, -18.0, 0, "B", "CS43198 left channel on the back under the pocket (floorplan v1)"),
     "U2601": (-11.5, -18.0, 0, "B", "CS43198 right channel, mirror of the left about x = -15.75 (CRAFT-34)"),
@@ -60,8 +60,8 @@ FIXED = {
 }
 # Parts taller than 1.5 mm stand only in the bands (PCB-Z-02); the bands are small, so each band part
 # has its place here, next to the converter or contact it serves:
-# - power band above the USB-C (y -36 to -28.55): the battery fuse under the P+ contacts, the 5.1 V
-#   converter's 1210 and one pre-rail 1206;
+# - power band above the USB-C (y -36 to -28.55): the battery fuse under the P+ contacts (the 5.1 V
+#   converter's 1210 output capacitor stood here until placement v1.3: two 0805 replace it, BOM v1.18);
 # - power band at the right edge (x 21 to 27.3, under the bottom-right hole): the VSYS_LV and pre-rail
 #   inductors (XGL4020, 2.1 mm).
 # The vdd_cpu, vcc3v3_sys, radio AVDD18, charger and 5.1 V inductors are 1.2-1.5 mm since the compaction
@@ -69,8 +69,6 @@ FIXED = {
 # VSYS_LV converter's 0805 C904 finds back room too, so no part uses PCB-Z-04 (placement v1 decision 4).
 FIXED.update({
     "F701": (-2.4, -30.45, 0, "B", "battery fuse (NANO2, 2.69 mm) in the band under the P+ contacts (PCB-P-01)"),
-    "C4403": (-3.75, -34.2, 0, "B", "5.1 V converter output 1210 (2.5 mm) in the band above the USB-C"),
-    "C2817": (1.05, -34.4, 0, "B", "pre-rail 22 uF 1206 (1.6 mm) in the band above the USB-C"),
     "L901": (24.2, -42.4, 0, "B", "VSYS_LV inductor (XAL4020, 2.1 mm) in the right band"),
     "L2802": (24.2, -37.7, 0, "B", "pre-rail inductor (XAL4020, 2.1 mm) in the right band"),
 })
@@ -193,6 +191,17 @@ PART_TARGET = {
     "TP5804": ((-0.5, 23.5), "B", "NFC antenna contact (BOM line 126)"),
     "TP6403": ((2.0, 23.5), "B", "NFC tag loop antenna contact (BOM line 126)"),
     "TP6404": ((4.5, 23.5), "B", "NFC tag loop antenna contact (BOM line 126)"),
+    # the two LT3094 first, so their back-only 0805 output capacitors (BOM v1.18 items 3 and 5) find
+    # room within their bound (capacitor proximity, placement v1.3)
+    "U2903": ((-22.4, 0.35), "B", "LT3094 A with its capacitors (PCB-P-10, placement v1.3)"),
+    "U2904": ((-26.5, -6.6), "B", "LT3094 B with its capacitors (PCB-P-10, placement v1.3)"),
+    # the RK809's vdd_gpu output capacitor by L1102's output pad, before the RP2354's parts fill the
+    # front there (capacitor proximity, placement v1.3)
+    "C1104": ((-13.15, 27.55), "F", "vdd_gpu output capacitor over L1102's output pad (PCB-P-07, placement v1.3)"),
+    "C904": ((27.6, -42.55), "B", "VSYS_LV output capacitor by L901's output pad in the right band (PCB-P-07, placement v1.3)"),
+    "C2819": ((27.75, -38.45), "B", "pre-rail output 1206 by L2802's output pad in the right band (PCB-P-07, placement v1.3)"),
+    "C2818": ((27.95, -33.6), "B", "pre-rail output 1206 by L2802's output pad in the right band (PCB-P-07, placement v1.3)"),
+    "C2817": ((24.3, -34.15), "B", "pre-rail output 1206 by L2802's output pad in the right band (PCB-P-07, placement v1.3)"),
 }
 # Edge parts exempt from PCB-B-01 (J*, SW*) that may reach the edge
 EDGE_OK = ("J", "SW")

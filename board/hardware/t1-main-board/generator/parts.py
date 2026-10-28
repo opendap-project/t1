@@ -56,10 +56,14 @@ PARTS = {
                          src="value, rating, dielectric and size: board ADR 0021 item 3"),
     "C_10u_0805_25V": _c("10 µF", "GRM21BR61E106KA73L", "0805", 25, "X5R"),
     "C_10u_0603_25V": _c("10 µF", "GRM188R61E106MA73D", "0603", 25, "X5R"),
+    "C_22u_0805_16V_LP": _c("22 µF", "GRM219R61C226ME15L", "0805", 16, "X5R",
+                            src="LT3045/LT3094 OUT and LT3094 IN, 10 µF minimum (Rev. D p. 16, Rev. B pp. 15, 20): "
+                                "three each, 13.4 µF effective at 6.04 V, 11.3 µF at 7.06 V, -20 to 85 °C, tolerance "
+                                "included; 1.0 mm max, either side (BOM v1.18 item 5)"),
     "C_22u_0805_25V": _c("22 µF", "GRM21BR61E226ME44L", "0805", 25, "X5R",
-                         src="TPS62136 and TPS62903 inputs: 3 µF effective minimum at 8.8 V (SLVSDV2 §7.3, SLVSES3A "
-                             "§6.3); 3.9 µF effective at 8.8 V, -20 to 85 °C, tolerance included (Murata DC-bias data, "
-                             "BOM v1.18 item 1)"),
+                         src="Murata DC-bias data, -20 to 85 °C, tolerance included (BOM v1.18 items 1, 3, 5): "
+                             "TPS62136 and TPS62903 inputs, 3 µF effective minimum (SLVSDV2 §7.3, SLVSES3A §6.3): "
+                             "3.9 µF; TPS62903 output, two: 13.5 µF at 5.1 V (>= 12 µF, BOM line 121)"),
     "C_1u_0201": _c("1 µF", "GRM033R60J105MEA2D", "0201", 6.3, "X5R"),
     "C_22u_0603": _c("22 µF", "GRM188R60J226MEA0D", "0603", 6.3, "X5R"),
     "C_22u_0603_10V": _c("22 µF", "GRM188R61A226ME15D", "0603", 10, "X5R"),
@@ -99,10 +103,6 @@ PARTS = {
                          src="TPS65131 output 4 x 4.7 µF 25 V X7R (BOM v1 line 111)"),
     "C_4u7_0805_X7R": _c("4.7 µF", "GRM21BR71C475KA73L", "0805", 16, "X7R",
                          src="LT3045 CIN 4.7 µF X7R (BOM v1 line 110)"),
-    "C_22u_1210_X7R": _c("22 µF", "GRM32ER71C226KEA8L", "1210", 16, "X7R",
-                         src="LT3045/LT3094 COUT and LT3094 CIN: 10 µF minimum (LT3045 Rev. D p. 16, LT3094 Rev. B "
-                             "pp. 15, 20), X7R (BOM v1 line 110); 11.1 µF effective at 6.04 V, 10.4 µF at 7.06 V "
-                             "(two at each LT3094 input), -20 to 85 °C (BOM v1.18 item 3)"),
     "C_22u_1206_16V": _c("22 µF", "GRM31CR71C226ME15L", "1206", 16, "X7R",
                          src="LMR33630C COUT 3 x 22 µF 16 V X7R (BOM v1 line 118)"),
     "C_1u_0603_25V": _c("1 µF", "GRM188R71E105KA12D", "0603", 25, "X7R"),
@@ -318,7 +318,6 @@ PARTS = {
     # USB ports and their power (blk.usb-c, blk.pwr-5v1, blk.usb-vbus-out, blk.hat-5v, blk.hat-signals)
     "C_100n_0603_50V": _c("100 nF", "GRM188R71H104KA93D", "0603", 50, "X7R",
                           src="TPD8S300A VBIAS 0.1 µF, >= 35 V, the datasheet's example part (SLVSEL9 §9.2.2.1, Table 3)"),
-    "C_22u_1210_25V": _c("22 µF", "GRM32ER71E226KE15L", "1210", 25, "X7R", src="TPS62903 5.1 V output (BOM v1 line 121)"),
     "R_15k": _r("15 kΩ", "15K", src="OTG0 VBUSDET divider 10 kΩ / 15 kΩ (RK3566 HDG 1.1 Figure 2-43)"),
     "R_95k3": _r("95.3 kΩ", "95K3", src="TPS62903 VSET 95.3 kΩ: 5.1 V (SLVSES3A Table 7-2; BOM v1 line 91)"),
     "R_26k1": _r("26.1 kΩ", "26K1", src="TPS62903 MODE/S-CONF 26.1 kΩ (SLVSES3A Table 7-1; BOM v1 line 91)"),

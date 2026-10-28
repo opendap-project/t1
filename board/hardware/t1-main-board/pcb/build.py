@@ -8,7 +8,9 @@ Run from anywhere with Python 3.11 or later (KiCad 10 installed):
 
 Steps: export the netlist with kicad-cli; read every footprint's geometry with KiCad's Python
 (fpgeom.py); take part heights from the 3D models (heights.py); place (placement.py, plan.py);
-check what DRC does not (checks.py); write the board with KiCad's Python (kicad_write.py); report
+check what DRC does not (checks.py) and that every converter's and IC's capacitors stand within
+their bound of the pins they serve (proximity.py: the build fails otherwise); write the board
+with KiCad's Python (kicad_write.py); report
 the area budget and occupancy (occupancy.py) in placement-result.json. Nothing here is edited by
 hand: change plan.py or the tools and run again. The same inputs give the same board.
 Environment: KICAD_CLI and KICAD_PY override the KiCad 10 paths (macOS defaults below).
@@ -34,6 +36,7 @@ import netlist as nlmod  # noqa: E402
 import occupancy  # noqa: E402
 import placement  # noqa: E402
 import plan  # noqa: E402
+import proximity  # noqa: E402
 import zones  # noqa: E402
 
 PROJECT = os.path.abspath(os.path.join(HERE, ".."))
@@ -174,8 +177,20 @@ def main():
             raise SystemExit("footprints not found: " + ", ".join(missing))
         hts = {r: hmod.height(c.footprint, geom[c.footprint], c.fields.get("MPN", ""))[0]
                for r, c in nl.components.items()}
-        placer = placement.Placer(nl, geom, hts)
-        placed, failed = placer.run(placement.edge_rotations(nl, geom))
+        # placement variants (placement.Placer.VARIANTS): the first with every part placed and every
+        # capacitor within its bound, else the one with the fewest failures, then the fewest beyond
+        best = None
+        for k, opts in enumerate(placement.Placer.VARIANTS):
+            pl_ = placement.Placer(nl, geom, hts, opts)
+            pd_, fd_ = pl_.run(placement.edge_rotations(nl, geom))
+            bad_ = [r for r in proximity.check(nl, pl_.pad_xy, set(pd_), placement.is_switch_node) if not r["ok"]]
+            score = (len(fd_), len(bad_), sum(r["mm"] - r["bound"] for r in bad_))
+            print("placement variant %d %s: %d failed, %d capacitors beyond their bound" % (k, opts, len(fd_), len(bad_)))
+            if best is None or score < best[0]:
+                best = (score, k, pl_, pd_, fd_)
+            if score[:2] == (0, 0):
+                break
+        _, variant, placer, placed, failed = best
 
         spec = {"seed": 7, "copper_layers": 6, "stackup": stackup_spec(), "outline": [-g.HX, -g.HY, g.HX, g.HY],
                 "title_block": {"title": "OpenDAP T1 main board", "revision": "A", "date": ISSUE_DATE,
@@ -210,6 +225,8 @@ def main():
     sides = {"F": 0, "B": 0}
     for p in placed.values():
         sides[p.side] += 1
+    prox = proximity.check(nl, placer.pad_xy, set(placed), placement.is_switch_node)
+    prox_bad = [r for r in prox if not r["ok"]]
     result = {
         "parts": len(nl.components), "placed": len(placed), "failed": failed,
         "per_side": sides, "board_only": [f[0] for f in plan.FIDUCIALS] + ["H1", "H2", "H3", "H4"],
@@ -224,7 +241,15 @@ def main():
                         for z, r, spec_, why in plan.ZONE_DELTAS],
         "block_moves": {b: {"zone": z, "reason": why} for b, (z, why) in plan.BLOCK_ZONE.items()},
         "converter_to_inductor_mm": converter_distances(nl, placed),
+        "capacitor_proximity": {
+            "bounds_mm": {k: {"mm": v[0], "basis": v[1]} for k, v in proximity.BOUNDS.items()},
+            "checked": {k: sum(1 for r in prox if r["role"] == k) for k in proximity.BOUNDS},
+            "worst_mm": {k: max([r["mm"] for r in prox if r["role"] == k] or [0.0]) for k in proximity.BOUNDS},
+            "violations": prox_bad,
+            "rows": {r["ref"]: [r["role"], r["owner"], r["nearest"], r["mm"]] for r in prox},
+        },
         "positions": {r: [p.x, p.y, p.rot, p.side, p.zone] for r, p in sorted(placed.items())},
+        "placement_variant": {"index": variant, "options": placement.Placer.VARIANTS[variant]},
     }
     if want_drc:
         result["drc"] = drc()
@@ -237,10 +262,17 @@ def main():
         g.BW, g.BH, *result["routing_room"].values()))
     for f in findings:
         print("  check: %s %s: %s" % tuple(f))
+    print("capacitor proximity: %d checked (%s), %d beyond their bound" % (
+        len(prox), ", ".join("%s %d <= %.1f mm" % (k, result["capacitor_proximity"]["checked"][k], v[0])
+                              for k, v in proximity.BOUNDS.items()), len(prox_bad)))
+    for r in prox_bad:
+        print("  proximity: %s (%s of %s) %.2f mm from %s, bound %.1f mm" % (
+            r["ref"], r["role"], r["owner"], r["mm"], r["nearest"], r["bound"]))
     if want_drc:
         d = result["drc"]
         print("DRC: %d errors, %d warnings, %d unconnected" % (d["errors"], d["warnings"], d["unconnected"]))
-    return 1 if failed else 0
+    # a capacitor beyond its bound fails the build, as a part without a place does
+    return 1 if (failed or prox_bad) else 0
 
 
 def routing_room(placed, budget):

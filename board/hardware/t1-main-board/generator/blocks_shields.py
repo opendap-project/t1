@@ -22,13 +22,23 @@ def sheet(proj):
                       "headphone stage (not fitted)", "A4")
 
 
-def _frame(s, f, variants):
-    """One frame part in its own group: placed like draw.ic, not fitted (dnp)."""
-    g = Group(s, "%s (%s)" % (f["title"], f["basis"]))
+def _frames(s, frames, variants):
+    """The frame parts side by side in one group, sized from them (CRAFT-174): each frame is one
+    small symbol, so a group per frame would take its width from its title, not its contents."""
+    g = Group(s, "Frames")
+    x = 101.6
+    for f in frames:
+        box = _frame(s, f, variants, x, 101.6)
+        g.add(box)
+        x = snap(box[2] + 7.62 - (box[0] - x))
+    return g.close()
+
+
+def _frame(s, f, variants, x, y):
+    """One frame part: placed like draw.ic, not fitted (dnp). Returns its bbox."""
     sym = library.load("T1_Main_Board", "Shield_Frame")
     ref = s.next_ref("A")   # A: a separable assembly (frame and lid); H* is the mounting holes' in the rules
     w, h = f["size"]
-    x, y = 101.6, 101.6
     fields = {
         "Block": s.block,
         "Footprint": "T1_Main_Board:" + f["footprint"],
@@ -52,8 +62,7 @@ def _frame(s, f, variants):
     for tx0, ty, tx1, _ in getattr(pl, "texts", []):
         box = (min(box[0], snap(tx0 - 1.27)), min(box[1], snap(ty - 2.54)), max(box[2], snap_up(tx1 + 1.27)),
                max(box[3], snap_up(ty + 1.27)))
-    g.add(box)
-    return g.close()
+    return box
 
 
 def _n(v):
@@ -63,8 +72,7 @@ def _n(v):
 def draw(s, variants):
     frames = shields.frames()
     f = Flow(s)
-    for fr in frames:
-        grp(f, lambda fr=fr: _frame(s, fr, variants))
+    grp(f, lambda: _frames(s, frames, variants))
     d = frames[0]
     s.iface_rows = [["GND", "Ground", "Each frame land is one ground pad ring (pad 1)"]]
     s.rail_rows = [["(none)", "-", "No supply on this sheet"]]

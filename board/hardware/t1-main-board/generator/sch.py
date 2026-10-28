@@ -381,6 +381,8 @@ class Sheet:
                 reach = pl.__dict__.setdefault("reach", {})
                 reach[dx] = max(reach.get(dx, 0.0), ends[(dx, round(y, 3))])
                 return
+            if net == "GND" and self._side_ground(pl, x, y, dx, rows, netmap, ends):
+                return
             half = 1.27 if net == "GND" else len(net) * 0.58
             need = 0.0
             for k in (1, 2):
@@ -425,6 +427,54 @@ class Sheet:
         ex, ey = x + dx * stub, y + dy * stub
         self.wire((x, y), (ex, ey))
         self.attach(net, ex, ey, DIR[(dx, dy)], PIN_DIRECTION.get(p.etype, "pas"), vertical=vertical)
+
+    def _side_ground(self, pl, x, y, dx, rows, netmap, ends):
+        """A ground on an IC's side pin whose next row holds a neighbour (a label, a rail or a
+        no-connect): a stub out past the neighbours' text, then a wire down to the first free row,
+        where the GND symbol points down (CRAFT-85) below its pin instead of hanging among the
+        neighbours' labels. Returns False when the next row is free (the symbol hangs at the stub
+        end) or the drop would run past the side's pins (the caller's layout is kept)."""
+        def taken(k):
+            yk = round(y + 2.54 * k, 3)
+            if (dx, yk) in ends:
+                return ends[(dx, yk)]
+            nb = rows.get(yk)
+            if nb is None:
+                return None
+            other = netmap.get(nb.number)
+            if other is None:             # a no-connect flag at the pin end, the pin number inside
+                return 0.75
+            if not other:                 # wired by hand: its stub
+                return 2.54 + 1.27
+            if other == "GND":            # a ground below joins this drop on a stub
+                return 0.0
+            return 2.54 + len(other) * 1.16 + 1.27     # a label, or a rail turned outward with its value
+        drops = pl.__dict__.setdefault("gnd_drops", {}).setdefault(dx, [])
+        for dist, y0, y1 in drops:        # a ground above already drops past this row: join it
+            if y0 < y < y1:
+                self.wire((x, y), (x + dx * dist, y))
+                self.junction(x + dx * dist, y)
+                ends[(dx, round(y, 3))] = dist + 0.75
+                return True
+        if taken(1) is None:
+            return False
+        k = 2
+        while taken(k) is not None:
+            k += 1
+        if k > max((round((r - y) / 2.54) for r in rows), default=0):
+            return False                  # no free row between the side's pins
+        # the drop passes rows 1..k-1; the symbol takes row k+1 and its value reaches row k+2
+        far = max(t for t in (taken(j) for j in range(1, k + 3)) if t is not None)
+        stub = snap_up(far + 1.27 + 1.75)
+        ex, yg = x + dx * stub, y + 2.54 * k
+        self.wire((x, y), (ex, y), (ex, yg))
+        self.project.rails_used.add("GND")
+        self.power("GND", ex, yg)
+        ends[(dx, round(y, 3))] = stub + 0.75
+        drops.append((stub, y, yg))
+        reach = pl.__dict__.setdefault("reach", {})
+        reach[dx] = max(reach.get(dx, 0.0), stub + 1.75 + 0.5)
+        return True
 
     def connect_all(self, pl, mapping, stub=2.54, collect=True):
         """Connect every pin of the unit: mapping pin key -> net (None: no-connect). Runs of

@@ -51,7 +51,7 @@ The T1 has four body buttons (T1-014, T1-015): **Main** (right edge) and **Actio
 
 ### 1.4 Physical control design
 
-The button design in the [concept art](../concept-art/) governs (T1-059): it is the reference for the form of the controls, and this section describes it. Other details in that concept art are stale (480 × 800 screen, 1.27 mm pins, earlier dimensions) and are not a source. The shared visual language is in the [design system spec](https://github.com/opendap-project/blackbird-ui/blob/main/docs/specs/design-system.md); materials, finishes and manufacturability in the [case industrial-design spec](https://github.com/opendap-project/case/blob/main/docs/specs/industrial-design.md).
+The button design in the [concept art](../concept-art/) governs (T1-059): it is the reference for the form of the controls, and this section describes it. Other details in that concept art are stale (480 × 800 screen, 1.27 mm pins, earlier dimensions) and are not a source. The shared visual language is in the [design system spec](https://github.com/opendap-project/blackbird/blob/main/ui/docs/specs/design-system.md); materials, finishes and manufacturability in the [case industrial-design spec](https://github.com/opendap-project/case/blob/main/docs/specs/industrial-design.md).
 
 Seen from the front:
 
@@ -71,7 +71,7 @@ Volume + / − and Main are silver-finished plastic: a metallic silver paint und
 
 ## 2. Status LED
 
-The status LED is on the faceplate (FPT-003), RGB where possible (FPT-025), and developer-controllable (FPT-016). The colours follow **IEC 60073** (meanings of colours for indicators), and the on-screen semantic colours use the same families for the same meanings ([design system](https://github.com/opendap-project/blackbird-ui/blob/main/docs/specs/design-system.md) §18.4): red for danger or fault, yellow/amber for an abnormal or warning condition, green for normal, blue for a condition that needs an action, white for neutral information. Patterns follow the same standard's use of flashing to draw attention.
+The status LED is on the faceplate (FPT-003), RGB where possible (FPT-025), and developer-controllable (FPT-016). The colours follow **IEC 60073** (meanings of colours for indicators), and the on-screen semantic colours use the same families for the same meanings ([design system](https://github.com/opendap-project/blackbird/blob/main/ui/docs/specs/design-system.md) §18.4): red for danger or fault, yellow/amber for an abnormal or warning condition, green for normal, blue for a condition that needs an action, white for neutral information. Patterns follow the same standard's use of flashing to draw attention.
 
 ### 2.1 Patterns
 
@@ -108,7 +108,7 @@ Listed by priority: when several states apply, the highest one is shown.
 - Battery thresholds: 15 % and 5 %, Android's defaults, the same for the status bar's warnings (2026-10-24).
 - Priorities 1–5 cannot be overridden by developer control. Below them, a developer may take the LED through the Linux LED class (`/sys/class/leds`, triggers such as `heartbeat` or `timer`).
 - With a single-colour LED (if RGB is not fitted), the base set keeps its meaning through patterns only: fast blink = fault or pairing, slow blink = low battery or eject first, breathing = busy/booting, single pulse = activity, solid = charging or charged.
-- Device-to-device states (5, 9, 10) follow the [OpenDAP Protocol](https://github.com/opendap-project/rfcs/blob/main/text/0004-opendap-protocol.md) and the [user-facing conventions](https://github.com/opendap-project/system/blob/main/docs/specs/user-facing-conventions.md): the screen says the same in words whenever it is on. Activity (10) is shown only with the screen off, and the listener can turn it off; calm first.
+- Device-to-device states (5, 9, 10) follow the [OpenDAP Protocol](https://github.com/opendap-project/rfcs/blob/main/text/0004-opendap-protocol.md) and the [user-facing conventions](https://github.com/opendap-project/blackbird/blob/main/system/docs/specs/user-facing-conventions.md): the screen says the same in words whenever it is on. Activity (10) is shown only with the screen off, and the listener can turn it off; calm first.
 - MaskROM cannot drive the LED, because no software runs on the SoC; the host tool reports MaskROM instead (`opendap device wait --mode maskrom`).
 - The microphone privacy LED is separate, hardware-tied to the microphone power (BRD-027), and never part of this code.
 

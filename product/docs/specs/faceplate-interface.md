@@ -373,7 +373,7 @@ An owner override (L7) may name a description for a faceplate under development;
 
 ## 6. Capabilities
 
-What a faceplate carries is declared once, in its device description (system [hardware support](https://github.com/opendap-project/system/blob/main/docs/specs/hardware-support.md) §3), so Blackbird OS adapts to it (SYS-040, T1-045) and nothing about a faceplate is hard-coded (§9 of the same spec). The device never reports capabilities over HID beyond its identity.
+What a faceplate carries is declared once, in its device description (system [hardware support](https://github.com/opendap-project/blackbird/blob/main/system/docs/specs/hardware-support.md) §3), so Blackbird OS adapts to it (SYS-040, T1-045) and nothing about a faceplate is hard-coded (§9 of the same spec). The device never reports capabilities over HID beyond its identity.
 
 | Capability | Description section | What the faceplate declares | When absent |
 |---|---|---|---|

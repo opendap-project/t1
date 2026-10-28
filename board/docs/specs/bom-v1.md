@@ -51,6 +51,8 @@ Gates of v1.16 item 3 closed without hardware (2026-10-27). Accepted (2026-10-27
 
    The TPS22916C blocks reverse current and has no output current limit (the TPS22919 had one); no position relies on it (the upstream converters limit). Sourcing (T1-029), 2026-10-27: pass; lifecycle Active (TI package option addendum, 2025-11-09).
 
+4. **TPS7A2018 positions (DAC1_VA, DAC2_VA, MCLK_1V8; line 29 and the DAC VA LDOs): SOT-23-5 kept.** No alternative of the same function (1.8 V, ultra-low noise, active output discharge, input from AUDIO_2V2 at 2.20 V), height and land class (1 × 1 mm four-pad leadless) passes: the X2SON TPS7A2018PDQNR and its M3 orderable each have authorized stock below one 1,000-piece order (sourcing check T1-029, 2026-10-27); TPS7A2018DQNR has no active discharge (SBVS338H §6.3.7: P versions only), which the power-gating map relies on (MCLK_1V8 falls with DAC_DIG_1V8, PCB-P-19; VA does not outlast VP, CS43198 DS1156F2 §5.2); the onsemi NCP163AMX180TBG (XDFN4 1 × 1) needs 2.2 V at its input (NCP163/D Rev. 16 p. 1), the rail's nominal value. The present SOT-23-5 part's own availability is re-checked before the board freezes (§7 item 54).
+
 ## Changes in v1.16
 
 On 2026-10-27 the maintainers approved the board's area recovery with the body at the T1-031 maximum ([ADR 0025](../adr/0025-height-zones-in-the-wider-body.md)). Of its part swaps, those whose checks pass are applied; each of the others names what it waits for. Accepted (2026-10-27). Basis: ratings at least twice the node's voltage (the v1.15 rule), the parts' series data, and the sourcing check (T1-029) of 2026-10-27.
@@ -66,7 +68,7 @@ On 2026-10-27 the maintainers approved the board's area recovery with the body a
    | 1 nF 0402 → 0201 on low-voltage signal nodes | 6 | No 0201 part sourced yet |
    | 10 µF 0805 → 0603 (GRM188R61E106MA73D, 25 V X5R) | 22 | **Closed in v1.17:** 7 passed and applied, 15 failed; lifecycle: in production |
    | TPS22919DCKR → TPS22916CYFPR (4-ball WCSP) | 6 | **Closed in v1.17:** land in kicad-lib v0.3.1, every position passes; applied |
-   | TPS7A2018PDBVR → TPS7A2018PDQNR (X2SON-4) | 3 | Sourcing conditional (authorized stock below one build); the MCLK LDO's TPS7A2031PDQNR has no authorized listing and stays SOT-23-5 |
+   | TPS7A2018PDBVR → TPS7A2018PDQNR (X2SON-4) | 3 | **Closed in v1.17:** no X2SON-class alternative passes; SOT-23-5 kept |
    | Test pads on power and ground 1.0 → 0.8 mm (line 86) | 115 | A probe check: PCB-D-06's source gives 1.0 mm as the minimum on power and ground |
 
 ## Changes in v1.15
@@ -763,6 +765,7 @@ Closed by the cross-validation: BRD-023 frequencies (confirmed), MaskROM entry (
 51. **VSYS converter input capacitance (C901, C4402; v1.17):** one 10 µF 25 V X5R 0805 keeps 1.86 µF effective at 8.8 V and −20 °C (2.11 µF at 25 °C, tolerance included; Murata SimSurfing) against the 3 µF effective minimum of the TPS62136 (SLVSDV2 §7.3) and the TPS62903 (SLVSES3A §6.3). A second capacitor per converter, or a part that keeps 3 µF at 8.8 V, before the board freezes.
 52. **GRM155R61A105KE15D (1 µF 10 V X5R 0402, v1.17):** Murata's product data lists it as to be discontinued (SimSurfing product list, 2026-10-27). Every position that uses it needs a successor with the same or better DC-bias figure.
 53. **GRM21BR71C106KE51L (10 µF 16 V X7R 0805, amplifier-rail LDOs, v1.17):** not in Murata's product data (SimSurfing product list, 2026-10-27): no DC-bias curve or lifecycle could be read. Confirm the part number and its effective capacitance at ±6.04 V and −7.06 V against the LT3045 and LT3094 10 µF minimums.
+54. **TPS7A2018PDBVR availability (DAC VA, MCLK_1V8; v1.17):** the 2026-10-27 sourcing read found no authorized stock it could confirm for the SOT-23-5 part. Re-run the check before the board freezes; the X2SON TPS7A2018PDQNR (and its M3 orderable) is the first replacement once its stock covers an order (v1.17 item 4).
 
 ## 8. Risks
 

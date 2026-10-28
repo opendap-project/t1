@@ -1,6 +1,6 @@
 # ADR 0016: Front-side height under the display
 
-- **Status:** Accepted
+- **Status:** Superseded by [ADR 0025](0025-height-zones-in-the-wider-body.md) (2026-10-27; the body grows to 62.5 × 95.0 × 25.0 mm, t1 ADR 0006; the zone heights and the stack are restated unchanged). Previously: Accepted.
 - **Date:** 2026-10-24
 
 ## Context

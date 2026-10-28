@@ -12,16 +12,25 @@ from __future__ import annotations
 
 OX, OY = 100.0, 100.0
 
-# Outline (PCB-M-02): cavity 56.3 x 91.1 mm (body 59.5 x 94.3 mm less 1.6 mm walls, UNVERIFIED)
-# less 0.5 mm per side (UNVERIFIED); square corners until the case gives its radii (CRAFT-35).
-BW, BH = 55.3, 90.1
+# Outline (PCB-M-01, M-02; board ADR 0025): body 62.5 x 95.0 mm (T1-031 maximum, t1 ADR 0006) less
+# 1.2 mm walls (case interface, ADR 0025) = cavity 60.1 x 92.6 mm, less 0.5 mm per side (UNVERIFIED)
+# = 59.1 x 91.6 mm; square corners until the case gives its radii (CRAFT-35). The body grows evenly
+# about the device centre (PCB-M-04), so the pocket, the display and every fixed part keep their
+# device-frame positions; the extra width and height go to the edges and the bands.
+BODY = (62.5, 95.0)
+WALL = 1.2
+CLEARANCE = 0.5
+BW, BH = BODY[0] - 2 * WALL - 2 * CLEARANCE, BODY[1] - 2 * WALL - 2 * CLEARANCE
 HX, HY = BW / 2, BH / 2
 
 # Height areas (ADR 0016; PCB-Z-01 to Z-04)
 DISPLAY = (54.46, 82.94)                 # display module, centred (ADR 0016; position UNVERIFIED)
 DISP = (-DISPLAY[0] / 2, -DISPLAY[1] / 2, DISPLAY[0] / 2, DISPLAY[1] / 2)
-BAND_BOTTOM = 17.0 - 0.5                 # PCB-Z-02: bottom band 17.0 mm from the inner wall
-BAND_TOP = 7.0 - 0.5                     # PCB-Z-02: top band 7.0 mm from the inner wall
+# PCB-Z-02: the bands from the inner wall. They were 17.0 and 7.0 mm in the 59.5 x 94.3 mm body with
+# 1.6 mm walls; the pocket does not move, so each band gains half the 0.7 mm of extra height plus the
+# 0.4 mm of thinner wall: 17.75 and 7.75 mm (arithmetic, ADR 0025).
+BAND_BOTTOM = 17.75 - CLEARANCE
+BAND_TOP = 7.75 - CLEARANCE
 POCKET_W = 51.3                          # PCB-Z-01: pocket footprint width on the board
 POCKET = (-POCKET_W / 2, -HY + BAND_BOTTOM, POCKET_W / 2, HY - BAND_TOP)
 FP_AREA_H = 10.0                         # faceplate connection area depth (ADR 0016 item 1, UNVERIFIED)
@@ -67,7 +76,9 @@ CORRIDORS = {
 }
 
 # Mounting holes (PCB-M-08, PCB-H): positions UNVERIFIED until the case; 2.2 mm (M2 class)
-HOLES = [(-24.15, 41.55), (24.15, 41.55), (-24.9, -27.0), (24.9, -27.0)]
+# same distance from the edges as in the 55.3 x 90.1 mm outline: top 3.5 mm from the side and top edges,
+# bottom 2.75 mm from the side edges at y -27.0 (beside the battery-contact window)
+HOLES = [(-(HX - 3.5), HY - 3.5), (HX - 3.5, HY - 3.5), (-(HX - 2.75), -27.0), (HX - 2.75, -27.0)]
 HOLE_D = 2.2
 H01_RING = 1.4        # PCB-H-01: courtyards 1.4 mm from the hole edge (UNVERIFIED screw)
 H05_MLCC = 3.0        # PCB-H-05: MLCC courtyard 3 mm from the hole edge (UNVERIFIED)
@@ -107,10 +118,13 @@ def battery_pocket_area():
     return (POCKET[0] - 3, POCKET[1] - 3, POCKET[2] + 3, POCKET[3] + 3)
 
 
-# Speaker (BOM v1 line 33, Same Sky CMS-151125-078S-67): spring contacts on gold pads; its body sits
-# over the board in the bottom band, right of the USB-C (PCB-M-05). Shadow 15 x 11 mm at the floorplan's
-# position (floorplan study; 15 x 11 is the part's outline from BOM v1, its position UNVERIFIED).
+# Speaker (BOM v1 line 33, Same Sky CMS-151125-078S-67): spring contacts on gold pads; its body sits on a
+# case shelf above the board in the bottom band, right of the USB-C (PCB-M-05, PCB-Z-09; ADR 0025). The
+# shelf's footprint is the speaker's 15 x 11 mm outline at the floorplan's position (position UNVERIFIED);
+# back parts under it are limited to the shelf clearance, held at PCB-Z-01's 1.5 mm until the case sets
+# it (UNVERIFIED).
 SPEAKER = (13.5 - 7.5, -39.5 - 5.5, 13.5 + 7.5, -39.5 + 5.5)
+H_SHELF = 1.5
 
 LAYER_SETS = {
     None: ("F", "B"), "front": ("F",), "back": ("B",), "not_back": ("F",), "inner_back": ("B",),
@@ -127,7 +141,7 @@ def height_areas(side: str):
     board = (-HX, -HY, HX, HY)
     if side == "F":
         return [(board, H_FRONT_OUTSIDE), (DISP, H_FRONT_DISPLAY)]
-    return [(board, H_BACK_BAND), (POCKET, H_BACK_POCKET)]
+    return [(board, H_BACK_BAND), (POCKET, H_BACK_POCKET), (SPEAKER, H_SHELF)]
 
 
 def rect_area(r):

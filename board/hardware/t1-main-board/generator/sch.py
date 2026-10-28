@@ -239,6 +239,9 @@ class Sheet:
         f = {k: v for k, v in sym.props.items() if not k.startswith("ki_") and k not in ("Reference", "Value")}
         f.update(fields or {})
         val_text = value if value is not None else sym.props.get("Value", sym.name)
+        if not ref.startswith("#"):
+            from parts import area_swap
+            f = area_swap(self.block, ref, f, val_text)
         self.project.parts.append((self, pl, f, val_text, in_bom, dnp, variants or {}))
         x0, y0, x1, y1 = sym.body(unit)
         # fields (rotation 0, unless given): on a side of the body with no pins, value above the

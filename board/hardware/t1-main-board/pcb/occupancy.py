@@ -5,12 +5,13 @@ Two views:
 1. `floorplan_budget`: floorplan v1's method (docs/specs/floorplan-v1.md §2.1,
    hardware/studies/floorplan/floorplan.py) on the floorplan's zones, with every part's real
    courtyard instead of the study's estimates: classes T (> 1.5 mm, bands only), E (edge parts:
-   jacks, USB-C; plus the speaker's shadow), B (1.0-1.5 mm, back), F (<= 1.0 mm), placement factor
-   1.7 (1.2 for edge parts); tall and edge parts take the band, B parts the back, F parts the back's
-   remainder and then the front. This is the number to compare with the floorplan's 205 % / 139 % /
-   112 % / 106 %.
+   jacks, USB-C), B (1.0-1.5 mm, back), F (<= 1.0 mm), placement factor 1.7 (1.2 for edge parts);
+   tall and edge parts take the band, B parts the back, F parts the back's remainder and then the
+   front. The speaker stands on a case shelf (PCB-Z-09, ADR 0025): it takes no board area, and the
+   shelf's footprint counts as low back area (parts up to the shelf clearance), not as band. This is
+   the number to compare with the floorplan's 205 % / 139 % / 112 % / 106 %.
 2. `placed_occupancy`: the placed board as it is, courtyard area over region area, per zone and
-   side, with the back split into pocket and band (no factor).
+   side, with the back split into low area (pocket and shelf) and band (no factor).
 """
 
 from __future__ import annotations
@@ -19,7 +20,8 @@ import geometry as g
 import zones as zmod
 
 FACTOR, FACTOR_EDGE = 1.7, 1.2
-SPEAKER_SHADOW = (g.SPEAKER[2] - g.SPEAKER[0]) * (g.SPEAKER[3] - g.SPEAKER[1])
+SPEAKER_SHADOW = 0.0       # the speaker on its case shelf takes no board area (PCB-Z-09)
+LOW_BACK = (g.POCKET, g.SPEAKER)     # back areas limited to 1.5 mm: the pocket and the speaker shelf
 EDGE_PARTS = ("J3401", "J4001", "J4601")       # jacks and USB-C (the study's class E)
 
 
@@ -40,8 +42,22 @@ def _areas(rects_f, rects_b):
     rings = hole_rings()
     front = sum(rect_area(r) for r in rects_f) - sum(clip_area(q, rects_f) for q in rings)
     back = sum(rect_area(r) for r in rects_b) - sum(clip_area(q, rects_b) for q in rings)
-    pocket = sum(rect_area(i) for r in rects_b for i in [zmod.intersect(r, g.POCKET)] if i)
+    pocket = sum(rect_area(p) for p in low_parts(rects_b))
     return front, back, pocket, back - pocket
+
+
+def band_parts(rects):
+    """rects less the low back areas (pocket, shelf)."""
+    for low in LOW_BACK:
+        rects = [p for r in rects for p in zmod.subtract(r, low)]
+    return rects
+
+
+def low_parts(rects):
+    """The parts of rects inside the low back areas (pocket, shelf), without double counting."""
+    out = [i for r in rects for i in [zmod.intersect(r, g.POCKET)] if i]
+    rest = [p for r in rects for p in zmod.subtract(r, g.POCKET)]
+    return out + [i for r in rest for i in [zmod.intersect(r, g.SPEAKER)] if i]
 
 
 def part_class(ref, h):
@@ -61,7 +77,6 @@ def floorplan_budget(nl, geom, heights, zone_of_block, faceplate_refs):
         z = "FACEPLATE" if ref in faceplate_refs else zone_of_block.get(c.block, "CORE")
         cy = geom[c.footprint]["courtyard"]
         need[z][part_class(ref, heights[ref])] += rect_area(cy)
-    need["POWER"]["E"] += SPEAKER_SHADOW
     res = {}
     for z in g.ZONES:
         rf, rb = g.zone_rects(z, "F"), g.zone_rects(z, "B")
@@ -95,11 +110,9 @@ def placed_occupancy(placed_rects, zone_rects):
             row[s] = {"area_mm2": round(area, 1), "courtyard_mm2": round(used, 1),
                       "use_pct": round(100 * used / area, 1) if area else None}
             if s == "B":
-                band_rects = [p for r in rects for p in zmod.subtract(r, g.POCKET)]
+                band_rects = band_parts(rects)
                 band = sum(rect_area(r) for r in band_rects)
-                # the speaker's body occupies its band area (BOM v1 line 33), as in the floorplan
-                bused = sum(clip_area(r, band_rects) for zz, ss, r in placed_rects.values() if ss == "B") + \
-                    clip_area(g.SPEAKER, band_rects)
+                bused = sum(clip_area(r, band_rects) for zz, ss, r in placed_rects.values() if ss == "B")
                 row["band"] = {"area_mm2": round(band, 1), "courtyard_mm2": round(bused, 1),
                                "use_pct": round(100 * bused / band, 1) if band else None}
         res[z] = row

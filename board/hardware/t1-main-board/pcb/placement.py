@@ -86,11 +86,14 @@ class Placer:
         if h <= g.H_BACK_POCKET:
             return [(-g.HX, -g.HY, g.HX, g.HY)]
         if h <= g.H_BACK_BAND:
-            return _subtract((-g.HX, -g.HY, g.HX, g.HY), g.POCKET)
+            band = _subtract((-g.HX, -g.HY, g.HX, g.HY), g.POCKET)
+            if h > g.H_SHELF:        # under the speaker shelf: the shelf clearance (PCB-Z-09)
+                band = [p for r in band for p in _subtract(r, g.SPEAKER)]
+            return band
         return []
 
     def mask(self, zones, side: str, h: float, edge_ok: bool, cap: bool):
-        key = (tuple(sorted(zones)), side, h > g.H_FRONT_DISPLAY, h > g.H_BACK_POCKET, edge_ok, cap)
+        key = (tuple(sorted(zones)), side, h > g.H_FRONT_DISPLAY, h > g.H_BACK_POCKET, h > g.H_SHELF, edge_ok, cap)
         if key in self._masks:
             return self._masks[key]
         inc = []
@@ -112,7 +115,6 @@ class Placer:
             m.clear_disc(hx, hy, ring)
         if side == "B":             # the battery-contact window takes battery parts only (PCB-L-02, L-05)
             m.set_rect(g.contact_window(), False, grow=0.0)
-            m.set_rect(g.SPEAKER, False, grow=0.0)
         self._masks[key] = m
         return m
 

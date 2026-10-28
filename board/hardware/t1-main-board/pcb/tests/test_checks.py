@@ -40,6 +40,27 @@ def test_hole_ring_and_edge():
     assert ("PCB-B-01", "R5") in rules
 
 
+def test_speaker_shelf_height():
+    """Back parts under the speaker shelf are held to the shelf clearance (PCB-Z-09); the rest of the
+    band keeps PCB-Z-02's 14.2 mm."""
+    sx, sy = (g.SPEAKER[0] + g.SPEAKER[2]) / 2, (g.SPEAKER[1] + g.SPEAKER[3]) / 2
+    placed = {
+        "L1": {"side": "B", "zone": "POWER", "rect": (sx - 1, sy - 1, sx + 1, sy + 1)},
+        "L2": {"side": "B", "zone": "POWER", "rect": (g.SPEAKER[2] + 1, sy - 1, g.SPEAKER[2] + 3, sy + 1)},
+        "C1": {"side": "B", "zone": "POWER", "rect": (sx - 3, sy - 1, sx - 2, sy)},
+    }
+    f = checks.run(placed, {"L1": 2.1, "L2": 2.1, "C1": 1.2}, zr(), exempt_zone=set(placed))
+    rules = {(r, ref) for r, ref, _ in f}
+    assert ("PCB-Z-09", "L1") in rules
+    assert not any(ref in ("L2", "C1") for _, ref, _ in f)
+
+
+def test_board_outline_from_the_body():
+    """Outline = body less two walls less two clearances (PCB-M-02, ADR 0025); the pocket keeps its place."""
+    assert abs(g.BW - (62.5 - 2 * 1.2 - 2 * 0.5)) < 1e-9 and abs(g.BH - (95.0 - 2 * 1.2 - 2 * 0.5)) < 1e-9
+    assert abs(g.POCKET[1] - (-28.55)) < 1e-9 and abs(g.POCKET[3] - 38.55) < 1e-9
+
+
 class Tests(unittest.TestCase):
     pass
 

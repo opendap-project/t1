@@ -116,7 +116,7 @@ def drawings_and_texts():
     t.append({"x": 0, "y": -g.HY + 1.2, "text": "PCB-Z-02 bottom band <= 14.2 mm", "layer": "User.2", "size": 0.6})
     t.append({"x": 0, "y": g.HY - 1.2, "text": "PCB-Z-02 top band <= 14.2 mm", "layer": "User.2", "size": 0.6})
     d.append({"rect": list(g.SPEAKER), "layer": "User.2"})
-    t.append({"x": (g.SPEAKER[0] + g.SPEAKER[2]) / 2, "y": g.SPEAKER[3] - 1.2, "text": "speaker body (BOM line 33)", "layer": "User.2", "size": 0.6})
+    t.append({"x": (g.SPEAKER[0] + g.SPEAKER[2]) / 2, "y": g.SPEAKER[3] - 1.2, "text": "PCB-Z-09 speaker shelf: parts <= 1.5 mm", "layer": "User.2", "size": 0.6})
     for z, r, layers in zones.rule_areas():
         if "F.Cu" in layers and (r[2] - r[0]) > 8 and (r[3] - r[1]) > 8:
             t.append({"x": (r[0] + r[2]) / 2, "y": (r[1] + r[3]) / 2, "text": z, "layer": "User.3", "size": 1.5})
@@ -195,7 +195,16 @@ def main():
     fixed = set(plan.FIXED) | window
     pl = {r: {"side": p.side, "zone": p.zone, "rect": p.rect, "zones": p.zones,
               "holes": placer.holes_at(r, p.x, p.y, p.side, p.rot)} for r, p in placed.items()}
-    findings = checks.run(pl, hts, placer.zone_rects, exempt_zone=fixed, window_parts=window)
+    allf = checks.run(pl, hts, placer.zone_rects, exempt_zone=fixed, window_parts=window)
+    relief = [f for f in allf if f[0] == "PCB-Z-01" and f[1] in plan.POCKET_RELIEFS]
+    findings = [f for f in allf if f not in relief]
+    reliefs = {}
+    for _, ref, _ in relief:
+        r = placed[ref].rect
+        cut = zones.intersect(r, g.POCKET)
+        reliefs[ref] = {"row": plan.POCKET_RELIEFS[ref], "height_mm": round(hts[ref], 2),
+                        "courtyard": [round(v, 2) for v in r], "in_pocket": [round(v, 2) for v in cut],
+                        "depth_into_pocket_mm": round(min(cut[2] - cut[0], cut[3] - cut[1]), 2)}
     budget = occupancy.floorplan_budget(nl, geom, hts, plan.FLOORPLAN_ZONE_OF_BLOCK, plan.FACEPLATE_REFS)
     occ = occupancy.placed_occupancy({r: (p.zone, p.side, p.rect) for r, p in placed.items()}, placer.zone_rects)
     sides = {"F": 0, "B": 0}
@@ -205,7 +214,10 @@ def main():
         "parts": len(nl.components), "placed": len(placed), "failed": failed,
         "per_side": sides, "board_only": [f[0] for f in plan.FIDUCIALS] + ["H1", "H2", "H3", "H4"],
         "placeholders": sorted(r for r, c in nl.components.items() if c.footprint in plan.PLACEHOLDER),
+        "outline_mm": [round(g.BW, 2), round(g.BH, 2)],
         "checks": [list(f) for f in findings],
+        "pocket_reliefs": reliefs,
+        "routing_room": routing_room(placed, budget),
         "floorplan_budget_real_courtyards": budget,
         "placed_occupancy": occ,
         "zone_deltas": [{"zone": z, "rect": list(r), "layers": spec_ or "all", "reason": why}
@@ -219,14 +231,26 @@ def main():
     with open(RESULT, "w") as fh:
         json.dump(result, fh, indent=1, sort_keys=True)
         fh.write("\n")
-    print("placed %d of %d parts (front %d, back %d), %d failed; %d check findings" % (
-        len(placed), len(nl.components), sides["F"], sides["B"], len(failed), len(findings)))
+    print("placed %d of %d parts (front %d, back %d), %d failed; %d check findings; %d pocket reliefs" % (
+        len(placed), len(nl.components), sides["F"], sides["B"], len(failed), len(findings), len(reliefs)))
+    print("outline %.1f x %.1f mm; board need %.1f %%, placed courtyard %.1f %%, factor left %.2f" % (
+        g.BW, g.BH, *result["routing_room"].values()))
     for f in findings:
         print("  check: %s %s: %s" % tuple(f))
     if want_drc:
         d = result["drc"]
         print("DRC: %d errors, %d warnings, %d unconnected" % (d["errors"], d["warnings"], d["unconnected"]))
     return 1 if failed else 0
+
+
+def routing_room(placed, budget):
+    """Board need by the floorplan method, placed courtyard and the placement and routing factor
+    left (both sides' area over the placed courtyard), whole board and per zone and side."""
+    area = 2 * g.BW * g.BH
+    cy = sum(occupancy.rect_area(p.rect) for p in placed.values())
+    need = sum(z["need_mm2"] for z in budget.values())
+    return {"board_need_pct": round(100 * need / area, 1), "placed_courtyard_pct": round(100 * cy / area, 1),
+            "factor_left": round(area / cy, 2)}
 
 
 def converter_distances(nl, placed):

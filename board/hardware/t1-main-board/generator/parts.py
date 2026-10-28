@@ -32,7 +32,7 @@ def _r(value, code, size="0402", tol="1 %", spec=None, src="capture choice", pow
     series = "RC" + size
     jumper = value.startswith("0 ")
     mpn = f"{series}{'JR' if jumper else 'FR'}-07{code}L"
-    desc = "Jumper, 0 Ohm, " + size if jumper else f"Resistor, {value}, {tol}, {power or {'0402': '1/16 W', '0603': '1/10 W', '0805': '1/8 W'}.get(size, '1/4 W')}, {size}"
+    desc = "Jumper, 0 Ohm, " + size if jumper else f"Resistor, {value}, {tol}, {power or {'0201': '1/20 W', '0402': '1/16 W', '0603': '1/10 W', '0805': '1/8 W'}.get(size, '1/4 W')}, {size}"
     return dict(kind="R", value=value, Footprint=fp, Datasheet=YAGEO + mpn, Description=desc, Manufacturer="YAGEO",
                 MPN=mpn, spec=spec if spec is not None else "", src=src)
 
@@ -420,3 +420,47 @@ def compact(key, block, top, bottom):
             and block and block.startswith(BLOCKS_0201):
         return "C_100n_0201_DEC"
     return key
+
+
+# ---- area recovery (board ADR 0025, 2026-10-27): part swaps applied at placement ------------------
+# Applied to every placed part (sch.Sheet.place), after its catalog fields:
+# - 0402 resistors to 0201 of the same series (Yageo RC0201, 1/20 W, 25 V), outside the audio chain
+#   and the VBUS and charger-input paths; 0 Ω links and values under 10 Ω (current paths) keep 0402.
+#   Every 0402 resistor outside those blocks is a pull-up, divider, bias or series part on rails of at
+#   most VSYS (8.8 V), within half the 0201's 25 V; sourcing (T1-029), 2026-10-27: pass.
+# - 100 nF capacitors on low-voltage signal nodes (PMIC power-on and VDC, vdd_cpu EN and VOS, SoC
+#   reset) to the 0201 already used for decoupling (GRM033R61A104KE15D, 10 V X5R; at most 1.8 V on
+#   each node, power tree v0 §3). The 1 µF positions of the same study wait for DC-bias figures
+#   (DRV-107); the 0201 1 nF positions wait for a sourced part.
+AREA_R_EXCLUDE = ("blk.dac", "blk.mclk", "blk.hpa", "blk.audio", "blk.jack", "blk.charger-input", "blk.usb-c",
+                  "blk.hat-5v", "blk.usb-vbus-out")
+AREA_C_SIGNAL = {("blk.pmic", "C1114"), ("blk.pmic", "C1115"), ("blk.vdd-cpu", "C1204"),
+                 ("blk.vdd-cpu", "C1207"), ("blk.soc-pmuio", "C1303")}
+_OHM = {"Ω": 1.0, "kΩ": 1e3, "MΩ": 1e6, "mΩ": 1e-3}
+
+
+def ohms(value):
+    num, _, unit = value.partition(" ")
+    try:
+        return float(num) * _OHM[unit]
+    except (KeyError, ValueError):
+        return None
+
+
+def area_swap(block, ref, f, value):
+    """The fields of a placed part after the area-recovery swaps (ADR 0025); f is not modified."""
+    fp = f.get("Footprint", "")
+    if fp == "Resistor_SMD:R_0402_1005Metric" and f.get("Manufacturer") == "YAGEO" and block \
+            and not block.startswith(AREA_R_EXCLUDE) and (ohms(value) or 0) >= 10 \
+            and f.get("MPN", "").startswith("RC0402FR-07"):
+        g = dict(f)
+        g["Footprint"] = "Resistor_SMD:R_0201_0603Metric"
+        g["MPN"] = "RC0201" + f["MPN"][6:]
+        g["Datasheet"] = YAGEO + g["MPN"]
+        g["Description"] = f["Description"].replace("1/16 W, 0402", "1/20 W, 0201")
+        return g
+    if (block, ref) in AREA_C_SIGNAL and f.get("MPN") == "GRM155R71C104KA88D":
+        g = dict(f)
+        g.update({k: PARTS["C_100n_0201"][k] for k in ("Footprint", "Datasheet", "Description", "MPN")})
+        return g
+    return f

@@ -15,11 +15,15 @@ def test_part_class():
     assert occupancy.part_class("C1", 0.5) == "F"
 
 
-def test_placed_occupancy_counts_speaker_in_power_band():
+def test_speaker_shelf_is_low_back_area_not_band():
+    """The speaker stands on a case shelf (PCB-Z-09): its footprint leaves the band and takes no area."""
     zr = {"POWER": {"F": [], "B": [(-g.HX, -g.HY, g.HX, g.POCKET[1])]}}
     occ = occupancy.placed_occupancy({}, zr)
     sp = (g.SPEAKER[2] - g.SPEAKER[0]) * (g.SPEAKER[3] - g.SPEAKER[1])
-    assert abs(occ["POWER"]["band"]["courtyard_mm2"] - round(sp, 1)) < 0.11
+    full = 2 * g.HX * (g.POCKET[1] + g.HY)
+    assert occ["POWER"]["band"]["courtyard_mm2"] == 0
+    assert abs(occ["POWER"]["band"]["area_mm2"] - round(full - sp, 1)) < 0.11
+    assert occupancy.SPEAKER_SHADOW == 0
 
 
 class Tests(unittest.TestCase):

@@ -28,7 +28,9 @@ def height_limit(side, rect):
     """Lowest height limit over a rectangle on one side."""
     if side == "F":
         return g.H_FRONT_DISPLAY if zmod.intersect(rect, g.DISP) else g.H_FRONT_OUTSIDE
-    return g.H_BACK_POCKET if zmod.intersect(rect, g.POCKET) else g.H_BACK_BAND
+    if zmod.intersect(rect, g.POCKET):
+        return g.H_BACK_POCKET
+    return g.H_SHELF if zmod.intersect(rect, g.SPEAKER) else g.H_BACK_BAND
 
 
 def run(placed, heights, zone_rects, exempt_zone=(), window_parts=()):
@@ -60,8 +62,14 @@ def run(placed, heights, zone_rects, exempt_zone=(), window_parts=()):
         if ref in window_parts and s == "B":
             lim = g.H_CONTACT_WINDOW
         if h is not None and h > lim + 1e-9:
-            rule = {"F": "PCB-Z-03" if lim == g.H_FRONT_DISPLAY else "PCB-Z-04",
-                    "B": "PCB-Z-01" if lim == g.H_BACK_POCKET else ("PCB-L-05" if ref in window_parts else "PCB-Z-02")}[s]
+            if s == "F":
+                rule = "PCB-Z-03" if lim == g.H_FRONT_DISPLAY else "PCB-Z-04"
+            elif ref in window_parts:
+                rule = "PCB-L-05"
+            elif zmod.intersect(r, g.POCKET):
+                rule = "PCB-Z-01"
+            else:
+                rule = "PCB-Z-09" if zmod.intersect(r, g.SPEAKER) else "PCB-Z-02"
             out.append((rule, ref, "%.2f mm over a %.1f mm limit" % (h, lim)))
         if s == "F" and lim == g.H_FRONT_OUTSIDE and h > g.H_FRONT_DISPLAY:
             out.append(("PCB-Z-04 (UNVERIFIED value)", ref, "%.2f mm outside the display, on PCB-Z-04's 6.8 mm" % h))

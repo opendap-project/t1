@@ -1,6 +1,6 @@
 # Floorplan v1 of the T1 main board
 
-- **Status:** Draft v1 (2026-10-25; §7 added 2026-10-27 from [placement v1](placement-v1.md)). Basis: the maintainers' direction of 2026-10-25: the board is dense, with parts on both sides; functions are grouped into isolated zones that share the physical layers, each zone using the layers under it for its own needs, so the board needs as few layers and as few full-layer grounds as the zones allow. Nothing here is placed by a designer, routed or measured: it is the plan placement starts from.
+- **Status:** Draft v1 (2026-10-25; §7 added 2026-10-27 from [placement v1](placement-v1.md); §1 outline, bands and holes for the 62.5 × 95.0 mm body of [ADR 0025](../adr/0025-height-zones-in-the-wider-body.md), 2026-10-27: the zones are drawn from the board edges, so they follow the outline; the area figures of §2.1 are the 55.3 × 90.1 mm study's). Basis: the maintainers' direction of 2026-10-25: the board is dense, with parts on both sides; functions are grouped into isolated zones that share the physical layers, each zone using the layers under it for its own needs, so the board needs as few layers and as few full-layer grounds as the zones allow. Nothing here is placed by a designer, routed or measured: it is the plan placement starts from.
 - **Study board:** [`hardware/studies/floorplan/`](../../hardware/studies/floorplan/): `floorplan.py` builds a KiCad board with the outline, the zones and corridors as named rule areas, the height and battery areas, the mounting holes and every part whose position the product fixes (libs footprints), and computes the area budget of §2.1 (written on each run to `floorplan-v1.result.json`, not committed). DRC with the composed T1 rules: **0 errors**; warnings in §6 item 3.
 - **Inputs:** [PCB design constraints](pcb-design-constraints.md) v0.14 (PCB-M, PCB-Z, PCB-L, PCB-R rows), [ADR 0016](../adr/0016-front-side-height-under-the-display.md), [ADR 0020](../adr/0020-battery-connected-through-contacts.md), [feature blocks](feature-blocks.md), [BOM v1](bom-v1.md) v1.14, the [HAT flat cable](hat-flat-cable.md) v1 ([RFC 0014](https://github.com/opendap-project/rfcs/blob/main/text/0014-hat-interface-v2-usb-only.md), [RFC 0015](https://github.com/opendap-project/rfcs/blob/main/text/0015-hat-connector-pogo-field-and-usb-c-port-hat.md)), [pinout v1](pinout-v1.md), [stackup v3](stackup-v3.md) (layer references updated from stackup v2 on 2026-10-25). Footprints: kicad-lib `88508b6`.
 
@@ -8,13 +8,13 @@
 
 | Item | Value | Source |
 |---|---|---|
-| Outline | 55.3 × 90.1 mm (cavity 56.3 × 91.1 mm less 0.5 mm per side, **UNVERIFIED**) | PCB-M-02 |
+| Outline | 59.1 × 91.6 mm (cavity 60.1 × 92.6 mm with 1.2 mm walls, less 0.5 mm per side, **UNVERIFIED** clearance); was 55.3 × 90.1 mm in the 59.5 × 94.3 mm body | PCB-M-02, ADR 0025 |
 | Frame | Origin at the board centre, x across, y along, +y towards the top wall | PCB-M-04 |
 | Front (L1), under the display | Parts ≤ 1.0 mm; display 54.46 × 82.94 mm, centred (**UNVERIFIED** position) | PCB-Z-03, ADR 0016 |
 | Front, faceplate connection area | ≈ 54 × 10 mm at the display's bottom edge: FH35C and its ESD only | ADR 0016 item 1 (size **UNVERIFIED**) |
-| Back (L6), under the pocket | 51.3 mm wide, from 16.5 mm above the bottom edge to 6.5 mm below the top edge; parts ≤ 1.5 mm; battery-contact window exception | PCB-Z-01, PCB-L-05 |
-| Back, bands | Bottom band 16.5 mm, top band 6.5 mm, side strips 2.0 mm; parts ≤ 14.2 mm | PCB-Z-02 |
-| Mounting holes | (±24.15, 41.55) and (±24.9, −27.0) mm, 2.2 mm (**UNVERIFIED** until the case) | PCB-M-08, PCB-H |
+| Back (L6), under the pocket | 51.3 mm wide, from 17.25 mm above the bottom edge to 7.25 mm below the top edge (y −28.55 to 38.55, unchanged in the device frame); parts ≤ 1.5 mm; battery-contact window exception | PCB-Z-01, PCB-L-05 |
+| Back, bands | Bottom band 17.25 mm, top band 7.25 mm, side strips 3.9 mm from the board edge; parts ≤ 14.2 mm; the speaker on a case shelf over parts ≤ 1.5 mm (PCB-Z-09) | PCB-Z-02, PCB-Z-09 |
+| Mounting holes | (±26.05, 42.3) and (±26.8, −27.0) mm, 2.2 mm, the same distance from the edges as before (**UNVERIFIED** until the case) | PCB-M-08, PCB-H |
 
 ## 2. Zones
 

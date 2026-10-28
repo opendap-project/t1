@@ -65,15 +65,14 @@ FIXED = {
 # - power band at the right edge (x 21 to 27.3, under the bottom-right hole): the VSYS_LV and pre-rail
 #   inductors (XGL4020, 2.1 mm).
 # The vdd_cpu, vcc3v3_sys, radio AVDD18, charger and 5.1 V inductors are 1.2-1.5 mm since the compaction
-# study (placement v1 decision 12) and are placed by the search; one 0805 (C904) finds no back room and
-# stands on the front's bottom strip outside the display (PCB-Z-04, 6.8 mm, UNVERIFIED).
+# study (placement v1 decision 12) and are placed by the search. In the wider body (ADR 0025) the
+# VSYS_LV converter's 0805 C904 finds back room too, so no part uses PCB-Z-04 (placement v1 decision 4).
 FIXED.update({
     "F701": (-2.4, -30.45, 0, "B", "battery fuse (NANO2, 2.69 mm) in the band under the P+ contacts (PCB-P-01)"),
     "C4403": (-3.75, -34.2, 0, "B", "5.1 V converter output 1210 (2.5 mm) in the band above the USB-C"),
     "C2817": (1.05, -34.4, 0, "B", "pre-rail 22 uF 1206 (1.6 mm) in the band above the USB-C"),
     "L901": (24.2, -42.4, 0, "B", "VSYS_LV inductor (XAL4020, 2.1 mm) in the right band"),
     "L2802": (24.2, -37.7, 0, "B", "pre-rail inductor (XAL4020, 2.1 mm) in the right band"),
-    "C904": (25.35, -43.35, 0, "F", "VSYS_LV converter 22 uF 0805 (1.25 mm) on the front bottom strip outside the display, at the converter: the power zone's back has no room left for it (PCB-Z-04, UNVERIFIED)"),
 })
 
 # Battery-contact ESD (PCB-L-08, ADR 0020 item 6): one TPD1E10B06 per signal contact, within 3 mm of
@@ -99,6 +98,13 @@ FIXED.update({
     "SW6903": (-g.HX + 1.9, 24.0, 90, "B", "Vol-, left edge below Vol+, 2 mm above the eMMC (PCB-D-01)"),
     "SW6901": (g.HX - 1.9, 29.5, 90, "B", "Main (power), right edge"),
 })
+# Pocket reliefs (case interface, ADR 0025; PCB-Z-06 to Z-08): parts that stand over PCB-Z-01's 1.5 mm
+# where the pocket floor and the pack keep out of their volume. build.py reports each relief's
+# courtyard and height (placement-result.json "pocket_reliefs") instead of a PCB-Z-01 finding.
+POCKET_RELIEFS = {
+    "J4001": "PCB-Z-06", "J6201": "PCB-Z-07",
+    "SW6901": "PCB-Z-08", "SW6902": "PCB-Z-08", "SW6903": "PCB-Z-08", "SW6904": "PCB-Z-08",
+}
 # Battery contacts (ADR 0020 item 2, PCB-L-04): P+, P+, empty, mid-cell tap, NTC, P-, P-
 CONTACT_ORDER = {"BAT_P": [0, 1], "BAT_MID": [3], "BAT_NTC": [4], "BAT_N": [5, 6]}
 
@@ -179,8 +185,8 @@ TARGET = {
 
 # Parts placed at their own target (contact pads for parts mounted in the case, edge pads)
 PART_TARGET = {
-    "TP5901": ((26.4, -14.0), "B", "cover-detect pad at the board edge (ADR 0020 item 7, PCB-L-10)"),
-    "TP5902": ((26.4, -17.5), "B", "cover-detect ground pad at the board edge (ADR 0020 item 7)"),
+    "TP5901": ((g.HX - 1.25, -14.0), "B", "cover-detect pad at the board edge (ADR 0020 item 7, PCB-L-10)"),
+    "TP5902": ((g.HX - 1.25, -17.5), "B", "cover-detect ground pad at the board edge (ADR 0020 item 7)"),
     "TP6803": ((-20.0, 22.0), "B", "LRA contact (actuator in the case, feature block 44)"),
     "TP6804": ((-17.5, 22.0), "B", "LRA contact (actuator in the case, feature block 44)"),
     "TP5803": ((-3.0, 23.5), "B", "NFC antenna contact (BOM line 126; antenna position UNVERIFIED)"),

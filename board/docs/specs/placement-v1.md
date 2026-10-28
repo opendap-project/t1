@@ -1,6 +1,6 @@
 # Placement v1 of the T1 main board
 
-- **Status:** Draft v1.1 (2026-10-27: the 62.5 × 95.0 mm body of [ADR 0025](../adr/0025-height-zones-in-the-wider-body.md), §4 decision 13; compaction of §4 decision 12 applied the same day). The board setup and the placement stage of the T1 main board: every part of the schematic placed, nothing routed. It applies [floorplan v1](floorplan-v1.md) with the changes of §4, each recorded as a decision.
+- **Status:** Draft v1.2 (2026-10-27: the swaps of [BOM v1.17](bom-v1.md#changes-in-v117) whose gates closed without hardware; v1.1 the same day: the 62.5 × 95.0 mm body of [ADR 0025](../adr/0025-height-zones-in-the-wider-body.md), §4 decision 13; compaction of §4 decision 12 applied the same day). The board setup and the placement stage of the T1 main board: every part of the schematic placed, nothing routed. It applies [floorplan v1](floorplan-v1.md) with the changes of §4, each recorded as a decision.
 - **Board:** [`hardware/t1-main-board/t1-main-board.kicad_pcb`](../../hardware/t1-main-board/t1-main-board.kicad_pcb), written by the placement tool [`hardware/t1-main-board/pcb/`](../../hardware/t1-main-board/pcb/) (`build.py`) from the schematic; the tool's report is [`pcb/placement-result.json`](../../hardware/t1-main-board/pcb/placement-result.json). The same inputs give a byte-identical board.
 - **Inputs:** the schematic (hardware/t1-main-board, 1,012 parts, 1,081 nets), [floorplan v1](floorplan-v1.md), [stackup v3](stackup-v3.md) and `hardware/stackup/stackup-v3.toml`, the [PCB design constraints](pcb-design-constraints.md) v0.17, [ADR 0025](../adr/0025-height-zones-in-the-wider-body.md), [ADR 0018](../adr/0018-antennas-and-certification-route.md), [ADR 0020](../adr/0020-battery-connected-through-contacts.md), the composed design rules (`t1-main-board.kicad_dru`), the [BGA escape study](../../hardware/studies/bga-escape/README.md). Footprints: kicad-lib as pinned in `hardware/lib/opendap` and KiCad 10.0.7's stock libraries.
 
@@ -20,7 +20,7 @@
 
 ## 2. What is placed
 
-All 1,012 parts: 846 on the front, 166 on the back, plus the eight fiducials and four holes. The schematic parity check finds no difference. Four parts stand on courtyard-only placeholders, because their lands are not drawn yet (hardware/t1-main-board/README.md, open items): L5401 (Murata LQH3NP), SW6901–SW6903 (C&K PTS815).
+All 1,012 parts: 852 on the front, 160 on the back, plus the eight fiducials and four holes. The schematic parity check finds no difference. Four parts stand on courtyard-only placeholders, because their lands are not drawn yet (hardware/t1-main-board/README.md, open items): L5401 (Murata LQH3NP), SW6901–SW6903 (C&K PTS815).
 
 | Part | Where (device frame, mm) | Side | Basis |
 |---|---|---|---|
@@ -55,15 +55,15 @@ Floorplan v1 §2.1 estimated the over-budget bands with a placement and routing 
 
 | Zone | Courtyard (mm²) | Need ×1.7 (mm²) | Band use | Back use | Front use | 55.3 × 90.1 mm outline (band / back / front) |
 |---|---|---|---|---|---|---|
-| CORE | 2,723 | 4,629 | **124 %** of 497 mm² | 100 % | 75 % | 203 % / 100 % / 94 % |
-| AUDIO | 1,664 | 2,640 | 99 % of 458 mm² | 100 % | **216 %** | 123 % / 100 % / 254 % |
-| POWER | 1,276 | 2,170 | **223 %** of 220 mm² | **126 %** | **141 %** | 233 % / 165 % / 164 % |
-| IO | 366 | 574 | 80 % | 100 % | 23 % | 82 % / 100 % / 29 % |
-| RADIO | 282 | 480 | 0 % | 98 % | 0 % | 0 % / 100 % / 11 % |
+| CORE | 2,700 | 4,590 | **124 %** of 497 mm² | 100 % | 74 % | 203 % / 100 % / 94 % |
+| AUDIO | 1,649 | 2,614 | 99 % of 458 mm² | 100 % | **213 %** | 123 % / 100 % / 254 % |
+| POWER | 1,260 | 2,141 | **223 %** of 220 mm² | **117 %** | **149 %** | 233 % / 165 % / 164 % |
+| IO | 365 | 571 | 80 % | 100 % | 23 % | 82 % / 100 % / 29 % |
+| RADIO | 275 | 467 | 0 % | 96 % | 0 % | 0 % / 100 % / 11 % |
 | FACEPLATE | 121 | 206 | — | — | **109 %** of 190 mm² | — / — / 109 % |
-| **Board** | **6,434** | **10,700** | | | **98.8 % of 10,827 mm²** | 111 % of 9,965 mm² |
+| **Board** | **6,369** | **10,590** | | | **97.8 % of 10,827 mm²** | 111 % of 9,965 mm² |
 
-The wider body (ADR 0025) and the 0201 swaps of [BOM v1.16](bom-v1.md#changes-in-v116) take the board from 111 % to 98.8 % of both sides; the courtyards alone cover 59.4 % (67.3 % before). The study's target of 95 % with routing room is not reached yet: it needs the swaps still gated (the audio output stage in 0402 after V2-A08, 1 µF and 10 µF capacitors after DC-bias figures, X2SON LDOs after stock, WCSP load switches after a land, 0.8 mm power test pads after a probe check), or the reserve of §6 item 1.
+The wider body (ADR 0025) and the 0201 swaps of [BOM v1.16](bom-v1.md#changes-in-v116) take the board from 111 % to 98.8 % of both sides; the swaps of [BOM v1.17](bom-v1.md#changes-in-v117) (seven 10 µF in 0603, two 1 µF in 0201, six load switches in WCSP) to **97.8 %**; the courtyards alone cover 58.8 % (59.4 % at v1.1, 67.3 % before ADR 0025). The study's target of 95 % with routing room is not reached: the X2SON LDOs and most of the 1 µF and 10 µF positions failed their gates (BOM v1.17), and what remains gated needs hardware (the audio output stage in 0402 after V2-A08, 0.8 mm power test pads after a probe check), or the reserve of §6 item 1.
 
 ### 3.2 The placed board
 
@@ -71,14 +71,14 @@ Courtyard area over zone area, per side, without a factor (zones with the change
 
 | Zone | Front | Back | Band (back) |
 |---|---|---|---|
-| CORE | 1,281 of 2,009 mm² (64 %) | 1,337 of 2,280 mm² (59 %) | 204 of 512 mm² (40 %) |
-| AUDIO | 912 of 1,363 mm² (67 %) | 729 of 1,126 mm² (65 %) | 338 of 524 mm² (65 %) |
-| POWER | 619 of 1,087 mm² (57 %) | 736 of 1,311 mm² (56 %) | 161 of 368 mm² (44 %) |
-| IO | 186 of 312 mm² (60 %) | 197 of 265 mm² (74 %) | 164 of 195 mm² (84 %) |
-| RADIO | 113 of 453 mm² (25 %) | 154 of 453 mm² (34 %) | 86 of 208 mm² (41 %) |
+| CORE | 1,273 of 2,009 mm² (63 %) | 1,315 of 2,280 mm² (58 %) | 188 of 512 mm² (37 %) |
+| AUDIO | 899 of 1,363 mm² (66 %) | 737 of 1,126 mm² (65 %) | 340 of 524 mm² (65 %) |
+| POWER | 652 of 1,087 mm² (60 %) | 678 of 1,311 mm² (52 %) | 154 of 368 mm² (42 %) |
+| IO | 189 of 312 mm² (61 %) | 197 of 265 mm² (74 %) | 164 of 195 mm² (84 %) |
+| RADIO | 119 of 453 mm² (26 %) | 140 of 453 mm² (31 %) | 86 of 208 mm² (41 %) |
 | FACEPLATE | 97 of 190 mm² (51 %) | — | — |
 
-Every part found a place with its courtyard inside its zone, its height inside its height area (the two pocket reliefs of §5 aside) and no courtyard overlap. The placement and routing factor left is **1.68** over the board (10,827 / 6,434 mm²; was 1.49), about 1.5–1.6 in the core's and the audio zone's front; the floorplan assumed 1.7 (1.5–1.9). The tool reports these figures in `placement-result.json` (`routing_room`). Whether the board routes at this density is the next stage's question; a shortfall goes back to the maintainers as a stackup question (PCB-S-22) or as the reserve of §6 item 1.
+Every part found a place with its courtyard inside its zone, its height inside its height area (the two pocket reliefs of §5 aside) and no courtyard overlap. The placement and routing factor left is **1.70** over the board (10,827 / 6,369 mm²; 1.68 at v1.1, 1.49 before ADR 0025), about 1.5–1.6 in the core's and the audio zone's front; the floorplan assumed 1.7 (1.5–1.9). The tool reports these figures in `placement-result.json` (`routing_room`). Whether the board routes at this density is the next stage's question; a shortfall goes back to the maintainers as a stackup question (PCB-S-22) or as the reserve of §6 item 1.
 
 ## 4. Decisions
 
@@ -120,7 +120,7 @@ The side buttons (SW6901–SW6904) no longer reach the pocket footprint (0.05 mm
 
 ## 6. Open items
 
-1. **Routing density and the reserve.** The real parts need 98.8 % of the board with the floorplan's factor 1.7 (§3.1; 111 % before decision 13); the placement leaves a factor of 1.68. Gated swaps, in the order they free area (area study, by the factor): the audio output stage's 0603 parts in 0402 of the same series (3.9 points; ADR 0025 item 6, t1 V2-A08); 0.8 mm test pads on power and ground (1.5 points; a probe check against PCB-D-06's 1.0 mm); 0805 10 µF in 0603 (0.9; DC-bias figures, DRV-107, and the part's lifecycle); TPS22919 load switches in TPS22916C WCSP (0.8; a land in kicad-lib and each position's rise time and output discharge); TPS7A2018 in X2SON (0.6; authorized stock below one build, and the MCLK LDO's X2SON has no authorized listing); 1 µF in 0201 on rails ≤ 1.8 V (0.3; DRV-107). **Reserve, not applied** (ADR 0025 item 7): if the routing stage or the shield-can frames need more, remove the NFC reader (BRD-057, about 2.6 points), then the TPM (BRD-059, about 1 point), for every model; a maintainers' decision.
+1. **Routing density and the reserve.** The real parts need 97.8 % of the board with the floorplan's factor 1.7 (§3.1; 98.8 % before BOM v1.17, 111 % before decision 13); the placement leaves a factor of 1.70. BOM v1.17 closed the gates that needed no hardware: the TPS22916C load switches, seven 10 µF in 0603 and two 1 µF in 0201 are applied; the X2SON LDOs, 15 of the 10 µF and 16 of the 1 µF positions failed and keep their parts. Still gated, in the order they free area (area study, by the factor): the audio output stage's 0603 parts in 0402 of the same series (3.9 points; ADR 0025 item 6, t1 V2-A08); 0.8 mm test pads on power and ground (1.5 points; a probe check against PCB-D-06's 1.0 mm); the 1 nF positions in 0201 (no part sourced). **Reserve, not applied** (ADR 0025 item 7): if the routing stage or the shield-can frames need more, remove the NFC reader (BRD-057, about 2.6 points), then the TPM (BRD-059, about 1 point), for every model; a maintainers' decision.
 2. **Zone net classes:** closed (2026-10-27). Every net but GND carries the `ZONE_<NAME>` class of each zone whose blocks it touches (the zones of `pcb/plan.py`; the faceplate connector's sheet also the faceplate zone), a rail used in more than one zone `ZONE_SHARED`; the generator writes them as net-class patterns (`zone_patterns` in `generator/generate.py`). Of 1,080 nets: 911 in one zone, 104 in two, 36 in three, 28 shared rails, GND none.
 3. **Switch-node class:** closed (2026-10-27). The generator names every switch node `*_SW` (`VSYS_LV_SW`, `VCC3V3_SYS_SW`, `VDD_CPU_SW`, `RP_VREG_SW`, was `RP_VREG_LX`), and the faceplate display switch's output is `FP_VCI_OUT` (was `FP_VCI_SW`), so `SW_NODE` holds the 18 switch nodes and nothing else.
 4. **Lands not drawn:** LQH3NP, PTS815 (placeholders, §2); the WE-LHMI 4020 is no longer fitted (decision 12).

@@ -1,7 +1,7 @@
 """Part heights above the board, from each footprint's 3D model (STEP), pure Python.
 
 The height of a model is the largest z of its STEP points, after the footprint's model offset and
-scale (models rotated about x or y take their largest extent). Models are the library's (kicad-lib
+scale (models rotated about x or y take their largest extent). Models are the library's (libs kicad/
 or KiCad's stock models) and stand for the part's maximum body; a model's height is checked against
 the data sheet when the height decides a zone (`OVERRIDES` records every value set by hand, with its
 source).
@@ -28,7 +28,6 @@ OVERRIDES = {
     "T1_Main_Board:L_Murata_DFE201610E": (1.0, "Murata DFE201610E: 2.0 x 1.6 x 1.0 mm max (code E = 1.0 mm)"),
     "T1_Main_Board:L_Abracon_AOTA-B201610": (1.0, "Abracon AOTA-B201610: 2.0 x 1.6 x 1.0 mm (series code 201610), UNVERIFIED"),
     "T1_Main_Board:L_Murata_LQH3NP_3x3mm": (1.1, "Murata LQH3NPN220MMEL: 3.0 x 3.0 mm, 1.1 mm max (MM code), UNVERIFIED: sheet not retrieved"),
-    "T1_Main_Board:L_Wuerth_WE-LHMI_4020": (2.0, "Wuerth WE-LHMI 4020: 4.0 x 4.0 x 2.0 mm (size code), UNVERIFIED: sheet not retrieved"),
     "T1_Main_Board:SW_CK_PTS815": (2.7, "C&K PTS815: 2.5 +-0.2 mm (PTS 815 data sheet, 8 Apr 21, p. B-44), the maximum"),
     "Inductor_SMD:L_Coilcraft_XxL4020": (2.1, "Coilcraft XAL4020/XGL4020: 2.1 mm max (PCB-Z-05)"),
     "hirose:Hirose_DF40C-50DS-0.4V_2x25_P0.4mm_Vertical": (1.6, "DF40C-50DS: 1.45 +- 0.15 mm (PCB-Z-05, RFC 0015)"),

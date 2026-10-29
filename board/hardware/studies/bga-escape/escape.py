@@ -76,7 +76,7 @@ HOLE_HOLE = 11 * 0.0254      # PCBWay HDI via hole to hole (mechanical)
 MV_D, MV_H = 0.25, 0.10      # first laser level: land / drill (stackup v1 §1, PCB-G-03)
 MV2_D, MV2_H = 0.275, 0.125  # second laser level: land / drill (stackup v1 §1, UNVERIFIED)
 TH_D, TH_H = 0.46, 0.20      # through via: pad / drill (PCB-G-04 0.45 mm, raised to keep PCBWay's 5 mil ring [P1])
-PAD_D = 0.25                 # BGA land (kicad-lib footprint)
+PAD_D = 0.25                 # BGA land (libs kicad/ footprint)
 EPS = 0.004                  # grid safety margin
 S = 0.025                    # router grid step
 

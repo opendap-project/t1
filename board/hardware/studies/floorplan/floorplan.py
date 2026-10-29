@@ -11,7 +11,7 @@ Writes, in this folder (FLOORPLAN_OUT=<dir> writes elsewhere):
 - floorplan-v1.kicad_pcb / .kicad_pro / .kicad_dru: the outline, the zones and corridors as named
   rule areas, the height and battery areas, the mounting holes and the parts whose position is
   fixed by the product (edge connectors, battery contacts, faceplate connector, SoC, memory, radio
-  feeds, microSD), placed from kicad-lib footprints. Every other part is counted in the budget,
+  feeds, microSD), placed from libs kicad/ footprints. Every other part is counted in the budget,
   not placed.
 
 Frame: device frame of PCB-M-04 (origin at the board centre, x across, y along, +y towards the
@@ -84,7 +84,7 @@ CORRIDORS = {
     "io-faceplate": (-9.5, -31.5, 9.5, -27.5),    # DSI and faceplate control into the FH35C area
 }
 
-# ---- fixed parts (kicad-lib footprints), device-frame centre, rotation (deg), side
+# ---- fixed parts (libs kicad/ footprints), device-frame centre, rotation (deg), side
 KLIB = None
 PARTS = [
     # ref, library, footprint, x, y, rot, side, fields
@@ -130,7 +130,7 @@ CONTACT_FP = ("kyocera-avx", "KYOCERA_AVX_9258-100_70-9258-001-120-006_SpringFin
 # Mounting holes (PCB-M-08, PCB-H): positions UNVERIFIED until the case; 2.2 mm (M2 class).
 HOLES = [(-24.15, 41.55), (24.15, 41.55), (-24.9, -27.0), (24.9, -27.0)]
 
-# ---- drawn, not placed: bodies the budget counts that have no kicad-lib footprint yet
+# ---- drawn, not placed: bodies the budget counts that have no libs kicad/ footprint yet
 DRAWN = [
     ("Radio module 2EL (8.2 x 9.3 courtyard, UNVERIFIED size)", -17.0, 32.5, 8.2, 9.3, "B"),
     ("Speaker shadow 15 x 11 (CMS-151125, BOM v1)", 13.5, -39.5, 15.0, 11.0, "B"),
@@ -138,13 +138,13 @@ DRAWN = [
     ("4020 inductor", 24.6, -37.4, 4.4, 4.4, "B"),
     ("4020 inductor", 24.6, -32.8, 4.4, 4.4, "B"),
     # Hirose DF40C-50DS-0.4V(51), 12.6 x 3.38 mm, 1.45 mm high (BOM line 66, catalog p. 4); no
-    # kicad-lib footprint yet
+    # libs kicad/ footprint yet
     ("HAT flat-cable receptacle DF40C-50DS (12.6 x 3.38 mm)", 13.1, -31.0, 12.6, 3.38, "B"),
 ]
 
 
 # ------------------------------------------------------------------ area budget
-# Courtyard per zone and height class (mm²). Sources: kicad-lib footprints (courtyard bounding
+# Courtyard per zone and height class (mm²). Sources: libs kicad/ footprints (courtyard bounding
 # boxes, read by this script where a footprint exists), class estimates from BOM v1.7 parts (est.),
 # and the BOM v1.11 to v1.14 changes. F <= 1.0 mm (front under the display or anywhere),
 # B <= 1.5 mm (back under the pocket or the bands), T > 1.5 mm (bands only), E edge parts.
@@ -165,7 +165,7 @@ BUDGET = {
               ("4.4 mm jack", "fp:J2", "E"), ("jack ESD, mute shunts (est.)", 36.0, "F"),
               ("ambient microphone (est.)", 10.0, "B")],
     "POWER": [("BQ25798, TPS2121, ship FET, sense, BQ28Z610 (est.)", 55.0, "F"),
-              ("TPS62136, TPS62903, TPS65131, LMR33630C (kicad-lib, est.; v1.13: one TPS62903)", 65.0, "F"),
+              ("TPS62136, TPS62903, TPS65131, LMR33630C (libs kicad/, est.; v1.13: one TPS62903)", 65.0, "F"),
               ("4020 inductors x 5 (est.)", 101.0, "T"), ("WE-LHMI (est.)", 23.0, "T"),
               ("NANO2 fuse (est.)", 21.0, "T"), ("eFuses x 3 (#A, #C, #D), TVS2200, TVS0500 (est.)", 45.0, "F"),
               ("INA236 x 4, TPS22919 x 7 (est.)", 74.0, "B"),
@@ -218,7 +218,7 @@ def kicad_lib_dir():
     for c in cands:
         if c and os.path.exists(os.path.join(c, "footprints", "rockchip.pretty")):
             return c
-    sys.exit("kicad-lib not found (set ODAP_KICAD_LIB_DIR)")
+    sys.exit("libs kicad/ not found (set ODAP_KICAD_LIB_DIR)")
 
 
 def courtyard_mm2(fp):
@@ -463,7 +463,7 @@ class Floorplan:
                 if isinstance(src, str):
                     refs = src[3:].split("+")
                     a = contacts if refs == ["contacts"] else sum(courtyard_mm2(self.fps[r]) for r in refs)
-                    source = "kicad-lib courtyard"
+                    source = "libs kicad/ courtyard"
                 else:
                     a, source = src, "estimate"
                 rows.append({"item": label, "courtyard_mm2": round(a, 1), "class": cls, "source": source})

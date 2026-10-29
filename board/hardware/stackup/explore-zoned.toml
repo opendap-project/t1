@@ -1,6 +1,9 @@
 # OpenDAP T1 main board: layer-count exploration over the floorplan zones.
 #
-# Input to toolkit-hardware's `odapkit stackup explore` (format in its
+# SUPERSEDED 2026-10-25 with stackup v2 by stackup-v3.toml (docs/specs/stackup-v3.md): a study
+# input kept as the record of how the layer count was chosen; nothing reads it for the board.
+#
+# Input to tools' hardware/ `odapkit stackup explore` (format in its
 # docs/specs/stackup-method.md §5). Every candidate stack of 4, 6, 8 and 10 layers, every
 # build and every symmetric dielectric sequence from the palette below is enumerated, pruned by
 # the needs of each zone and ranked. Zones and their needs: docs/specs/floorplan-v1.md §2-3;

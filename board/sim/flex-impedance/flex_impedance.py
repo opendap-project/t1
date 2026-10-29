@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Impedance, coupling, conductor loss and power-conductor sizing for the T1 flat cables.
 
-HAT flat cable: hat-standard interface v2 (one USB port; RFC 0014, RFC 0015), updated 2026-10-25.
+HAT flat cable: hats standard/ interface v2 (one USB port; RFC 0014, RFC 0015), updated 2026-10-25.
 
 Used by the board's HAT flat-cable specification (docs/specs/hat-flat-cable.md) and by
 faceplate-touch's faceplate flex specification. Every number those specs quote from
@@ -28,7 +28,7 @@ Stack-ups are the fab's published standard FPC stack-ups (Stack-up for FPC page,
 the adhesive and bonding-sheet ("pure gum") DK is not published, so 3.5 is assumed and
 the 3.3 and 3.6 cases are printed as sensitivity.
 
-The specifications take their impedance figures from toolkit-hardware's `odapkit stackup`;
+The specifications take their impedance figures from tools' hardware/ `odapkit stackup`;
 this script cross-checks them and adds loss, coupling, the EMI-film effect and power sizing.
 """
 import math
@@ -256,7 +256,7 @@ def main(out):
       f"Hammerstad {120 * math.pi / (u + 1.393 + 0.667 * math.log(u + 1.444)):.1f} ohm")
 
     p("\n# HAT flat cable (the fab 4-layer 0.268 mm; pairs on L2, L1 and L4 ground, L3 void)")
-    p("# One USB port (hat-standard interface v2): SSTX, SSRX and D+/D- at 90 ohm differential")
+    p("# One USB port (hats standard/ interface v2): SSTX, SSRX and D+/D- at 90 ohm differential")
     w, s = 70, 100
     r = pair(hat_geo(w, s))
     p(f"USB 90 ohm: w={w} s={s} um -> Zdiff {r['zdiff']:.1f}, Zcomm {r['zcomm']:.1f}, "

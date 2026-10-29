@@ -56,7 +56,7 @@ def draw_power(s):
     # rail table on the left, power tree as an indented column of boxes on the right
     s.table(25.4, 35.56, [27.94, 20.32, 45.72, 40.64, 60.96, 20.32, 30.48],
             [["Rail", "Voltage", "Source", "Switch or enable", "Consumers", "Net class", "Measure"]] + RAIL_ROWS,
-            "railtab", title="Rail table (power tree v0.6 §3, §4.12)")
+            "railtab", title="Rail table (power tree v0.11 §3, §4.12)")
     s.text("Power tree (drawn blocks)", 279.4, 35.56 - 1.27, size=2.54)
     # (label, sub-label, indent level, parent index)
     boxes = [
@@ -101,7 +101,7 @@ def draw_interconnect(s):
     s.table(25.4, 35.56, [38.1, 66.04, 101.6], [
         ["Connector", "Block", "Pin map"],
         ["USB-C (USB4105-GF-A)", "blk.usb-c", "added when the block is drawn"],
-        ["HAT connector", "blk.hat-signals", "follows the connector decision (RFC 0014; hat-standard interface v2)"],
+        ["HAT connector", "blk.hat-signals", "follows the connector decision (RFC 0014; hats standard/ interface v2)"],
         ["Faceplate (FH35C-51S)", "blk.fp-connector", "added when the block is drawn (faceplate interface v1)"],
         ["Battery contacts (6 x 70-9258)", "blk.charger", "added when the block is drawn (ADR 0020)"],
         ["Headphone jacks 3.5 / 4.4 mm", "blk.jack-se, blk.jack-bal", "added when the blocks are drawn"],

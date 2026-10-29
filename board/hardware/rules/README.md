@@ -4,9 +4,9 @@ The T1 main board's own design rules, from the [PCB design constraints](../../do
 
 - `t1-main-board.kicad_dru`: the product rules. Each rule is named after the constraint it enforces and the lowest quality level at which it is mandatory ([RFC 0010](https://github.com/opendap-project/rfcs/blob/main/text/0010-quality-levels.md)): `T1 PCB-H-01 [Q1]: …`.
 - `netclasses.toml`: the net classes the rules and the schematic share, with their constraint IDs, design currents and impedance targets.
-- `test/`: a test board with one failing and one passing object per rule, built by `make_test_board.py` on kicad-lib's test-board tools (submodule `../lib/opendap`).
+- `test/`: a test board with one failing and one passing object per rule, built by `make_test_board.py` on libs' `kicad/` test-board tools (submodule `../lib/opendap`).
 
-The KiCad project's rules, [`../t1-main-board/t1-main-board.kicad_dru`](../t1-main-board/), are the composition of the PCBWay HDI fab rules (kicad-lib `design-rules/pcbway-hdi`), the OpenDAP craft rules (kicad-lib `design-rules/opendap-craft`) and these product rules, in that order, made and checked with `odapkit dru` from `t1-main-board.dru.toml`.
+The KiCad project's rules, [`../t1-main-board/t1-main-board.kicad_dru`](../t1-main-board/), are the composition of the PCBWay HDI fab rules (libs `kicad/` `design-rules/pcbway-hdi`), the OpenDAP craft rules (libs `kicad/` `design-rules/opendap-craft`) and these product rules, in that order, made and checked with `odapkit dru` from `t1-main-board.dru.toml`.
 
 Impedance-controlled net classes are named `<name>_<ohms>D` (differential) or `<name>_<ohms>SE` (single-ended), so the craft rules exempt them from their general width rules (CRAFT-40, CRAFT-43; the composition was checked with every impedance class: no craft or fab report on their tracks). The product rules find the same classes with the same wildcards (PCB-S-14, PCB-W-01). `BAT_SENSE` also matches the `*_???SE` wildcard and is not an impedance class: the product rules leave it out by name.
 
@@ -67,13 +67,13 @@ python3 hardware/lib/opendap/kicad/design-rules/tools/check_drc.py hardware/rule
 
 Every rule fires exactly once in the FAIL column and nothing fires in the PASS column.
 
-Rules that overlap the fab and craft rule sets are left to them: silkscreen to pads and vias, silk sizes, 45° routing, acute angles (CRAFT-41, 135° minimum), short segments and the via set live in kicad-lib `opendap-craft`. The composition `pcbway-hdi` + `opendap-craft` + these rules compiles under KiCad 10.0.7 with every T1 rule still firing on the test board. The test board has six copper layers (stackup v3); its GND objects are joined by a bus on L5 (`In4.Cu`, the full-layer ground, which takes GND), so the board reports no unconnected items.
+Rules that overlap the fab and craft rule sets are left to them: silkscreen to pads and vias, silk sizes, 45° routing, acute angles (CRAFT-41, 135° minimum), short segments and the via set live in libs `kicad/` `opendap-craft`. The composition `pcbway-hdi` + `opendap-craft` + these rules compiles under KiCad 10.0.7 with every T1 rule still firing on the test board. The test board has six copper layers (stackup v3); its GND objects are joined by a bus on L5 (`In4.Cu`, the full-layer ground, which takes GND), so the board reports no unconnected items.
 
 ## Not checked by DRC
 
 Impedance itself, zone-local ground stitching and zone-boundary fences (PCB-S-19, S-13), the edge margin from a zone-local ground, the maximum pair gap, spacing to other nets (3–5 × W; LPDDR4X on L4 is DRC, PCB-S-24), length matching, skew and delay matching across layers (PCB-I, PCB-S-15), height zones (PCB-Z, including the battery-contact exception of PCB-L-05), copper area per net and via counts for current (PCB-P-01 to PCB-P-03, PCB-P-09), the battery contacts' pad size, pitch and order (PCB-L-04), via count per contact pad and pour symmetry (PCB-L-07), ESD distance (PCB-E-01) and test-pad coverage (PCB-T-02) are layout checks. The contact working height and the liner distance (PCB-L-06) are 3D review and case items. Review items are listed in the specification.
 
-KiCad 10.0.7 can express three more rules, thermal-relief spoke count (`min_resolved_spokes`), differential-pair uncoupled length (`diff_pair_uncoupled`) and differential-pair gap (`diff_pair_gap`, with its maximum and the router's gap), but its report does not name the rule for them ("zone min spoke count", "(<rule> maximum uncoupled length", "(<rule> maximum gap"), so `check_drc.py` cannot attribute them. The pair gap's minimum is checked as a clearance instead (see Layers). They wait for a kicad-lib `check_drc.py` that reads those messages; until then they are CHK items below, with the other checks DRC cannot make.
+KiCad 10.0.7 can express three more rules, thermal-relief spoke count (`min_resolved_spokes`), differential-pair uncoupled length (`diff_pair_uncoupled`) and differential-pair gap (`diff_pair_gap`, with its maximum and the router's gap), but its report does not name the rule for them ("zone min spoke count", "(<rule> maximum uncoupled length", "(<rule> maximum gap"), so `check_drc.py` cannot attribute them. The pair gap's minimum is checked as a clearance instead (see Layers). They wait for a libs `kicad/` `check_drc.py` that reads those messages; until then they are CHK items below, with the other checks DRC cannot make.
 
 ## Review and script items (CHK)
 
@@ -130,7 +130,7 @@ Fetched 2026-10-24 unless stated.
 | LC | LCSC blog, "How to Properly Place Fiducial Marks on PCBs": <https://www.lcsc.com/blog/how-to-properly-place-fiducial-marks-on-pcbs-a-step-by-step-guide/> | Secondary |
 | AP | ALLPCB, "Non-Plated Through Holes: Design Rules": <https://www.allpcb.com/allelectrohub/non-plated-through-holes-design-rules-for-optimal-performance-and-reliability> | Secondary |
 | RK | Rockchip RK3568 High Speed PCB Design Guide V1.0.0, cited by page | Primary |
-| P1–P20 | The prototype fab's published pages, as keyed in kicad-lib's `pcbway-*` rule sets (fetched 2026-10-22): P1 capabilities, P2 advanced, P3 HDI, P11 via-in-pad, P16 order options, P20 assembly reminders | Primary |
+| P1–P20 | The prototype fab's published pages, as keyed in libs' `kicad/` `pcbway-*` rule sets (fetched 2026-10-22): P1 capabilities, P2 advanced, P3 HDI, P11 via-in-pad, P16 order options, P20 assembly reminders | Primary |
 | KiCad | KiCad 10.0.7 PCB Editor manual, custom rules (bundled `pcbnew.html`), and the behaviour listed above | Primary |
 
 Not retrieved, so not used for any value: IPC-7351B courtyard excess table, IPC-7095 rework clearances, IPC-A-610, IPC-2152, IPC-7525 paste, SMEMA 3.1 text, TI and Intel high-speed layout guides for uncoupled length, the fab's pages on fiducials, test points and tab clearance, and any Li-ion cell maker's heat-source distance.

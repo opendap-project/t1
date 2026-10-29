@@ -759,7 +759,7 @@ def draw_jack_bal(s, variants):
         "   TPD1E10B06 on each leg and the detect line (line 36).",
         "2. Absent state: passive. Detect: pin 10 to HP_DET_BAL, pin 9 to ground (switch state",
         "   UNVERIFIED on the drawing), read by expander P11 with its pull-up on the host side.",
-        "3. Pin-to-pad assignment UNVERIFIED (kicad-lib note): check against a sample before boards.",
+        "3. Pin-to-pad assignment UNVERIFIED (libs kicad/ note): check against a sample before boards.",
         "4. Open: RF filter footprints near the jack (PCB-A-19, Q2); the Pentaconn alternate land.",
     ])
 

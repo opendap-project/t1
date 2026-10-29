@@ -1,4 +1,4 @@
-"""Project-local library parts the board needs and kicad-lib does not carry yet (hardware/lib/).
+"""Project-local library parts the board needs and libs kicad/ does not carry yet (hardware/lib/).
 
 Each part is drawn from its datasheet, to the craft standard's symbol rules (§9.3):
 2.54 mm pins on the 2.54 mm grid, no hidden pins, supply in at the left (converter), output at the

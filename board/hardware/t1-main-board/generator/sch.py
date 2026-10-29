@@ -21,7 +21,7 @@ HOLDER = "The OpenDAP Project"
 PROJECT = "t1-main-board"
 PAPER = {"A4": (297.0, 210.0), "A3": (420.0, 297.0)}
 
-# Rails of the power tree (power tree v0.5, rail table and §3.1). Every power symbol names one.
+# Rails of the power tree (power tree v0.11, rail table and §3.1). Every power symbol names one.
 RAILS = [
     "GND", "VSYS", "VSYS_LV", "vcc3v3_sys", "vdd_cpu", "vdd_logic", "vdd_gpu", "vdd_npu", "vcc_ddr",
     "vcc0v6_ddr", "vcc1v8_ddr", "vcc_1v8", "vccio6_1v8", "vdda0v9_image", "vdda_0v9", "vdda0v9_pmu",

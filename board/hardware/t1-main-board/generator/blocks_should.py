@@ -138,7 +138,7 @@ TAPS = [("I2S_BCLK", "RP_TAP_BCLK"), ("I2S_LRCK", "RP_TAP_LRCK"), ("I2S_SDO0", "
 
 
 def rp_unit(s, ref, unit, mapping, title, rows=(), rows_dx=5.08):
-    """One unit of the RP2354A (kicad-lib raspberry-pi:RP2354A, three units) with passive rows."""
+    """One unit of the RP2354A (libs kicad/ raspberry-pi:RP2354A, three units) with passive rows."""
     from draw import ic as _ic, prow, row_need, unit_box, unit_extent
     import library
     sym = library.load("raspberry-pi", "RP2354A")

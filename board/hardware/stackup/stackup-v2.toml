@@ -7,8 +7,8 @@
 # eight-layer candidate with one full-layer ground; the six-layer rank 1 fails the SoC plane
 # check, docs/specs/stackup-v2.md §0). Explained in docs/specs/stackup-v2.md; replaces stackup v1
 # (ten layers). To be confirmed by the fab's DFM review: every thickness, copper weight and Dk
-# here is the fab's published data or a stated assumption. Checked with toolkit-hardware's
-# `odapkit stackup check hardware/stackup/stackup-v2.toml`; format in toolkit-hardware
+# here is the fab's published data or a stated assumption. Checked with tools' hardware/
+# `odapkit stackup check hardware/stackup/stackup-v2.toml`; format in tools hardware/
 # docs/specs/stackup-method.md.
 #
 # Layers top (front, faceplate side, +z) to bottom (back, battery side, the SoC). Thicknesses in

@@ -1,8 +1,11 @@
 # OpenDAP T1 main board: dual-stripline coupling case on stackup v2's dielectrics.
 #
+# SUPERSEDED 2026-10-25 with stackup v2 by stackup-v3.toml (docs/specs/stackup-v3.md): a study
+# input kept as the record of how the layer count was chosen; nothing reads it for the board.
+#
 # Not a stackup of the board: stackup v2's cross-section with L3 and L4 both as routing layers
 # between the L2 and L5 grounds (a dual stripline, the zoned method's role D), solved with
-# toolkit-hardware's `odapkit stackup design` and `odapkit stackup coupling`. It gives the
+# tools' hardware/ `odapkit stackup design` and `odapkit stackup coupling`. It gives the
 # impedance on the shared layers and the near-end (backward) crosstalk coefficient Kb between a
 # trace on L3 and one on L4, the number a zone needs before it routes fast classes on both
 # (docs/specs/stackup-v2.md §4). Dielectrics and Dk as stackup-v2.toml.

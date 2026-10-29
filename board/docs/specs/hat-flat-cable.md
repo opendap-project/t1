@@ -1,10 +1,10 @@
 # HAT flat cable
 
 - **Status:** Draft v1 (2026-10-25). Nothing here is built or measured; every impedance, loss and temperature figure is computed and is confirmed only by the test coupon (§14).
-- **v1 (2026-10-25, [RFC 0014](https://github.com/opendap-project/rfcs/blob/main/text/0014-hat-interface-v2-usb-only.md), [RFC 0015](https://github.com/opendap-project/rfcs/blob/main/text/0015-hat-connector-pogo-field-and-usb-c-port-hat.md)):** HATs are USB only (hat-standard [interface v2](https://github.com/opendap-project/hats/blob/main/standard/docs/specs/interface-v2.md)) and the HAT connector is the pogo field on the device-side piece. The cable carries one USB port on a DF40C-50 at each end: the 100 Ω extension pairs, the 50 Ω I2S lines, `HAT_3V3` and the low-speed and reserved lines of v0 (interface v1.1, DF40C-100) are gone. v0 is in this file's history.
-- **Requirements:** BRD-013 (this repository owns the flat cable), BRD-042 (nothing in the high-speed paths limits the link), BRD-049 (margin below every rating), BRD-055 (prototype fab processes), BRD-060 (constraints with limits); hat-standard HCS-004, HCS-023, HCS-027, HCS-028.
-- **Inputs:** hat-standard interface v2 §4, §5.1 and §9.2, [ADR 0004](https://github.com/opendap-project/hats/blob/main/standard/docs/adr/0004-pogo-part-and-field-geometry.md) (coupon); [ADR 0002](../adr/0002-hat-signals-leave-the-board-over-a-flat-cable.md); [BOM v1](bom-v1.md) lines 65–69, 102; [PCB design constraints](pcb-design-constraints.md) PCB-I-01, PCB-I-02, PCB-I-14, PCB-R-06, PCB-P-20, PCB-P-21; kicad-lib [`pcbway-flex`](https://github.com/opendap-project/libs/tree/main/kicad/design-rules/pcbway-flex); libs generator data `kicad/generator/parts/hirose/DF40C-50DS-0.4V(51).toml`; the Hirose DF40 catalog; the fab's *Stack-up for FPC* page (fetched 2026-10-24).
-- **Computation:** impedance with toolkit-hardware's `odapkit stackup` (2D finite-element field solver, [method](https://github.com/opendap-project/tools/blob/main/hardware/docs/specs/stackup-method.md)) on [`hardware/hat-flat-cable/stackup-v0.toml`](../../hardware/hat-flat-cable/stackup-v0.toml); loss, coupling, the EMI-film comparison and the power sizing with [`sim/flex-impedance`](../../sim/flex-impedance/README.md), a 2D finite-difference solver that agrees with `odapkit stackup` within 1 Ω on these striplines. Both run 2026-10-25.
+- **v1 (2026-10-25, [RFC 0014](https://github.com/opendap-project/rfcs/blob/main/text/0014-hat-interface-v2-usb-only.md), [RFC 0015](https://github.com/opendap-project/rfcs/blob/main/text/0015-hat-connector-pogo-field-and-usb-c-port-hat.md)):** HATs are USB only (hats `standard/` [interface v2](https://github.com/opendap-project/hats/blob/main/standard/docs/specs/interface-v2.md)) and the HAT connector is the pogo field on the device-side piece. The cable carries one USB port on a DF40C-50 at each end: the 100 Ω extension pairs, the 50 Ω I2S lines, `HAT_3V3` and the low-speed and reserved lines of v0 (interface v1.1, DF40C-100) are gone. v0 is in this file's history.
+- **Requirements:** BRD-013 (this repository owns the flat cable), BRD-042 (nothing in the high-speed paths limits the link), BRD-049 (margin below every rating), BRD-055 (prototype fab processes), BRD-060 (constraints with limits); hats `standard/` HCS-004, HCS-023, HCS-027, HCS-028.
+- **Inputs:** hats `standard/` interface v2 §4, §5.1 and §9.2, [ADR 0004](https://github.com/opendap-project/hats/blob/main/standard/docs/adr/0004-pogo-part-and-field-geometry.md) (coupon); [ADR 0002](../adr/0002-hat-signals-leave-the-board-over-a-flat-cable.md); [BOM v1](bom-v1.md) lines 65–69, 102; [PCB design constraints](pcb-design-constraints.md) PCB-I-01, PCB-I-02, PCB-I-14, PCB-R-06, PCB-P-20, PCB-P-21; libs `kicad/` [`pcbway-flex`](https://github.com/opendap-project/libs/tree/main/kicad/design-rules/pcbway-flex); libs generator data `kicad/generator/parts/hirose/DF40C-50DS-0.4V(51).toml`; the Hirose DF40 catalog; the fab's *Stack-up for FPC* page (fetched 2026-10-24).
+- **Computation:** impedance with tools' `hardware/` `odapkit stackup` (2D finite-element field solver, [method](https://github.com/opendap-project/tools/blob/main/hardware/docs/specs/stackup-method.md)) on [`hardware/hat-flat-cable/stackup-v0.toml`](../../hardware/hat-flat-cable/stackup-v0.toml); loss, coupling, the EMI-film comparison and the power sizing with [`sim/flex-impedance`](../../sim/flex-impedance/README.md), a 2D finite-difference solver that agrees with `odapkit stackup` within 1 Ω on these striplines. Both run 2026-10-25.
 - **Conventions:** **UNVERIFIED** = no primary source checked. *Input from the case* = a value the case repository sets; this spec assumes a range and says so. Rule IDs `HFC-nn` carry their RFC 0010 quality level; an untagged item is Q1. Positions are DF40 contact numbers as in interface v2 §9.2.
 
 ## Summary
@@ -17,7 +17,7 @@ The flat cable carries the HAT USB port, signals and power, from the board to th
 - **Power:** `VBUS` **≥ 18.2 mm** on L3 (18.5 mm used), return on the L1 and L4 planes, sized by IPC-2221B for a 10 °C rise at the 4.5 A fault ceiling and about 4 °C at the 3.0 A continuous rating. Drop for a 100 mm cable with both DF40 pairs at their maximum contact resistance: 102 mV (2.0 %) at 3.0 A (§9).
 - **Shielding:** none added (§10). **Stiffeners:** 0.2 mm stainless steel under each DF40 (§11). **Bend:** static only, inside radius ≥ 4.0 mm, never below 2.7 mm (§12).
 - **Length and width:** input from the case. This spec assumes 40–100 mm; the cross-section needs **22.5 mm** (§5).
-- **Coupon:** seven cable members join the hat-standard ADR 0004 coupon (§14).
+- **Coupon:** seven cable members join the hats `standard/` ADR 0004 coupon (§14).
 
 ## 1. Scope and topology
 
@@ -26,7 +26,7 @@ board DF40C-50DS ── FPC DF40C-50DP ══ flat cable (4-layer FPC) ══ FP
                     └ steel stiffener                               └ steel stiffener
 ```
 
-This spec covers the cable: conductors, stack-up, geometry, stiffeners, bend, fab notes and its coupon members. It does not cover the board-side routing (PCB design constraints), the device-side piece and its pogo field (hat-standard), or the case (case repository); §15 lists what the cable needs from the case. The ESD protection of the port sits on the device-side piece at the field (BOM lines 65, 68, 69); the cable carries none.
+This spec covers the cable: conductors, stack-up, geometry, stiffeners, bend, fab notes and its coupon members. It does not cover the board-side routing (PCB design constraints), the device-side piece and its pogo field (hats `standard/`), or the case (case repository); §15 lists what the cable needs from the case. The ESD protection of the port sits on the device-side piece at the field (BOM lines 65, 68, 69); the cable carries none.
 
 ## 2. Connectors
 
@@ -190,7 +190,7 @@ At the T1's 1.5 A offer the drop is half the continuous figure: 51 mV at 100 mm,
 | HFC-23 [Q0] | Bend type | Static: folded once at assembly, held in place; never flexed in use | A 4-layer circuit with solid planes is not a dynamic flex |
 | HFC-24 [Q0] | Minimum inside bend radius | **2.7 mm absolute** (10 × 0.268 mm) | The fab: multilayer 10–15 × thickness [P5] |
 | HFC-25 [Q1] | Design inside bend radius | **≥ 4.0 mm** (15 ×) | Same, upper end |
-| HFC-26 [Q1] | Bend zones | No vias, pads, stiffener edges, plane or pour edges, or changes of trace width within a bend zone and 1.0 mm either side; traces cross the bend axis at right angles; both members of a pair bend together | kicad-lib `pcbway-flex` README (bend keep-outs) |
+| HFC-26 [Q1] | Bend zones | No vias, pads, stiffener edges, plane or pour edges, or changes of trace width within a bend zone and 1.0 mm either side; traces cross the bend axis at right angles; both members of a pair bend together | libs `kicad/` `pcbway-flex` README (bend keep-outs) |
 | HFC-27 [Q1] | Length | Assumed 40–100 mm (input from the case); ≤ 100 mm unless §7 is redone | §7 |
 | HFC-28 [Q1] | Width | ≥ 22.5 mm body (input from the case) | §5 |
 | HFC-29 [Q2] | Placement in the case | Away from the antennas and their feeds; distance **UNVERIFIED** (PCB-R-06) | PCB-R-06 |
@@ -199,7 +199,7 @@ The board sits behind the display and the device-side piece on the back of the b
 
 ## 13. Fab notes
 
-- **Rules:** kicad-lib `pcbway-flex` (3 mil track and gap, 0.15 / 0.35 mm vias, 0.20 mm copper to outline **UNVERIFIED** for flex), with the cable's product rules on top: 72.5 µm track in the D90 class only (above the fab's 0.06 mm floor); `VBUS` ≥ 18.15 mm; HFC-26 keep-outs as rule areas.
+- **Rules:** libs `kicad/` `pcbway-flex` (3 mil track and gap, 0.15 / 0.35 mm vias, 0.20 mm copper to outline **UNVERIFIED** for flex), with the cable's product rules on top: 72.5 µm track in the D90 class only (above the fab's 0.06 mm floor); `VBUS` ≥ 18.15 mm; HFC-26 keep-outs as rule areas.
 - **Coverlay at the DF40:** the header lands are 0.23 mm at 0.4 mm pitch, a 0.17 mm gap, below the 8 mil coverlay bridge [P5]: one coverlay opening per land row, or LPI solder mask in that area.
 - **Finish:** ENIG (soldered lands only). **Outline:** laser routed, ±2 mil [P5]; keying features (§15) in the outline if the case uses them.
 - **Assembly:** DF40 headers placed on the steel-stiffened areas; flex assembly is "contact us" at the fab [P8] (**UNVERIFIED**, DFM). No other part on the cable.
@@ -219,7 +219,7 @@ Hat-standard ADR 0004 requires a coupon (pogo field, DF40 flat cable, HAT pads: 
 | C6 | C2 with EMI film on both coverlays (only if Q2 pre-compliance asks for it) | As C2 | Impedance unchanged within ± 3 % | Q2 |
 | C7 | DF40 mating cycles on C2: 30 cycles (the catalog rating), contact resistance every 5 cycles | Four-wire per power position | ≤ 90 mΩ per contact (catalog p. 2) | Q1 |
 
-C2 and C3 also go into the end-to-end channel of hat-standard ADR 0004 (pogo field and HAT pads), where a real USB 3 Gen 1 and USB 2.0 link runs.
+C2 and C3 also go into the end-to-end channel of hats `standard/` ADR 0004 (pogo field and HAT pads), where a real USB 3 Gen 1 and USB 2.0 link runs.
 
 ## 15. Inputs needed from the case
 
@@ -255,7 +255,7 @@ Applied in [BOM v1.14](bom-v1.md#changes-in-v114) (RFC 0015): line 66 DF40C-50DS
 ## 19. Sources
 
 - Hirose Electric, DF40 Series catalog (libs parts manifest): pp. 1–4, 10, 16, 19.
-- The fab, *Stack-up for FPC*, <https://www.pcbway.com/pcb_prototype/Stack_up_for_FPC.html>, fetched 2026-10-24; [P5], [P8], [P13] as cited in kicad-lib's `pcbway-*` rule sets (fetched 2026-10-22).
+- The fab, *Stack-up for FPC*, <https://www.pcbway.com/pcb_prototype/Stack_up_for_FPC.html>, fetched 2026-10-24; [P5], [P8], [P13] as cited in libs' `kicad/` `pcbway-*` rule sets (fetched 2026-10-22).
 - IPC-2221B, *Generic Standard on Printed Board Design*, conductor current-carrying design equation.
 - Hat-standard interface v2, ADR 0004 and its amendment; RFC 0014, RFC 0015.
-- `odapkit stackup` (toolkit-hardware) on `hardware/hat-flat-cable/stackup-v0.toml`; `sim/flex-impedance` (this repository); both run 2026-10-25.
+- `odapkit stackup` (tools `hardware/`) on `hardware/hat-flat-cable/stackup-v0.toml`; `sim/flex-impedance` (this repository); both run 2026-10-25.

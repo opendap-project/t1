@@ -42,7 +42,7 @@ def kicad_cli():
 REF = re.compile(r"^[A-Z]{1,2}[0-9]{3,4}$")      # a reference: prefix and a hundred-block number
 
 
-# OpenDAP colour theme (kicad-lib colour-themes/opendap.json): what a stroke colour draws
+# OpenDAP colour theme (libs kicad/ colour-themes/opendap.json): what a stroke colour draws
 INK_SYMBOL = "#191C1F"     # component outlines and pins (also local labels' text, sheet boxes)
 INK_NO_CONNECT = "#737C85"  # no-connect crosses
 NC_CLEAR = 0.1             # mm: no text touches a no-connect cross (pin numbers included)

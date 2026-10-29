@@ -443,7 +443,7 @@ def project_file(classes, patterns, wks, aliases=None, base_variant="full"):
             "page_layout_descr_file": wks,
             "connection_grid_size": 50.0,
             "annotate_start_num": 0,
-            # unit notation ".A": a unit reads "U3501.System", not "U3501System" (kicad-lib craft standard §9.4)
+            # unit notation ".A": a unit reads "U3501.System", not "U3501System" (libs kicad/ craft standard §9.4)
             "subpart_id_separator": 46,
             "subpart_first_id": 65,
             "drawing": {"default_text_size": 50.0, "default_line_thickness": 6.0, "default_wire_thickness": 6.0,
@@ -477,7 +477,7 @@ def _sym_table():
     rows = []
     for nick, (_path, kind) in library.LIBS.items():
         if kind == "opendap":
-            uri, descr = f"${{KIPRJMOD}}/../lib/opendap/kicad/symbols/{nick}.kicad_sym", "kicad-lib"
+            uri, descr = f"${{KIPRJMOD}}/../lib/opendap/kicad/symbols/{nick}.kicad_sym", "libs kicad/"
         elif kind == "local":
             uri, descr = f"${{KIPRJMOD}}/../lib/symbols/{nick}.kicad_sym", "Project-only symbols, written by generator/"
         else:
@@ -486,8 +486,8 @@ def _sym_table():
     return "(sym_lib_table\n  (version 7)\n" + "\n".join(rows) + "\n)\n"
 
 
-# Footprint libraries: kicad-lib's, the project's, then KiCad's stock ones the parts use.
-# every footprint library of the pinned kicad-lib, so a part added there needs no edit here
+# Footprint libraries: libs kicad/'s, the project's, then KiCad's stock ones the parts use.
+# every footprint library of the pinned libs kicad/, so a part added there needs no edit here
 FP_OPENDAP = sorted(n[:-len(".pretty")] for n in os.listdir(os.path.join(library.KICAD_LIB, "footprints"))
                     if n.endswith(".pretty"))
 FP_STOCK = ["Capacitor_SMD", "Resistor_SMD", "Inductor_SMD", "Crystal", "TestPoint", "NetTie", "Package_SON",
@@ -496,7 +496,7 @@ FP_STOCK = ["Capacitor_SMD", "Resistor_SMD", "Inductor_SMD", "Crystal", "TestPoi
 
 
 def _fp_table():
-    rows = [f'  (lib (name "{n}")(type "KiCad")(uri "${{KIPRJMOD}}/../lib/opendap/kicad/footprints/{n}.pretty")(options "")(descr "kicad-lib"))'
+    rows = [f'  (lib (name "{n}")(type "KiCad")(uri "${{KIPRJMOD}}/../lib/opendap/kicad/footprints/{n}.pretty")(options "")(descr "libs kicad/"))'
             for n in FP_OPENDAP]
     rows.append('  (lib (name "T1_Main_Board")(type "KiCad")(uri "${KIPRJMOD}/../lib/footprints/T1_Main_Board.pretty")'
                 '(options "")(descr "Project-only footprints, written by generator/"))')

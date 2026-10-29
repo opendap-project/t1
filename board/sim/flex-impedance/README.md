@@ -5,7 +5,7 @@ The question: which trace geometry gives each pair class its target impedance on
 - the board's [HAT flat-cable specification](../../docs/specs/hat-flat-cable.md) (BRD-013);
 - faceplate-touch's [faceplate flex specification](../../../faceplates/touch/docs/specs/faceplate-flex.md).
 
-`odapkit stackup` (toolkit-hardware) landed on 2026-10-24 while this study was written; the specifications take their impedance figures from it (`hardware/hat-flat-cable/stackup-v0.toml`, faceplate-touch `hardware/faceplate-flex/stackup-v0.toml`). This study cross-checks them and adds what `odapkit stackup` does not compute: conductor loss, coupling between lines, the effect of an EMI shielding film, and power-conductor sizing.
+`odapkit stackup` (tools `hardware/`) landed on 2026-10-24 while this study was written; the specifications take their impedance figures from it (`hardware/hat-flat-cable/stackup-v0.toml`, faceplate-touch `hardware/faceplate-flex/stackup-v0.toml`). This study cross-checks them and adds what `odapkit stackup` does not compute: conductor loss, coupling between lines, the effect of an EMI shielding film, and power-conductor sizing.
 
 ## Method
 
@@ -35,7 +35,7 @@ Output goes to the terminal and to `results/flex-impedance.txt` (not committed).
 
 ## Results (2026-10-25)
 
-The HAT cable rows follow hat-standard interface v2 (one USB port; RFC 0014, RFC 0015): the 100 Ω extension, 50 Ω I2S and `HAT_3V3` cases of 2026-10-24 are removed from the script.
+The HAT cable rows follow hats `standard/` interface v2 (one USB port; RFC 0014, RFC 0015): the 100 Ω extension, 50 Ω I2S and `HAT_3V3` cases of 2026-10-24 are removed from the script.
 
 | Line class | Layer and references | Geometry | Result |
 |---|---|---|---|
@@ -49,6 +49,6 @@ Sensitivity, coupling, the EMI-film comparison and the power sizing are in the s
 
 ## Limits
 
-- 2D quasi-static: no connector, via, bend or pad transition is modelled. Those are what the signal-integrity coupon measures (hat-standard ADR 0004).
+- 2D quasi-static: no connector, via, bend or pad transition is modelled. Those are what the signal-integrity coupon measures (hats `standard/` ADR 0004).
 - Lamination thicknesses are the fab's nominal figures; the bonding sheet's thickness after pressing around L2 is assumed equal to the published 13 µm.
 - Dielectric loss tangent is not published by the fab (**UNVERIFIED**); the printed range (0.005–0.02) is an assumption.

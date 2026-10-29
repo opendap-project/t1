@@ -1,5 +1,5 @@
 # Craft check configuration of the T1 main board (odapkit craft check),
-# format in toolkit-hardware tools/pcb-craft-check.py.
+# format in the tools repository, hardware/tools/pcb-craft-check.py.
 #
 # Prototype 1 targets Q1 (RFC 0010; board docs/specs/pcb-design-constraints.md).
 # The mirrored blocks below follow the schematic's references: one hundred-block
@@ -9,41 +9,42 @@
 version = 1
 target = "Q1"
 
-# The CS43198 pair is dual mono (BOM v1 line 18): blk.dac-l (21xx) is the left
-# channel, blk.dac-r (22xx) the right, each with its supplies, filters and
-# serial-port parts. R2207 (the right DAC's ADR resistor) has no counterpart:
-# the left DAC's ADR pin goes straight to ground.
+# The CS43198 pair is dual mono (BOM v1 line 18): blk.dac-l (25xx) is the left
+# channel, blk.dac-r (26xx) the right, each with its supplies, filters and
+# serial-port parts. R2606 (the right DAC's ADR resistor) has no counterpart:
+# the left DAC's ADR pin goes straight to ground; so the VA links pair at an
+# offset of 101 (R2506, R2607) and stay out of this table.
 [[symmetry]]
 name = "DAC left / right (CS43198 dual mono)"
-a = ["U21??", "R210[1-6]", "C21??"]
+a = ["U25??", "R250[1-5]", "C25??"]
 offset = 100
 axis = "vertical"
 
 # 4.4 mm balanced output stage: one OPA1622 package per leg (ADR 0012), the
-# left legs on blk.hpa-bal-l (28xx), the right legs on blk.hpa-bal-r (29xx).
+# left legs on blk.hpa-bal-l (32xx), the right legs on blk.hpa-bal-r (33xx).
 [[symmetry]]
 name = "Balanced output stage left / right"
-a = ["U28??", "R28??", "C28??"]
+a = ["U32??", "R32??", "C32??"]
 offset = 100
 axis = "vertical"
 
 # 3.5 mm single-ended output stage: one OPA1622 package per channel (ADR 0012),
-# both on blk.hpa-se (26xx): channel L first, then channel R.
+# both on blk.hpa-se (30xx): channel L first, then channel R.
 [[symmetry]]
 name = "Single-ended output stage left / right: packages"
-a = ["U2601"]
+a = ["U3001"]
 offset = 1
 axis = "vertical"
 
 [[symmetry]]
 name = "Single-ended output stage left / right: networks and ballasts"
-a = ["R260?", "R2610"]
+a = ["R300?", "R3010"]
 offset = 10
 axis = "vertical"
 
 [[symmetry]]
 name = "Single-ended output stage left / right: decoupling and network capacitors"
-a = ["C260[1-6]"]
+a = ["C300[1-6]"]
 offset = 6
 axis = "vertical"
 

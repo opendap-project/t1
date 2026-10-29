@@ -255,6 +255,5 @@ WEAK_NETS = {"GND", "VSYS", "VSYS_LV", "vcc3v3_sys", "vcc_1v8", "vcca1v8_pmu", "
 # Footprints with no land in the libraries yet: placed as courtyard-only placeholders (no pads), with
 # the body named by the part (UNVERIFIED) and the field Placeholder.
 PLACEHOLDER = {
-    "T1_Main_Board:L_Wuerth_WE-LHMI_4020": ((-2.3, -2.3, 2.3, 2.3), "Wuerth 744373240047, 4020 size code: 4.0 x 4.0 mm body + 0.3 mm; land not drawn"),
     "T1_Main_Board:L_Murata_LQH3NP_3x3mm": ((-1.8, -1.8, 1.8, 1.8), "Murata LQH3NPN220MMEL 3.0 x 3.0 mm body + 0.3 mm; land not drawn"),
 }

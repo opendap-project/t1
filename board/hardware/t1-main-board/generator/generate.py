@@ -6,7 +6,7 @@ Run from anywhere with Python 3.11 or later:
     python3 hardware/t1-main-board/generator/generate.py
 
 Inputs (all in this repository): the pinout (hardware/pinout/pinout-v1.csv), the net classes
-(hardware/rules/netclasses.toml), the variant files (hardware/variants/*.toml), kicad-lib (submodule
+(hardware/rules/netclasses.toml), the variant files (hardware/variants/*.toml), libs kicad/ (submodule
 hardware/lib/opendap) and the block definitions in this folder (blocks_*.py, parts.py), whose
 values cite the board documents and data sheets. Outputs, written into hardware/t1-main-board/:
 the .kicad_pro, every .kicad_sch, sym-lib-table, fp-lib-table, the [schematic] table of
@@ -143,7 +143,7 @@ def bus_aliases():
 
 def base_variant():
     """The name of the base design's variant: the variant file of kind "full" (CRAFT-147). The title
-    block shows it as Variant on a plot of the base design (kicad-lib's drawing sheet reads the
+    block shows it as Variant on a plot of the base design (libs' kicad/ drawing sheet reads the
     project text variable OPENDAP_BASE_VARIANT when KiCad's ${VARIANT} is empty)."""
     for p in sorted(glob.glob(os.path.join(HW, "variants", "*.toml"))):
         with open(p, "rb") as fh:

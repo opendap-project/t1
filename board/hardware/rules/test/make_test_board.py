@@ -2,7 +2,7 @@
 
 The product rules use net classes, named rule areas, footprint references,
 footprint fields and pad fabrication properties, so this board extends
-kicad-lib's TestBoard (design-rules/tools/testboard.py, through the
+libs' kicad/ TestBoard (design-rules/tools/testboard.py, through the
 submodule) with nets in those classes, rule areas, footprints with
 courtyards, holes, zones, and rows of any height. Every value is read from
 the rules file, so the board follows it.
@@ -32,7 +32,7 @@ from testboard import TEST_BOARD_IGNORED_CHECKS, TestBoard, mm, pt  # noqa: E402
 NAME = "t1-main-board-rules-test"
 P = "T1 "
 
-# kicad-lib's reader takes lengths only; the product rules also use angles
+# libs' kicad/ reader takes lengths only; the product rules also use angles
 # (track_angle, in degrees without a unit: KiCad 10.0.7 rejects "90deg"),
 # counts (via_count) and negative values. Read those as plain numbers.
 _to_mm = tbm.to_mm

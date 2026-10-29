@@ -21,7 +21,7 @@
 # areas; those conventions are in README.md ("Conventions the rules rely on").
 #
 # Impedance-controlled classes are named <name>_<ohms>D (differential) or
-# <name>_<ohms>SE (single-ended), the form kicad-lib's craft rules exempt
+# <name>_<ohms>SE (single-ended), the form libs' kicad/ craft rules exempt
 # from their general width rules (pcb-craft-standard.md, composition).
 
 version = 1
@@ -57,7 +57,7 @@ constraints = ["PCB-P-04", "PCB-P-22"]
 
 [[class]]
 name = "PWR_HAT5V"
-signals = "HAT_5V: VBUS of the HAT USB port in both directions under USB PD: eFuse #A output (source), the TPS2121 IN2 branch (sink) and the HAT connector VBUS contacts (hat-standard interface v2: 3.0 A continuous, 4.5 A fault ceiling; RFC 0014); outer pours only in the I/O zone (PCB-P-22)"
+signals = "HAT_5V: VBUS of the HAT USB port in both directions under USB PD: eFuse #A output (source), the TPS2121 IN2 branch (sink) and the HAT connector VBUS contacts (hats standard/ interface v2: 3.0 A continuous, 4.5 A fault ceiling; RFC 0014); outer pours only in the I/O zone (PCB-P-22)"
 design_current_a = 4.5
 constraints = ["PCB-P-20", "PCB-P-22"]
 
@@ -74,7 +74,7 @@ constraints = ["PCB-A-07", "PCB-A-20"]
 
 [[class]]
 name = "SW_NODE"
-signals = "Switch node of every converter (BQ25798, TPS62136, TPS62903, LMR33630C, TPS65131, RK809, RK860-0, TPS62840)"
+signals = "Switch node of every converter (BQ25798, TPS62136, TPS62827, TPS62903, TPS62870Z4, LMR33630C, TPS65131 boost, RK809, TPS62840, TPS62826, TPS61160, RP2354A core regulator)"
 constraints = ["PCB-P-07", "PCB-P-08", "PCB-A-06"]
 
 [[class]]

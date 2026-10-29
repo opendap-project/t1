@@ -31,7 +31,7 @@ def sheets(proj):
 
 
 def module_pins(sym_pins):
-    """Net of every module pin, by the pin names of the kicad-lib symbol."""
+    """Net of every module pin, by the pin names of the libs kicad/ symbol."""
     nets = {
         "PDn": "WL_PD_N", "AVDD33": "vcc3v3_wl", "AVDD18": "vcc1v8_wl", "VIO": "vcc_1v8", "SD_VIO": "vcc_1v8",
         "ANT0": "WL_ANT0", "ANT1": "WL_ANT1", "BT_15.4_IN": "WL_BT_IN",

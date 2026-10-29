@@ -5,8 +5,8 @@
 # Accepted 2026-10-24. Explained in
 # docs/specs/stackup-v1.md. To be confirmed by the fab's DFM review (deferred):
 # every thickness, copper weight and Dk here is the fab's published data or a stated assumption.
-# Checked with toolkit-hardware's `odapkit stackup check hardware/stackup/stackup-v1.toml`;
-# format in toolkit-hardware docs/specs/stackup-method.md.
+# Checked with tools' hardware/ `odapkit stackup check hardware/stackup/stackup-v1.toml`;
+# format in tools hardware/ docs/specs/stackup-method.md.
 #
 # 2026-10-25 (RFC 0014, HATs are USB only): the net classes PCIE_85D, PCIE_REFCLK_100D and
 # HAT_EXT_100D are withdrawn from the board (hardware/rules/netclasses.toml). The D85 classes and

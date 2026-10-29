@@ -1,4 +1,4 @@
-"""Symbol libraries the T1 schematic draws from: kicad-lib (the pinned submodule), KiCad's stock
+"""Symbol libraries the T1 schematic draws from: libs kicad/ (the pinned submodule), KiCad's stock
 libraries and the project-local library. Gives each symbol's embeddable text and its pin geometry."""
 
 from __future__ import annotations
@@ -16,8 +16,8 @@ LOCAL_LIB = os.path.join(HW, "lib", "symbols")
 KICAD_APP = os.environ.get("KICAD_APP", "/Applications/KiCad/KiCad.app")
 STOCK = os.environ.get("KICAD10_SYMBOL_DIR", os.path.join(KICAD_APP, "Contents", "SharedSupport", "symbols"))
 
-# Library nickname -> (file, kind). kind: "opendap" (kicad-lib), "stock" (KiCad), "local" (project).
-# every symbol library of the pinned kicad-lib, so a part added there needs no edit here
+# Library nickname -> (file, kind). kind: "opendap" (libs kicad/), "stock" (KiCad), "local" (project).
+# every symbol library of the pinned libs kicad/, so a part added there needs no edit here
 LIBS = {n[:-len(".kicad_sym")]: (os.path.join(KICAD_LIB, "symbols", n), "opendap")
         for n in sorted(os.listdir(os.path.join(KICAD_LIB, "symbols"))) if n.endswith(".kicad_sym")}
 LIBS.update({

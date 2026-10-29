@@ -5,10 +5,10 @@
 # The fab's published standard 4-layer FPC stack-up (Stack-up for FPC page, fetched 2026-10-24)
 # or a stated assumption: the adhesive and bonding-sheet Dk (3.5) and the etch are not published.
 # Pairs on L2 between the L1 and L4 ground planes; L3 is voided under the pair band (cutout_um).
-# Updated 2026-10-25 (hat-standard interface v2, RFC 0014, RFC 0015): the cable carries one USB
+# Updated 2026-10-25 (hats standard/ interface v2, RFC 0014, RFC 0015): the cable carries one USB
 # port, so only the 90 ohm class remains; the 100 ohm extension and 50 ohm I2S classes are removed.
-# Checked with toolkit-hardware's `odapkit stackup check hardware/hat-flat-cable/stackup-v0.toml`;
-# format in toolkit-hardware docs/specs/stackup-method.md.
+# Checked with tools' hardware/ `odapkit stackup check hardware/hat-flat-cable/stackup-v0.toml`;
+# format in tools hardware/ docs/specs/stackup-method.md.
 
 version = 1
 name = "t1 HAT flat cable stack-up v0"

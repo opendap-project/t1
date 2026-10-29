@@ -111,7 +111,7 @@ def draw_lpddr4x(s, variants):
         "   per channel, single rank (board ADR 0022 item 1).",
         "2. Open part, one land: the part choice stays open between Micron and the CXMT CXDB5CBAM-MA-B",
         "   second source (ADR 0022, DRAM sourcing matrix); it plugs in only through this symbol and",
-        "   the kicad-lib land, sized for both bodies (10 x 15 mm envelope, 1.1 mm maximum height).",
+        "   the libs kicad/ land, sized for both bodies (10 x 15 mm envelope, 1.1 mm maximum height).",
         "3. Single rank: the RK3566 CS1, CKE1 and ODT1_CA outputs carry no-connect flags (blk.soc-ddr) and",
         "   ball A8 (ZQ1 on dual-rank parts) has no resistor. A dual-rank part needs a new decision and",
         "   a symbol change (ADR 0022 item 4).",

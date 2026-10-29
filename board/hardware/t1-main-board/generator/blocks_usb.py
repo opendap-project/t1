@@ -3,7 +3,7 @@ blk.hat-5v (#15) and blk.hat-signals (#19).
 
 Sources: BOM v1 lines 41, 44, 61-70, 91, 92, 102, 121; power tree v0 §2, §4.6, §4.7; pinout v1
 (USB balls, SARADC_VIN2/VIN3, expander P01-P03, P15-P17, USBC_INT_N, HAT_PD_INT_N); feature blocks
-records 9, 14-16, 19; hat-standard interface v2 §9.2; RFC 0014, RFC 0015; RK3566 HDG 1.1 pp. 55-56;
+records 9, 14-16, 19; hats standard/ interface v2 §9.2; RFC 0014, RFC 0015; RK3566 HDG 1.1 pp. 55-56;
 the libs generator data (FUSB302BMPX, TPD8S300ARUKR, TPD4E05U06DQAR, TVS2200DRVR, TPS259470ARPWR,
 TPS62903RPJR)."""
 
@@ -233,7 +233,7 @@ def draw_hat_5v(s, variants):
     s.rail_rows = [["vcc3v3_pmu", "1 µF + 100 nF", "FUSB302B/D"],
                    ["P5V1_LIM, HAT_5V", "1 µF 25 V at IN and OUT", "SLVSFC9C §8.3"]]
     corner_notes(s, [
-        "1. Function: the HAT port's VBUS under USB PD (hat-standard interface v2, RFC 0014): eFuse #A",
+        "1. Function: the HAT port's VBUS under USB PD (hats standard/ interface v2, RFC 0014): eFuse #A",
         "   sources 5 V (TCPM vbus-supply on HAT5V_EN), the TPS2121 IN2 sinks 5 V from a source HAT.",
         "2. Absent state: HAT5V_EN low, VBUS discharged; the FUSB302B01 presents Rd on CC, also",
         "   unpowered (dead-battery support), so a source HAT can feed the T1.",
@@ -290,7 +290,7 @@ def draw_hat_signals(s, variants):
     s.rail_rows = [["None", "No decoupling: the 100 nF are the TX AC-coupling capacitors", "RK3566 HDG 1.1 p. 59"]]
     corner_notes(s, [
         "1. Function: the HAT USB port on the board end of the flat cable (RFC 0015): USB 3 Gen 1, USB 2,",
-        "   CC and VBUS to the device-side piece and its pogo field (hat-standard interface v2).",
+        "   CC and VBUS to the device-side piece and its pogo field (hats standard/ interface v2).",
         "2. Absent state: HAT or cable absent: no attach; the AC caps keep a dangling cable off the TX pair.",
         "3. Contacts per interface v2 §9.2: VBUS on 3-31 odd, GND on 4-32 even, 33, 39, 42, 45, 48;",
         "   CC 34; SSTX 35/37; SSRX 41/43; D± 44/46; 36, 38, 40, 47 spare; 1, 2, 49, 50 metal fittings.",

@@ -153,13 +153,38 @@ def base_variant():
     raise SystemExit("generator: no variant file of kind \"full\" in hardware/variants/")
 
 
-def variant_files():
-    out = {}
-    for p in sorted(glob.glob(os.path.join(HW, "variants", "*.toml"))):
+# Output modules (feature blocks #51, #52): a parent and its children share one state in every
+# variant, so an output is fitted or left off whole (amplifier stage and jack together).
+OUTPUT_MODULES = {"blk.hp-out-se": ("blk.hpa-se", "blk.jack-se"),
+                  "blk.hp-out-bal": ("blk.hpa-bal", "blk.jack-bal")}
+
+
+def module_findings(variant):
+    """The output modules whose parent and children disagree in one variant file (fit and alternate
+    count as fitted)."""
+    blocks = variant.get("blocks", {})
+
+    def fitted(b):
+        return blocks.get(b, {}).get("state", "fit") != "dnp"
+    out = []
+    for parent, kids in OUTPUT_MODULES.items():
+        states = {b: fitted(b) for b in (parent, *kids)}
+        if len(set(states.values())) > 1:
+            out.append(f"{variant.get('name')}: {parent} and its children differ: " +
+                       ", ".join(f"{b} {'fit' if v else 'dnp'}" for b, v in states.items()))
+    return out
+
+
+def variant_files(folder=None):
+    out, bad = {}, []
+    for p in sorted(glob.glob(os.path.join(folder or os.path.join(HW, "variants"), "*.toml"))):
         with open(p, "rb") as fh:
             d = tomllib.load(fh)
+        bad += module_findings(d)
         if d.get("kind") != "full":       # the base design is the full variant (CRAFT-147)
             out[d["name"]] = d
+    if bad:
+        raise SystemExit("generator: output modules fitted in part:\n  " + "\n  ".join(bad))
     return out
 
 

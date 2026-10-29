@@ -645,10 +645,12 @@ def draw_bal_parent(s, variants):
 def _stage_tables(s, kind, en, vp, vn, first, second, parent=False):
     bal = kind == "bal"
     s.iface_rows = [
-        ["DACx_AOUT_P, DACx_AOUT_N", "Input", "Both stages load the DAC pins; a stage left fitted but unpowered still loads them"],
+        ["DACx_AOUT_P, DACx_AOUT_N", "Input", "Both stages load the DAC pins; with this output module left off the other "
+                                               "stage is their only load; a stage fitted but unpowered still loads them"],
         [en, "Input", "Pulled down on the host side: packages in shutdown (5 µA per channel)"],
-        ["HPBAL_x_P / _N" if bal else "HPSE_L, HPSE_R, HPSE_REF_x", "Output",
-         "A disabled OPA1622 output is not high-impedance (SBOS727B §7.4.1)"],
+        ["HPBAL_x_P / _N" if bal else "HPSE_L, HPSE_R", "Output",
+         "To the module's jack only; a disabled OPA1622 output is not high-impedance (SBOS727B §7.4.1), so stage "
+         "and jack are fitted or left off together (blk.hp-out-" + ("bal" if bal else "se") + ")"],
     ]
     if first:
         s.rail_rows = [[vp + ", " + vn, "100 nF per supply pin, after the links",
@@ -662,6 +664,7 @@ def _stage_tables(s, kind, en, vp, vn, first, second, parent=False):
             "   rails, before the local capacitors (power tree §4.12; ADR 0012).",
             "2. Absent state: HPA_BAL_EN pulled down on the host side: shutdown. A disabled output is not",
             "   high-impedance: never fitted but unpowered while the other stage plays (feature blocks #34).",
+            "   Left off with blk.jack-bal as the 4.4 mm output module blk.hp-out-bal (feature blocks #52).",
             "3. Sub-sheet IDs (blk.hpa-bal-*) are sheets of blk.hpa-bal, as the SoC's sub-sheets.",
         ])
         return
@@ -672,7 +675,8 @@ def _stage_tables(s, kind, en, vp, vn, first, second, parent=False):
         "   difference amplifier (R1 = R3 1.00 kΩ, R2 = R4 1.62 kΩ, gain 1.62, 100 pF across R2 and R4),",
         "   feedback at the half's pin, 1.0 Ω ballast to the leg (ADR 0012; BOM v1 lines 19, 37, 107, 108).",
         "2. Absent state: " + en + " pulled down on the host side: shutdown. A disabled output is not",
-        "   high-impedance: never fitted but unpowered while the other stage plays (feature blocks #33-34).",
+        "   high-impedance: never fitted but unpowered while the other stage plays (feature blocks #33-34);",
+        "   left off only with its jack, as one output module (blk.hp-out-se, -bal: feature blocks #51-52).",
         "3. " + ("R4 returns to ground; the jack's ground pin joins it at the jack." if bal else
                  "R4 returns to HPSE_REF_x, the same 3.5 mm sleeve sense as the DAC's REFA and REFB (PCB-A-16)."),
         "4. Thermal pad (EP) to V- (PCB-A-08). Halves of a package symmetric, legs symmetric (PCB-A-09, -10).",
@@ -720,17 +724,21 @@ def draw_jack_se(s, variants):
     grp(f, ties)
     grp(f, lambda: tvs_group(s, "ESD and detect (BOM v1 line 36)", ("HPSE_L", "HPSE_R", "HP_DET_SE")))
     s.iface_rows = [
-        ["HPSE_L, HPSE_R", "Input", "Not applicable: never omitted (BRD-011)"],
-        ["HPSE_REF_L, HPSE_REF_R", "Passive", "Join ground at the sleeve pin only"],
+        ["HPSE_L, HPSE_R", "Input", "Left off with blk.hpa-se as the 3.5 mm output module (blk.hp-out-se): the nets "
+                                    "go with it"],
+        ["HPSE_REF_L, HPSE_REF_R", "Passive", "Tied to ground at the sleeve land by the net-tie copper, on the board in "
+                                              "every variant: the DACs' REFA and REFB stay referenced (DS1156F2 §8.3)"],
         ["HP_DET_SE", "Output", "Pull-up on the host side; reads the tip switch"],
     ]
     corner_notes(s, [
         "1. Function: 3.5 mm TRRS jack used as TRS (tip L, ring 1 R, ring 2 and sleeve ground; BOM v1",
         "   line 30); TPD1E10B06 on each output and the detect line (line 36).",
-        "2. Absent state: passive. Plug detect: the tip switch (pin 10, normally closed to the tip,",
-        "   UNVERIFIED by text) on HP_DET_SE, read by expander P10 with its pull-up on the host side.",
+        "2. Absent state: passive; left off only with blk.hpa-se (blk.hp-out-se). Plug detect: the tip switch (pin 10,",
+        "   normally closed to the tip, UNVERIFIED by text) on HP_DET_SE, read by expander P10 with its pull-up on the",
+        "   host side, so the line reads \"absent\" with the jack left off.",
         "3. HPSE_REF_L and _R (DAC REFA, REFB and the SE references) each a separate trace joining",
-        "   ground at the sleeve pin through a net tie (PCB-A-03, PCB-A-16, PCB-A-17).",
+        "   ground at the sleeve pin through a net tie (PCB-A-03, PCB-A-16, PCB-A-17); the ties are copper and",
+        "   stay with the jack left off, so REFA and REFB keep their ground (DS1156F2 §8.3).",
         "4. Open: RF filter footprints near the jack (PCB-A-19, Q2); the detect polarity (sample).",
     ], w=None)
 
@@ -751,14 +759,16 @@ def draw_jack_bal(s, variants):
     grp(f, lambda: tvs_group(s, "ESD (BOM v1 line 36)",
                              ("HPBAL_L_P", "HPBAL_L_N", "HPBAL_R_P", "HPBAL_R_N", "HP_DET_BAL")))
     s.iface_rows = [
-        ["HPBAL_L_P, _L_N, _R_P, _R_N", "Input", "Not applicable: never omitted (BRD-024)"],
+        ["HPBAL_L_P, _L_N, _R_P, _R_N", "Input", "Left off with blk.hpa-bal as the 4.4 mm output module "
+                                                 "(blk.hp-out-bal): the nets go with it"],
         ["HP_DET_BAL", "Output", "Pull-up on the host side; reads the detect switch"],
     ]
     corner_notes(s, [
         "1. Function: 4.4 mm 5-pole jack (L+, L-, R+, R-, GND; JEITA RC-8141C, BOM v1 line 31);",
         "   TPD1E10B06 on each leg and the detect line (line 36).",
-        "2. Absent state: passive. Detect: pin 10 to HP_DET_BAL, pin 9 to ground (switch state",
-        "   UNVERIFIED on the drawing), read by expander P11 with its pull-up on the host side.",
+        "2. Absent state: passive; left off only with blk.hpa-bal (blk.hp-out-bal). Detect: pin 10 to HP_DET_BAL,",
+        "   pin 9 to ground (switch state UNVERIFIED on the drawing), read by expander P11 with its pull-up on the",
+        "   host side, so the line reads \"absent\" with the jack left off.",
         "3. Pin-to-pad assignment UNVERIFIED (libs kicad/ note): check against a sample before boards.",
         "4. Open: RF filter footprints near the jack (PCB-A-19, Q2); the Pentaconn alternate land.",
     ])

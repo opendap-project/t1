@@ -17,7 +17,7 @@
 
 ## 0. Summary
 
-1. **50 blocks** cover every BOM v1.7 function, plus the cover detect of BOM v1.10 (`blk.cover-detect`, #50; 49 blocks until then) (§2, §3). 2026-10-25: 48 in use, `blk.hat-3v3` (#17) and `blk.hat-audio` (#20) removed (RFC 0014); 2026-10-27: 47 in use, `blk.nfc-reader` (#42) withdrawn (maintainer decision, board area); their numbers are not reused. Blocks nest where a swap needs a wider boundary than a fit: the audio converter boundary (`blk.audio`) holds the DACs, clocks, supplies and amplifiers, so another DAC family or output stage in another variant replaces what sits behind I2S/TDM/DSD, clocks, the control bus, supplies and the jack nets, never the rest of the board.
+1. **50 blocks** cover every BOM v1.7 function, plus the cover detect of BOM v1.10 (`blk.cover-detect`, #50; 49 blocks until then) (§2, §3). 2026-10-25: 48 in use, `blk.hat-3v3` (#17) and `blk.hat-audio` (#20) removed (RFC 0014); 2026-10-27: 47 in use, `blk.nfc-reader` (#42) withdrawn (maintainer decision, board area); their numbers are not reused. Blocks nest where a swap needs a wider boundary than a fit: the audio converter boundary (`blk.audio`) holds the DACs, clocks, supplies and amplifiers, so another DAC family or output stage in another variant replaces what sits behind I2S/TDM/DSD, clocks, the control bus, supplies and the jack nets, never the rest of the board. 2026-10-28: two output modules added as parents (#51 `blk.hp-out-se`, #52 `blk.hp-out-bal`), 49 in use.
 2. **Bound by, not fixed.** Following RFC 0011 rule 5, no block is structurally fixed. Each record names the requirements and promise any replacement must meet (for example T1-040 at 100 %, BRD-049 margins). Must requirements of a variant's declared promise keep their block fitted (or replaced by an alternate that meets them) in every product variant.
 3. **Power and measurement are incomplete today.** Four should blocks have no usable switch or enable (IMU, TPM, NFC tag, and the haptic driver, whose enable has no GPIO), 20 blocks have no measurement point of their own, and only 4 current-sense channels exist (VSYS, "audio", "display", HAT 5.1 V), two of them with no defined position. §7 proposes a 0 Ω link plus shunt footprint with Kelvin pads per block supply, and load switches only where the off state matters.
 4. **Five absent-state risks need hardware, not software:** the two CS43198 sit on the shared 1.8 V I2C2 while their digital supply is switched (back-powering through the control port, G2); the master clock can drive the DAC XTI pins with the DAC unpowered (G3); the RP2354A taps the live I2S nets while its own supply is switched (G4); the IMU is on `vcc_1v8`, which is off in suspend, yet it is the wake-on-motion source (G1); the PN7160 is fed "from the battery path", 6.0–8.8 V on the 2S tree, and takes a 3.3 V expander line on a 1.8 V pin (G7; withdrawn with the reader on 2026-10-27).
@@ -88,6 +88,8 @@ Priority is the requirement's own (must / should) as recorded in its requirement
 | 48 | `blk.maskrom` | MaskROM combo (TPS3808, gates, BAT54, FET) | BRD-035, BRD-043 (must) | — (vcca1v8_pmu) | — | fit | fit |
 | 49 | `blk.debug` | UART pads, I2S/DSD pads, rail test points, RP SWD pads, measurement links | BRD-040, BRD-047 (must), T1-026 | — | — | fit | fit (links 0 Ω) |
 | 50 | `blk.cover-detect` | Back-cover detect input: board-edge pad, pull-up, TPD1E10B06 (v1.10) | ADR 0020 item 7 (should; no requirement ID; T1-086 met without it) | — (passive input) | none (µA) | fit | fit |
+| 51 | `blk.hp-out-se` | 3.5 mm output module (2026-10-28): parent of `blk.hpa-se` and `blk.jack-se`, fitted or left off whole | BRD-011, BRD-052 (must) | `HPA_SE_EN` | as children (links #7, #8) | fit | fit |
+| 52 | `blk.hp-out-bal` | 4.4 mm output module (2026-10-28): parent of `blk.hpa-bal` and `blk.jack-bal`, fitted or left off whole | BRD-011, BRD-024, BRD-052 (must) | `HPA_BAL_EN` | as children (links #9, #10) | fit | fit |
 | — | `blk.shields` | Shield-can frames (DNP footprints): two etched two-piece cans (BOM v1.20) | BOM line 90, PCB-T-06, PCB-EMC-03 | — | — | dnp | dnp |
 
 `blk.shields` is listed for completeness: it is a mechanical footprint set, not a function, and is not counted among the 50. Item tracking (BRD-030, line 103) has no hardware block of its own: from BOM v1.9 it is `blk.radio` kept powered in suspend while the listener enables it (decision 2026-10-24); tracking with the T1 off stays open.
@@ -537,7 +539,7 @@ The faceplate interface is the t1 [faceplate interface v1](../../../product/docs
 | Interface | DAC differential outputs (both groups hang on the same DAC pins), HPA_P6V0, HPA_N6V0, `HPA_SE_EN` (2 packages) or `HPA_BAL_EN` (4 packages), outputs to the jack blocks |
 | Power domain | OPA1622 EN per group (shutdown 5 µA per channel); the rails are shared |
 | Measure | Proposed: a 0 Ω link per group on each rail branch, with Kelvin pads, for idle and loaded current per group (G12) |
-| Absent state | EN pulled low; a disabled OPA1622 output is not high-impedance (SBOS727B §7.4.1), so a group is never left fitted but unpowered while the other plays from the same DAC pins without the rails up; mute shunt footprints DNP (line 100) |
+| Absent state | EN pulled low; a disabled OPA1622 output is not high-impedance (SBOS727B §7.4.1), so a group is never left fitted but unpowered while the other plays from the same DAC pins without the rails up; a group is left off only with its jack, as its output module (#51, #52); mute shunt footprints DNP (line 100) |
 | Holds / revision | Holds: OPA1622 replacements on the DRC0010J land. Revision: another topology (parent swap) |
 | Alternates | Mute shunt (line 100) as `fit` option |
 | Software | Part of the card's DAPM widgets; output selection follows jack detection (BRD-052) |
@@ -552,10 +554,27 @@ The faceplate interface is the t1 [faceplate interface v1](../../../product/docs
 | Interface | Output legs from the amplifier group, REF return, detect switch to the expander (3.3 V port, interrupt); TPD1E10B06 on every leg and detect line |
 | Power domain | Passive |
 | Measure | — |
-| Absent state | Nothing plugged: detect reads "absent" through its pull-up |
+| Absent state | Nothing plugged: detect reads "absent" through its pull-up (on `blk.gpio-expander`, so also with the jack left off). Left off only with its stage, as its output module (#51, #52) |
 | Holds / revision | Holds: same-land jacks. Revision: Pentaconn genuine part if its drawing differs (line 31) |
 | Alternates | `sj2-35894d` (3.5 mm); `pentaconn` (4.4 mm, land **UNVERIFIED**) |
 | Software | Jack detection through the expander GPIO; description `outputs` |
+| Level | — / Q1 |
+
+#### 51–52. `blk.hp-out-se`, `blk.hp-out-bal`: headphone output modules
+
+Each output is one module for variants (maintainer request, 2026-10-28): the parent groups the amplifier stage and the jack of one output, and a variant gives the parent and both children one state. The generator stops on a variant file that fits part of a module. Both modules are fitted in `full` and `production`.
+
+| Field | Content |
+|---|---|
+| Bound by | BRD-011, BRD-052 (must); `blk.hp-out-bal` also BRD-024 (must); T1-040 |
+| Interface | `blk.hp-out-se`: the DAC differential outputs (shared with the other module), HPA_P6V0 and HPA_N6V0, `HPA_SE_EN`, `HP_DET_SE`, the REFA and REFB sense nets `HPSE_REF_L`, `HPSE_REF_R`. `blk.hp-out-bal`: the same DAC outputs and rails, `HPA_BAL_EN`, `HP_DET_BAL` |
+| Children | `blk.hpa-se` and `blk.jack-se`; `blk.hpa-bal` (sheets `blk.hpa-bal-l`, `blk.hpa-bal-r`) and `blk.jack-bal` |
+| Power domain | The children's: the OPA1622 enable of the stage; the ±6 V rails are shared and stay |
+| Measure | The stage's links (#7, #8 for 3.5 mm; #9, #10 for 4.4 mm) |
+| Absent state | One module left off, the other fitted (checked 2026-10-28 with `odapkit variant` on a 3.5 mm-only and a 4.4 mm-only variant: no floating net, no unsourced rail, BOM built): the DAC outputs keep the other stage's input network as their only load; the module's enable keeps its SoC ball and pull-down on `blk.soc-vccio-b` (off); its detect line keeps its pull-up on `blk.gpio-expander` and reads "absent"; `HPSE_REF_L` and `HPSE_REF_R` keep the net-tie copper to ground at the 3.5 mm sleeve land, which stays on the board in every variant, so the DACs' REFA and REFB stay referenced (DS1156F2 §8.3); the ±6 V rails keep the other stage as their load. Nothing the remaining output needs sits inside the module left off |
+| Holds / revision | As the children |
+| Alternates | The children's (`sj2-35894d`, `pentaconn`) |
+| Software | The card's routes for the module's stage and jack; a module left off leaves its output out of the description `outputs` section |
 | Level | — / Q1 |
 
 #### 37. `blk.speaker`: speaker amplifier
@@ -779,7 +798,7 @@ Rules:
 
 ### 4.2 The T1 variants
 
-The files list the 50 blocks plus `blk.shields` (51 entries; 50 until BOM v1.10 added `blk.cover-detect`), so the shield footprints' DNP state is data too.
+The files list every block in use plus `blk.shields`, so the shield footprints' DNP state is data too (2026-10-28: 49 blocks in use with the two output modules #51 and #52, 50 entries).
 
 - [`full.toml`](../../hardware/variants/full.toml): prototype 1 (RFC 0011 rule 1, BRD-053). Every block, every *should* part and every instrumentation link with its shunt value; shields DNP (fitted only if measurement requires, line 90).
 - [`production.toml`](../../hardware/variants/production.toml): Commercial and DIY editions (T1-004, ADR 0013). Same blocks as `full`, measurement links as 0 Ω, the four INA236 kept (ADR 0013). Open: eMMC 16 or 32 GB (BRD-037). The PN7160 question closed on 2026-10-27: the reader is withdrawn from every model (#42).

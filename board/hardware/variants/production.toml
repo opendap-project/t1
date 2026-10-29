@@ -63,6 +63,8 @@ test_points = "fit"
 "blk.hpa-bal" = { state = "fit" }
 "blk.jack-se" = { state = "fit" }
 "blk.jack-bal" = { state = "fit" }
+"blk.hp-out-se" = { state = "fit", note = "3.5 mm output module: blk.hpa-se and blk.jack-se together" }
+"blk.hp-out-bal" = { state = "fit", note = "4.4 mm output module: blk.hpa-bal and blk.jack-bal together" }
 "blk.speaker" = { state = "fit" }
 "blk.mic-ambient" = { state = "fit", note = "ADR 0013" }
 "blk.radio" = { state = "fit" }

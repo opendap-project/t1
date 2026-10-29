@@ -82,9 +82,11 @@ def draw_connector(s, variants):
             maps.append({"D1+": f"{a}_P", "D1-": f"{a}_N", "D2+": f"{b}_P" if b else None,
                          "D2-": f"{b}_N" if b else None})
         for i, m in enumerate(maps):
-            u = ic(s, "texas-instruments", "TPD4E05U06DQAR", 101.6 + (i % 4) * 60.96, 101.6 + (i // 4) * 48.26,
+            u = ic(s, "texas-instruments", "TPD4E05U06DQAR", 101.6 + (i % 4) * 58.42, 101.6 + (i // 4) * 48.26,
                    {**m, "NC": None, "GND": "GND"})
             g.add(u.bbox)
+            if i % 4 == 0:      # room for a hierarchical label on the left column (its arrow is longer)
+                g.add((u.bbox[0] - 5.08, u.bbox[1], u.bbox[0], u.bbox[1]))
         return g.close()
     grp(f, esd)
 

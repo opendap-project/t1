@@ -2,8 +2,8 @@
 # OpenDAP T1 main board: product rules
 #
 # The T1's own limits, composed on top of the PCBWay HDI fab rule set
-# (kicad-lib design-rules/pcbway-hdi) and the OpenDAP craft rule set
-# (kicad-lib design-rules/opendap-craft) into the project's
+# (libs kicad/ design-rules/pcbway-hdi) and the OpenDAP craft rule set
+# (libs kicad/ design-rules/opendap-craft) into the project's
 # <project>.kicad_dru. Rules PCB-G, -P, -A, -I, -S and -R enforce constraints of
 # docs/specs/pcb-design-constraints.md (Draft v0.15); rules PCB-V, -H, -B, -D,
 # -W and -L enforce the constraints of the same families there, and
@@ -56,6 +56,19 @@
 (rule "T1 PCB-G-04 [Q1]: Mechanical via diameter"
 	(condition "A.Type == 'Via' && A.Via_Type != 'Micro'")
 	(constraint via_diameter (min 0.45mm))
+)
+
+# PCB-G-11: mechanical hole to inner-layer copper at the fab's six-layer row,
+# >= 8 mil normal [P1, "minimum isolation ring (inner layer)", 6 layers,
+# re-read 2026-10-28]. The composed fab rules (libs kicad/ pcbway-hdi) carry
+# the 8-layer row, 9 mil; stackup v3 is six layers. KiCad applies the last
+# matching rule, so this one decides. Laser microvias keep the fab's own
+# rule: the laser drill (4 mil standard [P3]; 0.10 mm in the fab's published
+# 8- and 10-layer HDI examples) does not depend on the layer count.
+(rule "T1 PCB-G-11 [Q1]: Hole to copper, inner layers (six-layer row)"
+	(layer inner)
+	(condition "A.Type == 'Pad' || (A.Type == 'Via' && A.Via_Type != 'Micro')")
+	(constraint hole_clearance (min 8mil))
 )
 
 # PCB-G-05: copper to board edge 0.30 mm (fab 0.20 mm plus the outline
@@ -137,7 +150,7 @@
 )
 
 # PCB-P-04 at the maximum trip of eFuse #D, the shared 5.1 V limiter, with
-# the RILM tolerance (2.52 A, TI SLVSFC9C Equation 7; power tree v0.8,
+# the RILM tolerance (2.52 A, TI SLVSFC9C Equation 7; power tree v0.8 and later,
 # RFC 0015): IPC-2221 at 10 C, outer 1.08 mm (35 um), inner 5.44 mm (18 um).
 # PCB-P-05 (HAT_3V3) is withdrawn (RFC 0014).
 (rule "T1 PCB-P-04 [Q0]: 5.1 V source track width (outer)"
@@ -153,7 +166,7 @@
 )
 
 # PCB-P-20: HAT VBUS (HAT_5V) in both directions under USB PD at the
-# hat-standard interface v2 fault ceiling, 4.5 A (section 5.1; 3.0 A
+# hats standard/ interface v2 fault ceiling, 4.5 A (section 5.1; 3.0 A
 # continuous; RFC 0014). IPC-2221 at 10 degC: outer 129.7 mil2 / 1.378 mil =
 # 2.39 mm -> 2.4 mm; inner 337.5 mil2 / 0.709 mil = 12.10 mm -> 12.1 mm. The
 # T1's own trips stay inside it: eFuse #A 1.981 A maximum at RILM 1.87 kOhm,

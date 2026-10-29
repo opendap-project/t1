@@ -25,6 +25,7 @@
     "T1 PCB-G-03 [Q1]: Microvia diameter": 1,
     "T1 PCB-G-04 [Q1]: Mechanical via diameter": 1,
     "T1 PCB-G-05 [Q1]: Copper to board edge": 1,
+    "T1 PCB-G-11 [Q1]: Hole to copper, inner layers (six-layer row)": 1,
     "T1 PCB-H-01 [Q1]: Part under the screw head": 1,
     "T1 PCB-H-02 [Q1]: Copper under the screw head": 1,
     "T1 PCB-H-03 [Q2]: Plated mounting hole on GND": 1,

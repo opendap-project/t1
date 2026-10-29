@@ -332,13 +332,13 @@ class ProductTestBoard(TestBoard):
             self.widen(px + pad)
         self.add_row(name, max(tbm.ROW_H, drill + 2.0), build)
 
-    def hole_to_copper_row(self, name, drill, width):
+    def hole_to_copper_row(self, name, drill, width, layer=pcbnew.F_Cu):
         gap = self.rule(name).value("hole_clearance")
 
         def build(x, y, fail):
             self.hole(x + drill / 2, y, drill)
             ty = y + drill / 2 + self._v(gap, fail) + width / 2
-            self._track(x - 1, ty, x + drill + 1, ty, width, pcbnew.F_Cu)
+            self._track(x - 1, ty, x + drill + 1, ty, width, layer)
         self.add_row(name, max(tbm.ROW_H, drill + gap + 2.0), build)
 
     def plated_hole_net_row(self, name, drill):
@@ -771,6 +771,9 @@ def main():
     tb.via_diameter_row(P + "PCB-G-03 [Q1]: Microvia diameter", 0.1, *micro)
     tb.via_diameter_row(P + "PCB-G-04 [Q1]: Mechanical via diameter", 0.2)
     tb.edge_row(P + "PCB-G-05 [Q1]: Copper to board edge", width=0.2)
+    # L4 (In3.Cu), the inner signal layer: no zone rule acts on it outside the corridors
+    tb.hole_to_copper_row(P + "PCB-G-11 [Q1]: Hole to copper, inner layers (six-layer row)", 0.5, 0.1,
+                          layer=pcbnew.In3_Cu)
 
     # Voltage spacing (PCB-V)
     tb.pad_to_track_row(P + "PCB-V-01 [Q1]: Exposed termination spacing", pad=0.6)

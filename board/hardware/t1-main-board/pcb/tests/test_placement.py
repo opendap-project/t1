@@ -9,6 +9,7 @@ sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."
 import checks
 import netlist
 import placement
+import plan
 
 NET = '''(export (version "E")
  (components
@@ -39,7 +40,7 @@ def test_small_board_places_everything_in_zone():
     assert not failed
     assert set(placed) == set(nl.components)
     assert placed["C902"].side == "B"           # 1.25 mm: back only
-    assert placed["TP900"].side == "F"          # test pads on the front (ADR 0016)
+    assert placed["TP900"].side in plan.TEST_PAD_SIDES   # either side, nearest free spot (ADR 0027)
     assert placed["C902"].zone == "POWER"
     # decoupling next to its IC
     u, c = placed["U900"], placed["C900"]

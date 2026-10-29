@@ -199,9 +199,11 @@ class Placer:
     def allowed_sides(self, ref):
         h = self.h[ref]
         if ref.startswith("TP"):
-            # flat test pads on the front, for a single-sided fixture (ADR 0016, consequences);
-            # contact pads of case parts are fixed parts of the plan (PART_TARGET)
-            return ("F",)
+            # flat test pads on either side: prototypes and first runs are tested by flying probe,
+            # which reaches both sides (board ADR 0027; placement v1 decision 9 as revised): the
+            # nearest free spot wins, the front on a tie; contact pads of case parts are fixed
+            # parts of the plan (PART_TARGET)
+            return plan.TEST_PAD_SIDES
         if ref in plan.THERMAL_HOT and h <= g.H_FRONT_DISPLAY:
             # PCB-L-01: no heat source on the back over the battery pocket; a hot part that the
             # front can take goes there (the SoC and the PMIC are fixed parts, ADR 0016)

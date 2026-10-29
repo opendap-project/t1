@@ -31,6 +31,10 @@ for _b in ("usb-c", "hat-signals", "fp-connector", "fp-display", "fp-controls", 
 for _b in ("radio", "radio-module", "radio-power", "antennas"):
     ZONE_OF_BLOCK["blk." + _b] = "RADIO"
 
+# Sides a flat test pad may take (placement v1 decision 9, revised 2026-10-28: flying probe for
+# prototypes and first runs, board ADR 0027): both, front first on a tie
+TEST_PAD_SIDES = ("F", "B")
+
 # The faceplate connection area carries the FH35C and its ESD only (ADR 0016 item 1, floorplan v1 §2)
 FACEPLATE_REFS = {"J5301", "U5301", "U5302", "U5303", "U5304", "U5305", "U5306", "U5307", "U5308", "D5301"}
 

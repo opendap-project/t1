@@ -77,6 +77,11 @@ FIXED.update({
     "L2802": (24.2, -37.7, 0, "B", "pre-rail inductor (XAL4020, 2.1 mm) in the right band"),
 })
 
+# The 5.1 V converter at its v1.10 position (placement v1.11): with libs v0.3.6's courtyard, grown to
+# cover the pin-1 mark, the search turned it 180 degrees and its input capacitor C4402 stood 5 mm from
+# pin 6 (bound 3 mm, decision 14)
+FIXED["U4401"] = (20.35, -16.65, 0, "F", "TPS62903 at its v1.10 position, so C4402 stays within its bound (placement v1.11)")
+
 # Battery-contact ESD (PCB-L-08, ADR 0020 item 6): one TPD1E10B06 per signal contact, within 3 mm of
 # it, just past the contact pads' top end (inside BATTERY_CONNECTOR, which allows battery nets and GND)
 FIXED.update({

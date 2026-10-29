@@ -160,6 +160,7 @@ Listed per sheet in each sheet's notes. In short:
 - `blk.gauge`: CHG and DSG left open (no FETs, SLUSE07B §8.3.14); golden image and CC Gain calibration per board (ADR 0017 items 4-5).
 - `blk.pmic`: BATDIV and SNSP/SNSN wiring (test pads until the reference is read), the 32.768 kHz load capacitors, the RK809-5 OTP defaults (**UNVERIFIED**), PDMCLK left open against BOM line 2's "tied to ground" (it is an output).
 - `blk.soc-*`: decoupling of the PHY analog supplies; unused-pin handling (pinout v1 O2); the 24 MHz load capacitors (2 × 10 pF for the NDK crystal's 8 pF, BOM v1.22 item 3) are trimmed at bring-up against the measured frequency error.
+- Core-rail PDN (stackup v3 §7, Q1): screened on the placed decoupling (2026-10-28); open until the layout's PDN simulation with the package; vdd_gpu and vdd_npu peak at about twice their target between 0.3 and 0.5 MHz, with their bulk at the RK809.
 - `blk.lpddr4x`, `blk.emmc`: supply decoupling at the memories (data sheets silent); the DNP TPS7A2018 `vcc1v8_ddr` option (BOM line 132).
 - `blk.mclk`: the oscillators' ST input driven at 3.3 V into a 3.1 V supply, and the 45.1584 MHz value on an NDK document (**UNVERIFIED**).
 - `blk.dac-l`, `blk.dac-r`: the CS43198 pins' behaviour while unpowered (**UNVERIFIED**); serial-port series values other than 0 Ω are a bring-up choice.

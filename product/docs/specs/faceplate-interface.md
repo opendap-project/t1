@@ -358,7 +358,7 @@ pid.codes reserves 0x0001–0x0010 as test PIDs: usable in private testing only,
 4. **Resolve the description** `opendap.device-description/v1`, kind `faceplate`, keyed by `1209:<pid>` and a hardware-revision range: an L2 package for known faceplates, a signed L6 registry artifact for new ones (system hardware support §5). The description names the devicetree overlay against the faceplate connector.
 5. **Apply the overlay** and bind the faceplate's drivers. `i2c-hid` binds the identity node; its uevent carries `HID_ID=0018:00001209:0000<pid>` (bus I2C), which hwdb and the component services match.
 6. **Check** the identity report (interface major 1, hardware revision equal to `wVersionID`) and the compatibility of the description's `provides` with the running release (system hardware support §7).
-7. **Publish** the capabilities (§6) in `org.opendap.device.Capabilities`.
+7. **Publish** the capabilities (§6) in `cc.opendap.Blackbird.Device.Capabilities`.
 
 ### 5.3 When identification fails
 
@@ -388,7 +388,7 @@ What a faceplate carries is declared once, in its device description (system [ha
 | Microphone | `audio` | Per microphone: PDM, the clock range it accepts, its position; the privacy indicator tied to MIC_1V8 | Recording sources from the body only |
 | Spare GPIO | `controls` or `indicators`, by function | What GPIO0 and GPIO1 do, if anything | Inputs with pulls on the body |
 | Power | `power` | Per rail: typical and maximum current, maximum in suspend with wake armed (FP_3V3 ≤ 100 µA) | — |
-| Interfaces provided | `provides` | `org.opendap.hw.*` interfaces and versions (Display, Controls, Led…) | — |
+| Interfaces provided | `provides` | `cc.opendap.Blackbird.Hw.*` interfaces and versions (Display, Controls, Led…) | — |
 
 The description schema has no section named for microphones or for a faceplate's per-rail power yet; the rows above use `audio` and `power`, to be confirmed by the system spec's owner (§10).
 

@@ -213,7 +213,7 @@ Field order follows RFC 0011 §1. "Holds" lists the swap classes the interface t
 | Absent state | Not applicable (never omitted) |
 | Holds / revision | Holds: BQ28Z610 data-flash variants. Revision: BQ40Z50-R2 (other package, line 42) |
 | Alternates | None same-land |
-| Software | `fuel_gauge` node (the BQ28Z610); `ti,bq28z610` (DKMS); `org.opendap.hw.Battery` |
+| Software | `fuel_gauge` node (the BQ28Z610); `ti,bq28z610` (DKMS); `cc.opendap.Blackbird.Hw.Battery` |
 | Level | — / Q1 |
 
 #### 9. `blk.usb-c`: main USB-C port
@@ -439,7 +439,7 @@ The faceplate interface is the t1 [faceplate interface v1](../../../product/docs
 | Absent state | Faceplate detached: current-source outputs open, no back-powering. LP5521 unfitted: 0x32 free; LED lines open |
 | Holds / revision | Holds: LP5521 packaging and binning on the WQFN-24 land. Revision: LP5521TMX/NOPB (DSBGA, same die, other land), or a single-colour LED on a PWM (FPT-025 fallback) |
 | Alternates | — same-land |
-| Software | `status_led` node (the LP5521); `national,lp5521` (DKMS); `org.opendap.hw.Led`; description `indicators` |
+| Software | `status_led` node (the LP5521); `national,lp5521` (DKMS); `cc.opendap.Blackbird.Hw.Led`; description `indicators` |
 | Level | — / Q1 |
 
 #### 26. `blk.mic-main`: microphone supply, privacy LED gate and faceplate PDM
@@ -471,7 +471,7 @@ The faceplate interface is the t1 [faceplate interface v1](../../../product/docs
 | Absent state | Not omitted in any product variant (T1-040). Unpowered: every enable pulled to off (PCB-A-13 [Q1]); I2S SDO lines parked low before power-down (power tree §5) and isolated from the unpowered DACs by hardware (G2) |
 | Holds / revision | Holds: another DAC family or output stage behind I2S/TDM/DSD with the converter as clock master or consumer, 1.8 V or 3.3 V control (with translation inside the block), its own supplies from VSYS and VSYS_LV, and up to four analog legs per jack pair. Revision: a converter that needs a SoC MCLK output, SPDIF, or USB audio |
 | Alternates | Child alternates below |
-| Software | `sound` node (the card); `simple-audio-card` or audio-graph card (board devicetree); `org.opendap.hw.audio.Dac`, `.Output`; description `audio` and `outputs` sections |
+| Software | `sound` node (the card); `simple-audio-card` or audio-graph card (board devicetree); `cc.opendap.Blackbird.Hw.Audio.Dac`, `.Output`; description `audio` and `outputs` sections |
 | Level | — / Q1 |
 
 #### 28. `blk.audio-supply`: DAC supplies
@@ -647,7 +647,7 @@ Each output is one module for variants (maintainer request, 2026-10-28): the par
 | Absent state | Unfitted: 0x55 free on I2C2; FD line pulled up (open-drain). Powered off with I2C2 live: whether the NTAG I2C plus pins tolerate the bus with VCC at 0 V is **UNVERIFIED** (G6) |
 | Holds / revision | Holds: NTAG I2C plus 2k (same family). Revision: ST25DV (Type 5, other land) |
 | Alternates | `nt3h2211` (**UNVERIFIED** MPN and land) |
-| Software | No kernel driver (i2c-dev); `org.opendap.hw.Nfc` |
+| Software | No kernel driver (i2c-dev); `cc.opendap.Blackbird.Hw.Nfc` |
 | Level | — / Q1 |
 
 #### 42. `blk.nfc-reader`: removed
@@ -679,7 +679,7 @@ Removed on 2026-10-27 (maintainer decision, reason: board area; BOM v1.18 item 7
 | Absent state | EN pulled low; unfitted: 0x5A free, LRA contacts open |
 | Holds / revision | Holds: other LRAs within the driver's range. Revision: DA7280 (not pin-compatible) |
 | Alternates | `c10-100` actuator (Precision Microdrives) |
-| Software | `haptics` node (the DRV2605L); `ti,drv2605l` (DKMS); `org.opendap.hw.Haptics` |
+| Software | `haptics` node (the DRV2605L); `ti,drv2605l` (DKMS); `cc.opendap.Blackbird.Hw.Haptics` |
 | Level | — / Q1 |
 
 #### 45. `blk.tpm`: hardware key holder
@@ -693,7 +693,7 @@ Removed on 2026-10-27 (maintainer decision, reason: board area; BOM v1.18 item 7
 | Absent state | Unfitted: 0x2E free; reset pulled to its inactive level; PIRQ pulled up |
 | Holds / revision | Holds: SLB9673 firmware versions. Revision: ST33KTPM2 (not pin-compatible: dual footprint or revision, line 122) |
 | Alternates | `st33ktpm2` as an alternate footprint (DNP) if the land fits under PCB-Z-03 |
-| Software | `tpm` node (the SLB9673); `infineon,slb9673`, `tcg,tpm-tis-i2c` (DKMS); `org.opendap.hw.KeyHolder` |
+| Software | `tpm` node (the SLB9673); `infineon,slb9673`, `tcg,tpm-tis-i2c` (DKMS); `cc.opendap.Blackbird.Hw.KeyHolder` |
 | Level | — / Q1 |
 
 #### 46. `blk.rp2354`: coprocessor

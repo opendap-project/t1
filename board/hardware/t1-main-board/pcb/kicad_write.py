@@ -18,6 +18,7 @@ import pcbnew
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
+import fabref  # noqa: E402
 import libtable  # noqa: E402
 
 OX, OY = 100.0, 100.0
@@ -112,6 +113,54 @@ def placeholder(board, f):
     return fp
 
 
+def box_mm(bb):
+    return (pcbnew.ToMM(bb.GetLeft()), pcbnew.ToMM(bb.GetTop()), pcbnew.ToMM(bb.GetRight()), pcbnew.ToMM(bb.GetBottom()))
+
+
+def fab_refs(fp):
+    layer = pcbnew.B_Fab if fp.IsFlipped() else pcbnew.F_Fab
+    return [g for g in fp.GraphicalItems() if g.GetClass() == "PCB_TEXT"
+            and g.GetText() == "${REFERENCE}" and g.GetLayer() == layer]
+
+
+def courtyard_mm(fp):
+    cy = fp.GetCourtyard(pcbnew.B_CrtYd if fp.IsFlipped() else pcbnew.F_CrtYd)
+    if not cy.IsEmpty():
+        return box_mm(cy.BBox())
+    return box_mm(fp.GetBoundingBox(False))
+
+
+def place_fab_reference(fp):
+    """The fab ${REFERENCE} centred in the courtyard, sized to fit it (fabref.fit); the drawn box is
+    measured and the height reduced until it fits, down to fabref.MIN_H."""
+    texts = fab_refs(fp)
+    if not texts:
+        return
+    cy = courtyard_mm(fp)
+    x, y, angle, h = fabref.fit(cy, len(fp.GetReference()))
+    for t in texts:
+        t.SetHorizJustify(pcbnew.GR_TEXT_H_ALIGN_CENTER)
+        t.SetVertJustify(pcbnew.GR_TEXT_V_ALIGN_CENTER)
+        t.SetKeepUpright(True)
+        t.SetPosition(pcbnew.VECTOR2I(mm(x), mm(y)))
+        t.SetTextAngleDegrees(angle)
+        hh = h
+        while True:
+            t.SetTextSize(pcbnew.VECTOR2I(mm(hh), mm(hh)))
+            t.SetTextThickness(mm(round(hh * fabref.THICK, 3)))
+            if fabref.inside(box_mm(t.GetBoundingBox()), cy) or hh <= fabref.MIN_H:
+                break
+            hh = max(round(hh * 0.9, 3), fabref.MIN_H)
+
+
+def fab_reference_overlaps(board):
+    items = []
+    for fp in board.GetFootprints():
+        for t in fab_refs(fp):
+            items.append((fp.GetReference(), "B" if fp.IsFlipped() else "F", box_mm(t.GetBoundingBox())))
+    return fabref.overlaps(items)
+
+
 def footprint(board, libs, f, nets):
     if f.get("placeholder"):
         fp = placeholder(board, f)
@@ -154,6 +203,7 @@ def footprint(board, libs, f, nets):
     if f.get("board_only"):
         attrs |= pcbnew.FP_BOARD_ONLY
     fp.SetAttributes(attrs)
+    place_fab_reference(fp)
     pins = f.get("pins", {})
     for pd in fp.Pads():
         n = pins.get(pd.GetNumber())
@@ -251,6 +301,9 @@ def main():
     b2 = pcbnew.LoadBoard(out)
     n = len(b2.GetFootprints())
     th = pcbnew.ToMM(b2.GetDesignSettings().GetBoardThickness())
+    clash = fab_reference_overlaps(b2)
+    if clash:
+        raise SystemExit("fabrication references overlap: " + ", ".join("%s/%s" % c for c in clash))
     print("wrote %s: %d footprints, %d nets, %.3f mm" % (out, n, b2.GetNetCount(), th))
 
 

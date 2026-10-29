@@ -148,6 +148,8 @@ def footprint_specs(nl, placed, geom):
         ph = plan.PLACEHOLDER.get(c.footprint)
         if ph:
             fields["Placeholder"] = ph[1]
+        if c.footprint in plan.CRAFT_EXEMPT:
+            fields["Craft_Exempt"] = plan.CRAFT_EXEMPT[c.footprint]
         sheet = c.sheet_names.rstrip("/").rsplit("/", 1)[-1] if c.sheet_names else ""
         out.append({"ref": ref, "fpid": c.footprint, "x": p.x, "y": p.y, "rot": p.rot, "side": p.side,
                     "value": c.value, "fields": fields, "path": c.path, "sheetname": sheet,

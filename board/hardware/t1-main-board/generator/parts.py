@@ -377,7 +377,7 @@ PARTS = {
                       Manufacturer="C&K", MPN="PTS815SJG250SMTRLFS", spec="",
                       src="BOM v1 line 76 (v1.22): the side-button family and land of line 77, the heavier force"),
     # crystal, net tie, test pad ---------------------------------------------------------------
-    "Y_24M": dict(kind="Y", value="24 MHz", Footprint="Crystal:Crystal_SMD_3225-4Pin_3.2x2.5mm",
+    "Y_24M": dict(kind="Y", value="24 MHz", Footprint="ndk:Crystal_SMD_NDK_NX3225GA-4Pin_3.2x2.5mm",
                   Datasheet="https://static.chipdip.ru/lib/694/DOC028694308.pdf",
                   Description="Crystal, 24 MHz, CL 8 pF, ESR 50 Ohm max, 3225 4-pin (#1-#3 crystal, #2 #4 ground)",
                   Manufacturer="NDK", MPN="NX3225GA-24MHZ-STD-CRG-2", spec="",

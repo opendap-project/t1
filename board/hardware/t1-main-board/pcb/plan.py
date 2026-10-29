@@ -234,6 +234,9 @@ UNDER_BGA = {"blk.soc-power": "U1301", "blk.lpddr4x": "U2101", "blk.emmc": "U380
 THERMAL_HOT = {"U1301", "U1101", "U1201", "U1001", "U601", "U901", "U4401", "U2801", "U2802", "U4501", "U4502",
                "U4801", "U501", "U5103", "U2303", "U5401"}
 REWORK_BGA = {"U1301", "U2101", "U3801"}
+# Craft-check exemptions by footprint (field Craft_Exempt, listed in the craft report): a two-terminal
+# crystal has interchangeable terminals, so CRAFT-13 has no pin 1 to mark on it
+CRAFT_EXEMPT = {"Crystal:Crystal_SMD_3215-2Pin_3.2x1.5mm": "CRAFT-13: two interchangeable terminals, no polarity to mark"}
 
 # Board-only parts (not in the schematic): fiducials (PCB-M-09: three global per populated side, not
 # symmetric, and two local at the RK3566; PCB-D-02 to D-04: 1 mm dot, 1 mm clear area). Each keeps

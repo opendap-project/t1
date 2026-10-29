@@ -95,9 +95,9 @@ FIXED.update({
 # Main on the right). Long side along the edge, courtyard against the edge, above the eMMC's rework
 # clearance. Positions UNVERIFIED (case); their 1.9-2.5 mm bodies stand 2 mm into PCB-Z-01 (open item).
 FIXED.update({
-    "SW6904": (-g.HX + 1.9, 36.6, 90, "B", "Action, left edge, top (v1.6: 1.6 mm up for the PTS815 land below it)"),
-    "SW6902": (-g.HX + 1.9, 30.7, 90, "B", "Vol+, left edge below Action (v1.6: the PTS815 land is 6.0 mm long with its courtyard)"),
-    "SW6903": (-g.HX + 1.9, 24.6, 90, "B", "Vol-, left edge below Vol+, 2 mm above the eMMC (PCB-D-01)"),
+    "SW6904": (-g.HX + 1.9, 36.72, 90, "B", "Action, left edge, top (v1.9: the PTS815 land, BOM v1.22 line 76; against Vol+, 1.43 mm from the hole edge)"),
+    "SW6902": (-g.HX + 1.9, 30.6, 90, "B", "Vol+, left edge below Action (v1.6: the PTS815 land is 6.0 mm long with its courtyard)"),
+    "SW6903": (-g.HX + 1.9, 24.5, 90, "B", "Vol-, left edge below Vol+, 2 mm above the eMMC (PCB-D-01)"),
     "SW6901": (g.HX - 1.9, 29.5, 90, "B", "Main (power), right edge"),
 })
 # Pocket reliefs (case interface, ADR 0025; PCB-Z-06 to Z-08): parts that stand over PCB-Z-01's 1.5 mm
@@ -258,6 +258,4 @@ WEAK_NETS = {"GND", "VSYS", "VSYS_LV", "vcc3v3_sys", "vcc_1v8", "vcca1v8_pmu", "
 
 # Footprints with no land in the libraries yet: placed as courtyard-only placeholders (no pads), with
 # the body named by the part (UNVERIFIED) and the field Placeholder.
-PLACEHOLDER = {
-    "T1_Main_Board:L_Murata_LQH3NP_3x3mm": ((-1.8, -1.8, 1.8, 1.8), "Murata LQH3NPN220MMEL 3.0 x 3.0 mm body + 0.3 mm; land not drawn"),
-}
+PLACEHOLDER = {}

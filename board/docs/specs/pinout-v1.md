@@ -121,7 +121,7 @@ Columns: ball; pad (the GPIO name with its reset suffix; the full mux list is in
 
 | Ball | Pad | Function | Domain | Reset state and why | Net | Block | Escape | Notes |
 |---|---|---|---|---|---|---|---|---|
-| AK37 | GPIO0_B3_u | I2C1_SCL | PMUIO2, 1.8 V, vcca1v8_pmu | pull-up | `I2C1_SCL` | `blk.charger` | ring, inner (microvia) | FUSB302B 0x22 (main USB-C), FUSB302B01MPX 0x23 (HAT port, 2026-10-25; FUSB302B/D Rev. 5 p. 18 Table 15), BQ28Z610-R1 0x55, BQ25798 0x6B, INA236 0x40-0x43. FUSB302B VIH 1.32 V (FUSB302B/D Rev. 5 p. 16) |
+| AK37 | GPIO0_B3_u | I2C1_SCL | PMUIO2, 1.8 V, vcca1v8_pmu | pull-up | `I2C1_SCL` | `blk.charger` | ring, inner (microvia) | FUSB302B 0x22 (main USB-C), FUSB302B01MPX 0x23 (HAT port, 2026-10-25; FUSB302B/D Rev. 5 p. 18 Table 15), BQ28Z610-R1 0x55, BQ25798 0x6B, INA236 0x40, 0x41, 0x43, 0x48, 0x49 (BOM v1.22 item 1: no A0 = SDA). FUSB302B VIH 1.32 V (FUSB302B/D Rev. 5 p. 16) |
 | AM38 | GPIO0_B4_u | I2C1_SDA | PMUIO2, 1.8 V, vcca1v8_pmu | pull-up | `I2C1_SDA` | `blk.charger` | ring, outer | As I2C1_SCL |
 | 1U20 | GPIO0_B5_u | I2C2_SCL_M0 | PMUIO2, 1.8 V, vcca1v8_pmu | pull-up | `I2C2_SCL` | `blk.gpio-expander` | core | Board control bus: TCA6416A 0x21, TPM 0x2E, CS43198 0x30/0x31 (behind the G2 isolator), LP5521 0x32, AT24C02D 0x50, NTAG 0x55, DRV2605L 0x5A, LSM6DSV16X 0x6A. Pull-ups to vcca1v8_pmu (G16) |
 | 1R16 | GPIO0_B6_u | I2C2_SDA_M0 | PMUIO2, 1.8 V, vcca1v8_pmu | pull-up | `I2C2_SDA` | `blk.gpio-expander` | core | As I2C2_SCL |

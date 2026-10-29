@@ -261,6 +261,8 @@ def draw_rp2354(parent, variants):
         "3. VREG_VIN and VREG_AVDD ramp together from RP_3V3 (DS §6.1.8); VREG_AVDD through 33 Ω + 4.7 µF.",
         "4. Links #21 (RP_3V3, 0.1 Ω) and #30 (RP_IOVDD_1V8, 1 Ω), power tree §4.12. The inductor's",
         "   polarity dot faces VREG_LX as in DS Figure 28: UNVERIFIED until checked on the Pico 2 layout.",
+        "5. Supply pins as DS Figure 152: IOVDD 1, 11, 20, 30, 38, 45; QSPI_IOVDD 54 (Table 1679 also",
+        "   lists 54 under IOVDD and leaves out pin 1, which no other function takes: a table erratum).",
     ])
 
 
@@ -282,7 +284,7 @@ def core_tables(s):
         "   0 Ω positions keep a series value possible at bring-up.",
         "3. IOVDD at 1.8 V: firmware sets VOLTAGE_SELECT = 1 for bank 0 at boot (DS §6.1.1).",
         "4. QSPI pads go to the in-package flash only: open here (HDG §3.1); BOOTSEL pulls QSPI_SS low",
-        "   through 1 kΩ and the N-FET. USB: 27 Ω series at the RP2354A (DS Table 1678).",
+        "   through 1 kΩ and the N-FET. USB (full speed): 27 Ω at the RP2354A (DS Table 1678), 2.2 Ω at the SoC.",
         "5. GPIO allocation (pinout v1 §3, 2026-10-26): UART0 GPIO0/1, RP_IRQ GPIO2, spare GPIO3 (pad),",
         "   taps GPIO4-8 for one PIO IN (DS §11.5.6); GPIO9-29 open. The I2C2 option is not wired (G16).",
     ])

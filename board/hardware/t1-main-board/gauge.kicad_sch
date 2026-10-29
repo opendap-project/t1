@@ -1487,7 +1487,7 @@
   (property "Reference" "R808" (at 242.57 43.18 90) (effects (font (size 1.27 1.27))))
   (property "Value" "3 mΩ" (at 242.57 48.26 90) (effects (font (size 1.27 1.27))))
   (property "Spec" "1206" (at 242.57 50.8 90) (effects (font (size 1.27 1.27))))
-  (property "Footprint" "Resistor_SMD:R_1206_3216Metric" (at 242.57 45.72 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Footprint" "T1_Main_Board:R_Vishay_WSL1206_2m-5m9" (at 242.57 45.72 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Datasheet" "https://www.vishay.com/docs/30100/wsl.pdf" (at 242.57 45.72 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Description" "Current-sense resistor, 3 mOhm, 1 %, 0.25 W, 1206 metal strip" (at 242.57 45.72 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Manufacturer" "Vishay Dale" (at 242.57 45.72 0) (effects (font (size 1.27 1.27))) (hide yes))

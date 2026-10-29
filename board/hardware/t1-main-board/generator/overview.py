@@ -21,7 +21,7 @@ RAIL_ROWS = [
     ["VSYS_P5V1", "6.0-8.8 V", "VSYS through 20 mΩ (blk.current-monitors)", "-", "TPS62903 VIN (blk.pwr-5v1)", "PWR_VSYS", "INA236 0x43"],
     ["VSYS_LV", "3.8 V", "TPS62136 (blk.pwr-vsys-lv)", "always on (EN = VSYS)", "RK809 VCC1-4, TPS62870Z4, TPS62827, audio, display", "-", "H5 link"],
     ["VSYS_LV_AUDIO", "3.8 V", "VSYS_LV through 20 mΩ (blk.current-monitors)", "-", "DAC_VP switch, TPS62840, link #27, TPS65131", "-", "INA236 0x41"],
-    ["VSYS_LV_BL", "3.8 V", "VSYS_LV through 100 mΩ (blk.current-monitors)", "-", "TPS61160 VIN (blk.fp-backlight)", "-", "INA236 0x42"],
+    ["VSYS_LV_BL", "3.8 V", "VSYS_LV through 100 mΩ (blk.current-monitors)", "-", "TPS61160 VIN (blk.fp-backlight)", "-", "INA236 0x49"],
     ["vcc3v3_sys", "3.3 V", "TPS62827 (blk.pwr-3v3-sys)", "always on (EN = VSYS_LV)", "RK809 VCC5-9, eMMC VCC, SoC VCCIO1/5/7, USB", "-", "H5 link"],
     ["vdd_cpu", "0.85-1.10 V", "TPS62870Z4 (blk.vdd-cpu)", "EN from vcc3v3_pmu; I2C DVS", "SoC CPU", "-", "H5 link"],
     ["vdd_logic", "0.90 V", "RK809 BUCK1 (blk.pmic)", "off in suspend", "SoC logic", "-", "H5 link (blk.soc)"],

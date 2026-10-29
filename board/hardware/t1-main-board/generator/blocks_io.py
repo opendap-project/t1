@@ -254,7 +254,7 @@ def draw_buttons(s, variants):
         "2. Absent state: never omitted; released lines read high through their pulls.",
         "3. Vol- is pulled to the always-on vcca1v8_pmu, which also feeds the MaskROM gate: a pull to",
         "   vcca_1v8 would read pressed while that rail is still off (pinout v1 §4, Vol- row).",
-        "4. Open: the Action part (BOM v1 line 76; T1-022 deeper travel); KMR221GLFS is the BOM's",
-        "   placeholder on the KMR2 land. PTS815 land per its data sheet p. B-44: terminals 1-2 are",
-        "   pad 1, 3-4 pad 2 (the circuit diagram on the same page).",
+        "4. Action: PTS815 G force code (400 gf, UNVERIFIED) on the side buttons' land (BOM v1 line 76);",
+        "   its deeper travel (T1-022) is the case cap's free travel. PTS815 land per p. B-44: terminals",
+        "   1-2 are pad 1, 3-4 pad 2 (the circuit diagram on the same page).",
     ])

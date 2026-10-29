@@ -1420,7 +1420,7 @@
   (property "Reference" "R1004" (at 231.14 77.47 90) (effects (font (size 1.27 1.27))))
   (property "Value" "5 mΩ" (at 231.14 83.82 90) (effects (font (size 1.27 1.27))))
   (property "Spec" "1206" (at 231.14 86.36 90) (effects (font (size 1.27 1.27))))
-  (property "Footprint" "Resistor_SMD:R_1206_3216Metric" (at 233.68 81.28 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Footprint" "T1_Main_Board:R_Vishay_WSL1206_2m-5m9" (at 233.68 81.28 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Datasheet" "https://www.vishay.com/docs/30100/wsl.pdf" (at 233.68 81.28 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Description" "Current-sense resistor, 5 mOhm, 1 %, 0.5 W, 1206 metal strip: measurement link H5" (at 233.68 81.28 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Manufacturer" "Vishay Dale" (at 233.68 81.28 0) (effects (font (size 1.27 1.27))) (hide yes))

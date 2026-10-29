@@ -189,7 +189,7 @@ def draw_backlight(s, variants):
 
     def stage():
         g = Group(s, "Inductor, rectifier, output capacitor (lines 52, 53)")
-        g.add(two_pin_box(s, "L_LQH3NPN220", 109.22, 101.6, "VSYS_LV_BL", "BL_SW", prefix="L"))
+        g.add(two_pin_box(s, "L_XFL3012_223", 109.22, 101.6, "BL_SW", "VSYS_LV_BL", prefix="L"))   # pad 1, the start lead, on SW
         part(s, "Diode", "PMEG6010CEH", 116.84, 116.84, {"1": "BL_LEDA", "2": "BL_SW"}, key="D_PMEG6010CEH", angle=180,
              prefix="D", ref_at=(116.84, 116.84 - 6.35), val_at=(116.84, 116.84 - 3.81), stub=5.08)
         g.add((96.52, 106.68, 137.16, 119.38))
@@ -197,7 +197,7 @@ def draw_backlight(s, variants):
         return g.close()
     grp(f, stage)
     s.iface_rows = [
-        ["VSYS_LV_BL", "Supply in", "VSYS_LV 3.8 V through the display INA236 shunt (0x42, blk.current-monitors)"],
+        ["VSYS_LV_BL", "Supply in", "VSYS_LV 3.8 V through the display INA236 shunt (0x49, blk.current-monitors)"],
         ["BL_PWM", "Input", "PWM8_M0, SoC pull-down: off"],
         ["BL_LEDA, BL_LEDK", "Output", "Contacts 46, 45: the LED string between them"],
     ]
@@ -208,7 +208,7 @@ def draw_backlight(s, variants):
         "   up to 22 V; open-LED threshold 25-27 V at SW keeps BL_LEDA below 30 V (SLVS791E §6.5).",
         "2. Absent state: CTRL low (SoC pull-down): off; an open string is bounded by the threshold.",
         "3. COMP 220 nF as the datasheet's typical application (SLVS791E Figure 15); inductor 22 µH",
-        "   LQH3NPN220MMEL (Murata sheet not retrieved, rating UNVERIFIED); PMEG6010CEH rectifier.",
+        "   XFL3012-223MEC (Coilcraft doc 747, start lead on BL_SW); PMEG6010CEH rectifier.",
         "4. Software: pwm-backlight on CTRL (PWM 5-100 kHz, SLVS791E §6.3).",
     ])
 

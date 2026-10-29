@@ -337,10 +337,10 @@ Removed on 2026-10-25 (BOM v1.13, RFC 0014): hats `standard/` interface v2 has n
 | Field | Content |
 |---|---|
 | Bound by | T1-026 (must: the tooling to verify promises shall exist); BOM line 54 is Proposed and ADR 0013 keeps all four in every variant |
-| Interface | I2C1 at 0x40–0x43; four shunts: VSYS 10 mΩ, audio 100 mΩ, display 100 mΩ, HAT 20 mΩ |
+| Interface | I2C1 at 0x40, 0x41, 0x43 (INA236A) and 0x48, 0x49 (INA236B; BOM v1.22 item 1); five shunts: VSYS 10 mΩ, audio VSYS_LV and VSYS sides 20 mΩ each, display 100 mΩ, HAT 20 mΩ |
 | Power domain | vcc3v3_sys; INA236 power-down mode over I2C |
 | Measure | It is the measurement |
-| Absent state | INA236 unfitted: the shunts stay in circuit (power tree §5), or become 0 Ω links in a variant that drops a channel; 0x40–0x43 free on I2C1 |
+| Absent state | INA236 unfitted: the shunts stay in circuit (power tree §5), or become 0 Ω links in a variant that drops a channel; its address (0x40, 0x41, 0x43, 0x48 or 0x49) free on I2C1 |
 | Holds / revision | Holds: INA236 address options. Revision: INA238 (1.2 V I2C, hwmon, other land) |
 | Alternates | Parameters per variant: `channels` (fitted INA236 channels; a dropped channel's shunt becomes a 0 Ω link) and `shunt_mohm` |
 | Software | `ti,ina236` (IIO `ina2xx-adc`) ×4 |

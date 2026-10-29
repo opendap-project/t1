@@ -177,6 +177,68 @@ def sw_ck_pts815():
     return "\n".join(out) + "\n"
 
 
+# Vishay WSL lands (doc 30100, Rev. 23-Nov-2023, p. 2, "Solder pad dimensions"): a = pad length
+# along the part, b = pad width, l = gap between the pads, by model and resistance range; body L x W.
+WSL_LANDS = [
+    # name, model and range as the table prints it, a, b, l, L, W
+    ("R_Vishay_WSL1206_2m-5m9", "WSL1206, 0.002 to 0.0059 Ohm", 1.78, 1.93, 1.55, 3.20, 1.60),
+    ("R_Vishay_WSL1206_6m-200m", "WSL1206, 0.006 to 0.20 Ohm", 1.65, 1.93, 1.80, 3.20, 1.60),
+    ("R_Vishay_WSL2010_7m-500m", "WSL2010, 0.007 to 0.5 Ohm", 1.40, 3.05, 3.30, 5.08, 2.54),
+    ("R_Vishay_WSL2512_7m-500m", "WSL2512, 0.007 to 0.5 Ohm", 1.65, 3.68, 4.06, 6.35, 3.18),
+]
+
+
+def wsl(name, model, a, b, l, bl, bw):
+    """A Vishay WSL metal-strip shunt land from the doc 30100 pad table: two pads a x b, l apart.
+    Courtyard 0.25 mm around the pads (KLC F5.3, as KiCad's resistor lands); no silk (the pads
+    reach past the body), the reference on the fabrication layer. The sense traces leave each pad's inner
+    edge (doc 30100 p. 2, "Typical sensing traces"; SBOSA81D §8.4.1)."""
+    x = (l + a) / 2
+    cx = (l / 2 + a) + 0.25
+    cy = max(b, bw) / 2 + 0.25
+    return "\n".join([
+        f'(footprint "{name}" (version 20241229) (generator "t1-main-board-generator")',
+        '\t(layer "F.Cu")',
+        f'\t(descr "Vishay {model} metal-strip resistor; land per doc 30100 (Rev. 23-Nov-2023) p. 2: a {n(a)}, b {n(b)}, l {n(l)} mm")',
+        '\t(tags "resistor shunt current sense Vishay WSL")',
+        '\t(attr smd)',
+        f'\t(property "Reference" "REF**" (at 0 {n(-cy - 0.6)} 0) (layer "F.Fab") (effects (font (size 0.8 0.8) (thickness 0.12))))',
+        f'\t(property "Value" "{name}" (at 0 {n(cy + 0.6)} 0) (layer "F.Fab") (effects (font (size 0.8 0.8) (thickness 0.12))))',
+        f'\t(fp_rect (start {n(-bl / 2)} {n(-bw / 2)}) (end {n(bl / 2)} {n(bw / 2)}) (stroke (width 0.1) (type solid)) (fill no) (layer "F.Fab"))',
+        f'\t(fp_rect (start {n(-cx)} {n(-cy)}) (end {n(cx)} {n(cy)}) (stroke (width 0.05) (type solid)) (fill no) (layer "F.CrtYd"))',
+        '\t(fp_text user "${REFERENCE}" (at 0 0 0) (layer "F.Fab") (effects (font (size 0.5 0.5) (thickness 0.08))))',
+        f'\t(pad "1" smd rect (at {n(-x)} 0) (size {n(a)} {n(b)}) (layers "F.Cu" "F.Paste" "F.Mask"))',
+        f'\t(pad "2" smd rect (at {n(x)} 0) (size {n(a)} {n(b)}) (layers "F.Cu" "F.Paste" "F.Mask"))',
+        '\t(embedded_fonts no)',
+        ')',
+    ]) + "\n"
+
+
+def xfl3012():
+    """Coilcraft XFL3012 land (Document 747-1, revised 03/10/26, "Recommended Land Pattern"): two
+    pads 1.0 x 2.90 mm with 2.03 mm between them, 4.03 mm overall; body 3.0 x 3.0 mm, 1.3 mm
+    maximum height (same page). Pad 1 is the start lead (the dot; "Connect high dv/dt here for
+    lowest EMI", same page): the switch node, marked by the chamfer on the fabrication outline."""
+    return "\n".join([
+        '(footprint "L_Coilcraft_XFL3012" (version 20241229) (generator "t1-main-board-generator")',
+        '\t(layer "F.Cu")',
+        '\t(descr "Coilcraft XFL3012 shielded power inductor, 3.0 x 3.0 x 1.3 mm max; land per Document 747-1 (03/10/26); pad 1 = start lead (dot)")',
+        '\t(tags "inductor Coilcraft XFL3012")',
+        '\t(attr smd)',
+        '\t(property "Reference" "REF**" (at 0 -2.4 0) (layer "F.SilkS") (effects (font (size 0.8 0.8) (thickness 0.12))))',
+        '\t(property "Value" "L_Coilcraft_XFL3012" (at 0 2.4 0) (layer "F.Fab") (effects (font (size 0.8 0.8) (thickness 0.12))))',
+        '\t(fp_poly (pts (xy -1.0 -1.5) (xy 1.5 -1.5) (xy 1.5 1.5) (xy -1.5 1.5) (xy -1.5 -1.0)) (stroke (width 0.1) (type solid)) (fill no) (layer "F.Fab"))',
+        '\t(fp_rect (start -2.27 -1.75) (end 2.27 1.75) (stroke (width 0.05) (type solid)) (fill no) (layer "F.CrtYd"))',
+        '\t(fp_line (start -0.8 -1.62) (end 0.8 -1.62) (stroke (width 0.15) (type solid)) (layer "F.SilkS"))',
+        '\t(fp_line (start -0.8 1.62) (end 0.8 1.62) (stroke (width 0.15) (type solid)) (layer "F.SilkS"))',
+        '\t(fp_text user "${REFERENCE}" (at 0 0 0) (layer "F.Fab") (effects (font (size 0.6 0.6) (thickness 0.09))))',
+        '\t(pad "1" smd rect (at -1.515 0) (size 1.0 2.9) (layers "F.Cu" "F.Paste" "F.Mask"))',
+        '\t(pad "2" smd rect (at 1.515 0) (size 1.0 2.9) (layers "F.Cu" "F.Paste" "F.Mask"))',
+        '\t(embedded_fonts no)',
+        ')',
+    ]) + "\n"
+
+
 def shield_frame():
     """Shield-can frame (blk.shields): one pin, the frame land, to ground. Footprint, part number
     and description are per frame (blocks_shields.py), from ../shields.toml."""
@@ -251,6 +313,11 @@ def write():
         fh.write(testpoint_d08())
     with open(os.path.join(FP_DIR, "SW_CK_PTS815.kicad_mod"), "w", encoding="utf-8") as fh:
         fh.write(sw_ck_pts815())
+    with open(os.path.join(FP_DIR, "L_Coilcraft_XFL3012.kicad_mod"), "w", encoding="utf-8") as fh:
+        fh.write(xfl3012())
+    for land in WSL_LANDS:
+        with open(os.path.join(FP_DIR, land[0] + ".kicad_mod"), "w", encoding="utf-8") as fh:
+            fh.write(wsl(*land))
     for old in os.listdir(FP_DIR):             # a frame whose size changed leaves no stale land
         if old.startswith("Shield_Frame_"):
             os.remove(os.path.join(FP_DIR, old))

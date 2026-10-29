@@ -89,8 +89,8 @@ def _soc_pmuio(s, y0, variants):
     s.connect(pl, "4", "GND")
     two_pin_h(s, "R_1M", 50.8, y + 5.08, "XIN24M", "XOUT24M", blk)
     two_pin_h(s, "R_22", 101.6, y + 5.08, "XOUT24M", "XTAL24M_OUT", blk)
-    two_pin_v(s, "C_18p_0402", 45.72, y + 27.94, "XIN24M", "GND", blk)
-    two_pin_v(s, "C_18p_0402", 116.84, y + 27.94, "XTAL24M_OUT", "GND", blk)
+    two_pin_v(s, "C_10p_0402", 45.72, y + 27.94, "XIN24M", "GND", blk)
+    two_pin_v(s, "C_10p_0402", 116.84, y + 27.94, "XTAL24M_OUT", "GND", blk)
 
     xr = 142.24
     s.group_box("Reset and boot strap", xr - 5.08, y - 5.08, 63.5, 45.72)
@@ -132,8 +132,8 @@ def _soc_pmuio(s, y0, variants):
         "   PMUIO2 (1.8 V: I2C0-2, wake inputs, debug UART) and the SARADC (pinout v1 §1, §3).",
         "2. Absent state: not applicable (the SoC is never omitted). The pull-ups here hold every",
         "   open-drain interrupt and bus of the blocks they serve, so those blocks may be unfitted.",
-        "3. Crystal: 2 x 18 pF, 1 MΩ, 22 Ω per HDG 1.1 pp. 16-17; the X322524MOB4SI load capacitance",
-        "   is UNVERIFIED (BOM v1 line 15), so 18 pF is matched to it at bring-up.",
+        "3. Crystal NX3225GA-24MHZ-STD-CRG-2, CL 8 pF (NDK 2008E): C = 2 (CL - 3 pF stray) = 10 pF C0G;",
+        "   1 MΩ and 22 Ω per HDG 1.1 pp. 16-17. Bring-up trims C against the 24 MHz error.",
         "4. Pull-ups: I2C 2.2 kΩ (BOM v1 §5); interrupts 4.7 kΩ (pinout v1 B9); PMIC_INT_N 10 kΩ",
         "   (RK809 DS Fig. 1-1); SOC_RESET_N and FLASH_VOL_SEL 10 kΩ: capture choice, HDG gives none.",
         "5. A net with one pin by design ends in a local label (ERC warning isolated_pin_label).",
@@ -203,8 +203,8 @@ def _soc_phy(s, y0, variants):
         "   are placed with blk.usb-c and blk.hat-signals, the blocks that drive their inputs. PCIe and",
         "   unit 15 (CSI RX) have no consumer (RFC 0014: HATs are USB only); their balls are NC.",
         "2. Absent state: not applicable (the SoC is never omitted).",
-        "3. USB 2 series resistors (2.2 Ω, HDG 1.1 p. 59) and the USB 3 SSTX AC capacitors sit on the",
-        "   sheets of their blocks (blk.usb-c, blk.hat-signals).",
+        "3. USB 2 series resistors (2.2 Ω, HDG 1.1 p. 59; the RP2354A end keeps its own 27 Ω, DS Table",
+        "   1678) and the USB 3 SSTX AC capacitors sit on the sheets of blk.usb-c, blk.hat-signals.",
         "4. A net with one pin by design ends in a local label (ERC warning isolated_pin_label).",
     ])
 

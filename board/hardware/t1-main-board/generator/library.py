@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import math
 import os
+import tomllib
 
 from sexpr import balanced, kid, kids, parse, val
 
@@ -31,6 +32,12 @@ LIBS.update({
     "Switch": (os.path.join(STOCK, "Switch.kicad_sym"), "stock"),
 })
 
+
+# The second source the board's BOM names per library symbol (hardware/bom/second-sources.toml): a BOM
+# choice, so the board sets it on its placed parts; libs symbols carry none.
+with open(os.path.join(HW, "bom", "second-sources.toml"), "rb") as _fh:
+    SECOND_SOURCES = tomllib.load(_fh)["parts"]
+SECOND_SOURCES_USED: set[str] = set()
 
 class Pin:
     __slots__ = ("unit", "number", "name", "etype", "x", "y", "angle", "length", "hidden")

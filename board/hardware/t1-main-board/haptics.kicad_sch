@@ -859,15 +859,6 @@
 				)
 			)
 		)
-		(property "Second_Source" "Renesas DA7280-00FV2 (not pin-compatible; BOM v1 line 123)"
-			(at 0 0 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "ki_keywords" "haptic driver LRA ERM vibration DRV2605L I2C VSSOP DGS"
 			(at 0 0 0)
 			(hide yes)

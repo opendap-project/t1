@@ -1423,15 +1423,6 @@
 				)
 			)
 		)
-		(property "Second_Source" "Texas Instruments TPS62827DMQR (BOM v1 line 129)"
-			(at 0 0 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "ki_keywords" "buck step-down converter DC-DC 3A TPS62826 TPS6282x VSON-HR DMQ0006A"
 			(at 0 0 0)
 			(hide yes)

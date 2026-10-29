@@ -656,15 +656,6 @@
 				)
 			)
 		)
-		(property "Second_Source" "Hirose FH35C-51S-0.3SHW(99) (BOM v1 line 71)"
-			(at 0 0 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "ki_keywords" "connector FPC FFC FH35C 0.3mm 51 back-flip dual-sided MIPI DSI Hirose"
 			(at 0 0 0)
 			(hide yes)

@@ -1203,15 +1203,6 @@
 				)
 			)
 		)
-		(property "Second_Source" "Texas Instruments TPS62902 (BOM v1 line 38)"
-			(at 0 0 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "ki_keywords" "buck step-down converter DC-DC DCS-Control 3A TPS62903 VQFN-HR RPJ0009A"
 			(at 0 0 0)
 			(hide yes)

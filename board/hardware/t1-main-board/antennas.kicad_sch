@@ -367,15 +367,6 @@
 				)
 			)
 		)
-		(property "Second_Source" "Hirose U.FL-R-SMT-1(80) (BOM v1 line 56)"
-			(at 0 0 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "ki_keywords" "connector coaxial RF U.FL IPEX antenna 50ohm Hirose receptacle"
 			(at 0 0 0)
 			(hide yes)

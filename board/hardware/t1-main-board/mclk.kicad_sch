@@ -1456,15 +1456,6 @@
 				)
 			)
 		)
-		(property "Second_Source" "Nexperia 74LVC1G57GW (BOM v1 line 98)"
-			(at 0 0 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "ki_keywords" "logic gate configurable AND Schmitt LVC SN74LVC1G57 SC-70 DCK"
 			(at 0 0 0)
 			(hide yes)

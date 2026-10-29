@@ -36,6 +36,7 @@ import blocks_power  # noqa: E402
 import blocks_radio  # noqa: E402
 import blocks_soc  # noqa: E402
 import blocks_usb  # noqa: E402
+import library  # noqa: E402
 import localparts  # noqa: E402
 import overview  # noqa: E402
 from draw import finalize_tables, local_flags  # noqa: E402
@@ -360,6 +361,10 @@ def main():
         print(f"zones: {name}: {f}")
     if bad:
         raise SystemExit(f"generator: {len(bad)} zone collision(s)")
+    unused = sorted(set(library.SECOND_SOURCES) - library.SECOND_SOURCES_USED)
+    if unused:
+        raise SystemExit(f"generator: hardware/bom/second-sources.toml names parts the board does not place "
+                         f"(or always overrides): {', '.join(unused)}")
     print(f"generated {len(proj.sheets)} sheets, {sum(1 for _ in proj.parts)} placed units")
 
 

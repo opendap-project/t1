@@ -5,6 +5,7 @@ Tool: [KiCad](https://www.kicad.org) 10.
 ## Layout
 
 - `<project>/`: one KiCad project per PCB, holding `<project>.kicad_pro`, `<project>.kicad_sch` and `<project>.kicad_pcb`.
+- `bom/`: BOM data the generator writes into the placed parts: `second-sources.toml`, the second source the BOM names per library part (a BOM choice, so it is not in libs).
 - `lib/`: project-local libraries shared by every project in this folder.
   - `lib/symbols/`: symbol libraries (`*.kicad_sym`).
   - `lib/footprints/`: footprint libraries (`<name>.pretty/`).

@@ -922,15 +922,6 @@
 				)
 			)
 		)
-		(property "Second_Source" "Texas Instruments BQ25792RQMR (BOM v1 line 39)"
-			(at 0 0 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "ki_keywords" "charger buck-boost NVDC li-ion 2S I2C power path VQFN-HR RQM"
 			(at 0 0 0)
 			(hide yes)

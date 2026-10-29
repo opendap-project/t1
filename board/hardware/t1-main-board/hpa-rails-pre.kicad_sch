@@ -1776,15 +1776,6 @@
 				)
 			)
 		)
-		(property "Second_Source" "Texas Instruments LMR33620CRNXR (2 A, same package and pins; BOM v1 line 116)"
-			(at 0 0 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "ki_keywords" "buck step-down converter DC-DC 3A 36V LMR33630 LMR33630C inverting buck-boost VQFN-HR RNX0012B"
 			(at 0 0 0)
 			(hide yes)

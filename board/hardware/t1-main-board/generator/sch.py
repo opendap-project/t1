@@ -237,6 +237,10 @@ class Sheet:
         x, y = snap(x), snap(y)
         pl = Placed(self, sym, ref, unit, x, y, angle)
         f = {k: v for k, v in sym.props.items() if not k.startswith("ki_") and k not in ("Reference", "Value")}
+        if sym.name in library.SECOND_SOURCES and library.LIBS[sym.nick][1] == "opendap":
+            f["Second_Source"] = library.SECOND_SOURCES[sym.name]   # the BOM's choice (hardware/bom/)
+            if "Second_Source" not in (fields or {}):
+                library.SECOND_SOURCES_USED.add(sym.name)
         f.update(fields or {})
         val_text = value if value is not None else sym.props.get("Value", sym.name)
         if not ref.startswith("#"):

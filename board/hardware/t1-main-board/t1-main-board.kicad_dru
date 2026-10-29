@@ -160,7 +160,7 @@
 )
 
 # Source: hardware/lib/opendap/kicad/design-rules/opendap-craft/opendap-craft.kicad_dru
-# sha256: 9d58249d1ce04c5aec2bd640111a607f00e10c4878d23ea4f97b8976b1b2c357
+# sha256: 9c1231890ca4e912a6767194d73b5c930453bd3536c6f1f26a7c543436dab09f
 
 # OpenDAP craft rules: the part of the OpenDAP PCB craft standard that KiCad DRC can check
 #
@@ -175,8 +175,8 @@
 # track_segment_length), so they never relax a fab limit. KiCad applies every
 # matching assertion, so a product rule cannot relax them either: the
 # exemptions are built in, and are the only ones:
-#   - impedance-controlled net classes, named after their impedance as the
-#     T1 board names them: <name>_<ohms>D (differential, for example
+#   - impedance-controlled net classes, named after their impedance:
+#     <name>_<ohms>D (differential, for example
 #     USB3_90D) or <name>_<ohms>SE (single-ended). Their widths come from the
 #     stackup; they are exempt from CRAFT-40 and CRAFT-43;
 #   - rule areas named CRAFT-EXEMPT* or containing ESCAPE (a BGA escape,

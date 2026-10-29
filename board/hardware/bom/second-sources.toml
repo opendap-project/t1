@@ -1,0 +1,30 @@
+# OpenDAP T1 main board: the second source the BOM names for each library part it places.
+#
+# A second source is a BOM choice, so it lives with the board, not in libs (libs v0.3.4 carries no
+# Second_Source on its symbols). generator/sch.py writes the string into the Second_Source field of
+# every placed unit of the symbol, unless the block gives the part its own Second_Source; the
+# generator refuses an entry whose symbol the board does not place. The lines cited are those of
+# docs/specs/bom-v1.md, which holds the decision and its basis.
+
+schema = "opendap.board-second-sources/v1"
+board = "t1-main-board"
+
+# library symbol name = Second_Source
+[parts]
+"BQ25798RQMR" = "Texas Instruments BQ25792RQMR (BOM v1 line 39)"
+"BQ28Z610DRZR-R1" = "Texas Instruments BQ40Z50-R2 (BOM v1 line 42, different package)"
+"DM3AT-SF-PEJM5" = "Molex 104031-0811 (BOM v1 line 11)"
+"DRV2605LDGSR" = "Renesas DA7280-00FV2 (not pin-compatible; BOM v1 line 123)"
+"ECS-2016MV-120-BN-TR" = "Abracon ABM8-272-T3 crystal with a re-tuned XOUT resistor, after qualification over temperature (BOM v1 line 14)"
+"FH35C-51S-0.3SHW" = "Hirose FH35C-51S-0.3SHW(99) (BOM v1 line 71)"
+"LBES5PL2EL-923" = "u-blox MAYA-W271-00B (same IW612 chip, other land; pin compatibility UNVERIFIED; BOM v1 line 55)"
+"LMR33630CRNXR" = "Texas Instruments LMR33620CRNXR (2 A, same package and pins; BOM v1 line 116)"
+"LT3094EDD" = "Analog Devices LT3094EDD#PBF (same part, tube)"
+"NT3H2111W0FHKH" = "ST ST25DV04KC / ST25DV64KC (Type 5 tag, different footprint; BOM v1 line 125)"
+"SJ2-35954D-SMT-TR" = "Same Sky SJ2-35894D-SMT-TR (BOM v1 line 30)"
+"SLB9673XU20FW2613XTMA1" = "ST ST33KTPM2 I2C build (not pin-compatible; BOM v1 line 122)"
+"SN74LVC1G57DCKR" = "Nexperia 74LVC1G57GW (BOM v1 line 98)"
+"TPS62826DMQR" = "Texas Instruments TPS62827DMQR (BOM v1 line 129)"
+"TPS62903RPJR" = "Texas Instruments TPS62902 (BOM v1 line 38)"
+"U.FL-R-SMT-1" = "Hirose U.FL-R-SMT-1(80) (BOM v1 line 56)"
+"USB4105-GF-A" = "Amphenol 12402012E212A (BOM v1 line 61)"

@@ -1037,15 +1037,6 @@
 				)
 			)
 		)
-		(property "Second_Source" "Texas Instruments TPS62826DMQR (BOM v1 line 6)"
-			(at 0 0 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "ki_keywords" "buck step-down converter DC-DC 4A TPS62827 TPS6282x VSON-HR DMQ0006A"
 			(at 0 0 0)
 			(hide yes)
@@ -1195,8 +1186,8 @@
   (property "Description" "4 A synchronous step-down converter, 2.5-5.5 V input, 0.6-4.0 V adjustable output, power save mode, power good, 100 % duty cycle, VSON-HR-6 (DMQ0006A) 1.5 x 1.5 mm" (at 101.6 83.82 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Manufacturer" "Texas Instruments" (at 101.6 83.82 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "MPN" "TPS62827DMQR" (at 101.6 83.82 0) (effects (font (size 1.27 1.27))) (hide yes))
-  (property "Second_Source" "Texas Instruments TPS62826DMQR (3 A, same land, only while the peak stays <= 2.4 A; BOM v1 line 6)" (at 101.6 83.82 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Block" "blk.pwr-3v3-sys" (at 101.6 83.82 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Second_Source" "Texas Instruments TPS62826DMQR (3 A, same land, only while the peak stays <= 2.4 A; BOM v1 line 6)" (at 101.6 83.82 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Manufacturer_2" "Texas Instruments" (at 101.6 83.82 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "MPN_2" "TPS62826DMQR" (at 101.6 83.82 0) (effects (font (size 1.27 1.27))) (hide yes))
   (pin "1" (uuid "d4b033a7-6e2d-5661-9a13-7e26a768e05b"))

@@ -1037,15 +1037,6 @@
 				)
 			)
 		)
-		(property "Second_Source" "Texas Instruments TPS62136RGXT (BOM v1 line 113)"
-			(at 0 0 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "ki_keywords" "buck step-down converter DC-DC DCS-Control 4A TPS62136 VQFN-HR RGX0011A"
 			(at 0 0 0)
 			(hide yes)
@@ -1285,8 +1276,8 @@
   (property "Description" "4 A synchronous step-down converter, 3-17 V input, 0.8-12 V output, DCS-Control, 1 MHz, power good, output discharge, VQFN-HR-11 (RGX0011A) 2 x 3 mm" (at 101.6 83.82 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Manufacturer" "Texas Instruments" (at 101.6 83.82 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "MPN" "TPS62136RGXR" (at 101.6 83.82 0) (effects (font (size 1.27 1.27))) (hide yes))
-  (property "Second_Source" "Texas Instruments TPS62136RGXT (same part, 250-piece reel; BOM v1 line 113)" (at 101.6 83.82 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Block" "blk.pwr-vsys-lv" (at 101.6 83.82 0) (effects (font (size 1.27 1.27))) (hide yes))
+  (property "Second_Source" "Texas Instruments TPS62136RGXT (same part, 250-piece reel; BOM v1 line 113)" (at 101.6 83.82 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "Manufacturer_2" "Texas Instruments" (at 101.6 83.82 0) (effects (font (size 1.27 1.27))) (hide yes))
   (property "MPN_2" "TPS62136RGXT" (at 101.6 83.82 0) (effects (font (size 1.27 1.27))) (hide yes))
   (pin "8" (uuid "3fed679b-6045-5236-bd63-7b92fe4482be"))

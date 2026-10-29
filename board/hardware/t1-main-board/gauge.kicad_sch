@@ -885,15 +885,6 @@
 				)
 			)
 		)
-		(property "Second_Source" "Texas Instruments BQ40Z50-R2 (BOM v1 line 42, different package)"
-			(at 0 0 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "ki_keywords" "fuel gauge gas gauge battery 2S li-ion protection I2C impedance track VSON DRZ"
 			(at 0 0 0)
 			(hide yes)

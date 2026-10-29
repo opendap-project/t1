@@ -1,0 +1,93 @@
+# OpenDAP T1 touch faceplate flex: stack-up v0 (machine-readable).
+#
+# Written 2026-10-24 for
+# docs/specs/faceplate-flex.md. Every thickness and Dk is the prototype fab's
+# published standard 2-layer FPC stack-up (Stack-up for FPC page, fetched 2026-10-24) or a
+# stated assumption: the adhesive Dk (3.5) and the etch are not published. The coverlay is
+# modelled as a conformal 27.5 µm layer. DSI on L1 over the L2 ground plane.
+# Checked with toolkit-hardware's `odapkit stackup check hardware/faceplate-flex/stackup-v0.toml`;
+# format in toolkit-hardware docs/specs/stackup-method.md.
+
+version = 1
+name = "touch faceplate flex stack-up v0"
+build = "2-layer FPC, adhesive-based polyimide core"
+material = "Prototype fab standard 2-layer FPC stack-up, 0.156 mm (Stack-up for FPC page, fetched 2026-10-24)"
+design_window_pct = 2.0
+
+[etch]
+outer_reduction_um = 6.0
+inner_reduction_um = 4.0
+
+[tolerance]
+dielectric_pct = 10
+er_pct = 5
+width_um = 10
+copper_pct = 15
+
+[thickness]
+min_mm = 0.14
+max_mm = 0.20
+tolerance_mm = 0.03
+source = "Fab ±1.2 mil for two-layer flex up to 12 mil [P5]"
+
+[[layer]]
+name = "Coverlay top"
+type = "mask"
+thickness_um = 27.5
+er = 3.4
+material = "PI 12.5 (Dk 3.3) + adhesive 15 (Dk 3.5 assumed); mean"
+
+[[layer]]
+name = "L1"
+type = "copper"
+thickness_um = 24
+role = "DSI, low-speed, supplies"
+material = "18 um base, 24 um finished"
+
+[[layer]]
+name = "Adh L1"
+type = "dielectric"
+thickness_um = 20
+er = 3.5
+material = "adhesive, Dk assumed"
+
+[[layer]]
+name = "PI core"
+type = "dielectric"
+thickness_um = 25
+er = 3.3
+material = "polyimide"
+
+[[layer]]
+name = "Adh L2"
+type = "dielectric"
+thickness_um = 20
+er = 3.5
+material = "adhesive, Dk assumed"
+
+[[layer]]
+name = "L2"
+type = "copper"
+thickness_um = 24
+role = "ground plane"
+material = "18 um base, 24 um finished"
+
+[[layer]]
+name = "Coverlay bottom"
+type = "mask"
+thickness_um = 27.5
+er = 3.4
+material = "adhesive 15 + PI 12.5; mean"
+
+[[class]]
+name = "D100-L1"
+netclasses = ["MIPI_100D"]
+type = "diff"
+target_ohm = 100
+tolerance_pct = 10
+layer = "L1"
+reference = ["L2"]
+solve = "width"
+gap_um = 150
+width_um = 94.0
+z_ohm = 99.99

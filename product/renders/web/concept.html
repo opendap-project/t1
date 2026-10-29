@@ -1,0 +1,523 @@
+<title>OpenDAP T1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+  /* Full-window product render on the studio backdrop. */
+  :root { color-scheme: dark; }
+  html, body { height: 100%; margin: 0; }
+  /* A 16:9 frame, like a 1080p video cover: fitted to the window, centred, letterboxed in black.
+     The canvas always renders at 1920 × 1080 whatever the frame's on-screen size. */
+  body { background: #000; overflow: hidden; display: grid; place-items: center; }
+  .stage {
+    position: relative; overflow: hidden;
+    width: min(100vw, calc(100vh * 16 / 9)); aspect-ratio: 16 / 9;
+    background:
+      radial-gradient(ellipse 28% 42% at 57.6% 46%, rgba(170,185,205,0.13), transparent 72%),   /* light pool right behind the device */
+      radial-gradient(ellipse 90% 80% at 57% 46%, #1d2125 0%, #15181b 55%, #0d0f11 100%);
+  }
+  #view { position: absolute; inset: 0; }
+  #view canvas { display: block; outline: none; }
+  .labels { display: none; }
+  /* Hero overlay, sized in frame units (cqw) so it scales with the 1920 × 1080 frame like video graphics. */
+  .stage { container-type: inline-size; }
+  .hero { position: absolute; left: 6.5cqw; top: 4.088cqw;   /* T1 cap top sits 6cqw from the top, the same margin as the logo and the note at the bottom */ color: #f5f6f4; pointer-events: none; }
+  .hero h1 { margin: 0; display: grid; gap: 1.4cqw;   /* title and subtitle as wide as the bullet list */ font: 300 4.69cqw/1 "IBM Plex Sans", system-ui, sans-serif; color: #c6cbd0; letter-spacing: -0.005em; }
+  .hero h1 b { font: 600 17.87cqw/0.86 "IBM Plex Sans", system-ui, sans-serif; color: #f5f6f4; letter-spacing: -0.03em; }
+  /* Optical left alignment: cancel each glyph's left side bearing (Plex Sans SemiBold "T" 0.026 em, Light "O" 0.063 em). */
+  .hero h1 b { margin-left: -0.026em; }
+  .hero h1 span { margin-left: -0.063em; }
+  .hero h1 { padding-left: 0.104cqw; }   /* the list's ink starts ~0.09 em in (Plex Mono D/B); the title lines up with it */
+  .hero ul { list-style: none; margin: 3cqw 0 0; padding: 0; display: grid; gap: 1.05cqw; font: 400 1.15cqw/1.2 "IBM Plex Mono", ui-monospace, monospace; color: #939ba3; letter-spacing: 0.01em; }   /* sentence case, no wide tracking (design system §9.2) */
+  /* The first point is active by default; hovering any point makes it the active one instead. */
+  .hero ul { pointer-events: auto; }
+  .hero li { cursor: default; transition: color 120ms cubic-bezier(0.2, 0, 0, 1); }
+  .hero li:first-child { color: #f5f6f4; }
+  .hero ul:hover li:first-child { color: #939ba3; }
+  .hero ul:hover li:hover, .hero ul:hover li:first-child:hover { color: #f5f6f4; }
+  @media (prefers-reduced-motion: reduce) { .hero li { transition: none; } }
+  /* Top right: open source, open hardware and GitHub marks, one colour, top edge on the T1 cap top, right edge on the logo's. */
+  .marks { position: absolute; right: 6cqw; top: 6cqw; display: flex; align-items: center; gap: 1.5cqw; margin: 0; padding: 0; list-style: none; }
+  .marks li { display: grid; place-items: center; width: 2cqw; height: 2cqw; }
+  .marks svg { display: block; width: calc(2cqw * var(--k, 1)); height: calc(2cqw * var(--k, 1)); fill: #939ba3; }   /* --k: optical size per mark (Simple Icons, CC0) */
+  .marks a { display: block; color: inherit; }
+  .marks a:focus-visible { outline: 0.12cqw solid #ff874d; outline-offset: 0.3cqw; border-radius: 0.3cqw; }
+  /* Soft contact shadow under the device: no floor, just enough to stop it floating. */
+  .shadow { position: absolute; left: 57.6%; top: 84.5%; width: 22cqw; height: 2.4cqw; transform: translate(-50%, -50%); border-radius: 50%;
+    background: radial-gradient(closest-side, rgba(0,0,0,0.55), rgba(0,0,0,0.22) 55%, transparent); filter: blur(0.6cqw); pointer-events: none; }
+  /* Disclaimer: aligned left with the text block and on the logo's bottom edge. */
+  .disclaimer { position: absolute; left: 6.5cqw; bottom: 6cqw; margin: 0; font: 400 0.8cqw/1.6 "IBM Plex Mono", ui-monospace, monospace; color: #565e66; letter-spacing: 0.01em; pointer-events: none; }   /* dimmed by request, about 2.6:1 on this backdrop: under AA for small text (design system §3.4); fine for a video frame, not for web or docs */
+  .wordmark { position: absolute; right: 6cqw; bottom: 6cqw; width: 7cqw;   /* vertical lockup: mark above the wordmark */ height: auto; display: block; pointer-events: none; }
+</style>
+
+<main class="stage" aria-label="OpenDAP T1 concept render">
+  <div class="shadow" aria-hidden="true"></div>
+  <div id="view" role="img" aria-label="OpenDAP T1: graphite body, touch display on the front, orange Action button on the left edge."></div>
+  <header class="hero">
+    <h1 aria-label="OpenDAP T1"><b>T1</b><span>OpenDAP</span></h1>
+    <ul>
+      <li>Digital Audio Player</li>
+      <li>Blackbird OS</li>
+      <li>Linux Kernel 7+</li>
+      <li>Open Source / Open Hardware</li>
+    </ul>
+  </header>
+  <ul class="marks">
+    <li><svg viewBox="0 0 24 24" style="--k:1.0" role="img" aria-label="Linux"><title>Linux</title><path d="M12.504 0c-.155 0-.315.008-.48.021-4.226.333-3.105 4.807-3.17 6.298-.076 1.092-.3 1.953-1.05 3.02-.885 1.051-2.127 2.75-2.716 4.521-.278.832-.41 1.684-.287 2.489a.424.424 0 00-.11.135c-.26.268-.45.6-.663.839-.199.199-.485.267-.797.4-.313.136-.658.269-.864.68-.09.189-.136.394-.132.602 0 .199.027.4.055.536.058.399.116.728.04.97-.249.68-.28 1.145-.106 1.484.174.334.535.47.94.601.81.2 1.91.135 2.774.6.926.466 1.866.67 2.616.47.526-.116.97-.464 1.208-.946.587-.003 1.23-.269 2.26-.334.699-.058 1.574.267 2.577.2.025.134.063.198.114.333l.003.003c.391.778 1.113 1.132 1.884 1.071.771-.06 1.592-.536 2.257-1.306.631-.765 1.683-1.084 2.378-1.503.348-.199.629-.469.649-.853.023-.4-.2-.811-.714-1.376v-.097l-.003-.003c-.17-.2-.25-.535-.338-.926-.085-.401-.182-.786-.492-1.046h-.003c-.059-.054-.123-.067-.188-.135a.357.357 0 00-.19-.064c.431-1.278.264-2.55-.173-3.694-.533-1.41-1.465-2.638-2.175-3.483-.796-1.005-1.576-1.957-1.56-3.368.026-2.152.236-6.133-3.544-6.139zm.529 3.405h.013c.213 0 .396.062.584.198.19.135.33.332.438.533.105.259.158.459.166.724 0-.02.006-.04.006-.06v.105a.086.086 0 01-.004-.021l-.004-.024a1.807 1.807 0 01-.15.706.953.953 0 01-.213.335.71.71 0 00-.088-.042c-.104-.045-.198-.064-.284-.133a1.312 1.312 0 00-.22-.066c.05-.06.146-.133.183-.198.053-.128.082-.264.088-.402v-.02a1.21 1.21 0 00-.061-.4c-.045-.134-.101-.2-.183-.333-.084-.066-.167-.132-.267-.132h-.016c-.093 0-.176.03-.262.132a.8.8 0 00-.205.334 1.18 1.18 0 00-.09.4v.019c.002.089.008.179.02.267-.193-.067-.438-.135-.607-.202a1.635 1.635 0 01-.018-.2v-.02a1.772 1.772 0 01.15-.768c.082-.22.232-.406.43-.533a.985.985 0 01.594-.2zm-2.962.059h.036c.142 0 .27.048.399.135.146.129.264.288.344.465.09.199.14.4.153.667v.004c.007.134.006.2-.002.266v.08c-.03.007-.056.018-.083.024-.152.055-.274.135-.393.2.012-.09.013-.18.003-.267v-.015c-.012-.133-.04-.2-.082-.333a.613.613 0 00-.166-.267.248.248 0 00-.183-.064h-.021c-.071.006-.13.04-.186.132a.552.552 0 00-.12.27.944.944 0 00-.023.33v.015c.012.135.037.2.08.334.046.134.098.2.166.268.01.009.02.018.034.024-.07.057-.117.07-.176.136a.304.304 0 01-.131.068 2.62 2.62 0 01-.275-.402 1.772 1.772 0 01-.155-.667 1.759 1.759 0 01.08-.668 1.43 1.43 0 01.283-.535c.128-.133.26-.2.418-.2zm1.37 1.706c.332 0 .733.065 1.216.399.293.2.523.269 1.052.468h.003c.255.136.405.266.478.399v-.131a.571.571 0 01.016.47c-.123.31-.516.643-1.063.842v.002c-.268.135-.501.333-.775.465-.276.135-.588.292-1.012.267a1.139 1.139 0 01-.448-.067 3.566 3.566 0 01-.322-.198c-.195-.135-.363-.332-.612-.465v-.005h-.005c-.4-.246-.616-.512-.686-.71-.07-.268-.005-.47.193-.6.224-.135.38-.271.483-.336.104-.074.143-.102.176-.131h.002v-.003c.169-.202.436-.47.839-.601.139-.036.294-.065.466-.065zm2.8 2.142c.358 1.417 1.196 3.475 1.735 4.473.286.534.855 1.659 1.102 3.024.156-.005.33.018.513.064.646-1.671-.546-3.467-1.089-3.966-.22-.2-.232-.335-.123-.335.59.534 1.365 1.572 1.646 2.757.13.535.16 1.104.021 1.67.067.028.135.06.205.067 1.032.534 1.413.938 1.23 1.537v-.043c-.06-.003-.12 0-.18 0h-.016c.151-.467-.182-.825-1.065-1.224-.915-.4-1.646-.336-1.77.465-.008.043-.013.066-.018.135-.068.023-.139.053-.209.064-.43.268-.662.669-.793 1.187-.13.533-.17 1.156-.205 1.869v.003c-.02.334-.17.838-.319 1.35-1.5 1.072-3.58 1.538-5.348.334a2.645 2.645 0 00-.402-.533 1.45 1.45 0 00-.275-.333c.182 0 .338-.03.465-.067a.615.615 0 00.314-.334c.108-.267 0-.697-.345-1.163-.345-.467-.931-.995-1.788-1.521-.63-.4-.986-.87-1.15-1.396-.165-.534-.143-1.085-.015-1.645.245-1.07.873-2.11 1.274-2.763.107-.065.037.135-.408.974-.396.751-1.14 2.497-.122 3.854a8.123 8.123 0 01.647-2.876c.564-1.278 1.743-3.504 1.836-5.268.048.036.217.135.289.202.218.133.38.333.59.465.21.201.477.335.876.335.039.003.075.006.11.006.412 0 .73-.134.997-.268.29-.134.52-.334.74-.4h.005c.467-.135.835-.402 1.044-.7zm2.185 8.958c.037.6.343 1.245.882 1.377.588.134 1.434-.333 1.791-.765l.211-.01c.315-.007.577.01.847.268l.003.003c.208.199.305.53.391.876.085.4.154.78.409 1.066.486.527.645.906.636 1.14l.003-.007v.018l-.003-.012c-.015.262-.185.396-.498.595-.63.401-1.746.712-2.457 1.57-.618.737-1.37 1.14-2.036 1.191-.664.053-1.237-.2-1.574-.898l-.005-.003c-.21-.4-.12-1.025.056-1.69.176-.668.428-1.344.463-1.897.037-.714.076-1.335.195-1.814.12-.465.308-.797.641-.984l.045-.022zm-10.814.049h.01c.053 0 .105.005.157.014.376.055.706.333 1.023.752l.91 1.664.003.003c.243.533.754 1.064 1.189 1.637.434.598.77 1.131.729 1.57v.006c-.057.744-.48 1.148-1.125 1.294-.645.135-1.52.002-2.395-.464-.968-.536-2.118-.469-2.857-.602-.369-.066-.61-.2-.723-.4-.11-.2-.113-.602.123-1.23v-.004l.002-.003c.117-.334.03-.752-.027-1.118-.055-.401-.083-.71.043-.94.16-.334.396-.4.69-.533.294-.135.64-.202.915-.47h.002v-.002c.256-.268.445-.601.668-.838.19-.201.38-.336.663-.336zm7.159-9.074c-.435.201-.945.535-1.488.535-.542 0-.97-.267-1.28-.466-.154-.134-.28-.268-.373-.335-.164-.134-.144-.333-.074-.333.109.016.129.134.199.2.096.066.215.2.36.333.292.2.68.467 1.167.467.485 0 1.053-.267 1.398-.466.195-.135.445-.334.648-.467.156-.136.149-.267.279-.267.128.016.034.134-.147.332a8.097 8.097 0 01-.69.468zm-1.082-1.583V5.64c-.006-.02.013-.042.029-.05.074-.043.18-.027.26.004.063 0 .16.067.15.135-.006.049-.085.066-.135.066-.055 0-.092-.043-.141-.068-.052-.018-.146-.008-.163-.065zm-.551 0c-.02.058-.113.049-.166.066-.047.025-.086.068-.14.068-.05 0-.13-.02-.136-.068-.01-.066.088-.133.15-.133.08-.031.184-.047.259-.005.019.009.036.03.03.05v.02h.003z"/></svg></li>
+    <li><svg viewBox="0 0 24 24" style="--k:0.95" role="img" aria-label="Open source"><title>Open source</title><path d="M6.44 20.90 L6.31 20.82 L6.18 20.74 L6.06 20.66 L5.93 20.57 L5.81 20.48 L5.69 20.39 L5.57 20.30 L5.45 20.21 L5.34 20.11 L5.22 20.02 L5.11 19.92 L4.99 19.82 L4.88 19.72 L4.77 19.62 L4.66 19.51 L4.56 19.40 L4.45 19.30 L4.35 19.19 L4.24 19.08 L4.14 18.97 L4.04 18.85 L3.95 18.74 L3.85 18.62 L3.76 18.50 L3.66 18.38 L3.57 18.26 L3.48 18.14 L3.40 18.02 L3.31 17.90 L3.23 17.77 L3.15 17.64 L3.07 17.52 L2.99 17.39 L2.91 17.26 L2.84 17.13 L2.76 16.99 L2.69 16.86 L2.62 16.73 L2.56 16.59 L2.49 16.46 L2.43 16.32 L2.37 16.18 L2.31 16.04 L2.25 15.90 L2.20 15.76 L2.14 15.62 L2.09 15.48 L2.04 15.34 L2.00 15.19 L1.95 15.05 L1.91 14.91 L1.87 14.76 L1.83 14.62 L1.79 14.47 L1.76 14.32 L1.73 14.18 L1.70 14.03 L1.67 13.88 L1.64 13.73 L1.62 13.58 L1.60 13.43 L1.58 13.28 L1.56 13.13 L1.55 12.98 L1.53 12.83 L1.52 12.68 L1.51 12.53 L1.51 12.38 L1.50 12.23 L1.50 12.08 L1.50 11.93 L1.50 11.78 L1.51 11.63 L1.51 11.48 L1.52 11.33 L1.53 11.18 L1.55 11.03 L1.56 10.88 L1.58 10.73 L1.60 10.58 L1.62 10.43 L1.64 10.28 L1.67 10.13 L1.70 9.98 L1.73 9.84 L1.76 9.69 L1.79 9.54 L1.83 9.40 L1.87 9.25 L1.91 9.11 L1.95 8.96 L1.99 8.82 L2.04 8.67 L2.09 8.53 L2.14 8.39 L2.19 8.25 L2.25 8.11 L2.30 7.97 L2.36 7.83 L2.42 7.69 L2.49 7.56 L2.55 7.42 L2.62 7.28 L2.69 7.15 L2.76 7.02 L2.83 6.88 L2.90 6.75 L2.98 6.62 L3.06 6.49 L3.14 6.37 L3.22 6.24 L3.30 6.11 L3.39 5.99 L3.48 5.87 L3.57 5.75 L3.66 5.63 L3.75 5.51 L3.84 5.39 L3.94 5.27 L4.04 5.16 L4.13 5.04 L4.24 4.93 L4.34 4.82 L4.44 4.71 L4.55 4.60 L4.65 4.50 L4.76 4.39 L4.87 4.29 L4.98 4.19 L5.10 4.09 L5.21 3.99 L5.33 3.89 L5.44 3.80 L5.56 3.71 L5.68 3.61 L5.80 3.52 L5.92 3.44 L6.05 3.35 L6.17 3.27 L6.30 3.18 L6.43 3.10 L6.55 3.02 L6.68 2.95 L6.81 2.87 L6.95 2.80 L7.08 2.73 L7.21 2.66 L7.35 2.59 L7.48 2.52 L7.62 2.46 L7.76 2.40 L7.89 2.34 L8.03 2.28 L8.17 2.22 L8.31 2.17 L8.45 2.12 L8.60 2.07 L8.74 2.02 L8.88 1.97 L9.03 1.93 L9.17 1.89 L9.32 1.85 L9.46 1.81 L9.61 1.78 L9.76 1.74 L9.90 1.71 L10.05 1.68 L10.20 1.66 L10.35 1.63 L10.50 1.61 L10.65 1.59 L10.80 1.57 L10.95 1.55 L11.10 1.54 L11.25 1.53 L11.40 1.52 L11.55 1.51 L11.70 1.50 L11.85 1.50 L12.00 1.50 L12.15 1.50 L12.30 1.50 L12.45 1.51 L12.60 1.52 L12.75 1.53 L12.90 1.54 L13.05 1.55 L13.20 1.57 L13.35 1.59 L13.50 1.61 L13.65 1.63 L13.80 1.66 L13.95 1.68 L14.10 1.71 L14.24 1.74 L14.39 1.78 L14.54 1.81 L14.68 1.85 L14.83 1.89 L14.97 1.93 L15.12 1.97 L15.26 2.02 L15.40 2.07 L15.55 2.12 L15.69 2.17 L15.83 2.22 L15.97 2.28 L16.11 2.34 L16.24 2.40 L16.38 2.46 L16.52 2.52 L16.65 2.59 L16.79 2.66 L16.92 2.73 L17.05 2.80 L17.19 2.87 L17.32 2.95 L17.45 3.02 L17.57 3.10 L17.70 3.18 L17.83 3.27 L17.95 3.35 L18.08 3.44 L18.20 3.52 L18.32 3.61 L18.44 3.71 L18.56 3.80 L18.67 3.89 L18.79 3.99 L18.90 4.09 L19.02 4.19 L19.13 4.29 L19.24 4.39 L19.35 4.50 L19.45 4.60 L19.56 4.71 L19.66 4.82 L19.76 4.93 L19.87 5.04 L19.96 5.16 L20.06 5.27 L20.16 5.39 L20.25 5.51 L20.34 5.63 L20.43 5.75 L20.52 5.87 L20.61 5.99 L20.70 6.11 L20.78 6.24 L20.86 6.37 L20.94 6.49 L21.02 6.62 L21.10 6.75 L21.17 6.88 L21.24 7.02 L21.31 7.15 L21.38 7.28 L21.45 7.42 L21.51 7.56 L21.58 7.69 L21.64 7.83 L21.70 7.97 L21.75 8.11 L21.81 8.25 L21.86 8.39 L21.91 8.53 L21.96 8.67 L22.01 8.82 L22.05 8.96 L22.09 9.11 L22.13 9.25 L22.17 9.40 L22.21 9.54 L22.24 9.69 L22.27 9.84 L22.30 9.98 L22.33 10.13 L22.36 10.28 L22.38 10.43 L22.40 10.58 L22.42 10.73 L22.44 10.88 L22.45 11.03 L22.47 11.18 L22.48 11.33 L22.49 11.48 L22.49 11.63 L22.50 11.78 L22.50 11.93 L22.50 12.08 L22.50 12.23 L22.49 12.38 L22.49 12.53 L22.48 12.68 L22.47 12.83 L22.45 12.98 L22.44 13.13 L22.42 13.28 L22.40 13.43 L22.38 13.58 L22.36 13.73 L22.33 13.88 L22.30 14.03 L22.27 14.18 L22.24 14.32 L22.21 14.47 L22.17 14.62 L22.13 14.76 L22.09 14.91 L22.05 15.05 L22.00 15.19 L21.96 15.34 L21.91 15.48 L21.86 15.62 L21.80 15.76 L21.75 15.90 L21.69 16.04 L21.63 16.18 L21.57 16.32 L21.51 16.46 L21.44 16.59 L21.38 16.73 L21.31 16.86 L21.24 16.99 L21.16 17.13 L21.09 17.26 L21.01 17.39 L20.93 17.52 L20.85 17.64 L20.77 17.77 L20.69 17.90 L20.60 18.02 L20.52 18.14 L20.43 18.26 L20.34 18.38 L20.24 18.50 L20.15 18.62 L20.05 18.74 L19.96 18.85 L19.86 18.97 L19.76 19.08 L19.65 19.19 L19.55 19.30 L19.44 19.40 L19.34 19.51 L19.23 19.62 L19.12 19.72 L19.01 19.82 L18.89 19.92 L18.78 20.02 L18.66 20.11 L18.55 20.21 L18.43 20.30 L18.31 20.39 L18.19 20.48 L18.07 20.57 L17.94 20.66 L17.82 20.74 L17.69 20.82 L17.56 20.90 L14.44 15.90 L14.49 15.87 L14.55 15.83 L14.60 15.79 L14.66 15.75 L14.71 15.72 L14.76 15.68 L14.82 15.64 L14.87 15.60 L14.92 15.55 L14.97 15.51 L15.02 15.47 L15.07 15.43 L15.12 15.38 L15.17 15.34 L15.21 15.29 L15.26 15.24 L15.31 15.20 L15.35 15.15 L15.40 15.10 L15.44 15.05 L15.49 15.00 L15.53 14.95 L15.57 14.90 L15.61 14.85 L15.65 14.80 L15.69 14.74 L15.73 14.69 L15.77 14.64 L15.81 14.58 L15.84 14.53 L15.88 14.47 L15.91 14.42 L15.95 14.36 L15.98 14.30 L16.01 14.25 L16.05 14.19 L16.08 14.13 L16.11 14.07 L16.14 14.01 L16.17 13.95 L16.19 13.89 L16.22 13.83 L16.25 13.77 L16.27 13.71 L16.29 13.65 L16.32 13.59 L16.34 13.52 L16.36 13.46 L16.38 13.40 L16.40 13.34 L16.42 13.27 L16.44 13.21 L16.46 13.15 L16.47 13.08 L16.49 13.02 L16.50 12.95 L16.51 12.89 L16.53 12.82 L16.54 12.76 L16.55 12.69 L16.56 12.63 L16.57 12.56 L16.57 12.50 L16.58 12.43 L16.59 12.37 L16.59 12.30 L16.59 12.23 L16.60 12.17 L16.60 12.10 L16.60 12.04 L16.60 11.97 L16.60 11.90 L16.60 11.84 L16.59 11.77 L16.59 11.71 L16.59 11.64 L16.58 11.57 L16.57 11.51 L16.57 11.44 L16.56 11.38 L16.55 11.31 L16.54 11.25 L16.53 11.18 L16.51 11.12 L16.50 11.05 L16.49 10.99 L16.47 10.92 L16.46 10.86 L16.44 10.80 L16.42 10.73 L16.40 10.67 L16.38 10.61 L16.36 10.54 L16.34 10.48 L16.32 10.42 L16.30 10.36 L16.27 10.30 L16.25 10.23 L16.22 10.17 L16.20 10.11 L16.17 10.05 L16.14 9.99 L16.11 9.93 L16.08 9.88 L16.05 9.82 L16.02 9.76 L15.98 9.70 L15.95 9.64 L15.92 9.59 L15.88 9.53 L15.85 9.48 L15.81 9.42 L15.77 9.37 L15.73 9.31 L15.70 9.26 L15.66 9.21 L15.61 9.16 L15.57 9.10 L15.53 9.05 L15.49 9.00 L15.45 8.95 L15.40 8.90 L15.36 8.85 L15.31 8.81 L15.27 8.76 L15.22 8.71 L15.17 8.67 L15.12 8.62 L15.07 8.58 L15.02 8.53 L14.97 8.49 L14.92 8.45 L14.87 8.41 L14.82 8.37 L14.77 8.33 L14.72 8.29 L14.66 8.25 L14.61 8.21 L14.55 8.17 L14.50 8.14 L14.44 8.10 L14.39 8.07 L14.33 8.03 L14.27 8.00 L14.21 7.97 L14.16 7.94 L14.10 7.91 L14.04 7.88 L13.98 7.85 L13.92 7.82 L13.86 7.79 L13.80 7.77 L13.74 7.74 L13.68 7.72 L13.62 7.69 L13.55 7.67 L13.49 7.65 L13.43 7.63 L13.37 7.61 L13.30 7.59 L13.24 7.57 L13.18 7.55 L13.11 7.54 L13.05 7.52 L12.98 7.51 L12.92 7.49 L12.85 7.48 L12.79 7.47 L12.72 7.46 L12.66 7.45 L12.59 7.44 L12.53 7.43 L12.46 7.42 L12.40 7.42 L12.33 7.41 L12.26 7.41 L12.20 7.40 L12.13 7.40 L12.07 7.40 L12.00 7.40 L11.93 7.40 L11.87 7.40 L11.80 7.40 L11.74 7.41 L11.67 7.41 L11.60 7.42 L11.54 7.42 L11.47 7.43 L11.41 7.44 L11.34 7.45 L11.28 7.46 L11.21 7.47 L11.15 7.48 L11.08 7.49 L11.02 7.51 L10.95 7.52 L10.89 7.54 L10.82 7.55 L10.76 7.57 L10.70 7.59 L10.63 7.61 L10.57 7.63 L10.51 7.65 L10.45 7.67 L10.38 7.69 L10.32 7.72 L10.26 7.74 L10.20 7.77 L10.14 7.79 L10.08 7.82 L10.02 7.85 L9.96 7.88 L9.90 7.91 L9.84 7.94 L9.79 7.97 L9.73 8.00 L9.67 8.03 L9.61 8.07 L9.56 8.10 L9.50 8.14 L9.45 8.17 L9.39 8.21 L9.34 8.25 L9.28 8.29 L9.23 8.33 L9.18 8.37 L9.13 8.41 L9.08 8.45 L9.03 8.49 L8.98 8.53 L8.93 8.58 L8.88 8.62 L8.83 8.67 L8.78 8.71 L8.73 8.76 L8.69 8.81 L8.64 8.85 L8.60 8.90 L8.55 8.95 L8.51 9.00 L8.47 9.05 L8.43 9.10 L8.39 9.16 L8.34 9.21 L8.30 9.26 L8.27 9.31 L8.23 9.37 L8.19 9.42 L8.15 9.48 L8.12 9.53 L8.08 9.59 L8.05 9.64 L8.02 9.70 L7.98 9.76 L7.95 9.82 L7.92 9.88 L7.89 9.93 L7.86 9.99 L7.83 10.05 L7.80 10.11 L7.78 10.17 L7.75 10.23 L7.73 10.30 L7.70 10.36 L7.68 10.42 L7.66 10.48 L7.64 10.54 L7.62 10.61 L7.60 10.67 L7.58 10.73 L7.56 10.80 L7.54 10.86 L7.53 10.92 L7.51 10.99 L7.50 11.05 L7.49 11.12 L7.47 11.18 L7.46 11.25 L7.45 11.31 L7.44 11.38 L7.43 11.44 L7.43 11.51 L7.42 11.57 L7.41 11.64 L7.41 11.71 L7.41 11.77 L7.40 11.84 L7.40 11.90 L7.40 11.97 L7.40 12.04 L7.40 12.10 L7.40 12.17 L7.41 12.23 L7.41 12.30 L7.41 12.37 L7.42 12.43 L7.43 12.50 L7.43 12.56 L7.44 12.63 L7.45 12.69 L7.46 12.76 L7.47 12.82 L7.49 12.89 L7.50 12.95 L7.51 13.02 L7.53 13.08 L7.54 13.15 L7.56 13.21 L7.58 13.27 L7.60 13.34 L7.62 13.40 L7.64 13.46 L7.66 13.52 L7.68 13.59 L7.71 13.65 L7.73 13.71 L7.75 13.77 L7.78 13.83 L7.81 13.89 L7.83 13.95 L7.86 14.01 L7.89 14.07 L7.92 14.13 L7.95 14.19 L7.99 14.25 L8.02 14.30 L8.05 14.36 L8.09 14.42 L8.12 14.47 L8.16 14.53 L8.19 14.58 L8.23 14.64 L8.27 14.69 L8.31 14.74 L8.35 14.80 L8.39 14.85 L8.43 14.90 L8.47 14.95 L8.51 15.00 L8.56 15.05 L8.60 15.10 L8.65 15.15 L8.69 15.20 L8.74 15.24 L8.79 15.29 L8.83 15.34 L8.88 15.38 L8.93 15.43 L8.98 15.47 L9.03 15.51 L9.08 15.55 L9.13 15.60 L9.18 15.64 L9.24 15.68 L9.29 15.72 L9.34 15.75 L9.40 15.79 L9.45 15.83 L9.51 15.87 L9.56 15.90 Z"/></svg></li>
+    <li><svg viewBox="0 0 24 24" style="--k:0.93" role="img" aria-label="Open hardware"><title>Open hardware</title><path d="M23.87 11.525c.071.013.13.084.13.157v3.033a.166.166 0 0 1-.13.157l-2.875.535a.243.243 0 0 0-.17.151l-.898 2.242a.252.252 0 0 0 .017.229l1.633 2.379a.167.167 0 0 1-.02.204l-2.144 2.144a.167.167 0 0 1-.203.019l-2.338-1.604a.23.23 0 0 0-.224-.008l-1.03.55a.121.121 0 0 1-.17-.062l-2.125-5.135a.161.161 0 0 1 .062-.192l.258-.158c.048-.03.113-.08.163-.125a3.354 3.354 0 1 0-3.612 0c.05.046.115.096.163.125l.258.158a.16.16 0 0 1 .062.192L8.552 21.65a.121.121 0 0 1-.17.063l-1.03-.55a.23.23 0 0 0-.224.007L4.79 22.775a.168.168 0 0 1-.204-.019l-2.145-2.144a.167.167 0 0 1-.019-.204l1.633-2.38a.251.251 0 0 0 .017-.228l-.897-2.242a.244.244 0 0 0-.17-.15L.13 14.871a.166.166 0 0 1-.13-.157v-3.032c0-.073.059-.144.13-.157l2.947-.548a.253.253 0 0 0 .175-.15l.903-2.108a.246.246 0 0 0-.014-.227L2.424 5.989a.167.167 0 0 1 .019-.203L4.587 3.64a.166.166 0 0 1 .204-.019L7.337 5.37c.06.041.163.048.229.016l2.043-.836c.07-.023.137-.1.15-.173l.567-3.047a.167.167 0 0 1 .157-.131h3.034c.073 0 .143.059.157.13l.567 3.048a.25.25 0 0 0 .15.173l2.043.836a.252.252 0 0 0 .23-.016l2.546-1.748a.166.166 0 0 1 .203.02l2.144 2.144c.052.051.06.143.02.203l-1.718 2.503a.245.245 0 0 0-.014.227l.903 2.108a.256.256 0 0 0 .175.15l2.946.548"/></svg></li>
+    <li><a href="https://github.com/opendap-project" aria-label="OpenDAP on GitHub"><svg viewBox="0 0 24 24" style="--k:0.86" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a></li>
+  </ul>
+  <p class="disclaimer">Concept art, not a real device.<br>OpenDAP is in early open development.</p>
+  <svg class="wordmark" viewBox="0 0 435.244 335.626" role="img" aria-label="OpenDAP"><path fill="#939BA3" d="M210.622 36.875L210.622 194.694C210.622 195.407 210.242 196.066 209.626 196.424L197.779 203.298C197.163 203.656 196.402 203.659 195.783 203.305L57.629 124.36C57.006 124.004 56.622 123.341 56.622 122.624L56.622 108.945C56.622 108.227 57.006 107.565 57.629 107.208L195.783 28.264C196.402 27.91 197.163 27.912 197.779 28.27L209.626 35.145C210.242 35.503 210.622 36.162 210.622 36.875ZM182.622 154.663L182.622 76.905C182.622 76.192 182.242 75.533 181.626 75.176L176.699 72.316C176.082 71.958 175.322 71.956 174.703 72.31L106.629 111.208C106.006 111.565 105.622 112.227 105.622 112.945L105.622 118.624C105.622 119.341 106.006 120.004 106.629 120.36L174.703 159.259C175.322 159.613 176.082 159.61 176.699 159.252L181.626 156.393C182.242 156.035 182.622 155.376 182.622 154.663ZM224.622 166.694L224.622 8.875C224.622 8.162 225.001 7.503 225.618 7.145L237.464 0.27C238.081 -0.088 238.841 -0.09 239.46 0.264L377.614 79.208C378.237 79.565 378.622 80.227 378.622 80.945L378.622 94.624C378.622 95.341 378.237 96.004 377.614 96.36L239.46 175.305C238.841 175.659 238.081 175.656 237.464 175.298L225.618 168.424C225.001 168.066 224.622 167.407 224.622 166.694ZM252.622 48.905L252.622 126.663C252.622 127.376 253.001 128.035 253.618 128.393L258.545 131.252C259.162 131.61 259.922 131.613 260.541 131.259L328.614 92.36C329.237 92.004 329.622 91.341 329.622 90.624L329.622 84.945C329.622 84.227 329.237 83.565 328.614 83.208L260.541 44.31C259.922 43.956 259.162 43.958 258.545 44.316L253.618 47.176C253.001 47.533 252.622 48.192 252.622 48.905ZM30.487 316.772C48.94 316.772 60.974 304.236 60.974 280.569C60.974 256.901 48.94 244.365 30.487 244.365C12.135 244.365 0 256.901 0 280.569C0 304.236 12.135 316.772 30.487 316.772ZM30.487 305.039C20.458 305.039 14.04 297.918 14.04 285.984V275.153C14.04 263.219 20.458 256.099 30.487 256.099C40.516 256.099 46.934 263.219 46.934 275.153V285.984C46.934 297.918 40.516 305.039 30.487 305.039ZM73.61 335.626H86.447V306.844H86.848C88.854 312.761 94.37 316.772 101.289 316.772C114.527 316.772 121.848 306.844 121.848 289.294C121.848 271.844 114.527 262.016 101.289 262.016C94.37 262.016 88.754 265.827 86.848 271.844H86.447V263.219H73.61ZM97.178 306.142C91.06 306.142 86.447 303.033 86.447 297.617V280.97C86.447 275.855 91.06 272.546 97.178 272.546C103.797 272.546 108.41 277.46 108.41 284.881V293.907C108.41 301.328 103.797 306.142 97.178 306.142ZM154.943 316.772C164.67 316.772 172.292 313.062 176.605 307.145L169.685 299.423C166.476 303.534 162.665 306.543 156.347 306.543C147.923 306.543 143.61 301.428 143.61 293.907V292.603H178.41V288.391C178.41 274.05 170.888 262.016 154.542 262.016C139.198 262.016 130.272 272.746 130.272 289.294C130.272 306.041 139.499 316.772 154.943 316.772ZM154.742 271.643C161.361 271.643 165.072 276.557 165.072 283.778V284.68H143.61V283.878C143.61 276.657 148.023 271.643 154.742 271.643ZM202.579 315.569V280.97C202.579 275.354 207.693 272.546 213.009 272.546C219.126 272.546 221.633 276.357 221.633 283.778V315.569H234.47V282.474C234.47 269.437 228.453 262.016 217.722 262.016C209.599 262.016 205.186 266.328 203.08 271.944H202.579V263.219H189.742V315.569ZM249.513 315.569H274.986C293.238 315.569 305.172 303.835 305.172 280.569C305.172 257.302 293.238 245.569 274.986 245.569H249.513ZM262.751 303.835V257.302H274.986C284.814 257.302 291.132 263.119 291.132 275.053V286.084C291.132 298.019 284.814 303.835 274.986 303.835ZM372.665 315.569 349.398 245.569H332.951L309.484 315.569H322.923L328.438 297.718H353.309L358.926 315.569ZM350.1 286.385H331.648L340.573 257.603H341.074ZM396.232 315.569V288.892H414.484C427.421 288.892 435.244 280.268 435.244 267.231C435.244 254.294 427.421 245.569 414.484 245.569H382.994V315.569ZM396.232 257.102H413.281C418.395 257.102 421.504 259.809 421.504 264.924V269.537C421.504 274.652 418.395 277.46 413.281 277.46H396.232Z"/></svg>
+</main>
+
+<script type="importmap">
+{ "imports": {
+  "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/",
+  "three-mesh-bvh": "https://cdn.jsdelivr.net/npm/three-mesh-bvh@0.8.3/build/index.module.js",
+  "three-bvh-csg": "https://cdn.jsdelivr.net/npm/three-bvh-csg@0.0.17/build/index.module.js"
+} }
+</script>
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
+import { RoundedBoxGeometry } from 'three/addons/geometries/RoundedBoxGeometry.js';
+import { CSS2DRenderer, CSS2DObject } from 'three/addons/renderers/CSS2DRenderer.js';
+import * as BGU from 'three/addons/utils/BufferGeometryUtils.js';
+import { Brush, Evaluator, SUBTRACTION } from 'three-bvh-csg';
+
+/* mm; origin at the body centre; x width, y length (+up), z thickness (+faceplate) — T1-021.
+   Construction, finishes and buttons follow the earlier T1 concept model (T1-059);
+   dimensions, front layout and ports follow the current requirements. */
+const W = 59.5, H = 94.3, T = 24, R = 9;            // tentative body, t1 ADR 0003
+const ZF = T / 2, ZB = -T / 2, KZ = 0;              // faces; button axis on the side walls
+const BEV = 0.6;                                    // body edge bevel
+const LIP = 1.0;                                    // frame lip around the inset faceplate and back cover
+const CW = W - 2 * LIP, CH = H - 2 * LIP, CR = R - LIP;
+const GLASS_T = 0.7, BACK_T = 1.2;
+const ACT = { w: 48.96, h: 73.44, y: 0 };           // faceplate-touch ADR 0001
+const SENS = { y: (ACT.y + ACT.h / 2 + CH / 2) / 2, als: 0, led: 16 };  // FPT-023; centred in the glass strip above the display
+const MICY = (ACT.y - ACT.h / 2 - CH / 2) / 2;      // FPT-024; centred in the glass strip below the display
+const DY = 0.9;                                     // earlier concept was 92.5 long: keep the buttons' distance from the top
+const KEYS = {
+  action: { side: -1, y: 30.0 + DY, shape: 'round', d: 13 },   // Ø13 for the thumb; 1 mm higher to keep the gap to the volume pocket
+  volup:  { side: -1, y: 13.8125 + DY, shape: 'half', dir: 1, len: 11.375, hz: 8.6, pair: 7.5 + DY, icon: '+' },
+  voldn:  { side: -1, y: 1.1875 + DY, shape: 'half', dir: -1, len: 11.375, hz: 8.6, pair: 7.5 + DY, icon: '-' },
+  main:   { side: 1, y: 22.0 + DY, shape: 'pill', len: 15, hz: 7 },
+};
+// T1-016 order. Part bodies from the earlier concept: 3.5 mm jack 5.6 wide, Pentaconn 4.4 9.0, USB-C 8.94, side-fire speaker 15;
+// USB-C centred, 2 mm between bodies; the speaker's grille sits over its mouth as before.
+const PORTS = { j35: { x: -20.27, r: 2.5 }, j44: { x: -10.97, r: 3.0 }, usbc: { x: 0, w: 9.14, h: 3.46 }, spk: { x0: 9.57, x1: 18.37 } };
+
+const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const V = (x, y, z) => new THREE.Vector3(x, y, z);
+
+// ---------- Renderer ----------
+const host = document.getElementById('view');
+const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, preserveDrawingBuffer: true });
+renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+renderer.toneMapping = THREE.NeutralToneMapping;
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+renderer.shadowMap.enabled = true; renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+host.appendChild(renderer.domElement);
+const labelRenderer = new CSS2DRenderer();
+labelRenderer.domElement.className = 'labels';
+host.appendChild(labelRenderer.domElement);
+
+const scene = new THREE.Scene();
+scene.environment = new THREE.PMREMGenerator(renderer).fromScene(new RoomEnvironment(), 0.04).texture;
+scene.environmentIntensity = 0.85;
+const camera = new THREE.PerspectiveCamera(28, 1, 8, 3000);
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.enableDamping = false; controls.dampingFactor = 0.08; controls.enablePan = false;
+controls.minDistance = 130; controls.maxDistance = 600;
+
+const key = new THREE.DirectionalLight(0xffffff, 1.9); key.position.set(-90, 170, 140); key.castShadow = true;
+Object.assign(key.shadow.camera, { left: -90, right: 90, top: 90, bottom: -90, near: 10, far: 600 }); key.shadow.mapSize.set(2048, 2048); key.shadow.radius = 6;
+scene.add(key);
+const rim = new THREE.DirectionalLight(0xdfe8ff, 2.4); rim.position.set(170, 70, -150); scene.add(rim);
+// rim lights from behind on both sides and from below: they draw the case's edges against the dark backdrop
+const rimL = new THREE.DirectionalLight(0xdfe8ff, 0.9); rimL.position.set(-190, 40, -120); scene.add(rimL);
+const rimT = new THREE.DirectionalLight(0xffffff, 1.2); rimT.position.set(0, 200, -140); scene.add(rimT);
+const under = new THREE.DirectionalLight(0xcfd8e6, 0.35); under.position.set(-60, -200, 80); scene.add(under);
+const underR = new THREE.DirectionalLight(0xdfe6f0, 1.1); underR.position.set(60, -240, 70); scene.add(underR);   // secondary from below right: lights the bottom edge so the speaker grille reads
+// faint direct light on the speaker grille: a narrow, soft spot from below and in front, aimed at the bottom edge's right half
+const spkLight = new THREE.SpotLight(0xe6ecf4, 1.6, 0, Math.PI / 18, 0.85, 0);
+spkLight.position.set(40, -150, 120); spkLight.target.position.set(14, -47, 0); scene.add(spkLight, spkLight.target);
+const fill = new THREE.DirectionalLight(0xffffff, 0.45); fill.position.set(160, -60, 140); scene.add(fill);
+const ground = new THREE.Mesh(new THREE.PlaneGeometry(1200, 1200), new THREE.ShadowMaterial({ opacity: 0.35 }));
+ground.rotation.x = -Math.PI / 2; ground.position.y = -H / 2 - 16; ground.receiveShadow = true;
+
+// ---------- Geometry helpers (from the earlier concept engine) ----------
+function squircle(w, h, r, cx = 0, cy = 0, seg = 22) {
+  const p = Math.min(r * 1.45, w / 2, h / 2), n = 3.6, pts = [];
+  [[w / 2 - p, h / 2 - p], [-w / 2 + p, h / 2 - p], [-w / 2 + p, -h / 2 + p], [w / 2 - p, -h / 2 + p]].forEach(([sx, sy], q) => {
+    for (let i = 0; i <= seg; i++) { const t = q * Math.PI / 2 + (i / seg) * Math.PI / 2, c = Math.cos(t), s = Math.sin(t); pts.push(new THREE.Vector2(cx + sx + p * Math.sign(c) * Math.pow(Math.abs(c), 2 / n), cy + sy + p * Math.sign(s) * Math.pow(Math.abs(s), 2 / n))); }
+  });
+  return pts;
+}
+const crease = g => BGU.toCreasedNormals(g, Math.PI / 5);
+function extrudeZ(shape, z0, z1, bevel = 0, segs = 1) {
+  const d = Math.max(0.01, z1 - z0 - 2 * bevel);
+  const g = new THREE.ExtrudeGeometry(shape, { depth: d, bevelEnabled: bevel > 0, bevelThickness: bevel, bevelSize: bevel, bevelSegments: segs, curveSegments: 14 });
+  g.translate(0, 0, z0 + bevel); return g;
+}
+function slab(w, h, r, z0, z1, bevel = 0, cx = 0, cy = 0) { return crease(extrudeZ(new THREE.Shape(squircle(w - 2 * bevel, h - 2 * bevel, Math.max(0.2, r - bevel), cx, cy)), z0, z1, bevel, bevel > 0.3 ? 3 : 1)); }
+function vStadium(w, h, cx = 0, cy = 0) { const s = new THREE.Shape(), r = w / 2; s.absarc(cx, cy + h / 2 - r, r, 0, Math.PI); s.absarc(cx, cy - h / 2 + r, r, Math.PI, Math.PI * 2); return s; }
+function stadiumShape(w, h) { const s = new THREE.Shape(), r = h / 2; s.absarc(w / 2 - r, 0, r, -Math.PI / 2, Math.PI / 2); s.absarc(-w / 2 + r, 0, r, Math.PI / 2, Math.PI * 1.5); return s; }
+function circleShp(r) { const s = new THREE.Shape(); s.absarc(0, 0, r, 0, Math.PI * 2, false); return s; }
+// Half capsule: round end outward (dir), flat end at the split, 0.6 mm corners.
+function halfShape(w, len, dir, rc = 0.6, y0 = 0) {
+  const s = new THREE.Shape(), r = w / 2, yr = y0 + dir * (len / 2 - r), yf = y0 - dir * len / 2, pts = [];
+  for (let i = 0; i <= 24; i++) { const a = Math.PI * i / 24; pts.push([r * Math.cos(a), dir * r * Math.sin(a)]); }
+  const out = pts.map(([x, y]) => [x, yr + y]), c1 = [], c2 = [];
+  for (let i = 0; i <= 6; i++) { const a = Math.PI / 2 * i / 6; c1.push([-r + rc - rc * Math.cos(a), yf + dir * (rc - rc * Math.sin(a))]); c2.push([r - rc + rc * Math.sin(a), yf + dir * (rc - rc * Math.cos(a))]); }
+  const all = out.concat(c1, c2), ordered = dir > 0 ? all : all.slice().reverse();
+  ordered.forEach(([x, y], i) => i ? s.lineTo(x, y) : s.moveTo(x, y));
+  return s;
+}
+function localExtrude(shape, z0, z1) { const g = new THREE.ExtrudeGeometry(shape, { depth: z1 - z0, bevelEnabled: false, curveSegments: 28 }); g.translate(0, 0, z0); return g; }
+const ev = new Evaluator(); ev.useGroups = false; ev.attributes = ['position', 'uv', 'normal'];
+function brush(geo, x = 0, y = 0, z = 0, rx = 0, ry = 0, rz = 0) { const b = new Brush(geo); b.position.set(x, y, z); b.rotation.set(rx, ry, rz); b.updateMatrixWorld(); return b; }
+
+// ---------- Materials (finishes from the earlier concept; colours from the tokens) ----------
+function grain(size = 512) {
+  const c = document.createElement('canvas'); c.width = c.height = size; const g = c.getContext('2d'), img = g.createImageData(size, size);
+  for (let i = 0; i < img.data.length; i += 4) { const v = 200 + Math.random() * 55; img.data[i] = img.data[i + 1] = img.data[i + 2] = v; img.data[i + 3] = 255; }
+  g.putImageData(img, 0, 0); const t = new THREE.CanvasTexture(c); t.wrapS = t.wrapT = THREE.RepeatWrapping; t.repeat.set(0.08, 0.08); return t;
+}
+const G = grain();
+const M = {
+  core: new THREE.MeshPhysicalMaterial({ color: 0x2b2d2f, roughness: 0.62, bumpMap: G, bumpScale: 0.25 }),     // graphite polymer, grip texture (CASE-021)
+  back: new THREE.MeshPhysicalMaterial({ color: 0x2b2d2f, roughness: 0.55, bumpMap: G, bumpScale: 0.2 }),
+  glass: new THREE.MeshPhysicalMaterial({ color: 0x020203, roughness: 0.08, clearcoat: 1, clearcoatRoughness: 0.03, envMapIntensity: 0.6 }),
+  glassTop: new THREE.MeshPhysicalMaterial({ color: 0x0c0d10, roughness: 0.03, transparent: true, opacity: 0.1, envMapIntensity: 0.8, depthWrite: false }),
+  btn: new THREE.MeshPhysicalMaterial({ color: 0xb4b9bf, metalness: 0.55, roughness: 0.38, clearcoat: 0.7, clearcoatRoughness: 0.25 }),   // Volume and Main: silver-finished plastic (metallic paint under a clear coat)
+  act: new THREE.MeshPhysicalMaterial({ color: 0xff6a2a, metalness: 0.85, roughness: 0.34, clearcoat: 0.6, clearcoatRoughness: 0.15, side: THREE.DoubleSide }),
+  relief: new THREE.MeshStandardMaterial({ color: 0x2b2e32, roughness: 0.5, metalness: 0.1 }),   // + and − in graphite, to read on the silver keys
+  print: new THREE.MeshStandardMaterial({ color: 0xf4f2ed, roughness: 0.7, polygonOffset: true, polygonOffsetFactor: -2 }),
+  dark: new THREE.MeshStandardMaterial({ color: 0x0a0b0c, roughness: 0.6 }),
+  black: new THREE.MeshBasicMaterial({ color: 0x050505 }),
+  nickel: new THREE.MeshStandardMaterial({ color: 0xd9dbdc, roughness: 0.18, metalness: 1 }),
+  pom: new THREE.MeshStandardMaterial({ color: 0x141517, roughness: 0.5 }),
+  lens: new THREE.MeshPhysicalMaterial({ color: 0xffffff, roughness: 0.05, transmission: 0.9, thickness: 1 }),
+  ir: new THREE.MeshStandardMaterial({ color: 0x1a1214, roughness: 0.3 }),
+};
+
+const device = new THREE.Group(); scene.add(device);
+
+// ---------- Body: one piece, flat walls, 0.6 mm bevel; pockets for the faceplate and the back cover ----------
+function keyFrame(k) { const o = new THREE.Object3D(); o.position.set(k.side * W / 2, k.y, KZ); o.rotation.y = k.side > 0 ? Math.PI / 2 : -Math.PI / 2; o.updateMatrix(); return o.matrix; }
+function keyOutline(k, grow = 0) {
+  if (k.shape === 'round') return circleShp(k.d / 2 + grow);
+  if (k.shape === 'half') return halfShape(k.hz + 2 * grow, k.len + 2 * grow, k.dir, 0.6 + grow, 0);
+  return vStadium(k.hz + 2 * grow, k.len + 2 * grow);
+}
+const keyList = Object.entries(KEYS).map(([id, k]) => ({ id, ...k }));
+{
+  let body = brush(slab(W, H, R, ZB, ZF, BEV));
+  const pocket = (z0, z1) => brush(extrudeZ(new THREE.Shape(squircle(CW + 0.2, CH + 0.2, CR + 0.1)), z0, z1));
+  body = ev.evaluate(body, pocket(ZF - 3.2, ZF + 1), SUBTRACTION);
+  body = ev.evaluate(body, pocket(ZB - 1, ZB + BACK_T + 0.6), SUBTRACTION);
+  // recessed pockets in the edge, each following its button's shape (earlier concept)
+  // shallow (0.35 mm) and fully chamfered at 45°: the outline below grows by the chamfer up to the wall
+  const PD = 0.35;
+  const pockets = [[circleShp(7.65 - PD), KEYS.action], [vStadium(10.4 - 2 * PD, 26.8 - 2 * PD), { ...KEYS.volup, y: KEYS.volup.pair }], [vStadium(KEYS.main.hz + 1.8 - 2 * PD, KEYS.main.len + 1.8 - 2 * PD), KEYS.main]];
+  pockets.forEach(([shape, k]) => {
+    const g = new THREE.ExtrudeGeometry(shape, { depth: 4, bevelEnabled: true, bevelThickness: PD, bevelSize: PD, bevelSegments: 1, curveSegments: 40 });
+    g.applyMatrix4(keyFrame(k)); body = ev.evaluate(body, brush(g), SUBTRACTION);
+  });
+  // through-slots: the size of the button that shows, plus 0.1 mm
+  keyList.forEach(k => { const g = localExtrude(keyOutline(k, 0.1), -3, 2); g.applyMatrix4(keyFrame(k)); body = ev.evaluate(body, brush(g), SUBTRACTION); });
+  // bottom edge: connectors pass through the wall and sit flush (T1-016)
+  const yb = -H / 2;
+  const cylY = (r, len, x, y, z) => brush(new THREE.CylinderGeometry(r, r, len, 40), x, y, z);
+  body = ev.evaluate(body, cylY(PORTS.j35.r + 0.12, 7, PORTS.j35.x, yb + 2, 0), SUBTRACTION);
+  body = ev.evaluate(body, cylY(PORTS.j44.r + 0.12, 7, PORTS.j44.x, yb + 2, 0), SUBTRACTION);
+  { const st = new THREE.ExtrudeGeometry(stadiumShape(PORTS.usbc.w + 0.2, PORTS.usbc.h + 0.2), { depth: 7, bevelEnabled: false, curveSegments: 16 }); st.rotateX(-Math.PI / 2); body = ev.evaluate(body, brush(st, PORTS.usbc.x, yb - 1.5, 0), SUBTRACTION); }
+  // a 0.35 mm × 45° chamfer on each opening, as a moulded or machined edge would have
+  const chamferCut = (shape, x) => { const g = new THREE.ExtrudeGeometry(shape, { depth: 3, bevelEnabled: true, bevelThickness: 0.35, bevelSize: 0.35, bevelSegments: 1, curveSegments: 48 }); g.rotateX(Math.PI / 2); body = ev.evaluate(body, brush(g, x, yb, 0), SUBTRACTION); };
+  chamferCut(circleShp(PORTS.j35.r + 0.12), PORTS.j35.x);
+  chamferCut(circleShp(PORTS.j44.r + 0.12), PORTS.j44.x);
+  chamferCut(stadiumShape(PORTS.usbc.w + 0.2, PORTS.usbc.h + 0.2), PORTS.usbc.x);
+  { const n = 7, pitch = (PORTS.spk.x1 - PORTS.spk.x0) / n; for (let i = 0; i < n; i++) body = ev.evaluate(body, brush(new RoundedBoxGeometry(0.75, 6, 2.6, 3, 0.36), PORTS.spk.x0 + pitch * (i + 0.5), yb + 1.5, 0), SUBTRACTION); }
+  // top edge: ambient-noise microphone at the top right, in line with the status LED (BRD-031)
+  body = ev.evaluate(body, cylY(0.4, 4, SENS.led, H / 2 - 1, 0), SUBTRACTION);
+  const mesh = new THREE.Mesh(body.geometry, M.core); mesh.castShadow = true; device.add(mesh);
+  // what is seen through each opening
+  const inside = (geo, mat, x, y, z) => { const m = new THREE.Mesh(geo, mat); m.position.set(x, y, z); device.add(m); return m; };
+  // connectors pass through the wall and end flush with the outer face, so a plug seats fully.
+  // Satin, not mirror, metal; black POM inside; the contacts deep inside catch a little light.
+  const faceUp = g => { g.rotateX(Math.PI / 2); return g; };   // flat shape facing -y (out of the bottom edge)
+  const DEEP = 5;   // within the 5.5 mm the wall cut reaches
+  const satin = new THREE.MeshStandardMaterial({ color: 0x80858b, roughness: 0.52, metalness: 0.9, envMapIntensity: 0.6, side: THREE.DoubleSide });   // satin nickel, moderate sheen
+  const satinIn = new THREE.MeshStandardMaterial({ color: 0x44494e, roughness: 0.55, metalness: 0.9, envMapIntensity: 0.5, side: THREE.BackSide });
+  const pomIn = new THREE.MeshStandardMaterial({ color: 0x121315, roughness: 0.55, side: THREE.BackSide });
+  const gold = new THREE.MeshStandardMaterial({ color: 0xab8c4c, roughness: 0.42, metalness: 0.95, envMapIntensity: 0.6 });
+  [[PORTS.j35, 1.75], [PORTS.j44, 2.2]].forEach(([p, rh]) => {                   // plug bores Ø3.5 and Ø4.4
+    const nose = new THREE.LatheGeometry([[rh, 0.9], [rh, 0.12], [rh + 0.12, 0], [p.r - 0.1, 0], [p.r, 0.1], [p.r, 1.6]].map(([r, h]) => new THREE.Vector2(r, h)), 64);
+    inside(nose, satin, p.x, yb + 0.02, 0);                    // metal nose: flush face, rounded lips
+    inside(new THREE.CylinderGeometry(rh, rh, DEEP - 0.9, 40, 1, true), pomIn, p.x, yb + 0.9 + (DEEP - 0.9) / 2, 0);
+    inside(new THREE.CylinderGeometry(rh - 0.03, rh - 0.03, 0.35, 40, 1, true), satinIn, p.x, yb + 3.2, 0);   // contact ring
+    inside(faceUp(new THREE.CircleGeometry(rh, 40)), M.black, p.x, yb + DEEP, 0);
+  });
+  {
+    const u = PORTS.usbc, inner = 0.25;
+    const ring = stadiumShape(u.w, u.h); ring.holes.push(stadiumShape(u.w - 2 * inner, u.h - 2 * inner));
+    inside(faceUp(new THREE.ShapeGeometry(ring, 32)), satin, u.x, yb + 0.02, 0);   // receptacle shell lip, flush
+    const shell = new THREE.ExtrudeGeometry(stadiumShape(u.w - 2 * inner, u.h - 2 * inner), { depth: DEEP, bevelEnabled: false, curveSegments: 24 }); shell.rotateX(-Math.PI / 2);
+    const sm = new THREE.Mesh(shell, satinIn); sm.position.set(u.x, yb + 0.02, 0); device.add(sm);
+    inside(faceUp(new THREE.ShapeGeometry(stadiumShape(u.w - 2 * inner, u.h - 2 * inner))), M.black, u.x, yb + DEEP - 0.01, 0);
+    const tl = DEEP - 1.6;                                                             // tongue, set back 1.6 mm
+    inside(new RoundedBoxGeometry(6.6, tl, 0.7, 2, 0.15), M.pom, u.x, yb + 1.6 + tl / 2, 0);
+    for (let n = 0; n < 12; n++) [-1, 1].forEach(sd => inside(new THREE.BoxGeometry(0.25, 1.4, 0.03), gold, u.x - 2.75 + n * 0.5, yb + 1.6 + 0.75, sd * 0.365));   // 12 contacts per side
+  }
+  { const m = new THREE.CircleGeometry(0.42, 24); m.rotateX(-Math.PI / 2); inside(m, M.black, SENS.led, H / 2 - 1.2, 0); }
+  { const sp = new THREE.PlaneGeometry(PORTS.spk.x1 - PORTS.spk.x0 + 1, 3.2); sp.rotateX(Math.PI / 2); inside(sp, M.black, (PORTS.spk.x0 + PORTS.spk.x1) / 2, yb + 1.6, 0); }
+}
+
+// ---------- Faceplate, inset and flush: cover glass with the display under it ----------
+{
+  const f = new THREE.Group(); device.add(f);
+  f.add(new THREE.Mesh(slab(CW, CH, CR, ZF - 3.0, ZF, 0.3), M.glass));
+  const top = new THREE.Mesh(slab(CW, CH, CR, ZF - 0.02, ZF + 0.02, 0.0), M.glassTop); top.renderOrder = 2; f.add(top);
+  // display, under the glass
+  const screenTex = new THREE.CanvasTexture(document.createElement('canvas')); screenTex.colorSpace = THREE.SRGBColorSpace; screenTex.anisotropy = 8;
+  const scr = new THREE.Mesh(new THREE.PlaneGeometry(ACT.w, ACT.h), new THREE.MeshStandardMaterial({ color: 0x000000, emissive: 0xffffff, emissiveMap: screenTex, roughness: 0.25 }));
+  scr.position.set(0, ACT.y, ZF + 0.005); f.add(scr);
+  window.__screenTex = screenTex;
+  // ambient light sensor under IR ink, status LED window, microphone hole (FPT-023, FPT-024)
+  const disc = (r, mat, x, y, z = ZF + 0.006) => { const m = new THREE.Mesh(new THREE.CircleGeometry(r, 32), mat); m.position.set(x, y, z); f.add(m); return m; };
+  disc(0.8, M.ir, SENS.als, SENS.y);
+  disc(0.6, new THREE.MeshPhysicalMaterial({ color: 0x3b3f44, roughness: 0.15, clearcoat: 1 }), SENS.led, SENS.y);
+  disc(0.4, M.black, 0, MICY);
+}
+
+// ---------- Back cover, inset and flush; snaps on (CASE-025) ----------
+{
+  device.add(new THREE.Mesh(slab(CW, CH, CR, ZB, ZB + BACK_T + 0.6, 0.3), M.back));
+  // pad print: the model name on top, the vertical lockup (mark above the wordmark) below it, light on graphite at low opacity
+  const LOCKUP = new Path2D("M210.622 36.875L210.622 194.694C210.622 195.407 210.242 196.066 209.626 196.424L197.779 203.298C197.163 203.656 196.402 203.659 195.783 203.305L57.629 124.36C57.006 124.004 56.622 123.341 56.622 122.624L56.622 108.945C56.622 108.227 57.006 107.565 57.629 107.208L195.783 28.264C196.402 27.91 197.163 27.912 197.779 28.27L209.626 35.145C210.242 35.503 210.622 36.162 210.622 36.875ZM182.622 154.663L182.622 76.905C182.622 76.192 182.242 75.533 181.626 75.176L176.699 72.316C176.082 71.958 175.322 71.956 174.703 72.31L106.629 111.208C106.006 111.565 105.622 112.227 105.622 112.945L105.622 118.624C105.622 119.341 106.006 120.004 106.629 120.36L174.703 159.259C175.322 159.613 176.082 159.61 176.699 159.252L181.626 156.393C182.242 156.035 182.622 155.376 182.622 154.663ZM224.622 166.694L224.622 8.875C224.622 8.162 225.001 7.503 225.618 7.145L237.464 0.27C238.081 -0.088 238.841 -0.09 239.46 0.264L377.614 79.208C378.237 79.565 378.622 80.227 378.622 80.945L378.622 94.624C378.622 95.341 378.237 96.004 377.614 96.36L239.46 175.305C238.841 175.659 238.081 175.656 237.464 175.298L225.618 168.424C225.001 168.066 224.622 167.407 224.622 166.694ZM252.622 48.905L252.622 126.663C252.622 127.376 253.001 128.035 253.618 128.393L258.545 131.252C259.162 131.61 259.922 131.613 260.541 131.259L328.614 92.36C329.237 92.004 329.622 91.341 329.622 90.624L329.622 84.945C329.622 84.227 329.237 83.565 328.614 83.208L260.541 44.31C259.922 43.956 259.162 43.958 258.545 44.316L253.618 47.176C253.001 47.533 252.622 48.192 252.622 48.905ZM30.487 316.772C48.94 316.772 60.974 304.236 60.974 280.569C60.974 256.901 48.94 244.365 30.487 244.365C12.135 244.365 0 256.901 0 280.569C0 304.236 12.135 316.772 30.487 316.772ZM30.487 305.039C20.458 305.039 14.04 297.918 14.04 285.984V275.153C14.04 263.219 20.458 256.099 30.487 256.099C40.516 256.099 46.934 263.219 46.934 275.153V285.984C46.934 297.918 40.516 305.039 30.487 305.039ZM73.61 335.626H86.447V306.844H86.848C88.854 312.761 94.37 316.772 101.289 316.772C114.527 316.772 121.848 306.844 121.848 289.294C121.848 271.844 114.527 262.016 101.289 262.016C94.37 262.016 88.754 265.827 86.848 271.844H86.447V263.219H73.61ZM97.178 306.142C91.06 306.142 86.447 303.033 86.447 297.617V280.97C86.447 275.855 91.06 272.546 97.178 272.546C103.797 272.546 108.41 277.46 108.41 284.881V293.907C108.41 301.328 103.797 306.142 97.178 306.142ZM154.943 316.772C164.67 316.772 172.292 313.062 176.605 307.145L169.685 299.423C166.476 303.534 162.665 306.543 156.347 306.543C147.923 306.543 143.61 301.428 143.61 293.907V292.603H178.41V288.391C178.41 274.05 170.888 262.016 154.542 262.016C139.198 262.016 130.272 272.746 130.272 289.294C130.272 306.041 139.499 316.772 154.943 316.772ZM154.742 271.643C161.361 271.643 165.072 276.557 165.072 283.778V284.68H143.61V283.878C143.61 276.657 148.023 271.643 154.742 271.643ZM202.579 315.569V280.97C202.579 275.354 207.693 272.546 213.009 272.546C219.126 272.546 221.633 276.357 221.633 283.778V315.569H234.47V282.474C234.47 269.437 228.453 262.016 217.722 262.016C209.599 262.016 205.186 266.328 203.08 271.944H202.579V263.219H189.742V315.569ZM249.513 315.569H274.986C293.238 315.569 305.172 303.835 305.172 280.569C305.172 257.302 293.238 245.569 274.986 245.569H249.513ZM262.751 303.835V257.302H274.986C284.814 257.302 291.132 263.119 291.132 275.053V286.084C291.132 298.019 284.814 303.835 274.986 303.835ZM372.665 315.569 349.398 245.569H332.951L309.484 315.569H322.923L328.438 297.718H353.309L358.926 315.569ZM350.1 286.385H331.648L340.573 257.603H341.074ZM396.232 315.569V288.892H414.484C427.421 288.892 435.244 280.268 435.244 267.231C435.244 254.294 427.421 245.569 414.484 245.569H382.994V315.569ZM396.232 257.102H413.281C418.395 257.102 421.504 259.809 421.504 264.924V269.537C421.504 274.652 418.395 277.46 413.281 277.46H396.232Z");
+  const c = document.createElement('canvas'); c.width = 512; c.height = 880; const x = c.getContext('2d');
+  const pxmm = 512 / 48, y0 = 45.25;                       // plane covers x ±24, y -37.25…45.25 mm
+  const draw = () => {
+    x.clearRect(0, 0, 512, 880); x.fillStyle = 'rgba(245,246,244,0.26)';
+    const t1H = 203.6 * (22 * pxmm / 435.244);              // T1 cap height (~10.3 mm)
+    // T1 on top; the lockup smaller (14 mm wide) lower down, its bottom 22 mm below the centre
+    const lw = 14 * pxmm, sc = lw / 435.244, lockH = 335.626 * sc, markH = t1H;
+    x.save(); x.translate(256 - lw / 2, (y0 + 22) * pxmm - lockH); x.scale(sc, sc); x.fill(LOCKUP); x.restore();
+    x.font = `600 ${Math.round(markH / 0.698)}px "IBM Plex Sans", sans-serif`; x.textAlign = 'center'; x.textBaseline = 'alphabetic';
+    x.fillText('T1', 256, (y0 - 31) * pxmm + markH);
+    t.needsUpdate = true;
+  };
+  const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = 8;
+  const bd = new THREE.Mesh(new THREE.PlaneGeometry(48, 82.5), new THREE.MeshBasicMaterial({ map: t, transparent: true, depthWrite: false }));
+  bd.rotation.y = Math.PI; bd.position.set(0, 4, ZB - 0.02); device.add(bd);
+  draw(); window.__backTex = { draw };
+}
+
+// ---------- Buttons: the earlier concept's design (T1-059) ----------
+keyList.forEach(k => {
+  const kw = new THREE.Group(); kw.position.set(k.side * W / 2, k.y, KZ); device.add(kw);
+  const ki = new THREE.Group(); ki.rotation.y = k.side > 0 ? Math.PI / 2 : -Math.PI / 2; kw.add(ki);   // local +z = out of the edge
+  const mat = k.id === 'action' ? M.act : M.btn;
+  if (k.shape === 'round') {
+    // Action: round, concave face with a raised perimeter; stands 0.4 mm prouder than the other keys for its longer travel (T1-022); anodised orange; white dot printed at the centre
+    const prof = [[0, 1.9], [2.81, 1.83], [4.8, 1.92], [5.74, 2.06], [6.27, 1.92], [6.5, 1.55], [6.5, -0.6]].map(p => new THREE.Vector2(p[0], p[1]));
+    const cap = new THREE.Mesh(new THREE.LatheGeometry(prof, 80), mat); cap.rotation.x = Math.PI / 2; cap.castShadow = true; ki.add(cap);
+    const dot = new THREE.Mesh(new THREE.CircleGeometry(1.05, 40), M.print); dot.position.z = 1.903; ki.add(dot);
+  } else if (k.shape === 'half') {
+    // Volume + / −: one approved capsule split at the centre, + and − in relief
+    const hc = new THREE.Mesh(crease(new THREE.ExtrudeGeometry(halfShape(k.hz, k.len, k.dir), { depth: 0.6, bevelEnabled: true, bevelThickness: 0.45, bevelSize: 0.45, bevelSegments: 4, curveSegments: 28 })), mat);
+    hc.position.z = -0.05; hc.castShadow = true; ki.add(hc);
+    const ry = (k.pair + k.dir * 7.2) - k.y;
+    const relief = (w, h) => { const b = new THREE.Mesh(new RoundedBoxGeometry(w, h, 0.62, 2, 0.2), M.relief); b.position.set(0, ry, 1.0); ki.add(b); };
+    relief(3.6, 0.85); if (k.icon === '+') relief(0.85, 3.6);
+  } else {
+    // Main: a 15 mm pill with five crests
+    const pw = new THREE.Mesh(crease(new THREE.ExtrudeGeometry(vStadium(k.hz, k.len), { depth: 0.5, bevelEnabled: true, bevelThickness: 0.4, bevelSize: 0.4, bevelSegments: 4, curveSegments: 28 })), mat);
+    pw.position.z = -0.05; pw.castShadow = true; ki.add(pw);
+    for (let i = 0; i < 5; i++) { const r = new THREE.Mesh(new RoundedBoxGeometry(5.0, 0.55, 0.55, 2, 0.22), mat); r.position.set(0, -3.6 + i * 1.8, 0.86); ki.add(r); }
+  }
+  // the button body continues through the slot
+  ki.add(new THREE.Mesh(localExtrude(keyOutline(k), -2.5, -0.05), mat));
+});
+
+// ---------- Screen content (sample, 320 × 480 at 3×) ----------
+async function drawScreen() {
+  try {
+    await Promise.race([
+      Promise.all(['600 20px "IBM Plex Sans"', '400 14px "IBM Plex Sans"', '500 30px "IBM Plex Sans"', '500 11px "IBM Plex Mono"', '400 11px "IBM Plex Mono"'].map(f => document.fonts.load(f))),
+      new Promise(r => setTimeout(r, 2500)),
+    ]);
+  } catch (e) { /* system fonts */ }
+  const S = 3, c = document.createElement('canvas'); c.width = 320 * S; c.height = 480 * S;
+  const g = c.getContext('2d'); g.scale(S, S);
+  g.fillStyle = '#111315'; g.fillRect(0, 0, 320, 480);
+  // ambient background from the cover: soft, overlapping colour fields (cool violet, indigo and cyan, no orange),
+  // blended additively, with fine grain against banding; fades into graphite above the status bar and under the artist
+  { g.save(); g.globalCompositeOperation = 'lighter';
+    const field = (x, y, r, rgb, a) => { const gr = g.createRadialGradient(x, y, 0, x, y, r); gr.addColorStop(0, `rgba(${rgb},${a})`); gr.addColorStop(0.55, `rgba(${rgb},${a * 0.38})`); gr.addColorStop(1, `rgba(${rgb},0)`); g.fillStyle = gr; g.fillRect(x - r, y - r, 2 * r, 2 * r); };
+    field(96, 150, 180, '78,70,190', 0.55);      // indigo, upper left
+    field(250, 230, 170, '40,150,190', 0.42);    // deep cyan, lower right
+    field(190, 120, 120, '150,95,230', 0.40);    // violet, upper right
+    field(130, 250, 120, '70,110,220', 0.32);    // blue, lower left
+    field(158, 178, 70, '200,215,255', 0.22);    // soft cool highlight
+    g.restore();
+    const n = g.getImageData(0, 0, 320 * S, 372 * S), d = n.data;                 // grain, ±3 levels
+    for (let k = 0; k < d.length; k += 4) { const v = (Math.random() - 0.5) * 6; d[k] += v; d[k + 1] += v; d[k + 2] += v; }
+    g.putImageData(n, 0, 0);
+    let lg = g.createLinearGradient(0, 0, 0, 76); lg.addColorStop(0, 'rgba(17,19,21,1)'); lg.addColorStop(1, 'rgba(17,19,21,0)');
+    g.fillStyle = lg; g.fillRect(0, 0, 320, 76);
+    lg = g.createLinearGradient(0, 300, 0, 372); lg.addColorStop(0, 'rgba(17,19,21,0)'); lg.addColorStop(1, 'rgba(17,19,21,1)');   // title and artist sit on the field
+    g.fillStyle = lg; g.fillRect(0, 300, 320, 180); }
+  g.font = '500 11px "IBM Plex Mono", monospace'; g.fillStyle = '#C6CBD0';
+  // status bar (SYS-038): start = time, microSD, volume (speaker icon and level; semantic colour: success within
+  // the safe limit, warning above it); end = Bluetooth, Wi-Fi, battery %, battery icon
+  const sy = 18; g.strokeStyle = '#C6CBD0'; g.lineWidth = 1.4; g.lineJoin = 'round'; g.lineCap = 'round'; g.textBaseline = 'middle';
+  g.fillText('14:32', 18, sy);
+  let sx = 18 + g.measureText('14:32').width + 9;
+  { const x = sx, y = sy - 5.5;                                               // microSD card
+    g.beginPath(); g.moveTo(x, y + 2.5); g.lineTo(x + 2.5, y); g.lineTo(x + 8, y); g.lineTo(x + 8, y + 11); g.lineTo(x, y + 11); g.closePath(); g.stroke();
+    for (let i = 0; i < 3; i++) { g.beginPath(); g.moveTo(x + 3 + i * 1.8, y + 1.6); g.lineTo(x + 3 + i * 1.8, y + 3.6); g.stroke(); }
+    sx += 8 + 10; }
+  { const vol = 42, safe = true, c = safe ? '#64D6A1' : '#F3C66B';            // sample level, within the safe limit
+    g.save(); g.fillStyle = c; g.strokeStyle = c;
+    g.beginPath(); g.moveTo(sx, sy - 2.5); g.lineTo(sx + 3, sy - 2.5); g.lineTo(sx + 7, sy - 6); g.lineTo(sx + 7, sy + 6); g.lineTo(sx + 3, sy + 2.5); g.lineTo(sx, sy + 2.5); g.closePath(); g.fill();   // speaker
+    g.beginPath(); g.arc(sx + 8, sy, 4.5, -Math.PI / 4, Math.PI / 4); g.stroke();
+    g.fillText(String(vol), sx + 16, sy); g.restore(); }
+  let ex = 302;
+  { const w = 19, h = 9, x = ex - w - 2, y = sy - h / 2;                    // battery icon
+    g.beginPath(); g.roundRect(x, y, w, h, 2); g.stroke();
+    g.fillStyle = '#C6CBD0'; g.beginPath(); g.roundRect(x + w + 0.8, sy - 2, 1.6, 4, 0.8); g.fill();
+    g.beginPath(); g.roundRect(x + 1.8, y + 1.8, (w - 3.6) * 0.82, h - 3.6, 1); g.fill(); ex = x - 7; }
+  g.textAlign = 'right'; g.fillText('82 %', ex, sy); ex -= g.measureText('82 %').width + 10; g.textAlign = 'left';
+  { const cx = ex - 6, cy = sy + 4;                                           // Wi-Fi
+    [9, 6, 3].forEach(r => { g.beginPath(); g.arc(cx, cy, r, -Math.PI * 0.75, -Math.PI * 0.25); g.stroke(); });
+    g.beginPath(); g.arc(cx, cy, 1, 0, Math.PI * 2); g.fill(); ex = cx - 9 - 9; }
+  { const cx = ex - 3, cy = sy;                                               // Bluetooth
+    g.beginPath(); g.moveTo(cx - 3.2, cy - 3); g.lineTo(cx + 3, cy + 3); g.lineTo(cx, cy + 6); g.lineTo(cx, cy - 6); g.lineTo(cx + 3, cy - 3); g.lineTo(cx - 3.2, cy + 3); g.stroke(); }
+  g.textBaseline = 'alphabetic';
+  // header row: chevron down closes the player (back / down); 44 px touch target from y 26
+  { const cx = 30, cy = 46; g.strokeStyle = '#F5F6F4'; g.lineWidth = 2; g.beginPath(); g.moveTo(cx - 6, cy - 3); g.lineTo(cx, cy + 3); g.lineTo(cx + 6, cy - 3); g.stroke(); }
+  // same row, at the end: like, then playlist (44 px targets, 24 px margin)
+  { const y = 46; g.strokeStyle = '#F5F6F4'; g.lineWidth = 1.8; g.lineJoin = 'round'; g.lineCap = 'round';
+    { const x = 254;                                                              // like: heart 16 × 13, outline = not liked
+      g.beginPath(); g.moveTo(x, y + 6);
+      g.lineTo(x - 6.6, y - 0.2); g.arc(x - 4, y - 2.6, 3.8, Math.PI * 0.78, Math.PI * 1.95, false);
+      g.arc(x + 4, y - 2.6, 3.8, Math.PI * 1.05, Math.PI * 0.22, false); g.closePath(); g.stroke(); }
+    { const x = 290;                                                              // playlist: three lines and a play mark, 16 × 11
+      [[-5, 14], [0, 14], [5, 7]].forEach(([dy, w]) => { g.beginPath(); g.moveTo(x - 8, y + dy); g.lineTo(x - 8 + w, y + dy); g.stroke(); });
+      g.fillStyle = '#F5F6F4'; g.beginPath(); g.moveTo(x + 2, y + 2); g.lineTo(x + 8, y + 5); g.lineTo(x + 2, y + 8); g.closePath(); g.fill(); } }
+  g.fillStyle = '#F5F6F4'; g.font = '600 20px "IBM Plex Sans", sans-serif'; g.fillText('You Only Live Once', 24, 296);
+  g.fillStyle = '#C6CBD0'; g.font = '400 14px "IBM Plex Sans", sans-serif'; g.fillText('The Strokes', 24, 317);
+  g.fillStyle = '#939BA3'; g.font = '400 11px "IBM Plex Mono", monospace'; g.fillText('FLAC · 16 bit · 44.1 kHz → 4.4 mm', 24, 339);
+  const px0 = 24, px1 = 296, py = 358, p = 0.42;
+  g.fillStyle = '#292E33'; g.beginPath(); g.roundRect(px0, py - 1.5, px1 - px0, 3, 1.5); g.fill();
+  g.fillStyle = '#F5F6F4'; g.beginPath(); g.roundRect(px0, py - 1.5, (px1 - px0) * p, 3, 1.5); g.fill();
+  g.beginPath(); g.arc(px0 + (px1 - px0) * p, py, 5.5, 0, Math.PI * 2); g.fill();
+  g.fillStyle = '#939BA3'; g.font = '400 11px "IBM Plex Mono", monospace';
+  g.fillText('1:19', 24, 377); g.textAlign = 'right'; g.fillText('−1:50', 296, 377); g.textAlign = 'left';
+  const ty = 420;   // 34 px radius (68 px, about 10.4 mm on the 166 ppi panel): bottom at 454, 26 px above the screen edge
+  const skip = (cx, dir) => { g.fillStyle = '#F5F6F4'; g.beginPath(); g.moveTo(cx - 7 * dir, ty); g.lineTo(cx + 6 * dir, ty - 8); g.lineTo(cx + 6 * dir, ty + 8); g.closePath(); g.fill(); g.fillRect(dir > 0 ? cx - 9.5 : cx + 7.5, ty - 8, 2, 16); };
+  // transport row, evenly spaced: shuffle · previous · play/pause · next · repeat (secondary toggles muted when off)
+  skip(98, 1); skip(222, -1);
+  g.strokeStyle = '#C6CBD0'; g.lineWidth = 1.6; g.lineCap = 'round'; g.lineJoin = 'round';
+  const head = (x0, y0, x1, y1, x2, y2) => { g.beginPath(); g.moveTo(x0, y0); g.lineTo(x1, y1); g.lineTo(x2, y2); g.stroke(); };
+  { const x = 36, y = ty;                                            // shuffle
+    g.beginPath(); g.moveTo(x - 8, y - 5); g.lineTo(x - 3, y - 5); g.lineTo(x + 3, y + 5); g.lineTo(x + 8, y + 5); g.stroke();
+    g.beginPath(); g.moveTo(x - 8, y + 5); g.lineTo(x - 3, y + 5); g.lineTo(x + 3, y - 5); g.lineTo(x + 8, y - 5); g.stroke();
+    head(x + 5, y - 8, x + 8, y - 5, x + 5, y - 2); head(x + 5, y + 2, x + 8, y + 5, x + 5, y + 8); }
+  { const x = 284, y = ty;                                           // repeat
+    g.beginPath(); g.moveTo(x - 8, y + 1); g.lineTo(x - 8, y - 2); g.arcTo(x - 8, y - 5, x - 5, y - 5, 3); g.lineTo(x + 7, y - 5); g.stroke();
+    head(x + 4, y - 8, x + 7, y - 5, x + 4, y - 2);
+    g.beginPath(); g.moveTo(x + 8, y - 1); g.lineTo(x + 8, y + 2); g.arcTo(x + 8, y + 5, x + 5, y + 5, 3); g.lineTo(x - 7, y + 5); g.stroke();
+    head(x - 4, y + 2, x - 7, y + 5, x - 4, y + 8); }
+  g.fillStyle = '#FF6A2A'; g.beginPath(); g.arc(160, ty, 34, 0, Math.PI * 2); g.fill();
+  g.fillStyle = '#111315'; g.beginPath(); g.roundRect(148.5, ty - 11.5, 8, 23, 2); g.roundRect(163.5, ty - 11.5, 8, 23, 2); g.fill();
+  window.__screenTex.dispose(); window.__screenTex.image = c; window.__screenTex.needsUpdate = true;   // new size: reallocate, don't sub-copy
+  window.__backTex.draw();
+}
+drawScreen();
+
+// ---------- Callouts ----------
+const callouts = [];
+function callout(text, pos, normal, side = 'r') {
+  const el = document.createElement('div'); el.className = 'callout ' + side;
+  el.innerHTML = '<span class="line"></span><span></span>'; el.lastChild.textContent = text;
+  const obj = new CSS2DObject(el); obj.position.copy(pos); obj.center.set(side === 'r' ? 0 : side === 'l' ? 1 : 0.5, side === 'b' ? 0 : 0.5); device.add(obj);
+  callouts.push({ obj, el, normal: normal.clone().normalize() });
+}
+const zF = ZF + 0.1, yB = -H / 2 - 0.1;
+callout('Ambient light sensor', V(SENS.als, SENS.y, zF), V(0, 0, 1), 'l');
+callout('Status LED', V(SENS.led, SENS.y, zF), V(0, 0, 1), 'r');
+callout('Microphone', V(0, MICY, zF), V(0, 0, 1), 'r');
+callout('Touch display · 3.5″ · 320 × 480', V(ACT.w / 2, 8, zF), V(0, 0, 1), 'r');
+callout('Action', V(-W / 2 - 2.2, KEYS.action.y, KZ), V(-1, 0, 0), 'l');
+callout('Volume +', V(-W / 2 - 1.2, KEYS.volup.y, KZ), V(-1, 0, 0), 'l');
+callout('Volume −', V(-W / 2 - 1.2, KEYS.voldn.y, KZ), V(-1, 0, 0), 'l');
+callout('Main', V(W / 2 + 1.6, KEYS.main.y, KZ), V(1, 0, 0), 'r');
+callout('3.5 mm', V(PORTS.j35.x - PORTS.j35.r, yB, 0), V(0, -1, 0), 'l');
+callout('4.4 mm', V(PORTS.j44.x, yB, -PORTS.j44.r), V(0, -1, 0), 'b');
+callout('USB-C', V(PORTS.usbc.x, yB, -1.8), V(0, -1, 0), 'r');
+callout('Speaker', V(PORTS.spk.x1, yB, 0), V(0, -1, 0), 'r');
+callout('Ambient microphone', V(SENS.led, H / 2 + 0.1, 0), V(0, 1, 0), 'r');
+callout('Snap-on back cover · swappable for a HAT case', V(-CW / 2 + 5, -28, ZB - 0.1), V(0, 0, -1), 'r');
+
+let showLabels = false;
+const tmp = new THREE.Vector3();
+function updateCallouts() {
+  for (const c of callouts) {
+    c.obj.getWorldPosition(tmp);
+    const toCam = camera.position.clone().sub(tmp).normalize();
+    c.el.classList.toggle('hidden', !(showLabels && c.normal.dot(toCam) > 0.42));
+  }
+}
+
+// ---------- Views ----------
+const VIEWS = {
+  three:  { pos: V(-164.1, -135.2, 209.6), target: V(0, -6, 0) },   // from below left: left-edge keys, bottom connectors and the screen
+  front:  { pos: V(0, 0, 330), target: V(0, 0, 0) },
+  left:   { pos: V(-330, 10, 30), target: V(0, 0, 0) },
+  right:  { pos: V(330, 10, 30), target: V(0, 0, 0) },
+  bottom: { pos: V(-30, -300, 90), target: V(0, -25, 0) },
+  back:   { pos: V(110, 50, -310), target: V(0, 0, 0) },
+  top:    { pos: V(30, 230, 190), target: V(0, 8, 0) },
+};
+let tween = null;
+function goTo(name) {
+  const v = VIEWS[name];
+  if (reduceMotion) { camera.position.copy(v.pos); controls.target.copy(v.target); tween = null; return; }
+  tween = { from: { pos: camera.position.clone(), target: controls.target.clone() }, to: v, t0: performance.now(), dur: 800 };
+}
+const ease = t => 1 - Math.pow(1 - t, 3);
+function stepTween(now) {
+  if (!tween) return;
+  const t = Math.min(1, (now - tween.t0) / tween.dur), k = ease(t);
+  const tgt = tween.from.target.clone().lerp(tween.to.target, k);
+  const a = new THREE.Spherical().setFromVector3(tween.from.pos.clone().sub(tween.from.target));
+  const b = new THREE.Spherical().setFromVector3(tween.to.pos.clone().sub(tween.to.target));
+  let dth = b.theta - a.theta; if (dth > Math.PI) dth -= 2 * Math.PI; if (dth < -Math.PI) dth += 2 * Math.PI;
+  camera.position.setFromSpherical(new THREE.Spherical(a.radius + (b.radius - a.radius) * k, a.phi + (b.phi - a.phi) * k, a.theta + dth * k)).add(tgt);
+  controls.target.copy(tgt);
+  if (t >= 1) tween = null;
+}
+camera.position.copy(VIEWS.three.pos); controls.target.copy(VIEWS.three.target);
+const hash = location.hash.slice(1); if (VIEWS[hash]) { camera.position.copy(VIEWS[hash].pos); controls.target.copy(VIEWS[hash].target); goTo(hash); tween = null; }
+
+function resize() {
+  const w = host.clientWidth, h = host.clientHeight;
+  renderer.setPixelRatio(1920 / w);   // fixed 1920 × 1080 output
+  renderer.setSize(w, h, false); renderer.domElement.style.width = w + 'px'; renderer.domElement.style.height = h + 'px';
+  labelRenderer.setSize(w, h);
+  camera.aspect = 16 / 9; camera.fov = 28;
+  camera.setViewOffset(1920, 1080, -0.08 * 1920, 0, 1920, 1080);   // shift the device right of centre, to balance the text block on the left
+  camera.updateProjectionMatrix();
+}
+new ResizeObserver(resize).observe(host); resize();
+function frame(now) { stepTween(now); controls.update(); updateCallouts(); renderer.render(scene, camera); labelRenderer.render(scene, camera); requestAnimationFrame(frame); }
+requestAnimationFrame(frame);
+</script>

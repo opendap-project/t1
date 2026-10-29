@@ -1,0 +1,4 @@
+# Component versions that make up an OpenDAP T1 configuration.
+# Each entry pins the tag whose export/ this integration consumes.
+# No component has been exported yet.
+components: {}

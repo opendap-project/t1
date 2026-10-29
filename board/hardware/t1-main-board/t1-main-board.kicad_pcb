@@ -6521,7 +6521,7 @@
 			(uuid "f7233717-72ca-40d5-900d-12fd6633b7ff")
 		)
 		(embedded_fonts no)
-		(model "${KICAD10_3DMODEL_DIR}/Package_SON.3dshapes/Texas_DPY0002A_0.6x1mm_P0.65mm.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/texas-instruments.3dshapes/Texas_DPY0002A_0.6x1mm_P0.65mm.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -7881,7 +7881,7 @@
 			(uuid "f31a61c6-83cb-4054-bebd-7e9e5070c73b")
 		)
 		(embedded_fonts no)
-		(model "${KICAD10_3DMODEL_DIR}/Package_SON.3dshapes/Texas_DPY0002A_0.6x1mm_P0.65mm.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/texas-instruments.3dshapes/Texas_DPY0002A_0.6x1mm_P0.65mm.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -10535,7 +10535,7 @@
 			(uuid "32fc0a18-6ce9-4b22-aba8-f94ac8e0dc8d")
 		)
 		(embedded_fonts no)
-		(model "${KICAD10_3DMODEL_DIR}/Package_TO_SOT_SMD.3dshapes/SOT-523.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/diodes-inc.3dshapes/SOT-523.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -13047,7 +13047,7 @@
 			(uuid "c9611261-3edc-422f-80ed-60b3c2d9f0a2")
 		)
 		(embedded_fonts no)
-		(model "${KICAD10_3DMODEL_DIR}/Package_TO_SOT_SMD.3dshapes/SOT-523.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/diodes-inc.3dshapes/SOT-523.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -22545,7 +22545,7 @@
 			(uuid "252d04ce-e7e5-46a3-a0c8-645db91a8651")
 		)
 		(embedded_fonts no)
-		(model "${KICAD10_3DMODEL_DIR}/Package_SON.3dshapes/Texas_DPY0002A_0.6x1mm_P0.65mm.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/texas-instruments.3dshapes/Texas_DPY0002A_0.6x1mm_P0.65mm.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -28776,6 +28776,17 @@
 			(uuid "7883dd3e-1066-45b6-9ecc-f3ce6f2eab62")
 		)
 		(embedded_fonts no)
+		(model "${OPENDAP_KICAD_3DMODELS}/vishay.3dshapes/R_Vishay_WSL1206.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Capacitor_SMD:C_0402_1005Metric"
 		(layer "F.Cu")
@@ -30044,6 +30055,17 @@
 			(uuid "89c1d64c-69e4-4515-8feb-a110d97b2d98")
 		)
 		(embedded_fonts no)
+		(model "${OPENDAP_KICAD_3DMODELS}/vishay.3dshapes/R_Vishay_WSL1206.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 		(variant (name "production") (field (name "Value") (value "0 Ω")) (field (name "MPN") (value "RC1206JR-070RL")) (field (name "Manufacturer") (value "YAGEO")))
 	)
 	(footprint "Capacitor_SMD:C_0402_1005Metric"
@@ -30883,7 +30905,7 @@
 			(uuid "e57db643-39eb-448e-90db-806791c48509")
 		)
 		(embedded_fonts no)
-		(model "${KICAD10_3DMODEL_DIR}/Package_SON.3dshapes/Texas_DPY0002A_0.6x1mm_P0.65mm.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/texas-instruments.3dshapes/Texas_DPY0002A_0.6x1mm_P0.65mm.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -39838,7 +39860,7 @@
 			(uuid "85cf0f8a-96b4-4c4f-9605-b9eb8546f0d0")
 		)
 		(embedded_fonts no)
-		(model "${KICAD10_3DMODEL_DIR}/Package_TO_SOT_SMD.3dshapes/SOT-523.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/diodes-inc.3dshapes/SOT-523.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -43702,6 +43724,17 @@
 			(uuid "2c3d2ba7-3432-4534-8494-ed1f9f42fb9c")
 		)
 		(embedded_fonts no)
+		(model "${OPENDAP_KICAD_3DMODELS}/vishay.3dshapes/R_Vishay_WSL1206.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Capacitor_SMD:C_0201_0603Metric"
 		(layer "F.Cu")
@@ -44460,6 +44493,17 @@
 			(uuid "dc4a1405-0ffd-4839-b2bb-b19cf4d32fdb")
 		)
 		(embedded_fonts no)
+		(model "${OPENDAP_KICAD_3DMODELS}/vishay.3dshapes/R_Vishay_WSL1206.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Capacitor_SMD:C_0603_1608Metric"
 		(layer "F.Cu")
@@ -44898,7 +44942,7 @@
 			(uuid "62df9cca-f577-4e13-90e6-852f8d036f79")
 		)
 		(embedded_fonts no)
-		(model "${KICAD10_3DMODEL_DIR}/Package_SON.3dshapes/Texas_DPY0002A_0.6x1mm_P0.65mm.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/texas-instruments.3dshapes/Texas_DPY0002A_0.6x1mm_P0.65mm.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -48254,7 +48298,7 @@
 			(uuid "4f273a4b-b1ad-48e1-a735-0d8536b87794")
 		)
 		(embedded_fonts no)
-		(model "${KICAD10_3DMODEL_DIR}/Package_SON.3dshapes/Texas_DPY0002A_0.6x1mm_P0.65mm.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/texas-instruments.3dshapes/Texas_DPY0002A_0.6x1mm_P0.65mm.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -51985,6 +52029,17 @@
 			(uuid "4c9d6c82-6d7d-471e-b861-7ff56e25b273")
 		)
 		(embedded_fonts no)
+		(model "${OPENDAP_KICAD_3DMODELS}/vishay.3dshapes/R_Vishay_WSL1206.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 		(variant (name "production") (field (name "Value") (value "0 Ω")) (field (name "MPN") (value "RC1206JR-070RL")) (field (name "Manufacturer") (value "YAGEO")))
 	)
 	(footprint "Capacitor_SMD:C_0402_1005Metric"
@@ -54280,7 +54335,7 @@
 			(uuid "54ec9a5f-d69e-4301-a43c-f43827046cfb")
 		)
 		(embedded_fonts no)
-		(model "${KICAD10_3DMODEL_DIR}/Package_SON.3dshapes/Texas_DPY0002A_0.6x1mm_P0.65mm.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/texas-instruments.3dshapes/Texas_DPY0002A_0.6x1mm_P0.65mm.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -57345,7 +57400,7 @@
 			(uuid "d437210c-8ce4-4270-800f-06870ffe4fa0")
 		)
 		(embedded_fonts no)
-		(model "${KICAD10_3DMODEL_DIR}/Package_SON.3dshapes/Texas_DPY0002A_0.6x1mm_P0.65mm.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/texas-instruments.3dshapes/Texas_DPY0002A_0.6x1mm_P0.65mm.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -59434,6 +59489,17 @@
 			(uuid "b545c4bf-1bfd-4b17-b17b-ac01c45e34f8")
 		)
 		(embedded_fonts no)
+		(model "${OPENDAP_KICAD_3DMODELS}/vishay.3dshapes/R_Vishay_WSL1206.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "TestPoint:TestPoint_Pad_D1.0mm"
 		(layer "F.Cu")
@@ -61368,6 +61434,17 @@
 			(uuid "8af99954-ee78-4208-be42-d2e1572f550e")
 		)
 		(embedded_fonts no)
+		(model "${OPENDAP_KICAD_3DMODELS}/vishay.3dshapes/R_Vishay_WSL1206.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Capacitor_SMD:C_0603_1608Metric"
 		(layer "F.Cu")
@@ -62234,7 +62311,7 @@
 			(uuid "49279595-6721-4162-89d5-7e4d3da3bde3")
 		)
 		(embedded_fonts no)
-		(model "${KICAD10_3DMODEL_DIR}/Package_SON.3dshapes/Texas_DPY0002A_0.6x1mm_P0.65mm.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/texas-instruments.3dshapes/Texas_DPY0002A_0.6x1mm_P0.65mm.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -70122,6 +70199,17 @@
 			(uuid "3de194b7-6e27-4cdc-8f6c-21711a50db5f")
 		)
 		(embedded_fonts no)
+		(model "${OPENDAP_KICAD_3DMODELS}/vishay.3dshapes/R_Vishay_WSL1206.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 		(variant (name "production") (field (name "Value") (value "0 Ω")) (field (name "MPN") (value "RC1206JR-070RL")) (field (name "Manufacturer") (value "YAGEO")))
 	)
 	(footprint "Capacitor_SMD:C_0402_1005Metric"
@@ -76747,7 +76835,7 @@
 			(uuid "82f51cdf-4697-4ba2-9e29-74a4f0a87912")
 		)
 		(embedded_fonts no)
-		(model "${KICAD10_3DMODEL_DIR}/Package_SON.3dshapes/Texas_DPY0002A_0.6x1mm_P0.65mm.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/texas-instruments.3dshapes/Texas_DPY0002A_0.6x1mm_P0.65mm.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -82484,6 +82572,17 @@
 			(uuid "44ac064f-bfc9-44be-b428-1b87f7f2263f")
 		)
 		(embedded_fonts no)
+		(model "${OPENDAP_KICAD_3DMODELS}/vishay.3dshapes/R_Vishay_WSL1206.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 		(variant (name "production") (field (name "Value") (value "0 Ω")) (field (name "MPN") (value "RC1206JR-070RL")) (field (name "Manufacturer") (value "YAGEO")))
 	)
 	(footprint "Resistor_SMD:R_0603_1608Metric"
@@ -89374,7 +89473,7 @@
 			(uuid "36033a49-02af-48c2-b17f-8de59aa658ae")
 		)
 		(embedded_fonts no)
-		(model "${KICAD10_3DMODEL_DIR}/Package_SON.3dshapes/Texas_DPY0002A_0.6x1mm_P0.65mm.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/texas-instruments.3dshapes/Texas_DPY0002A_0.6x1mm_P0.65mm.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -89568,6 +89667,17 @@
 			(uuid "7ee313a9-9215-4dff-8a58-4278992b0fe5")
 		)
 		(embedded_fonts no)
+		(model "${OPENDAP_KICAD_3DMODELS}/vishay.3dshapes/R_Vishay_WSL2010.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Capacitor_SMD:C_0201_0603Metric"
 		(layer "F.Cu")
@@ -93967,6 +94077,17 @@
 			(uuid "c01166ad-4338-48fb-86d9-150ab9bd2c80")
 		)
 		(embedded_fonts no)
+		(model "${OPENDAP_KICAD_3DMODELS}/vishay.3dshapes/R_Vishay_WSL2512.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Capacitor_SMD:C_0603_1608Metric"
 		(layer "F.Cu")
@@ -98036,6 +98157,17 @@
 			(uuid "abe1ed72-8804-48b4-8097-d9041e41fb63")
 		)
 		(embedded_fonts no)
+		(model "${OPENDAP_KICAD_3DMODELS}/vishay.3dshapes/R_Vishay_WSL1206.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 		(variant (name "production") (field (name "Value") (value "0 Ω")) (field (name "MPN") (value "RC1206JR-070RL")) (field (name "Manufacturer") (value "YAGEO")))
 	)
 	(footprint "Resistor_SMD:R_0201_0603Metric"
@@ -103429,6 +103561,17 @@
 			(uuid "247f419f-7d82-48a8-8689-65797a32bd42")
 		)
 		(embedded_fonts no)
+		(model "${OPENDAP_KICAD_3DMODELS}/vishay.3dshapes/R_Vishay_WSL1206.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "T1_Main_Board:TestPoint_Pad_D0.8mm"
 		(layer "F.Cu")
@@ -106192,6 +106335,17 @@
 			(uuid "aa6442ae-6236-4207-a8fa-fc388a2ebac4")
 		)
 		(embedded_fonts no)
+		(model "${OPENDAP_KICAD_3DMODELS}/vishay.3dshapes/R_Vishay_WSL1206.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 		(variant (name "production") (field (name "Value") (value "0 Ω")) (field (name "MPN") (value "RC1206JR-070RL")) (field (name "Manufacturer") (value "YAGEO")))
 	)
 	(footprint "Resistor_SMD:R_0402_1005Metric"
@@ -114522,6 +114676,17 @@
 			(uuid "0c6579f0-b980-4414-8219-3a78a2c660fb")
 		)
 		(embedded_fonts no)
+		(model "${OPENDAP_KICAD_3DMODELS}/vishay.3dshapes/R_Vishay_WSL1206.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Capacitor_SMD:C_0402_1005Metric"
 		(layer "F.Cu")
@@ -119148,7 +119313,7 @@
 			(uuid "3b922232-0df8-4384-bd90-9cc0e1c0a313")
 		)
 		(embedded_fonts no)
-		(model "${KICAD10_3DMODEL_DIR}/Package_SON.3dshapes/Texas_DPY0002A_0.6x1mm_P0.65mm.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/texas-instruments.3dshapes/Texas_DPY0002A_0.6x1mm_P0.65mm.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -122030,6 +122195,17 @@
 			(uuid "56bf73b3-54bb-4bf4-b726-3898c42a0f9c")
 		)
 		(embedded_fonts no)
+		(model "${OPENDAP_KICAD_3DMODELS}/vishay.3dshapes/R_Vishay_WSL1206.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Capacitor_SMD:C_0201_0603Metric"
 		(layer "F.Cu")
@@ -130816,7 +130992,7 @@
 			(uuid "77e18243-a30f-415f-a4a3-2cb652aa3f48")
 		)
 		(embedded_fonts no)
-		(model "${KICAD10_3DMODEL_DIR}/Package_SON.3dshapes/Texas_DPY0002A_0.6x1mm_P0.65mm.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/texas-instruments.3dshapes/Texas_DPY0002A_0.6x1mm_P0.65mm.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -137347,7 +137523,7 @@
 			(uuid "f77744e7-0048-4eed-a311-65952e711bd2")
 		)
 		(embedded_fonts no)
-		(model "${KICAD10_3DMODEL_DIR}/Package_SON.3dshapes/Texas_DPY0002A_0.6x1mm_P0.65mm.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/texas-instruments.3dshapes/Texas_DPY0002A_0.6x1mm_P0.65mm.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -139662,7 +139838,7 @@
 			(uuid "1487c93c-b91f-4861-aed3-65b058cf6417")
 		)
 		(embedded_fonts no)
-		(model "${KICAD10_3DMODEL_DIR}/Package_TO_SOT_SMD.3dshapes/SOT-523.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/diodes-inc.3dshapes/SOT-523.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -151006,7 +151182,7 @@
 			(uuid "465fb505-446f-4354-b32b-7910376e0982")
 		)
 		(embedded_fonts no)
-		(model "${KICAD10_3DMODEL_DIR}/Inductor_SMD.3dshapes/L_Coilcraft_XxL4020.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/coilcraft.3dshapes/L_Coilcraft_XxL4020_H1.2.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -153525,6 +153701,17 @@
 			(uuid "9dce5361-59ec-46be-892e-725a45f9c417")
 		)
 		(embedded_fonts no)
+		(model "${OPENDAP_KICAD_3DMODELS}/murata.3dshapes/L_Murata_DFE252012F.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "T1_Main_Board:L_Abracon_AOTA-B201610"
 		(layer "B.Cu")
@@ -153710,6 +153897,17 @@
 			(uuid "a91f7d5d-7a82-4ebc-8588-bdc1f421f148")
 		)
 		(embedded_fonts no)
+		(model "${OPENDAP_KICAD_3DMODELS}/abracon.3dshapes/L_Abracon_AOTA-B201610.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Capacitor_SMD:C_0603_1608Metric"
 		(layer "B.Cu")
@@ -157137,6 +157335,17 @@
 			(uuid "711ab9a5-5d0b-4391-835d-fad72f62fcb2")
 		)
 		(embedded_fonts no)
+		(model "${OPENDAP_KICAD_3DMODELS}/ck.3dshapes/SW_CK_PTS815.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Capacitor_SMD:C_0402_1005Metric"
 		(layer "B.Cu")
@@ -158458,6 +158667,17 @@
 			(uuid "ae3cb4fe-60c0-4d97-8e3b-ae5ecf289607")
 		)
 		(embedded_fonts no)
+		(model "${OPENDAP_KICAD_3DMODELS}/ck.3dshapes/SW_CK_PTS815.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Capacitor_SMD:C_0805_2012Metric"
 		(layer "B.Cu")
@@ -159795,7 +160015,7 @@
 			(uuid "0aacd13d-e639-431f-9dc1-af6f81f76337")
 		)
 		(embedded_fonts no)
-		(model "${KICAD10_3DMODEL_DIR}/Fuse.3dshapes/Fuse_Littelfuse-NANO2-451_453.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/littelfuse.3dshapes/Fuse_Littelfuse-NANO2-451_453.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -163831,7 +164051,7 @@
 			(uuid "e43bde33-3755-4b21-a86d-fdab12f4b798")
 		)
 		(embedded_fonts no)
-		(model "${KICAD10_3DMODEL_DIR}/Inductor_SMD.3dshapes/L_Coilcraft_XxL4020.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/coilcraft.3dshapes/L_Coilcraft_XxL4020_H1.5.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -182210,6 +182430,17 @@
 			(uuid "95577785-9a38-4cf1-a842-77bf3a483c9e")
 		)
 		(embedded_fonts no)
+		(model "${OPENDAP_KICAD_3DMODELS}/murata.3dshapes/L_Murata_DFE252012F.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "kyocera-avx:KYOCERA_AVX_9258-100_70-9258-001-120-006_SpringFinger_Pad7.0x2.7mm"
 		(layer "B.Cu")
@@ -184336,7 +184567,7 @@
 			(uuid "50178700-c2c9-483d-b847-4ad62cafe53e")
 		)
 		(embedded_fonts no)
-		(model "${KICAD10_3DMODEL_DIR}/Package_SON.3dshapes/Texas_DPY0002A_0.6x1mm_P0.65mm.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/texas-instruments.3dshapes/Texas_DPY0002A_0.6x1mm_P0.65mm.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -185772,7 +186003,7 @@
 			(uuid "7bd8212b-9e63-4908-87a7-5972572f29b4")
 		)
 		(embedded_fonts no)
-		(model "${KICAD10_3DMODEL_DIR}/Package_SON.3dshapes/Texas_DPY0002A_0.6x1mm_P0.65mm.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/texas-instruments.3dshapes/Texas_DPY0002A_0.6x1mm_P0.65mm.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -187087,6 +187318,17 @@
 			(uuid "4370887d-dc39-42c6-a78f-8364adeba969")
 		)
 		(embedded_fonts no)
+		(model "${OPENDAP_KICAD_3DMODELS}/vishay.3dshapes/R_Vishay_WSL1206.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Capacitor_SMD:C_0402_1005Metric"
 		(layer "B.Cu")
@@ -188949,6 +189191,17 @@
 			(uuid "30100d4d-d778-47cc-9de6-ca94aa61b3e6")
 		)
 		(embedded_fonts no)
+		(model "${OPENDAP_KICAD_3DMODELS}/ck.3dshapes/SW_CK_PTS815.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Diode_SMD:D_SOD-123F"
 		(layer "B.Cu")
@@ -192195,6 +192448,17 @@
 			(uuid "91c4239e-d161-4e76-80b9-4ecb3b8128b2")
 		)
 		(embedded_fonts no)
+		(model "${OPENDAP_KICAD_3DMODELS}/murata.3dshapes/L_Murata_DFE252012F.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Capacitor_SMD:C_0603_1608Metric"
 		(layer "B.Cu")
@@ -193603,6 +193867,17 @@
 			(uuid "cfca4afc-844a-41de-95b0-d2c8eefcc02f")
 		)
 		(embedded_fonts no)
+		(model "${OPENDAP_KICAD_3DMODELS}/shield-frames.3dshapes/Shield_Frame_SOC_34.15x19.75mm.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 		(variant (name "production") (dnp yes))
 	)
 	(footprint "Capacitor_SMD:C_0805_2012Metric"
@@ -195478,6 +195753,17 @@
 			(uuid "6b3a8a12-40ef-4aa1-851d-e58f00ddcf49")
 		)
 		(embedded_fonts no)
+		(model "${OPENDAP_KICAD_3DMODELS}/coilcraft.3dshapes/L_Coilcraft_XFL3012.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Capacitor_SMD:C_0402_1005Metric"
 		(layer "B.Cu")
@@ -199416,7 +199702,7 @@
 			(uuid "7a86f6ef-25b0-4f5d-8415-f45569decd69")
 		)
 		(embedded_fonts no)
-		(model "${KICAD10_3DMODEL_DIR}/Inductor_SMD.3dshapes/L_Coilcraft_XxL4020.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/coilcraft.3dshapes/L_Coilcraft_XxL4020_H1.5.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -202100,6 +202386,17 @@
 			(uuid "f47665f1-943b-41d5-8c60-846599883572")
 		)
 		(embedded_fonts no)
+		(model "${OPENDAP_KICAD_3DMODELS}/murata.3dshapes/L_Murata_DFE252012F.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Capacitor_SMD:C_0603_1608Metric"
 		(layer "B.Cu")
@@ -205022,6 +205319,17 @@
 			(uuid "e84cbee1-5005-4347-a0e6-ff685929e819")
 		)
 		(embedded_fonts no)
+		(model "${OPENDAP_KICAD_3DMODELS}/shield-frames.3dshapes/Shield_Frame_RADIO_13.3x11.1mm.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 		(variant (name "production") (dnp yes))
 	)
 	(footprint "kyocera-avx:KYOCERA_AVX_9258-100_70-9258-001-120-006_SpringFinger_Pad7.0x2.7mm"
@@ -209836,6 +210144,17 @@
 			(uuid "a2737024-63c1-4891-b988-256b18ac2601")
 		)
 		(embedded_fonts no)
+		(model "${OPENDAP_KICAD_3DMODELS}/vishay.3dshapes/R_Vishay_WSL1206.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 		(variant (name "production") (field (name "Value") (value "0 Ω")) (field (name "MPN") (value "RC1206JR-070RL")) (field (name "Manufacturer") (value "YAGEO")))
 	)
 	(footprint "Capacitor_SMD:C_0402_1005Metric"
@@ -215620,7 +215939,7 @@
 			(uuid "1a73e032-7c16-4463-b213-6c20ae0a227b")
 		)
 		(embedded_fonts no)
-		(model "${KICAD10_3DMODEL_DIR}/Inductor_SMD.3dshapes/L_Coilcraft_XxL4020.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/coilcraft.3dshapes/L_Coilcraft_XxL4020_H2.1.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -219221,7 +219540,7 @@
 			(uuid "d69dd4b0-f205-4368-8ec9-108efca9382c")
 		)
 		(embedded_fonts no)
-		(model "${KICAD10_3DMODEL_DIR}/Inductor_SMD.3dshapes/L_Coilcraft_XxL4020.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/coilcraft.3dshapes/L_Coilcraft_XxL4020_H2.1.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -221511,6 +221830,17 @@
 			(uuid "7c157f2b-7f3c-43d0-9ee9-58252838a538")
 		)
 		(embedded_fonts no)
+		(model "${OPENDAP_KICAD_3DMODELS}/ck.3dshapes/SW_CK_PTS815.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Inductor_SMD:L_Coilcraft_XxL4020"
 		(layer "B.Cu")
@@ -221781,7 +222111,7 @@
 			(uuid "7a94829d-0e02-41de-905d-4f58d8ac9715")
 		)
 		(embedded_fonts no)
-		(model "${KICAD10_3DMODEL_DIR}/Inductor_SMD.3dshapes/L_Coilcraft_XxL4020.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/coilcraft.3dshapes/L_Coilcraft_XxL4020_H1.5.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -221977,6 +222307,17 @@
 			(uuid "385e4e53-46da-4bc8-a8b0-11d3cfe4a7dd")
 		)
 		(embedded_fonts no)
+		(model "${OPENDAP_KICAD_3DMODELS}/murata.3dshapes/L_Murata_DFE252012F.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Capacitor_SMD:C_0201_0603Metric"
 		(layer "B.Cu")
@@ -222792,6 +223133,17 @@
 			(uuid "466b454a-d3cb-406e-b840-7693550d688a")
 		)
 		(embedded_fonts no)
+		(model "${OPENDAP_KICAD_3DMODELS}/murata.3dshapes/L_Murata_DFE201610E.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "hirose:Hirose_DF40C-50DS-0.4V_2x25_P0.4mm_Vertical"
 		(layer "B.Cu")
@@ -223576,6 +223928,17 @@
 			(uuid "986e9460-eeaf-43f9-8307-081612ced667")
 		)
 		(embedded_fonts no)
+		(model "${OPENDAP_KICAD_3DMODELS}/murata.3dshapes/L_Murata_DFE252012F.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Capacitor_SMD:C_0402_1005Metric"
 		(layer "B.Cu")
@@ -224910,7 +225273,7 @@
 			(uuid "fba137a7-5ce3-42ab-915f-7207dee793b9")
 		)
 		(embedded_fonts no)
-		(model "${KICAD10_3DMODEL_DIR}/Inductor_SMD.3dshapes/L_Coilcraft_XxL4020.step"
+		(model "${OPENDAP_KICAD_3DMODELS}/coilcraft.3dshapes/L_Coilcraft_XxL4020_H1.5.step"
 			(offset
 				(xyz 0 0 0)
 			)

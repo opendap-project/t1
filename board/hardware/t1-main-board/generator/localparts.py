@@ -297,31 +297,52 @@ def shield_frame_fp(f):
     return "\n".join(lines) + "\n"
 
 
+# 3D models of the project lands: libs kicad/ envelopes (generator/envelopes.toml, libs v0.3.3).
+MODELS = {
+    "L_Murata_DFE252012F": ("murata", "L_Murata_DFE252012F"),
+    "L_Murata_DFE201610E": ("murata", "L_Murata_DFE201610E"),
+    "L_Abracon_AOTA-B201610": ("abracon", "L_Abracon_AOTA-B201610"),
+    "SW_CK_PTS815": ("ck", "SW_CK_PTS815"),
+    "L_Coilcraft_XFL3012": ("coilcraft", "L_Coilcraft_XFL3012"),
+    "R_Vishay_WSL1206_2m-5m9": ("vishay", "R_Vishay_WSL1206"),
+    "R_Vishay_WSL1206_6m-200m": ("vishay", "R_Vishay_WSL1206"),
+    "R_Vishay_WSL2010_7m-500m": ("vishay", "R_Vishay_WSL2010"),
+    "R_Vishay_WSL2512_7m-500m": ("vishay", "R_Vishay_WSL2512"),
+}
+
+
+def with_model(text, name):
+    """The footprint text with its libs envelope model, the shield frames' from their own library."""
+    key, step = ("shield-frames", name) if name.startswith("Shield_Frame_") else MODELS[name]
+    model = ('\t(model "${OPENDAP_KICAD_3DMODELS}/%s.3dshapes/%s.step" (offset (xyz 0 0 0)) '
+             '(scale (xyz 1 1 1)) (rotate (xyz 0 0 0)))\n' % (key, step))
+    body = text.rstrip("\n")
+    assert body.endswith(")")
+    return body[:-1] + model + ")\n"
+
+
+def _fp(name, text):
+    with open(os.path.join(FP_DIR, name + ".kicad_mod"), "w", encoding="utf-8") as fh:
+        fh.write(with_model(text, name) if (name in MODELS or name.startswith("Shield_Frame_")) else text)
+
+
 def write():
     os.makedirs(os.path.dirname(SYM_PATH), exist_ok=True)
     with open(SYM_PATH, "w", encoding="utf-8") as fh:
         fh.write('(kicad_symbol_lib (version 20251024) (generator "t1-main-board-generator") (generator_version "10.0")\n'
                  + tps7a1006() + "\n" + shield_frame() + "\n)\n")
     os.makedirs(FP_DIR, exist_ok=True)
-    with open(os.path.join(FP_DIR, "L_Murata_DFE252012F.kicad_mod"), "w", encoding="utf-8") as fh:
-        fh.write(dfe252012f())
-    with open(os.path.join(FP_DIR, "L_Murata_DFE201610E.kicad_mod"), "w", encoding="utf-8") as fh:
-        fh.write(dfe201610e())
-    with open(os.path.join(FP_DIR, "L_Abracon_AOTA-B201610.kicad_mod"), "w", encoding="utf-8") as fh:
-        fh.write(aota_b201610())
-    with open(os.path.join(FP_DIR, "TestPoint_Pad_D0.8mm.kicad_mod"), "w", encoding="utf-8") as fh:
-        fh.write(testpoint_d08())
-    with open(os.path.join(FP_DIR, "SW_CK_PTS815.kicad_mod"), "w", encoding="utf-8") as fh:
-        fh.write(sw_ck_pts815())
-    with open(os.path.join(FP_DIR, "L_Coilcraft_XFL3012.kicad_mod"), "w", encoding="utf-8") as fh:
-        fh.write(xfl3012())
+    _fp("L_Murata_DFE252012F", dfe252012f())
+    _fp("L_Murata_DFE201610E", dfe201610e())
+    _fp("L_Abracon_AOTA-B201610", aota_b201610())
+    _fp("TestPoint_Pad_D0.8mm", testpoint_d08())
+    _fp("SW_CK_PTS815", sw_ck_pts815())
+    _fp("L_Coilcraft_XFL3012", xfl3012())
     for land in WSL_LANDS:
-        with open(os.path.join(FP_DIR, land[0] + ".kicad_mod"), "w", encoding="utf-8") as fh:
-            fh.write(wsl(*land))
+        _fp(land[0], wsl(*land))
     for old in os.listdir(FP_DIR):             # a frame whose size changed leaves no stale land
         if old.startswith("Shield_Frame_"):
             os.remove(os.path.join(FP_DIR, old))
     for f in shields.frames():
-        with open(os.path.join(FP_DIR, f["footprint"] + ".kicad_mod"), "w", encoding="utf-8") as fh:
-            fh.write(shield_frame_fp(f))
+        _fp(f["footprint"], shield_frame_fp(f))
     library.reset_local()

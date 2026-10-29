@@ -118,6 +118,11 @@ def footprint(board, libs, f, nets):
     else:
         lib, name = f["fpid"].split(":", 1)
         fp = pcbnew.FootprintLoad(libs[lib], name)
+    if f.get("model"):                      # a libs envelope in place of a missing stock model
+        fp.Models().clear()
+        m = pcbnew.FP_3DMODEL()
+        m.m_Filename = f["model"]
+        fp.Models().push_back(m)
     fp.SetFPIDAsString(f["fpid"])
     fp.SetReference(f["ref"])
     fp.SetValue(f.get("value", ""))

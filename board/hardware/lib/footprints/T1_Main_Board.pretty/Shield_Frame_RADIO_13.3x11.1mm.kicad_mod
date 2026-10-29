@@ -14,4 +14,5 @@
 	(pad "1" smd rect (at -6.45 0) (size 0.4 10.3) (layers "F.Cu" "F.Paste" "F.Mask"))
 	(pad "1" smd rect (at 6.45 0) (size 0.4 10.3) (layers "F.Cu" "F.Paste" "F.Mask"))
 	(embedded_fonts no)
+	(model "${OPENDAP_KICAD_3DMODELS}/shield-frames.3dshapes/Shield_Frame_RADIO_13.3x11.1mm.step" (offset (xyz 0 0 0)) (scale (xyz 1 1 1)) (rotate (xyz 0 0 0)))
 )

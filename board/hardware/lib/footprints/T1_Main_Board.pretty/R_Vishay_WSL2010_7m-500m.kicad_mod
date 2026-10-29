@@ -11,4 +11,5 @@
 	(pad "1" smd rect (at -2.35 0) (size 1.4 3.05) (layers "F.Cu" "F.Paste" "F.Mask"))
 	(pad "2" smd rect (at 2.35 0) (size 1.4 3.05) (layers "F.Cu" "F.Paste" "F.Mask"))
 	(embedded_fonts no)
+	(model "${OPENDAP_KICAD_3DMODELS}/vishay.3dshapes/R_Vishay_WSL2010.step" (offset (xyz 0 0 0)) (scale (xyz 1 1 1)) (rotate (xyz 0 0 0)))
 )

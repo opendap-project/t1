@@ -12,4 +12,5 @@
 	(pad "1" smd rect (at -1.0 0) (size 0.8 2.0) (layers "F.Cu" "F.Paste" "F.Mask"))
 	(pad "2" smd rect (at 1.0 0) (size 0.8 2.0) (layers "F.Cu" "F.Paste" "F.Mask"))
 	(embedded_fonts no)
+	(model "${OPENDAP_KICAD_3DMODELS}/murata.3dshapes/L_Murata_DFE252012F.step" (offset (xyz 0 0 0)) (scale (xyz 1 1 1)) (rotate (xyz 0 0 0)))
 )

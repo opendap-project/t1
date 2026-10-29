@@ -13,4 +13,5 @@
 	(pad "2" smd rect (at -2.25 1.075) (size 1.0 0.7) (layers "F.Cu" "F.Paste" "F.Mask"))
 	(pad "2" smd rect (at 2.25 1.075) (size 1.0 0.7) (layers "F.Cu" "F.Paste" "F.Mask"))
 	(embedded_fonts no)
+	(model "${OPENDAP_KICAD_3DMODELS}/ck.3dshapes/SW_CK_PTS815.step" (offset (xyz 0 0 0)) (scale (xyz 1 1 1)) (rotate (xyz 0 0 0)))
 )

@@ -153,6 +153,7 @@ def footprint_specs(nl, placed, geom):
                     "value": c.value, "fields": fields, "path": c.path, "sheetname": sheet,
                     "sheetfile": c.sheet_file, "dnp": c.dnp, "pins": c.pins,
                     "exclude_bom": c.ref.startswith("TP"),
+                    "model": plan.model_for(c.footprint, fields.get("MPN", "")),
                     "placeholder": {"courtyard": list(ph[0])} if ph else None})
     for ref, x, y, side, kind in plan.FIDUCIALS:
         out.append({"ref": ref, "fpid": plan.FIDUCIAL_FP, "x": x, "y": y, "rot": 0, "side": side, "value": "Fiducial",

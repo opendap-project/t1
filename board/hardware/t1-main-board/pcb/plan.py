@@ -256,6 +256,36 @@ IDENTITY = {"rect": (-9.0, 33.5, 5.0, 37.3),   # v1.6: right of the radio frame 
 # Nets that do not pull a part towards them (ground and wide rails reach every part through planes)
 WEAK_NETS = {"GND", "VSYS", "VSYS_LV", "vcc3v3_sys", "vcc_1v8", "vcca1v8_pmu", "vcc3v3_pmu", "VBAT"}
 
+# 3D models for KiCad stock footprints whose KiCad 10 library ships none: libs kicad/ envelopes
+# (generator/envelopes.toml, libs v0.3.3), by footprint, and by MPN where one land carries parts
+# of several heights. The board writes them in place of the stock model path.
+LIB_MODEL = "${OPENDAP_KICAD_3DMODELS}/%s.3dshapes/%s.step"
+MODEL_BY_FOOTPRINT = {
+    "Fuse:Fuse_Littelfuse-NANO2-451_453": LIB_MODEL % ("littelfuse", "Fuse_Littelfuse-NANO2-451_453"),
+    "Package_SON:Texas_DPY0002A_0.6x1mm_P0.65mm": LIB_MODEL % ("texas-instruments", "Texas_DPY0002A_0.6x1mm_P0.65mm"),
+    "Package_TO_SOT_SMD:SOT-523": LIB_MODEL % ("diodes-inc", "SOT-523"),
+}
+MODEL_BY_MPN = {
+    "XGL4012-221MEC": LIB_MODEL % ("coilcraft", "L_Coilcraft_XxL4020_H1.2"),
+    "XEL4012-920NEC": LIB_MODEL % ("coilcraft", "L_Coilcraft_XxL4020_H1.2"),
+    "XGL4015-102MEC": LIB_MODEL % ("coilcraft", "L_Coilcraft_XxL4020_H1.5"),
+    "XGL4015-471MEC": LIB_MODEL % ("coilcraft", "L_Coilcraft_XxL4020_H1.5"),
+    "XGL4020-102MEC": LIB_MODEL % ("coilcraft", "L_Coilcraft_XxL4020_H2.1"),
+    "XGL4020-152MEC": LIB_MODEL % ("coilcraft", "L_Coilcraft_XxL4020_H2.1"),
+    "XGL4020-222MEC": LIB_MODEL % ("coilcraft", "L_Coilcraft_XxL4020_H2.1"),
+    "XAL4020-102MEC": LIB_MODEL % ("coilcraft", "L_Coilcraft_XxL4020_H2.1"),
+}
+
+
+def model_for(fpid, mpn):
+    """The libs envelope that replaces a missing stock model, or None (keep the footprint's own)."""
+    if fpid == "Inductor_SMD:L_Coilcraft_XxL4020":
+        if mpn not in MODEL_BY_MPN:
+            raise ValueError("no XxL4020 envelope for %s: add its height to MODEL_BY_MPN" % mpn)
+        return MODEL_BY_MPN[mpn]
+    return MODEL_BY_FOOTPRINT.get(fpid)
+
+
 # Footprints with no land in the libraries yet: placed as courtyard-only placeholders (no pads), with
 # the body named by the part (UNVERIFIED) and the field Placeholder.
 PLACEHOLDER = {}

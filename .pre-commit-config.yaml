@@ -10,7 +10,7 @@ repos:
       - id: check-json
       - id: check-added-large-files
         args: ["--maxkb=5120"]
-        exclude: \.kicad_pcb$
+        exclude: ^(?!board/)|^board/.*(?:\.kicad_pcb$)
       # A KiCad board is one text file that grows with its copper: the placed T1
       # main board is 4.7 MB before routing, and pours and tracks add to it. Board
       # files get 40 MB, under GitHub's 50 MB push warning; every other file keeps
@@ -18,7 +18,10 @@ repos:
       - id: check-added-large-files
         name: check for added large files (KiCad boards, 40 MB)
         args: ["--maxkb=40960"]
-        files: \.kicad_pcb$
+        files: ^board/.*(?:\.kicad_pcb$)
+      - id: check-added-large-files
+        args: ["--maxkb=5120"]
+        exclude: ^(?!(?:case|faceplates/cassette|faceplates/classic|faceplates/touch|product)/)
   - repo: https://github.com/fsfe/reuse-tool
     rev: v6.2.0
     hooks:
@@ -28,10 +31,15 @@ repos:
     hooks:
       - id: no-stray-files
       - id: kicad-erc
+        exclude: ^(?!(?:board|faceplates/cassette|faceplates/classic|faceplates/touch)/)
       - id: kicad-drc
-        exclude: ^hardware/rules/test/  # the rule test board fails by design
+        exclude: ^(?!board/)|^board/hardware/rules/test/  # the rule test board fails by design
       - id: no-fab-outputs
+        exclude: ^(?!(?:board|faceplates/cassette|faceplates/classic|faceplates/touch)/)
       - id: kicad-dru-composed
+        exclude: ^(?!board/)
+      - id: kicad-drc
+        exclude: ^(?!(?:faceplates/cassette|faceplates/classic|faceplates/touch)/)
   - repo: https://github.com/DavidAnson/markdownlint-cli2
     rev: v0.24.0
     hooks:

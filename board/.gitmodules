@@ -1,3 +1,0 @@
-[submodule "hardware/lib/opendap"]
-	path = hardware/lib/opendap
-	url = https://github.com/opendap-project/libs.git

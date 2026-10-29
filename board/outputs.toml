@@ -1,0 +1,14 @@
+# The board's committed visual outputs (RFC 0021): odw render update writes them to outputs/.
+schema = "opendap.outputs/v1"
+
+[[source]]
+type = "kicad-sch"
+path = "hardware/t1-main-board/t1-main-board.kicad_sch"
+name = "t1-main-board"
+kicad_theme = "hardware/lib/opendap/kicad/colour-themes/opendap.json"
+
+[[source]]
+type = "kicad-pcb"
+path = "hardware/t1-main-board/t1-main-board.kicad_pcb"
+name = "t1-main-board-pcb"
+kicad_theme = "hardware/lib/opendap/kicad/colour-themes/opendap.json"

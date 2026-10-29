@@ -8,6 +8,8 @@ Main board of the OpenDAP T1: the SoC-based single board computer, its auxiliary
 - `firmware/`
 - `sim/`
 - `export/`
+- `outputs/`: the [committed visual outputs](outputs/README.md) of the main board (RFC [0021](https://github.com/opendap-project/rfcs/blob/main/text/0021-committed-visual-outputs.md)): the schematic as PDF and one SVG per sheet, one SVG per board layer, 3D renders from four fixed views. Declared in `outputs.toml`; `odw render update .` regenerates them, never by hand
+- `outputs.toml`
 - `docs/`
 
 ## License

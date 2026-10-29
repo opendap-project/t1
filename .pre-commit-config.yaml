@@ -30,6 +30,9 @@ repos:
     rev: v0.1.1
     hooks:
       - id: no-stray-files
+        # tools v0.1.1 rejects every PDF; v0.2.0 allows a stamped output PDF (RFC 0021 §7), and this
+        # exclusion goes with the v0.2.0 pin, when outputs-current checks the stamps
+        exclude: ^board/outputs/
       - id: kicad-erc
         exclude: ^(?!(?:board|faceplates/cassette|faceplates/classic|faceplates/touch)/)
       - id: kicad-drc

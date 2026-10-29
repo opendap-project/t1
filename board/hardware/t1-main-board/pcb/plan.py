@@ -32,7 +32,7 @@ for _b in ("radio", "radio-module", "radio-power", "antennas"):
     ZONE_OF_BLOCK["blk." + _b] = "RADIO"
 
 # The faceplate connection area carries the FH35C and its ESD only (ADR 0016 item 1, floorplan v1 §2)
-FACEPLATE_REFS = {"J5301", "U5301", "U5302", "U5303", "U5304", "U5305", "U5306"}
+FACEPLATE_REFS = {"J5301", "U5301", "U5302", "U5303", "U5304", "U5305", "U5306", "U5307", "U5308", "D5301"}
 
 # ---- fixed parts: ref -> (x, y, rotation, side, reason). "edge:bottom"/"edge:top" as y puts the
 # courtyard against that edge with the mouth outward (rotation chosen by build.py as in the floorplan

@@ -40,6 +40,7 @@ CONTACTS = {
     46: "BL_LEDA", 47: None, 48: None, 49: None, 50: None, 51: None,
 }
 LOW_SPEED = [CONTACTS[c] for c in range(17, 39) if CONTACTS[c] not in ("GND",)]   # 21 lines (BOM v1 line 75)
+LOW_SPEED_ARRAY = [n for n in LOW_SPEED if n != "FP_GPIO1"]                       # 20 lines on 5 arrays
 
 
 def switch_group(s, title, part_name, pins, rows, extra=None):
@@ -66,28 +67,43 @@ def draw_connector(s, variants):
     grp(f, connector)
 
     def esd():
-        g = Group(s, "Low-speed ESD: 6 x TPD4E05U06, 21 lines (BOM v1 line 75)")
-        lines = LOW_SPEED + [None] * (24 - len(LOW_SPEED))
-        for i in range(6):
-            a, b, c, d = lines[4 * i:4 * i + 4]
-            u = ic(s, "texas-instruments", "TPD4E05U06DQAR", 101.6 + (i % 3) * 60.96, 101.6 + (i // 3) * 48.26,
-                   {"D1+": a, "D1-": b, "D2+": c, "D2-": d, "NC": None, "GND": "GND"})
+        # one group for every array at the connector, four per row: the low-speed lines four per
+        # array, then the DSI pairs, one pair per two channels, flow-through as the TPD4E05U06 pins
+        # run (CLK alone on the third array, its other two channels open). FP_GPIO1, the
+        # 21st low-speed line, takes a single TPD1E10B06 in the detect group (BOM v1 line 75).
+        g = Group(s, "ESD: 5 x TPD4E05U06 low-speed, 20 lines (BOM v1 line 75); 3 x TPD4E05U06 DSI, "
+                     "10 lines (line 72)")
+        maps = []
+        lines = LOW_SPEED_ARRAY
+        for i in range(0, len(lines), 4):
+            a, b, c, d = lines[i:i + 4]
+            maps.append({"D1+": a, "D1-": b, "D2+": c, "D2-": d})
+        for a, b in [("FP_DSI_D0", "FP_DSI_D1"), ("FP_DSI_D2", "FP_DSI_D3"), ("FP_DSI_CLK", None)]:
+            maps.append({"D1+": f"{a}_P", "D1-": f"{a}_N", "D2+": f"{b}_P" if b else None,
+                         "D2-": f"{b}_N" if b else None})
+        for i, m in enumerate(maps):
+            u = ic(s, "texas-instruments", "TPD4E05U06DQAR", 101.6 + (i % 4) * 60.96, 101.6 + (i // 4) * 48.26,
+                   {**m, "NC": None, "GND": "GND"})
             g.add(u.bbox)
         return g.close()
     grp(f, esd)
 
-    def detect():
-        g = Group(s, "Detect, spares (P12-P14)")
-        g.add(prow(s, 101.6, 109.22, [("R_10k", "vcc3v3_sys", "FP_DET_N"), ("R_100k", "FP_GPIO0", "GND"),
-                                      ("R_100k", "FP_GPIO1", "GND")]))
-        return g.close()
-    grp(f, detect)
-
     grp(f, lambda: switch_group(
-        s, "FP_3V3: TPS22950, RILIM 3.57 kΩ, 0.22-0.38 A (BOM v1 line 145)", "TPS22950YBHR",
+        s, "FP_3V3: TPS22950, 0.22-0.38 A (line 145)", "TPS22950YBHR",
         {"VIN": "vcc3v3_sys", "VOUT": "FP_3V3_SRC", "ON": "FP_IO_EN", "ILIM": "FP3V3_ILIM", "FLT": None, "GND": "GND"},
         rows=[[("C_1u_0402", "vcc3v3_sys", "GND"), ("C_1u_0402", "FP_3V3_SRC", "GND"), ("R_3k57", "FP3V3_ILIM", "GND"),
                ("R_100k", "FP_IO_EN", "GND")]]), newline=True)
+
+    def detect():
+        # the spare FP_GPIO1 takes its ESD here: one TPD1E10B06 (BOM v1 line 75)
+        g = Group(s, "Detect, spares, FP_GPIO1 ESD")
+        b = g.add(prow(s, 101.6, 109.22, [("R_10k", "vcc3v3_sys", "FP_DET_N"), ("R_100k", "FP_GPIO0", "GND"),
+                                          ("R_100k", "FP_GPIO1", "GND")]))
+        x = snap(b[2] + 7.62)
+        part(s, "Device", "D_TVS", x, 101.6, {"2": "FP_GPIO1", "1": "GND"}, key="D_TPD1E10B06", angle=90,
+             prefix="D", ref_at=(x + 2.54 + 2.9, 100.33), val_at=(x + 2.54 + 5.8, 102.87))
+        g.add((x - 5.08, 101.6 - 7.62 - len("FP_GPIO1") * 1.16, x + 15.24, 101.6 + 12.7))
+        return g.close()
     # the links in a column between the switches; their Kelvin pads are the rail test pads (PCB-T-02)
     col = Flow(s, x0=snap(f.x + 0.0), y0=f.y)
     col.x_max = col.x0 + 80.0
@@ -96,12 +112,13 @@ def draw_connector(s, variants):
     f.x = snap(col.x_right + f.gap)
     f.row_h = max(f.row_h, col.bottom() - f.y)
     grp(f, lambda: switch_group(
-        s, "FP_1V8: TPS22945, 100-200 mA (BOM v1 line 146)", "TPS22945DCKR",
+        s, "FP_1V8: TPS22945, 100-200 mA (line 146)", "TPS22945DCKR",
         {"VIN": "vcc_1v8", "VOUT": "FP_1V8_SRC", "ON": "FP_IO_EN", "OC": None, "GND": "GND"},
         rows=[[("C_1u_0402", "vcc_1v8", "GND"), ("C_1u_0402", "FP_1V8_SRC", "GND"), ("R_10k", "FP_1V8_SRC", "GND")]]))
+    grp(f, detect)
 
     s.iface_rows = [
-        ["FP_DSI_*", "Output", "From blk.fp-display (DSI0 D-PHY, 100 Ω)"],
+        ["FP_DSI_*", "Output", "From blk.fp-display (DSI0 D-PHY, 100 Ω); ESD here (BOM v1 line 72)"],
         ["FP_I2C_*, FP_SPI_*, FP_TP_*, FP_LCD_*, FP_*_INT_N", "Bidirectional", "From blk.fp-controls"],
         ["LED_R, LED_G, LED_B", "Output", "From blk.status-led (LP5521 current sources): open with the LP5521 unfitted"],
         ["PDM_CLK0_FP, PDM_DATA0", "Bidirectional", "blk.mic-main: clock through 22 Ω; data to the SoC"],
@@ -123,6 +140,8 @@ def draw_connector(s, variants):
         "5. Contacts 47-51 reserved (47, next to BL_LEDA, never a logic line). Contact numbering",
         "   against the Hirose drawing: pinout v1 §8.1.",
         "6. Links (power tree §4.12): #23 FP_3V3, 0.1 Ω (80 mA, 8 mV); #31 FP_1V8, 1 Ω (5 mA, 5 mV).",
+        "7. ESD at the connector: DSI CLK and D0-D3 on 3 x TPD4E05U06 (line 72, 0.42-0.5 pF, one pair per",
+        "   two channels); 20 low-speed lines on 5 x TPD4E05U06 and FP_GPIO1 on a TPD1E10B06 (line 75).",
     ])
 
 

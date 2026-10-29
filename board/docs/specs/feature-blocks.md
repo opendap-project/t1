@@ -58,8 +58,8 @@ Priority is the requirement's own (must / should) as recorded in its requirement
 | 18 | `blk.current-monitors` | 4 × INA236 and shunts | T1-026 (must) through BOM line 54 (Proposed; ADR 0013 keeps them) | INA236 power-down | — | fit | fit |
 | 19 | `blk.hat-signals` | HAT USB port: USB3 HOST1 SuperSpeed pairs with AC caps, `D±`, `CC`; two TPD4E05U06; the HAT connector (follows the connector decision) | BRD-003, BRD-006, BRD-013, BRD-044 (must), HCS-012, HCS-027 | none (USB attach) | none | fit | fit |
 | 20 | `blk.hat-audio` | Removed (2026-10-25, RFC 0014: HAT audio goes over USB Audio Class) | — | — | — | — | — |
-| 21 | `blk.fp-connector` | FH35C, low-speed ESD, FP_3V3, FP_1V8 | BRD-048 (must) | `FP_IO_EN` (TPS22950 FP_3V3, TPS22945 FP_1V8; current-limited from BOM v1.11) | display channel (position open) | fit | fit |
-| 22 | `blk.fp-display` | DSI ESD, FP_VCI, panel RST/TE | BRD-048 (must) | RK809 LDO4, and a TPS22945 on `FP_IO_EN` (BOM v1.11) | display channel (G11) | fit | fit |
+| 21 | `blk.fp-connector` | FH35C, low-speed and DSI ESD (BOM v1.21), FP_3V3, FP_1V8 | BRD-048 (must) | `FP_IO_EN` (TPS22950 FP_3V3, TPS22945 FP_1V8; current-limited from BOM v1.11) | display channel (position open) | fit | fit |
+| 22 | `blk.fp-display` | DSI lanes, FP_VCI, panel RST/TE (DSI ESD at the connector, `blk.fp-connector`, BOM v1.21) | BRD-048 (must) | RK809 LDO4, and a TPS22945 on `FP_IO_EN` (BOM v1.11) | display channel (G11) | fit | fit |
 | 23 | `blk.fp-backlight` | TPS61160 (BOM v1.11; TPS61169 before), inductor, rectifier | BRD-048 (must) | CTRL (`BL_PWM`) | display channel (G11) | fit | fit |
 | 24 | `blk.fp-controls` | Faceplate I2C, touch INT/RST, HID_INT, ALS_INT, FP_DET# | BRD-048, T1-023 (must), FPT-021 (must) | FP_3V3 | none | fit | fit |
 | 25 | `blk.status-led` | LP5521 | FPT-003, FPT-016 (must), FPT-025 (should) | CHIP_EN (I2C) | none (G12) | fit | fit |
@@ -375,7 +375,7 @@ The faceplate interface is the t1 [faceplate interface v1](../../../product/docs
 | Field | Content |
 |---|---|
 | Bound by | BRD-048 (must) |
-| Interface | FH35C-51S, contact positions in pinout v1 §8 (RFC 0001 group order); FP_3V3 ×2, FP_1V8, `FP_DET#`, 2 spare GPIO (expander), 5 reserved, grounds; low-speed ESD (line 75: 6 × TPD4E05U06 for 21 lines from BOM v1.9) |
+| Interface | FH35C-51S, contact positions in pinout v1 §8 (RFC 0001 group order); FP_3V3 ×2, FP_1V8, `FP_DET#`, 2 spare GPIO (expander), 5 reserved, grounds; low-speed ESD (line 75: 5 × TPD4E05U06 for 20 lines and a TPD1E10B06 for `FP_GPIO1` from BOM v1.21; 6 × TPD4E05U06 from v1.9); DSI ESD at the contacts (line 72: 3 × TPD4E05U06 for CLK± and D0–D3±, BOM v1.21) |
 | Power domain | Current-limited switches (BOM v1.11 lines 145, 146; 2 × TPS22919 before): TPS22950 for FP_3V3 from vcc3v3_sys (0.22–0.38 A), TPS22945 for FP_1V8 from vcc_1v8 (100–200 mA), `FP_IO_EN` on expander P00. Suspend (decision 2026-10-24, T1-060): off by default, the T1 wakes from the body buttons; the expander holds `FP_IO_EN`, so FP_3V3 can stay on for a faceplate that must wake the T1; FP_1V8 follows vcc_1v8 |
 | Measure | INA236 display channel (position open, G11). Proposed: shunt footprints on FP_3V3 and FP_1V8 at the switch outputs |
 | Absent state | Faceplate detached: `FP_DET#` pulled up (reads "absent"); FP_3V3 and FP_1V8 off (TPS22950 QOD; the TPS22945 has none, so a 10 kΩ discharge resistor, BOM line 146); spares as SoC/expander inputs with pulls; reserved contacts unconnected |

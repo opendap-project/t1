@@ -1287,26 +1287,26 @@
    ],
    "C5301": [
     "decoupling",
-    "U5307",
-    "U5307.B1",
+    "U5309",
+    "U5309.B1",
     1.62
    ],
    "C5302": [
     "decoupling",
-    "U5307",
-    "U5307.B2",
+    "U5309",
+    "U5309.B2",
     1.42
    ],
    "C5303": [
     "decoupling",
-    "U5308",
-    "U5308.5",
+    "U5310",
+    "U5310.5",
     0.48
    ],
    "C5304": [
     "decoupling",
-    "U5308",
-    "U5308.1",
+    "U5310",
+    "U5310.1",
     0.32
    ],
    "C5401": [
@@ -1613,8 +1613,8 @@
    "warning | lib_footprint_issues | ": 1,
    "warning | silk_edge_clearance | T1 PCB-D-05 [Q2]: Silkscreen to board edge": 1,
    "warning | silk_over_copper | OpenDAP CRAFT-07 [Q2]: Silk clearance to pads": 199,
-   "warning | silk_overlap | ": 9,
-   "warning | silk_overlap | OpenDAP CRAFT-07 [Q2]: Silk clearance to pads": 190
+   "warning | silk_overlap | ": 10,
+   "warning | silk_overlap | OpenDAP CRAFT-07 [Q2]: Silk clearance to pads": 189
   },
   "errors": 0,
   "schematic_parity": 0,
@@ -1661,12 +1661,12 @@
    "courtyard_mm2": {
     "B": 0.0,
     "E": 0.0,
-    "F": 121.3,
+    "F": 134.9,
     "T": 0.0
    },
    "front_area_mm2": 190.0,
-   "front_use_pct": 108.5,
-   "need_mm2": 206.2
+   "front_use_pct": 120.7,
+   "need_mm2": 229.4
   },
   "IO": {
    "back_area_mm2": 446.2,
@@ -1718,12 +1718,12 @@
   59.1,
   91.6
  ],
- "parts": 993,
+ "parts": 996,
  "per_side": {
   "B": 277,
-  "F": 716
+  "F": 719
  },
- "placed": 993,
+ "placed": 996,
  "placed_occupancy": {
   "AUDIO": {
    "B": {
@@ -1767,8 +1767,8 @@
    },
    "F": {
     "area_mm2": 190.0,
-    "courtyard_mm2": 96.5,
-    "use_pct": 50.8
+    "courtyard_mm2": 110.2,
+    "use_pct": 58.0
    },
    "band": {
     "area_mm2": 0,
@@ -1789,8 +1789,8 @@
    },
    "band": {
     "area_mm2": 194.9,
-    "courtyard_mm2": 166.8,
-    "use_pct": 85.6
+    "courtyard_mm2": 165.6,
+    "use_pct": 85.0
    }
   },
   "POWER": {
@@ -4529,6 +4529,13 @@
    "F",
    "POWER"
   ],
+  "D5301": [
+   -7.0,
+   -32.2,
+   90,
+   "F",
+   "FACEPLATE"
+  ],
   "D5401": [
    8.25,
    -36.25,
@@ -6581,57 +6588,57 @@
    "RADIO"
   ],
   "R5301": [
-   -2.75,
-   -23.5,
-   0,
-   "F",
-   "IO"
-  ],
-  "R5302": [
-   -5.8,
-   -36.75,
-   90,
-   "B",
-   "IO"
-  ],
-  "R5303": [
-   -5.8,
-   -38.25,
-   90,
-   "B",
-   "IO"
-  ],
-  "R5304": [
    -2.55,
    -9.0,
    0,
    "F",
    "IO"
   ],
-  "R5305": [
+  "R5302": [
    -3.0,
    -13.5,
    0,
    "F",
    "IO"
   ],
-  "R5306": [
+  "R5303": [
    -2.8,
    -20.7,
    0,
    "F",
    "IO"
   ],
-  "R5307": [
+  "R5304": [
    -2.1,
    -22.3,
    0,
    "F",
    "IO"
   ],
-  "R5308": [
+  "R5305": [
    -5.5,
    -16.55,
+   90,
+   "B",
+   "IO"
+  ],
+  "R5306": [
+   -2.75,
+   -23.5,
+   0,
+   "F",
+   "IO"
+  ],
+  "R5307": [
+   -5.8,
+   -36.75,
+   90,
+   "B",
+   "IO"
+  ],
+  "R5308": [
+   -5.4,
+   -25.8,
    90,
    "B",
    "IO"
@@ -8660,20 +8667,34 @@
    "FACEPLATE"
   ],
   "U5306": [
-   -0.85,
-   -40.2,
+   7.85,
+   -36.2,
    90,
    "F",
    "FACEPLATE"
   ],
   "U5307": [
+   7.95,
+   -38.2,
+   90,
+   "F",
+   "FACEPLATE"
+  ],
+  "U5308": [
+   6.5,
+   -40.2,
+   90,
+   "F",
+   "FACEPLATE"
+  ],
+  "U5309": [
    -2.8,
    -11.25,
    90,
    "F",
    "IO"
   ],
-  "U5308": [
+  "U5310": [
    -3.9,
    -11.9,
    0,
@@ -8829,9 +8850,9 @@
   ]
  },
  "routing_room": {
-  "board_need_pct": 98.9,
+  "board_need_pct": 99.2,
   "factor_left": 1.66,
-  "placed_courtyard_pct": 60.2
+  "placed_courtyard_pct": 60.3
  },
  "shield_frames": {
   "A5901": {

@@ -456,7 +456,7 @@ AR38,VSS_29,ground,supply,0 V,GND,blk.soc,-,
 1N6,VCCIO5_2,power,supply,3.3 V,vcc3v3_sys,blk.fp-connector,-,io-domain 3.3 V; 100 nF per ball
 1N7,VSS_116,ground,supply,0 V,GND,blk.soc,-,
 1N8,VCCIO7,power,supply,3.3 V,vcc3v3_sys,blk.hat-signals,-,io-domain 3.3 V; 100 nF
-1N9,MIPI_CSI_RX_AVDD_0V9,power,supply,0.9 V,vdda_0v9,blk.soc,-,"Ferrite bead + decoupling (HDG pp. 84-85); CSI RX unused under HAT interface v2 (RFC 0014): supply handling of the unused PHY follows O2, powered until then"
+1N9,MIPI_CSI_RX_AVDD_0V9,power,supply,0.9 V,vdda_0v9,blk.soc,-,"Tied straight to vdda_0v9, no bead and no capacitor of its own (2026-10-28): the CSI receiver has no consumer (RFC 0014). HDG 1.1 p. 84 asks for the series bead and close decoupling to improve the receiver's performance; p. 33 lists the supply and no Rockchip text allows it unpowered, so it stays on its rail (O2)"
 1N10,MIPI_DSI_TX1_AVDD_0V9,power,supply,0.9 V,vdda_0v9,blk.soc,-,"DSI1 unused: supply handling per RK3566_PinOut, not retrieved (O2)"
 1N11,AVSS_9,ground,supply,0 V,GND,blk.soc,-,
 1N12,AVSS_10,ground,supply,0 V,GND,blk.soc,-,
@@ -476,7 +476,7 @@ AR38,VSS_29,ground,supply,0 V,GND,blk.soc,-,
 1P6,VSS_119,ground,supply,0 V,GND,blk.soc,-,
 1P7,VSS_120,ground,supply,0 V,GND,blk.soc,-,
 1P8,AVSS_11,ground,supply,0 V,GND,blk.soc,-,
-1P9,MIPI_CSI_RX_AVDD_1V8,power,supply,1.8 V,vcca_1v8,blk.soc,-,"Ferrite bead + decoupling; CSI RX unused under HAT interface v2 (RFC 0014): supply handling of the unused PHY follows O2, powered until then"
+1P9,MIPI_CSI_RX_AVDD_1V8,power,supply,1.8 V,vcca_1v8,blk.soc,-,"Tied straight to vcca_1v8, no bead and no capacitor of its own (2026-10-28): as 1N9 (HDG 1.1 pp. 33, 84; RFC 0014; O2)"
 1P10,AVSS_12,ground,supply,0 V,GND,blk.soc,-,
 1P11,MIPI_DSI_TX0/LVDS_TX0_AVDD_0V9,power,supply,0.9 V,vdda_0v9,blk.fp-display,-,Ferrite bead + decoupling (HDG p. 78)
 1P12,MIPI_DSI_TX0/LVDS_TX0_AVDD_1V8,power,supply,1.8 V,vcca_1v8,blk.fp-display,-,Ferrite bead + decoupling

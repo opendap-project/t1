@@ -609,7 +609,7 @@ No new level shifter is needed: the master-clock and headphone-rail enables move
 | # | Item | What closes it |
 |---|---|---|
 | O1 | I2C5 M1 on the HDMI DDC balls (C1) | First prototype (M-CORE). Fallback: `i2c-gpio` on the spare 3.3 V balls GPIO1_A3/A4 |
-| O2 | Unused-ball and unused-PHY handling (eDP, HDMI, DSI1, CSI CLK1, the CSI-2 receiver and PCIe 2.0 (2026-10-25, RFC 0014), USB host 3, OTG0 ID, the DDR ball without an LPDDR4 function, spare GPIO) | Rockchip *RK3566_PinOut* (HDG p. 4), not retrieved; until then, supplies of unused PHYs are connected as the reference boards do |
+| O2 | Unused-ball and unused-PHY handling (eDP, HDMI, DSI1, CSI CLK1, the CSI-2 receiver and PCIe 2.0 (2026-10-25, RFC 0014), USB host 3, OTG0 ID, the DDR ball without an LPDDR4 function, spare GPIO) | Rockchip *RK3566_PinOut* (HDG p. 4), not retrieved; until then, supplies of unused PHYs are connected as the reference boards do. 2026-10-28, CSI-2 receiver supplies (1N9, 1P9): straight to vdda_0v9 and vcca_1v8 with no bead and no capacitor of their own; HDG 1.1 p. 84 gives the bead and close decoupling for the receiver's performance, and nothing in the HDG lets the supply go unpowered (its p. 32 rule for unpowered domains covers GPIO domains only) |
 | O3 | Rockchip IO Power Domain Checklist (HDG pp. 4, 31) | Retrieve and fill in from §1 |
 | O4 | I2S1 RX on the TX clocks | HDG p. 69 states that SDI lines referring to one clock group use SCLKTX/LRCKTX by default, which supports it; the DNP links to GPIO4_A6/A7 stay until the first prototype |
 | O5 | Native DSD on SDO1/SDO2 | v0 §3.4, unchanged |

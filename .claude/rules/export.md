@@ -1,6 +1,6 @@
 ---
 paths:
-  - "export/**"
+  - "**/export/**"
 ---
 
 # Export

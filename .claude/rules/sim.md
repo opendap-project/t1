@@ -1,6 +1,6 @@
 ---
 paths:
-  - "sim/**"
+  - "**/sim/**"
 ---
 
 # Simulations

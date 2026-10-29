@@ -5,7 +5,7 @@
 
 ## Context
 
-BOM v1 line 3 supplies the RK3566 CPU cluster (vdd_cpu) from a Rockchip RK860-0, the part on the Radxa ZERO 3W, with a Murata DFE252012F-R47M (line 4). The RK860-0 has no public datasheet: its input range, current rating, the 0x40 address, the OTP boot voltage, its land pattern and whether it senses remotely are all **UNVERIFIED** in the BOM, the power tree (§4.10 lists its margin as "Open: datasheet from Rockchip") and the [parts-lib sheet](https://github.com/opendap-project/libs/blob/main/parts/Rockchip/RK860-0.md). No franchised distributor lists it. That fails T1-010 and T1-027 to T1-029, the authorised-channel rule of ADR 0013 and the supply rule of ADR 0010, the BRD-049 margins cannot be shown, and a DIY builder can neither check nor replace the part. Its mainline driver is `fan53555` (`rockchip,rk8600`).
+BOM v1 line 3 supplies the RK3566 CPU cluster (vdd_cpu) from a Rockchip RK860-0, the part on the Radxa ZERO 3W, with a Murata DFE252012F-R47M (line 4). The RK860-0 has no public datasheet: its input range, current rating, the 0x40 address, the OTP boot voltage, its land pattern and whether it senses remotely are all **UNVERIFIED** in the BOM, the power tree (§4.10 lists its margin as "Open: datasheet from Rockchip") and the RK860-0 parts-lib sheet (no longer published, libs parts ADR 0002). No franchised distributor lists it. That fails T1-010 and T1-027 to T1-029, the authorised-channel rule of ADR 0013 and the supply rule of ADR 0010, the BRD-049 margins cannot be shown, and a DIY builder can neither check nor replace the part. Its mainline driver is `fan53555` (`rockchip,rk8600`).
 
 ## Research
 
@@ -112,7 +112,7 @@ This ADR does not edit those files. To apply:
 
 ### Done here
 
-- parts-lib: [`Texas-Instruments/TPS6286910CRQYR.md`](https://github.com/opendap-project/libs/blob/main/parts/Texas-Instruments/TPS6286910CRQYR.md) (new), `Rockchip/RK860-0.md` (why it was replaced), `Rockchip/RK3566.md` (power line), `manifest.toml` (TPS6286910CRQYR datasheet and EVM guide, XGL4012-221MEC, SYR827PKC source; the RK860-0 entry notes that no datasheet exists).
+- parts-lib: `Texas-Instruments/TPS6286910CRQYR.md` (new; from TI datasheet SLVSFS3B; sheets no longer published, libs parts ADR 0002), `Rockchip/RK860-0.md` (why it was replaced), `Rockchip/RK3566.md` (power line), `manifest.toml` (TPS6286910CRQYR datasheet and EVM guide, XGL4012-221MEC, SYR827PKC source; the RK860-0 entry notes that no datasheet exists).
 - kicad-lib: symbol `Texas_Instruments:TPS6286910CRQYR` and footprint `Texas_RQY0009A_VQFN-HR-9_1.5x2.5mm_P0.5mm` from the generator data `generator/parts/Texas_Instruments/TPS6286910CRQYR.toml`, with its envelope STEP; `test_library.py` passes (11 tests).
 
 ### Open, to close on the first boards (UNVERIFIED until then)

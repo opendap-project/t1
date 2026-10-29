@@ -65,5 +65,5 @@ Channels checked 2026-10-25; lifecycle as distributors listed it that day. RK356
   - `blk.lpddr4x` holds: "same-package LPDDR4X ... that the rkbin DDR blob supports" becomes "single-rank 200-ball LPDDR4X on the MO-311 grid, 10 × 14.5 or 10 × 15 mm, listed T/A for RK3566".
   - Gap G18: 4 GB alternate closed; 2 GB fallback still open.
 - **Pinout v1:** the rank-1 notes (balls A3, 1A2, 1A4, 1A5 and the other CS1/CKE1 lines) resolve to "not connected: the DRAM is single rank (ADR 0022)".
-- **parts-lib:** sheets [MT53E1G32D2FW-046](https://github.com/opendap-project/libs/blob/main/parts/Micron/MT53E1G32D2FW-046.md) and [CXDB5CBAM-MA-B](https://github.com/opendap-project/libs/blob/main/parts/CXMT/CXDB5CBAM-MA-B.md); the Samsung sheet points here.
+- **parts-lib:** sheets MT53E1G32D2FW-046 (from Micron datasheet Rev. C) and CXDB5CBAM-MA-B (from CXMT datasheet Version 1.0), no longer published (libs parts ADR 0002); the Samsung sheet points here.
 - **Open (UNVERIFIED until checked):** AAT:C package identity; a formal lifecycle statement from Micron for the `:C` grades and from CXMT; the experience-budget effect of single rank.

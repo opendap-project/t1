@@ -23,7 +23,7 @@ Both remaining branches need a T1-038 exception for the pack: a made-to-order 1S
    - continuous discharge rating ≥ 4.0 A (3.2 A at 80 %);
    - PCM in the pack with over-charge, over-discharge, over-current (trip 4.0–5.0 A) and short-circuit protection, and cell balancing;
    - lead and Micro-Fit plug rated ≥ 4.6 A per pole (3.2 A at 70 %);
-   - the largest energy that fits the battery pocket of [t1 ADR 0003](https://github.com/opendap-project/t1/blob/main/docs/adr/0003-tentative-body-size.md); UN 38.3 report, and IEC 62133-2 for the Commercial edition;
+   - the largest energy that fits the battery pocket of [t1 ADR 0003](../../../product/docs/adr/0003-tentative-body-size.md); UN 38.3 report, and IEC 62133-2 for the Commercial edition;
    - a pack specification that at least two independent makers can build, so the product never depends on one supplier;
    - cells of 4.2 V or LiHV chemistry ([ADR 0008](0008-battery-technology-ready-for-lihv.md) unchanged).
    An off-the-shelf pack that meets the same criteria replaces the made-to-order one if one appears.

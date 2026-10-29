@@ -22,7 +22,7 @@ The T1 has four body buttons (T1-014, T1-015): **Main** (right edge) and **Actio
 | Combination | Result | Reference |
 |---|---|---|
 | **Main**, long | Power on, normal boot | Android power-on |
-| **Main + Volume −**, held at power-on | **MaskROM** (USB download over the main USB-C) | Android: Power + Volume Down enters the bootloader/download mode. T1: [board ADR 0009](https://github.com/opendap-project/board/blob/main/docs/adr/0009-bom-v1-decisions.md), BRD-035, implemented in hardware. MaskROM through the buttons needs a full power-off first (a warm restart does not reopen the entry window) and an empty or unbootable microSD slot (board BOM v1.6 line 97; software can still reboot into the loader) |
+| **Main + Volume −**, held at power-on | **MaskROM** (USB download over the main USB-C) | Android: Power + Volume Down enters the bootloader/download mode. T1: [board ADR 0009](../../../board/docs/adr/0009-bom-v1-decisions.md), BRD-035, implemented in hardware. MaskROM through the buttons needs a full power-off first (a warm restart does not reopen the entry window) and an empty or unbootable microSD slot (board BOM v1.6 line 97; software can still reboot into the loader) |
 | **Main + Volume +**, held at power-on | **Recovery** (Blackbird OS recovery; reflash from SD/TF, BRD-043) | Android: Power + Volume Up enters recovery on many devices. BRD-017 (recovery key) |
 
 ### 1.3 Device on
@@ -51,7 +51,7 @@ The T1 has four body buttons (T1-014, T1-015): **Main** (right edge) and **Actio
 
 ### 1.4 Physical control design
 
-The button design in the [concept art](../concept-art/) governs (T1-059): it is the reference for the form of the controls, and this section describes it. Other details in that concept art are stale (480 × 800 screen, 1.27 mm pins, earlier dimensions) and are not a source. The shared visual language is in the [design system spec](https://github.com/opendap-project/blackbird/blob/main/ui/docs/specs/design-system.md); materials, finishes and manufacturability in the [case industrial-design spec](https://github.com/opendap-project/case/blob/main/docs/specs/industrial-design.md).
+The button design in the [concept art](../concept-art/) governs (T1-059): it is the reference for the form of the controls, and this section describes it. Other details in that concept art are stale (480 × 800 screen, 1.27 mm pins, earlier dimensions) and are not a source. The shared visual language is in the [design system spec](https://github.com/opendap-project/blackbird/blob/main/ui/docs/specs/design-system.md); materials, finishes and manufacturability in the [case industrial-design spec](../../../case/docs/specs/industrial-design.md).
 
 Seen from the front:
 

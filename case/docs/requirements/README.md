@@ -1,6 +1,6 @@
 # Case requirements
 
-Requirements for the physical case of the OpenDAP T1: core with the basic back cover, and the HAT case. Product requirements are in [`t1`](https://github.com/opendap-project/t1).
+Requirements for the physical case of the OpenDAP T1: core with the basic back cover, and the HAT case. Product requirements are in [`t1`](../../../product).
 
 | ID | Requirement | Priority | Status |
 |---|---|---|---|

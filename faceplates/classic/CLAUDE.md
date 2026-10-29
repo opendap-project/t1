@@ -10,4 +10,4 @@ Contributor rules (English, confirmed information only, REUSE licensing, the `do
 
 ## Working here
 
-- This faceplate attaches through the [faceplate interface](https://github.com/opendap-project/t1/blob/main/docs/specs/faceplate-interface.md) in the t1 repository; follow it instead of redefining the interface here.
+- This faceplate attaches through the [faceplate interface](../../product/docs/specs/faceplate-interface.md) in the t1 repository; follow it instead of redefining the interface here.

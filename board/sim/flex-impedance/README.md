@@ -3,7 +3,7 @@
 The question: which trace geometry gives each pair class its target impedance on the fab's standard flexible-circuit stack-ups, what changes it (dielectric constant, width tolerance, an EMI shielding film), how much the conductors lose, and how wide the power conductors must be? It serves two specifications:
 
 - the board's [HAT flat-cable specification](../../docs/specs/hat-flat-cable.md) (BRD-013);
-- faceplate-touch's [faceplate flex specification](https://github.com/opendap-project/faceplate-touch/blob/main/docs/specs/faceplate-flex.md).
+- faceplate-touch's [faceplate flex specification](../../../faceplates/touch/docs/specs/faceplate-flex.md).
 
 `odapkit stackup` (toolkit-hardware) landed on 2026-10-24 while this study was written; the specifications take their impedance figures from it (`hardware/hat-flat-cable/stackup-v0.toml`, faceplate-touch `hardware/faceplate-flex/stackup-v0.toml`). This study cross-checks them and adds what `odapkit stackup` does not compute: conductor loss, coupling between lines, the effect of an EMI shielding film, and power-conductor sizing.
 

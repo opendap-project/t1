@@ -5,7 +5,7 @@
 
 ## Context
 
-The T1 thickness stack, which sets the 59.5 × 94.3 × 24 mm body of [t1 ADR 0003](https://github.com/opendap-project/t1/blob/main/docs/adr/0003-tentative-body-size.md) and the 10.9 × 50.5 × 63.8 mm pocket the [ADR 0014](0014-two-cell-battery.md) pack fills, leaves 0.3 mm between the display module and the board. The faceplate connector FH35C-51S is 0.9 mm high, and BRD-054 allows both sides populated ([PCB design constraints](../specs/pcb-design-constraints.md) PCB-Z-03, §9 item 1).
+The T1 thickness stack, which sets the 59.5 × 94.3 × 24 mm body of [t1 ADR 0003](../../../product/docs/adr/0003-tentative-body-size.md) and the 10.9 × 50.5 × 63.8 mm pocket the [ADR 0014](0014-two-cell-battery.md) pack fills, leaves 0.3 mm between the display module and the board. The faceplate connector FH35C-51S is 0.9 mm high, and BRD-054 allows both sides populated ([PCB design constraints](../specs/pcb-design-constraints.md) PCB-Z-03, §9 item 1).
 
 A front-side height budget (courtyard area from BOM v1.7, placement factor from the Radxa ZERO 3W) found:
 

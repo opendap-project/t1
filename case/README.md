@@ -1,6 +1,6 @@
 # Case
 
-The physical case of the OpenDAP T1: the core with its basic back cover, the device-side HAT case mechanics, and the mount that faceplates attach to. Product requirements live in [`t1`](https://github.com/opendap-project/t1); each faceplate keeps its own mechanics in its repository.
+The physical case of the OpenDAP T1: the core with its basic back cover, the device-side HAT case mechanics, and the mount that faceplates attach to. Product requirements live in [`t1`](../product); each faceplate keeps its own mechanics in its repository.
 
 ## Layout
 

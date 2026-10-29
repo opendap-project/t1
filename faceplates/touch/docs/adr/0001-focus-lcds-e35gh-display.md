@@ -17,4 +17,4 @@ The touch faceplate display must fit the product (T1-030), keep a 2:3-preferred 
 
 The body grows from the ideal toward the maximum, to about 59.5 × 91.5 mm (ratio about 1.54), within T1-031 and T1-033.
 
-Note (2026-10-24): [t1 ADR 0003](https://github.com/opendap-project/t1/blob/main/docs/adr/0003-tentative-body-size.md) (Accepted) later set the tentative body at 59.5 × 94.3 × 24 mm (credit-card proportions at this width), taller than the 91.5 mm the display alone needs; that ADR is the current body size.
+Note (2026-10-24): [t1 ADR 0003](../../../../product/docs/adr/0003-tentative-body-size.md) (Accepted) later set the tentative body at 59.5 × 94.3 × 24 mm (credit-card proportions at this width), taller than the 91.5 mm the display alone needs; that ADR is the current body size.

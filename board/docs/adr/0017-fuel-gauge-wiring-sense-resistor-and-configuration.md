@@ -11,7 +11,7 @@
 - (b) the 5 mΩ sense resistor is outside the datasheet's 1–3 mΩ;
 - (c) three data-flash defaults differ between SLUUC81 §13 and its Table 14-1.
 
-Sources: TI SLUSE07B (BQ28Z610-R1 datasheet, January 2022), TI SLUUC81 (technical reference, January 2020), TI SLUSDV2C (BQ25798), TI SLPS489A (CSD17575Q3), Vishay document 30100 (WSL, 23-Nov-2023). All are in the [parts-lib manifest](https://github.com/opendap-project/parts-lib/blob/main/manifest.toml) and were read from the local cache with matching sha256.
+Sources: TI SLUSE07B (BQ28Z610-R1 datasheet, January 2022), TI SLUUC81 (technical reference, January 2020), TI SLUSDV2C (BQ25798), TI SLPS489A (CSD17575Q3), Vishay document 30100 (WSL, 23-Nov-2023). All are in the [parts-lib manifest](https://github.com/opendap-project/libs/blob/main/parts/manifest.toml) and were read from the local cache with matching sha256.
 
 ## Research
 

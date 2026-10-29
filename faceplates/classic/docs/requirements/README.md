@@ -5,7 +5,7 @@ Requirements for the classic faceplate of the OpenDAP T1.
 | ID | Requirement | Priority | Status |
 |---|---|---|---|
 | FPK-001 | The classic faceplate shall be inspired by classic portable music players. | must | Confirmed |
-| FPK-002 | The classic faceplate shall meet the [faceplate interface](https://github.com/opendap-project/t1/blob/main/docs/specs/faceplate-interface.md) defined in the t1 repository. | must | Confirmed |
+| FPK-002 | The classic faceplate shall meet the [faceplate interface](../../../../product/docs/specs/faceplate-interface.md) defined in the t1 repository. | must | Confirmed |
 | FPK-003 | The classic faceplate shall keep its own mechanics in this repository. | must | Confirmed |
 | FPK-004 | The classic faceplate shall have a display and an ambient light sensor for dimming it (every faceplate has a display). | must | Confirmed |
 | FPK-005 | The display driver shall be on the classic faceplate. | must | Confirmed |

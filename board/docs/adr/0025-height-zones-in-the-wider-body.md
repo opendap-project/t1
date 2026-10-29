@@ -2,7 +2,7 @@
 
 - **Status:** Accepted (2026-10-27). Supersedes [ADR 0016](0016-front-side-height-under-the-display.md).
 - **Date:** 2026-10-27
-- **Basis:** [t1 ADR 0006](https://github.com/opendap-project/t1/blob/main/docs/adr/0006-body-at-the-maximum-width.md) (body at the T1-031 maximum); the board-area result below; T1-040 (audio parts change only after measurement); BRD-038 (microSD); T1-016 (speaker at the bottom edge, right).
+- **Basis:** [t1 ADR 0006](../../../product/docs/adr/0006-body-at-the-maximum-width.md) (body at the T1-031 maximum); the board-area result below; T1-040 (audio parts change only after measurement); BRD-038 (microSD); T1-016 (speaker at the bottom edge, right).
 
 ## Context
 

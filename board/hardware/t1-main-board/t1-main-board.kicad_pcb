@@ -176327,7 +176327,7 @@
 				(justify left mirror)
 			)
 		)
-		(property "Datasheet" "https://github.com/opendap-project/board/blob/main/hardware/t1-main-board/shields.toml"
+		(property "Datasheet" "https://github.com/opendap-project/t1/blob/main/board/hardware/t1-main-board/shields.toml"
 			(at 0 0 180)
 			(layer "B.Fab")
 			(hide yes)
@@ -179469,7 +179469,7 @@
 				(justify left mirror)
 			)
 		)
-		(property "Datasheet" "https://github.com/opendap-project/board/blob/main/hardware/t1-main-board/shields.toml"
+		(property "Datasheet" "https://github.com/opendap-project/t1/blob/main/board/hardware/t1-main-board/shields.toml"
 			(at 0 0 180)
 			(layer "B.Fab")
 			(hide yes)

@@ -18,7 +18,7 @@ Terms: the **body** is the T1 without its faceplate (board, case, battery); **co
 
 ## 1. Connector and contacts
 
-Defined by function ([RFC 0001](https://github.com/opendap-project/rfcs/blob/main/text/0001-faceplate-interface-v0-pinout.md)). The board maps its SoC pins onto these groups; no SoC pin is part of the interface (hardware-support connector rule). Connector: Hirose FH35C-51S, 0.3 mm pitch, 51 contacts: 46 used, 5 reserved. Contact positions: [board pinout v1 §8](https://github.com/opendap-project/board/blob/main/docs/specs/pinout-v1.md).
+Defined by function ([RFC 0001](https://github.com/opendap-project/rfcs/blob/main/text/0001-faceplate-interface-v0-pinout.md)). The board maps its SoC pins onto these groups; no SoC pin is part of the interface (hardware-support connector rule). Connector: Hirose FH35C-51S, 0.3 mm pitch, 51 contacts: 46 used, 5 reserved. Contact positions: [board pinout v1 §8](../../../board/docs/specs/pinout-v1.md).
 
 | Group | Lines | Contacts | Notes |
 |---|---|---|---|

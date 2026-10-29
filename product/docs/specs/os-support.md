@@ -3,7 +3,7 @@
 - **Status:** Draft.
 - **Date:** 2026-10-26
 - **Applies to:** the Blackbird OS image for the T1, through the T1's board support package ([Blackbird OS](https://github.com/opendap-project/blackbird/tree/main/os) OS-004).
-- **Sources:** the [board BOM v1.5](https://github.com/opendap-project/board/blob/main/docs/specs/bom-v1.md), [board ADR 0014](https://github.com/opendap-project/board/blob/main/docs/adr/0014-two-cell-battery.md).
+- **Sources:** the [board BOM v1.5](../../../board/docs/specs/bom-v1.md), [board ADR 0014](../../../board/docs/adr/0014-two-cell-battery.md).
 
 What the T1's hardware needs from the image, beyond the generic Blackbird OS. Generic rules (mainline kernel, drivers through DKMS while upstream review runs) are Blackbird OS requirements; this document lists only the T1's parts.
 

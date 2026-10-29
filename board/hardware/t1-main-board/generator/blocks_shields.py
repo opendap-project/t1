@@ -13,7 +13,7 @@ from draw import Flow, Group, corner_notes, unit_box, unit_extent
 from localparts import shields
 from sch import snap, snap_up
 
-DRAWING = "https://github.com/opendap-project/board/blob/main/hardware/t1-main-board/shields.toml"
+DRAWING = "https://github.com/opendap-project/t1/blob/main/board/hardware/t1-main-board/shields.toml"
 
 
 def sheet(proj):
